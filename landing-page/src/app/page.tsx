@@ -32,7 +32,6 @@ export default function Home() {
 
   return (
     <div className="bg-white">
-      {/* Hero Section */}
       <section
         className="relative bg-gradient-to-br py-20 bg-center bg-cover"
         style={{ backgroundImage: "url('/bg.png')" }}
@@ -115,7 +114,10 @@ export default function Home() {
             ))}
           </div>
           <div className=" mt-2 text-right mr-1 text-primary-500 hover:underline hover:text-primary-700 ">
-            <Link href="https://www.instagram.com/wholesalenursery?igsh=MXZ5MnFlMzVvM2Vsaw%3D%3D&utm_source=qr" target="_">
+            <Link
+              href="https://www.instagram.com/wholesalenursery?igsh=MXZ5MnFlMzVvM2Vsaw%3D%3D&utm_source=qr"
+              target="_"
+            >
               View more
             </Link>
           </div>
