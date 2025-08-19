@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+:root {
+  --background: #fff;
+  --foreground: #505050;
+  --txt-green: #0d6536;
+  --txt-orange: #f37521;
+  --bg-green: #4cba9b;
+  --bg-green-light: #e4fff0;
+  --heading-txt: #1d2f33;
+  --txt-dark: #1d2f33;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-catamaran);
+  box-sizing: border-box;
+  min-height: 2000px;
+}
+
+.container {
+  width: 100%;
+  max-width: 1390px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+header {
+  /* position: sticky; */
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  padding-top: 45px;
+  z-index: 1000;
+}
+
+.main_header {
+  background-color: #fff;
+  border-radius: 10px;
+  height: 80px;
+  padding: 10px 30px;
+  border: 1px solid #1d2f331a;
+  box-shadow: 0 8px 60px 0px #1d2f331a;
+}
+
+.main_header nav ul li a {
+  font-size: 16px;
+  line-height: 30px;
+  color: #1d2f3366;
+  display: inline-block;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+}
+.main_header nav ul li a.active {
+  color: var(--txt-dark);
+}
+.main_header nav ul li a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0px;
+  width: 0;
+  height: 2px;
+  background-color: transparent;
+  transition: all 0.3s ease-in-out;
+}
+
+.main_header nav ul li a:hover {
+  color: var(--txt-dark);
+}
+
+.main_header nav ul li a:hover::after {
+  background-color: var(--txt-green);
+  width: 100%;
+  left: 0;
+}
+
+.main_header nav ul li a.active::after {
+  background-color: var(--txt-orange);
+  width: 100%;
+  left: 0;
+}
