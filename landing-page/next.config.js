@@ -54,7 +54,7 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "www.trendythreads.co.in",
+        hostname: "www.sanasnursery.com",
         pathname: "**",
       },
       {

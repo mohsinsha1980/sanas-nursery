@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>New Enquiry Notification | Sanas Nursery</title>
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #f3f4f6;
+        font-family: "Montserrat", sans-serif;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      table {
+        border-spacing: 0;
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      a {
+        color: #444;
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .email-container {
+        max-width: 600px;
+        margin: 30px auto;
+        background-color: #ffffff;
+        border: 1px solid #e0e0e0;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+      }
+
+      .email-header {
+        background-color: #fbe4de;
+        text-align: center;
+        padding: 20px 20px;
+      }
+
+      .email-header img {
+        width: 150px;
+        margin-bottom: 10px;
+      }
+
+      .email-body {
+        padding: 40px 30px;
+        text-align: center;
+      }
+
+      .email-body h2 {
+        color: #333;
+        font-size: 24px;
+        margin-bottom: 12px;
+      }
+
+      .email-body p {
+        margin: 0 0 15px;
+        color: #555;
+      }
+
+      .cta-button {
+        display: inline-block;
+        background: #f08b64;
+        color: #fff;
+        font-weight: 600;
+        text-transform: uppercase;
+        padding: 12px 30px;
+        border-radius: 6px;
+        margin-top: 20px;
+      }
+
+      .cta-button:hover {
+        background: #e07a50;
+      }
+
+      .cta-button a {
+        color: #444 !important;
+      }
+
+      .footer {
+        text-align: center;
+        padding: 15px 30px;
+        background-color: #f8f9fa;
+        border-top: 1px solid #e0e0e0;
+        color: #777;
+        font-size: 12px;
+      }
+
+      .footer a {
+        color: #444;
+      }
+
+      @media only screen and (max-width: 600px) {
+        .email-body {
+          padding: 30px 20px;
+        }
+
+        .cta-button {
+          width: 80%;
+          padding: 12px;
+          margin: 0 auto;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <center>
+      <div class="email-container">
+        <!-- Header Section -->
+        <div class="email-header">
+          <img
+            src="https://sanasnursery.com/api/public/images/logo-png.png"
+            alt="TrendyThreads"
+          />
+        </div>
+
+        <!-- Body Section -->
+        <div class="email-body">
+          <h2>New Enquiry Received</h2>
+          <p>Dear Admin,</p>
+          <p>A new enquiry form has been submitted on your website.</p>
+          <p>
+            Please log in to your account to review the details and take the
+            necessary action.
+          </p>
+
+          <a href="{{enquiryLink}}" class="cta-button"> View Enquiry </a>
+
+          <p style="margin-top: 30px">
+            Thank you, <br />
+            <strong>TrendyThreads Team</strong>
+          </p>
+        </div>
+
+        <!-- Footer Section -->
+        <div class="footer">
+          <p>
+            Need help? Contact our support team at
+            <a href="`mailto:{{supportEmail}}`">{{supportEmail}}</a>
+          </p>
+        </div>
+      </div>
+    </center>
+  </body>
+</html>
