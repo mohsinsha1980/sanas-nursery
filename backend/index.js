@@ -9,6 +9,8 @@ import helmet from "helmet";
 import config from "./config/env-config.js";
 import connectDB from "./db/connection.js";
 import path from "path";
+import log from "./services/logger.js";
+
 const app = express();
 
 app.use(express.json({ limit: "10mb" }));
@@ -34,19 +36,19 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.use("/", (req, res) => {
-  res.send("App is up and running on port: ", config.PORT);
+  res.send("App is up and running on port: " + config.PORT);
 });
 
 // import adminRoutes from "./routes/admin";
 // import authRoute from "./routes/auth";
-// import publicRoutes from "./routes/public";
+import publicRoutes from "./routes/public.js";
+
 // import userRoutes from "./routes/user/index.js";
-// import { log } from "./services/logger";
 
 // app.use("/api/auth", authRoute);
 // app.use("/api/user", userRoutes);
 // app.use("/api/admin", adminRoutes);
-// app.use("/api/public", publicRoutes);
+app.use("/api/public", publicRoutes);
 
 // only run when next() is called   || success response
 app.use((req, res) => {
