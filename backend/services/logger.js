@@ -22,4 +22,4 @@ const log = (data) => {
   );
 };
 
-export default { log };
+export default  log ;
