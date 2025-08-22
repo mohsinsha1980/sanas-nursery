@@ -1,0 +1,331 @@
+const fs = require("fs");
+const { CATEGORY_LEVEL, SORT } = require("./constants").default;
+const ObjectId = require("mongoose").Types.ObjectId;
+const MasterData = require("../models/Settings");
+const CryptoJS = require("crypto-js");
+
+const readHTMLFile = function (path, callback) {
+  fs.readFile(path, { encoding: "utf-8" }, function (err, html) {
+    if (err) {
+      callback(err);
+      // throw err;
+    } else {
+      callback(null, html);
+    }
+  });
+};
+
+// function toBase64(filePath) {
+//   const img = fs.readFileSync(filePath);
+//   const mime_type = mime.getType(filePath);
+//   const base64String = Buffer.from(img).toString("base64");
+//   const withPrefix = `data:${mime_type};base64,` + base64String;
+//   return withPrefix;
+// }
+
+const isValidObjectId = (id) => {
+  if (ObjectId.isValid(id)) {
+    if (String(new ObjectId(id)) === id) return true;
+    return false;
+  }
+  return false;
+};
+
+const WEEK_DAYS = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
+
+const MONTH_NAMES = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
+
+function getAMPMTime(date) {
+  var hours = date.getHours();
+  var minutes = date.getMinutes();
+  var ampm = hours >= 12 ? "PM" : "AM";
+  hours = hours % 12;
+  hours = hours ? hours : 12; // the hour '0' should be '12'
+  minutes = minutes < 10 ? "0" + minutes : minutes;
+  var strTime = hours + ":" + minutes + " " + ampm;
+  return strTime;
+}
+
+const getFormattedDateAndTime = (inputDate) => {
+  if (!inputDate) return "";
+  const date = new Date(inputDate);
+  const day = date.getDay();
+  const curr_date = date.getDate();
+  const formattedDay = ("0" + curr_date).slice(-2);
+  const month = date.getMonth();
+  const year = date.getFullYear();
+  const time = getAMPMTime(date);
+
+  return `${WEEK_DAYS[day]}, ${MONTH_NAMES[month]} ${formattedDay} ${year} at ${time}`;
+};
+
+const getFormattedDate = (inputDate) => {
+  if (!inputDate) return "";
+  const date = new Date(inputDate);
+  const day = date.getDate();
+  const formattedDay = ("0" + day).slice(-2);
+  const month = date.getMonth();
+  const year = date.getFullYear();
+
+  return `${MONTH_NAMES[month]}, ${formattedDay} ${year}`;
+};
+
+const unlinkAsync = (path) => {
+  return new Promise((resolve, reject) => {
+    fs.unlink(path, (err) => (err ? reject(err) : resolve()));
+  });
+};
+
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+const phoneRegex = /^[6-9]\d{9}$/;
+
+// const buildCategoryTree = (categories) => {
+//   try {
+//     const categoryMap = {};
+//     const tree = [];
+
+//     categories.forEach((cat) => {
+//       categoryMap[cat._id] = { ...cat, children: [] };
+//     });
+
+//     categories.forEach((cat) => {
+//       if (cat.level === CATEGORY_LEVEL.LEVEL1) {
+//         tree.push(categoryMap[cat._id]);
+//       } else if (cat.level === CATEGORY_LEVEL.LEVEL2 && cat.l1_category) {
+//         categoryMap[cat.l1_category]?.children.push(categoryMap[cat._id]);
+//       } else if (cat.level === CATEGORY_LEVEL.LEVEL3 && cat.l2_category) {
+//         categoryMap[cat.l2_category]?.children.push(categoryMap[cat._id]);
+//       }
+//     });
+
+//     return { error: false, data: tree };
+//   } catch (error) {
+//     return { error: true, data: [] };
+//   }
+// };
+
+const buildProductFilter = async (query) => {
+  const { colors, materials, sizes, styles, discount, price_range } = query;
+  const filter = {};
+
+  if (colors) {
+    const colorArray = colors
+      .split(",")
+      .map((color) => color.trim().toLowerCase());
+
+    if (colorArray.includes("other")) {
+      const masterData = await MasterData.findOne().lean().exec();
+      const masterColors = masterData?.colors?.map((c) => c.label) || [];
+      filter["variants"] = filter["variants"] = filter["variants"] || {
+        $elemMatch: {},
+      };
+      filter["variants"].$elemMatch["color.label"] = { $nin: masterColors };
+    } else {
+      const colorArray = colors
+        .split(",")
+        .map((color) => new RegExp(`^${color.trim()}$`, "i"));
+      filter["variants"] = filter["variants"] || { $elemMatch: {} };
+      filter["variants"].$elemMatch["color.label"] = { $in: colorArray };
+    }
+
+    // const colorArray = colors
+    //   .split(",")
+    //   .map((color) => new RegExp(`^${color.trim()}$`, "i"));
+    // filter["variants"] = filter["variants"] || { $elemMatch: {} };
+    // filter["variants"].$elemMatch["color.label"] = { $in: colorArray };
+  }
+
+  if (materials) {
+    filter["variants"] = filter["variants"] || { $elemMatch: {} };
+    filter["variants"].$elemMatch.material = { $in: materials.split(",") };
+  }
+
+  if (sizes) {
+    filter["variants"] = filter["variants"] || { $elemMatch: {} };
+    filter["variants"].$elemMatch.size = { $in: sizes.split(",") };
+  }
+
+  if (styles) {
+    filter["variants"] = filter["variants"] || { $elemMatch: {} };
+    filter["variants"].$elemMatch.style = { $in: styles.split(",") };
+  }
+
+  if (discount) {
+    const [minDiscount, maxDiscount] = discount.split("-").map(Number);
+    filter["variants"] = filter["variants"] || { $elemMatch: {} };
+    filter["variants"].$elemMatch.discount = {
+      $gte: minDiscount,
+      ...(maxDiscount ? { $lte: maxDiscount } : {}),
+    };
+  }
+
+  // price_range = "20,50"
+  if (price_range) {
+    const [minPrice, maxPrice] = price_range.split(",").map(Number);
+    filter["variants"] = filter["variants"] || { $elemMatch: {} };
+    filter["variants"].$elemMatch.sellingPrice = {
+      $gte: minPrice,
+      ...(maxPrice ? { $lte: maxPrice } : {}),
+    };
+  }
+
+  return filter;
+};
+
+const productSortQuery = (sort) => {
+  switch (sort) {
+    case SORT.BEST_SELLER:
+      return [
+        { $addFields: { totalSold: { $sum: "$variants.soldQuantity" } } },
+        { $sort: { totalSold: -1 } },
+      ];
+    case SORT.TOP_RATED:
+      return { avgRating: -1 };
+    case SORT.PRICE_ASC:
+      return [
+        { $addFields: { minPrice: { $min: "$variants.sellingPrice" } } },
+        { $sort: { minPrice: 1 } },
+      ];
+    case SORT.PRICE_DESC:
+      return [
+        { $addFields: { maxPrice: { $max: "$variants.sellingPrice" } } },
+        { $sort: { maxPrice: -1 } },
+      ];
+    default:
+      return { createdAt: -1 };
+  }
+};
+
+// const formatNavList = (categories, parentPath = "") => {
+//   return categories.map((category) => {
+//     const categoryPath = `${parentPath}/${category.slug}`;
+
+//     const formattedCategory = {
+//       id: category._id.toString(),
+//       label: category.label,
+//       link: categoryPath,
+//     };
+
+//     if (category.children && category.children.length > 0) {
+//       formattedCategory.children = formatNavList(
+//         category.children,
+//         categoryPath
+//       );
+//     }
+
+//     return formattedCategory;
+//   });
+// };
+
+const capitalize = (str) => {
+  return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+};
+
+const getFormattedPicURL = (endpoint) => {
+  if (!endpoint) return "";
+  return `${process.env.NEXT_PUBLIC_BACKEND}/${endpoint}`;
+};
+
+// const constructProductLink = (product) => {
+//   let link = "/";
+//   link = link + product.l1_category.slug + "/" + product.l2_category.slug;
+//   if (product.l3_category?.slug) {
+//     link = link + "/" + product.l3_category.slug;
+//   }
+//   link = link + "/" + product.slug + "/" + product._id;
+//   return link;
+// };
+
+// const constructCategoryLink = (product) => {
+//   let link = "/";
+//   link = link + product.l1_category.slug + "/" + product.l2_category.slug;
+//   if (product.l3_category?.slug) {
+//     link = link + "/" + product.l3_category.slug;
+//   }
+//   link = link + "/" + product.slug + "/" + product._id;
+//   return link;
+// };
+
+const buildQueryString = (searchParams) => {
+  const params = new URLSearchParams();
+
+  Object.entries(searchParams).forEach(([Key, value]) => {
+    if (value !== undefined && value !== null) {
+      if (Array.isArray(value)) {
+        value.forEach((v) => params.append(Key, v.toString()));
+      } else {
+        params.append(Key, value.toString());
+      }
+    }
+  });
+
+  return params.toString() ? "?" + params.toString() : "";
+};
+
+const SECRET_KEY = config;
+const encryptData = (data) => {
+  return CryptoJS.AES.encrypt(JSON.stringify(data), SECRET_KEY).toString();
+};
+
+const formatUserData = (user) =>
+  encryptData({
+    _id: user._id,
+    email: user.email,
+    role: user.role,
+    first_name: user.first_name,
+    last_name: user.last_name,
+    addresses: user.addresses,
+    photo: user.photo,
+    phone: user.phone,
+    wishlist: user.wishlist,
+    isPassword: user.password ? true : false,
+  });
+
+module.exports = {
+  readHTMLFile,
+  isValidObjectId,
+  getFormattedDateAndTime,
+  getAMPMTime,
+  WEEK_DAYS,
+  MONTH_NAMES,
+  getFormattedDate,
+  unlinkAsync,
+  emailRegex,
+  phoneRegex,
+  buildCategoryTree,
+  buildProductFilter,
+  productSortQuery,
+  formatNavList,
+  capitalize,
+  getFormattedPicURL,
+  constructProductLink,
+  productSortQuery,
+  constructCategoryLink,
+  calSellingPrice,
+  buildQueryString,
+  isCouponAlreadyUsed,
+  calculateTaxes,
+  formatUserData,
+};
