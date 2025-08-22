@@ -4,12 +4,6 @@ import { AxiosResponse } from "axios";
 import { Controller, PaginationDataType } from "../types/common-types";
 import { PasswordData } from "../types/admin-types";
 
-export const updatePassword = (data: PasswordData, controller: Controller) => {
-  return axiosInstance.post(`${config.API_ADMIN_PATH}/updatePassword`, data, {
-    signal: controller?.signal,
-  });
-};
-
 export const getUsers = (
   pagination: PaginationDataType,
   controller: Controller
@@ -20,6 +14,12 @@ export const getUsers = (
       signal: controller?.signal,
     }
   );
+};
+
+export const updatePassword = (data: PasswordData, controller: Controller) => {
+  return axiosInstance.post(`${config.API_ADMIN_PATH}/updatePassword`, data, {
+    signal: controller?.signal,
+  });
 };
 
 // export const createProduct = (

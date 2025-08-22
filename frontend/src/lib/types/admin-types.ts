@@ -195,24 +195,21 @@ export interface PasswordData {
 //   _id: string;
 // }
 
-// export interface UserTableActionType {
-//   actionType: string;
-//   actionIcon?: React.ReactNode;
-//   action: (user: UserTableDataType) => void;
-// }
+export interface UserTableActionType {
+  actionType: string;
+  actionIcon?: React.ReactNode;
+  action: (user: UserTableDataType) => void;
+}
 
-// export interface UserTableDataType {
-//   _id: string;
-//   phone: string;
-//   first_name?: string;
-//   last_name?: string;
-//   email?: string;
-//   is_verified: boolean;
-//   addresses: UserAddressesDataType[];
-//   actions: UserTableActionType[];
-//   active: boolean;
-//   role: string;
-// }
+export interface UserTableDataType {
+  _id: string;
+  name: string;
+  email: string;
+  phone?: string;
+  isVerified: boolean;
+  actions: UserTableActionType[];
+  role: string;
+}
 
 // export interface UserAddressesDataType {
 //   _id: string;

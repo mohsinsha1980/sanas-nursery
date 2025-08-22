@@ -1,0 +1,29 @@
+.bl_admin_template {
+  width: 100%;
+  max-width: var(--container-small);
+  margin: auto;
+  min-height: 100%;
+  display: flex;
+  padding: 20px;
+  gap: 30px;
+}
+
+.bl_admin_template > div {
+  flex: 1;
+}
+
+.admin_nav {
+  max-width: 200px;
+  min-height: 500px;
+}
+
+.pg_content h1 {
+  font-size: 24px;
+  font-weight: 300;
+}
+
+.pg_content h2 {
+  font-size: 20px;
+  font-weight: 300;
+  margin-bottom: 20px;
+}

@@ -1,6 +1,7 @@
-import { verify } from "jsonwebtoken";
-import { ROLES } from "../lib/constants";
-import { clearAuthCookies } from "./user-auth";
+import jwt from "jsonwebtoken";
+const { verify } = jwt;
+import { ROLES } from "../lib/constants.js";
+import { clearAuthCookies } from "./user-auth.js";
 
 const adminAuth = async (req, res, next) => {
   try {
