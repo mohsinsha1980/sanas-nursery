@@ -1,15 +1,10 @@
 import { PRODUCTS_PER_PAGE } from "@/lib/constants";
 
-export default function ProductListLoading({
-  show = true,
-}: {
-  show?: boolean;
-}) {
+export default function ProductListLoading() {
   return (
     <div className="animate-pulse">
       <section>
-        <div className="w-full h-[100px] p-0 bg-gray-300 mb-6">
-        </div>
+        <div className="w-full h-[100px] p-0 bg-gray-300 mb-6"></div>
         <div className="p-6 container grid grid-cols-5 sm:grid-cols-2">
           <div className="sm:hidden">
             <div className="p-4 space-y-4 self-start bl_list pe-[20px] pb-[20px] border-b-2 border-black-500">

@@ -34,6 +34,8 @@ const config = {
   ZEPTO_FROM_EMAIL: process.env.ZEPTO_FROM_EMAIL || "noreply@sanasnursery.com",
   ADMIN_EMAIL: process.env.ADMIN_EMAIL || "sanasnursery@gmail.com",
   SUPPORT_EMAIL: process.env.SUPPORT_EMAIL || "info@sanasnursery.com",
+  BACKEND_VERIFICATION_ENDPONT: process.env.BACKEND_VERIFICATION_ENDPONT,
+  FE_EMAIL_VERIFIED_PAGE: process.env.FE_EMAIL_VERIFIED_PAGE,
 };
 
 export default config;

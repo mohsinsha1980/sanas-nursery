@@ -82,6 +82,23 @@
         color: #555;
       }
 
+      .button {
+        display: inline-block;
+        padding: 12px 24px;
+        background: #f08b64;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: bold;
+        margin: 20px 0;
+        transition: 0.3s ease;
+      }
+
+      .button:hover {
+        background: #e07a50;
+      }
+
       .otp-code {
         display: inline-block;
         background-color: #fdf1ef;
@@ -125,28 +142,19 @@
   <body>
     <center>
       <div class="email-container">
-        <!-- Header Section -->
         <div class="email-header">
-          <img
-            src="https://sanasnursery.com/api/public/images/logo-png.png"
-            alt="TrendyThreads"
-          />
+          <img src="" alt="Sanas Nursery" />
         </div>
 
-        <!-- Body Section -->
         <div class="email-body">
           <h2>Email Verification</h2>
-          <p>Hello <strong>{{name}}</strong>,</p>
-          <p>Please use the following OTP to verify your email:</p>
-
-          <div class="otp-code">{{otp}}</div>
-
-          <p>This OTP is valid for the next {{expiryMinutes}} minutes.</p>
+          <p>Please click on the following button to verify your email:</p>
+          <a href="{{verificationLink}}" class="button">Verify Email</a>
           <p>
             If you haven’t requested this, you can safely ignore this email.
           </p>
 
-          <p>Thank you,<br /><strong>TrendyThreads Team</strong></p>
+          <p>Thank you,<br /><strong>Sanas Nursery Team</strong></p>
         </div>
 
         <!-- Footer Section -->

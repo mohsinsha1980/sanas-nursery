@@ -1,10 +1,17 @@
-const fs = require("fs");
-const { CATEGORY_LEVEL, SORT } = require("./constants").default;
-const ObjectId = require("mongoose").Types.ObjectId;
-const MasterData = require("../models/Settings");
-const CryptoJS = require("crypto-js");
+import fs from "fs";
+import { SORT } from "./constants.js";
+import { Types } from "mongoose";
+import CryptoJS from "crypto-js";
+import config from "../config/env-config.js";
+const ObjectId = Types.ObjectId;
 
-const readHTMLFile = function (path, callback) {
+export const nameRegEx = /^[A-Za-z\s]+$/;
+export const phoneRegEx = /^[6-9]\d{9}$/;
+export const emailRegEx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+export const zipRegEx = /^[1-9]{1}\d{2}\s?\d{3}$/;
+export const slugRegEx = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+
+export const readHTMLFile = function (path, callback) {
   fs.readFile(path, { encoding: "utf-8" }, function (err, html) {
     if (err) {
       callback(err);
@@ -284,48 +291,18 @@ const buildQueryString = (searchParams) => {
   return params.toString() ? "?" + params.toString() : "";
 };
 
-const SECRET_KEY = config;
 const encryptData = (data) => {
-  return CryptoJS.AES.encrypt(JSON.stringify(data), SECRET_KEY).toString();
+  return CryptoJS.AES.encrypt(
+    JSON.stringify(data),
+    config.ENCRYPTION_SECRET_KEY
+  ).toString();
 };
 
-const formatUserData = (user) =>
+export const formatUserData = (user) =>
   encryptData({
     _id: user._id,
     email: user.email,
-    role: user.role,
-    first_name: user.first_name,
-    last_name: user.last_name,
-    addresses: user.addresses,
-    photo: user.photo,
+    name: user.name,
     phone: user.phone,
-    wishlist: user.wishlist,
-    isPassword: user.password ? true : false,
+    role: user.role,
   });
-
-module.exports = {
-  readHTMLFile,
-  isValidObjectId,
-  getFormattedDateAndTime,
-  getAMPMTime,
-  WEEK_DAYS,
-  MONTH_NAMES,
-  getFormattedDate,
-  unlinkAsync,
-  emailRegex,
-  phoneRegex,
-  buildCategoryTree,
-  buildProductFilter,
-  productSortQuery,
-  formatNavList,
-  capitalize,
-  getFormattedPicURL,
-  constructProductLink,
-  productSortQuery,
-  constructCategoryLink,
-  calSellingPrice,
-  buildQueryString,
-  isCouponAlreadyUsed,
-  calculateTaxes,
-  formatUserData,
-};

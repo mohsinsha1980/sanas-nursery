@@ -1,5 +1,5 @@
 import { SendMailClient } from "zeptomail";
-import { default as config } from "./env-config";
+import config from "./env-config.js";
 
 const mailClient = new SendMailClient({
   url: "api.zeptomail.in/",

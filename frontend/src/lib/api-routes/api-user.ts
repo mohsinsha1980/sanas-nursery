@@ -22,6 +22,10 @@
 //   UpdateProfilePassword,
 // } from "./types/user-types";
 
+// import { axiosInstance } from "@/config/http";
+// import { Controller } from "../types/common-types";
+// import config from "@/config/env-config";
+
 // export const addReview = (data: ReviewFormDataType, controller: Controller) => {
 //   return axiosInstance.post(`${APP_USER_PATH}/reviews`, data, {
 //     signal: controller?.signal,

@@ -1,3 +1,6 @@
+const COUNTRY_NAME = "India";
+export const PASSWORD_HASH_ROUND = 10;
+
 export const ROLES = {
   USER: "User",
   ADMIN: "Admin",
@@ -8,8 +11,6 @@ export const STATUS = {
   INACTIVE: "1",
   DELETED: "2",
 };
-
-const COUNTRY_NAME = "India";
 
 // MEDIA = {
 //   Gallery: {

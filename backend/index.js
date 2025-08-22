@@ -35,17 +35,13 @@ app.set("view engine", "html");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-app.use("/", (req, res) => {
-  res.send("App is up and running on port: " + config.PORT);
-});
-
 // import adminRoutes from "./routes/admin";
-// import authRoute from "./routes/auth";
+import authRoute from "./routes/auth.js";
 import publicRoutes from "./routes/public.js";
 
 // import userRoutes from "./routes/user/index.js";
 
-// app.use("/api/auth", authRoute);
+app.use("/api/auth", authRoute);
 // app.use("/api/user", userRoutes);
 // app.use("/api/admin", adminRoutes);
 app.use("/api/public", publicRoutes);

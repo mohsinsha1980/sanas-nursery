@@ -1,203 +1,150 @@
-const { ROLES, STATUS } = require("../lib/constants.js");
-const bcrypt = require("bcryptjs");
-const nodemailer = require("nodemailer");
-const jwt = require("jsonwebtoken");
-const handlebars = require("handlebars");
-const User = require("../models/User.js");
-const Otp = require("../models/Otp.js");
-const {
-  readHTMLFile,
-  emailRegex,
-  phoneRegex,
-  formatUserData,
-} = require("../lib/util.js");
-const { sendOTP, validateOTP } = require("../config/otpConfig.js");
-const path = require("path");
-const { log } = require("../services/logger");
-const mailClient = require("../config/mailConfig.js");
+import bcrypt from "bcryptjs";
+import { PASSWORD_HASH_ROUND, ROLES } from "../lib/constants.js";
+import { emailRegEx, formatUserData, phoneRegEx } from "../lib/util.js";
+import User from "../models/User.js";
+import jwt from "jsonwebtoken";
+import config from "../config/env-config.js";
+import sendEmail from "../services/sendEmail.js";
+import path, { dirname } from "path";
+import { fileURLToPath } from "url";
+import Otp from "../models/Otp.js";
+import log from "../services/logger.js";
+import { clearAuthCookies, setAuthCookies } from "../middleware/user-auth.js";
 
-const getAuthOtp = async (req, res, next) => {
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+export const signup = async (req, res, next) => {
   try {
-    const { phone } = req.body;
-    if (!phone) {
+    const { name, email, phone, password } = req.body;
+
+    if (!name || !email || !password) {
       return next({
         status: 400,
-        message: "Required fields is missing . Phone Number is required",
+        message: "Name, email and password are required",
       });
     }
 
-    const otpSent = await sendOTP(phone);
-    if (otpSent?.error) {
-      return next({ status: 500, message: otpSent.message });
+    if (!emailRegEx.test(email)) {
+      return next({ status: 400, message: "Invalid email format" });
     }
 
-    let foundUser = await User.findOne({ phone });
-
-    if (foundUser && !foundUser.active) {
-      return next({
-        status: 400,
-        message: "User is not active, Please contact support.",
-      });
+    if (phone && !phoneRegEx.test(phone)) {
+      return next({ status: 400, message: "Invalid phone format" });
     }
 
-    req.successResponse = {
-      message: "OTP sent for verification.",
-      data: "",
-    };
-    return next();
-  } catch (error) {
-    return next({
-      status: 500,
-      message: error.message || "Internal Server Error",
-    });
-  }
-};
+    const existingUser = await User.findOne({ email });
 
-const validateOtp = async (req, res, next) => {
-  try {
-    const { phone, otp } = req.body;
-    if (!phone || !otp) {
-      return next({
-        status: 400,
-        message: "Required fields are missing. Phone and Otp is required!",
-      });
-    }
-
-    const isValid = await validateOTP(phone, otp);
-    if (isValid.error) {
-      return next({ status: 400, message: isValid.message });
-    }
-
-    let foundUser = await User.findOne({ phone }).populate("wishlist");
-    let user = foundUser;
-
-    if (!foundUser) {
-      user = await User.create({
-        phone,
+    let user;
+    if (!existingUser) {
+      const hashed = await bcrypt.hash(password, PASSWORD_HASH_ROUND);
+      const newUser = new User({
+        name,
+        email: email,
+        phone: phone || undefined,
+        password: hashed,
         role: ROLES.USER,
-        is_verified: true,
+        googleId: null,
       });
+      user = await User.create(newUser);
+    } else if (existingUser && !existingUser.is_verified) {
+      user = existingUser;
     }
 
-    const activeWishlist =
-      user.wishlist
-        ?.filter((product) => product.status === STATUS.ACTIVE)
-        .map((product) => product._id) || [];
+    const verifyToken = jwt.sign(
+      {
+        email: email,
+      },
+      config.JWT_SECRET,
+      { expiresIn: config.ACCESS_TOKEN_EXPIRY }
+    );
 
-    if (foundUser?.wishlist) {
-      const deletedProductIds = foundUser.wishlist
-        ?.filter((product) => product.status === STATUS.DELETED)
-        .map((product) => product._id);
-
-      if (deletedProductIds?.length) {
-        user.wishlist = foundUser.wishlist
-          .filter((product) => product.status !== STATUS.DELETED)
-          .map((product) => product._id);
-      }
-    }
-
-    const accessToken = user.generateAccessToken();
-    const refreshToken = user.generateRefreshToken();
-    user.refreshToken = refreshToken;
-    const newUser = await user.save();
-    setAuthCookies(res, accessToken, refreshToken);
-
-    const formattedUser = formatUserData({
-      ...newUser.toObject(),
-      wishlist: activeWishlist,
-    });
-
-    req.successResponse = {
-      message: foundUser ? "Sign-in successful." : "Sign-up successful.",
-      data: formattedUser,
+    const replacements = {
+      supportEmail: config.SUPPORT_EMAIL,
+      verificationLink: `${config.BACKEND_VERIFICATION_ENDPONT}/${verifyToken}`,
     };
-    return next();
-  } catch (error) {
-    return next({
-      status: 500,
-      message: error.message || "Internal Server Error",
+
+    const { error, message } = await sendEmail({
+      templatePath: path.join(
+        __dirname + "../../templates/emailVerification.html"
+      ),
+      receiverEmail: user.email,
+      subject: "Sanas Nursery: Email Verification",
+      replacements,
     });
+
+    if (error) {
+      return next({
+        status: 500,
+        message: message,
+      });
+    } else {
+      req.successResponse = {
+        message: "Verification link sent in email successfully",
+      };
+      next();
+    }
+  } catch (e) {
+    return next({ status: 500, message: e.message });
   }
 };
 
-const verify = async (req, res) => {
-  const { token } = req.params;
-
-  jwt.verify(token, process.env.SECRET, async function (err, decoded) {
-    if (err) {
-      const message =
-        "Email verification failed, possibly the link is invalid or expired";
-
+export const verifyEmail = async (req, res, next) => {
+  try {
+    const { token } = req.params;
+    const decoded = jwt.verify(token, config.JWT_SECRET);
+    if (!decoded?.email) {
       return next({
         status: 400,
-        message,
+        message: "Invalid or corrupted token. Email information is missing.",
       });
-    } else {
-      const filter = { email: decoded.data };
-      const update = { is_verified: true };
-      await User.findOneAndUpdate(filter, update);
-
-      return res.redirect(process.env.FRONTEND_VERIFIED_PAGE);
     }
-  });
+
+    const filter = { email: decoded.email };
+    const update = { isVerified: true };
+    await User.findOneAndUpdate(filter, update);
+    return res.redirect(config.FE_EMAIL_VERIFIED_PAGE);
+  } catch (error) {
+    return next({ status: 400, message: error.message });
+  }
 };
 
-const signin = async (req, res, next) => {
+export const signin = async (req, res, next) => {
   try {
-    const { identifier, password } = req.body;
+    const { email, password } = req.body;
 
-    if (!identifier || !password) {
+    if (!email || !password) {
       return next({
         status: 400,
-        message: "Identifier and password are required",
+        message: "Email and password are required",
       });
     }
 
-    let query = {};
-    if (emailRegex.test(identifier)) {
-      query.email = identifier;
-    } else if (phoneRegex.test(identifier)) {
-      query.phone = identifier;
-    } else {
-      return next({ status: 400, message: "Invalid identifier format" });
-    }
-
-    const foundUser = await User.findOne(query).populate("wishlist");
+    const foundUser = await User.findOne({ email });
     if (!foundUser) {
       return next({
         status: 404,
-        message: "User not found with this credentials.",
+        message: "User not found with this email.",
       });
     }
 
-    if (!foundUser.is_verified || !foundUser.active) {
+    if (!foundUser.isVerified) {
       return next({
         status: 400,
-        message: "User is not active or not verified, Please contact support.",
+        message: "User is not verified, Please register again.",
       });
     }
 
     if (!foundUser.password) {
-      return next({ status: 400, message: "Invalid Password!" });
+      return next({
+        status: 400,
+        message: "Use the same method you registered with to log in.",
+      });
     }
 
     const compared = await bcrypt.compare(password, foundUser.password);
     if (!compared) {
       return next({ status: 400, message: "Incorrect password" });
-    }
-
-    const activeWishlist = foundUser.wishlist
-      .filter((product) => product.status === STATUS.ACTIVE)
-      .map((product) => product._id);
-
-    const deletedProductIds = foundUser.wishlist
-      .filter((product) => product.status === STATUS.DELETED)
-      .map((product) => product._id);
-
-    if (deletedProductIds?.length) {
-      foundUser.wishlist = foundUser.wishlist
-        .filter((product) => product.status !== STATUS.DELETED)
-        .map((product) => product._id);
     }
 
     const accessToken = foundUser.generateAccessToken();
@@ -208,10 +155,7 @@ const signin = async (req, res, next) => {
 
     setAuthCookies(res, accessToken, refreshToken);
 
-    const formattedUser = formatUserData({
-      ...foundUser.toObject(),
-      wishlist: activeWishlist,
-    });
+    const formattedUser = formatUserData(foundUser.toObject());
 
     req.successResponse = {
       message: "Sign-in successful.",
@@ -226,217 +170,134 @@ const signin = async (req, res, next) => {
   }
 };
 
-const forgotPassword = async (req, res, next) => {
+export const forgotPassword = async (req, res, next) => {
   try {
-    const { identifier } = req.body;
-
-    let query = {};
-    if (emailRegex.test(identifier)) {
-      query.email = identifier;
-    } else if (phoneRegex.test(identifier)) {
-      isEmail = false;
-      query.phone = identifier;
-    } else {
-      return next({ status: 400, message: "Invalid identifier format" });
+    const { email } = req.body;
+    if (!email) {
+      return next({
+        status: 400,
+        message: "Email is required!",
+      });
     }
 
-    const foundUser = await User.findOne(query);
+    const foundUser = await User.findOne({ email, isVerified: true });
     if (!foundUser) {
       return next({
         status: 404,
-        message: "User not found with this credentials.",
+        message: "User is either not registered or not verified",
       });
     }
 
-    if (!foundUser.is_verified || !foundUser.active) {
-      return next({
-        status: 400,
-        message: "User is not verified or active, Please contact support.",
-      });
-    }
-
-    if (!foundUser.email) {
-      return next({
-        status: 400,
-        message: "No email address found with your account.",
-      });
-    }
-
-    await Otp.deleteMany({ phone: foundUser.phone });
+    await Otp.findOneAndDelete({ email });
     const data = {
-      phone: foundUser.phone,
+      email,
       otp: Math.floor(100000 + Math.random() * 900000),
-      expireIn: new Date().getTime() + 1800 * 1000,
+      expireIn: new Date().getTime() + 1000 * 30 * 60, //  30 mins
     };
+
     const otp = await Otp.create(data);
 
-    readHTMLFile(
-      path.join(__dirname + "/../templates/forgotPassword.html"),
-      async function (readFileErr, html) {
-        if (readFileErr) {
-          return next({
-            status: 500,
-            message: "Error reading email template",
-          });
-        }
-        const template = handlebars.compile(html);
-        const replacements = {
-          name:
-            `${foundUser.first_name || ""} ${
-              foundUser.last_name || ""
-            }`.trim() || foundUser.email,
-          email: foundUser.email,
-          otp: otp.otp,
-          supportEmail: process.env.SUPPORT_EMAIL,
-        };
-        const htmlToSend = template(replacements);
+    const replacements = {
+      name: foundUser.name,
+      email: foundUser.email,
+      otp: otp.otp,
+      supportEmail: config.SUPPORT_EMAIL,
+    };
 
-        try {
-          await mailClient.sendMail({
-            from: {
-              address: process.env.EMAIL_FROM,
-              name: "TrendyThreads",
-            },
-            to: [
-              {
-                email_address: {
-                  address: foundUser.email,
-                  name: "Info",
-                },
-              },
-            ],
-            subject: "TrendyThreads: Reset password",
-            htmlbody: htmlToSend,
-          });
+    const { error, message } = await sendEmail({
+      templatePath: path.join(__dirname + "./../templates/forgotPassword.html"),
+      receiverEmail: email,
+      subject: "Sanas Nursery: Otp for reset password",
+      replacements,
+    });
 
-          req.successResponse = {
-            message: "OTP sent to your email successfully!",
-          };
-          return next();
-        } catch (err) {
-          return next({ status: 500, message: err.message });
-        }
-      }
-    );
-  } catch (e) {
-    return next({ status: 500, message: e.message });
+    if (error) {
+      return next({
+        status: 500,
+        message: message,
+      });
+    } else {
+      req.successResponse = {
+        message: "Otp sent in email successfully",
+      };
+      next();
+    }
+  } catch (err) {
+    return next({
+      status: 500,
+      message: err.message,
+    });
   }
 };
 
-const resetPassword = async (req, res, next) => {
+export const resetPassword = async (req, res, next) => {
   try {
-    const { identifier, otp, password, confirmPassword } = req.body;
-    if (!identifier || !otp || !password || !confirmPassword) {
+    const { email, otp, password, confirmPassword } = req.body;
+    if (!email || !otp || !password || !confirmPassword) {
       return next({
         status: 401,
-        message: "Identifier, otp, password and confirm password are required",
+        message: "Email, otp , password and confirm password are required",
       });
     }
 
     if (password !== confirmPassword) {
       return next({
-        status: 401,
-        message: "Password does not match with confirm password",
+        status: 404,
+        message:
+          "No forgot password request found for this email. Please initiate a new request.",
       });
     }
 
-    let query = {};
-    if (emailRegex.test(identifier)) {
-      query.email = identifier;
-    } else if (phoneRegex.test(identifier)) {
-      query.phone = identifier;
-    } else {
-      return next({ status: 400, message: "Invalid identifier format" });
-    }
+    const savedOtp = await Otp.findOne({ email, otp });
 
-    const foundUser = await User.findOne(query);
-    if (!foundUser) {
+    if (!savedOtp) {
       return next({
         status: 404,
-        message: "User not found with this credentials.",
+        message:
+          "No forgot password request found for this email. Please initiate a new request.",
       });
     }
 
-    if (!foundUser.is_verified || !foundUser.active) {
+    if (savedOtp?.otp !== +otp) {
+      return next({ status: 401, message: "OTP is incorrect" });
+    }
+
+    const currentTime = new Date().getTime();
+    const expiry = new Date(savedOtp.expireIn).getTime();
+    const diff = expiry - currentTime;
+
+    if (diff < 0) {
       return next({
         status: 400,
-        message: "User is not active or not verified",
+        message: "OTP is expired.",
       });
     }
 
-    const isValid = await validateOTP(foundUser.phone, otp);
-    if (isValid.error) {
-      return next({ status: 400, message: isValid.message });
-    }
-
-    const hashed = await bcrypt.hash(password.trim(), 10);
+    const hashed = await bcrypt.hash(password ? password.trim() : password, 10);
     const user = await User.findOneAndUpdate(
-      { phone: foundUser.phone },
+      { email },
       {
         password: hashed,
       }
     );
-
     if (!user) {
       return next({ status: 401, message: "User not found" });
     }
-    await Otp.deleteMany({ phone: foundUser.phone });
+
+    await Otp.findOneAndDelete({ otp: otp, email: email });
 
     req.successResponse = {
-      data: "",
       message: "Password reset successful!",
     };
-    return next();
-  } catch (e) {
-    return next({ status: 500, message: e.message });
+    next();
+  } catch (error) {
+    return next({ status: 400, message: error.message });
   }
 };
 
-const updatePassword = async (req, res, next) => {
-  try {
-    const { oldPassword, newPassword } = req.body;
-
-    if (!oldPassword || !newPassword) {
-      return next({
-        status: 400,
-        message: "Old and new passwords are required",
-      });
-    }
-
-    const { _id } = req.userData;
-
-    if (!_id) {
-      return next({
-        status: 400,
-        message: "You are not authorized to perform this action",
-      });
-    }
-
-    const foundUser = await User.findOne({ _id });
-
-    const compared = await bcrypt.compare(oldPassword, foundUser.password);
-
-    if (!compared) {
-      return next({ status: 400, message: "Old password is incorrect" });
-    }
-
-    const hashed = await bcrypt.hash(newPassword, 10);
-    await User.findOneAndUpdate({ _id }, { password: hashed });
-
-    req.successResponse = {
-      message: "Password updated successfully.",
-      data: "",
-    };
-    return next();
-  } catch (e) {
-    return next({ status: 500, message: e.message });
-  }
-};
-
-const logout = async (req, res, next) => {
+export const logout = async (req, res, next) => {
   try {
     const refreshToken = req.cookies?.refreshToken;
-
     if (!refreshToken) {
       return next({ status: 400, message: "No refresh token provided" });
     }
@@ -472,23 +333,84 @@ const logout = async (req, res, next) => {
   }
 };
 
-module.exports = {
-  verify,
-  signin,
-  updatePassword,
-  forgotPassword,
-  resetPassword,
-  getAuthOtp,
-  validateOtp,
-  logout,
+export const getLogedInUser = async (req, res, next) => {
+  try {
+    const foundUser = await User.findOne({
+      _id: req.userData._id,
+    });
+
+    if (!foundUser) {
+      return next({ status: 404, message: "User not found" });
+    }
+
+    if (!foundUser.isVerified) {
+      return next({
+        status: 404,
+        message: "User is not verified",
+      });
+    }
+
+    const formattedUser = formatUserData(foundUser.toObject());
+
+    req.successResponse = {
+      message: "User retrieved successfully.",
+      data: formattedUser,
+    };
+    return next();
+  } catch (e) {
+    return next({
+      status: 500,
+      message: e.message,
+    });
+  }
 };
 
-const setAuthCookies = (res, accessToken, refreshToken) => {
-  const options = {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    // sameSite: "None",
-  };
-  res.cookie("accessToken", accessToken, options);
-  res.cookie("refreshToken", refreshToken, options);
+export const refreshToken = async (req, res, next) => {
+  try {
+    const refreshToken = req.cookies?.refreshToken;
+
+    if (!refreshToken) {
+      return next({
+        status: 401,
+        message: "Unauthorized: No refresh token provided",
+      });
+    }
+
+    const decoded = jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRETS);
+    const user = await User.findById(decoded._id);
+    if (!user || user.refreshToken !== refreshToken) {
+      clearAuthCookies(res);
+      return next({
+        status: 403,
+        message: "RefreshTokenExpiredError",
+      });
+    }
+
+    const newAccessToken = user.generateAccessToken();
+    const newRefreshToken = user.generateRefreshToken();
+    user.refreshToken = newRefreshToken;
+    await user.save();
+    setAuthCookies(res, newAccessToken, newRefreshToken);
+    req.userData = user;
+
+    req.successResponse = {
+      message: "Access token refreshed successfully.",
+      data: "",
+    };
+
+    return next();
+  } catch (error) {
+    if (error.name === "TokenExpiredError") {
+      clearAuthCookies(res);
+      return next({
+        status: 403,
+        message: "RefreshTokenExpiredError",
+      });
+    } else {
+      return next({
+        status: 500,
+        message: `*** ${error.message} , Please login again! ***`,
+      });
+    }
+  }
 };
