@@ -2,6 +2,7 @@ import HomeBanner from "@/components/home/home-banner";
 import ContactForm from "@/components/home/contact/contact";
 import BestSellingProduct from "@/components/home/best-selling-product";
 import Testimonials from "@/components/home/testimonial/testimonials";
+import Banner from "@/components/home/banner";
 
 
 
@@ -12,6 +13,7 @@ export default function Home() {
       <ContactForm/>
       <BestSellingProduct/>
       <Testimonials/>
+      <Banner/>
     </>
   );
 }

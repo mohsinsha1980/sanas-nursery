@@ -158,7 +158,7 @@ const Contact = () => {
                             <div className="">
                                 <button
                                     type="submit"
-                                    className="p lg:h-[60px] lg:w-[191px] md:h-[35px] md:w-[110px] w-[90px] h-[30px] flex justify-center items-center bg-[#F37521] lg:rounded-xl md:rounded-xl rounded-[5px] text-[#FFFFFF] lg:text-[20px] lg:font-semibold">Subscribe</button>
+                                    className="p lg:h-[60px] lg:w-[191px] md:h-[35px] md:w-[110px] w-[90px] h-[30px] flex justify-center items-center hover:bg-[#DA5700]  bg-[#F37521] lg:rounded-xl md:rounded-xl rounded-[5px] text-[#FFFFFF] lg:text-[20px] lg:font-semibold">Subscribe</button>
                             </div>
                         </div>
                     </div>
