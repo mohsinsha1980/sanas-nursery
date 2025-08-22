@@ -18,7 +18,7 @@ export default function Footer() {
                 alt="Sana-Nursery-Logo"
                 width={100}
                 height={100}
-                className="logo lg:h-25 lg:w-25 md:h-20 md:w-20"
+                className="logo lg:h-25 lg:w-25 md:h-20 md:w-20 lg:ml-0 ml-2"
               />
             </div>
             <div key="3-icons" className=" flex flex-row justify-between items-center text-white lg:space-x-4 md:space-x-3 space-x-5">
@@ -49,7 +49,7 @@ export default function Footer() {
             </p>
             <div className="input-div h-fit w-fit  p-0.5 bg-white flex flex-row justify-between lg:rounded-xl md:rounded-xl rounded-[5px] ">
               <input type="text" placeholder="Enter Email Address" className="lg:w-[260px] md:w-[180px] w-[160px] lg:pl-5 md:pl-2 pl-1 outline-none" />
-              <button className="p lg:h-[45px] lg:w-[170px] md:h-[35px] md:w-[110px] w-[90px] h-[30px] flex justify-center items-center bg-[#F37521] lg:rounded-xl md:rounded-xl rounded-[5px] text-[#FFFFFF] lg:text-[20px] lg:font-semibold">Subscribe</button>
+              <button className="p lg:h-[45px] lg:w-[170px] md:h-[35px] md:w-[110px] w-[90px] h-[30px] flex justify-center items-center bg-[#F37521] lg:rounded-xl md:rounded-xl rounded-[5px] text-[#FFFFFF] lg:text-[20px] ">Subscribe</button>
             </div>
           </div>
         </div>

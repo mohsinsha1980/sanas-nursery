@@ -60,7 +60,7 @@ const BestSellingProduct: React.FC = () => {
                 <motion.div
                   key={items[index].src + index}
                   layout
-                  transition={{ duration: 0.6, ease: "easeInOut" }}
+                  transition={{ duration: 1, ease: "easeInOut" }}
                   className={`absolute h-[500px] w-[330px] flex flex-col items-center ${style}`}
                 >
                   <Image

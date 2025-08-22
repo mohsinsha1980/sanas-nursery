@@ -85,6 +85,17 @@ header {
   position: relative;
   transition: all 0.3s ease-in-out;
 }
+
+.main_header nav ul li .dropdown-link {
+  text-decoration: none !important; 
+  color: #354733; 
+}
+
+.main_header nav ul li .dropdown-link:hover {
+  text-decoration: none !important;
+  color: #354733;
+}
+
 .main_header nav ul li a.active {
   color: var(--txt-dark);
 }

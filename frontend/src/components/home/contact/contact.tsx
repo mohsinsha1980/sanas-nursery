@@ -4,6 +4,7 @@ import { Phone, Mail, MapPin, Facebook, Instagram, Youtube } from 'lucide-react'
 import schema, { ContactFormData } from "@/components/home/contact/schema";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { addContactUs } from '@/lib/api-routes/api-public';
 
 
 const Contact = () => {
@@ -16,9 +17,25 @@ const Contact = () => {
         resolver: zodResolver(schema),
     });
 
-    const onSubmit = (data: ContactFormData) => {
-        reset();
-    }
+    const [loading, setLoading] = React.useState(false);
+    const [error, setError] = React.useState("");
+    const [success, setSuccess] = React.useState("");
+
+    const onSubmit = async (data: ContactFormData) => {
+        setLoading(true);
+        setError("");
+        setSuccess("");
+        try {
+            const response = await addContactUs(data);
+            setSuccess("Message sent successfully!");
+            reset();
+            console.log(response)
+        } catch (err) {
+            setError("Something went wrong. Please try again.");
+        } finally {
+            setLoading(false);
+        }
+    };
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} noValidate>
@@ -66,8 +83,8 @@ const Contact = () => {
 
                         {/* Right Section */}
                         <div className="lg:mr-10  lg:w-[50%] lg:h-[500px] md:w-[100%] w-[100%] lg:gap-y-9 gap-y-8 flex flex-col justify-between text-[#8D8D8D]    ">
-                            {/* <div>{error && <p className="text-red-600 mb-5">{error}</p>}</div>
-              <div>{success && <p className="text-green-600 mb-5">{success}</p>}</div> */}
+                            <div>{error && <p className="text-red-600 mb-5">{error}</p>}</div>
+                            <div>{success && <p className="text-green-600 mb-5">{success}</p>}</div>
 
 
                             <div className=" lg:w-[95%] w-[100%] flex justify-between ">
@@ -78,7 +95,11 @@ const Contact = () => {
                                     <input
                                         type="text"
                                         {...register("firstname")}
-                                        className="lg:border-b-2 border-b-1  border-[#8D8D8D] lg:h-[35px] lg:text-[18px]  text-[16px] bg-transparent focus:outline-none"
+                                                style={{
+                                        WebkitBoxShadow: "0 0 0 1000px white inset", // overrides autofill background
+                                        WebkitTextFillColor: "black", // ensures text color stays correct
+                                    }}
+                                        className=" lg:border-b-2 border-b-1  border-[#8D8D8D] lg:h-[35px] lg:text-[18px]  text-[16px] bg-transparent focus:outline-none focus:bg-transparent autofill:bg-transparent autofill:text-[#1d2f33]"
                                     />
                                     {errors.firstname && (
                                         <p className="text-red-500 text-sm">
@@ -94,7 +115,11 @@ const Contact = () => {
                                     <input
                                         type="text"
                                         {...register("lastname")}
-                                        className="lg:border-b-2 border-b-1 border-[#8D8D8D] lg:h-[35px] lg:text-[18px] text-[16px] bg-transparent focus:outline-none"
+                                                style={{
+                                        WebkitBoxShadow: "0 0 0 1000px white inset", // overrides autofill background
+                                        WebkitTextFillColor: "black", // ensures text color stays correct
+                                    }}
+                                        className="lg:border-b-2 border-b-1 border-[#8D8D8D] lg:h-[35px] lg:text-[18px] text-[16px] bg-transparent focus:outline-none focus:bg-transparent autofill:bg-transparent autofill:text-[#1d2f33]"
                                     />
                                     {errors.lastname && (
                                         <p className="text-red-500 text-sm">
@@ -112,7 +137,11 @@ const Contact = () => {
                                     <input
                                         type="text"
                                         {...register("email")}
-                                        className="lg:border-b-2 border-b-1 border-[#8D8D8D] lg:h-[35px] lg:text-[18px] text-[16px] bg-transparent focus:outline-none"
+                                         style={{
+                                        WebkitBoxShadow: "0 0 0 1000px white inset", // overrides autofill background
+                                        WebkitTextFillColor: "black", // ensures text color stays correct
+                                    }}
+                                        className="lg:border-b-2 border-b-1 border-[#8D8D8D] lg:h-[35px] lg:text-[18px] text-[16px] bg-transparent focus:outline-none focus:bg-transparent autofill:bg-transparent autofill:text-[#1d2f33]"
                                     />
                                     {errors.email && (
                                         <p className="text-red-500 text-sm">
@@ -128,7 +157,11 @@ const Contact = () => {
                                     <input
                                         type="text"
                                         {...register("phonenumber")}
-                                        className="lg:border-b-2 border-b-1 border-[#8D8D8D] lg:h-[35px] lg:text-[18px] text-[16px] bg-transparent focus:outline-none"
+                                         style={{
+                                        WebkitBoxShadow: "0 0 0 1000px white inset", // overrides autofill background
+                                        WebkitTextFillColor: "black", // ensures text color stays correct
+                                    }}
+                                        className="lg:border-b-2 border-b-1 border-[#8D8D8D] lg:h-[35px] lg:text-[18px] text-[16px] bg-transparent focus:outline-none focus:bg-transparent autofill:bg-transparent autofill:text-[#1d2f33]"
                                     />
                                     {errors.phonenumber && (
                                         <p className="text-red-500 text-sm">
@@ -145,8 +178,11 @@ const Contact = () => {
                                 <input
                                     type="text"
                                     {...register("message")}
-                                    placeholder="Write your message"
-                                    className="lg:border-b-2 border-b-1 border-[#8D8D8D] lg:h-[35px] lg:text-[18px] text-[16px] bg-transparent focus:outline-none"
+                                    style={{
+                                        WebkitBoxShadow: "0 0 0 1000px white inset", // overrides autofill background
+                                        WebkitTextFillColor: "black", // ensures text color stays correct
+                                    }}
+                                    className="lg:border-b-2 border-b-1 border-[#8D8D8D] lg:h-[35px] lg:text-[18px] text-[16px] bg-transparent focus:outline-none "
                                 />
                                 {errors.message && (
                                     <p className="text-red-500 text-sm">
@@ -158,7 +194,9 @@ const Contact = () => {
                             <div className="">
                                 <button
                                     type="submit"
-                                    className="p lg:h-[60px] lg:w-[191px] md:h-[35px] md:w-[110px] w-[90px] h-[30px] flex justify-center items-center hover:bg-[#DA5700]  bg-[#F37521] lg:rounded-xl md:rounded-xl rounded-[5px] text-[#FFFFFF] lg:text-[20px] lg:font-semibold">Subscribe</button>
+                                    disabled={loading}
+                                    className="p lg:h-[60px] lg:w-[191px] md:h-[35px] md:w-[110px] w-[90px] h-[30px] flex justify-center items-center hover:bg-[#DA5700]  bg-[#F37521] lg:rounded-xl md:rounded-xl rounded-[5px] text-[#FFFFFF] lg:text-[20px] ">  {loading ? "Sending..." : "Subscribe"}
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -169,3 +207,4 @@ const Contact = () => {
 }
 
 export default Contact
+

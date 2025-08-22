@@ -107,7 +107,7 @@ export const InfiniteMovingCards = ({
       <ul
         ref={scrollerRef}
         className={cn(
-          "flex w-max min-w-full shrink-0 flex-nowrap gap-6 py-4 ",
+          "flex w-max min-w-full shrink-0 flex-nowrap lg:gap-6 gap-4 py-4 ",
           start && "animate-scroll",
           pauseOnHover && "hover:[animation-play-state:paused]"
         )}
@@ -115,19 +115,19 @@ export const InfiniteMovingCards = ({
         {items.map((item, idx) => (
           <li
             key={idx}
-            className="relative w-[600px] max-w-full shrink-0 rounded-lg bg-[#4CB390] px-8 py-14 text-white"
+            className="relative lg:w-[600px] w-[400px] shrink-0 rounded-lg bg-[#4CB390] lg:px-8 md:px-6 px-5 lg:py-14 md:py-10 py-6 text-white"
           >
-            <div className="flex justify-between items-center mb-8">
+            <div className="flex justify-between items-center lg:mb-8 md:mb-5 mb-5">
               <div className="flex items-center gap-2">
                 <Quote size={28} className="text-white" />
-                <span className="font-bold text-[24px]">{item.name}</span>
+                <span className="lg:font-bold lg:text-[24px] md:text-[20px] text-[18px]">{item.name}</span>
               </div>
               <div className="flex items-center gap-1">
                 <Star size={18} className="text-white" />
-                <span className="font-bold text-[24px]">{item.rating}</span>
+                <span className="lg:font-bold lg:text-[24px] md:text-[20px] text-[18px]">{item.rating}</span>
               </div>
             </div>
-            <p className="text-[20px] leading-relaxed">{item.quote}</p>
+            <p className="lg:text-[20px] md:text-[18px]  text-[16px] leading-relaxed">{item.quote}</p>
           </li>
         ))}
       </ul>
