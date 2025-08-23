@@ -32,12 +32,11 @@ export default function Home() {
 
   return (
     <div className="bg-white">
-      {/* Hero Section */}
       <section
         className="relative bg-gradient-to-br py-20 bg-center bg-cover"
         style={{ backgroundImage: "url('/bg.png')" }}
       >
-        <div className="container-custom text-center py-10">
+        <div className="container-custom text-center py-10 z-50">
           <h1 className="text-4xl md:text-6xl font-bold text-accent-900 mb-6">
             Welcome to <span className="text-primary-600">Sanas Nursery</span>
           </h1>
@@ -60,19 +59,19 @@ export default function Home() {
           </div>
 
           {/* Social Media Links */}
-          <div className="mt-8">
+          <div className="mt-8 z-50">
             <p className="text-lg text-accent-600 mb-4">
               Connect with us on social media:
             </p>
-            <div className="flex justify-center">
+            <div className="flex justify-center z-50">
               <SocialMedia />
             </div>
           </div>
         </div>
 
         {/* Decorative Elements */}
-        <div className="absolute top-10 left-10 w-20 h-20 bg-primary-200 rounded-full opacity-20"></div>
-        <div className="absolute bottom-10 right-10 w-32 h-32 bg-secondary-300 rounded-full opacity-20"></div>
+        <div className="absolute top-10 left-10 w-20 h-20 bg-primary-200 rounded-full opacity-20 z-10 pointer-events-none"></div>
+        <div className="absolute bottom-10 right-10 w-32 h-32 bg-secondary-300 rounded-full opacity-20 z-10 pointer-events-none"></div>
       </section>
 
       {/* YouTube Videos Section */}
@@ -115,7 +114,10 @@ export default function Home() {
             ))}
           </div>
           <div className=" mt-2 text-right mr-1 text-primary-500 hover:underline hover:text-primary-700 ">
-            <Link href="https://www.instagram.com/wholesalenursery?igsh=MXZ5MnFlMzVvM2Vsaw%3D%3D&utm_source=qr" target="_">
+            <Link
+              href="https://www.instagram.com/wholesalenursery?igsh=MXZ5MnFlMzVvM2Vsaw%3D%3D&utm_source=qr"
+              target="_"
+            >
               View more
             </Link>
           </div>
@@ -237,7 +239,7 @@ export default function Home() {
           <h2 className="text-3xl md:text-4xl font-bold  text-accent-900 mb-4">
             Stay Updated
           </h2>
-          <p className="text-xl text-accent-800  mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-accent-900  mb-8 max-w-2xl mx-auto">
             Don't miss out on the launch! Get in touch with us to stay informed
             about our progress.
           </p>
