@@ -28,6 +28,10 @@ body {
   margin-right: auto;
 }
 
+.container-small {
+  max-width: 1140px;
+}
+
 header {
   /* position: sticky; */
   position: fixed;
@@ -83,4 +87,23 @@ header {
   background-color: var(--txt-orange);
   width: 100%;
   left: 0;
+}
+
+.main_header .header-actions {
+  display: flex;
+  gap: 20px;
+}
+
+footer {
+  background-color: var(--txt-dark);
+  color: #fff;
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+.bl-footer-social a {
+  transition: all 0.3s ease-in-out;
+}
+.bl-footer-social a:hover {
+  color: #f37521;
 }

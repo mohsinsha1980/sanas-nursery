@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Catamaran } from "next/font/google";
 import "./globals.css";
 import MainHeader from "@/components/common/header/main-header";
-import Footer from "@/components/common/footer";
+import MainFooter from "@/components/common/footer/main-footer";
 
 const catamaran = Catamaran({
   variable: "--font-catamaran",
@@ -24,7 +24,7 @@ export default function RootLayout({
       <body className={`${catamaran.variable} antialiased`}>
         <MainHeader />
         <main>{children}</main>
-        <Footer />
+        <MainFooter />
       </body>
     </html>
   );

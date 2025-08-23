@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function HeaderLogo({ size = 80 }: { size?: number }) {
+export default function Logo({ size = 80 }: { size?: number }) {
   return (
     <Link href="/">
       <Image
