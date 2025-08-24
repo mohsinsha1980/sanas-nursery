@@ -306,3 +306,21 @@ export const formatUserData = (user) =>
     phone: user.phone,
     role: user.role,
   });
+
+export const generateSlug = (nameValue) => {
+  return nameValue.trim().toLowerCase().replace(/\s+/g, "-");
+};
+
+export const invalidSlug = (slug) => {
+  if (slug.length < 3) {
+    return "Slug must be at least 3 characters";
+  }
+  if (slug.length > 50) {
+    return "Slug must not exceed 50 characters";
+  }
+  if (!slugRegEx.test(slug)) {
+    return "Slug can only contain lowercase letters, numbers, and hyphens";
+  }
+
+  return false;
+};

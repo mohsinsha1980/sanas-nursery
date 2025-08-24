@@ -213,3 +213,16 @@ header {
   font-weight: 700;
   font-size: 28px;
 }
+
+.tiptap.ProseMirror {
+  padding: 20px;
+  min-height: 200px;
+}
+
+.tiptap.ProseMirror p,
+.tiptap.ProseMirror ul,
+.tiptap.ProseMirror ol {
+  margin-bottom: 10px;
+}
+
+

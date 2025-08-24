@@ -1,7 +1,6 @@
 "use client";
 import { Card, CardContent } from "@/components/ui/card";
 import {
-  BoxesIcon,
   ChartAreaIcon,
   Gamepad2,
   Headset,
@@ -31,14 +30,9 @@ export default function ContextMenu() {
               <ChartAreaIcon strokeWidth={1} className="h-6" /> Dashboard
             </Link>
           </li>
-          <li className={getActiveClass("/admin/categories")}>
-            <Link href="/admin/categories">
-              <BoxesIcon strokeWidth={1} className="h-6" /> Categories
-            </Link>
-          </li>
-          <li className={getActiveClass("/admin/games")}>
-            <Link href="/admin/games">
-              <Gamepad2 strokeWidth={1} className="h-6" /> Games
+          <li className={getActiveClass("/admin/plants")}>
+            <Link href="/admin/plants">
+              <Gamepad2 strokeWidth={1} className="h-6" /> Plants
             </Link>
           </li>
           <li className={getActiveClass("/admin/reviews")}>

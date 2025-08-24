@@ -1,9 +1,9 @@
 import { Router } from "express";
-const router = Router();
 import adminAuth from "../../middleware/admin-auth.js";
+import settingsRoutes from "./master-data.js";
+import plantRoutes from "./plants.js";
 import userRoutes from "./users.js";
-// import productRoutes from "./products.js";
-// import settingsRoutes from "./master-data.js";
+const router = Router();
 // import homeRoutes from "./home.js";
 // import reviewsRoutes from "./reviews.js";
 // import galleryRoutes from "./gallery.js";
@@ -19,10 +19,10 @@ import userRoutes from "./users.js";
 // import enquiryCtrl from "../../controllers/admin/enquiry";
 
 router.use("/users", adminAuth, userRoutes);
+router.use("/master-data", adminAuth, settingsRoutes);
+router.use("/plants", adminAuth, plantRoutes);
 
 // router.use("/categories", adminAuth, categoryRoutes);
-// router.use("/products", adminAuth, productRoutes);
-// router.use("/master-data", adminAuth, settingsRoutes);
 // router.use("/home", adminAuth, homeRoutes);
 // router.use("/reviews", adminAuth, reviewsRoutes);
 // router.use("/gallery", adminAuth, galleryRoutes);

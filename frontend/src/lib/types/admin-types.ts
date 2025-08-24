@@ -2,36 +2,40 @@
 // import {
 //   addCategorySchema,
 //   addCouponSchema,
-//   addProductSchema,
+//   addPlantSchema,
 //   AddressesSchema,
 //   adminAddressSchema,
 //   adminShippingAddressSchema,
 //   editCategorySchema,
 //   editCouponSchema,
 //   editHomeSliderSchema,
-//   editProductSchema,
+//   editPlantSchema,
 //   gallerySchema,
 //   OrderFilterSchema,
-//   ProductFilterSchema,
-//   productVariantSchema,
+//   PlantFilterSchema,
+//   plantVariantSchema,
 //   RevenueGraphSchema,
 //   ReviewStatusSchema,
 //   SizeSchema,
 //   TaxChargesSchema,
-//   TopSellingProductSchema,
+//   TopSellingPlantSchema,
 // } from "../schemas/admin";
 // import {
 //   DataTableActionType,
 //   HomeBannerType,
-//   ViewProductDataType,
+//   ViewPlantDataType,
 // } from "./common-types";
 // import { EmailType } from "./public-types";
 // import { Address, SupportType } from "./user-types";
 
-// export interface SelectOption {
-//   label: string;
-//   value: string;
-// }
+import z from "zod";
+import { addPlantSchema, editPlantSchema, PlantFilterSchema } from "../schemas/admin";
+import { DataTableActionType } from "./common-types";
+
+export interface SelectOption {
+  label: string;
+  value: string;
+}
 
 export interface PasswordData {
   oldPassword: string;
@@ -73,9 +77,9 @@ export interface PasswordData {
 //   description: string;
 // }
 
-// export interface MasterDataOption extends SelectOption {
-//   _id: string;
-// }
+export interface MasterDataOption extends SelectOption {
+  _id: string;
+}
 
 // export type AddMasterDataProps = {
 //   onAdd: (data: MasterDataOption) => void;
@@ -98,37 +102,29 @@ export interface PasswordData {
 //   value: string;
 // }
 
-// export interface MasterData {
-//   shippingAddress?: AdminShippingAddressFormData;
-//   billingAddress?: AdminAddressFormData;
-//   colors: MasterDataOption[];
-//   materials: MasterDataOption[];
-//   styles: MasterDataOption[];
-//   sizes: MasterDataOption[];
-//   taxCharges: TaxDataOption[];
-//   highestMrp?: number;
-// }
+export interface MasterData {
+  tags: MasterDataOption[];
+}
 
 // export type AddCategoryFields = z.infer<typeof addCategorySchema>;
 // export type EditCategoryFields = z.infer<typeof editCategorySchema>;
-// export type AddProductFields = z.infer<typeof addProductSchema>;
-// export type EditProductFields = z.infer<typeof editProductSchema>;
-// export type ProductVariantsTypes = z.infer<typeof productVariantSchema>;
+export type AddPlantFields = z.infer<typeof addPlantSchema>;
+export type EditPlantFields = z.infer<typeof editPlantSchema>;
+// export type PlantVariantsTypes = z.infer<typeof plantVariantSchema>;
 // export type EditCouponSchema = z.infer<typeof editCouponSchema>;
 
-// export interface ProductTableDataType {
-//   title: string;
-//   productId: string;
-//   status: string;
-//   hierachy: string;
-//   actions: DataTableActionType[];
-//   picture: string;
-// }
+export interface PlantTableDataType {
+  title: string;
+  plantId: string;
+  status: string;
+  actions: DataTableActionType[];
+  picture: string;
+}
 
 // export interface ReviewTableDataType {
 //   _id: string;
-//   productId: string;
-//   productTitle: string;
+//   plantId: string;
+//   plantTitle: string;
 //   description: string;
 //   user: string;
 //   review: string;
@@ -138,7 +134,7 @@ export interface PasswordData {
 // }
 
 // export interface ReviewsFilterDataType {
-//   productTitle?: string;
+//   plantTitle?: string;
 //   rating?: string;
 //   status?: string;
 // }
@@ -182,8 +178,8 @@ export interface PasswordData {
 // };
 
 // export interface ReviewsDataType {
-//   productId: string;
-//   productTitle: string;
+//   plantId: string;
+//   plantTitle: string;
 //   user: string;
 //   review: string;
 //   rating: number;
@@ -232,7 +228,7 @@ export interface UserTableDataType {
 //     first_name: string;
 //     last_name: string;
 //   };
-//   productId: {
+//   plantId: {
 //     _id: string;
 //     title: string;
 //   };
@@ -309,7 +305,7 @@ export interface UserTableDataType {
 // }
 
 // export type RevenueGraphFields = z.infer<typeof RevenueGraphSchema>;
-// export type TopSellingProductFields = z.infer<typeof TopSellingProductSchema>;
+// export type TopSellingPlantFields = z.infer<typeof TopSellingPlantSchema>;
 
 // export interface CompletedOrderTableDataType {
 //   _id: string;
@@ -391,22 +387,22 @@ export interface UserTableDataType {
 //   };
 // }
 
-// export interface ProductSale {
-//   productId: string;
+// export interface PlantSale {
+//   plantId: string;
 //   title: string;
 //   countSold: number;
 //   revenue: number;
 // }
 
-// export interface TopSellingProduct {
-//   productId: string;
+// export interface TopSellingPlant {
+//   plantId: string;
 //   title: string;
 //   countSold: number;
 //   revenue: number;
 // }
 
 // export interface InventoryReportType {
-//   productId: string;
+//   plantId: string;
 //   title: string;
 //   picture: string;
 //   variants: {
@@ -426,7 +422,7 @@ export interface UserTableDataType {
 
 // export type OrderItemType = {
 //   _id: string;
-//   productId: string;
+//   plantId: string;
 //   title: string;
 //   picture: string;
 //   size: string;
@@ -443,8 +439,8 @@ export interface UserTableDataType {
 //   link?: string;
 // };
 
-// export interface OrderItemDetailsType extends Omit<OrderItemType, "productId"> {
-//   productId: ViewProductDataType;
+// export interface OrderItemDetailsType extends Omit<OrderItemType, "plantId"> {
+//   plantId: ViewPlantDataType;
 // }
 
 // export type PriceDataType = {
@@ -576,4 +572,4 @@ export interface UserTableDataType {
 //   action: (coupon: ContactFormDataType) => void;
 // }
 
-// export type ProductFilterTypes = z.infer<typeof ProductFilterSchema>;
+export type PlantFilterTypes = z.infer<typeof PlantFilterSchema>;

@@ -5,6 +5,7 @@ import CryptoJS from "crypto-js";
 import config from "@/config/env-config";
 import { toast } from "sonner";
 import { UserInSessionTypes } from "./types/user-types";
+import { AddPlantFields } from "./types/admin-types";
 
 type InputDate = string | Date;
 interface errorType {
@@ -239,7 +240,7 @@ export const DAYS = [
 
 export const getPicURL = (endpoint: string) => {
   if (!endpoint) return "";
-  return `${process.env.NEXT_PUBLIC_BACKEND}/${endpoint}`;
+  return `${config.BACKEND_BASE_PATH}/${endpoint}`;
 };
 
 export const getFormattedPdfURL = (endpoint: string) => {
@@ -431,3 +432,12 @@ export const decryptData = (encryptedData: string) => {
 export const generateSlug = (nameValue: string) => {
   return nameValue.trim().toLowerCase().replace(/\s+/g, "-");
 };
+
+export function getFaqAccrItems(faqs: AddPlantFields["faqs"]) {
+  return faqs.map((faq, index) => ({
+    id: `faq-${index + 1}`,
+    title: faq.question,
+    content: [faq.answer],
+    index,
+  }));
+}

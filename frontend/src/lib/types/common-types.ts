@@ -1,4 +1,5 @@
 import { ColumnDef } from "@tanstack/react-table";
+import { AddPlantFields } from "./admin-types";
 // import React from "react";
 // import { AddGalleryField, AddProductFields } from "./admin-types";
 // import { UserReviewSchema } from "../schemas/common";
@@ -43,6 +44,13 @@ export interface DataTableActionType {
   actionIcon?: React.ReactNode;
   action: (id: string) => void;
 }
+
+export type PlantTypes = Omit<AddPlantFields, "pictures" | "status"> & {
+  _id: string;
+  plantId: string;
+  pictures: string[];
+  status: string;
+};
 
 export type steperStatusType = "completed" | "incomplete";
 
