@@ -4,12 +4,10 @@ import { Facebook, Youtube, Instagram } from 'lucide-react';
 import Link from "next/link";
 import { FloatingWhatsApp } from "react-floating-whatsapp";
 
-
-
-export default function Footer() {
+export default function MainFooter() {
   return (
-    <>
-      <div key="outer-div" className="h-full w-full lg:pt-30 lg:pb-30 md:pt-20 md:pb-20 pt-10 pb-10 flex flex-row justify-center bg-[#1D2F33] ">
+    <footer>
+      <div key="outer-div" className="h-full w-full flex flex-row justify-center bg-[#1D2F33] ">
         <div key="inner-div" className="inner-div h-full lg:w-[60%] md:w-[90%] w-[95%] flex lg:flex-row md:flex-row flex-col lg:justify-between md:justify-between lg:items-start md:items-start items-center lg:space-y-0 md:space-y-0 space-y-10 ">
           <div key="1-div" className="h-fit w-fit lg:space-y-3 md:space-y-3 space-y-3 ">
             <div>
@@ -27,7 +25,7 @@ export default function Footer() {
               <Youtube className=" h-7 w-7 hover:text-red-600" />
             </div>
           </div>
-          <div className="two-div h-[100%] lg:w-[360px] lg:space-x-0 md:space-x-3 space-x-20 flex flex-row justify-between items-start ">
+          <div className="two-div h-[100%] lg:w-[350px] lg:space-x-0 md:space-x-3 space-x-20 flex flex-row justify-between items-start ">
             <div key="2-div" className="h-fit w-fit flex flex-col lg:items-start md:items-start items-center space-y-5 ">
               <Link href="" className="p text-[#FFFFFF] lg:text-[20px] md:text-[16px] lg:font-semibold">Information</Link>
               <Link href="" className="p text-[#FFFFFF] lg:text-[20px] md:text-[16px] lg:font-semibold">About</Link>
@@ -65,9 +63,6 @@ export default function Footer() {
           avatar="./maxima-wapp.webp"
         />
       </div>
-
-
-    </>
+    </footer>
   );
 }
-

@@ -2,9 +2,8 @@ import type { Metadata } from "next";
 import { Catamaran } from "next/font/google";
 import "./globals.css";
 import MainHeader from "@/components/common/header/main-header";
-import Footer from "@/components/common/footer";
 import { ReCaptchaProvider } from "next-recaptcha-v3";
-
+import MainFooter from "@/components/common/footer/main-footer";
 
 const catamaran = Catamaran({
   variable: "--font-catamaran",
@@ -25,13 +24,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${catamaran.variable} antialiased`}>
         <MainHeader />
-        <main>
           <ReCaptchaProvider
             reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
           >{children}
           </ReCaptchaProvider>
-        </main>
-        <Footer />
+        <MainFooter />
       </body>
     </html>
   );

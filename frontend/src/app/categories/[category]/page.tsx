@@ -7,12 +7,12 @@ import Image from "next/image";
 
 // Dummy 100 plants data (you can replace with real images)
 const plants = {
-  "fruit-trees": Array.from({ length: 60 }, (_, i) => ({
+  "fruit-trees": Array.from({ length: 32 }, (_, i) => ({
     id: `fruit${i + 1}`,
     name: `Fruit Plant ${i + 1}`,
     image: `/plant${(i % 3) + 1}.png`, // reuse 5 sample images
   })),
-  "flower-trees": Array.from({ length: 100 }, (_, i) => ({
+  "flower-trees": Array.from({ length: 32 }, (_, i) => ({
     id: `flower${i + 1}`,
     name: `Flower Plant ${i + 1}`,
     image: `/images/flower${(i % 5) + 1}.png`,
@@ -26,6 +26,7 @@ export default function CategoryPage() {
       ? plants[category as keyof typeof plants]
       : [];
 
+      console.log(category)
 
   // Pagination states
   const [currentPage, setCurrentPage] = useState(1);
@@ -58,7 +59,7 @@ export default function CategoryPage() {
 
       <div key="plant-list-main-div" className="h-full w-full lg:pt-30 lg:pb-30 md:pt-20 md:pb-20 pt-10 pb-10 flex flex-col justify-center items-center">
         <div key="heading">
-          <h1 className="text-[#0D6536] lg:text-[42px] font-semibold ">Fruit Trees</h1>
+          <h1 className="text-[#0D6536] lg:text-[42px] font-semibold ">{category}</h1>
         </div>
         <div key="filter-list-sort" className="relative  w-[70%] h-full ">
           <div key="filterText-and-sortDropdown" className="w-full h-full flex justify-between items-center pb-6 px-4">
