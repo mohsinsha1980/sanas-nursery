@@ -1,4 +1,3 @@
-import Footer from "@/components/common/footer";
 import MainHeader from "@/components/common/header/main-header";
 import ReduxProvider from "@/components/layout/ReduxProvider";
 import config from "@/config/env-config";
@@ -10,6 +9,7 @@ import { NuqsAdapter } from "nuqs/adapters/next/app";
 import { Toaster } from "sonner";
 import "./globals.css";
 import AuthProvider from "@/components/auth/AuthProvider";
+import MainFooter from "@/components/common/footer/main-footer";
 
 const catamaran = Catamaran({
   variable: "--font-catamaran",
@@ -52,7 +52,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
               <AuthProvider>
                 <MainHeader />
                 <main>{children}</main>
-                <Footer />
+                <MainFooter />
                 <Toaster richColors />
               </AuthProvider>
             </ReduxProvider>
