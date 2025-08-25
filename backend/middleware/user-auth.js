@@ -1,8 +1,8 @@
-import rateLimit from "express-rate-limit";
-import { verify } from "jsonwebtoken";
-import { ROLES } from "../lib/constants";
+import jwt from "jsonwebtoken";
+import { ROLES } from "../lib/constants.js";
+const { verify } = jwt;
 
-const userAuth = async (req, res, next) => {
+export const userAuth = async (req, res, next) => {
   try {
     const accessToken = req.cookies.accessToken;
     const refreshToken = req.cookies.refreshToken;
@@ -47,16 +47,7 @@ const userAuth = async (req, res, next) => {
   }
 };
 
-const otpRateLimiter = rateLimit({
-  windowMs: 1 * 60 * 1000,
-  max: 5,
-  message: {
-    error: true,
-    message: "Too many OTP requests. Please try again later.",
-  },
-});
-
-const clearAuthCookies = (res) => {
+export const clearAuthCookies = (res) => {
   const options = {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
@@ -65,7 +56,7 @@ const clearAuthCookies = (res) => {
   res.clearCookie("refreshToken", options);
 };
 
-const setAuthCookies = (res, accessToken, refreshToken) => {
+export const setAuthCookies = (res, accessToken, refreshToken) => {
   const options = {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
@@ -74,5 +65,3 @@ const setAuthCookies = (res, accessToken, refreshToken) => {
   res.cookie("accessToken", accessToken, options);
   res.cookie("refreshToken", refreshToken, options);
 };
-
-export default { userAuth, otpRateLimiter, clearAuthCookies, setAuthCookies };

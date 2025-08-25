@@ -1,4 +1,5 @@
 "use client";
+
 import {
   FormControl,
   FormDescription,
@@ -15,43 +16,30 @@ interface SwitchFieldProps<T extends FieldValues> {
   label: string;
   description?: string;
   formControl: Control<T>;
-  disabled?: boolean;
-  onChange?: (val: boolean) => void;
 }
 
-const SwitchField = <T extends FieldValues>({
+function SwitchField<T extends FieldValues>({
   name,
   label,
   description,
   formControl,
-  disabled = false,
-  onChange,
-}: SwitchFieldProps<T>) => {
+}: SwitchFieldProps<T>) {
   return (
     <FormField
       control={formControl}
       name={name}
       render={({ field }) => (
-        <FormItem className="flex items-center justify-between rounded-lg border p-3">
-          <div className="space-y-1">
-            <FormLabel>{label}</FormLabel>
-            {description && <FormDescription>{description}</FormDescription>}
-          </div>
+        <FormItem>
+          <FormLabel className="block">{label}</FormLabel>
           <FormControl>
-            <Switch
-              disabled={disabled}
-              checked={field.value ?? false}
-              onCheckedChange={(val) => {
-                field.onChange(val);
-                onChange?.(val);
-              }}
-            />
+            <Switch checked={field.value} onCheckedChange={field.onChange} />
           </FormControl>
+          {description && <FormDescription>{description}</FormDescription>}
           <FormMessage />
         </FormItem>
       )}
     />
   );
-};
+}
 
 export default SwitchField;

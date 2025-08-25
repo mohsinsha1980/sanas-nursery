@@ -1,8 +1,8 @@
-import { verify } from "jsonwebtoken";
-import { clearAuthCookies } from "./user-auth";
+import jwt from "jsonwebtoken";
+import { clearAuthCookies } from "./user-auth.js";
+const { verify } = jwt;
 
-// only for get loged in User details api  || dont use for other public api
-const publicAuth = async (req, res, next) => {
+const isAuthenticated = async (req, res, next) => {
   try {
     const accessToken = req.cookies.accessToken;
     const refreshToken = req.cookies.refreshToken;
@@ -41,5 +41,4 @@ const publicAuth = async (req, res, next) => {
     });
   }
 };
-
-export default publicAuth;
+export default isAuthenticated;
