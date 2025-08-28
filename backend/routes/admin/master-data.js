@@ -1,12 +1,12 @@
-const express = require("express");
-const routes = express.Router();
-const masterDataCtrl = require("../../controllers/admin/master-data");
+import { Router } from "express";
+import * as settingsCtrl from "../../controllers/admin/master-data.js";
+const routes = Router();
 
 // /api/admin/master-data
 
-routes.get("/", masterDataCtrl.getMasterData);
-routes.post("/", masterDataCtrl.addMasterData);
-routes.delete("/:field/:id", masterDataCtrl.deleteMasterRecord);
-routes.post("/address", masterDataCtrl.addAdminAddress);
+routes.get("/", settingsCtrl.getMasterData);
+// routes.post("/", masterDataCtrl.addMasterData);
+// routes.delete("/:field/:id", masterDataCtrl.deleteMasterRecord);
+// routes.post("/address", masterDataCtrl.addAdminAddress);
 
-module.exports = routes;
+export default routes;

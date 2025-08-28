@@ -1,129 +1,116 @@
 import { z } from "zod";
 import { slugRegEx } from "../helper";
+import { ACCEPTED_IMAGE_TYPES } from "../constants";
 
 export const slugValidation = z
   .string()
   .nonempty("Slug is required")
   .regex(slugRegEx, "Slug must be URL-friendly, Change title.");
 
-// export const addProductSchema = z
-//   .object({
-//     pictures:
-//       typeof window === "undefined"
-//         ? z.any()
-//         : z
-//             .instanceof(FileList, { message: "Pictures are required" })
-//             .transform((list) => Array.from(list))
-//             .refine(
-//               (files) => {
-//                 return files.every(
-//                   (file) => ACCEPTED_IMAGE_TYPES.indexOf(file.type) > -1
-//                 );
-//               },
-//               {
-//                 message: "Only .jpg, .jpeg, .png and .webp files are accepted.",
-//               }
-//             ),
+const picturesSchema =
+  typeof window === "undefined"
+    ? z.any()
+    : z
+        .instanceof(FileList, { message: "Pictures are required" })
+        .transform((list) => Array.from(list))
+        .refine(
+          (files) => {
+            return files.every(
+              (file) => ACCEPTED_IMAGE_TYPES.indexOf(file.type) > -1
+            );
+          },
+          {
+            message: "Only .jpg, .jpeg, .png and .webp files are accepted.",
+          }
+        );
 
-//     title: z.string().nonempty("Title is required"),
-//     slug: slugValidation,
-//     details: z.string().nonempty("Detail is required"),
-//     l1_category: z.string().nonempty("L1 Category is required"),
-//     l2_category: z.string().nonempty("L2 Category is required"),
-//     l3_category: z.string().optional(),
-//     taxRate: z
-//       .number()
-//       .min(0, "Tax Rate must be greter than or equal to 0")
-//       .max(100, { message: "Tax Rate cannot exceed 100%" }),
-//     variants: z
-//       .array(productVariantSchema)
-//       .nonempty("At least one variant is required"),
-//     // ...dimensionsSchema._def.schema.shape,
-//     ...dimensionsSchema.shape,
+export const specificationsSchema = z.object({
+  label: z.string().nonempty("Key Specification label is required"),
+  value: z.string().nonempty("Key Specification value is required"),
+});
 
-//     status: z.boolean(),
-//     metaDescription: z.string().nonempty("Meta description is required"),
-//     summary: z.string().nonempty("Product summary is required"),
-//     description: z.string().nonempty("Product description is required"),
-//     sizeChart: z.array(SizeSchema),
-//     hsnNumber: z.string().optional(),
-//   })
-//   .superRefine((data, ctx) => {
-//     const generatedSlug = data?.title
-//       ?.trim()
-//       .toLowerCase()
-//       .replaceAll(" ", "-");
+export const faqsSchema = z.object({
+  question: z.string().nonempty("Question is required"),
+  answer: z.string().nonempty("Answer is required"),
+});
 
-//     const slugResult = slugValidation.safeParse(generatedSlug);
-//     if (!slugResult.success) {
-//       ctx.addIssue({
-//         path: ["title"],
-//         message:
-//           "Title can't contain special characters (used to generate slug).",
-//         code: z.ZodIssueCode.custom,
-//       });
-//     }
-//   });
+export const tagSchema = z.object({
+  label: z.string().nonempty("Tag label is required"),
+  value: z.string().nonempty("Tag value is required"),
+});
 
-// const picturesSchema =
-//   typeof window === "undefined"
-//     ? z.any()
-//     : z.union([
-//         z.array(z.string()),
-//         z
-//           .instanceof(FileList, { message: "Pictures are required" })
-//           .transform((list) => Array.from(list))
-//           .refine(
-//             (files) =>
-//               files.every((file) => ACCEPTED_IMAGE_TYPES.includes(file.type)),
-//             {
-//               message: "Only .jpg, .jpeg, .png, and .webp files are accepted.",
-//             }
-//           ),
-//       ]);
+export const addPlantSchema = z
+  .object({
+    title: z.string().nonempty("Title is required"),
+    slug: slugValidation,
+    summary: z.string().nonempty("Plant summary is required"),
+    category: z.string().nonempty("Plant Category is required"),
+    size: z.string().nonempty("Plant Size is required"),
+    careLevel: z.string().optional(),
+    tags: z.array(tagSchema).optional(),
+    metaDescription: z.string().optional(),
+    details: z.string().nonempty("Detail is required"),
+    description: z.string().nonempty("Plant description is required"),
+    specifications: z.array(specificationsSchema),
+    faqs: z.array(faqsSchema),
+    pictures: picturesSchema,
+    status: z.boolean(),
+  })
+  .superRefine((data, ctx) => {
+    const generatedSlug = data?.title
+      ?.trim()
+      .toLowerCase()
+      .replaceAll(" ", "-");
 
-// export const editProductSchema = z
-//   .object({
-//     productId: z.string(),
-//     title: z.string().min(3, "Title must be at least 3 characters long."),
-//     slug: slugValidation,
-//     details: z.string().nonempty("Detail is required"),
-//     l1_category: z.string().nonempty("L1 Category is required"),
-//     l2_category: z.string().nonempty("L2 Category is required"),
-//     l3_category: z.string().optional(),
-//     taxRate: z
-//       .number()
-//       .min(0, "Tax Rate must be greter than or equal to 0")
-//       .max(100, { message: "Tax Rate cannot exceed 100%" }),
-//     variants: z
-//       .array(productVariantSchema)
-//       .nonempty("At least one variant is required"),
-//     // ...dimensionsSchema._def.schema.shape,
-//     ...dimensionsSchema.shape,
+    const slugResult = slugValidation.safeParse(generatedSlug);
+    if (!slugResult.success) {
+      ctx.addIssue({
+        path: ["title"],
+        message:
+          "Title can't contain special characters (used to generate slug).",
+        code: z.ZodIssueCode.custom,
+      });
+    }
+  });
 
-//     status: z.boolean(),
-//     metaDescription: z.string().nonempty("Meta description is required"),
-//     summary: z.string().nonempty("Product summary is required"),
-//     description: z.string().nonempty("Product description is required"),
-//     sizeChart: z.array(SizeSchema),
-//     pictures: picturesSchema,
-//     hsnNumber: z.string().optional(),
-//   })
-//   .superRefine((data, ctx) => {
-//     const generatedSlug = data?.title
-//       ?.trim()
-//       .toLowerCase()
-//       .replaceAll(" ", "-");
+const editPlantPicturesSchema =
+  typeof window === "undefined"
+    ? z.any()
+    : z.union([
+        z.array(z.string()),
+        z
+          .instanceof(FileList, { message: "Pictures are required" })
+          .transform((list) => Array.from(list))
+          .refine(
+            (files) =>
+              files.every((file) => ACCEPTED_IMAGE_TYPES.includes(file.type)),
+            {
+              message: "Only .jpg, .jpeg, .png, and .webp files are accepted.",
+            }
+          ),
+      ]);
 
-//     const slugResult = slugValidation.safeParse(generatedSlug);
-//     if (!slugResult.success) {
-//       ctx.addIssue({
-//         path: ["title"],
-//         message: slugResult.error.errors[0].message,
-//         code: z.ZodIssueCode.custom,
-//       });
-//     }
-//   });
+export const editPlantSchema = addPlantSchema
+  .extend({
+    plantId: z.string(),
+    pictures: editPlantPicturesSchema,
+  })
+  .superRefine((data, ctx) => {
+    const generatedSlug = data?.title
+      ?.trim()
+      .toLowerCase()
+      .replaceAll(" ", "-");
+
+    const slugResult = slugValidation.safeParse(generatedSlug);
+    if (!slugResult.success) {
+      ctx.addIssue({
+        path: ["title"],
+        message:
+          "Title can't contain special characters (used to generate slug).",
+        code: z.ZodIssueCode.custom,
+      });
+    }
+  });
 
 // export const homeTopBanner = z.object({
 //   small: z.string().nonempty("Sub-heading is required"),
@@ -199,3 +186,9 @@ export const slugValidation = z
 //       }),
 //     z.string().nonempty("Image URL is required"),
 //   ]),
+
+export const PlantFilterSchema = z.object({
+  title: z.string().optional(),
+  plantId: z.string().optional(),
+  status: z.string().optional(),
+});

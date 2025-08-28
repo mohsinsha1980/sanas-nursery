@@ -175,4 +175,4 @@ const mediaUpload = (mediaType) => async (req, res, next) => {
   }
 };
 
-export default { mediaUpload };
+export default mediaUpload;

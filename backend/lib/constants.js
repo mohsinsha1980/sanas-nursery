@@ -1,3 +1,6 @@
+const COUNTRY_NAME = "India";
+export const PASSWORD_HASH_ROUND = 10;
+
 export const ROLES = {
   USER: "User",
   ADMIN: "Admin",
@@ -9,91 +12,106 @@ export const STATUS = {
   DELETED: "2",
 };
 
-const COUNTRY_NAME = "India";
+export const CATEGORIES = {
+  FRUIT_TREES: { label: "Fruit Trees", value: "fruit-trees" },
+  FLOWER_TREES: { label: "Flower Trees", value: "flower-trees" },
+  SHADOW_TREES: { label: "Shadow Trees", value: "shadow-trees" },
+  SHOW_TREES: { label: "Show Trees", value: "show-trees" },
+  MASALA: { label: "Masala", value: "masala" },
+  OTHERS: { label: "Others", value: "others" },
+};
 
-// MEDIA = {
-//   Gallery: {
-//     destination: "public/pictures/gallery",
-//     resizeOptions: {
-//       width: 501,
-//       height: 668,
-//       fit: "cover",
-//     },
-//     pictures: { count: 10, fileSize: 0.5 * 1024 * 1024 },
-//     limits: { fileSize: 0.5 * 1024 * 1024 },
-//   },
-//   Product: {
-//     destination: "public/pictures/products",
-//     resizeOptions: {
-//       width: 501,
-//       height: 668,
-//       fit: "cover",
-//     },
-//     pictures: { count: 20, fileSize: 0.5 * 1024 * 1024 },
-//     limits: { fileSize: 0.5 * 1024 * 1024 },
-//   },
-//   Home: {
-//     Banner: {
-//       destination: "public/pictures/home",
-//       resizeOptions: {
-//         fit: "cover",
-//       },
-//       pictures: { count: 1, fileSize: 0.5 * 1024 * 1024 },
-//       limits: { fileSize: 0.5 * 1024 * 1024 },
-//     },
-//     // Top: {
-//     //   A1: {
-//     //     destination: "public/pictures/home",
-//     //     resizeOptions: {
-//     //       // width: 505,
-//     //       // height: 457,
-//     //       fit: "cover",
-//     //     },
-//     //     pictures: { count: 1, fileSize: 0.5 * 1024 * 1024 },
-//     //     limits: { fileSize: 0.5 * 1024 * 1024 },
-//     //   },
-//     //   B1: {
-//     //     destination: "public/pictures/home",
-//     //     resizeOptions: {
-//     //       width: 505,
-//     //       height: 214,
-//     //       fit: "cover",
-//     //     },
-//     //     pictures: { count: 1, fileSize: 0.5 * 1024 * 1024 },
-//     //     limits: { fileSize: 0.5 * 1024 * 1024 },
-//     //   },
-//     //   B2: {
-//     //     destination: "public/pictures/home",
-//     //     resizeOptions: {
-//     //       width: 242,
-//     //       height: 214,
-//     //       fit: "cover",
-//     //     },
-//     //     pictures: { count: 1, fileSize: 0.5 * 1024 * 1024 },
-//     //     limits: { fileSize: 0.5 * 1024 * 1024 },
-//     //   },
-//     // },
-//     Slider: {
-//       destination: "public/pictures/home",
-//       resizeOptions: {
-//         width: 1899,
-//         height: 584,
-//         fit: "cover",
-//       },
-//       pictures: { count: 1, fileSize: 0.5 * 1024 * 1024 },
-//       limits: { fileSize: 0.5 * 1024 * 1024 },
-//     },
-//   },
-//   ContactUs: {
-//     destination: "public/pictures/contact-us",
-//     resizeOptions: {
-//       fit: "cover",
-//     },
-//     pictures: { count: 10, fileSize: 0.5 * 1024 * 1024 },
-//     files: { count: 1, fileSize: 0.5 * 1024 * 1024 },
-//     limits: { fileSize: 0.5 * 1024 * 1024 },
-//   },
-// };
+export const CATEGORY_ARR = Object.values(CATEGORIES).map(
+  (category) => category
+);
+
+export const MASTER_DATA_TYPE = {
+  TAGS: "tags",
+};
+
+export const MEDIA = {
+  // Gallery: {
+  //   destination: "public/pictures/gallery",
+  //   resizeOptions: {
+  //     width: 501,
+  //     height: 668,
+  //     fit: "cover",
+  //   },
+  //   pictures: { count: 10, fileSize: 0.5 * 1024 * 1024 },
+  //   limits: { fileSize: 0.5 * 1024 * 1024 },
+  // },
+  Plants: {
+    destination: "public/pictures/Plants",
+    resizeOptions: {
+      width: 501,
+      height: 668,
+      fit: "cover",
+    },
+    pictures: { count: 20, fileSize: 0.5 * 1024 * 1024 },
+    limits: { fileSize: 0.5 * 1024 * 1024 },
+  },
+  // Home: {
+  //   Banner: {
+  //     destination: "public/pictures/home",
+  //     resizeOptions: {
+  //       fit: "cover",
+  //     },
+  //     pictures: { count: 1, fileSize: 0.5 * 1024 * 1024 },
+  //     limits: { fileSize: 0.5 * 1024 * 1024 },
+  //   },
+  //   // Top: {
+  //   //   A1: {
+  //   //     destination: "public/pictures/home",
+  //   //     resizeOptions: {
+  //   //       // width: 505,
+  //   //       // height: 457,
+  //   //       fit: "cover",
+  //   //     },
+  //   //     pictures: { count: 1, fileSize: 0.5 * 1024 * 1024 },
+  //   //     limits: { fileSize: 0.5 * 1024 * 1024 },
+  //   //   },
+  //   //   B1: {
+  //   //     destination: "public/pictures/home",
+  //   //     resizeOptions: {
+  //   //       width: 505,
+  //   //       height: 214,
+  //   //       fit: "cover",
+  //   //     },
+  //   //     pictures: { count: 1, fileSize: 0.5 * 1024 * 1024 },
+  //   //     limits: { fileSize: 0.5 * 1024 * 1024 },
+  //   //   },
+  //   //   B2: {
+  //   //     destination: "public/pictures/home",
+  //   //     resizeOptions: {
+  //   //       width: 242,
+  //   //       height: 214,
+  //   //       fit: "cover",
+  //   //     },
+  //   //     pictures: { count: 1, fileSize: 0.5 * 1024 * 1024 },
+  //   //     limits: { fileSize: 0.5 * 1024 * 1024 },
+  //   //   },
+  //   // },
+  //   Slider: {
+  //     destination: "public/pictures/home",
+  //     resizeOptions: {
+  //       width: 1899,
+  //       height: 584,
+  //       fit: "cover",
+  //     },
+  //     pictures: { count: 1, fileSize: 0.5 * 1024 * 1024 },
+  //     limits: { fileSize: 0.5 * 1024 * 1024 },
+  //   },
+  // },
+  // ContactUs: {
+  //   destination: "public/pictures/contact-us",
+  //   resizeOptions: {
+  //     fit: "cover",
+  //   },
+  //   pictures: { count: 10, fileSize: 0.5 * 1024 * 1024 },
+  //   files: { count: 1, fileSize: 0.5 * 1024 * 1024 },
+  //   limits: { fileSize: 0.5 * 1024 * 1024 },
+  // },
+};
 
 export const PRODUCTS_PER_PAGE = 20;
 

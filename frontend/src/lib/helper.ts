@@ -1,11 +1,11 @@
 import store from "@/redux/store";
 import { AxiosError } from "axios";
 import CryptoJS from "crypto-js";
-import { URLSearchParams } from "url";
 
+import config from "@/config/env-config";
 import { toast } from "sonner";
-import { USER_STORE_DATA_KEY } from "./constants";
 import { UserInSessionTypes } from "./types/user-types";
+import { AddPlantFields } from "./types/admin-types";
 
 type InputDate = string | Date;
 interface errorType {
@@ -13,6 +13,7 @@ interface errorType {
   message: string;
 }
 
+export const nameRegEx = /^[A-Za-z\s]+$/;
 export const phoneRegEx = /^[6-9]\d{9}$/;
 export const emailRegEx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 export const zipRegEx = /^[1-9]{1}\d{2}\s?\d{3}$/;
@@ -239,7 +240,7 @@ export const DAYS = [
 
 export const getPicURL = (endpoint: string) => {
   if (!endpoint) return "";
-  return `${process.env.NEXT_PUBLIC_BACKEND}/${endpoint}`;
+  return `${config.BACKEND_BASE_PATH}/${endpoint}`;
 };
 
 export const getFormattedPdfURL = (endpoint: string) => {
@@ -377,10 +378,10 @@ export const showErrorToast = (message: string): void => {
   });
 };
 
-export const showSuccessToast = (message: string): void => {
+export const showSuccessToast = (message: string, duration?: number): void => {
   toast.success(message, {
     position: "top-center",
-    duration: 5000,
+    duration: duration ? duration : 5000,
     className: "success_custom-toast",
   });
 };
@@ -419,12 +420,11 @@ export const decryptData = (encryptedData: string) => {
   try {
     const bytes = CryptoJS.AES.decrypt(
       encryptedData,
-      process.env.NEXT_PUBLIC_ENCRYPTION_SECRET_KEY as string
+      config.ENCRYPTION_SECRET_KEY
     );
     return JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
   } catch (error) {
     console.log("decryptData error", error);
-    sessionStorage.removeItem(USER_STORE_DATA_KEY);
     return null;
   }
 };
@@ -432,3 +432,12 @@ export const decryptData = (encryptedData: string) => {
 export const generateSlug = (nameValue: string) => {
   return nameValue.trim().toLowerCase().replace(/\s+/g, "-");
 };
+
+export function getFaqAccrItems(faqs: AddPlantFields["faqs"]) {
+  return faqs.map((faq, index) => ({
+    id: `faq-${index + 1}`,
+    title: faq.question,
+    content: [faq.answer],
+    index,
+  }));
+}

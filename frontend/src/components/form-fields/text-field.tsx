@@ -1,4 +1,5 @@
 "use client";
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   FormControl,
   FormDescription,
@@ -15,14 +16,14 @@ import { Control, FieldPath, FieldValues } from "react-hook-form";
 interface TextFieldProps<T extends FieldValues> {
   name: FieldPath<T>;
   label: string;
-  placeholder?: string;
+  placeholder: string;
   description?: string;
-  type?: React.HTMLInputTypeAttribute;
+  inputType?: string;
   formControl: Control<T>;
   prefix?: React.ReactNode;
   suffix?: React.ReactNode;
-  readOnly?: boolean;
-  onChange?: (val: string | number) => void;
+  readonly?: boolean;
+  onchange?: (val: any) => void;
   className?: string;
   upperCase?: boolean;
 }
@@ -32,12 +33,12 @@ const TextField = <T extends FieldValues>({
   label,
   placeholder,
   description,
-  type = "text",
+  inputType,
   formControl,
   prefix,
   suffix,
-  readOnly = false,
-  onChange,
+  readonly,
+  onchange,
   className = "",
   upperCase = false,
 }: TextFieldProps<T>) => {
@@ -51,47 +52,50 @@ const TextField = <T extends FieldValues>({
         <FormItem>
           <FormLabel>{label}</FormLabel>
           <FormControl>
-            <div className="relative w-full flex items-center">
-              {prefix && (
-                <div className="flex items-center justify-center rounded-md h-9 px-2 bg-zinc-200 border border-gray-300 me-2">
-                  {prefix}
-                </div>
-              )}
+            <div className="relative w-full">
+              <div className="flex h-9 items-center">
+                {prefix && (
+                  <div className="flex items-center justify-center rounded-md h-full p-2 bg-white-200 min-w-10 me-2 border border-gray-300">
+                    {prefix}
+                  </div>
+                )}
 
-              <Input
-                className={className}
-                placeholder={placeholder}
-                type={type === "password" && isView ? "text" : type}
-                value={field.value ?? ""}
-                readOnly={readOnly}
-                onChange={(e) => {
-                  let value: string | number = e.target.value;
+                <Input
+                  className={className}
+                  placeholder={placeholder}
+                  type={inputType === "password" && isView ? "text" : inputType}
+                  {...field}
+                  readOnly={readonly}
+                  onChange={(event) => {
+                    if (inputType === "number") {
+                      const value = +event.target.value;
+                      field.onChange(value);
+                      onchange?.(value);
+                    } else {
+                      const value = upperCase
+                        ? event.target.value.toUpperCase()
+                        : event.target.value;
+                      field.onChange(value);
+                      onchange?.(value);
+                    }
+                  }}
+                />
 
-                  if (type === "number") {
-                    value = e.target.value === "" ? "" : +e.target.value;
-                  } else if (upperCase) {
-                    value = e.target.value.toUpperCase();
-                  }
+                {inputType === "password" && (
+                  <div
+                    className="absolute right-6 cursor-pointer text-gray-500"
+                    onClick={() => setIsView((prev) => !prev)}
+                  >
+                    {isView ? <EyeOff size={20} /> : <Eye size={20} />}
+                  </div>
+                )}
 
-                  field.onChange(value);
-                  onChange?.(value);
-                }}
-              />
-
-              {type === "password" && (
-                <div
-                  className="absolute right-2 cursor-pointer text-gray-500"
-                  onClick={() => setIsView((prev) => !prev)}
-                >
-                  {isView ? <EyeOff size={20} /> : <Eye size={20} />}
-                </div>
-              )}
-
-              {suffix && (
-                <div className="flex items-center justify-center h-9 px-2 bg-zinc-200 rounded-md ms-2">
-                  {suffix}
-                </div>
-              )}
+                {suffix && (
+                  <div className="flex items-center justify-center h-full p-2 bg-zinc-200 min-w-10 rounded-md ms-1">
+                    {suffix}
+                  </div>
+                )}
+              </div>
             </div>
           </FormControl>
           {description && <FormDescription>{description}</FormDescription>}

@@ -25,12 +25,6 @@ export const DISCOUNT = [
   { label: "60%-80%", value: "60-80" },
 ];
 
-export const CATEGORIES = [
-  { label: "Women", value: "women" },
-  { label: "Men", value: "men" },
-  { label: "Kids", value: "kids" },
-];
-
 export const ACCEPTED_IMAGE_TYPES = [
   "image/jpeg",
   "image/jpg",
@@ -80,6 +74,35 @@ export const HOME_SECTIONS = {
   MIDDLE: "middle",
   BOTTOM: "bottom",
 };
+
+export const CATEGORIES = {
+  FRUIT_TREES: { label: "Fruit Trees", value: "fruit-trees" },
+  FLOWER_TREES: { label: "Flower Trees", value: "flower-trees" },
+  SHADOW_TREES: { label: "Shadow Trees", value: "shadow-trees" },
+  SHOW_TREES: { label: "Show Trees", value: "show-trees" },
+  MASALA: { label: "Masala", value: "masala" },
+  OTHERS: { label: "Others", value: "others" },
+};
+
+export const CATEGORY_ARR = Object.values(CATEGORIES).map(
+  (category) => category
+);
+
+export const PLANT_SIZES = {
+  SMALL: { label: "Small", value: "small" },
+  MEDIUM: { label: "Medium", value: "medium" },
+  LARGE: { label: "Large", value: "large" },
+};
+
+export const PLANT_SIZES_ARR = Object.values(PLANT_SIZES).map((size) => size);
+
+export const CARE_LEVEL = {
+  EASY: { label: "Easy", value: "easy" },
+  MODERSTE: { label: "Moderate", value: "moderate" },
+  HIGH: { label: "High", value: "high" },
+};
+
+export const CARE_LEVEL_ARR = Object.values(CARE_LEVEL).map((level) => level);
 
 export const HOME_FIELDS = {
   TOP: {

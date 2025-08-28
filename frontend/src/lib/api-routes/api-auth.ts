@@ -1,121 +1,57 @@
-// import { axiosInstance } from "@/config/http";
-// import {
-//   ForgetPassApiType,
-//   GetAuthOtpApiType,
-//   SignInUserApiType,
-//   ValidateOtpApiType,
-// } from "../types/auth-types";
-// import { Controller } from "../types/common-types";
-// import config from "@/config/env-config";
+import config from "@/config/env-config";
+import { axiosInstance } from "@/config/http";
+import {
+  ForgetPassField,
+  ResetPassType,
+  SignInType,
+  SignUpType,
+} from "../types/auth-types";
+import { Controller } from "../types/common-types";
 
-// export const getAuthOtp = (
-//   data: GetAuthOtpApiType,
-//   controller?: Controller
-// ) => {
-//   return axiosInstance
-//     .post(`${config.API_AUTH_PATH}/getAuthOtp`, data, {
-//       signal: controller?.signal,
-//     })
-//     .then((res) => res.data)
-//     .catch((e) => {
-//       return (
-//         e?.response?.data || {
-//           error: true,
-//           message: "Something went wrong!",
-//         }
-//       );
-//     });
-// };
+export const signup = (
+  data: SignUpType & { token: string },
+  controller?: Controller
+) => {
+  return axiosInstance.post(`${config.API_AUTH_PATH}/signup`, data, {
+    signal: controller?.signal,
+  });
+};
 
-// export const validateOtp = (data: ValidateOtpApiType) => {
-//   return axiosInstance
-//     .post(`${config.API_AUTH_PATH}/validateOtp`, data)
-//     .then((res) => res.data)
-//     .catch((e) => {
-//       return (
-//         e?.response?.data || {
-//           error: true,
-//           message: "Something went wrong!",
-//         }
-//       );
-//     });
-// };
+export const signin = (
+  data: SignInType & { token: string },
+  controller?: Controller
+) => {
+  return axiosInstance.post(`${config.API_AUTH_PATH}/signin`, data, {
+    signal: controller?.signal,
+  });
+};
 
-// export const signin = (
-//   userData: SignInUserApiType,
-//   controller?: Controller
-// ) => {
-//   return axiosInstance
-//     .post(`${config.API_AUTH_PATH}/signin`, userData, {
-//       signal: controller?.signal,
-//     })
-//     .then((res) => res.data)
-//     .catch((e) => {
-//       return (
-//         e?.response?.data || {
-//           error: true,
-//           message: "Something went wrong!",
-//         }
-//       );
-//     });
-// };
+export const forgotPassword = (
+  data: ForgetPassField & { token: string },
+  controller?: Controller
+) => {
+  return axiosInstance.post(`${config.API_AUTH_PATH}/forgot-password`, data, {
+    signal: controller?.signal,
+  });
+};
 
-// export const forgotPassword = (
-//   data: ForgetPassApiType,
-//   controller?: Controller
-// ) => {
-//   return axiosInstance
-//     .post(`${config.API_AUTH_PATH}/forgotPassword`, data, {
-//       signal: controller?.signal,
-//     })
-//     .then((res) => {
-//       return res.data;
-//     })
-//     .catch((e) => {
-//       return (
-//         e?.response?.data || {
-//           error: true,
-//           message: "Something went wrong!",
-//         }
-//       );
-//     });
-// };
+export const resetPassword = (
+  data: ResetPassType & { token: string },
+  controller?: Controller
+) => {
+  return axiosInstance.post(`${config.API_AUTH_PATH}/reset-password`, data, {
+    signal: controller?.signal,
+  });
+};
 
-// export const resetPassword = (
-//   data: ResetPasswordApiType,
-//   controller?: Controller
-// ) => {
-//   return axiosInstance
-//     .post(`${config.API_AUTH_PATH}/resetPassword`, data, {
-//       signal: controller?.signal,
-//     })
-//     .then((res) => res.data)
-//     .catch((e) => {
-//       return (
-//         e?.response?.data || {
-//           error: true,
-//           message: "Something went wrong!",
-//         }
-//       );
-//     });
-// };
+export const logout = (controller?: Controller) => {
+  return axiosInstance.post(`${config.API_AUTH_PATH}/logout`, {
+    signal: controller?.signal,
+  });
+};
 
-// export const logout = async (
-//   userData: UserInSessionTypes,
-//   controller?: Controller
-// ) => {
-//   try {
-//     const response = await axiosInstance.post(
-//       `${config.API_AUTH_PATH}/logout`,
-//       userData,
-//       {
-//         signal: controller?.signal,
-//       }
-//     );
-
-//     window.location.href = "/";
-//     return response.data;
-//   } catch (error) {
-//     return (error as AxiosError).response?.data || { message: "Logout failed" };
-//   }
-// };
+export const getLogedInUser = (controller: Controller) => {
+  return axiosInstance.get(`${config.API_AUTH_PATH}/login-user`, {
+    signal: controller?.signal,
+  });
+};

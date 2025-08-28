@@ -1,21 +1,21 @@
-require("dotenv").config({ path: __dirname + "/.env" });
-const mongoose = require("mongoose");
-mongoose.Promise = global.Promise;
-const User = require("./models/User.js");
-const bcrypt = require("bcryptjs");
+import dotenv from "dotenv";
+dotenv.config({ path: "/.env" });
+import { hash } from "bcryptjs";
+import { connect } from "mongoose";
+import User from "../models/User.js";
+import config from "../config/env-config.js";
+Promise = global.Promise;
 
 const register = async () => {
   try {
-    const hashed = await bcrypt.hash("Rgc@2096!", 10);
+    const hashed = await hash("12345678", 10);
     const user = new User({
-      email: "rashchop@gmail.com",
+      email: "adminvaibhav@gmail.com",
       password: hashed,
-      first_name: "BharathaTechno IT",
-      last_name: "Pvt Ltd",
-      phone: "8421014146",
-      is_verified: true,
+      name: "Admin Vaibhav",
+      phone: "9561157845",
+      isVerified: true,
       role: "Admin",
-      active: true,
     });
     const createdUser = await User.create(user);
     console.log(createdUser);
@@ -26,9 +26,9 @@ const register = async () => {
   }
 };
 
-const DB = process.env.DB;
+const DB = config.DB;
 
-mongoose.connect(DB).then(
+connect(DB).then(
   () => {
     console.log("Connected to database");
     register();

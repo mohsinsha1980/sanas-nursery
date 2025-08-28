@@ -51,6 +51,7 @@ const InputImageField = <T extends FieldValues>({
                 accept={accept}
                 onChange={(event) => {
                   if (event.target?.files) {
+                    console.log(value);
                     onChange(event.target.files);
                     onchange?.(event.target.files);
                   }
