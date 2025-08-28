@@ -21,6 +21,7 @@ const plants = {
 
 export default function CategoryPage() {
   const { category } = useParams();
+  console.log(category);
   const plantList =
     typeof category === "string" && category in plants
       ? plants[category as keyof typeof plants]
@@ -51,7 +52,7 @@ export default function CategoryPage() {
             className="lg:h-full lg:w-full"
           />
           <div className="z-1 absolute top-[40%] left-[11%] lg:w-[611px] lg:h-[385px] space-y-4">
-            <h1 className="text-[#0D6536] lg:text-[64px] font-bold leading-18">Fruit Trees Collection </h1>
+            <h1 className="text-[#0D6536] lg:text-[64px] font-bold leading-18">{category} Collection </h1>
             <p className="text-[#505050] lg:text-[20px] font-medium">Explore a variety of fruit trees perfect for your garden</p>
           </div>
         </div>

@@ -13,7 +13,7 @@ const categories = [
 export default function Categories() {
   return (
     <div className="h-full w-full lg:pt-30 lg:pb-30 md:pt-20 md:pb-20 pt-10 pb-10  flex flex-row justify-center  ">
-      <div className="h-full lg:w-[80%] md:w-[90%] w-[95%]    ">
+      <div className="h-full max-w-[1370px] md:w-[90%] w-[95%]    ">
         <div className="h-full w-full  flex flex-col justify-center items-center lg:pb-10 ">
           <h1 className="lg:text-[42px] md:text-[36px] text-[28px] font-semibold text-center">
             Choose Your <span className="text-[#00611F]">Plant</span> Family

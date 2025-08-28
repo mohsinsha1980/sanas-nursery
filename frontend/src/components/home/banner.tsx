@@ -52,7 +52,7 @@ const Banner = () => {
                     <div className='z-11 h-fit w-[60%] absolute left-10 top-[50%] -translate-y-1/2 space-y-5  '>
                         <h1 className='text-white text-[28px] font-medium'>Monsoon Special Green</h1>
                         <p className='text-white text-[20px] font-medium'>Fresh, lush plants perfect for the summer season.</p>
-                        <button className='hover:bg-white hover:text-black transition-all duration-300 border-2 border-white lg:h-[60px] lg:w-[191px] md:h-[35px] md:w-[110px] w-[120px] h-[50px] flex justify-center items-center lg:rounded-xl md:rounded-xl rounded-[5px] text-[#FFFFFF] lg:text-[20px]'>View Collection</button>
+                        <button className='hover:bg-white/40 hover:text-black transition-all duration-300 border-2 border-white lg:h-[60px] lg:w-[191px] md:h-[35px] md:w-[110px] w-[120px] h-[50px] flex justify-center items-center lg:rounded-xl md:rounded-xl rounded-[5px] text-[#FFFFFF] lg:text-[20px]'>View Collection</button>
                     </div>
                 </div>
                 <div className='relative lg:h-[410px] h-[370px] lg:w-[49%] w-full bg-white flex rounded-xl '>
