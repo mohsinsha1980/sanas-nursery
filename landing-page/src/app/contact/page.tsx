@@ -70,10 +70,9 @@ export default function ContactPage() {
 
   return (
     <div className="bg-white">
-      {/* Page Header */}
       <section
         className="py-16 bg-center bg-cover "
-        style={{ backgroundImage: "url('/bg.png')",}}
+        style={{ backgroundImage: "url('/bg.png')" }}
       >
         <div className="container-custom text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-accent-900 mb-4">
@@ -85,7 +84,6 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Contact Content */}
       <section className="py-20">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -159,10 +157,11 @@ export default function ContactPage() {
                     id="phone"
                     name="phone"
                     required
+                    pattern="^\d{10}$"
                     value={formData.phone}
                     onChange={handleChange}
                     className="w-full px-4 py-3 border border-accent-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                    placeholder="Enter your phone or WhatsApp number"
+                    placeholder="Enter 10-digit number (e.g. 9876543210)"
                   />
                 </div>
 

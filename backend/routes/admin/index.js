@@ -1,0 +1,40 @@
+import { Router } from "express";
+import adminAuth from "../../middleware/admin-auth.js";
+import settingsRoutes from "./master-data.js";
+import plantRoutes from "./plants.js";
+import userRoutes from "./users.js";
+const router = Router();
+// import homeRoutes from "./home.js";
+// import reviewsRoutes from "./reviews.js";
+// import galleryRoutes from "./gallery.js";
+// import promotionRoutes from "./promotions.js";
+
+// import categoryCtrl from "../../controllers/admin/categories";
+// import tnxRoutes from "./transaction";
+// import subscriptionCtrl from "../../controllers/admin/subscription";
+// import dashboardRoutes from "./dashboard";
+// import shiprocketRoutes from "./shiprocket";
+// import ordersRoutes from "./orders";
+// import supportCtrl from "../../controllers/admin/support";
+// import enquiryCtrl from "../../controllers/admin/enquiry";
+
+router.use("/users", adminAuth, userRoutes);
+router.use("/master-data", adminAuth, settingsRoutes);
+router.use("/plants", adminAuth, plantRoutes);
+
+// router.use("/categories", adminAuth, categoryRoutes);
+// router.use("/home", adminAuth, homeRoutes);
+// router.use("/reviews", adminAuth, reviewsRoutes);
+// router.use("/gallery", adminAuth, galleryRoutes);
+// router.use("/promotions", adminAuth, promotionRoutes);
+// router.use("/transactions", adminAuth, tnxRoutes);
+// router.use("/subscriptions", adminAuth, subscriptionCtrl.getSubscription);
+// router.use("/dashboard", adminAuth, dashboardRoutes);
+// router.use("/delivery", shiprocketRoutes);
+// router.get("/categoryTree", adminAuth, categoryCtrl.getCategoryTree);
+// router.use("/orders", adminAuth, ordersRoutes);
+// router.get("/support", adminAuth, supportCtrl.getSupport);
+// router.put("/support/:supportId", adminAuth, supportCtrl.updateSupport);
+// router.get("/contact-us", adminAuth, enquiryCtrl.getEnquiry);
+
+export default router;

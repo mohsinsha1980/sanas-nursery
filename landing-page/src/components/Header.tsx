@@ -20,9 +20,9 @@ export default function Header() {
           <div className="flex items-center">
             <Link href="/" className="flex items-center space-x-3">
               <Logo />
-              <span className="text-xl font-bold text-primary-600 hidden sm:block">
+              {/* <span className="text-xl font-bold text-primary-600 hidden sm:block">
                 Sanas Nursery
-              </span>
+              </span> */}
             </Link>
           </div>
 

@@ -1,0 +1,31 @@
+interface Config {
+  WEBAPP_TITLE: string;
+  BACKEND_URL: string;
+  RECAPTCHA_SITE_KEY: string;
+  ENCRYPTION_SECRET_KEY: string;
+  NODE_ENV: string;
+
+  BACKEND_BASE_PATH: string;
+  API_AUTH_PATH: string;
+  API_USER_PATH: string;
+  API_ADMIN_PATH: string;
+  API_PUBLIC_PATH: string;
+  API_GOOGLE_AUTH: string;
+}
+
+const config: Config = {
+  WEBAPP_TITLE: process.env.NEXT_PUBLIC_WEBAPP_TITLE || "Sanas Nursery",
+  BACKEND_URL: process.env.NEXT_PUBLIC_BACKEND!,
+  RECAPTCHA_SITE_KEY: process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!,
+  ENCRYPTION_SECRET_KEY: process.env.NEXT_PUBLIC_ENCRYPTION_SECRET_KEY!,
+  NODE_ENV: process.env.NEXT_PUBLIC_NODE_ENV!,
+
+  BACKEND_BASE_PATH: process.env.NEXT_PUBLIC_BACKEND_BASE_PATH!,
+  API_AUTH_PATH: process.env.NEXT_PUBLIC_API_AUTH_PATH!,
+  API_USER_PATH: process.env.NEXT_PUBLIC_API_USER_PATH!,
+  API_ADMIN_PATH: process.env.NEXT_PUBLIC_API_ADMIN_PATH!,
+  API_PUBLIC_PATH: process.env.NEXT_PUBLIC_API_PUBLIC_PATH!,
+  API_GOOGLE_AUTH: process.env.NEXT_PUBLIC_API_GOOGLE_AUTH!,
+};
+
+export default config;
