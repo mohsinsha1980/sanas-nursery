@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { Star, Quote } from "lucide-react";
@@ -33,7 +33,11 @@ const testimonials = [
 export default function InfiniteMovingCardsDemo() {
   return (
     <div className="w-full relative overflow-hidden">
-      <InfiniteMovingCards items={testimonials} direction="right" speed="slow" />
+      <InfiniteMovingCards
+        items={testimonials}
+        direction="right"
+        speed="slow"
+      />
     </div>
   );
 }
@@ -60,9 +64,7 @@ export const InfiniteMovingCards = ({
 
   const [start, setStart] = useState(false);
 
-  useEffect(() => {
-    addAnimation();
-  }, []);
+  addAnimation();
 
   function addAnimation() {
     if (containerRef.current && scrollerRef.current) {
@@ -120,14 +122,20 @@ export const InfiniteMovingCards = ({
             <div className="flex justify-between items-center lg:mb-8 md:mb-5 mb-5">
               <div className="flex items-center gap-2">
                 <Quote size={28} className="text-white" />
-                <span className="lg:font-bold lg:text-[24px] md:text-[20px] text-[18px]">{item.name}</span>
+                <span className="lg:font-bold lg:text-[24px] md:text-[20px] text-[18px]">
+                  {item.name}
+                </span>
               </div>
               <div className="flex items-center gap-1">
                 <Star size={18} className="text-white" />
-                <span className="lg:font-bold lg:text-[24px] md:text-[20px] text-[18px]">{item.rating}</span>
+                <span className="lg:font-bold lg:text-[24px] md:text-[20px] text-[18px]">
+                  {item.rating}
+                </span>
               </div>
             </div>
-            <p className="lg:text-[20px] md:text-[18px]  text-[16px] leading-relaxed">{item.quote}</p>
+            <p className="lg:text-[20px] md:text-[18px]  text-[16px] leading-relaxed">
+              {item.quote}
+            </p>
           </li>
         ))}
       </ul>

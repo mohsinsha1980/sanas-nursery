@@ -32,6 +32,7 @@ const nextConfig: NextConfig = {
     },
   },
   images: {
+    domains: ["img.youtube.com"],
     remotePatterns: [
       {
         protocol: "http",
