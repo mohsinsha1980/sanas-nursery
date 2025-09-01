@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
 
 type Video = {
   id: string;
@@ -35,7 +36,7 @@ const YoutubeSection: React.FC = () => {
   }, []);
 
   return (
-    <div className="w-full bg-[rgba(228,255,240,1)] py-12 md:py-16 flex justify-center">
+    <div className="w-full  py-12 md:py-16 flex justify-center">
       <div className="w-full max-w-[1370px] flex flex-col items-center px-4">
         {/* Heading */}
         <div className="text-center mb-8 md:mb-10">
@@ -58,12 +59,17 @@ const YoutubeSection: React.FC = () => {
                          rounded-lg overflow-hidden shadow-lg cursor-pointer group focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-600"
               aria-label={`Play ${v.title}`}
             >
-              <img
-                src={v.thumbnail}
-                alt={v.title}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                loading="lazy"
-              />
+              <div className="relative w-full h-full">
+                <Image
+                  src={v.thumbnail}
+                  alt={v.title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  sizes="(max-width: 768px) 100vw, 500px"
+                  priority={false}
+                />
+              </div>
+
               {/* Play overlay */}
               <div className="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/50 transition">
                 <svg

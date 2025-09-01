@@ -8,12 +8,29 @@
 import { axiosInstance } from "@/config/http";
 import { Controller } from "../types/common-types";
 import config from "@/config/env-config";
+import { ContactFormData } from "@/components/home/contact/schema";
 
 export const refreshToken = (controller?: Controller) => {
   return axiosInstance.get(`${config.API_USER_PATH}/refreshToken`, {
     signal: controller?.signal,
   });
 };
+
+export const addContactUs = (data: ContactFormData, controller?: Controller) => {
+  const formData = new FormData();
+
+  formData.append("firstname", data.firstname);
+  formData.append("lastname", data.lastname);
+  formData.append("email", data.email);
+  formData.append("phonenumber", data.phonenumber);
+  formData.append("message", data.message);
+
+  return axiosInstance.post(`/contact-us`, formData, {
+    signal: controller?.signal,
+  });
+};
+
+
 
 // export const getUser = (controller: Controller) => {
 //   return axiosInstance
@@ -152,29 +169,6 @@ export const refreshToken = (controller?: Controller) => {
 //   });
 // };
 
-// export const addContactUs = (
-//   data: ContactUsDataType,
-//   controller?: Controller
-// ) => {
-//   const formData = new FormData();
-
-//   formData.append("email", data.email);
-//   formData.append("full_name", data.full_name);
-//   formData.append("phone", data.phone);
-//   formData.append("message", data.message);
-
-//   for (let i = 0; i < data.pictures?.length; i++) {
-//     formData.append("pictures", data.pictures[i]);
-//   }
-
-//   if (data.file) {
-//     formData.append("files", data.file);
-//   }
-
-//   return axiosInstance.post(`${APP_PUBLIC_API_PATH}/contact-us`, formData, {
-//     signal: controller?.signal,
-//   });
-// };
 
 // export const getHomeClientData = (controller?: Controller) => {
 //   return axiosInstance.get(`${APP_PUBLIC_API_PATH}/client-home`, {
