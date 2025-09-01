@@ -412,3 +412,12 @@ footer {
 }
 
 
+@theme inline {
+  --animate-scroll: scroll 30s linear infinite; /* Faster than 40s */
+
+  @keyframes scroll {
+    to {
+      transform: translate(calc(-50% - 0.5rem));
+    }
+  }
+}
