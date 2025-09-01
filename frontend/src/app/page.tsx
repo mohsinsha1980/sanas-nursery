@@ -1,4 +1,3 @@
-import ChoosePlantFamily from "@/components/home/choose-plant-family";
 import CollectionSection from "@/components/home/collection-section";
 import Gallery from "@/components/home/gallery";
 import HomeBanner from "@/components/home/home-banner";
@@ -28,7 +27,6 @@ export default function Home() {
       <CollectionSection />
       <Gallery />
 
-      <ChoosePlantFamily />
 
       <Testimonials />
       <YoutubeSection />
