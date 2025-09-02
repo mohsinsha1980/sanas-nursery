@@ -12,7 +12,7 @@ const defaultMasterData = {
   tags: [],
 };
 
-const settingsPage = () => {
+const SettingsPage = () => {
   const dispatch = useDispatch();
   const [masterData, setMasterData] = useState<MasterData>(defaultMasterData);
 
@@ -56,4 +56,4 @@ const settingsPage = () => {
   );
 };
 
-export default settingsPage;
+export default SettingsPage;

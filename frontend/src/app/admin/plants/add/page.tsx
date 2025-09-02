@@ -306,7 +306,10 @@ export default function AddPlant() {
                     label="Tags"
                     placeholder="Select"
                     formControl={form.control}
-                    options={masterData.tags.map(({ _id, ...rest }) => rest)}
+                    options={masterData.tags.map(({ _id, ...rest }) => {
+                      console.log(_id);
+                      return rest;
+                    })}
                   />
                 )}
               </div>

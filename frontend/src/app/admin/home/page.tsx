@@ -19,7 +19,7 @@ export default function HomePageComponent() {
       try {
         dispatch(showLoader());
         const response = await getHomeData(controller);
-        let updatedResponse = structuredClone(response.data.data);
+        const updatedResponse = structuredClone(response.data.data);
         setHomeData(updatedResponse);
         dispatch(hideLoader());
       } catch (error: unknown) {
