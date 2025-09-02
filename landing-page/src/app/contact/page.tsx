@@ -87,13 +87,11 @@ export default function ContactPage() {
       <section className="py-20">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Contact Form */}
             <div className="bg-accent-50 p-8 rounded-lg">
               <h2 className="text-2xl font-bold text-accent-900 mb-6">
                 Send us a Message
               </h2>
 
-              {/* Success/Error Messages */}
               {submitStatus.type && (
                 <div
                   className={`mb-6 p-4 rounded-lg ${
@@ -361,6 +359,24 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+
+      <div className="container-custom pb-20">
+        <h2 className="text-2xl font-bold text-accent-900 mb-8 text-center">
+          Find Us on the Google Map
+        </h2>
+        <div className="w-full rounded-lg overflow-hidden shadow-lg">
+          <div className="relative w-full pb-[56.25%] md:pb-[50%] lg:pb-[40%]">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3784.0491842958786!2d74.1666438!3d18.4814312!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2e1579a8e3dc1%3A0xd82516d259aa5ea!2zU2FuYXMgV2hvbGVzYWxlIE51cnNlcnkg4KS24KS-4KSW4KS-IChVcnVsaS1LYW5jaGFuKSBVbml0IDI!5e0!3m2!1sen!2sin!4v1756447903300!5m2!1sen!2sin"
+              className="absolute top-0 left-0 w-full h-full"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

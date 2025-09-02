@@ -58,6 +58,7 @@ export const getPlants = async (req, res, next) => {
 };
 
 export const getPlantById = async (req, res, next) => {
+  console.log("getPlantById");
   try {
     const { plantId } = req.params;
 
@@ -288,6 +289,31 @@ export const deletePlant = async (req, res, next) => {
     return next({
       message: error.message || "Internal Server Error while deleting plant.",
       status: 500,
+    });
+  }
+};
+
+export const getPlantsForGreenChoices = async (req, res, next) => {
+  try {
+    console.log("getPlantsForGreenChoices");
+    let filter = { status: STATUS.ACTIVE };
+    const plants = await Plant.find(filter)
+      .select("title plantId category pictures")
+      .sort("createdAt")
+      .lean()
+      .exec();
+
+    req.successResponse = {
+      message: "Plants retrieved successfully.",
+      plants,
+    };
+
+    return next();
+  } catch (error) {
+    console.log("error ", error);
+    return next({
+      status: 500,
+      message: error.message || "Internal server error while fetching Plants.",
     });
   }
 };

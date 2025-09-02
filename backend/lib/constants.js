@@ -50,58 +50,66 @@ export const MEDIA = {
     pictures: { count: 20, fileSize: 0.5 * 1024 * 1024 },
     limits: { fileSize: 0.5 * 1024 * 1024 },
   },
-  // Home: {
-  //   Banner: {
-  //     destination: "public/pictures/home",
-  //     resizeOptions: {
-  //       fit: "cover",
-  //     },
-  //     pictures: { count: 1, fileSize: 0.5 * 1024 * 1024 },
-  //     limits: { fileSize: 0.5 * 1024 * 1024 },
-  //   },
-  //   // Top: {
-  //   //   A1: {
-  //   //     destination: "public/pictures/home",
-  //   //     resizeOptions: {
-  //   //       // width: 505,
-  //   //       // height: 457,
-  //   //       fit: "cover",
-  //   //     },
-  //   //     pictures: { count: 1, fileSize: 0.5 * 1024 * 1024 },
-  //   //     limits: { fileSize: 0.5 * 1024 * 1024 },
-  //   //   },
-  //   //   B1: {
-  //   //     destination: "public/pictures/home",
-  //   //     resizeOptions: {
-  //   //       width: 505,
-  //   //       height: 214,
-  //   //       fit: "cover",
-  //   //     },
-  //   //     pictures: { count: 1, fileSize: 0.5 * 1024 * 1024 },
-  //   //     limits: { fileSize: 0.5 * 1024 * 1024 },
-  //   //   },
-  //   //   B2: {
-  //   //     destination: "public/pictures/home",
-  //   //     resizeOptions: {
-  //   //       width: 242,
-  //   //       height: 214,
-  //   //       fit: "cover",
-  //   //     },
-  //   //     pictures: { count: 1, fileSize: 0.5 * 1024 * 1024 },
-  //   //     limits: { fileSize: 0.5 * 1024 * 1024 },
-  //   //   },
-  //   // },
-  //   Slider: {
-  //     destination: "public/pictures/home",
-  //     resizeOptions: {
-  //       width: 1899,
-  //       height: 584,
-  //       fit: "cover",
-  //     },
-  //     pictures: { count: 1, fileSize: 0.5 * 1024 * 1024 },
-  //     limits: { fileSize: 0.5 * 1024 * 1024 },
-  //   },
-  // },
+  Home: {
+    Cards: {
+      destination: "public/pictures/home",
+      resizeOptions: {
+        fit: "cover",
+      },
+      pictures: { count: 1, fileSize: 0.5 * 1024 * 1024 },
+      limits: { fileSize: 0.5 * 1024 * 1024 },
+    },
+    Gallery: {
+      destination: "public/pictures/home",
+      resizeOptions: {
+        fit: "cover",
+      },
+      pictures: { count: 1, fileSize: 0.5 * 1024 * 1024 },
+      limits: { fileSize: 0.5 * 1024 * 1024 },
+    },
+    // Top: {
+    //   A1: {
+    //     destination: "public/pictures/home",
+    //     resizeOptions: {
+    //       // width: 505,
+    //       // height: 457,
+    //       fit: "cover",
+    //     },
+    //     pictures: { count: 1, fileSize: 0.5 * 1024 * 1024 },
+    //     limits: { fileSize: 0.5 * 1024 * 1024 },
+    //   },
+    //   B1: {
+    //     destination: "public/pictures/home",
+    //     resizeOptions: {
+    //       width: 505,
+    //       height: 214,
+    //       fit: "cover",
+    //     },
+    //     pictures: { count: 1, fileSize: 0.5 * 1024 * 1024 },
+    //     limits: { fileSize: 0.5 * 1024 * 1024 },
+    //   },
+    //   B2: {
+    //     destination: "public/pictures/home",
+    //     resizeOptions: {
+    //       width: 242,
+    //       height: 214,
+    //       fit: "cover",
+    //     },
+    //     pictures: { count: 1, fileSize: 0.5 * 1024 * 1024 },
+    //     limits: { fileSize: 0.5 * 1024 * 1024 },
+    //   },
+    // },
+    // Cards: {
+    //   destination: "public/pictures/home",
+    //   resizeOptions: {
+    //     width: 1899,
+    //     height: 584,
+    //     fit: "cover",
+    //   },
+    //   pictures: { count: 1, fileSize: 0.5 * 1024 * 1024 },
+    //   limits: { fileSize: 0.5 * 1024 * 1024 },
+    // },
+  },
   // ContactUs: {
   //   destination: "public/pictures/contact-us",
   //   resizeOptions: {
@@ -114,6 +122,7 @@ export const MEDIA = {
 };
 
 export const PRODUCTS_PER_PAGE = 20;
+export const GREEN_CHOICES_PRODUCT_LIMIT = 12;
 
 export const HOME_SECTIONS = {
   TOP: "top",
@@ -122,19 +131,19 @@ export const HOME_SECTIONS = {
 };
 
 export const HOME_FIELDS = {
-  TOP: {
-    A1: "A1",
-    B1: "B1",
-    B2: "B2",
-    B3: "B3",
+  GREEN_CHOICES: "greenChoices",
+  CARDS: {
     C1: "C1",
+    C2: "C2",
   },
-  MIDDLE: {
-    D1: "D1",
+  GALLERY: {
+    G1: "G1",
+    G2: "G2",
+    G3: "G3",
   },
-  BOTTOM: {
-    E1: "E1",
-    F1: "F1",
+  VIDEOS: {
+    V1: "V1",
+    V2: "V2",
   },
 };
 
@@ -153,3 +162,4 @@ export const ORDER_TAB_TYPE = {
 };
 
 export const TOP_SELLING_PRODUCT_COUNT = 10;
+export const YT_VIDEOS_LENGTH = 2;
