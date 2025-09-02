@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useState } from "react";
 import Image from "next/image";
 
-
 // Dummy 100 plants data (you can replace with real images)
 const plants = {
   "fruit-trees": Array.from({ length: 32 }, (_, i) => ({
@@ -27,7 +26,7 @@ export default function CategoryPage() {
       ? plants[category as keyof typeof plants]
       : [];
 
-      console.log(category)
+  console.log(category);
 
   // Pagination states
   const [currentPage, setCurrentPage] = useState(1);
@@ -42,7 +41,7 @@ export default function CategoryPage() {
 
   return (
     <div>
-      <div key="hero" >
+      <div key="hero">
         <div className="relative">
           <Image
             src="/home-hero.webp"
@@ -52,20 +51,34 @@ export default function CategoryPage() {
             className="lg:h-full lg:w-full"
           />
           <div className="z-1 absolute top-[40%] left-[11%] lg:w-[611px] lg:h-[385px] space-y-4">
-            <h1 className="text-[#0D6536] lg:text-[64px] font-bold leading-18">{category} Collection </h1>
-            <p className="text-[#505050] lg:text-[20px] font-medium">Explore a variety of fruit trees perfect for your garden</p>
+            <h1 className="text-[#0D6536] lg:text-[64px] font-bold leading-18">
+              {category} Collection{" "}
+            </h1>
+            <p className="text-[#505050] lg:text-[20px] font-medium">
+              Explore a variety of fruit trees perfect for your garden
+            </p>
           </div>
         </div>
       </div>
 
-      <div key="plant-list-main-div" className="h-full w-full lg:pt-30 lg:pb-30 md:pt-20 md:pb-20 pt-10 pb-10 flex flex-col justify-center items-center">
+      <div
+        key="plant-list-main-div"
+        className="h-full w-full lg:pt-30 lg:pb-30 md:pt-20 md:pb-20 pt-10 pb-10 flex flex-col justify-center items-center"
+      >
         <div key="heading">
-          <h1 className="text-[#0D6536] lg:text-[42px] font-semibold ">{category}</h1>
+          <h1 className="text-[#0D6536] lg:text-[42px] font-semibold ">
+            {category}
+          </h1>
         </div>
         <div key="filter-list-sort" className="relative  w-[70%] h-full ">
-          <div key="filterText-and-sortDropdown" className="w-full h-full flex justify-between items-center pb-6 px-4">
+          <div
+            key="filterText-and-sortDropdown"
+            className="w-full h-full flex justify-between items-center pb-6 px-4"
+          >
             <div>
-              <h1 className="text-[#1D2F33] lg:text-[30px] md:text-[36px] text-[28px] font-semibold">Filters</h1>
+              <h1 className="text-[#1D2F33] lg:text-[30px] md:text-[36px] text-[28px] font-semibold">
+                Filters
+              </h1>
             </div>
             <div className="relative w-[112px]">
               <select className="w-full h-[30px] rounded  text-[18px] font-bold cursor-pointer ">
@@ -77,17 +90,27 @@ export default function CategoryPage() {
               </select>
             </div>
           </div>
-          <div key="filter-and-list" className="h-full w-full flex justify-between ">
+          <div
+            key="filter-and-list"
+            className="h-full w-full flex justify-between "
+          >
             <div key="filter-div" className="w-[14%] h-[100%] space-y-10">
-              <div key="checkbox-div1" className="w-full h-auto shadow-2xl p-5 rounded-xl">
-                <h1 className="text-[#1D2F33] lg:text-[18px] md:text-[36px] text-[28px] font-semibold mb-3">Plant Type</h1>
+              <div
+                key="checkbox-div1"
+                className="w-full h-auto shadow-2xl p-5 rounded-xl"
+              >
+                <h1 className="text-[#1D2F33] lg:text-[18px] md:text-[36px] text-[28px] font-semibold mb-3">
+                  Plant Type
+                </h1>
                 <div className="flex flex-col space-y-2">
                   <label className="flex items-center space-x-2 cursor-pointer">
                     <input
                       type="checkbox"
                       className="peer h-4 w-4 border-2 border-orange-500 rounded accent-orange-500 checked:bg-orange-500 checked:text-white"
                     />
-                    <span className="peer-checked:text-orange-500">Fruit Trees</span>
+                    <span className="peer-checked:text-orange-500">
+                      Fruit Trees
+                    </span>
                   </label>
 
                   <label className="flex items-center space-x-2 cursor-pointer">
@@ -95,7 +118,9 @@ export default function CategoryPage() {
                       type="checkbox"
                       className="peer h-4 w-4 border-2 border-orange-500 rounded accent-orange-500 checked:bg-orange-500 checked:text-white"
                     />
-                    <span className="peer-checked:text-orange-500">Shade Trees</span>
+                    <span className="peer-checked:text-orange-500">
+                      Shade Trees
+                    </span>
                   </label>
 
                   <label className="flex items-center space-x-2 cursor-pointer">
@@ -103,7 +128,9 @@ export default function CategoryPage() {
                       type="checkbox"
                       className="peer h-4 w-4 border-2 border-orange-500 rounded accent-orange-500 checked:bg-orange-500 checked:text-white"
                     />
-                    <span className="peer-checked:text-orange-500">Outdoor Trees</span>
+                    <span className="peer-checked:text-orange-500">
+                      Outdoor Trees
+                    </span>
                   </label>
 
                   <label className="flex items-center space-x-2 cursor-pointer">
@@ -111,7 +138,9 @@ export default function CategoryPage() {
                       type="checkbox"
                       className="peer h-4 w-4 border-2 border-orange-500 rounded accent-orange-500 checked:bg-orange-500 checked:text-white"
                     />
-                    <span className="peer-checked:text-orange-500">Flowering Plants</span>
+                    <span className="peer-checked:text-orange-500">
+                      Flowering Plants
+                    </span>
                   </label>
 
                   <label className="flex items-center space-x-2 cursor-pointer">
@@ -119,20 +148,28 @@ export default function CategoryPage() {
                       type="checkbox"
                       className="peer h-4 w-4 border-2 border-orange-500 rounded accent-orange-500 checked:bg-orange-500 checked:text-white"
                     />
-                    <span className="peer-checked:text-orange-500">Indoor Plants</span>
+                    <span className="peer-checked:text-orange-500">
+                      Indoor Plants
+                    </span>
                   </label>
                 </div>
-
               </div>
-              <div key="checkbox-div2" className="w-full h-auto shadow-2xl p-5 rounded-xl">
-                <h1 className="text-[#1D2F33] lg:text-[18px] md:text-[36px] text-[28px] font-semibold mb-3">Plant Type</h1>
+              <div
+                key="checkbox-div2"
+                className="w-full h-auto shadow-2xl p-5 rounded-xl"
+              >
+                <h1 className="text-[#1D2F33] lg:text-[18px] md:text-[36px] text-[28px] font-semibold mb-3">
+                  Plant Type
+                </h1>
                 <div className="flex flex-col space-y-2">
                   <label className="flex items-center space-x-2 cursor-pointer">
                     <input
                       type="checkbox"
                       className="peer h-4 w-4 border-2 border-orange-500 rounded accent-orange-500 checked:bg-orange-500 checked:text-white"
                     />
-                    <span className="peer-checked:text-orange-500">Fruit Trees</span>
+                    <span className="peer-checked:text-orange-500">
+                      Fruit Trees
+                    </span>
                   </label>
 
                   <label className="flex items-center space-x-2 cursor-pointer">
@@ -140,7 +177,9 @@ export default function CategoryPage() {
                       type="checkbox"
                       className="peer h-4 w-4 border-2 border-orange-500 rounded accent-orange-500 checked:bg-orange-500 checked:text-white"
                     />
-                    <span className="peer-checked:text-orange-500">Shade Trees</span>
+                    <span className="peer-checked:text-orange-500">
+                      Shade Trees
+                    </span>
                   </label>
 
                   <label className="flex items-center space-x-2 cursor-pointer">
@@ -148,7 +187,9 @@ export default function CategoryPage() {
                       type="checkbox"
                       className="peer h-4 w-4 border-2 border-orange-500 rounded accent-orange-500 checked:bg-orange-500 checked:text-white"
                     />
-                    <span className="peer-checked:text-orange-500">Outdoor Trees</span>
+                    <span className="peer-checked:text-orange-500">
+                      Outdoor Trees
+                    </span>
                   </label>
 
                   <label className="flex items-center space-x-2 cursor-pointer">
@@ -156,7 +197,9 @@ export default function CategoryPage() {
                       type="checkbox"
                       className="peer h-4 w-4 border-2 border-orange-500 rounded accent-orange-500 checked:bg-orange-500 checked:text-white"
                     />
-                    <span className="peer-checked:text-orange-500">Flowering Plants</span>
+                    <span className="peer-checked:text-orange-500">
+                      Flowering Plants
+                    </span>
                   </label>
 
                   <label className="flex items-center space-x-2 cursor-pointer">
@@ -164,20 +207,28 @@ export default function CategoryPage() {
                       type="checkbox"
                       className="peer h-4 w-4 border-2 border-orange-500 rounded accent-orange-500 checked:bg-orange-500 checked:text-white"
                     />
-                    <span className="peer-checked:text-orange-500">Indoor Plants</span>
+                    <span className="peer-checked:text-orange-500">
+                      Indoor Plants
+                    </span>
                   </label>
                 </div>
-
               </div>
-              <div key="checkbox-div3" className="w-full h-auto shadow-2xl p-5 rounded-xl">
-                <h1 className="text-[#1D2F33] lg:text-[18px] md:text-[36px] text-[28px] font-semibold mb-3">Plant Type</h1>
+              <div
+                key="checkbox-div3"
+                className="w-full h-auto shadow-2xl p-5 rounded-xl"
+              >
+                <h1 className="text-[#1D2F33] lg:text-[18px] md:text-[36px] text-[28px] font-semibold mb-3">
+                  Plant Type
+                </h1>
                 <div className="flex flex-col space-y-2">
                   <label className="flex items-center space-x-2 cursor-pointer">
                     <input
                       type="checkbox"
                       className="peer h-4 w-4 border-2 border-orange-500 rounded accent-orange-500 checked:bg-orange-500 checked:text-white"
                     />
-                    <span className="peer-checked:text-orange-500">Fruit Trees</span>
+                    <span className="peer-checked:text-orange-500">
+                      Fruit Trees
+                    </span>
                   </label>
 
                   <label className="flex items-center space-x-2 cursor-pointer">
@@ -185,7 +236,9 @@ export default function CategoryPage() {
                       type="checkbox"
                       className="peer h-4 w-4 border-2 border-orange-500 rounded accent-orange-500 checked:bg-orange-500 checked:text-white"
                     />
-                    <span className="peer-checked:text-orange-500">Shade Trees</span>
+                    <span className="peer-checked:text-orange-500">
+                      Shade Trees
+                    </span>
                   </label>
 
                   <label className="flex items-center space-x-2 cursor-pointer">
@@ -193,7 +246,9 @@ export default function CategoryPage() {
                       type="checkbox"
                       className="peer h-4 w-4 border-2 border-orange-500 rounded accent-orange-500 checked:bg-orange-500 checked:text-white"
                     />
-                    <span className="peer-checked:text-orange-500">Outdoor Trees</span>
+                    <span className="peer-checked:text-orange-500">
+                      Outdoor Trees
+                    </span>
                   </label>
 
                   <label className="flex items-center space-x-2 cursor-pointer">
@@ -201,7 +256,9 @@ export default function CategoryPage() {
                       type="checkbox"
                       className="peer h-4 w-4 border-2 border-orange-500 rounded accent-orange-500 checked:bg-orange-500 checked:text-white"
                     />
-                    <span className="peer-checked:text-orange-500">Flowering Plants</span>
+                    <span className="peer-checked:text-orange-500">
+                      Flowering Plants
+                    </span>
                   </label>
 
                   <label className="flex items-center space-x-2 cursor-pointer">
@@ -209,22 +266,29 @@ export default function CategoryPage() {
                       type="checkbox"
                       className="peer h-4 w-4 border-2 border-orange-500 rounded accent-orange-500 checked:bg-orange-500 checked:text-white"
                     />
-                    <span className="peer-checked:text-orange-500">Indoor Plants</span>
+                    <span className="peer-checked:text-orange-500">
+                      Indoor Plants
+                    </span>
                   </label>
                 </div>
-
               </div>
             </div>
-            <div key="list-div" className="w-[82%] h-[100%] flex flex-col justify-center ">
+            <div
+              key="list-div"
+              className="w-[82%] h-[100%] flex flex-col justify-center "
+            >
               <div className="grid grid-cols-4 gap-6">
                 {currentItems.length > 0 ? (
                   currentItems.map((plant) => (
-                    <Link key={plant.id} href={`/categories/${category}/${plant.id}`}>
+                    <Link
+                      key={plant.id}
+                      href={`/categories/${category}/${plant.id}`}
+                    >
                       <div className="w-[250px] h-[417px] rounded-lg cursor-pointer transition-transform duration-300 hover:scale-105 overflow-hidden group">
                         {/* Image Wrapper */}
                         <div className="relative w-[90%] h-[90%] overflow-hidden rounded-lg">
                           {/* Plant Image */}
-                          <img
+                          <Image
                             src={plant.image}
                             alt={plant.name}
                             className="w-full h-full object-cover rounded-lg transition-transform duration-300 group-hover:scale-110"
@@ -239,9 +303,6 @@ export default function CategoryPage() {
                           {plant.name}
                         </p>
                       </div>
-
-
-
                     </Link>
                   ))
                 ) : (
@@ -254,10 +315,11 @@ export default function CategoryPage() {
                     <button
                       key={i}
                       onClick={() => setCurrentPage(i + 1)}
-                      className={`w-[50px] h-[50px] rounded-xl ${currentPage === i + 1
-                        ? "bg-[#F37521] text-white text-xl"
-                        : "bg-[#FFD7BC] text-black text-xl"
-                        }`}
+                      className={`w-[50px] h-[50px] rounded-xl ${
+                        currentPage === i + 1
+                          ? "bg-[#F37521] text-white text-xl"
+                          : "bg-[#FFD7BC] text-black text-xl"
+                      }`}
                     >
                       {i + 1}
                     </button>
@@ -267,11 +329,7 @@ export default function CategoryPage() {
             </div>
           </div>
         </div>
-
       </div>
-
-    </div >
+    </div>
   );
 }
-
-
