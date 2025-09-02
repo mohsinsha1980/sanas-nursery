@@ -114,6 +114,7 @@ export const MEDIA = {
 };
 
 export const PRODUCTS_PER_PAGE = 20;
+export const GREEN_CHOICES_PRODUCT_LIMIT = 12;
 
 export const HOME_SECTIONS = {
   TOP: "top",
@@ -122,19 +123,19 @@ export const HOME_SECTIONS = {
 };
 
 export const HOME_FIELDS = {
-  TOP: {
-    A1: "A1",
-    B1: "B1",
-    B2: "B2",
-    B3: "B3",
+  GREEN_CHOICES: "greenChoices",
+  CARDS: {
     C1: "C1",
+    C2: "C2",
   },
-  MIDDLE: {
-    D1: "D1",
+  GALLERY: {
+    G1: "G1",
+    G2: "G2",
+    G3: "G3",
   },
-  BOTTOM: {
-    E1: "E1",
-    F1: "F1",
+  VIDEOS: {
+    V1: "V1",
+    V2: "V2",
   },
 };
 

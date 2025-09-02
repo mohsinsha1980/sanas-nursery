@@ -4,6 +4,7 @@ import {
   deletePlant,
   getPlantById,
   getPlants,
+  getPlantsForGreenChoices,
   updatePlant,
 } from "../../controllers/admin/plants.js";
 import { MEDIA } from "../../lib/constants.js";

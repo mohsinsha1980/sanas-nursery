@@ -112,29 +112,22 @@ export const editPlantSchema = addPlantSchema
     }
   });
 
-// export const homeTopBanner = z.object({
-//   small: z.string().nonempty("Sub-heading is required"),
-//   smallColor: z.string().nonempty("Sub-heading color is required"),
-//   large: z.string().nonempty("Heading is required"),
-//   largeColor: z.string().nonempty("Heading color is required"),
-//   link: z.object({
-//     label: z.string().nonempty("Link label is required"),
-//     address: z.string().nonempty("Link address is required"),
-//     color: z.string().nonempty("Link color is required"),
-//   }),
-//   picture: z.instanceof(File).refine(
-//     (file) => {
-//       if (ACCEPTED_IMAGE_TYPES.includes(file?.type as string)) {
-//         return true;
-//       }
-//       return false;
-//     },
-//     {
-//       message: `.jpg, .jpeg, .png and .webp files are accepted`,
-//     }
-//   ),
-//   pictureUrl: z.string().optional(),
-// });
+export const TagsSchema = z.object({
+  label: z.string().nonempty("Tag label is required"),
+});
+
+export const homeCardSchema = z.object({
+  small: z.string().nonempty("Sub-heading is required"),
+  smallColor: z.string().nonempty("Sub-heading color is required"),
+  large: z.string().nonempty("Heading is required"),
+  largeColor: z.string().nonempty("Heading color is required"),
+  link: z.object({
+    label: z.string().nonempty("Link label is required"),
+    address: z.string().nonempty("Link address is required"),
+    color: z.string().nonempty("Link color is required"),
+  }),
+  picture: z.union([z.string(), z.instanceof(File), z.null(), z.undefined()]),
+});
 
 // export const gallerySchema = z.object({
 //   pictures:

@@ -267,14 +267,6 @@ export type steperStatusType = "completed" | "incomplete";
 //   status: boolean;
 // };
 
-// export interface DefultHomeBannerType {
-//   picture: string;
-//   small: string;
-//   big: string;
-//   linkLabel: string;
-//   linkAddress: string;
-// }
-
 // export interface HomeProductCardType extends ProductCardType {
 //   avgRating: number;
 //   totalReviews: number;
@@ -282,20 +274,19 @@ export type steperStatusType = "completed" | "incomplete";
 //   l3_category_label: string;
 // }
 
-// export interface HomeBannerType {
-//   _id?: string;
-//   small: string;
-//   smallColor: string;
-//   large: string;
-//   largeColor: string;
-//   link: {
-//     label: string;
-//     address: string;
-//     color: string;
-//   };
-//   picture: File | undefined | string;
-//   pictureUrl?: string;
-// }
+export interface HomeCardType {
+  _id?: string;
+  small: string;
+  smallColor: string;
+  large: string;
+  largeColor: string;
+  link: {
+    label: string;
+    address: string;
+    color: string;
+  };
+  picture: File | undefined | string | null;
+}
 
 // export interface HomeBannerTopType {
 //   _id?: string;
@@ -306,24 +297,48 @@ export type steperStatusType = "completed" | "incomplete";
 //   C1: HomeBannerType;
 // }
 
-// export interface HomeBannerMiddleType {
-//   _id?: string;
-//   D1: HomeBannerType;
-// }
+export interface HomeCardsTypes {
+  _id?: string;
+  C1: HomeCardType;
+  C2: HomeCardType;
+}
 
-// export interface HomeBannerBottomType {
-//   _id?: string;
-//   E1: HomeBannerType;
-//   F1: HomeBannerType;
-// }
+export interface HomeGalleryType {
+  _id?: string;
+  G1: string;
+  G2: string;
+  G3: string;
+}
 
-// export interface HomeBannerSectionType {
-//   _id?: string;
-//   top: HomeBannerTopType;
-//   middle: HomeBannerMiddleType;
-//   bottom: HomeBannerBottomType;
-//   mainCorousel: MainCarouselSlideType[];
-// }
+export interface HomeVideoURLType {
+  _id?: string;
+  V1: string;
+  V2: string;
+}
+
+export interface HomeGreenPlantType {
+  _id: string;
+  title: string;
+  plantId: string;
+  category: string;
+  pictures: string[];
+}
+
+export interface HomeBannerSectionType {
+  _id?: string;
+  greenChoices: HomeGreenPlantType[];
+  cards: HomeCardsTypes;
+  gallery: HomeGalleryType;
+  videos: HomeVideoURLType;
+}
+
+export interface DefultHomeCardType {
+  picture: string;
+  small: string;
+  big: string;
+  linkLabel: string;
+  linkAddress: string;
+}
 
 // export interface GalleryDataField extends AddGalleryField {
 //   _id: string;

@@ -22,6 +22,8 @@ import {
   showSuccessToast,
 } from "@/lib/helper";
 
+import AddFAQ from "@/components/admin/plants/add-faq";
+import AddSpecificatin from "@/components/admin/plants/add-specification";
 import { ProductAccordion } from "@/components/common/accordion";
 import InputImageField from "@/components/form-fields/input-image";
 import MultipleSelectField from "@/components/form-fields/multi-select-field";
@@ -48,8 +50,6 @@ import { Trash2Icon } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
-import AddSpecificatin from "@/components/admin/plants/add-specification";
-import AddFAQ from "@/components/admin/plants/add-faq";
 
 const defaultMasterData: MasterData = {
   tags: [],
@@ -74,7 +74,7 @@ export default function AddPlant() {
   const dispatch = useDispatch();
   const router = useRouter();
   const [previews, setPreviews] = useState<string[]>([]);
-  const [, setMasterData] = useState<MasterData>(defaultMasterData);
+  const [masterData, setMasterData] = useState<MasterData>(defaultMasterData);
   const [openKeySpec, setOpenKeySpec] = useState<boolean>(false);
   const [openAddFAQ, setOpenAddFAQ] = useState<boolean>(false);
 
@@ -300,14 +300,15 @@ export default function AddPlant() {
               </div>
 
               <div className="col-span-3">
-                <MultipleSelectField
-                  name="tags"
-                  label="Tags"
-                  placeholder="Select"
-                  formControl={form.control}
-                  options={CARE_LEVEL_ARR}
-                  // TODO: change options
-                />
+                {masterData?.tags?.length && (
+                  <MultipleSelectField
+                    name="tags"
+                    label="Tags"
+                    placeholder="Select"
+                    formControl={form.control}
+                    options={masterData.tags.map(({ _id, ...rest }) => rest)}
+                  />
+                )}
               </div>
 
               <div className="col-span-4">
@@ -343,7 +344,10 @@ export default function AddPlant() {
                 </div>
               ) : (
                 <div className="col-span-4 text-gray-500 mb-5">
-                  <p>No FAQ added yet. Click on &ldquo;Add New FAQ &ldquo; to add.</p>
+                  <p>
+                    No FAQ added yet. Click on &ldquo;Add New FAQ &ldquo; to
+                    add.
+                  </p>
                 </div>
               )}
 

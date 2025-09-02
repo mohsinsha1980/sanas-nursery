@@ -105,78 +105,19 @@ export const CARE_LEVEL = {
 export const CARE_LEVEL_ARR = Object.values(CARE_LEVEL).map((level) => level);
 
 export const HOME_FIELDS = {
-  TOP: {
-    A1: "A1",
-    B1: "B1",
-    B2: "B2",
-    B3: "B3",
+  GREEN_CHOICES: "greenChoices",
+  CARDS: {
     C1: "C1",
+    C2: "C2",
   },
-  MIDDLE: {
-    D1: "D1",
+  GALLERY: {
+    G1: "G1",
+    G2: "G2",
+    G3: "G3",
   },
-  BOTTOM: {
-    E1: "E1",
-    F1: "F1",
-  },
-};
-
-export const defultHomeData = {
-  A1: {
-    picture: "/site/placeholder/1.jpg",
-    small: "Hot Deals",
-    big: "Women's Collection",
-    linkLabel: "Shop Now",
-    linkAddress: "#",
-  },
-  B1: {
-    picture: "/site/placeholder/2.1.jpg",
-    small: "Smart Deals",
-    big: "Men's Collection",
-    linkLabel: "Shop Now",
-    linkAddress: "#",
-  },
-  B2: {
-    picture: "/site/placeholder/2.2.jpg",
-    small: "Live Deals",
-    big: "Accessories",
-    linkLabel: "Shop Now",
-    linkAddress: "#",
-  },
-  B3: {
-    picture: "/site/placeholder/2.3.jpg",
-    small: "Offers",
-    big: "New Year Offer",
-    linkLabel: "Shop Now",
-    linkAddress: "#",
-  },
-  C1: {
-    picture: "/site/placeholder/3.jpg",
-    small: "Desi Deals",
-    big: "Ethnic Special",
-    linkLabel: "Shop Now",
-    linkAddress: "#",
-  },
-  D1: {
-    picture: "/site/placeholder/middle-section.jpg",
-    small: "Deal Of The Week",
-    big: "Winter Collection",
-    linkLabel: "Shop Now",
-    linkAddress: "#",
-  },
-  E1: {
-    picture: "/site/placeholder/bottom-section-1.jpg",
-    small: `Starting At ₹ 475/-`,
-    big: `Women's T-shirt`,
-    linkLabel: "Shop Now",
-    linkAddress: "#",
-  },
-  F1: {
-    picture: "/site/placeholder/bottom-section-2.jpg",
-    small: `Starting At ₹ 575/-`,
-    big: `Men's Casual Shirt`,
-    linkLabel: "Shop Now",
-    linkAddress: "#",
+  VIDEOS: {
+    V1: "V1",
+    V2: "V2",
   },
 };
 
@@ -215,3 +156,24 @@ export const ADMIN_ROUTES = [
   "/admin/transactions",
   "/admin/users",
 ];
+
+export const MASTER_DATA_TYPE = {
+  TAGS: "tags",
+} as const;
+
+export const defultHomeCardsData = {
+  C1: {
+    picture: "/placeholder/1.png",
+    small: "Hot Deals",
+    big: "Women's Collection",
+    linkLabel: "Shop Now",
+    linkAddress: "#",
+  },
+  C2: {
+    picture: "/placeholder/2.png",
+    small: "Hot Deals",
+    big: "Women's Collection",
+    linkLabel: "Shop Now",
+    linkAddress: "#",
+  },
+};

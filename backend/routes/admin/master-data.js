@@ -5,8 +5,8 @@ const routes = Router();
 // /api/admin/master-data
 
 routes.get("/", settingsCtrl.getMasterData);
-// routes.post("/", masterDataCtrl.addMasterData);
-// routes.delete("/:field/:id", masterDataCtrl.deleteMasterRecord);
+routes.post("/", settingsCtrl.addMasterData);
+routes.delete("/:field/:id", settingsCtrl.deleteMasterRecord);
 // routes.post("/address", masterDataCtrl.addAdminAddress);
 
 export default routes;

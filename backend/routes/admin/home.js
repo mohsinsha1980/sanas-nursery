@@ -1,29 +1,23 @@
-const express = require("express");
+import express from "express";
+import * as homeCtrl from "../../controllers/admin/home.js"; // add .js extension in ESM
 const routes = express.Router();
-const homeCtrl = require("../../controllers/admin/home");
-const { MEDIA } = require("../../lib/constants");
-const { mediaUpload } = require("../../middleware/multer-upload");
 
-routes.post(
-  "/updateHomeBanner",
-  mediaUpload(MEDIA.Home.Banner),
-  homeCtrl.updateHomeBanner
-);
-
+routes.put("/green-choices", homeCtrl.updateGreenChoices);
 routes.get("/", homeCtrl.getHomeData);
+routes.put("/cards", homeCtrl.updateHomeCard);
 
-routes.post(
-  "/addHomeSlide",
-  mediaUpload(MEDIA.Home.Slider),
-  homeCtrl.addHomeSlide
-);
+// routes.post(
+//   "/addHomeSlide",
+//   mediaUpload(MEDIA.Home.Slider),
+//   homeCtrl.addHomeSlide
+// );
 
-routes.delete("/deleteHomeSlide/:_id", homeCtrl.deleteHomeSlide);
+// routes.delete("/deleteHomeSlide/:_id", homeCtrl.deleteHomeSlide);
 
-routes.post(
-  "/updateHomeSlider",
-  mediaUpload(MEDIA.Home.Slider),
-  homeCtrl.updateHomeSlider
-);
+// routes.post(
+//   "/updateHomeSlider",
+//   mediaUpload(MEDIA.Home.Slider),
+//   homeCtrl.updateHomeSlider
+// );
 
-module.exports = routes;
+export default routes;
