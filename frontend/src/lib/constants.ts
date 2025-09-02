@@ -161,19 +161,32 @@ export const MASTER_DATA_TYPE = {
   TAGS: "tags",
 } as const;
 
-export const defultHomeCardsData = {
-  C1: {
-    picture: "/placeholder/1.png",
-    small: "Hot Deals",
-    big: "Women's Collection",
-    linkLabel: "Shop Now",
-    linkAddress: "#",
+export const defultHomeData = {
+  Cards: {
+    C1: {
+      picture: "/site/home/collection/collecton-banner1.webp",
+      small: "Fresh, lush plants perfect for the summer season.",
+      big: "Summer Special Green",
+      linkLabel: "View Collection",
+      linkAddress: "#",
+    },
+    C2: {
+      picture: "/site/home/collection/collection-banner2.webp",
+      small: "Fresh, lush plants perfect for the rainy season.",
+      big: "Monsoon Special Green",
+      linkLabel: "View Collection",
+      linkAddress: "#",
+    },
   },
-  C2: {
-    picture: "/placeholder/2.png",
-    small: "Hot Deals",
-    big: "Women's Collection",
-    linkLabel: "Shop Now",
-    linkAddress: "#",
+  Gallery: {
+    G1: "/site/home/gallery/gallery1.webp",
+    G2: "/site/home/gallery/gallery2.webp",
+    G3: "/site/home/gallery/gallery3.webp",
   },
+  Videos: [
+    "https://www.youtube.com/watch?v=WNe8EDa8WPY",
+    "https://www.youtube.com/watch?v=9wY_-ZMQ-jQ",
+  ],
 };
+
+export const YT_VIDEOS_LENGTH = 2;

@@ -23,21 +23,16 @@ const cards = {
 const gallery = {
   [HOME_FIELDS.GALLERY.G1]: {
     type: String,
-    required: true,
+    required: false,
   },
   [HOME_FIELDS.GALLERY.G2]: {
     type: String,
-    required: true,
+    required: false,
   },
   [HOME_FIELDS.GALLERY.G3]: {
     type: String,
-    required: true,
+    required: false,
   },
-};
-
-const videos = {
-  [HOME_FIELDS.VIDEOS.V1]: { type: String, required: true },
-  [HOME_FIELDS.VIDEOS.V2]: { type: String, required: true },
 };
 
 const HomeSchema = new Schema(
@@ -54,10 +49,12 @@ const HomeSchema = new Schema(
     gallery: {
       type: gallery,
     },
-    videos: {
-      type: videos,
-      required: false,
-    },
+    videos: [
+      {
+        type: String,
+        required: false,
+      },
+    ],
   },
 
   {

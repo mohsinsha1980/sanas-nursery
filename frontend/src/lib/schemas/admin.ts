@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { slugRegEx } from "../helper";
-import { ACCEPTED_IMAGE_TYPES } from "../constants";
+import { ACCEPTED_IMAGE_TYPES, YT_VIDEOS_LENGTH } from "../constants";
 
 export const slugValidation = z
   .string()
@@ -127,6 +127,12 @@ export const homeCardSchema = z.object({
     color: z.string().nonempty("Link color is required"),
   }),
   picture: z.union([z.string(), z.instanceof(File), z.null(), z.undefined()]),
+});
+
+export const videoSchema = z.object({
+  videos: z
+    .array(z.string().url("Enter a valid YouTube URL"))
+    .length(YT_VIDEOS_LENGTH),
 });
 
 // export const gallerySchema = z.object({

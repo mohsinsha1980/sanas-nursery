@@ -217,3 +217,27 @@ export const updateHomeCard = (
     signal: controller?.signal,
   });
 };
+
+export const updateHomeGallery = (
+  data: { field: string; picture: File },
+  controller?: Controller
+) => {
+  const formData = new FormData();
+  formData.append("field", data.field);
+  if (typeof data.picture && data.picture) {
+    formData.append("pictures", data.picture);
+  }
+
+  return axiosInstance.put(`${config.API_ADMIN_PATH}/home/gallery`, formData, {
+    signal: controller?.signal,
+  });
+};
+
+export const updateHomeVideos = (
+  data: { videos: string[] },
+  controller?: Controller
+) => {
+  return axiosInstance.put(`${config.API_ADMIN_PATH}/home/videos`, data, {
+    signal: controller?.signal,
+  });
+};

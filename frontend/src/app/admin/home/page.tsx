@@ -1,9 +1,12 @@
 "use client";
 import CardsSection from "@/components/admin/home/cards-section";
+import GallerySection from "@/components/admin/home/gallery";
 import GreenChoices from "@/components/admin/home/green-choices";
+import VideoSection from "@/components/admin/home/video-section";
 import { getHomeData } from "@/lib/api-routes/api-admin";
+import { defultHomeData } from "@/lib/constants";
 import { getErrorMessage, showErrorToast } from "@/lib/helper";
-import { HomeBannerSectionType } from "@/lib/types/common-types";
+import { HomeDataType } from "@/lib/types/common-types";
 import { hideLoader, showLoader } from "@/redux/uiSlice";
 import { AxiosError } from "axios";
 import { useEffect, useState } from "react";
@@ -11,7 +14,7 @@ import { useDispatch } from "react-redux";
 
 export default function HomePageComponent() {
   const dispatch = useDispatch();
-  const [homeData, setHomeData] = useState<HomeBannerSectionType>();
+  const [homeData, setHomeData] = useState<HomeDataType>();
 
   useEffect(() => {
     const controller = new AbortController();
@@ -39,9 +42,9 @@ export default function HomePageComponent() {
   return (
     <>
       <GreenChoices data={homeData?.greenChoices || []} />
-      {/* <TopSection data={homeData?.top} />
-      <MiddleSection data={homeData?.middle} /> */}
       <CardsSection data={homeData?.cards} />
+      <GallerySection images={homeData?.gallery} />
+      <VideoSection videos={homeData?.videos || defultHomeData.Videos} />
     </>
   );
 }

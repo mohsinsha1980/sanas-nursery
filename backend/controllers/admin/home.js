@@ -1,4 +1,8 @@
-import { GREEN_CHOICES_PRODUCT_LIMIT } from "../../lib/constants.js";
+import fs from "fs";
+import {
+  GREEN_CHOICES_PRODUCT_LIMIT,
+  YT_VIDEOS_LENGTH,
+} from "../../lib/constants.js";
 import Home from "../../models/Home.js";
 
 export const getHomeData = async (req, res, next) => {
@@ -24,8 +28,6 @@ export const updateGreenChoices = async (req, res, next) => {
   try {
     const greenChoices = req.body;
 
-    console.log("greenChoices", greenChoices);
-
     if (!Array.isArray(greenChoices)) {
       return next({
         status: 400,
@@ -46,8 +48,6 @@ export const updateGreenChoices = async (req, res, next) => {
       path: "greenChoices",
       select: "_id title plantId category pictures",
     });
-
-    console.log("homeData", homeData);
 
     req.successResponse = {
       message: "Green choices updated successfully",
@@ -124,7 +124,7 @@ export const updateHomeCard = async (req, res, next) => {
     await homeData.save();
 
     req.successResponse = {
-      message: `${field} updated in ${section}.`,
+      message: `${field} card updated successfully.`,
       data: homeData,
     };
     return next();
@@ -133,168 +133,93 @@ export const updateHomeCard = async (req, res, next) => {
   }
 };
 
-// const addHomeSlide = async (req, res, next) => {
-//   try {
-//     const { h1, h1Color, h2, h2Color, h3, h3Color, link, status } = req.body;
-//     const linkData = JSON.parse(link);
+export const updateHomeGallery = async (req, res, next) => {
+  try {
+    const { field } = req.body;
 
-//     if (
-//       !h1 ||
-//       !h2 ||
-//       !h3 ||
-//       !linkData?.label ||
-//       !linkData?.address ||
-//       !req.optimizedImagePath
-//     ) {
-//       return next({ message: "Missing required fields.", status: 400 });
-//     }
+    if (!field || !req.optimizedImagePath) {
+      return next({ message: "Missing field name or image.", status: 400 });
+    }
 
-//     const newSlide = {
-//       h1,
-//       h1Color: h1Color || "",
-//       h2,
-//       h2Color: h2Color || "",
-//       h3,
-//       h3Color: h3Color || "",
-//       link: linkData,
-//       picture: req.optimizedImagePath,
-//       status: status ?? true,
-//     };
+    let homeData = await Home.findOne({});
+    const imagePath = req.optimizedImagePath;
 
-//     let home = await Home.findOne();
-//     if (!home) {
-//       home = new Home({ mainCorousel: [newSlide] });
-//     } else {
-//       home.mainCorousel.push(newSlide);
-//     }
+    if (!homeData) {
+      homeData = new Home({
+        gallery: {
+          [field]: imagePath,
+        },
+      });
+    } else {
+      if (!homeData["gallery"]) {
+        homeData["gallery"] = {};
+      }
 
-//     const data = await home.save();
-//     req.successResponse = {
-//       message: "New slide added successfully!",
-//       data: data.mainCorousel,
-//     };
-//     return next();
-//   } catch (error) {
-//     return next({ status: 500, message: "Internal server error." });
-//   }
-// };
+      const existingImage = homeData["gallery"][field];
+      if (existingImage) {
+        fs.unlink(existingImage, (err) => {
+          if (err) {
+            return next({
+              message: "Internal Server Error while deleting image.",
+              status: 500,
+            });
+          }
+        });
+      }
+    }
 
-// const deleteHomeSlide = async (req, res, next) => {
-//   try {
-//     const { _id } = req.params;
-//     if (!_id) {
-//       return next({ message: "Slide ID is required.", status: 400 });
-//     }
+    homeData["gallery"][field] = imagePath;
+    await homeData.save();
 
-//     const home = await Home.findOne();
-//     if (!home) {
-//       return next({ message: "Home document not found.", status: 404 });
-//     }
+    req.successResponse = {
+      message: `Gallery image updated successfully.`,
+      data: homeData,
+    };
+    return next();
+  } catch (error) {
+    return next({ status: 500, message: "Internal server error." });
+  }
+};
 
-//     const slideToDelete = home.mainCorousel.find(
-//       (slide) => slide._id.toString() === _id
-//     );
+export const updateHomeVideos = async (req, res, next) => {
+  try {
+    const { videos } = req.body;
+    if (
+      !videos ||
+      !Array.isArray(videos) ||
+      videos.length != YT_VIDEOS_LENGTH
+    ) {
+      return next({
+        message: `${YT_VIDEOS_LENGTH} videos are required, but received ${
+          Array.isArray(videos) ? videos.length : 0
+        }.`,
+        status: 400,
+      });
+    }
 
-//     if (!slideToDelete) {
-//       return next({ message: "Slide not found.", status: 404 });
-//     }
+    if (videos.some((v) => !v || String(v).trim() === "")) {
+      return next({
+        message: "valid videos are required.",
+        status: 400,
+      });
+    }
 
-//     home.mainCorousel = home.mainCorousel.filter(
-//       (slide) => slide._id.toString() !== _id
-//     );
+    let homeData = await Home.findOne({});
+    if (!homeData) {
+      homeData = new Home({
+        videos: videos,
+      });
+    }
 
-//     const data = await home.save();
+    homeData["videos"] = videos;
+    await homeData.save();
 
-//     if (slideToDelete.picture) {
-//       fs.unlink(slideToDelete.picture, (err) => {
-//         if (err) {
-//           return next({
-//             message: "Internal Server Error while deleting image.",
-//             status: 500,
-//           });
-//         }
-//       });
-//     }
-
-//     req.successResponse = {
-//       message: "Slide deleted successfully!",
-//       data: data.mainCorousel,
-//     };
-//     return next();
-//   } catch (error) {
-//     return next({
-//       message: error.message || "Internal Server Error while deleting slide.",
-//       status: 500,
-//     });
-//   }
-// };
-
-// const updateHomeSlider = async (req, res, next) => {
-//   try {
-//     const {
-//       _id,
-//       h1,
-//       h1Color,
-//       h2,
-//       h2Color,
-//       h3,
-//       h3Color,
-//       link,
-//       status,
-//       pictures,
-//     } = req.body;
-//     const linkData = JSON.parse(link);
-
-//     if (!_id) {
-//       return next({ message: "Slide ID is required.", status: 400 });
-//     }
-
-//     if (!h1 || !h2 || !h3 || !linkData?.label || !linkData?.address) {
-//       return next({ message: "Missing required fields.", status: 400 });
-//     }
-
-//     const newSlideData = {
-//       h1,
-//       h1Color: h1Color || "",
-//       h2,
-//       h2Color: h2Color || "",
-//       h3,
-//       h3Color: h3Color || "",
-//       link: linkData,
-//       picture: req.optimizedImagePath,
-//       status: status ?? true,
-//     };
-
-//     let home = await Home.findOne();
-//     if (!home) {
-//       return next({ message: "Home document not found.", status: 404 });
-//     }
-
-//     const slideIndex = home.mainCorousel.findIndex(
-//       (slide) => slide._id.toString() === _id
-//     );
-
-//     if (slideIndex === -1) {
-//       return next({ message: "Slide not found.", status: 404 });
-//     }
-
-//     if (req.optimizedImagePath) {
-//       newSlideData["picture"] = req.optimizedImagePath;
-//       await unlinkAsync(home.mainCorousel[slideIndex].picture);
-//     } else {
-//       newSlideData["picture"] = pictures;
-//     }
-
-//     Object.assign(home.mainCorousel[slideIndex], newSlideData);
-
-//     const updatedHome = await home.save();
-
-//     req.successResponse = {
-//       message: "New slide updated successfully!",
-//       data: updatedHome.mainCorousel,
-//     };
-//     return next();
-//   } catch (error) {
-//     return next({ status: 500, message: "Internal server error." });
-//   }
-// };
+    req.successResponse = {
+      message: `Videos updated successfully.`,
+      data: homeData,
+    };
+    return next();
+  } catch (error) {
+    return next({ status: 500, message: "Internal server error." });
+  }
+};

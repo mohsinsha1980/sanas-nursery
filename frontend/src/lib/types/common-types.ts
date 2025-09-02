@@ -324,12 +324,12 @@ export interface HomeGreenPlantType {
   pictures: string[];
 }
 
-export interface HomeBannerSectionType {
+export interface HomeDataType {
   _id?: string;
   greenChoices: HomeGreenPlantType[];
   cards: HomeCardsTypes;
   gallery: HomeGalleryType;
-  videos: HomeVideoURLType;
+  videos: string[];
 }
 
 export interface DefultHomeCardType {

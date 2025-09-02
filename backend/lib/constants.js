@@ -50,58 +50,66 @@ export const MEDIA = {
     pictures: { count: 20, fileSize: 0.5 * 1024 * 1024 },
     limits: { fileSize: 0.5 * 1024 * 1024 },
   },
-  // Home: {
-  //   Banner: {
-  //     destination: "public/pictures/home",
-  //     resizeOptions: {
-  //       fit: "cover",
-  //     },
-  //     pictures: { count: 1, fileSize: 0.5 * 1024 * 1024 },
-  //     limits: { fileSize: 0.5 * 1024 * 1024 },
-  //   },
-  //   // Top: {
-  //   //   A1: {
-  //   //     destination: "public/pictures/home",
-  //   //     resizeOptions: {
-  //   //       // width: 505,
-  //   //       // height: 457,
-  //   //       fit: "cover",
-  //   //     },
-  //   //     pictures: { count: 1, fileSize: 0.5 * 1024 * 1024 },
-  //   //     limits: { fileSize: 0.5 * 1024 * 1024 },
-  //   //   },
-  //   //   B1: {
-  //   //     destination: "public/pictures/home",
-  //   //     resizeOptions: {
-  //   //       width: 505,
-  //   //       height: 214,
-  //   //       fit: "cover",
-  //   //     },
-  //   //     pictures: { count: 1, fileSize: 0.5 * 1024 * 1024 },
-  //   //     limits: { fileSize: 0.5 * 1024 * 1024 },
-  //   //   },
-  //   //   B2: {
-  //   //     destination: "public/pictures/home",
-  //   //     resizeOptions: {
-  //   //       width: 242,
-  //   //       height: 214,
-  //   //       fit: "cover",
-  //   //     },
-  //   //     pictures: { count: 1, fileSize: 0.5 * 1024 * 1024 },
-  //   //     limits: { fileSize: 0.5 * 1024 * 1024 },
-  //   //   },
-  //   // },
-  //   Slider: {
-  //     destination: "public/pictures/home",
-  //     resizeOptions: {
-  //       width: 1899,
-  //       height: 584,
-  //       fit: "cover",
-  //     },
-  //     pictures: { count: 1, fileSize: 0.5 * 1024 * 1024 },
-  //     limits: { fileSize: 0.5 * 1024 * 1024 },
-  //   },
-  // },
+  Home: {
+    Cards: {
+      destination: "public/pictures/home",
+      resizeOptions: {
+        fit: "cover",
+      },
+      pictures: { count: 1, fileSize: 0.5 * 1024 * 1024 },
+      limits: { fileSize: 0.5 * 1024 * 1024 },
+    },
+    Gallery: {
+      destination: "public/pictures/home",
+      resizeOptions: {
+        fit: "cover",
+      },
+      pictures: { count: 1, fileSize: 0.5 * 1024 * 1024 },
+      limits: { fileSize: 0.5 * 1024 * 1024 },
+    },
+    // Top: {
+    //   A1: {
+    //     destination: "public/pictures/home",
+    //     resizeOptions: {
+    //       // width: 505,
+    //       // height: 457,
+    //       fit: "cover",
+    //     },
+    //     pictures: { count: 1, fileSize: 0.5 * 1024 * 1024 },
+    //     limits: { fileSize: 0.5 * 1024 * 1024 },
+    //   },
+    //   B1: {
+    //     destination: "public/pictures/home",
+    //     resizeOptions: {
+    //       width: 505,
+    //       height: 214,
+    //       fit: "cover",
+    //     },
+    //     pictures: { count: 1, fileSize: 0.5 * 1024 * 1024 },
+    //     limits: { fileSize: 0.5 * 1024 * 1024 },
+    //   },
+    //   B2: {
+    //     destination: "public/pictures/home",
+    //     resizeOptions: {
+    //       width: 242,
+    //       height: 214,
+    //       fit: "cover",
+    //     },
+    //     pictures: { count: 1, fileSize: 0.5 * 1024 * 1024 },
+    //     limits: { fileSize: 0.5 * 1024 * 1024 },
+    //   },
+    // },
+    // Cards: {
+    //   destination: "public/pictures/home",
+    //   resizeOptions: {
+    //     width: 1899,
+    //     height: 584,
+    //     fit: "cover",
+    //   },
+    //   pictures: { count: 1, fileSize: 0.5 * 1024 * 1024 },
+    //   limits: { fileSize: 0.5 * 1024 * 1024 },
+    // },
+  },
   // ContactUs: {
   //   destination: "public/pictures/contact-us",
   //   resizeOptions: {
@@ -154,3 +162,4 @@ export const ORDER_TAB_TYPE = {
 };
 
 export const TOP_SELLING_PRODUCT_COUNT = 10;
+export const YT_VIDEOS_LENGTH = 2;
