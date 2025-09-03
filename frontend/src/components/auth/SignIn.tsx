@@ -56,64 +56,82 @@ export default function SignIn() {
 
   return (
     <div
-      className="flex h-screen w-full bg-cover bg-center items-center pl-10 sm:h-auto sm:p-2"
+      className="flex min-h-screen w-full items-center justify-center bg-cover bg-center overflow-hidden pt-24 pb-10"
       style={{
-        backgroundImage: `url('${process.env.NEXT_PUBLIC_BASE_PATH}/auth-banner.png')`,
+        backgroundImage: "url('/site/auth/auth-banner.webp')",
       }}
     >
-      <div className="bg-white/25 backdrop-blur-lg shadow-lg rounded-2xl p-10 w-[852px] h-[631px] flex flex-col justify-center items-start pl-16 sm:h-[450px] sm:w-[581px] sm:gap-2 sm:p-4 md:h-[591px]">
-        <h1 className="text-[48px] font-semibold text-[rgba(17,17,17,1)] leading-[28px] sm:text-[20px] sm:mb-0 md:text-[30px]">
-          Sign in
-        </h1>
+      {/* Outer fixed container */}
+      <div className="bg-white shadow-lg rounded-2xl flex justify-center items-center w-[713px] h-[768px] mt-20">
+        {/* Inner form container */}
+        <div className="w-[574px] h-[608px] flex flex-col">
+          <h1 className="text-[40px] font-semibold text-gray-900">
+            Welcome Back To Your Green Space!
+          </h1>
+          <p className="text-[20px] text-gray-600 mt-4">
+            Sign in to explore our plant collections, read product details, and
+            learn more about each variety.
+          </p>
 
-        <p className="text-[24px] font-semibold text-[rgba(51,51,51,1)] leading-[32px] mt-[20px] sm:text-[16px] sm:mt-0 md:text-[17px] sm:font-normal sm:leading-[30px]">
-          Sign in now for exclusive deals, fast checkout, and a <br /> smooth
-          shopping experience!
-        </p>
-
-        <Form {...form}>
-          <form
-            onSubmit={form.handleSubmit(onSubmit)}
-            className="mt-10 space-y-6 w-[384px] max-w-full sm:w-full sm:mt-4 pe-4 sm:px-0"
-          >
-            <div className="w-full">
+          <Form {...form}>
+            <form
+              onSubmit={form.handleSubmit(onSubmit)}
+              className="mt-10 flex flex-col space-y-6"
+            >
+              {/* Email */}
               <TextField
                 name="email"
                 label="Email"
-                placeholder="Enter email "
+                placeholder="Enter Email"
                 inputType="email"
                 formControl={form.control}
-                className="w-full h-10 sm:h-12 rounded-md border border-gray-300 px-3 pr-14 py-2 text-black bg-white"
-              />
-            </div>
-
-            <div className="w-full">
-              <TextField
-                name="password"
-                label="Password"
-                placeholder="Enter your password"
-                inputType="password"
-                formControl={form.control}
-                className="w-full h-10 sm:h-12 rounded-md border border-gray-300 px-3 pr-14 py-2 text-black bg-white"
+                className="w-full h-[53px] rounded-md border border-gray-300 px-3 text-black bg-white"
               />
 
-              <div className="flex justify-end w-full mt-2">
-                <Link href="/auth/forgot-password">
-                  <span className="text-base text-gray-600 cursor-pointer sm:text-sm">
-                    Forgot Password
-                  </span>
-                </Link>
+              {/* Password */}
+              <div className="w-full">
+                <TextField
+                  name="password"
+                  label="Password"
+                  placeholder="At least 8 characters"
+                  inputType="password"
+                  formControl={form.control}
+                  className="w-full h-[53px] rounded-md border border-gray-300 px-3 text-black bg-white"
+                />
+                <div className="flex justify-end mt-2">
+                  <Link href="/auth/forgot-password">
+                    <span className="text-sm text-orange-500 cursor-pointer">
+                      Forgot Password?
+                    </span>
+                  </Link>
+                </div>
               </div>
-            </div>
 
-            <Button
-              type="submit"
-              className="w-full h-10 sm:h-12 text-lg text-white bg-gray-900 rounded-md transition hover:bg-gray-800 sm:text-md"
-            >
-              Sign in
-            </Button>
-          </form>
-        </Form>
+              {/* Sign In Button */}
+              <Button
+                type="submit"
+                className="w-[574px] h-[53px] text-lg font-medium text-white bg-orange-500 rounded-md hover:bg-orange-600"
+              >
+                Sign In
+              </Button>
+
+              {/* Divider */}
+              <div className="flex items-center gap-4 my-2">
+                <div className="flex-1 h-px bg-gray-300"></div>
+                <span className="text-gray-500 text-sm">Or</span>
+                <div className="flex-1 h-px bg-gray-300"></div>
+              </div>
+
+              {/* Signup link */}
+              <p className="text-center text-sm text-gray-600">
+                Don’t you have an account?{" "}
+                <Link href="/auth/signup" className="text-orange-500">
+                  Sign up
+                </Link>
+              </p>
+            </form>
+          </Form>
+        </div>
       </div>
     </div>
   );

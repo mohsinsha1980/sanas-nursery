@@ -46,7 +46,7 @@
 body {
   font-family: var(--font-catamaran);
   box-sizing: border-box;
-  min-height: 2000px;
+  min-height: 100vh;
 }
 
 .container {
@@ -91,8 +91,8 @@ header {
 }
 
 .main_header nav ul li .dropdown-link {
-  text-decoration: none !important; 
-  color: #354733; 
+  text-decoration: none !important;
+  color: #354733;
 }
 
 .main_header nav ul li .dropdown-link:hover {
@@ -149,108 +149,105 @@ footer {
   color: #f37521;
 }
 
-@media (min-width: 1024px) and (max-width: 1280px) and (min-height: 600px) and (max-height:1366px) {
-
-  .inner-div{
+@media (min-width: 1024px) and (max-width: 1280px) and (min-height: 600px) and (max-height: 1366px) {
+  .inner-div {
     width: 70%;
   }
 
-  .p{
+  .p {
     font-size: 14px;
   }
 
-  h1{
+  h1 {
     font-size: 28px;
   }
 
- button{
-  width: 100px;
-  height: 35px;
- }
-
- .fourthdiv{
-  width: 290px;
- }
-
- input{
-  width: 180px;
- }
-
- .two-div{
-  width: 250px;
-  row-gap: 1px;
- }
-
- .contact-form{
-  width: 81%;
- }
-
- .contact-form-innerdiv{
-    width: 80%;
- }
-
- .contact-form-left-div{
-  width: 40%;
- }
-
-    .inner-div-best-selling{
-    width: 90%;
+  button {
+    width: 100px;
+    height: 35px;
   }
 
- 
+  .fourthdiv {
+    width: 290px;
+  }
+
+  input {
+    width: 180px;
+  }
+
+  .two-div {
+    width: 250px;
+    row-gap: 1px;
+  }
+
+  .contact-form {
+    width: 81%;
+  }
+
+  .contact-form-innerdiv {
+    width: 80%;
+  }
+
+  .contact-form-left-div {
+    width: 40%;
+  }
+
+  .inner-div-best-selling {
+    width: 90%;
+  }
 }
 
 .grecaptcha-badge {
   transition: transform 0.6s ease-in-out;
-  transform: translateX(0); 
+  transform: translateX(0);
   overflow: hidden;
   z-index: 9999 !important;
-    bottom: 30px !important;
+  bottom: 30px !important;
 }
 
 .grecaptcha-badge:hover {
-  transform: translateX(0); 
+  transform: translateX(0);
 }
 
-@media (min-width: 1024px) and (max-width: 1280px) and (min-height: 600px) and (max-height:1366px) {
-.grecaptcha-badge {
- transition: transform 0.6s ease-in-out;
-  transform: translateX(0); 
-  z-index: 9999 !important;
+@media (min-width: 1024px) and (max-width: 1280px) and (min-height: 600px) and (max-height: 1366px) {
+  .grecaptcha-badge {
+    transition: transform 0.6s ease-in-out;
+    transform: translateX(0);
+    z-index: 9999 !important;
     bottom: 30px !important;
-}
+  }
 }
 
 @media (min-width: 768px) and (max-width: 1023px) and (min-height: 600px) and (max-height: 1368px) {
-.grecaptcha-badge {
- transition: transform 0.6s ease-in-out;
-  transform: translateX(0); 
-  overflow: hidden;
-  z-index: 9999 !important;
+  .grecaptcha-badge {
+    transition: transform 0.6s ease-in-out;
+    transform: translateX(0);
+    overflow: hidden;
+    z-index: 9999 !important;
     bottom: 30px !important;
+  }
+
+  .floating-whatsapp-button {
+    position: fixed !important;
+    bottom: 120px !important;
+    right: 10px !important;
+    z-index: 9999 !important;
+  }
 }
 
-.floating-whatsapp-button {
-  position: fixed !important;
-  bottom: 120px !important;
-  right: 10px !important;
-  z-index: 9999 !important;
-}
-}
+@media (min-width: 340px) and (max-width: 720px) {
+  .grecaptcha-badge {
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
 
-@media (min-width: 340px) and (max-width:720px) {
-.grecaptcha-badge {
-  visibility: hidden !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
-}
-
-.floating-whatsapp-button {
-  position: fixed !important;
-  bottom: 30px !important;
-  right: 20px !important;
-  z-index: 9999 !important;
-}
+  .floating-whatsapp-button {
+    position: fixed !important;
+    bottom: 30px !important;
+    right: 20px !important;
+    z-index: 9999 !important;
+  }
 }
 
 .floating-whatsapp-button {
@@ -269,18 +266,18 @@ footer {
 }
 
 .floating-whatsapp-button:hover {
-  background-color: #F37521 !important;
+  background-color: #f37521 !important;
 }
 
 .floating-whatsapp-button:hover svg {
-filter: brightness(0) saturate(100%) invert(18%) sepia(96%) saturate(747%) hue-rotate(93deg) brightness(95%) contrast(103%);
+  filter: brightness(0) saturate(100%) invert(18%) sepia(96%) saturate(747%)
+    hue-rotate(93deg) brightness(95%) contrast(103%);
 }
 
 .floating-whatsapp-button span {
-  background-color: #F37521 !important;
+  background-color: #f37521 !important;
   color: white !important;
 }
-
 
 .main_header .header-actions {
   display: flex;
@@ -373,7 +370,6 @@ footer {
   --sidebar-ring: oklch(0.556 0 0);
 }
 
-
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -410,5 +406,3 @@ footer {
 .tiptap.ProseMirror ol {
   margin-bottom: 10px;
 }
-
-
