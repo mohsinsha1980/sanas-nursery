@@ -29,8 +29,13 @@
 // import { Address, SupportType } from "./user-types";
 
 import z from "zod";
-import { addPlantSchema, editPlantSchema, PlantFilterSchema } from "../schemas/admin";
-import { DataTableActionType } from "./common-types";
+import {
+  addPlantSchema,
+  editPlantSchema,
+  PlantFilterSchema,
+} from "../schemas/admin";
+import { DataTableActionType, HomeCardType } from "./common-types";
+import { MASTER_DATA_TYPE } from "../constants";
 
 export interface SelectOption {
   label: string;
@@ -81,10 +86,10 @@ export interface MasterDataOption extends SelectOption {
   _id: string;
 }
 
-// export type AddMasterDataProps = {
-//   onAdd: (data: MasterDataOption) => void;
-//   onClose?: () => void;
-// };
+export type AddMasterDataProps = {
+  onAdd: (data: MasterDataOption) => void;
+  onClose?: () => void;
+};
 
 // export type AddTaxFields = z.infer<typeof TaxChargesSchema>;
 
@@ -106,6 +111,8 @@ export interface MasterData {
   tags: MasterDataOption[];
 }
 
+export type MasterDataFields =
+  (typeof MASTER_DATA_TYPE)[keyof typeof MASTER_DATA_TYPE];
 // export type AddCategoryFields = z.infer<typeof addCategorySchema>;
 // export type EditCategoryFields = z.infer<typeof editCategorySchema>;
 export type AddPlantFields = z.infer<typeof addPlantSchema>;
@@ -119,6 +126,10 @@ export interface PlantTableDataType {
   status: string;
   actions: DataTableActionType[];
   picture: string;
+}
+
+export interface UpdateHomeCardTypes extends HomeCardType {
+  field: string;
 }
 
 // export interface ReviewTableDataType {

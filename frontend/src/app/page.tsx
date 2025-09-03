@@ -26,6 +26,7 @@ export default function Home() {
       />
       <CollectionSection />
       <Gallery />
+      <ChoosePlantFamily />
       <Testimonials />
       <YoutubeSection />
       <ContactForm />

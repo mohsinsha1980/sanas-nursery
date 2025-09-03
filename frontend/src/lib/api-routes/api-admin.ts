@@ -1,12 +1,18 @@
 import config from "@/config/env-config";
 import { axiosInstance } from "@/config/http";
 import { AxiosResponse } from "axios";
-import { Controller, PaginationDataType } from "../types/common-types";
+import {
+  Controller,
+  PaginationDataType,
+  SelectOption,
+} from "../types/common-types";
 import {
   AddPlantFields,
   EditPlantFields,
+  MasterDataFields,
   PasswordData,
   PlantFilterTypes,
+  UpdateHomeCardTypes,
 } from "../types/admin-types";
 import { STATUS } from "../helper";
 
@@ -26,6 +32,33 @@ export const getMasterData = (controller?: Controller) => {
   return axiosInstance.get(`${config.API_ADMIN_PATH}/master-data`, {
     signal: controller?.signal,
   });
+};
+
+export const addMasterData = (
+  field: MasterDataFields,
+  data: SelectOption,
+  controller?: Controller
+) => {
+  return axiosInstance.post(
+    `${config.API_ADMIN_PATH}/master-data`,
+    { field, data },
+    {
+      signal: controller?.signal,
+    }
+  );
+};
+
+export const deleteMasterRecord = (
+  field: MasterDataFields,
+  id: string,
+  controller: Controller
+) => {
+  return axiosInstance.delete(
+    `${config.API_ADMIN_PATH}/master-data/${field}/${id}`,
+    {
+      signal: controller?.signal,
+    }
+  );
 };
 
 export const updatePassword = (data: PasswordData, controller: Controller) => {
@@ -93,9 +126,13 @@ export const updatePlant = (data: EditPlantFields, controller?: Controller) => {
       form.append("pictures", data.pictures[i]);
     }
   }
-  return axiosInstance.put(`${config.API_ADMIN_PATH}/plants/${data.plantId}`, form, {
-    signal: controller?.signal,
-  });
+  return axiosInstance.put(
+    `${config.API_ADMIN_PATH}/plants/${data.plantId}`,
+    form,
+    {
+      signal: controller?.signal,
+    }
+  );
 };
 
 export const deletePlant = (plantId: string, controller: Controller) => {
@@ -134,6 +171,73 @@ export const getPlants = (
 
 export const getPlantById = (plantId: string, controller?: Controller) => {
   return axiosInstance.get(`${config.API_ADMIN_PATH}/plants/${plantId}`, {
+    signal: controller?.signal,
+  });
+};
+
+export const getPlantsForGreenChoices = (controller?: Controller) => {
+  return axiosInstance.get(`${config.API_ADMIN_PATH}/plants-list`, {
+    signal: controller?.signal,
+  });
+};
+
+export const getHomeData = (controller?: Controller) => {
+  return axiosInstance.get(`${config.API_ADMIN_PATH}/home`, {
+    signal: controller?.signal,
+  });
+};
+
+export const updateGreenChoices = (data: string[], controller?: Controller) => {
+  return axiosInstance.put(
+    `${config.API_ADMIN_PATH}/home/green-choices`,
+    data,
+    {
+      signal: controller?.signal,
+    }
+  );
+};
+
+export const updateHomeCard = (
+  data: UpdateHomeCardTypes,
+  controller?: Controller
+) => {
+  const formData = new FormData();
+
+  formData.append("field", data.field);
+  formData.append("small", data.small);
+  formData.append("smallColor", data.smallColor);
+  formData.append("large", data.large);
+  formData.append("largeColor", data.largeColor);
+  formData.append("link", JSON.stringify(data.link));
+  if (typeof data.picture && data.picture) {
+    formData.append("pictures", data.picture);
+  }
+
+  return axiosInstance.put(`${config.API_ADMIN_PATH}/home/cards`, formData, {
+    signal: controller?.signal,
+  });
+};
+
+export const updateHomeGallery = (
+  data: { field: string; picture: File },
+  controller?: Controller
+) => {
+  const formData = new FormData();
+  formData.append("field", data.field);
+  if (typeof data.picture && data.picture) {
+    formData.append("pictures", data.picture);
+  }
+
+  return axiosInstance.put(`${config.API_ADMIN_PATH}/home/gallery`, formData, {
+    signal: controller?.signal,
+  });
+};
+
+export const updateHomeVideos = (
+  data: { videos: string[] },
+  controller?: Controller
+) => {
+  return axiosInstance.put(`${config.API_ADMIN_PATH}/home/videos`, data, {
     signal: controller?.signal,
   });
 };
