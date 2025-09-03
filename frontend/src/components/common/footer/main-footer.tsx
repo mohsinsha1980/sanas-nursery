@@ -8,7 +8,7 @@ export default function MainFooter() {
   return (
     <footer>
       <div key="outer-div" className="h-full w-full flex flex-row justify-center bg-[#1D2F33] ">
-        <div key="inner-div" className="inner-div h-full lg:w-[60%] md:w-[90%] w-[95%] flex lg:flex-row md:flex-row flex-col lg:justify-between md:justify-between lg:items-start md:items-start items-center lg:space-y-0 md:space-y-0 space-y-10 ">
+        <div key="inner-div" className="inner-div h-full lg:max-w-[60%] lg:min-w-[1000px] md:w-[90%] w-[95%] flex lg:flex-row md:flex-row flex-col lg:justify-between md:justify-between lg:items-start md:items-start items-center lg:space-y-0 md:space-y-0 space-y-10 ">
           <div key="1-div" className="h-fit w-fit lg:space-y-3 md:space-y-3 space-y-3 ">
             <div>
               <Image

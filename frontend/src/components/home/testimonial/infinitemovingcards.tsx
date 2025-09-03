@@ -41,15 +41,11 @@ export default function InfiniteMovingCardsDemo() {
 export const InfiniteMovingCards = ({
   items,
   direction = "left",
-  speed = "fast",
+  speed = "fast", // global control
   pauseOnHover = true,
   className,
 }: {
-  items: {
-    quote: string;
-    name: string;
-    rating: number;
-  }[];
+  items: { quote: string; name: string; rating: number }[];
   direction?: "left" | "right";
   speed?: "fast" | "normal" | "slow";
   pauseOnHover?: boolean;
@@ -60,8 +56,7 @@ export const InfiniteMovingCards = ({
   const [start, setStart] = useState(false);
 
   useEffect(() => {
-    if (!containerRef.current || !scrollerRef.current) return;
-    if (start) return;
+    if (!scrollerRef.current || start) return;
 
     const scrollerContent = Array.from(scrollerRef.current.children);
     scrollerContent.forEach((item) => {
@@ -69,34 +64,23 @@ export const InfiniteMovingCards = ({
       scrollerRef.current?.appendChild(duplicatedItem);
     });
 
-    containerRef.current.style.setProperty(
-      "--animation-direction",
-      direction === "right" ? "forwards" : "reverse"
-    );
-
-    if (speed === "fast") {
-      containerRef.current.style.setProperty("--animation-duration", "20s");
-    } else if (speed === "normal") {
-      containerRef.current.style.setProperty("--animation-duration", "40s");
-    } else {
-      containerRef.current.style.setProperty("--animation-duration", "80s");
-    }
-
     setStart(true);
-  }, [direction, speed, start]);
+  }, [start]);
 
   return (
     <div
       ref={containerRef}
       className={cn(
-        "scroller relative z-20 w-full overflow-hidden ",
+        "scroller relative z-20 w-full overflow-hidden",
+        `speed-${speed}`, // ✅ global speed control
+        direction === "right" ? "direction-right" : "direction-left",
         className
       )}
     >
       <ul
         ref={scrollerRef}
         className={cn(
-          "flex w-max min-w-full shrink-0 flex-nowrap lg:gap-6 gap-4 py-4 ",
+          "flex w-max min-w-full shrink-0 flex-nowrap lg:gap-6 gap-4 py-4",
           start && "animate-scroll",
           pauseOnHover && "hover:[animation-play-state:paused]"
         )}
@@ -120,7 +104,7 @@ export const InfiniteMovingCards = ({
                 </span>
               </div>
             </div>
-            <p className="lg:text-[20px] md:text-[18px]  text-[16px] leading-relaxed">
+            <p className="lg:text-[20px] md:text-[18px] text-[16px] leading-relaxed">
               {item.quote}
             </p>
           </li>

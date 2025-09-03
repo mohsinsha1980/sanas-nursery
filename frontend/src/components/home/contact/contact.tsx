@@ -53,6 +53,7 @@ const Contact = () => {
                                     <p className="lg:text-[20px] md:text-[22px] text-[16px] text-white lg:font-semibold">
                                         Watch how our plants are spreading smiles and freshness.
                                     </p>
+                                    
                                 </div>
                                 <div className="lg:w-[100%] lg:h-[45%] lg:gap-y-3 gap-y-3 flex flex-col justify-between text-[20px] text-white    ">
                                     <div className="flex items-center lg:gap-x-5 gap-3">

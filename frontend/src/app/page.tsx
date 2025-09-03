@@ -26,8 +26,6 @@ export default function Home() {
       />
       <CollectionSection />
       <Gallery />
-
-
       <Testimonials />
       <YoutubeSection />
       <ContactForm />
