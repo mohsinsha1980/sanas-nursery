@@ -205,18 +205,6 @@ const Contact = () => {
                 </div>
             </div>
         </form>
-        <div className="w-[100%] h-full bg-black flex justify-center items-center pb-35">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d121092.74028953009!2d73.82044506459074!3d18.47694808895882!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x3bc2eba952eb29fd%3A0x1fd1cfdcdf9f0974!2sSurvey%20No.22%2C%20Sunshree%20Woods%2C%20Office%20number%2C%20F28%20to%2032%2C%20NIBM%20Rd%2C%20Kondhwa%2C%20Pune%2C%20Maharashtra%20411048!3m2!1d18.4769659!2d73.90284679999999!5e0!3m2!1sen!2sin!4v1754376613048!5m2!1sen!2sin"
-          width="100%"
-          height="100%"
-          style={{ border: 0 }}
-          allowFullScreen
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-          className="w-[70%] h-[600px]"
-        />
-      </div>
        </>
     )
 }
