@@ -1,5 +1,6 @@
 "use client";
 
+import TextField from "@/components/form-fields/text-field";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import { forgotPassword } from "@/lib/api-routes/api-auth";
@@ -14,11 +15,9 @@ import { hideLoader, showLoader } from "@/redux/uiSlice";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { AxiosError } from "axios";
 import { useReCaptcha } from "next-recaptcha-v3";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import TextField from "@/components/form-fields/text-field";
 
 export default function ForgotPasswordPage() {
   const router = useRouter();
