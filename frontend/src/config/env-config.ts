@@ -1,5 +1,6 @@
 interface Config {
   WEBAPP_TITLE: string;
+  WEBAPP_URL: string;
   BACKEND_URL: string;
   RECAPTCHA_SITE_KEY: string;
   ENCRYPTION_SECRET_KEY: string;
@@ -15,6 +16,7 @@ interface Config {
 
 const config: Config = {
   WEBAPP_TITLE: process.env.NEXT_PUBLIC_WEBAPP_TITLE || "Sanas Nursery",
+  WEBAPP_URL: process.env.NEXT_PUBLIC_WEBAPP_URL || "sanasnursery.com",
   BACKEND_URL: process.env.NEXT_PUBLIC_BACKEND!,
   RECAPTCHA_SITE_KEY: process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!,
   ENCRYPTION_SECRET_KEY: process.env.NEXT_PUBLIC_ENCRYPTION_SECRET_KEY!,

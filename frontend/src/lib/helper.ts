@@ -6,6 +6,11 @@ import config from "@/config/env-config";
 import { toast } from "sonner";
 import { UserInSessionTypes } from "./types/user-types";
 import { AddPlantFields } from "./types/admin-types";
+import {
+  PlantDataType,
+  PlantFilterType,
+  PlantsCardType,
+} from "./types/common-types";
 
 type InputDate = string | Date;
 interface errorType {
@@ -279,19 +284,6 @@ export const capitalize = (str: string): string => {
   return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 };
 
-// export const buildQueryString = (searchParams: ProductFilterType) => {
-//   const params = new URLSearchParams();
-
-//   Object.entries(searchParams).forEach(([Key, value]) => {
-//     if (value !== undefined && value !== null) {
-//       if (Array.isArray(value)) {
-//         value.forEach((v) => params.append(Key, v.toString()));
-//       } else {
-//         params.append(Key, value.toString());
-//       }
-//     }
-//   });
-
 //   return params.toString() ? "?" + params.toString() : "";
 // };
 
@@ -305,33 +297,17 @@ export const capitalize = (str: string): string => {
 //   return link;
 // };
 
-// export const getProductCardData = (
-//   product: ProductDataType,
-//   sort?: string
-// ): ProductCardType => {
-//   let variantToDisplay = product.variants[0];
-//   if (sort === "price-asc" && product.variants.length) {
-//     variantToDisplay = getVariantWithMinMrp(product.variants);
-//   } else if (sort === "price-desc" && product.variants.length) {
-//     variantToDisplay = getVariantWithMaxMrp(product.variants);
-//   }
-
-//   return {
-//     id: product._id,
-//     title: product.title,
-//     sellingPrice: Math.round(variantToDisplay.sellingPrice),
-//     discount: variantToDisplay.discount,
-//     mrp: Math.round(variantToDisplay.mrp),
-//     l1_category: product.l1_category.slug,
-//     l2_category: product.l2_category.slug,
-//     l3_category: product.l3_category?.slug || "",
-//     pictures: product.pictures.map((item: string) => {
-//       return process.env.NEXT_PUBLIC_BACKEND + "/" + item;
-//     }),
-//     slug: product.slug,
-//     avgRating: product?.avgRating || 0,
-//   };
-// };
+export const getPlantsCardData = (plant: PlantDataType): PlantsCardType => {
+  return {
+    id: plant._id,
+    title: plant.title,
+    pictures: plant.pictures.map((item: string) => {
+      return getPicURL(item);
+    }),
+    slug: plant.slug,
+    category: plant.category,
+  };
+};
 
 export function getPaginatedMasterData<T>(
   array: T[],
@@ -441,3 +417,19 @@ export function getFaqAccrItems(faqs: AddPlantFields["faqs"]) {
     index,
   }));
 }
+
+export const buildQueryString = (searchParams: PlantFilterType) => {
+  const params = new URLSearchParams();
+
+  Object.entries(searchParams).forEach(([Key, value]) => {
+    if (value !== undefined && value !== null) {
+      if (Array.isArray(value)) {
+        value.forEach((v) => params.append(Key, v.toString()));
+      } else {
+        params.append(Key, value.toString());
+      }
+    }
+  });
+
+  return params.toString() ? "?" + params.toString() : "";
+};
