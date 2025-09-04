@@ -49,42 +49,56 @@ export default function ForgotPasswordPage() {
   };
 
   return (
-    <div className="flex flex-col md:flex-row justify-center items-center h-screen p-6 ">
-      <div className="mb-8 md:mb-0 md:mr-10">
-        <Image
-          src="/site/signin/banner.png"
-          width={800}
-          height={600}
-          alt="Sign-in Banner"
-          className="rounded-xl"
-        />
-      </div>
-      <div className="w-full max-w-md p-8 bg-white rounded-xl shadow-lg ">
-        <div className="flex flex-col gap-2 justify-center items-center mt-4">
-          <h2 className="text-2xl font-semibold text-center mb-2">
-            Forgot Password
-          </h2>
-        </div>
-        <Form {...form}>
-          <form
-            onSubmit={form.handleSubmit(onSubmit)}
-            className="flex flex-col gap-5"
+    <div
+      className="flex min-h-screen w-full items-center justify-center  bg-cover bg-center overflow-hidden pt-24 pb-10"
+      style={{
+        backgroundImage: "url('/site/auth/auth-banner.webp')",
+      }}
+    >
+      <div
+        className="bg-white shadow-lg rounded-2xl flex justify-center items-center"
+        style={{
+          width: "686px",
+          height: "426px",
+          maxWidth: "95%",
+          padding: "24px",
+        }}
+      >
+        <div className="flex flex-col w-full" style={{ maxWidth: "500px" }}>
+          <h1
+            className="font-semibold text-gray-900 "
+            style={{ fontSize: "32px" }}
           >
-            <h2 className="font-semibold text-center mb-2"></h2>
-            <TextField
-              name="email"
-              placeholder="Enter Email"
-              label="Email"
-              inputType="email"
-              formControl={form.control}
-            />
-            <div className="w-full flex justify-center items-center">
-              <Button type="submit" className="w-24">
+            Forgot Password
+          </h1>
+          <p className="text-gray-600 mt-3" style={{ fontSize: "18px" }}>
+            Enter your email to receive password reset instructions.
+          </p>
+
+          <Form {...form}>
+            <form
+              onSubmit={form.handleSubmit(onSubmit)}
+              className="mt-8 flex flex-col space-y-5"
+            >
+              <TextField
+                name="email"
+                placeholder="Enter Email"
+                label="Email"
+                inputType="email"
+                formControl={form.control}
+                className="rounded-md border border-gray-300 px-3 text-black bg-white"
+              />
+
+              <Button
+                type="submit"
+                className="text-lg font-medium text-white bg-orange-500 rounded-md hover:bg-orange-600"
+                style={{ width: "100%", height: "48px" }}
+              >
                 Proceed
               </Button>
-            </div>
-          </form>
-        </Form>
+            </form>
+          </Form>
+        </div>
       </div>
     </div>
   );

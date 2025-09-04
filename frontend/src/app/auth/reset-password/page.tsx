@@ -51,64 +51,76 @@ export default function ResetPasswordPage() {
   };
 
   return (
-    <div className="flex flex-col md:flex-row justify-center items-center h-screen p-6 mt-20">
-      <div className="mb-8 md:mb-0 md:mr-10">
-        <Image
-          src="/site/signin/banner.png"
-          width={800}
-          height={600}
-          alt="Sign-in Banner"
-          className="rounded-xl"
-        />
-      </div>
-      <div className="w-full max-w-md p-8 bg-white rounded-xl shadow-lg ">
-        <div className="flex flex-col gap-2 justify-center items-center mt-4">
-          <h2 className="text-2xl font-semibold text-center mb-2">
+    <div
+      className="flex min-h-screen w-full items-center justify-center bg-cover bg-center overflow-hidden pt-24 pb-10"
+      style={{
+        backgroundImage: "url('/site/auth/auth-banner.webp')",
+      }}
+    >
+      <div
+        className="bg-white shadow-lg rounded-2xl flex justify-center items-center mt-20 
+        w-[713px] h-[768px] max-w-[95%] sm:max-w-[713px] sm:h-[768px] p-6 sm:p-0"
+      >
+        <div className="w-full max-w-[574px] flex flex-col">
+          <h1 className="text-2xl sm:text-[40px] font-semibold text-gray-900">
             Reset Password
-          </h2>
-        </div>
-        <Form {...form}>
-          <form
-            onSubmit={form.handleSubmit(onSubmit)}
-            className="flex flex-col gap-5"
-          >
-            <h2 className="font-semibold text-center mb-2"></h2>
-            <TextField
-              name="email"
-              placeholder="Enter Email"
-              label="Email"
-              inputType="email"
-              formControl={form.control}
-            />
-            <TextField
-              name="otp"
-              placeholder="Enter OTP"
-              label="OTP"
-              inputType="text"
-              formControl={form.control}
-            />
-            <TextField
-              name="password"
-              placeholder="Enter Password"
-              label="Password"
-              inputType="password"
-              formControl={form.control}
-            />
+          </h1>
+          <p className="text-base sm:text-[20px] text-gray-600 mt-3 sm:mt-4">
+            Enter the OTP sent to your email and set a new password to continue
+            exploring our plant collection.
+          </p>
 
-            <TextField
-              name="confirmPassword"
-              placeholder="Confirm Password"
-              label="Confirm Password"
-              inputType="password"
-              formControl={form.control}
-            />
-            <div className="w-full flex justify-center items-center">
-              <Button type="submit" className="w-24">
+          <Form {...form}>
+            <form
+              onSubmit={form.handleSubmit(onSubmit)}
+              className="mt-8 sm:mt-10 flex flex-col space-y-5 sm:space-y-6"
+            >
+              {/* Email */}
+              <TextField
+                name="email"
+                placeholder="Enter Email"
+                label="Email"
+                inputType="email"
+                formControl={form.control}
+                className="w-full h-[48px] sm:h-[53px]"
+              />
+
+              <TextField
+                name="otp"
+                placeholder="Enter OTP"
+                label="OTP"
+                inputType="text"
+                formControl={form.control}
+                className="w-full h-[48px] sm:h-[53px]"
+              />
+
+              <TextField
+                name="password"
+                placeholder="Enter Password"
+                label="Password"
+                inputType="password"
+                formControl={form.control}
+                className="w-full h-[48px] sm:h-[53px]"
+              />
+
+              <TextField
+                name="confirmPassword"
+                placeholder="Confirm Password"
+                label="Confirm Password"
+                inputType="password"
+                formControl={form.control}
+                className="w-full h-[48px] sm:h-[53px]"
+              />
+
+              <Button
+                type="submit"
+                className="w-full h-[48px] sm:h-[53px] text-base sm:text-lg font-medium text-white bg-orange-500 rounded-md hover:bg-orange-600"
+              >
                 Reset Password
               </Button>
-            </div>
-          </form>
-        </Form>
+            </form>
+          </Form>
+        </div>
       </div>
     </div>
   );

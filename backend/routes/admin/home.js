@@ -1,29 +1,18 @@
-const express = require("express");
+import express from "express";
+import * as homeCtrl from "../../controllers/admin/home.js";
+import { MEDIA } from "../../lib/constants.js";
+import mediaUpload from "../../middleware/multer-upload.js";
 const routes = express.Router();
-const homeCtrl = require("../../controllers/admin/home");
-const { MEDIA } = require("../../lib/constants");
-const { mediaUpload } = require("../../middleware/multer-upload");
 
-routes.post(
-  "/updateHomeBanner",
-  mediaUpload(MEDIA.Home.Banner),
-  homeCtrl.updateHomeBanner
-);
-
+routes.put("/green-choices", homeCtrl.updateGreenChoices);
 routes.get("/", homeCtrl.getHomeData);
-
-routes.post(
-  "/addHomeSlide",
-  mediaUpload(MEDIA.Home.Slider),
-  homeCtrl.addHomeSlide
+routes.put("/cards", mediaUpload(MEDIA.Home.Cards), homeCtrl.updateHomeCard);
+routes.put(
+  "/gallery",
+  mediaUpload(MEDIA.Home.Gallery),
+  homeCtrl.updateHomeGallery
 );
 
-routes.delete("/deleteHomeSlide/:_id", homeCtrl.deleteHomeSlide);
+routes.put("/videos", homeCtrl.updateHomeVideos);
 
-routes.post(
-  "/updateHomeSlider",
-  mediaUpload(MEDIA.Home.Slider),
-  homeCtrl.updateHomeSlider
-);
-
-module.exports = routes;
+export default routes;

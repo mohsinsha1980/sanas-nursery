@@ -56,19 +56,17 @@ export default function SignIn() {
 
   return (
     <div
-      className="flex min-h-screen w-full items-center justify-center bg-cover bg-center overflow-hidden pt-24 pb-10"
-      style={{
-        backgroundImage: "url('/site/auth/auth-banner.webp')",
-      }}
+      className="relative flex min-h-screen w-full items-center justify-center bg-cover bg-center overflow-hidden"
+      style={{ backgroundImage: "url('/site/auth/auth-banner.webp')" }}
     >
-      {/* Outer fixed container */}
-      <div className="bg-white shadow-lg rounded-2xl flex justify-center items-center w-[713px] h-[768px] mt-20">
-        {/* Inner form container */}
-        <div className="w-[574px] h-[608px] flex flex-col">
-          <h1 className="text-[40px] font-semibold text-gray-900">
+      <div className="absolute inset-0 bg-black/20"></div>
+
+      <div className="relative bg-white shadow-lg rounded-2xl flex justify-center items-center mt-30 w-full max-w-[713px] mx-4 sm:mx-0 sm:p-6 h-auto sm:h-[768px]">
+        <div className="w-full max-w-[574px] flex flex-col px-4 sm:px-0 py-6 sm:py-0">
+          <h1 className="text-2xl sm:text-4xl font-semibold text-gray-900">
             Welcome Back To Your Green Space!
           </h1>
-          <p className="text-[20px] text-gray-600 mt-4">
+          <p className="text-base sm:text-lg text-gray-600 mt-4">
             Sign in to explore our plant collections, read product details, and
             learn more about each variety.
           </p>
@@ -76,9 +74,8 @@ export default function SignIn() {
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(onSubmit)}
-              className="mt-10 flex flex-col space-y-6"
+              className="mt-8 flex flex-col space-y-4 sm:space-y-6"
             >
-              {/* Email */}
               <TextField
                 name="email"
                 label="Email"
@@ -88,7 +85,6 @@ export default function SignIn() {
                 className="w-full h-[53px] rounded-md border border-gray-300 px-3 text-black bg-white"
               />
 
-              {/* Password */}
               <div className="w-full">
                 <TextField
                   name="password"
@@ -107,24 +103,21 @@ export default function SignIn() {
                 </div>
               </div>
 
-              {/* Sign In Button */}
               <Button
                 type="submit"
-                className="w-[574px] h-[53px] text-lg font-medium text-white bg-orange-500 rounded-md hover:bg-orange-600"
+                className="w-full h-[53px] text-lg font-medium text-white bg-orange-500 rounded-md hover:bg-orange-600"
               >
                 Sign In
               </Button>
 
-              {/* Divider */}
               <div className="flex items-center gap-4 my-2">
                 <div className="flex-1 h-px bg-gray-300"></div>
                 <span className="text-gray-500 text-sm">Or</span>
                 <div className="flex-1 h-px bg-gray-300"></div>
               </div>
 
-              {/* Signup link */}
               <p className="text-center text-sm text-gray-600">
-                Don’t you have an account?{" "}
+                Don't have an account?{" "}
                 <Link href="/auth/signup" className="text-orange-500">
                   Sign up
                 </Link>
