@@ -50,25 +50,25 @@ export default function MainFooter() {
             >
               <Link
                 href=""
-                className="p text-[#FFFFFF] lg:text-[20px] md:text-[16px] lg:font-semibold"
+                className="p footer-hover text-[#FFFFFF] lg:text-[20px] md:text-[16px] lg:font-semibold"
               >
                 Information
               </Link>
               <Link
                 href=""
-                className="p text-[#FFFFFF] lg:text-[20px] md:text-[16px] lg:font-semibold"
+                className="p footer-hover text-[#FFFFFF] lg:text-[20px] md:text-[16px] lg:font-semibold"
               >
                 About
               </Link>
               <Link
                 href=""
-                className="p text-[#FFFFFF] lg:text-[20px] md:text-[16px] lg:font-semibold"
+                className="p footer-hover text-[#FFFFFF] lg:text-[20px] md:text-[16px] lg:font-semibold"
               >
                 Product
               </Link>
               <Link
                 href=""
-                className="p text-[#FFFFFF] lg:text-[20px] md:text-[16px] lg:font-semibold"
+                className="p footer-hover text-[#FFFFFF] lg:text-[20px] md:text-[16px] lg:font-semibold"
               >
                 Blog
               </Link>
@@ -79,19 +79,19 @@ export default function MainFooter() {
             >
               <Link
                 href=""
-                className="p text-[#FFFFFF] lg:text-[20px] md:text-[16px] lg:font-semibold"
+                className="p footer-hover text-[#FFFFFF] lg:text-[20px] md:text-[16px] lg:font-semibold"
               >
                 Company
               </Link>
               <Link
                 href=""
-                className="p text-[#FFFFFF] lg:text-[20px] md:text-[16px] lg:font-semibold"
+                className="p footer-hover text-[#FFFFFF] lg:text-[20px] md:text-[16px] lg:font-semibold"
               >
                 Privacy Policy
               </Link>
               <Link
                 href=""
-                className="p text-[#FFFFFF] lg:text-[20px] md:text-[16px] lg:font-semibold"
+                className="p footer-hover text-[#FFFFFF] lg:text-[20px] md:text-[16px] lg:font-semibold"
               >
                 Terms and Conditions
               </Link>
