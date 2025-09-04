@@ -16,6 +16,7 @@ import { useReCaptcha } from "next-recaptcha-v3";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import TextField from "../form-fields/text-field";
+import Link from "next/link";
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
@@ -53,88 +54,101 @@ const SignUpForm = () => {
   // const google = () => {
   //   window.open(config.API_GOOGLE_AUTH, "_self");
   // };
-
   return (
-    <div className="z-10 mt-50 text-black">
-      <p className="font-medium  text-center my-5 text-2xl ">
-        Sign-up now and Start Winning!
-      </p>
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="mt-10">
-          <div className="grid gap-6 w-[300px]  mx-auto">
+    <div
+      className="relative flex min-h-screen w-full items-center justify-center bg-cover bg-center overflow-hidden px-4"
+      style={{ backgroundImage: "url('/site/auth/auth-banner.webp')" }}
+    >
+      {/* Background overlay */}
+      <div className="absolute inset-0 bg-black/20"></div>
+
+      {/* Centered Card */}
+      <div className="relative bg-white/80 backdrop-blur-md shadow-lg rounded-2xl ring-1 ring-black/10 flex flex-col justify-start mt-30 items-start w-full max-w-[686px] py-8 px-6 sm:px-10">
+        {/* Heading */}
+        <h1 className="text-3xl sm:text-4xl font-semibold text-gray-900 mb-2">
+          Join Us For An Exclusive Green Experience!
+        </h1>
+        <p className="text-base sm:text-lg text-gray-600 mb-6">
+          Sign up to access beautiful plant varieties and stay updated with new
+          arrivals.
+        </p>
+
+        <Form {...form}>
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="flex flex-col gap-4 w-full"
+          >
             <TextField
               name="name"
-              placeholder="Enter Name"
               label="Full Name"
+              placeholder="Enter Full Name"
               inputType="text"
               formControl={form.control}
-              className="bg-white/10 backdrop-blur-md  placeholder:text-normal rounded-md h-full"
+              className="w-full h-[54px] rounded-md border border-gray-300 px-3 text-gray-900 bg-white/40 placeholder:text-gray-500"
             />
+
             <TextField
               name="email"
-              placeholder="Enter Email"
               label="Email"
+              placeholder="Enter Email"
               inputType="email"
               formControl={form.control}
-              className="bg-white/10 backdrop-blur-md  placeholder:text-normal rounded-md h-full"
+              className="w-full h-[54px] rounded-md border border-gray-300 px-3 text-gray-900 bg-white/40 placeholder:text-gray-500"
             />
 
             <TextField
               name="phone"
-              placeholder="Enter Contact Number"
               label="Contact Number"
+              placeholder="Enter Contact Number"
               inputType="text"
               formControl={form.control}
-              className="bg-white/10 backdrop-blur-md  placeholder:text-normal rounded-md h-full"
+              className="w-full h-[54px] rounded-md border border-gray-300 px-3 text-gray-900 bg-white/40 placeholder:text-gray-500"
             />
+
             <TextField
               name="password"
-              placeholder="Password"
               label="Password"
+              placeholder="At least 8 characters"
               inputType="password"
               formControl={form.control}
-              className="bg-white/10 backdrop-blur-md  placeholder:text-normal rounded-md h-full"
+              className="w-full h-[54px] rounded-md border border-gray-300 px-3 text-gray-900 bg-white/40 placeholder:text-gray-500"
             />
+
             <TextField
               name="confirmPassword"
-              placeholder="Confirm Password"
               label="Confirm Password"
+              placeholder="Re-enter Password"
               inputType="password"
               formControl={form.control}
-              className="bg-white/10 backdrop-blur-md  placeholder:text-normal rounded-md h-full"
+              className="w-full h-[54px] rounded-md border border-gray-300 px-3 text-gray-900 bg-white/40 placeholder:text-gray-500"
             />
-          </div>
 
-          {/* <div className="flex flex-col gap-2 justify-center items-center my-4 ">
-            <div className="w-full flex items-center justify-center my-6">
-              <div className="flex items-center w-full max-w-md">
-                <div className="flex-grow border-t border-white/50"></div>
-                <span className="mx-4  text-sm">Or continue with</span>
-                <div className="flex-grow border-t border-white/50"></div>
-              </div>
-            </div>
-            <div className="flex gap-4">
-              <Button
-                type="button"
-                className="bg-white hover:bg-white p-[12px]"
-                onClick={google}
-              >
-                <IconGoogle />
-              </Button>
-            </div>
-          </div> */}
-
-          <div className="w-full flex justify-center items-center ">
+            {/* Signup Button */}
             <Button
-              variant="secondary"
               type="submit"
-              className="w-40 text-lg cursor-pointer"
+              className="w-full h-[54px] text-[16px] font-medium text-white bg-orange-500 rounded-md hover:bg-orange-600 mt-2"
             >
-              Signup
+              Sign Up
             </Button>
-          </div>
-        </form>
-      </Form>
+          </form>
+        </Form>
+
+        {/* Divider */}
+        <div className="w-full mt-6 flex items-center gap-3">
+          <div className="h-px bg-gray-300 flex-1" />
+          <span className="text-sm text-gray-500">Or</span>
+          <div className="h-px bg-gray-300 flex-1" />
+        </div>
+
+        <div className="w-full flex justify-center mt-4">
+          <p className="text-sm text-gray-600 text-center">
+            Already a member?{" "}
+            <Link href="/auth/signin" className="text-orange-500">
+              Sign In
+            </Link>
+          </p>
+        </div>
+      </div>
     </div>
   );
 };
