@@ -1,4 +1,4 @@
-import { PRODUCTS_PER_PAGE } from "@/lib/constants";
+import { PLANTS_PER_PAGE } from "@/lib/constants";
 
 export default function ProductListLoading() {
   return (
@@ -41,7 +41,7 @@ export default function ProductListLoading() {
           </div>
           <div className="col-span-4 sm:col-span-2">
             <div className="grid grid-cols-4 sm:grid-cols-2">
-              {[...Array(PRODUCTS_PER_PAGE)].map((_, index) => (
+              {[...Array(PLANTS_PER_PAGE)].map((_, index) => (
                 <div
                   key={index}
                   className="space-y-4 p-4 rounded-lg shadow-sm m-4 mt-0 sm:p-0 sm:m-2"

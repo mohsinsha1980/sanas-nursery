@@ -133,69 +133,20 @@ const phoneRegex = /^[6-9]\d{9}$/;
 //   }
 // };
 
-const buildProductFilter = async (query) => {
-  const { colors, materials, sizes, styles, discount, price_range } = query;
+export const buildPlantFilter = async (query) => {
+  const { sizes, tags, care_levels } = query;
   const filter = {};
 
-  if (colors) {
-    const colorArray = colors
-      .split(",")
-      .map((color) => color.trim().toLowerCase());
-
-    if (colorArray.includes("other")) {
-      const masterData = await MasterData.findOne().lean().exec();
-      const masterColors = masterData?.colors?.map((c) => c.label) || [];
-      filter["variants"] = filter["variants"] = filter["variants"] || {
-        $elemMatch: {},
-      };
-      filter["variants"].$elemMatch["color.label"] = { $nin: masterColors };
-    } else {
-      const colorArray = colors
-        .split(",")
-        .map((color) => new RegExp(`^${color.trim()}$`, "i"));
-      filter["variants"] = filter["variants"] || { $elemMatch: {} };
-      filter["variants"].$elemMatch["color.label"] = { $in: colorArray };
-    }
-
-    // const colorArray = colors
-    //   .split(",")
-    //   .map((color) => new RegExp(`^${color.trim()}$`, "i"));
-    // filter["variants"] = filter["variants"] || { $elemMatch: {} };
-    // filter["variants"].$elemMatch["color.label"] = { $in: colorArray };
-  }
-
-  if (materials) {
-    filter["variants"] = filter["variants"] || { $elemMatch: {} };
-    filter["variants"].$elemMatch.material = { $in: materials.split(",") };
-  }
-
   if (sizes) {
-    filter["variants"] = filter["variants"] || { $elemMatch: {} };
-    filter["variants"].$elemMatch.size = { $in: sizes.split(",") };
+    filter.size = { $in: sizes.split(",") };
   }
 
-  if (styles) {
-    filter["variants"] = filter["variants"] || { $elemMatch: {} };
-    filter["variants"].$elemMatch.style = { $in: styles.split(",") };
+  if (tags) {
+    filter["tags.value"] = { $in: tags.split(",") };
   }
 
-  if (discount) {
-    const [minDiscount, maxDiscount] = discount.split("-").map(Number);
-    filter["variants"] = filter["variants"] || { $elemMatch: {} };
-    filter["variants"].$elemMatch.discount = {
-      $gte: minDiscount,
-      ...(maxDiscount ? { $lte: maxDiscount } : {}),
-    };
-  }
-
-  // price_range = "20,50"
-  if (price_range) {
-    const [minPrice, maxPrice] = price_range.split(",").map(Number);
-    filter["variants"] = filter["variants"] || { $elemMatch: {} };
-    filter["variants"].$elemMatch.sellingPrice = {
-      $gte: minPrice,
-      ...(maxPrice ? { $lte: maxPrice } : {}),
-    };
+  if (care_levels) {
+    filter.careLevel = { $in: care_levels.split(",") };
   }
 
   return filter;

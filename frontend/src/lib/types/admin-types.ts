@@ -163,14 +163,10 @@ export interface UpdateHomeCardTypes extends HomeCardType {
 //   value: string;
 // }
 
-// type MasterDataOptionFieldType = { label: string; value: string };
-// export type MasterDataOptionsType = {
-//   colors: MasterDataOptionFieldType[];
-//   materials: MasterDataOptionFieldType[];
-//   styles: MasterDataOptionFieldType[];
-//   sizes: MasterDataOptionFieldType[];
-//   highestMrp?: number;
-// };
+type MasterDataOptionFieldType = { label: string; value: string };
+export type MasterDataOptionsType = {
+  tags: MasterDataOptionFieldType[];
+};
 
 // export interface UpdateHomeBannerTypes extends HomeBannerType {
 //   section: string;
