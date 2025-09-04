@@ -26,19 +26,16 @@ export default function MainHeader() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
   return (
-
     <header className="md:relative flex justify-center items-center w-full">
- <div
-  className={`bg-nav fixed top-0 z-[50] transition-transform flex justify-center w-full  ${
-      isScrolled
-        ? "bg-[rgba(13,13,13,0.40)] md:absolute md:translate-y-0 md:top-0"
-        : "md:max-w-[var(--container-8xl)] md:px-[var(--spacing-lg)] mx-auto md:absolute md:translate-y-5 md:top-5"
-    }
+      <div
+        className={`bg-nav fixed top-0 z-[50] transition-transform flex justify-center w-full  ${
+          isScrolled
+            ? "bg-[rgba(13,13,13,0.40)] md:absolute md:translate-y-0 md:top-0"
+            : "md:max-w-[var(--container-8xl)] md:px-[var(--spacing-lg)] mx-auto md:absolute md:translate-y-5 md:top-5"
+        }
   `}
->
-
+      >
         <div className="main_header w-[95%] ">
-          
           <div>
             <Logo size={60} />
           </div>

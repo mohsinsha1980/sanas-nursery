@@ -46,37 +46,36 @@ const BestSellingProduct: React.FC = () => {
             className="absolute top-[37%] lg:left-5 md:left-0 h-12 w-12 cursor-pointer z-20 text-[#00611F]"
           />
 
-          {[getIndex(activeIndex - 1), activeIndex, getIndex(activeIndex + 1)].map(
-            (index, pos) => {
-              let style = "";
-              if (pos === 0)
-                style = "left-[25%] -translate-x-1/2 top-0 z-10"; // left
-              if (pos === 1)
-                style = "left-1/2 -translate-x-1/2 top-10 z-20"; // center
-              if (pos === 2)
-                style = "left-[75%] -translate-x-1/2 top-0 z-10"; // right
+          {[
+            getIndex(activeIndex - 1),
+            activeIndex,
+            getIndex(activeIndex + 1),
+          ].map((index, pos) => {
+            let style = "";
+            if (pos === 0) style = "left-[25%] -translate-x-1/2 top-0 z-10"; // left
+            if (pos === 1) style = "left-1/2 -translate-x-1/2 top-10 z-20"; // center
+            if (pos === 2) style = "left-[75%] -translate-x-1/2 top-0 z-10"; // right
 
-              return (
-                <motion.div
-                  key={items[index].src + index}
-                  layout
-                  transition={{ duration: 1, ease: "easeInOut" }}
-                  className={`absolute h-[500px] w-[330px] flex flex-col items-center ${style}`}
-                >
-                  <Image
-                    src={items[index].src}
-                    alt={items[index].title}
-                    width={330}
-                    height={500}
-                    className="h-full w-full md:h-[80%] md:w-[250px] lg:h-full lg:w-full  object-cover rounded-lg shadow-lg"
-                  />
-                  <p className="text-[#505050] text-[20px] font-semibold mt-2">
-                    {items[index].title}
-                  </p>
-                </motion.div>
-              );
-            }
-          )}
+            return (
+              <motion.div
+                key={items[index].src + index}
+                layout
+                transition={{ duration: 1, ease: "easeInOut" }}
+                className={`absolute h-[500px] w-[330px] flex flex-col items-center ${style}`}
+              >
+                <Image
+                  src={items[index].src}
+                  alt={items[index].title}
+                  width={330}
+                  height={500}
+                  className="h-full w-full md:h-[80%] md:w-[250px] lg:h-full lg:w-full  object-cover rounded-lg shadow-lg"
+                />
+                <p className="text-[#505050] text-[20px] font-semibold mt-2">
+                  {items[index].title}
+                </p>
+              </motion.div>
+            );
+          })}
 
           <CircleArrowRight
             onClick={handleRight}

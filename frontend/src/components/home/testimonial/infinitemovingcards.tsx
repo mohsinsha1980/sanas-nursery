@@ -33,7 +33,11 @@ const testimonials = [
 export default function InfiniteMovingCardsDemo() {
   return (
     <div className="w-full relative overflow-hidden">
-      <InfiniteMovingCards items={testimonials} direction="right" speed="slow" />
+      <InfiniteMovingCards
+        items={testimonials}
+        direction="right"
+        speed="slow"
+      />
     </div>
   );
 }

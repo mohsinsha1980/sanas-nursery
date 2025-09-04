@@ -8,7 +8,7 @@ const plants = {
   "fruit-trees": Array.from({ length: 32 }, (_, i) => ({
     id: `fruit${i + 1}`,
     name: `Fruit Plant ${i + 1}`,
-    image: `/plant${(i % 3) + 1}.png`, 
+    image: `/plant${(i % 3) + 1}.png`,
   })),
   "flower-trees": Array.from({ length: 32 }, (_, i) => ({
     id: `flower${i + 1}`,

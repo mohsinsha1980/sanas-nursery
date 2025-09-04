@@ -54,10 +54,7 @@ const CollectionSection = () => {
             <p className="text-[16px] sm:text-[18px] md:text-[20px] leading-relaxed mb-4 sm:mb-6">
               Fresh, lush plants perfect for the rainy season.
             </p>
-            <Button
-              variant="orange"
-              size="lg"
-            >
+            <Button variant="orange" size="lg">
               View Collection
             </Button>
           </div>
