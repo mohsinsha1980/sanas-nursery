@@ -27,30 +27,30 @@ export default function Gallery() {
   };
 
   return (
-    <section className="w-full flex justify-center bg-white py-10">
-      <div className="w-full max-w-[1920px] flex flex-col items-center justify-center px-4 md:px-8">
+    <section className="w-full flex lg:pt-26 lg:pb-30 md:pt-20 md:pb-20 pt-10 pb-10 justify-center bg-white ">
+      <div className="w-full max-w-[1920px] flex flex-col items-center justify-center px-4 md:px-8 ">
         {/* Heading */}
-        <div className="text-center mb-12">
-          <h2 className="text-[28px] md:text-[36px] lg:text-[42px] font-bold">
+        <div className="text-center lg:mb-12 md:mb-10 mb-5 ">
+          <h2 className="lg:text-[42px] md:text-[36px] text-[28px] font-semibold text-center">
             <span className="text-[rgba(0,97,31,1)]">Green</span> Moments
             Gallery
           </h2>
-          <p className="text-gray-600 mt-4 text-[16px] md:text-[18px] lg:text-[20px]">
+          <p className="text-[#505050] lg:text-[20px] md:text-[22px] text-[16px] font-semibold lg:text-start text-center">
             A glimpse of our plants thriving in homes, gardens, and happy
             spaces.
           </p>
         </div>
 
         {/* Grid */}
-        <div className="w-full max-w-[1486px] flex items-center justify-center">
-          <div className="grid grid-cols-1 lg:grid-cols-[529px_828px] gap-4 max-w-[1374.53px] w-full">
+        <div className="w-full max-w-[1200px] flex items-center justify-center    ">
+          <div className="grid grid-cols-1 lg:grid-cols-[529px_828px] gap-4 max-w-[1200px] w-full    ">
             {/* Left Big Image */}
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="rounded-xl overflow-hidden shadow-md cursor-pointer"
+              className="rounded-xl overflow-hidden shadow-md cursor-pointer    "
               onClick={() => setSelectedIndex(0)}
             >
               <Image
@@ -58,11 +58,11 @@ export default function Gallery() {
                 alt="Gallery Big"
                 width={529}
                 height={793}
-                className="w-full lg:h-[793px] h-auto object-cover transition-transform duration-500 hover:scale-105"
+                className="w-full lg:h-[793px] h-auto object-cover transition-transform duration-500 hover:scale-105    "
               />
             </motion.div>
 
-            <div className="flex flex-col gap-4 lg:h-[793px]">
+            <div className="flex flex-col gap-4 lg:w-[78%] w-full ">
               {images.slice(1).map((img, i) => (
                 <motion.div
                   key={i + 1}
@@ -70,15 +70,15 @@ export default function Gallery() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: (i + 1) * 0.2 }}
                   viewport={{ once: true }}
-                  className="rounded-xl overflow-hidden shadow-md cursor-pointer lg:h-[389px] h-auto"
+                  className="rounded-xl overflow-hidden shadow-md cursor-pointer lg:h-[389px] h-auto    "
                   onClick={() => setSelectedIndex(i + 1)}
                 >
                   <Image
                     src={img}
                     alt={`Gallery ${i + 2}`}
-                    width={828}
+                    width={500}
                     height={389}
-                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105    "
                   />
                 </motion.div>
               ))}
@@ -127,7 +127,7 @@ export default function Gallery() {
               key={selectedIndex}
               src={images[selectedIndex]}
               alt="Full View"
-              className="max-w-full max-h-[90vh] rounded-lg shadow-lg"
+              className="max-w-full max-h-[90vh] rounded-lg shadow-lg    "
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
             />

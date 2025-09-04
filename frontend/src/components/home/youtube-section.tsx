@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import { Button } from "@/components/ui/button";
 
 type Video = {
   id: string;
@@ -26,7 +27,6 @@ const videos: Video[] = [
 const YoutubeSection: React.FC = () => {
   const [openVideo, setOpenVideo] = useState<string | null>(null);
 
-  // Close on ESC
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") setOpenVideo(null);
@@ -36,20 +36,20 @@ const YoutubeSection: React.FC = () => {
   }, []);
 
   return (
-    <div className="w-full  py-12 md:py-16 flex justify-center">
-      <div className="w-full max-w-[1370px] flex flex-col items-center px-4">
+    <div className="w-full h-full lg:pt-30 lg:pb-30 md:pt-20 md:pb-20 pt-10 pb-10 flex justify-center">
+      <div className="w-full max-w-[1370px] flex flex-col items-center px-4  ">
         {/* Heading */}
-        <div className="text-center mb-8 md:mb-10">
-          <h2 className="text-[28px] sm:text-[36px] md:text-[42px] font-semibold leading-snug">
+        <div className="text-center mb-8 md:mb-10  ">
+          <h2 className="lg:text-[42px] md:text-[36px] text-[28px] font-semibold text-center">
             See the <span className="text-green-700">Green</span> Experience
           </h2>
-          <p className="text-base sm:text-lg md:text-[20px] mt-2 text-gray-700">
+          <p className="text-[#505050] lg:text-[20px] md:text-[22px] text-[16px] font-semibold lg:px-0 px-2 lg:text-start text-center">
             Watch how our plants are spreading smiles and freshness.
           </p>
         </div>
 
         {/* Thumbnails (open modal on click) */}
-        <div className="flex flex-col md:flex-row gap-6 justify-center w-full">
+        <div className="flex flex-col md:flex-row gap-6 justify-center w-full  ">
           {videos.map((v) => (
             <button
               key={v.id}
@@ -91,11 +91,10 @@ const YoutubeSection: React.FC = () => {
           href="https://www.youtube.com/@sanasNursery"
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-8 md:mt-10 w-[160px] sm:w-[180px] md:w-[191px] h-[50px] sm:h-[56px] md:h-[62px] flex items-center justify-center 
-                     text-white bg-[rgba(243,117,33,1)] border border-[rgba(243,117,33,1)] 
-                     rounded-[10px] text-base sm:text-lg font-medium hover:bg-orange-600 transition"
         >
-          View on YouTube
+          <Button variant="orange" size="lg" className="lg:mt-10 md:mt-10 mt-5">
+            View on YouTube
+          </Button>
         </a>
       </div>
 

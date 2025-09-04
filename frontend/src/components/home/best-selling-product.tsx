@@ -30,8 +30,8 @@ const BestSellingProduct: React.FC = () => {
 
   return (
     <div className="h-full w-full lg:pt-30 lg:pb-30 md:pt-20 md:pb-20 pt-10 pb-10 flex flex-row justify-center bg-[#E4FFF0]">
-      <div className="inner-div-best-selling h-full lg:w-[60%] md:w-[90%] w-[95%]">
-        <div className="h-fit w-full flex flex-col items-center pt-5 lg:pb-15 pb-5 space-y-1">
+      <div className="inner-div-best-selling h-fit lg:max-w-[1100px]  md:w-[90%] w-[95%] ">
+        <div className="h-fit w-full flex flex-col items-center lg:pb-15 pb-5 space-y-1 ">
           <h1 className="text-[#00611F] lg:text-[42px] md:text-[36px] text-[28px] font-semibold text-center">
             Best Selling <span className="text-black">Products</span>
           </h1>
@@ -40,47 +40,46 @@ const BestSellingProduct: React.FC = () => {
           </p>
         </div>
 
-        <div className="hidden md:flex relative h-[622px] w-full items-center justify-center overflow-hidden">
+        <div className="hidden md:flex relative lg:h-[590px] h-[470px] w-full items-center justify-center overflow-hidden  ">
           <CircleArrowLeft
             onClick={handleLeft}
-            className="absolute top-[37%] lg:left-5 md:left-10 h-12 w-12 cursor-pointer z-20 text-[#00611F]"
+            className="absolute top-[37%] lg:left-5 md:left-0 h-12 w-12 cursor-pointer z-20 text-[#00611F]"
           />
 
-          {[getIndex(activeIndex - 1), activeIndex, getIndex(activeIndex + 1)].map(
-            (index, pos) => {
-              let style = "";
-              if (pos === 0)
-                style = "left-[25%] -translate-x-1/2 top-0 z-10"; // left
-              if (pos === 1)
-                style = "left-1/2 -translate-x-1/2 top-10 z-20"; // center
-              if (pos === 2)
-                style = "left-[75%] -translate-x-1/2 top-0 z-10"; // right
+          {[
+            getIndex(activeIndex - 1),
+            activeIndex,
+            getIndex(activeIndex + 1),
+          ].map((index, pos) => {
+            let style = "";
+            if (pos === 0) style = "left-[25%] -translate-x-1/2 top-0 z-10"; // left
+            if (pos === 1) style = "left-1/2 -translate-x-1/2 top-10 z-20"; // center
+            if (pos === 2) style = "left-[75%] -translate-x-1/2 top-0 z-10"; // right
 
-              return (
-                <motion.div
-                  key={items[index].src + index}
-                  layout
-                  transition={{ duration: 1, ease: "easeInOut" }}
-                  className={`absolute h-[500px] w-[330px] flex flex-col items-center ${style}`}
-                >
-                  <Image
-                    src={items[index].src}
-                    alt={items[index].title}
-                    width={330}
-                    height={500}
-                    className="h-full w-full object-cover rounded-lg shadow-lg"
-                  />
-                  <p className="text-[#505050] text-[20px] font-semibold mt-2">
-                    {items[index].title}
-                  </p>
-                </motion.div>
-              );
-            }
-          )}
+            return (
+              <motion.div
+                key={items[index].src + index}
+                layout
+                transition={{ duration: 1, ease: "easeInOut" }}
+                className={`absolute h-[500px] w-[330px] flex flex-col items-center ${style}`}
+              >
+                <Image
+                  src={items[index].src}
+                  alt={items[index].title}
+                  width={330}
+                  height={500}
+                  className="h-full w-full md:h-[80%] md:w-[250px] lg:h-full lg:w-full  object-cover rounded-lg shadow-lg"
+                />
+                <p className="text-[#505050] text-[20px] font-semibold mt-2">
+                  {items[index].title}
+                </p>
+              </motion.div>
+            );
+          })}
 
           <CircleArrowRight
             onClick={handleRight}
-            className="absolute top-[37%] lg:right-5 md:right-10 h-12 w-12 cursor-pointer z-20 text-[#00611F]"
+            className="absolute top-[37%] lg:right-5 md:right-0 h-12 w-12 cursor-pointer z-20 text-[#00611F]"
           />
         </div>
 
