@@ -18,26 +18,11 @@ import {
 import { Metadata } from "next";
 import { Suspense } from "react";
 
-<<<<<<< HEAD
-const plants = {
-  "fruit-trees": Array.from({ length: 32 }, (_, i) => ({
-    id: `fruit${i + 1}`,
-    name: `Fruit Plant ${i + 1}`,
-    image: `/plant${(i % 3) + 1}.png`,
-  })),
-  "flower-trees": Array.from({ length: 32 }, (_, i) => ({
-    id: `flower${i + 1}`,
-    name: `Flower Plant ${i + 1}`,
-    image: `/images/flower${(i % 5) + 1}.png`,
-  })),
-};
-=======
 export async function generateMetadata({
   params,
 }: CategoryPageParamsProps): Promise<Metadata> {
   const paramsData = await params;
   const category = paramsData.category;
->>>>>>> d51c2f7cd147a0c0dcd020f018f9b337288a3d50
 
   const categoryKey = Object.keys(CATEGORIES).find(
     (key) => CATEGORIES[key as keyof typeof CATEGORIES].value === category
@@ -113,57 +98,6 @@ export default async function CollectionPage({
               key="filter-and-list"
               className="h-full w-full flex justify-between "
             >
-<<<<<<< HEAD
-              <div className="grid grid-cols-4 gap-6">
-                {currentItems.length > 0 ? (
-                  currentItems.map((plant) => (
-                    <Link
-                      key={plant.id}
-                      href={`/categories/${category}/${plant.id}`}
-                    >
-                      <div className="w-[250px] h-[417px] rounded-lg cursor-pointer transition-transform duration-300 hover:scale-105 overflow-hidden group">
-                        {/* Image Wrapper */}
-                        <div className="relative w-[90%] h-[90%] overflow-hidden rounded-lg">
-                          {/* Plant Image */}
-                          <Image
-                            src={plant.image}
-                            alt={plant.name}
-                            height={50}
-                            width={50}
-                            className="w-full h-full object-cover rounded-lg transition-transform duration-300 group-hover:scale-110"
-                          />
-
-                          {/* Overlay (appears on hover) */}
-                          <div className="absolute inset-0 bg-[#DA5700] opacity-0 group-hover:opacity-20 transition-opacity duration-300 rounded-lg"></div>
-                        </div>
-
-                        {/* Plant Name */}
-                        <p className="text-[#505050] lg:text-[18px] md:text-[36px] text-[28px] font-semibold mt-2 text-center transition-colors duration-300 group-hover:text-[#DA5700]">
-                          {plant.name}
-                        </p>
-                      </div>
-                    </Link>
-                  ))
-                ) : (
-                  <p>No plants found in this category.</p>
-                )}
-              </div>
-              <div key="pagination">
-                <div className="flex justify-center mt-6 space-x-10   ">
-                  {Array.from({ length: totalPages }, (_, i) => (
-                    <button
-                      key={i}
-                      onClick={() => setCurrentPage(i + 1)}
-                      className={`w-[50px] h-[50px] rounded-xl ${
-                        currentPage === i + 1
-                          ? "bg-[#F37521] text-white text-xl"
-                          : "bg-[#FFD7BC] text-black text-xl"
-                      }`}
-                    >
-                      {i + 1}
-                    </button>
-                  ))}
-=======
               <CategoryFilter />
               <div
                 key="list-div"
@@ -177,7 +111,6 @@ export default async function CollectionPage({
                   ) : (
                     <p>No plants found in this category.</p>
                   )}
->>>>>>> d51c2f7cd147a0c0dcd020f018f9b337288a3d50
                 </div>
                 {updatedPlants.length &&
                 total &&

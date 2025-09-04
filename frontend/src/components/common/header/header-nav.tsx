@@ -7,7 +7,6 @@ import { motion, AnimatePresence } from "framer-motion";
 export default function HeaderNav() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
     <nav>
