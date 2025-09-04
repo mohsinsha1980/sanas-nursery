@@ -1,12 +1,8 @@
 "use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
-import Image from "next/image";
-import { Upload, Save } from "lucide-react";
-import { HomeGalleryType } from "@/lib/types/common-types";
-import { getPicURL } from "@/lib/helper";
 import { defultHomeData } from "@/lib/constants";
+import { getPicURL } from "@/lib/helper";
+import { HomeGalleryType } from "@/lib/types/common-types";
 import ImageCard from "./gallery-image-card";
 
 export default function GallerySection({

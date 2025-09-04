@@ -44,6 +44,7 @@ export default function VideoSection({ videos }: VideoSectionProps) {
       setOpenEditForm(false);
       setVideoUrls(values.videos);
     } catch (err) {
+      console.log(err);
       showErrorToast("Error updating videos");
     } finally {
       dispatch(hideLoader());

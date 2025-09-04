@@ -560,3 +560,80 @@ footer {
 .tiptap.ProseMirror ol {
   margin-bottom: 10px;
 }
+<<<<<<< HEAD
+=======
+
+
+.bl__slider,
+.bl__product__slider {
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.bl__slider__container {
+  display: flex;
+}
+
+.bl__slider__slide {
+  flex: 0 0 100%;
+  min-width: 0;
+}
+
+.bl__slider .bl__slider__dots {
+  position: absolute;
+  left: 50%;
+  bottom: -20px;
+  transform: translateX(-50%);
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  gap: 12px;
+  opacity: 0;
+  transition: all 0.2s ease-in-out;
+}
+
+.bl__slider:hover .bl__slider__dots {
+  opacity: 1;
+  bottom: 10px;
+}
+
+.bl__slider .bl__slider__dots>button {
+  position: relative;
+  width: 8px;
+  height: 8px;
+}
+
+.bl__slider .bl__slider__dots>button::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 8px;
+  height: 8px;
+  background-color: #fff;
+  border-radius: 50%;
+}
+
+.bl__slider .bl__slider__dots>button.selected::after {
+  background-color: #d6001c;
+}
+
+.bl__product__slider .bl__thumbnail__container {
+  max-height: 625px;
+  max-width: 100px;
+}
+
+.bl__product__slider .slider__dot img {
+  opacity: 0.5;
+  filter: grayscale(100%);
+  transition: all 0.3s ease-in-out;
+}
+
+.bl__product__slider .slider__dot.selected img {
+  
+  opacity: 1;
+  filter: none;
+}
+>>>>>>> d51c2f7cd147a0c0dcd020f018f9b337288a3d50
