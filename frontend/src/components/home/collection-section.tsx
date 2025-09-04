@@ -4,13 +4,10 @@ import { Button } from "@/components/ui/button";
 
 const CollectionSection = () => {
   return (
-    <div
-      className="w-full h-full flex items-center justify-center"
-      style={{ backgroundColor: "rgba(228, 255, 240, 1)", height: "672px" }}
-    >
-      <div className="max-w-[1300px] w-full h-full flex md:flex-col lg:flex-row gap-20">
+    <div className="w-full h-full flex items-center justify-center lg:pt-30 lg:pb-30 md:pt-20 md:pb-20 pt-10 pb-10 bg-[rgba(228,255,240,1)]">
+      <div className="max-w-[1200px] w-full h-full flex flex-col md:flex-col lg:flex-row justify-between items-center gap-15 md:px-10">
         {/* LEFT CARD */}
-        <div className="relative w-full md:w-1/2 h-[350px] sm:h-[420px] md:h-[472px] rounded-2xl overflow-hidden group">
+        <div className="relative lg:w-full md:w-[80%] md:h-[472px] h-[350px] w-[95%] rounded-2xl overflow-hidden group ">
           <Image
             src="/site/home/collection/collecton-banner1.webp"
             alt="Left collection background"
@@ -37,7 +34,7 @@ const CollectionSection = () => {
         </div>
 
         {/* RIGHT CARD */}
-        <div className="relative w-full md:w-1/2 h-[350px] sm:h-[420px] md:h-[472px] rounded-2xl overflow-hidden group">
+        <div className="relative lg:w-full md:w-[80%] md:h-[472px] h-[350px] w-[95%] rounded-2xl overflow-hidden group">
           <Image
             src="/site/home/collection/collection-banner2.webp"
             alt="Right collection background"
@@ -57,7 +54,10 @@ const CollectionSection = () => {
             <p className="text-[16px] sm:text-[18px] md:text-[20px] leading-relaxed mb-4 sm:mb-6">
               Fresh, lush plants perfect for the rainy season.
             </p>
-            <Button variant="orange" size="lg" className="">
+            <Button
+              variant="orange"
+              size="lg"
+            >
               View Collection
             </Button>
           </div>

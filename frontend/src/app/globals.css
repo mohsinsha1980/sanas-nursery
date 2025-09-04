@@ -705,12 +705,19 @@ footer {
 }
 
 @keyframes scroll {
-  to {
-    transform: translateX(calc(-50% - 0.5rem));
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
   }
 }
 
 .animate-scroll {
-  animation: scroll var(--animation-duration, 30s) linear infinite;
-  animation-direction: var(--animation-direction, forwards);
+  animation: scroll 40s linear infinite;
+  animation-play-state: running; /* important */
 }
+
+
+
+

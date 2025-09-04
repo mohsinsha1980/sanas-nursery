@@ -72,7 +72,7 @@ export const InfiniteMovingCards = ({
       ref={containerRef}
       className={cn(
         "scroller relative z-20 w-full overflow-hidden",
-        `speed-${speed}`, // ✅ global speed control
+        `speed-${speed}`,
         direction === "right" ? "direction-right" : "direction-left",
         className
       )}

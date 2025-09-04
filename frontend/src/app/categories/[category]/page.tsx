@@ -4,12 +4,11 @@ import Link from "next/link";
 import { useState } from "react";
 import Image from "next/image";
 
-// Dummy 100 plants data (you can replace with real images)
 const plants = {
   "fruit-trees": Array.from({ length: 32 }, (_, i) => ({
     id: `fruit${i + 1}`,
     name: `Fruit Plant ${i + 1}`,
-    image: `/plant${(i % 3) + 1}.png`, // reuse 5 sample images
+    image: `/plant${(i % 3) + 1}.png`, 
   })),
   "flower-trees": Array.from({ length: 32 }, (_, i) => ({
     id: `flower${i + 1}`,
@@ -291,6 +290,8 @@ export default function CategoryPage() {
                           <Image
                             src={plant.image}
                             alt={plant.name}
+                            height={50}
+                            width={50}
                             className="w-full h-full object-cover rounded-lg transition-transform duration-300 group-hover:scale-110"
                           />
 
