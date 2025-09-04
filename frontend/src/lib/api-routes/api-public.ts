@@ -6,9 +6,10 @@
 // import { SubscribeEmailApiType } from "./types/public-types";
 
 import { axiosInstance } from "@/config/http";
-import { Controller } from "../types/common-types";
+import { Controller, PlantFilterType } from "../types/common-types";
 import config from "@/config/env-config";
 import { ContactFormData } from "@/components/home/contact/schema";
+import { buildQueryString } from "../helper";
 
 export const refreshToken = (controller?: Controller) => {
   return axiosInstance.get(`${config.API_USER_PATH}/refreshToken`, {
@@ -16,7 +17,10 @@ export const refreshToken = (controller?: Controller) => {
   });
 };
 
-export const addContactUs = (data: ContactFormData, controller?: Controller) => {
+export const addContactUs = (
+  data: ContactFormData,
+  controller?: Controller
+) => {
   const formData = new FormData();
 
   formData.append("firstname", data.firstname);
@@ -30,7 +34,43 @@ export const addContactUs = (data: ContactFormData, controller?: Controller) => 
   });
 };
 
+export const getCategoryPlants = (
+  category: string,
+  searchParams: PlantFilterType | undefined
+) => {
+  const queryString = searchParams ? buildQueryString(searchParams) : "";
+  const url = queryString
+    ? `${config.API_PUBLIC_PATH}/plants/${category}${queryString}`
+    : `${config.API_PUBLIC_PATH}/plants/${category}`;
 
+  return fetch(url, { cache: "no-store" });
+};
+
+export const getMasterData = (controller?: Controller) => {
+  return axiosInstance.get(`${config.API_PUBLIC_PATH}/master-data`, {
+    signal: controller?.signal,
+  });
+};
+
+export const getPlantDetailsBySlug = (
+  plantSlug: string,
+  controller?: Controller
+) => {
+  return fetch(`${config.API_PUBLIC_PATH}/plant-slug/${plantSlug}`, {
+    signal: controller?.signal,
+    cache: "no-store",
+  });
+};
+
+export const getPlantDetailsByID = (
+  plantID: string,
+  controller?: Controller
+) => {
+  return fetch(`${config.API_PUBLIC_PATH}/plant-ID${plantID}`, {
+    signal: controller?.signal,
+    cache: "no-store",
+  });
+};
 
 // export const getUser = (controller: Controller) => {
 //   return axiosInstance
@@ -168,7 +208,6 @@ export const addContactUs = (data: ContactFormData, controller?: Controller) => 
 //     signal: controller?.signal,
 //   });
 // };
-
 
 // export const getHomeClientData = (controller?: Controller) => {
 //   return axiosInstance.get(`${APP_PUBLIC_API_PATH}/client-home`, {

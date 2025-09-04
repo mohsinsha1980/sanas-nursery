@@ -1,4 +1,4 @@
-export const PRODUCTS_PER_PAGE = 20;
+export const PLANTS_PER_PAGE = 20;
 export const PRICE_RANGE_MAX = 15000;
 export const ALLOWED_MAX_FILE_SIZE = 300000;
 export const DEFAULT_PER_PAGE = 10;
@@ -6,6 +6,7 @@ export const MAX_ADDRESS_COUNT = 4;
 export const USER_STORE_DATA_KEY = "vb9n5ysag59vp";
 export const PRODUCT_DETAILS_REVIEW_COUNT = 6;
 export const DISPLAY_LIMIT = 6;
+export const YT_VIDEOS_LENGTH = 2;
 export const LOGO =
   process.env.NEXT_PUBLIC_BASE_PATH + "/site/images/logo-full.svg"; // change here take from config
 
@@ -76,12 +77,54 @@ export const HOME_SECTIONS = {
 };
 
 export const CATEGORIES = {
-  FRUIT_TREES: { label: "Fruit Trees", value: "fruit-trees" },
-  FLOWER_TREES: { label: "Flower Trees", value: "flower-trees" },
-  SHADOW_TREES: { label: "Shadow Trees", value: "shadow-trees" },
-  SHOW_TREES: { label: "Show Trees", value: "show-trees" },
-  MASALA: { label: "Masala", value: "masala" },
-  OTHERS: { label: "Others", value: "others" },
+  FRUIT_TREES: {
+    label: "Fruit Trees",
+    value: "fruit-trees",
+    description: "Buy healthy fruit trees online.",
+    picture: "/plant1.png",
+    seoTitle: "Fruit Trees",
+    seoDescription: "Buy healthy fruit trees online.",
+  },
+  FLOWER_TREES: {
+    label: "Flower Trees",
+    value: "flower-trees",
+    picture: "/plant2.png",
+    description: "Beautiful flowering trees for your garden.",
+    seoTitle: "Fruit Trees",
+    seoDescription: "Buy healthy fruit trees online.",
+  },
+  SHADOW_TREES: {
+    label: "Shadow Trees",
+    value: "shadow-trees",
+    picture: "/plant3.png",
+    description: "Tall shadow trees for shade and greenery.",
+    seoTitle: "Fruit Trees",
+    seoDescription: "Buy healthy fruit trees online.",
+  },
+  SHOW_TREES: {
+    label: "Show Trees",
+    value: "show-trees",
+    picture: "/plant1.png",
+    description: "Decorative trees to enhance your landscape.",
+    seoTitle: "Fruit Trees",
+    seoDescription: "Buy healthy fruit trees online.",
+  },
+  MASALA: {
+    label: "Masala",
+    value: "masala",
+    picture: "/plant2.png",
+    description: "Spice plants and masala herbs for home garden.",
+    seoTitle: "Fruit Trees",
+    seoDescription: "Buy healthy fruit trees online.",
+  },
+  OTHERS: {
+    label: "Others",
+    value: "others",
+    picture: "/plant3.png",
+    description: "Other plant varieties available in our collection.",
+    seoTitle: "Fruit Trees",
+    seoDescription: "Buy healthy fruit trees online.",
+  },
 };
 
 export const CATEGORY_ARR = Object.values(CATEGORIES).map(
@@ -188,5 +231,3 @@ export const defultHomeData = {
     "https://www.youtube.com/watch?v=9wY_-ZMQ-jQ",
   ],
 };
-
-export const YT_VIDEOS_LENGTH = 2;

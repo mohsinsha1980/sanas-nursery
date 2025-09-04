@@ -54,19 +54,17 @@ export type PlantTypes = Omit<AddPlantFields, "pictures" | "status"> & {
 
 export type steperStatusType = "completed" | "incomplete";
 
-// export interface ProductCardType {
-//   id: string | number;
-//   pictures: string[];
-//   title: string;
-//   sellingPrice: number;
-//   mrp?: number;
-//   discount?: number;
-//   l1_category: string;
-//   l2_category: string;
-//   l3_category?: string;
-//   slug: string;
-//   avgRating?: number | 0;
-// }
+export interface CategoryPageParamsProps {
+  params: Promise<{ category: string }>;
+}
+
+export interface PlantsCardType {
+  id: string | number;
+  pictures: string[];
+  title: string;
+  slug: string;
+  category: string;
+}
 
 // export interface WishlistProductCardType {
 //   id: string;
@@ -119,10 +117,6 @@ export type steperStatusType = "completed" | "incomplete";
 //   params: Promise<{ slug: string }>;
 // };
 
-// export interface CategoryPageParamsProps {
-//   params: Promise<{ category_l1: string }>;
-// }
-
 // export interface SubCategoryPageParamsProps {
 //   params: Promise<{ category_l2: string; category_l1: string }>;
 // }
@@ -146,16 +140,6 @@ export type steperStatusType = "completed" | "incomplete";
 //   };
 // }
 
-// export interface ProductFilterType {
-//   colors?: string[];
-//   sizes?: string[];
-//   material?: string[];
-//   style?: string[];
-//   page?: string | undefined;
-//   perPage?: string;
-//   sort?: string | undefined;
-// }
-
 // export interface SizeChartPropertyType {
 //   _id: string;
 //   key: string;
@@ -170,59 +154,14 @@ export type steperStatusType = "completed" | "incomplete";
 //   length?: number;
 // }
 
-// type PropsAddProductFieldsOmitted =
-//   | "status"
-//   | "l1_category"
-//   | "l2_category"
-//   | "l3_category"
-//   | "sizeChart";
+type PropsAddProductFieldsOmitted = "status" | "picture";
 
-// export interface ProductDataType
-//   extends Omit<AddProductFields, PropsAddProductFieldsOmitted> {
-//   _id: string;
-//   status: string;
-//   picture: string;
-//   label: string;
-//   l1_category: {
-//     _id: string;
-//     uuid: string;
-//     label: string;
-//     l1_category: string;
-//     l2_category: string;
-//     slug: string;
-//     picture: string;
-//     level: string;
-//     status: string;
-//     description: string;
-//   };
-//   l2_category: {
-//     _id: string;
-//     uuid: string;
-//     label: string;
-//     l1_category: string;
-//     l2_category: string;
-//     slug: string;
-//     picture: string;
-//     level: string;
-//     status: string;
-//     description: string;
-//   };
-//   l3_category?: {
-//     _id: string;
-//     uuid: string;
-//     label: string;
-//     l1_category: string;
-//     l2_category: string;
-//     slug: string;
-//     picture: string;
-//     level: string;
-//     status: string;
-//     description: string;
-//   };
-//   sizeChart: ProductSizeChartType[];
-//   totalReviews?: number;
-//   avgRating?: number;
-// }
+export interface PlantDataType
+  extends Omit<AddPlantFields, PropsAddProductFieldsOmitted> {
+  _id: string;
+  status: string;
+  pictures: string[];
+}
 
 // export interface ReviewDataType {
 //   _id?: string;
@@ -233,11 +172,6 @@ export type steperStatusType = "completed" | "incomplete";
 //   status: boolean;
 //   user_id?: string;
 //   user?: ReviewsUserDataType;
-// }
-
-// export interface L1CategoryProductsHttpResponseDataType<TData> {
-//   message: string;
-//   data: { l1: TData; products: ProductDataType[]; total: number };
 // }
 
 // export interface L2CategoryProductsHttpResponseDataType<TData> {
@@ -338,6 +272,19 @@ export interface DefultHomeCardType {
   big: string;
   linkLabel: string;
   linkAddress: string;
+}
+
+export interface PlantFilterType {
+  sizes?: string[];
+  care_levels?: string[];
+  tags?: string[];
+  page?: string | undefined;
+  perPage?: string;
+}
+
+export interface CategoryPlantsHttpResDataType {
+  message: string;
+  data: { plants: PlantDataType[]; total: number };
 }
 
 // export interface GalleryDataField extends AddGalleryField {
