@@ -1,5 +1,7 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { AddPlantFields } from "./admin-types";
+import { orderEnquirySchema } from "../schemas/common";
+import z from "zod";
 // import React from "react";
 // import { AddGalleryField, AddProductFields } from "./admin-types";
 // import { UserReviewSchema } from "../schemas/common";
@@ -162,6 +164,13 @@ export interface PlantDataType
   status: string;
   pictures: string[];
 }
+
+export type OrderEnquiryFields = z.infer<typeof orderEnquirySchema>;
+
+export type OrderEnquiryType = OrderEnquiryFields & {
+  plantId: string;
+  userId?: string;
+};
 
 // export interface ReviewDataType {
 //   _id?: string;

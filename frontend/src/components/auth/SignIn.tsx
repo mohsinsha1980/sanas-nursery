@@ -82,7 +82,7 @@ export default function SignIn() {
                 placeholder="Enter Email"
                 inputType="email"
                 formControl={form.control}
-                className="w-full h-[53px] rounded-md border border-gray-300 px-3 text-black bg-white"
+                className="w-full rounded-md border border-gray-300 px-3 text-black bg-white"
               />
 
               <div className="w-full">
@@ -92,7 +92,7 @@ export default function SignIn() {
                   placeholder="At least 8 characters"
                   inputType="password"
                   formControl={form.control}
-                  className="w-full h-[53px] rounded-md border border-gray-300 px-3 text-black bg-white"
+                  className="w-full rounded-md border border-gray-300 px-3 text-black bg-white"
                 />
                 <div className="flex justify-end mt-2">
                   <Link href="/auth/forgot-password">

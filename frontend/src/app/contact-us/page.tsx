@@ -78,7 +78,8 @@ export default function ContactPage() {
             Contact Us
           </h1>
           <p className="text-xl text-accent-600 max-w-2xl mx-auto">
-            Have questions or want to stay updated? We&apos;d love to hear from you!
+            Have questions or want to stay updated? We&apos;d love to hear from
+            you!
           </p>
         </div>
       </section>
