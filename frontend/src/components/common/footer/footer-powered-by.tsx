@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import BharathaIconSvg from "../../../../public/site/images/icon-bharathatechno.svg";
 
 export default function FooterPoweredBy() {
@@ -9,13 +8,7 @@ export default function FooterPoweredBy() {
         Powered by
       </Link>
       <Link href="https://bharathatechno.com" target="_blank">
-        <Image
-          src={BharathaIconSvg}
-          alt="Bharatha Techno"
-          width={24}
-          height={24}
-          className="invert"
-        />
+        <BharathaIconSvg width={24} height={24} className="invert" />
       </Link>
     </div>
   );
