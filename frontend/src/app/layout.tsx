@@ -10,6 +10,7 @@ import { Toaster } from "sonner";
 import "./globals.css";
 import AuthProvider from "@/components/auth/AuthProvider";
 import MainFooter from "@/components/common/footer/main-footer";
+import WhatsappBadge from "@/components/common/footer/whatsapp-badge";
 
 const catamaran = Catamaran({
   variable: "--font-catamaran",
@@ -50,9 +51,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
             <ReduxProvider>
               {/* <Loader /> */}
               <AuthProvider>
-                <MainHeader />
-                <main>{children}</main>
-                <MainFooter />
+                <div className="min-h-screen flex flex-col">
+                  <MainHeader />
+                  <main className="flex-grow">{children}</main>
+                  <MainFooter />
+                  <WhatsappBadge />
+                </div>
                 <Toaster richColors />
               </AuthProvider>
             </ReduxProvider>

@@ -67,6 +67,10 @@ export const orderEnquirySchema = z.object({
   preferredContactTime: preferredContactTimeSchema,
 });
 
+export const SubscriptionSchema = z.object({
+  email: emailSchema,
+});
+
 // const optionSchema = z.object({
 //   label: z.string(),
 //   value: z.string(),

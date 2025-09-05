@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@tailwind utilities;
 
 @custom-variant dark (&:is(.dark *));
 
@@ -117,11 +118,29 @@
   --sidebar-ring: oklch(0.708 0 0);
 }
 
+
+@layer components {
+  /* .btn-primary {
+    @apply bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary-600 hover:bg-secondary-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+  } */
+  
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
+
 body {
   font-family: var(--font-catamaran);
   box-sizing: border-box;
   min-height: 100vh;
 }
+
+
+
 
 /* Standardized Container Classes */
 .container {
@@ -452,8 +471,8 @@ header {
 footer {
   background-color: var(--txt-dark);
   color: #fff;
-  padding-top: var(--spacing-8xl);
-  padding-bottom: var(--spacing-8xl);
+  /* padding-top: var(--spacing-4xl);
+  padding-bottom: var(--spacing-4xl); */
 }
 
 .bl-footer-social a {
@@ -601,8 +620,6 @@ footer {
 footer {
   background-color: var(--txt-dark);
   color: #fff;
-  padding-top: var(--spacing-8xl);
-  padding-bottom: var(--spacing-8xl);
 }
 
 .bl-footer-social a {

@@ -8,6 +8,7 @@ import { buildPlantFilter, emailRegEx, phoneRegEx } from "../lib/util.js";
 import { OrderEnquiry } from "../models/OrderEnquiry.js";
 import Plant from "../models/Plant.js";
 import Settings from "../models/Settings.js";
+import Subscription from "../models/Subscription.js";
 
 export const getCatProducts = async (req, res, next) => {
   try {
@@ -298,5 +299,32 @@ export const createContactEnquiry = async (req, res, next) => {
         error.message ||
         "Internal server error while creating contact enquiry.",
     });
+  }
+};
+
+export const subscribeEmail = async (req, res, next) => {
+  try {
+    const { email } = req.body;
+    if (!email) {
+      return next({ message: "Email is required", status: 400 });
+    }
+
+    if (!emailRegEx.test(email)) {
+      return next({ message: "Invalid Email Format", status: 400 });
+    }
+    const checkforexistingUser = await Subscription.findOne({ email });
+    if (checkforexistingUser) {
+      return next({ message: "Email is already subscribed", status: 400 });
+    }
+
+    const newSubscription = new Subscription({ email });
+    await newSubscription.save();
+    req.successResponse = {
+      message: "Subscription successful!",
+      data: newSubscription,
+    };
+    return next();
+  } catch (error) {
+    return next({ message: "Internal Server Error", status: 500 });
   }
 };

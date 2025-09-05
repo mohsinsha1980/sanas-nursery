@@ -231,3 +231,46 @@ export const defultHomeData = {
     "https://www.youtube.com/watch?v=9wY_-ZMQ-jQ",
   ],
 };
+
+export const SITE_DATA = {
+  EMAIL: "sanasnursery@gmail.com",
+  phone: "+91 8999481616",
+  LOCATION: `Sanas Wholesale Nursery, Bori Fata, near ITI collage, Uruli Kanchan, Maharashtra, 412201`,
+  SOCIAL: {
+    facebook: "https://www.facebook.com/share/1GmrYmkSHp/?mibextid=wwXIfr",
+    insta:
+      "https://www.instagram.com/wholesalenursery?igsh=MXZ5MnFlMzVvM2Vsaw%3D%3D&utm_source=qr",
+    youtube: "https://youtube.com/@sanasnursery?si=g2njg_7Z2kfy6fw7",
+  },
+} as const;
+
+export const FOOTER_LINKS = {
+  COMPANY: [
+    {
+      label: " Contact Us",
+      pageUrl: "/contact-us",
+    },
+    {
+      label: "Privacy Policy",
+      pageUrl: "/privacy-policy",
+    },
+    {
+      label: " Terms & Conditions",
+      pageUrl: "/terms-conditions",
+    },
+  ],
+  INFORMATION: [
+    {
+      label: "Home",
+      pageUrl: "/",
+    },
+    {
+      label: " About Us",
+      pageUrl: "/about-us",
+    },
+    {
+      label: "Blogs",
+      pageUrl: "/blogs",
+    },
+  ],
+} as const;
