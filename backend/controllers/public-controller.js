@@ -329,3 +329,6 @@ export const subscribeEmail = async (req, res, next) => {
     return next({ message: "Internal Server Error", status: 500 });
   }
 };
+
+
+

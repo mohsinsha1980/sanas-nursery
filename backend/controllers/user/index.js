@@ -201,8 +201,8 @@ export const removeFromWishlist = async (req, res, next) => {
     });
 
     if (!deletedItem) {
-      return res.status(404).json({
-        success: false,
+      return next({
+        status: 404,
         message: "Wishlist item not found or not owned by user",
       });
     }
@@ -210,6 +210,41 @@ export const removeFromWishlist = async (req, res, next) => {
     req.successResponse = {
       message: "Item removed from wishlist successfully",
       data: "",
+    };
+    return next();
+  } catch (error) {
+    return next({
+      status: 500,
+      message: error?.message || "Server error while removing wishlist item",
+    });
+  }
+};
+
+export const saveToWishlist = async (req, res, next) => {
+  try {
+    const { plantId } = req.body;
+    const userId = req.userData?._id;
+
+    if (!userId || !plantId) {
+      return next({ status: 401, message: "Unauthorized" });
+    }
+
+    const existingItem = await Wishlist.findOne({ plantId, userId });
+    if (existingItem) {
+      return next({
+        status: 400,
+        message: "Item already in wishlist",
+      });
+    }
+
+    const newWishlistItem = await Wishlist.create({
+      plantId,
+      userId,
+    });
+
+    req.successResponse = {
+      message: "Item added to wishlist successfully",
+      data: newWishlistItem,
     };
     return next();
   } catch (error) {

@@ -3,6 +3,7 @@ import {
   getEnquiries,
   getUserWishlist,
   removeFromWishlist,
+  saveToWishlist,
   updateUserPassword,
   updateUserProfile,
 } from "../../controllers/user/index.js";
@@ -14,5 +15,6 @@ router.put("/update-password", userAuth, updateUserPassword);
 router.get("/enquiries", userAuth, getEnquiries);
 router.get("/wishlist", userAuth, getUserWishlist);
 router.delete("/wishlist/:plantId", userAuth, removeFromWishlist);
+router.post("/wishlist", userAuth, saveToWishlist);
 
 export default router;

@@ -66,7 +66,7 @@ export interface CategoryPageParamsProps {
 }
 
 export interface PlantsCardType {
-  id: string | number;
+  id: string;
   pictures: string[];
   title: string;
   slug: string;

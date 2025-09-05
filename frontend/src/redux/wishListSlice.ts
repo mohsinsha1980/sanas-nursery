@@ -14,7 +14,7 @@ const emptyWishlistState: WishlistState = {
 let sessionWishlist: WishlistState | undefined;
 
 if (typeof window !== "undefined") {
-  const storedWishlist = sessionStorage.getItem(SESSION_KEY);
+  const storedWishlist = localStorage.getItem(SESSION_KEY);
   sessionWishlist = storedWishlist
     ? (JSON.parse(storedWishlist) as WishlistState)
     : emptyWishlistState;
@@ -33,37 +33,48 @@ const wishlistSlice = createSlice({
         if (!state.items.includes(action.payload)) {
           state.items.push(action.payload);
           state.totalWishlistItems = state.items.length;
-          sessionStorage.setItem(SESSION_KEY, JSON.stringify(state));
+          localStorage.setItem(SESSION_KEY, JSON.stringify(state));
         }
       }
     },
-    removeFromWishlist: (state, action: PayloadAction<string>) => {
+    removeFromWishlistStore: (state, action: PayloadAction<string>) => {
       state.items = state.items.filter((id) => id !== action.payload);
       state.totalWishlistItems = state.items.length;
       if (typeof window !== "undefined") {
-        sessionStorage.setItem(SESSION_KEY, JSON.stringify(state));
+        localStorage.setItem(SESSION_KEY, JSON.stringify(state));
       }
     },
     clearWishlist: () => {
       if (typeof window !== "undefined") {
-        sessionStorage.removeItem(SESSION_KEY);
+        localStorage.removeItem(SESSION_KEY);
       }
       return emptyWishlistState;
     },
     setWishlistData: (state, action: PayloadAction<WishlistState>) => {
       if (typeof window !== "undefined") {
-        sessionStorage.setItem(SESSION_KEY, JSON.stringify(action.payload));
+        localStorage.setItem(SESSION_KEY, JSON.stringify(action.payload));
       }
       return action.payload;
+    },
+    mergeWishlistFromDB: (state, action: PayloadAction<string[]>) => {
+      const newItems = action.payload.filter((id) => !state.items.includes(id));
+      if (newItems.length > 0) {
+        state.items.push(...newItems);
+        state.totalWishlistItems = state.items.length;
+        if (typeof window !== "undefined") {
+          localStorage.setItem(SESSION_KEY, JSON.stringify(state));
+        }
+      }
     },
   },
 });
 
 export const {
   addToWishlist,
-  removeFromWishlist,
+  removeFromWishlistStore,
   clearWishlist,
   setWishlistData,
+  mergeWishlistFromDB,
 } = wishlistSlice.actions;
 
 export default wishlistSlice.reducer;

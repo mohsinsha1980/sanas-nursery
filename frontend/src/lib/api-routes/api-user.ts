@@ -38,3 +38,15 @@ export const removeFromWishlist = (_id: string, controller?: Controller) => {
     signal: controller?.signal,
   });
 };
+
+export const saveToWishlist = (_id: string, controller?: Controller) => {
+  return axiosInstance.post(
+    `${config.API_USER_PATH}/wishlist`,
+    {
+      plantId: _id,
+    },
+    {
+      signal: controller?.signal,
+    }
+  );
+};

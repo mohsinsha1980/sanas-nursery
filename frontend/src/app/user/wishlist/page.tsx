@@ -21,27 +21,6 @@ export default function WishlistPage() {
   const [wishlist, setWishlist] = useState<WishlistItem[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const mockWishlist: WishlistItem[] = [
-    {
-      _id: "1",
-      title: "Monstera Deliciosa",
-      slug: "monstera-deliciosa",
-      picture: "/plant1.png",
-    },
-    {
-      _id: "2",
-      title: "Snake Plant",
-      slug: "snake-plant",
-      picture: "/plant2.png",
-    },
-    {
-      _id: "3",
-      title: "Snake Plant 3",
-      slug: "snake-plant-s",
-      picture: "/plant3.png",
-    },
-  ];
-
   useEffect(() => {
     const controller = new AbortController();
     const fetchWishlist = async () => {
@@ -50,9 +29,7 @@ export default function WishlistPage() {
         dispatch(showLoader());
         const response = await getUserWishlist();
         const data: WishlistItem[] = response.data?.data;
-        // setWishlist(data);
-        console.log(data);
-        setWishlist(mockWishlist);
+        setWishlist(data);
       } catch (error: unknown) {
         showErrorToast(getErrorMessage(error as AxiosError));
       } finally {
