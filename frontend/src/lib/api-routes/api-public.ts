@@ -6,7 +6,11 @@
 // import { SubscribeEmailApiType } from "./types/public-types";
 
 import { axiosInstance } from "@/config/http";
-import { Controller, PlantFilterType } from "../types/common-types";
+import {
+  Controller,
+  OrderEnquiryType,
+  PlantFilterType,
+} from "../types/common-types";
 import config from "@/config/env-config";
 import { ContactFormData } from "@/components/home/contact/schema";
 import { buildQueryString } from "../helper";
@@ -66,9 +70,27 @@ export const getPlantDetailsByID = (
   plantID: string,
   controller?: Controller
 ) => {
-  return fetch(`${config.API_PUBLIC_PATH}/plant-ID${plantID}`, {
+  return fetch(`${config.API_PUBLIC_PATH}/plant-ID/${plantID}`, {
     signal: controller?.signal,
     cache: "no-store",
+  });
+};
+
+export const createOrderEnquiry = (
+  data: OrderEnquiryType,
+  controller?: Controller
+) => {
+  return axiosInstance.post(`${config.API_PUBLIC_PATH}/order-enquiry`, data, {
+    signal: controller?.signal,
+  });
+};
+
+export const createContactEnquiry = (
+  data: OrderEnquiryType, // TODO : change here
+  controller?: Controller
+) => {
+  return axiosInstance.post(`${config.API_PUBLIC_PATH}/contact-us`, data, {
+    signal: controller?.signal,
   });
 };
 
