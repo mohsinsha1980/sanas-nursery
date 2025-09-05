@@ -28,8 +28,7 @@ export const addContactUs = (
 ) => {
   const formData = new FormData();
 
-  formData.append("firstname", data.firstname);
-  formData.append("lastname", data.lastname);
+  formData.append("name", data.name);
   formData.append("email", data.email);
   formData.append("phonenumber", data.phonenumber);
   formData.append("message", data.message);

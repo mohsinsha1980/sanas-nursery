@@ -47,9 +47,8 @@ export default function Footer() {
             <h4 className="text-lg font-semibold mb-4">Information</h4>
             <ul className="space-y-2">
               {FOOTER_LINKS.INFORMATION.map((link) => (
-                <li>
+                <li key={link.label}>
                   <Link
-                    key={link.label}
                     href={link.pageUrl}
                     className="text-gray-300 hover:text-primary-400 transition-colors duration-200"
                   >
@@ -64,9 +63,8 @@ export default function Footer() {
             <h4 className="text-lg font-semibold mb-4">Company</h4>
             <ul className="space-y-2">
               {FOOTER_LINKS.COMPANY.map((link) => (
-                <li>
+                <li key={link.label}>
                   <Link
-                    key={link.label}
                     href={link.pageUrl}
                     className="text-gray-300 hover:text-primary-400 transition-colors duration-200"
                   >

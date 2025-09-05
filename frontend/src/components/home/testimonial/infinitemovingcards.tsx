@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useMemo } from "react";
 import Slider, { Settings as SlickSettings } from "react-slick";
 import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -8,16 +8,11 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Link from "next/link";
 
-
 interface Item {
   quote: string;
   name: string;
   rating: string;
   website: string;
-}
-
-interface InfiniteOrSliderProps {
-  items: Item[];
 }
 
 export default function InfiniteOrSlider() {
@@ -27,40 +22,42 @@ export default function InfiniteOrSlider() {
   const [isLargeScreen, setIsLargeScreen] = useState(false);
   const sliderRef = useRef<Slider | null>(null);
 
-  const items: Item[] = [
-    {
-      name: "John Doe",
-      quote: "This service exceeded my expectations. Highly recommended!",
-      rating: "5",
-      website: "https://lucide.dev/icons/quote",
-    },
-    {
-      name: "Jane Smith",
-      quote: "Amazing experience! Will definitely come back again.",
-      rating: "4.8",
-      website: "https://lucide.dev/icons/quote",
-    },
-    {
-      name: "Alice Johnson",
-      quote: "Friendly staff and great support throughout the process.",
-      rating: "4.9",
-      website: "https://lucide.dev/icons/quote",
-    },
-    {
-      name: "Bob Williams",
-      quote: "Very satisfied with the quality and attention to detail.",
-      rating: "5",
-      website: "https://lucide.dev/icons/quote",
-    },
-    {
-      name: "Emily Brown",
-      quote: "A seamless experience from start to finish. Loved it!",
-      rating: "4.7",
-      website: "https://lucide.dev/icons/quote",
-    },
-  ];
+  const items: Item[] = useMemo(
+    () => [
+      {
+        name: "John Doe",
+        quote: "This service exceeded my expectations. Highly recommended!",
+        rating: "5",
+        website: "https://lucide.dev/icons/quote",
+      },
+      {
+        name: "Jane Smith",
+        quote: "Amazing experience! Will definitely come back again.",
+        rating: "4.8",
+        website: "https://lucide.dev/icons/quote",
+      },
+      {
+        name: "Alice Johnson",
+        quote: "Friendly staff and great support throughout the process.",
+        rating: "4.9",
+        website: "https://lucide.dev/icons/quote",
+      },
+      {
+        name: "Bob Williams",
+        quote: "Very satisfied with the quality and attention to detail.",
+        rating: "5",
+        website: "https://lucide.dev/icons/quote",
+      },
+      {
+        name: "Emily Brown",
+        quote: "A seamless experience from start to finish. Loved it!",
+        rating: "4.7",
+        website: "https://lucide.dev/icons/quote",
+      },
+    ],
+    []
+  );
 
-  // Detect screen size
   useEffect(() => {
     const checkScreen = () => setIsLargeScreen(window.innerWidth >= 1024);
     checkScreen();
@@ -110,7 +107,7 @@ export default function InfiniteOrSlider() {
     arrows: false,
   };
 
-  const duplicatedItems = [...items, ...items, ...items]; 
+  const duplicatedItems = [...items, ...items, ...items];
 
   return (
     <>
@@ -157,7 +154,6 @@ export default function InfiniteOrSlider() {
                   {item.quote}
                 </p>
 
-          
                 <div>
                   <Link
                     href={item.website}
@@ -191,16 +187,16 @@ export default function InfiniteOrSlider() {
                     </div>
                   </div>
                   <p className="text-[16px] leading-relaxed">{item.quote}</p>
-                     <div>
-                  <Link
-                    href={item.website}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-block text-white underline lg:text-[20px] md:text-[18px] text-[16px] mt-4 md:mt-5"
-                  >
-                    Website Link
-                  </Link>
-                </div>
+                  <div>
+                    <Link
+                      href={item.website}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block text-white underline lg:text-[20px] md:text-[18px] text-[16px] mt-4 md:mt-5"
+                    >
+                      Website Link
+                    </Link>
+                  </div>
                 </div>
               </div>
             ))}

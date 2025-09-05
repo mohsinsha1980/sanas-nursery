@@ -1,19 +1,19 @@
 "use client";
-import React from "react";
+import schema, { ContactFormData } from "@/components/contact/schema";
+import { Button } from "@/components/ui/button";
+import { addContactUs } from "@/lib/api-routes/api-public";
+import { zodResolver } from "@hookform/resolvers/zod";
 import {
-  Phone,
-  Mail,
-  MapPin,
   Facebook,
   Instagram,
+  Mail,
+  MapPin,
+  Phone,
   Youtube,
 } from "lucide-react";
-import schema, { ContactFormData } from "@/components/contact/schema";
+import React from "react";
 import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { addContactUs } from "@/lib/api-routes/api-public";
-import { Button } from "@/components/ui/button";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 const Contact = () => {
   const {
@@ -26,8 +26,8 @@ const Contact = () => {
   });
 
   const [loading, setLoading] = React.useState(false);
-  const [error, setError] = React.useState("");
-  const [success, setSuccess] = React.useState("");
+  const [, setError] = React.useState("");
+  const [, setSuccess] = React.useState("");
 
   const onSubmit = async (data: ContactFormData) => {
     setLoading(true);
@@ -131,7 +131,7 @@ const Contact = () => {
                     )}
                   </div>
 
-                   <div className="lg:w-[45%] md:w-[70%] w-[90%] flex flex-col justify-between lg:gap-y-4 gap-y-2 ">
+                  <div className="lg:w-[45%] md:w-[70%] w-[90%] flex flex-col justify-between lg:gap-y-4 gap-y-2 ">
                     <p className="ftheight lg:text-[20px] text-[20px] font-semibold">
                       Phone Number
                     </p>
