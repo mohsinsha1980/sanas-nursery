@@ -20,8 +20,8 @@ export const userAuth = async (req, res, next) => {
     verifiedUser = verify(accessToken, process.env.ACCESS_TOKEN_SECRETS);
     if (
       !verifiedUser?._id ||
-      !verifiedUser.role ||
-      verifiedUser.role !== ROLES.USER
+      !verifiedUser.role
+      // verifiedUser.role !== ROLES.USER
     ) {
       return next({
         status: 401,
@@ -31,7 +31,6 @@ export const userAuth = async (req, res, next) => {
     req.userData = verifiedUser;
     return next();
   } catch (err) {
-    // if access token not expired and tampered it makes user logout
     if (err.name !== "TokenExpiredError") {
       clearAuthCookies(res);
     } else if (err.name === "TokenExpiredError") {

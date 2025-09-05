@@ -51,20 +51,14 @@ const SignUpForm = () => {
     }
   };
 
-  // const google = () => {
-  //   window.open(config.API_GOOGLE_AUTH, "_self");
-  // };
   return (
     <div
       className="relative flex min-h-screen w-full items-center justify-center bg-cover bg-center overflow-hidden px-4"
       style={{ backgroundImage: "url('/site/auth/auth-banner.webp')" }}
     >
-      {/* Background overlay */}
       <div className="absolute inset-0 bg-black/20"></div>
 
-      {/* Centered Card */}
       <div className="relative bg-white/80 backdrop-blur-md shadow-lg rounded-2xl ring-1 ring-black/10 flex flex-col justify-start mt-30 items-start w-full max-w-[686px] py-8 px-6 sm:px-10">
-        {/* Heading */}
         <h1 className="text-3xl sm:text-4xl font-semibold text-gray-900 mb-2">
           Join Us For An Exclusive Green Experience!
         </h1>
