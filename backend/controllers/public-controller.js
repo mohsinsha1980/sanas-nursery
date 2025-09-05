@@ -4,7 +4,8 @@ import {
   SIMILAR_PLANTS_COUNT,
   STATUS,
 } from "../lib/constants.js";
-import { buildPlantFilter } from "../lib/util.js";
+import { buildPlantFilter, emailRegEx, phoneRegEx } from "../lib/util.js";
+import { OrderEnquiry } from "../models/OrderEnquiry.js";
 import Plant from "../models/Plant.js";
 import Settings from "../models/Settings.js";
 
@@ -176,7 +177,7 @@ export const getPlantDetailsByID = async (req, res, next) => {
       {
         $match: {
           category: plant.category,
-          slug: { $ne: slug },
+          _id: { $ne: id },
           status: STATUS.ACTIVE,
         },
       },
@@ -196,6 +197,106 @@ export const getPlantDetailsByID = async (req, res, next) => {
       message:
         error.message || "An error occurred while fetching plant details.",
       status: 500,
+    });
+  }
+};
+
+export const createOrderEnquiry = async (req, res, next) => {
+  try {
+    const {
+      name,
+      email,
+      phone,
+      message,
+      preferredContactTime,
+      plantId,
+      userId,
+    } = req.body;
+
+    if (!name || !email || !phone || !message || !plantId) {
+      return next({ status: 400, message: "Missing required fields." });
+    }
+
+    if (name.trim().length < 2)
+      return next({
+        status: 400,
+        message: "Name must be at least 2 characters.",
+      });
+    if (!emailRegEx.test(email))
+      return next({ status: 400, message: "Invalid email address." });
+    if (!phoneRegEx.test(phone))
+      return next({ status: 400, message: "Invalid phone number." });
+    if (message.trim().length < 10)
+      return next({
+        status: 400,
+        message: "Message must be at least 10 characters long.",
+      });
+
+    const enquiry = new OrderEnquiry({
+      name,
+      email,
+      phone,
+      message,
+      preferredContactTime: preferredContactTime || "",
+      plantId: plantId,
+      userId: userId || null,
+    });
+
+    const savedEnquiry = await enquiry.save();
+    req.successResponse = {
+      message: "Enquiry submitted successfully.",
+      data: savedEnquiry,
+    };
+    return next();
+  } catch (error) {
+    return next({
+      status: 500,
+      message: error.message || "Internal server error while creating Enquiry.",
+    });
+  }
+};
+
+export const createContactEnquiry = async (req, res, next) => {
+  try {
+    const { name, email, phone, message } = req.body;
+    if (!name || !email || !phone || !message) {
+      return next({ status: 400, message: "Missing required fields." });
+    }
+
+    if (name.trim().length < 2)
+      return next({
+        status: 400,
+        message: "Name must be at least 2 characters.",
+      });
+    if (!emailRegEx.test(email))
+      return next({ status: 400, message: "Invalid email address." });
+    if (!phoneRegEx.test(phone))
+      return next({ status: 400, message: "Invalid phone number." });
+    if (message.trim().length < 10)
+      return next({
+        status: 400,
+        message: "Message must be at least 10 characters long.",
+      });
+
+    const contactEnquiry = new ContactUs({
+      name,
+      email,
+      phone,
+      message,
+    });
+
+    const savedEnquiry = await contactEnquiry.save();
+    req.successResponse = {
+      message: "Contact Enquiry submitted successfully.",
+      data: savedEnquiry,
+    };
+    return next();
+  } catch (error) {
+    return next({
+      status: 500,
+      message:
+        error.message ||
+        "Internal server error while creating contact enquiry.",
     });
   }
 };

@@ -14,4 +14,7 @@ routes.get("/plant-slug/:slug", publicCtrl.getPlantDetailsBySlug);
 
 routes.get("/plant-ID/:id", publicCtrl.getPlantDetailsByID);
 
+routes.post("/order-enquiry", publicCtrl.createOrderEnquiry);
+routes.post("/contact-us", publicCtrl.createContactEnquiry);
+
 export default routes;

@@ -61,7 +61,7 @@ const TextField = <T extends FieldValues>({
                 )}
 
                 <Input
-                  className={className}
+                  className={className } 
                   placeholder={placeholder}
                   type={inputType === "password" && isView ? "text" : inputType}
                   {...field}

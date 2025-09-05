@@ -1,3 +1,4 @@
+import BuyNowBtn from "@/components/categories/buy-now-btn";
 import PlantDescTabs from "@/components/categories/plant-desc-tabs";
 import ProductPictureSlider from "@/components/common/product-picture-slider";
 import DetailsLoading from "@/components/layout/DetailsLoader";
@@ -63,6 +64,8 @@ export default async function ProductDetailsPageByID({
     };
   } = await fetchProductDetails(plantID);
 
+  console.log("response ", response);
+
   if (!response.data.plant) {
     return notFound();
   }
@@ -112,6 +115,8 @@ export default async function ProductDetailsPageByID({
                 dangerouslySetInnerHTML={{ __html: plant.details }}
               />
             )}
+
+            <BuyNowBtn plant={plant} />
           </div>
         </div>
       </section>
