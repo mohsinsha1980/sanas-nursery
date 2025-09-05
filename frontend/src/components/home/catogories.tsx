@@ -24,11 +24,11 @@ export default function Categories() {
           </p>
         </div>
 
-        <div className="flex gap-8 flex-wrap justify-center    ">
+        <div className="flex gap-8 flex-wrap justify-center  ">
           {categories.map((cat) => (
             <Link key={cat.slug} href={`/categories/${cat.slug}`}>
               <div className="flex flex-col items-center cursor-pointer">
-                <div className="relative lg:w-[200px] lg:h-[204px] w-[150px] h-[150px] rounded-full overflow-hidden group">
+                <div className="relative lg:w-[160px] lg:h-[160px] w-[150px] h-[150px] rounded-full overflow-hidden group">
                   <Image
                     src={cat.image}
                     alt={cat.name}

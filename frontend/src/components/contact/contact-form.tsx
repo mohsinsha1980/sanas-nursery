@@ -12,6 +12,8 @@ import schema, { ContactFormData } from "@/components/contact/schema";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { addContactUs } from "@/lib/api-routes/api-public";
+import { Button } from "@/components/ui/button";
+import toast, { Toaster } from "react-hot-toast";
 
 const Contact = () => {
   const {
@@ -33,12 +35,12 @@ const Contact = () => {
     setSuccess("");
     try {
       const response = await addContactUs(data);
-      setSuccess("Message sent successfully!");
+      toast.success("Message sent successfully!");
       reset();
       console.log(response);
     } catch (err) {
       console.log(err);
-      setError("Something went wrong. Please try again.");
+      toast.error("Something went wrong. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -47,12 +49,12 @@ const Contact = () => {
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
-        <div className="lg:w-[100%] lg:h-[889px] md:w-[100%] md:h-[900px] w-[100%] h-[950px] flex justify-center items-center bg-[#E4FFF0]   ">
-          <div className="contact-form lg:w-[61%] lg:h-[667px]  flex justify-center items-center bg-white rounded-xl">
-            <div className="contact-form-innerdiv lg:w-[60%] lg:h-auto md:w-[80%] w-[95%]  lg:gap-y-0 gap-y-10 flex lg:flex-row flex-col justify-between items-center absolute z-10 bg-white p-2 md:p-3 lg:px-0 rounded-xl  ">
+        <div className="lg:w-[100%] lg:h-[870px] md:w-[100%] md:h-[1100px] w-[100%] h-[1020px] flex justify-center items-center bg-[#E4FFF0]   ">
+          <div className="contact-form lg:w-[61%] flex justify-center items-center bg-white rounded-xl">
+            <div className="contact-form-innerdiv lg:w-[60%] lg:h-auto md:w-[80%] w-[95%]  lg:gap-y-0 gap-y-10 flex lg:flex-row flex-col justify-between items-center absolute z-10 bg-white p-2 md:p-3 lg:px-3 rounded-xl     ">
               {/* Left Section */}
-              <div className="contact-form-left-div lg:w-[40%] lg:h-[647px] md:w-full w-full flex lg:justify-center lg:items-center md:justify-center justify-start items-start bg-[#4CBA9B] px-4 lg:px-0 py-4 lg:py-0 rounded-xl">
-                <div className="lg:w-[80%] lg:h-auto w-full lg:gap-y-15 gap-y-10 flex flex-col justify-between items-start ">
+              <div className="contact-form-left-div lg:w-[45%] lg:h-[600px] md:w-full w-full flex lg:justify-center lg:items-center md:justify-center justify-start items-start bg-[#4CBA9B] px-4 lg:px-0 py-4 lg:py-0 rounded-xl   ">
+                <div className="lg:w-[80%] lg:h-[85%] w-full lg:gap-y-10 gap-y-10 flex flex-col justify-between items-start ">
                   <div className="lg:w-[100%] lg:h-auto lg:gap-y-3 gap-y-3 flex flex-col justify-between   ">
                     <p className="lg:text-[42px] md:text-[36px] text-[24px] text-white font-semibold lg:leading-13 ">
                       Connect with <span className="text-[#00611F]">Sanas</span>{" "}
@@ -62,7 +64,7 @@ const Contact = () => {
                       Watch how our plants are spreading smiles and freshness.
                     </p>
                   </div>
-                  <div className="lg:w-[100%] lg:h-[45%] lg:gap-y-3 gap-y-3 flex flex-col justify-between text-[20px] text-white    ">
+                  <div className="lg:w-[100%] lg:h-[45%] lg:gap-y-3 gap-y-3 flex flex-col justify-evenly text-[20px] text-white   ">
                     <div className="flex items-center lg:gap-x-5 gap-3">
                       <Phone className="lg:text-[22px] md:h-6 md:w-6 h-4 w-4" />
                       <p className="lg:text-[20px] md:text-[20px] text-[16px] lg:font-semibold">
@@ -86,86 +88,50 @@ const Contact = () => {
                     key="3-icons"
                     className=" flex flex-row justify-between items-center text-white lg:space-x-4 md:space-x-3 space-x-5  "
                   >
-                    <Facebook className=" hover:text-blue-600" />
-                    <Instagram className=" hover:text-pink-500" />
-                    <Youtube className=" h-7.5 w-7.5  hover:text-red-600" />
+                    <div className="h-[40px] w-[40px] bg-[#DA5700] shadow-md  rounded-lg flex justify-center items-center">
+                      <Facebook className="z-10 hover:text-blue-600" />
+                    </div>
+                    <div className="h-[40px] w-[40px] bg-[#DA5700] shadow-md  rounded-lg flex justify-center items-center">
+                      <Instagram className=" hover:text-pink-700" />
+                    </div>
+                    <div className="h-[40px] w-[40px] bg-[#DA5700] shadow-md  rounded-lg flex justify-center items-center">
+                      <Youtube className=" h-7 w-7 hover:text-red-600" />
+                    </div>
                   </div>
                 </div>
               </div>
 
               {/* Right Section */}
-              <div className="lg:mr-10  lg:w-[50%] lg:h-[500px] md:w-[100%] w-[100%] lg:gap-y-9 gap-y-8 flex flex-col justify-between text-[#8D8D8D]    ">
-                <div>
+              <div className="lg:w-[50%] lg:h-[550px] md:w-[100%] h-fit w-[100%] lg:gap-y-9 md:gap-y-8 gap-y-5 flex flex-col justify-evenly  text-[#8D8D8D] lg:px-0 md:px-3 px-4  ">
+                {/* <div>
                   {error && <p className="text-red-600 mb-5">{error}</p>}
                 </div>
                 <div>
                   {success && <p className="text-green-600 mb-5">{success}</p>}
-                </div>
+                </div> */}
 
-                <div className=" lg:w-[95%] w-[100%] flex justify-between ">
-                  <div className="lg:w-[45%] w-[48%] flex flex-col lg:gap-y-2 gap-y-2 ">
+                <div className=" lg:w-[95%] w-[100%] flex lg:flex-row flex-col justify-between lg:space-y-0 md:space-y-8 space-y-5 ">
+                  <div className="lg:w-[45%] md:w-[70%] w-[90%] flex flex-col lg:gap-y-4 gap-y-2 ">
                     <p className="lg:text-[20px] md:text-[24px] text-[20px] font-semibold">
-                      First Name
+                      Name
                     </p>
                     <input
                       type="text"
-                      {...register("firstname")}
+                      {...register("name")}
                       style={{
-                        WebkitBoxShadow: "0 0 0 1000px white inset", // overrides autofill background
-                        WebkitTextFillColor: "black", // ensures text color stays correct
+                        WebkitBoxShadow: "0 0 0 1000px white inset",
+                        WebkitTextFillColor: "black",
                       }}
                       className=" lg:border-b-2 border-b-1  border-[#8D8D8D] lg:h-[35px] lg:text-[18px]  text-[16px] bg-transparent focus:outline-none focus:bg-transparent autofill:bg-transparent autofill:text-[#1d2f33]"
                     />
-                    {errors.firstname && (
+                    {errors.name && (
                       <p className="text-red-500 text-sm">
-                        {errors.firstname.message}
+                        {errors.name.message}
                       </p>
                     )}
                   </div>
 
-                  <div className="lg:w-[45%] w-[48%] flex flex-col lg:gap-y-2 gap-y-2  ">
-                    <p className="lg:text-[20px] text-[20px] font-semibold">
-                      Last Name
-                    </p>
-                    <input
-                      type="text"
-                      {...register("lastname")}
-                      style={{
-                        WebkitBoxShadow: "0 0 0 1000px white inset", // overrides autofill background
-                        WebkitTextFillColor: "black", // ensures text color stays correct
-                      }}
-                      className="lg:border-b-2 border-b-1 border-[#8D8D8D] lg:h-[35px] lg:text-[18px] text-[16px] bg-transparent focus:outline-none focus:bg-transparent autofill:bg-transparent autofill:text-[#1d2f33]"
-                    />
-                    {errors.lastname && (
-                      <p className="text-red-500 text-sm">
-                        {errors.lastname.message}
-                      </p>
-                    )}
-                  </div>
-                </div>
-
-                <div className="lg:w-[95%] flex justify-between ">
-                  <div className="lg:w-[45%] w-[48%] flex flex-col lg:gap-y-2 gap-y-2 ">
-                    <p className="lg:text-[20px] text-[20px] font-semibold">
-                      Email
-                    </p>
-                    <input
-                      type="text"
-                      {...register("email")}
-                      style={{
-                        WebkitBoxShadow: "0 0 0 1000px white inset", // overrides autofill background
-                        WebkitTextFillColor: "black", // ensures text color stays correct
-                      }}
-                      className="lg:border-b-2 border-b-1 border-[#8D8D8D] lg:h-[35px] lg:text-[18px] text-[16px] bg-transparent focus:outline-none focus:bg-transparent autofill:bg-transparent autofill:text-[#1d2f33]"
-                    />
-                    {errors.email && (
-                      <p className="text-red-500 text-sm">
-                        {errors.email.message}
-                      </p>
-                    )}
-                  </div>
-
-                  <div className="lg:w-[45%] w-[48%] flex flex-col justify-between lg:gap-y-2 gap-y-2 ">
+                   <div className="lg:w-[45%] md:w-[70%] w-[90%] flex flex-col justify-between lg:gap-y-4 gap-y-2 ">
                     <p className="ftheight lg:text-[20px] text-[20px] font-semibold">
                       Phone Number
                     </p>
@@ -173,8 +139,8 @@ const Contact = () => {
                       type="text"
                       {...register("phonenumber")}
                       style={{
-                        WebkitBoxShadow: "0 0 0 1000px white inset", // overrides autofill background
-                        WebkitTextFillColor: "black", // ensures text color stays correct
+                        WebkitBoxShadow: "0 0 0 1000px white inset",
+                        WebkitTextFillColor: "black",
                       }}
                       className="lg:border-b-2 border-b-1 border-[#8D8D8D] lg:h-[35px] lg:text-[18px] text-[16px] bg-transparent focus:outline-none focus:bg-transparent autofill:bg-transparent autofill:text-[#1d2f33]"
                     />
@@ -186,19 +152,41 @@ const Contact = () => {
                   </div>
                 </div>
 
-                <div className="lg:w-[90%] flex flex-col lg:gap-y-2 gap-y-2 ">
+                <div className="lg:w-[95%] w-[100%] flex lg:flex-row flex-col justify-between lg:space-y-0 md:space-y-8 space-y-5 ">
+                  <div className="lg:w-[100%] md:w-[70%] w-[90%] flex flex-col lg:gap-y-4 gap-y-2 ">
+                    <p className="lg:text-[20px] text-[20px] font-semibold">
+                      Email
+                    </p>
+                    <input
+                      type="text"
+                      {...register("email")}
+                      style={{
+                        WebkitBoxShadow: "0 0 0 1000px white inset",
+                        WebkitTextFillColor: "black",
+                      }}
+                      className="lg:border-b-2 border-b-1 border-[#8D8D8D] lg:h-[35px] lg:text-[18px] text-[16px] bg-transparent focus:outline-none focus:bg-transparent autofill:bg-transparent autofill:text-[#1d2f33]"
+                    />
+                    {errors.email && (
+                      <p className="text-red-500 text-sm">
+                        {errors.email.message}
+                      </p>
+                    )}
+                  </div>
+                </div>
+
+                <div className="lg:w-[95%] md:w-[70%] w-[90%] flex flex-col justify-between lg:space-y-4 space-y-0">
                   <p className="lg:text-[20px] text-[20px] font-semibold">
                     Message
                   </p>
-                  <input
-                    type="text"
+                  <textarea
                     {...register("message")}
                     style={{
-                      WebkitBoxShadow: "0 0 0 1000px white inset", // overrides autofill background
-                      WebkitTextFillColor: "black", // ensures text color stays correct
+                      WebkitBoxShadow: "0 0 0 1000px white inset",
+                      WebkitTextFillColor: "black",
                     }}
-                    className="lg:border-b-2 border-b-1 border-[#8D8D8D] lg:h-[35px] lg:text-[18px] text-[16px] bg-transparent focus:outline-none "
+                    className="lg:border-b-2 border-b-1 border-[#8D8D8D] lg:h-[80px] h-[60px] lg:text-[18px] text-[16px] bg-transparent focus:outline-none resize-none overflow-y-auto"
                   />
+
                   {errors.message && (
                     <p className="text-red-500 text-sm">
                       {errors.message.message}
@@ -207,32 +195,20 @@ const Contact = () => {
                 </div>
 
                 <div className="">
-                  <button
+                  <Button
                     type="submit"
                     disabled={loading}
-                    className="p lg:h-[60px] lg:w-[191px] md:h-[35px] md:w-[110px] w-[90px] h-[30px] flex justify-center items-center hover:bg-[#DA5700]  bg-[#F37521] lg:rounded-xl md:rounded-xl rounded-[5px] text-[#FFFFFF] lg:text-[20px] "
+                    variant="orange"
+                    size="lg"
                   >
-                    {" "}
                     {loading ? "Sending..." : "Subscribe"}
-                  </button>
+                  </Button>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </form>
-      <div className="w-[100%] h-full bg-black flex justify-center items-center pb-35">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d121092.74028953009!2d73.82044506459074!3d18.47694808895882!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x3bc2eba952eb29fd%3A0x1fd1cfdcdf9f0974!2sSurvey%20No.22%2C%20Sunshree%20Woods%2C%20Office%20number%2C%20F28%20to%2032%2C%20NIBM%20Rd%2C%20Kondhwa%2C%20Pune%2C%20Maharashtra%20411048!3m2!1d18.4769659!2d73.90284679999999!5e0!3m2!1sen!2sin!4v1754376613048!5m2!1sen!2sin"
-          width="100%"
-          height="100%"
-          style={{ border: 0 }}
-          allowFullScreen
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-          className="w-[70%] h-[600px]"
-        />
-      </div>
     </>
   );
 };

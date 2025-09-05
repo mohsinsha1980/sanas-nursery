@@ -30,7 +30,7 @@ export default function MainHeader() {
       <div
         className={`bg-nav fixed top-0 z-[50] transition-transform flex justify-center w-full  ${
           isScrolled
-            ? "bg-[rgba(13,13,13,0.40)] md:absolute md:translate-y-0 md:top-0"
+            ? "bg-white/30 backdrop-blur-md md:absolute md:translate-y-0 md:top-0"
             : "md:max-w-[var(--container-8xl)] md:px-[var(--spacing-lg)] mx-auto md:absolute md:translate-y-5 md:top-5"
         }
   `}
@@ -50,7 +50,7 @@ export default function MainHeader() {
 
           <div className="md:hidden flex items-center">
             <button onClick={() => setMobileOpen(!mobileOpen)}>
-              {mobileOpen ? <X size={28} /> : <Menu size={28} />}
+              {mobileOpen ? <X className="text-orange-500" size={28} /> : <Menu className="text-orange-500" size={28} />}
             </button>
           </div>
 
