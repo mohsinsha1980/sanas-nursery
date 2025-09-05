@@ -13,13 +13,13 @@
 }
 
 .admin_nav {
-  max-width: 200px;
-  min-height: 500px;
+  max-width: 300px;
 }
 
 .pg_content h1 {
-  font-size: 24px;
-  font-weight: 300;
+  color: black;        
+  font-weight: 600;      
+  font-size: 42px;       
 }
 
 .pg_content h2 {

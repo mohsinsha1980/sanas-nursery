@@ -185,11 +185,13 @@ const PlantsList = () => {
 
   return (
     <>
-      <div>
+     <div>
+       <div className="">
         <PlantFilter setFilters={setFilters} />
       </div>
+      
       <div>
-        <div className="mb-3">
+        <div className="">
           <DataTable columns={columns} data={tableData.data} />
         </div>
         {tableData?.total / paginationData?.perPage > 1 ? (
@@ -200,6 +202,7 @@ const PlantsList = () => {
           />
         ) : null}
       </div>
+     </div>
 
       <CustomDialog
         title="Are you sure you want to delete this plant?"

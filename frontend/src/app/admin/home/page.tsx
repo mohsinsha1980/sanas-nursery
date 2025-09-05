@@ -41,10 +41,12 @@ export default function HomePageComponent() {
 
   return (
     <>
-      <GreenChoices data={homeData?.greenChoices || []} />
+      <div className="">
+        <GreenChoices data={homeData?.greenChoices || []} />
       <CardsSection data={homeData?.cards} />
       <GallerySection images={homeData?.gallery} />
       <VideoSection videos={homeData?.videos || defultHomeData.Videos} />
+      </div>
     </>
   );
 }
