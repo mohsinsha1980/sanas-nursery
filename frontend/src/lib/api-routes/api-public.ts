@@ -7,6 +7,7 @@
 
 import { axiosInstance } from "@/config/http";
 import {
+  ContactEnquiryFields,
   Controller,
   EmailType,
   OrderEnquiryType,
@@ -86,7 +87,9 @@ export const createOrderEnquiry = (
 };
 
 export const createContactEnquiry = (
-  data: OrderEnquiryType, // TODO : change here
+  data: ContactEnquiryFields & {
+    token: string;
+  },
   controller?: Controller
 ) => {
   return axiosInstance.post(`${config.API_PUBLIC_PATH}/contact-us`, data, {

@@ -1,6 +1,10 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { AddPlantFields } from "./admin-types";
-import { orderEnquirySchema, SubscriptionSchema } from "../schemas/common";
+import {
+  contactEnquirySchema,
+  orderEnquirySchema,
+  SubscriptionSchema,
+} from "../schemas/common";
 import z from "zod";
 // import React from "react";
 // import { AddGalleryField, AddProductFields } from "./admin-types";
@@ -166,6 +170,7 @@ export interface PlantDataType
 }
 
 export type OrderEnquiryFields = z.infer<typeof orderEnquirySchema>;
+export type ContactEnquiryFields = z.infer<typeof contactEnquirySchema>;
 
 export type OrderEnquiryType = OrderEnquiryFields & {
   plantId: string;

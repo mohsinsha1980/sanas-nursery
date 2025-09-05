@@ -71,6 +71,13 @@ export const SubscriptionSchema = z.object({
   email: emailSchema,
 });
 
+export const contactEnquirySchema = z.object({
+  name: nameSchema,
+  email: emailSchema,
+  phone: phoneSchema,
+  message: messageSchema,
+});
+
 // const optionSchema = z.object({
 //   label: z.string(),
 //   value: z.string(),

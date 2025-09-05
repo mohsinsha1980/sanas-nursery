@@ -84,10 +84,18 @@ export default function HeaderNav() {
         </li>
         <li>
           <Link
-            href="/contact"
+            href="/contact-us"
             className={pathname === "/contact" ? "active" : ""}
           >
             Contact
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blogs"
+            className={pathname === "/contact" ? "active" : ""}
+          >
+            Blog
           </Link>
         </li>
       </ul>
