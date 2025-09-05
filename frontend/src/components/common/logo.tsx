@@ -5,7 +5,7 @@ export default function Logo({ size = 80 }: { size?: number }) {
   return (
     <Link href="/">
       <Image
-        src="/site/logo.png"
+        src="/site/sanas-nursery-logo.webp"
         alt="Sanas Nursery"
         width={size}
         height={size}

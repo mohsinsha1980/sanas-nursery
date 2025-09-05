@@ -8,6 +8,7 @@
 import { axiosInstance } from "@/config/http";
 import {
   Controller,
+  EmailType,
   OrderEnquiryType,
   PlantFilterType,
 } from "../types/common-types";
@@ -90,6 +91,15 @@ export const createContactEnquiry = (
   controller?: Controller
 ) => {
   return axiosInstance.post(`${config.API_PUBLIC_PATH}/contact-us`, data, {
+    signal: controller?.signal,
+  });
+};
+
+export const subscribeEmail = (
+  data: EmailType & { token: string },
+  controller?: Controller
+) => {
+  return axiosInstance.post(`${config.API_PUBLIC_PATH}/subscriptions`, data, {
     signal: controller?.signal,
   });
 };

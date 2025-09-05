@@ -13,7 +13,6 @@ export default function TermsConditionsPage() {
         </div>
       </section>
 
-      {/* Terms & Conditions Content */}
       <section className="py-20">
         <div className="container-custom max-w-4xl">
           <div className="prose prose-lg max-w-none">
@@ -24,7 +23,6 @@ export default function TermsConditionsPage() {
             </div>
 
             <div className="space-y-8">
-              {/* Introduction */}
               <div>
                 <h2 className="text-2xl font-bold text-accent-900 mb-4">
                   1. Nature of Our Website
@@ -42,7 +40,6 @@ export default function TermsConditionsPage() {
                 </ul>
               </div>
 
-              {/* Product Information */}
               <div>
                 <h2 className="text-2xl font-bold text-accent-900 mb-4">
                   2. Product Information
@@ -59,7 +56,6 @@ export default function TermsConditionsPage() {
                 </ul>
               </div>
 
-              {/* Enquiry & Communication */}
               <div>
                 <h2 className="text-2xl font-bold text-accent-900 mb-4">
                   3. Enquiry & Communication
@@ -81,7 +77,6 @@ export default function TermsConditionsPage() {
                 </ul>
               </div>
 
-              {/* Orders & Payments */}
               <div>
                 <h2 className="text-2xl font-bold text-accent-900 mb-4">
                   4. Orders & Payments
@@ -104,7 +99,6 @@ export default function TermsConditionsPage() {
                 </ul>
               </div>
 
-              {/* Delivery & Pickup */}
               <div>
                 <h2 className="text-2xl font-bold text-accent-900 mb-4">
                   5. Delivery & Pickup
@@ -121,7 +115,6 @@ export default function TermsConditionsPage() {
                 </ul>
               </div>
 
-              {/* WhatsApp & SMS Communication */}
               <div>
                 <h2 className="text-2xl font-bold text-accent-900 mb-4">
                   6. WhatsApp & SMS Communication
@@ -140,7 +133,6 @@ export default function TermsConditionsPage() {
                 </p>
               </div>
 
-              {/* Intellectual Property */}
               <div>
                 <h2 className="text-2xl font-bold text-accent-900 mb-4">
                   7. Intellectual Property
@@ -153,7 +145,6 @@ export default function TermsConditionsPage() {
                 </p>
               </div>
 
-              {/* Limitation of Liability */}
               <div>
                 <h2 className="text-2xl font-bold text-accent-900 mb-4">
                   8. Limitation of Liability
@@ -172,7 +163,6 @@ export default function TermsConditionsPage() {
                 </p>
               </div>
 
-              {/* Third-Party Links */}
               <div>
                 <h2 className="text-2xl font-bold text-accent-900 mb-4">
                   9. Third-Party Links
@@ -184,7 +174,6 @@ export default function TermsConditionsPage() {
                 </p>
               </div>
 
-              {/* Changes to Terms */}
               <div>
                 <h2 className="text-2xl font-bold text-accent-900 mb-4">
                   10. Changes to Terms
@@ -195,7 +184,6 @@ export default function TermsConditionsPage() {
                 </p>
               </div>
 
-              {/* Contact Information */}
               <div>
                 <h2 className="text-2xl font-bold text-accent-900 mb-4">
                   11. Contact Us
@@ -225,7 +213,6 @@ export default function TermsConditionsPage() {
                 </div>
               </div>
 
-              {/* Acceptance */}
               <div className="bg-primary-50 p-6 rounded-lg border-l-4 border-primary-500">
                 <h3 className="text-lg font-semibold text-primary-800 mb-2">
                   Acceptance of Terms

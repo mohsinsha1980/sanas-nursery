@@ -16,5 +16,6 @@ routes.get("/plant-ID/:id", publicCtrl.getPlantDetailsByID);
 
 routes.post("/order-enquiry", publicCtrl.createOrderEnquiry);
 routes.post("/contact-us", publicCtrl.createContactEnquiry);
+routes.post("/subscriptions", publicCtrl.subscribeEmail);
 
 export default routes;

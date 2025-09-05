@@ -1,6 +1,6 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { AddPlantFields } from "./admin-types";
-import { orderEnquirySchema } from "../schemas/common";
+import { orderEnquirySchema, SubscriptionSchema } from "../schemas/common";
 import z from "zod";
 // import React from "react";
 // import { AddGalleryField, AddProductFields } from "./admin-types";
@@ -295,6 +295,7 @@ export interface CategoryPlantsHttpResDataType {
   message: string;
   data: { plants: PlantDataType[]; total: number };
 }
+export type EmailType = z.infer<typeof SubscriptionSchema>;
 
 // export interface GalleryDataField extends AddGalleryField {
 //   _id: string;
