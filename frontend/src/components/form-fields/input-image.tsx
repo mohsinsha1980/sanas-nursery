@@ -20,6 +20,8 @@ interface InputImageFieldProps<T extends FieldValues> {
   accept?: string;
   onchange?: (data: FileList) => void;
   className?: string;
+  labelClassName?: string;        // ✅ Added
+  descriptionClassName?: string;  // ✅ Added
 }
 
 const InputImageField = <T extends FieldValues>({
@@ -31,6 +33,8 @@ const InputImageField = <T extends FieldValues>({
   multiple,
   accept,
   className = "",
+  labelClassName = "",
+  descriptionClassName = "",
   onchange,
 }: InputImageFieldProps<T>) => {
   return (
@@ -39,7 +43,7 @@ const InputImageField = <T extends FieldValues>({
       name={name}
       render={({ field: { value, onChange, ...fieldProps } }) => (
         <FormItem>
-          <FormLabel>{label}</FormLabel>
+          <FormLabel className={labelClassName}>{label}</FormLabel>
           <FormControl>
             {multiple ? (
               <Input
@@ -51,7 +55,6 @@ const InputImageField = <T extends FieldValues>({
                 accept={accept}
                 onChange={(event) => {
                   if (event.target?.files) {
-                    console.log(value);
                     onChange(event.target.files);
                     onchange?.(event.target.files);
                   }
@@ -73,7 +76,11 @@ const InputImageField = <T extends FieldValues>({
               />
             )}
           </FormControl>
-          {description && <FormDescription>{description}</FormDescription>}
+          {description && (
+            <FormDescription className={descriptionClassName}>
+              {description}
+            </FormDescription>
+          )}
           <FormMessage />
         </FormItem>
       )}

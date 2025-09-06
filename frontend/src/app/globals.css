@@ -137,14 +137,6 @@
   }
 }
 
-@keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
 
 @layer components {
   .container-custom {
@@ -167,13 +159,6 @@ body {
   margin-right: auto;
 }
 
-.animate-scroll-left {
-  animation: scroll-left 30s linear infinite;
-}
-
-.animate-scroll-left:hover {
-  animation-play-state: paused;
-}
 
 header {
   position: fixed;
@@ -367,7 +352,31 @@ footer {
   margin-bottom: 10px;
 }
 
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%); 
+  }
+}
 
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-scroll-left {
+  animation: scroll-left 30s linear infinite;
+}
+
+.animate-scroll-left:hover {
+  animation-play-state: paused;
+}
 
 .animate-scroll {
   animation: scroll 70s linear infinite;
