@@ -11,6 +11,7 @@ import {
   PlantFilterType,
   PlantsCardType,
 } from "./types/common-types";
+import { EnquiryStatus, EnquiryStatusType } from "./constants";
 
 type InputDate = string | Date;
 interface errorType {
@@ -265,15 +266,6 @@ export function capitalizeFirstChar(str: string) {
   return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 }
 
-// export const getFullAddress = (address: Address): string => {
-//   if (!address) {
-//     return "";
-//   }
-//   return `${address.address1}, ${
-//     address.address2 ? address.address2 + ", " : ""
-//   }${address.city}, ${address.state}, ${address.zip}`;
-// };
-
 export const STATUS = {
   ACTIVE: "0",
   INACTIVE: "1",
@@ -283,19 +275,6 @@ export const STATUS = {
 export const capitalize = (str: string): string => {
   return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 };
-
-//   return params.toString() ? "?" + params.toString() : "";
-// };
-
-// export const constructProductLink = (data: ProductCardType): string => {
-//   let link = "/";
-//   link = link + data.l1_category + "/" + data.l2_category;
-//   if (data.l3_category) {
-//     link = link + "/" + data.l3_category;
-//   }
-//   link = link + "/" + data.slug + "/" + data.id;
-//   return link;
-// };
 
 export const getPlantsCardData = (plant: PlantDataType): PlantsCardType => {
   return {
@@ -318,29 +297,6 @@ export function getPaginatedMasterData<T>(
   const endIndex = startIndex + pageSize;
   return array.slice(startIndex, endIndex);
 }
-
-// export const getTrendyProductCardData = (
-//   product: TrendyProductDataType
-// ): HomeProductCardType => {
-//   return {
-//     id: product._id,
-//     title: product.title,
-//     sellingPrice: Math.round(product.variants[0].sellingPrice),
-//     discount: product.variants[0].discount,
-//     mrp: Math.round(product.variants[0].mrp),
-//     l1_category: product.l1_category?.slug,
-//     l2_category: product.l2_category?.slug,
-//     l3_category: product.l3_category?.slug || "",
-//     pictures: product.pictures.map((item: string) => {
-//       return process.env.NEXT_PUBLIC_BACKEND + "/" + item;
-//     }),
-//     slug: product.slug,
-//     avgRating: product.avgRating,
-//     totalReviews: product.totalReviews,
-//     l2_category_label: product.l2_category?.label || "",
-//     l3_category_label: product.l3_category?.label || "",
-//   };
-// };
 
 export const showErrorToast = (message: string): void => {
   const id = toast.error(message, {
@@ -366,18 +322,6 @@ export const formatMonthYear = (date: Date): string => {
   const options = { year: "numeric" as const, month: "long" as const };
   return new Date(date).toLocaleDateString("en-US", options);
 };
-
-// export const formatAddress = (address: Address | undefined): string => {
-//   if (!address) {
-//     return "-";
-//   }
-//   const { address1, address2, city, state, zip } = address;
-//   const country = "India";
-
-//   return `${address1}${
-//     address2 ? ", " + address2 : ""
-//   }, ${city}, ${state} - ${zip}, ${country}`;
-// };
 
 export const encryptData = (data: UserInSessionTypes) => {
   try {
@@ -432,4 +376,28 @@ export const buildQueryString = (searchParams: PlantFilterType) => {
   });
 
   return params.toString() ? "?" + params.toString() : "";
+};
+
+export const getInitials = (name: string) => {
+  return name
+    .split(" ")
+    .map((n) => n[0])
+    .join("")
+    .toUpperCase()
+    .slice(0, 2);
+};
+
+export const getStatusColor = (status: EnquiryStatusType) => {
+  switch (status) {
+    case EnquiryStatus.PENDING:
+      return "bg-yellow-100 text-yellow-800";
+    case EnquiryStatus.IN_PROGRESS:
+      return "bg-blue-100 text-blue-800";
+    case EnquiryStatus.RESOLVED:
+      return "bg-green-100 text-green-800";
+    case EnquiryStatus.CLOSED:
+      return "bg-gray-100 text-gray-800";
+    default:
+      return "bg-gray-100 text-gray-800";
+  }
 };

@@ -38,11 +38,10 @@ app.use(cookieParser());
 import adminRoutes from "./routes/admin/index.js";
 import authRoute from "./routes/auth.js";
 import publicRoutes from "./routes/public.js";
-
-// import userRoutes from "./routes/user/index.js";
+import userRoutes from "./routes/user/index.js";
 
 app.use("/api/auth", authRoute);
-// app.use("/api/user", userRoutes);
+app.use("/api/user", userRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/public", publicRoutes);
 

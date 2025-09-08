@@ -5,6 +5,7 @@ import {
   STATUS,
 } from "../lib/constants.js";
 import { buildPlantFilter, emailRegEx, phoneRegEx } from "../lib/util.js";
+import { ContactUs } from "../models/ContactUs.js";
 import { OrderEnquiry } from "../models/OrderEnquiry.js";
 import Plant from "../models/Plant.js";
 import Settings from "../models/Settings.js";
@@ -328,3 +329,6 @@ export const subscribeEmail = async (req, res, next) => {
     return next({ message: "Internal Server Error", status: 500 });
   }
 };
+
+
+

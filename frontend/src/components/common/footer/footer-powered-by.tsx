@@ -1,5 +1,5 @@
 import Link from "next/link";
-import BharathaIconSvg from "../../../../public/site/images/icon-bharathatechno.svg";
+// import BharathaIconSvg from "../../../../public/site/images/icon-bharathatechno.svg";
 
 export default function FooterPoweredBy() {
   return (
