@@ -20,6 +20,8 @@ interface TextAreaProps<T extends FieldValues> {
   resize?: boolean;
   rows?: number;
   onChange?: (val: string) => void;
+  labelClassName?: string;        // 👈 for label styling
+  descriptionClassName?: string;  // 👈 for description styling
 }
 
 const TextArea = <T extends FieldValues>({
@@ -32,6 +34,8 @@ const TextArea = <T extends FieldValues>({
   resize = true,
   rows = 4,
   onChange,
+  labelClassName = "",
+  descriptionClassName = "",
 }: TextAreaProps<T>) => {
   return (
     <FormField
@@ -39,7 +43,9 @@ const TextArea = <T extends FieldValues>({
       name={name}
       render={({ field }) => (
         <FormItem>
-          <FormLabel>{label}</FormLabel>
+          {/* Label with custom styles */}
+          <FormLabel className={labelClassName}>{label}</FormLabel>
+
           <FormControl>
             <Textarea
               readOnly={readOnly}
@@ -54,7 +60,12 @@ const TextArea = <T extends FieldValues>({
               }}
             />
           </FormControl>
-          {description && <FormDescription>{description}</FormDescription>}
+
+          {description && (
+            <FormDescription className={descriptionClassName}>
+              {description}
+            </FormDescription>
+          )}
           <FormMessage />
         </FormItem>
       )}

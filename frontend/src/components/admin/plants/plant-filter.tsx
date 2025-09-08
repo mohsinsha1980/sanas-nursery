@@ -33,7 +33,7 @@ const PlantFilter = ({
     <>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-          <div className="grid grid-cols-4 gap-4 mb-4">
+          <div className="grid grid-cols-4 gap-4 mb-4 items-center">
             <div>
               <TextField
                 name="title"
@@ -41,7 +41,7 @@ const PlantFilter = ({
                 placeholder="Filter by plant name"
                 formControl={form.control}
                 inputType="text"
-                className="border rounded-md"
+                className="p-5 border rounded-md"
               />
             </div>
             <div>
@@ -51,7 +51,7 @@ const PlantFilter = ({
                 placeholder="Filter by plant ID"
                 formControl={form.control}
                 inputType="text"
-                className="border rounded-md"
+                className="p-5 border rounded-md"
               />
             </div>
             <div>
@@ -64,10 +64,11 @@ const PlantFilter = ({
                   { label: "Active", value: "0" },
                   { label: "In-Active", value: "1" },
                 ]}
+                className="p-5 mt-2"
               />
             </div>
-            <div className="mt-2 flex gap-5">
-              <Button variant="link" type="submit" className="text-red-500">
+            <div className="flex gap-5">
+              <Button size="md" variant="orange" type="submit" className="">
                 Apply Filter
               </Button>
               {form.getValues("title") ||

@@ -26,6 +26,7 @@ interface SelectFieldProps<T extends FieldValues> {
   options: SelectOptionsProps[];
   onChange?: (data: string) => void;
   readOnly?: boolean;
+  className?: string; // ✅ Added className prop
 }
 
 interface SelectOptionsProps {
@@ -42,6 +43,7 @@ const SelectField = <T extends FieldValues>({
   options,
   onChange,
   readOnly = false,
+  className = "", // default empty
 }: SelectFieldProps<T>) => {
   return (
     <FormField
@@ -60,18 +62,20 @@ const SelectField = <T extends FieldValues>({
               value={field.value || ""}
             >
               <FormControl>
-                <SelectTrigger>
-                  <SelectValue placeholder={placeholder} />
+                <SelectTrigger className={className}>
+                  <SelectValue placeholder={placeholder} className={className}/>
                 </SelectTrigger>
               </FormControl>
-              <SelectContent>
-                {options.length > 0
-                  ? options.map((item, index) => (
-                      <SelectItem key={item.value + index} value={item.value}>
-                        {item.label}
-                      </SelectItem>
-                    ))
-                  : null}
+              <SelectContent className="bg-white border border-gray-200 rounded-md shadow-lg">
+                {options.map((item, index) => (
+                  <SelectItem 
+                  key={item.value + index} 
+                  value={item.value}
+                  className="text-md" 
+                  >
+                    {item.label}
+                  </SelectItem>
+                ))}
               </SelectContent>
             </Select>
             {description && <FormDescription>{description}</FormDescription>}

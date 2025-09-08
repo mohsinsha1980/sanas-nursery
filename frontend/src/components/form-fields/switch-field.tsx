@@ -16,6 +16,9 @@ interface SwitchFieldProps<T extends FieldValues> {
   label: string;
   description?: string;
   formControl: Control<T>;
+  className?: string; // ✅ Added
+  labelClassName?: string; // optional for styling
+  descriptionClassName?: string; // optional for styling
 }
 
 function SwitchField<T extends FieldValues>({
@@ -23,6 +26,9 @@ function SwitchField<T extends FieldValues>({
   label,
   description,
   formControl,
+  className = "",
+  labelClassName = "",
+  descriptionClassName = "",
 }: SwitchFieldProps<T>) {
   return (
     <FormField
@@ -30,11 +36,19 @@ function SwitchField<T extends FieldValues>({
       name={name}
       render={({ field }) => (
         <FormItem>
-          <FormLabel className="block">{label}</FormLabel>
+          <FormLabel className={`block ${labelClassName}`}>{label}</FormLabel>
           <FormControl>
-            <Switch checked={field.value} onCheckedChange={field.onChange} />
+            <Switch
+              checked={field.value}
+              onCheckedChange={field.onChange}
+              className={className}
+            />
           </FormControl>
-          {description && <FormDescription>{description}</FormDescription>}
+          {description && (
+            <FormDescription className={descriptionClassName}>
+              {description}
+            </FormDescription>
+          )}
           <FormMessage />
         </FormItem>
       )}

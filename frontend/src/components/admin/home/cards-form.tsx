@@ -25,10 +25,12 @@ import { useDispatch } from "react-redux";
 import { z } from "zod";
 
 type FormFields = z.infer<typeof homeCardSchema>;
+
 interface CardFormProps {
   defaultData: DefultHomeCardType;
   field: string;
   data?: HomeCardType;
+  className?: string;
 }
 
 export default function CardsForm({ defaultData, field, data }: CardFormProps) {
@@ -54,11 +56,11 @@ export default function CardsForm({ defaultData, field, data }: CardFormProps) {
   const onSubmit: SubmitHandler<FormFields> = async (values) => {
     try {
       dispatch(showLoader());
-      const updatedCardrData = {
+      const updatedCardData = {
         ...values,
         field,
       };
-      const response = await updateHomeCard(updatedCardrData);
+      const response = await updateHomeCard(updatedCardData);
       showSuccessToast(response.data.message);
       dispatch(hideLoader());
       setOpenConfirm(false);
@@ -93,21 +95,24 @@ export default function CardsForm({ defaultData, field, data }: CardFormProps) {
 
   return (
     <>
+      {/* Card */}
       <div
         onClick={() => setOpenConfirm(true)}
-        className="relative w-full md:w-1/2 h-[350px] sm:h-[420px] md:h-[472px] rounded-2xl overflow-hidden cursor-pointer"
+        className="relative w-full md:w-1/2 h-[350px] sm:h-[420px] md:h-[472px] lg:h-[350px] rounded-2xl overflow-hidden cursor-pointer group"
       >
+        {/* Card Image */}
         <Image
           src={imageSrc}
-          alt="Left collection background"
+          alt="Card background"
           fill
           priority
-          className="object-cover"
+          className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
         />
 
+        {/* Overlay with hover effect */}
         <div
-          className="absolute bottom-0 left-0 w-full bg-[rgba(255,255,255,0.2)]  flex flex-col items-start justify-center text-left p-6 sm:p-8 md:p-10"
-          style={{ height: "237px" }}
+          className="absolute bottom-0 left-0 w-full pl-5 group-hover:bg-[rgba(255,255,255,0.5)] flex flex-col items-start justify-center text-left transition-all duration-400 ease-in-out"
+          style={{ height: "200px" }}
         >
           <h2
             style={{ color: form.getValues("largeColor") || "white" }}
@@ -122,14 +127,14 @@ export default function CardsForm({ defaultData, field, data }: CardFormProps) {
             {form.getValues("small") || defaultData.small}
           </p>
           <button
-            style={{ color: form.getValues("link.color") || "white" }}
-            className="border border-white text-white text-base w-[140px] h-[46px] rounded transition duration-300 hover:bg-white hover:text-green-700"
+            className="w-[140px] h-[46px] rounded-lg bg-white text-[#F37521] font-semibold shadow-md transition-all duration-300 hover:bg-[#F37521] hover:text-white hover:shadow-lg"
           >
             {form.getValues("link.label") || defaultData.linkLabel}
           </button>
         </div>
       </div>
 
+      {/* Edit Dialog */}
       <CustomDialog
         title={`Update Card ${field}`}
         open={openEditForm}
@@ -189,6 +194,7 @@ export default function CardsForm({ defaultData, field, data }: CardFormProps) {
                   form.setValue("link.color", color as string)
                 }
               />
+
               <div className="col-span-2">
                 <TextField
                   name="link.address"
@@ -206,18 +212,17 @@ export default function CardsForm({ defaultData, field, data }: CardFormProps) {
                 description="Valid image extensions: .jpg, .jpeg, .png, .webp"
               />
 
-              {form.getValues("picture") && imageSrc ? (
+              {form.getValues("picture") && imageSrc && (
                 <Image
                   src={imageSrc}
                   alt="Selected Category"
                   height={200}
                   width={200}
-                  objectFit="contain"
+                  className="object-contain"
                 />
-              ) : null}
+              )}
             </div>
 
-            {/* Action buttons */}
             <div className="flex justify-end pt-2">
               <Button
                 type="submit"

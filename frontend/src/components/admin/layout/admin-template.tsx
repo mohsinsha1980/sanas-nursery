@@ -9,13 +9,13 @@ export default function AdminTemplate({
   children?: React.ReactNode;
 }>) {
   return (
-    <div className="bg-green-300 mt-32">
-      <div className={classes.bl_admin_template}>
-        <div className={classes.admin_nav}>
+    <div className="bg-white pt-32">
+      <div className={`${classes.bl_admin_template} `}>
+        <div className={`${classes.admin_nav}  h-full`}>
           <ContextMenu />
         </div>
 
-        <div className={classes.pg_content}>{children}</div>
+        <div className={`${classes.pg_content} bg-[var(--bg-green-light)] p-5 rounded-2xl shadow `}>{children}</div>
       </div>
     </div>
   );

@@ -14,7 +14,7 @@ export default function AdminLayout({
   const pathname = usePathname();
   const router = useRouter();
   const user = useSelector((state: RootState) => state.user);
-  const [isAdmin, setIsAdmin] = useState<boolean>(false);
+  const [isAdmin, setIsAdmin] = useState<boolean>(true);
 
   useEffect(() => {
     if (user?._id) {

@@ -114,8 +114,7 @@ export default function TagsField({ data }: Props) {
   }, [confirmVal, dispatch, idToDelete]);
 
   return (
-    <div className="mb-4">
-      <CustomCard>
+    <div className="pt-5 ">
         <div className="flex flex-row">
           <div className="basis-1/4">
             <h2>Tags</h2>
@@ -129,7 +128,7 @@ export default function TagsField({ data }: Props) {
             />
           </div>
           <div className="basis-1/4 text-right">
-            <Button type="button" size="sm" onClick={() => setOpenTag(true)}>
+            <Button variant={"orange"} type="button" size="sm" onClick={() => setOpenTag(true)}>
               <CirclePlusIcon /> Add
             </Button>
           </div>
@@ -176,7 +175,6 @@ export default function TagsField({ data }: Props) {
           perPage={PAGINATION.PER_PAGE}
           pageChange={setPage}
         />
-      </CustomCard>
 
       <CustomDialog
         title="Add a new tag"
