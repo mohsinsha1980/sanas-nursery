@@ -7,7 +7,7 @@ const store = configureStore({
   reducer: {
     ui: uiReducer,
     user: userReducer,
-    cart: wishlistReducer,
+    wishlist: wishlistReducer,
   },
   devTools: process.env.NEXT_PUBLIC_NODE_ENV !== "production",
 });

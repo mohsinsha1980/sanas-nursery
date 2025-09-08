@@ -30,4 +30,4 @@ const ContactUsSchema = new mongoose.Schema(
   { collection: "ContactUs", timestamps: true }
 );
 
-export const OrderEnquiry = mongoose.model("ContactUs", ContactUsSchema);
+export const ContactUs = mongoose.model("ContactUs", ContactUsSchema);

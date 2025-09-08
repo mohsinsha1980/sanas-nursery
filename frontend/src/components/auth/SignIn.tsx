@@ -21,6 +21,7 @@ import { useReCaptcha } from "next-recaptcha-v3";
 import TextField from "../form-fields/text-field";
 import { Button } from "../ui/button";
 import Link from "next/link";
+import { mergeWishlistFromDB } from "@/redux/wishListSlice";
 
 export default function SignIn() {
   const dispatch = useDispatch();
@@ -42,9 +43,12 @@ export default function SignIn() {
       const clonedData = structuredClone(data);
       const updatedData = { ...clonedData, token: token };
       const response = await signin(updatedData);
-      const encryptedUserData = response.data?.data;
+      const encryptedUserData = response.data?.data?.user;
       const userData = decryptData(encryptedUserData);
-      dispatch(updateUser(userData));
+      dispatch(updateUser(userData.data));
+      if (response.data.data?.wishlist?.length) {
+        dispatch(mergeWishlistFromDB(response.data.data?.wishlist));
+      }
       showSuccessToast("Signed in successfully");
       router.push("/");
     } catch (error: unknown) {

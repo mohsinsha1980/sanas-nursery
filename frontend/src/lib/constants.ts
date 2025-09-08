@@ -36,25 +36,6 @@ export const ACCEPTED_IMAGE_TYPES = [
 
 export const ACCEPTED_FILE_TYPES = ["application/pdf"];
 
-// export const PRODUCT_SORT_OPTIONS: VariantType[] = [
-//   {
-//     label: "Price: Low to High",
-//     value: "price-asc",
-//   },
-//   {
-//     label: "Price: High to Low",
-//     value: "price-desc",
-//   },
-//   {
-//     label: "Customer Ratings",
-//     value: "customer-ratings",
-//   },
-//   {
-//     label: "Best Seller",
-//     value: "best-seller",
-//   },
-// ];
-
 export const ACTION_TYPES = {
   EDIT: "Edit",
   DELETE: "Delete",
@@ -274,3 +255,13 @@ export const FOOTER_LINKS = {
     },
   ],
 } as const;
+
+export const EnquiryStatus = {
+  PENDING: "pending",
+  IN_PROGRESS: "in_progress",
+  RESOLVED: "resolved",
+  CLOSED: "closed",
+} as const;
+
+export type EnquiryStatusType =
+  (typeof EnquiryStatus)[keyof typeof EnquiryStatus];

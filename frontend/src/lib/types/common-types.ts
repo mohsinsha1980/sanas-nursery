@@ -1,6 +1,11 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { AddPlantFields } from "./admin-types";
-import { orderEnquirySchema, SubscriptionSchema } from "../schemas/common";
+import {
+  contactEnquirySchema,
+  orderEnquirySchema,
+  passwordChangeSchema,
+  SubscriptionSchema,
+} from "../schemas/common";
 import z from "zod";
 // import React from "react";
 // import { AddGalleryField, AddProductFields } from "./admin-types";
@@ -61,100 +66,12 @@ export interface CategoryPageParamsProps {
 }
 
 export interface PlantsCardType {
-  id: string | number;
+  id: string;
   pictures: string[];
   title: string;
   slug: string;
   category: string;
 }
-
-// export interface WishlistProductCardType {
-//   id: string;
-//   pictures: string[];
-//   isInCart: boolean;
-//   title: string;
-//   sellingPrice: number;
-//   mrp?: number;
-//   discount?: number;
-//   l1_category: string;
-//   l2_category: string;
-//   l3_category?: string;
-//   taxRate: number;
-//   slug: string;
-//   variants: VarientDataType[];
-// }
-
-// export interface SampleTableDataType {
-//   id: string;
-//   amount: number;
-//   status: string;
-//   email: string;
-//   actions?: DataTableActionType[];
-// }
-
-// export interface CategoryResponseType {
-//   l1_category: string;
-//   l2_category: string;
-//   label: string;
-//   level: string;
-//   picture: string;
-//   slug: string;
-//   uuid: string;
-//   _id: string;
-//   status: string;
-//   description: string;
-// }
-
-// export interface L1CategoryHttpResponseDataType<TData> {
-//   message: string;
-//   data: { l1: TData; l2: TData[] };
-// }
-
-// export interface L2CategoryHttpResponseDataType<TData> {
-//   message: string;
-//   data: { l1: TData; l2: TData; l3: TData[] };
-// }
-
-// export type CategoryProps = {
-//   params: Promise<{ slug: string }>;
-// };
-
-// export interface SubCategoryPageParamsProps {
-//   params: Promise<{ category_l2: string; category_l1: string }>;
-// }
-
-// export interface L3CategoryPageParamsProps {
-//   params: Promise<{
-//     category_l3: string;
-//     category_l2: string;
-//     category_l1: string;
-//   }>;
-// }
-
-// export interface L3CategoryProductsHttpResponseDataType<TData> {
-//   message: string;
-//   data: {
-//     l1: TData;
-//     l2: TData;
-//     l3: TData;
-//     products: ProductDataType[];
-//     total: number;
-//   };
-// }
-
-// export interface SizeChartPropertyType {
-//   _id: string;
-//   key: string;
-//   value: number;
-// }
-
-// export interface ProductSizeChartType {
-//   _id: string;
-//   label: string;
-//   value: string;
-//   properties: SizeChartPropertyType[];
-//   length?: number;
-// }
 
 type PropsAddProductFieldsOmitted = "status" | "picture";
 
@@ -166,56 +83,13 @@ export interface PlantDataType
 }
 
 export type OrderEnquiryFields = z.infer<typeof orderEnquirySchema>;
+export type ContactEnquiryFields = z.infer<typeof contactEnquirySchema>;
+export type PasswordChangeFormData = z.infer<typeof passwordChangeSchema>;
 
 export type OrderEnquiryType = OrderEnquiryFields & {
   plantId: string;
   userId?: string;
 };
-
-// export interface ReviewDataType {
-//   _id?: string;
-//   title?: string;
-//   description?: string;
-//   rating: number;
-//   productId: string;
-//   status: boolean;
-//   user_id?: string;
-//   user?: ReviewsUserDataType;
-// }
-
-// export interface L2CategoryProductsHttpResponseDataType<TData> {
-//   message: string;
-//   data: { l1: TData; l2: TData; products: ProductDataType[]; total: number };
-// }
-
-// export type catFilterOptionsType = {
-//   label: string;
-//   url: string;
-// };
-
-// export type MainCarouselSlideType = {
-//   _id: string;
-//   link: {
-//     label: string;
-//     address: string;
-//     color?: string;
-//   };
-//   h1: string;
-//   h2: string;
-//   h3: string;
-//   h1Color?: string;
-//   h2Color?: string;
-//   h3Color?: string;
-//   picture: File | undefined | string;
-//   status: boolean;
-// };
-
-// export interface HomeProductCardType extends ProductCardType {
-//   avgRating: number;
-//   totalReviews: number;
-//   l2_category_label: string;
-//   l3_category_label: string;
-// }
 
 export interface HomeCardType {
   _id?: string;
@@ -230,15 +104,6 @@ export interface HomeCardType {
   };
   picture: File | undefined | string | null;
 }
-
-// export interface HomeBannerTopType {
-//   _id?: string;
-//   A1: HomeBannerType;
-//   B1: HomeBannerType;
-//   B2: HomeBannerType;
-//   B3: HomeBannerType;
-//   C1: HomeBannerType;
-// }
 
 export interface HomeCardsTypes {
   _id?: string;
@@ -296,152 +161,3 @@ export interface CategoryPlantsHttpResDataType {
   data: { plants: PlantDataType[]; total: number };
 }
 export type EmailType = z.infer<typeof SubscriptionSchema>;
-
-// export interface GalleryDataField extends AddGalleryField {
-//   _id: string;
-// }
-
-// export interface GalleryHttpResponseDataType<TData> {
-//   message: string;
-//   data: TData[];
-// }
-
-// export interface TrendyProductDataType extends ProductDataType {
-//   avgRating: number;
-//   totalReviews: number;
-// }
-
-// export interface TrendyProductsHttpResponseDataType {
-//   message: string;
-//   data: {
-//     newArrivals: TrendyProductDataType[];
-//     bestSellers: TrendyProductDataType[];
-//     topRated: TrendyProductDataType[];
-//   };
-// }
-
-// // export interface EditReviewDataType {
-// //   _id: string;
-// //   description: string;
-// //   productId : ReviewsProductDataType;
-// //   rating: number;
-// //   status: boolean;
-// //   title: string;
-// //   user: ReviewsUserDataType;
-// // }
-
-// // export interface ReviewsProductDataType {
-// //   _id: string;
-// //   title: string;
-// // }
-
-// export interface ReviewsUserDataType {
-//   _id: string;
-//   first_name: string;
-//   last_name: string;
-//   active: boolean;
-// }
-
-// export type ReviewFormDataType = z.infer<typeof UserReviewSchema>;
-
-// export interface CartProductsDataType {
-//   color: VariantType;
-//   productId: string;
-//   quantity: number;
-//   size: string;
-//   userId: string;
-//   _id: string;
-// }
-
-// export type VarientDataType = z.infer<typeof productVariantSchema>;
-
-// export interface ViewProductDataType
-//   extends Omit<AddProductFields, PropsAddProductFieldsOmitted> {
-//   _id: string;
-//   status: string;
-//   picture: string;
-//   label: string;
-//   l1_category: {
-//     _id: string;
-//     uuid: string;
-//     label: string;
-//     l1_category: string;
-//     l2_category: string;
-//     slug: string;
-//     picture: string;
-//     level: string;
-//     status: string;
-//     description: string;
-//   };
-//   l2_category: {
-//     _id: string;
-//     uuid: string;
-//     label: string;
-//     l1_category: string;
-//     l2_category: string;
-//     slug: string;
-//     picture: string;
-//     level: string;
-//     status: string;
-//     description: string;
-//   };
-//   l3_category?: {
-//     _id: string;
-//     uuid: string;
-//     label: string;
-//     l1_category: string;
-//     l2_category: string;
-//     slug: string;
-//     picture: string;
-//     level: string;
-//     status: string;
-//     description: string;
-//   };
-//   sizeChart: ProductSizeChartType[];
-//   dimensions: {
-//     height: string;
-//     weight: string;
-//     length: string;
-//     width: string;
-//   };
-// }
-
-// export interface TopSellingProductsChartType {
-//   month: string;
-//   product_1?: number;
-//   product_2?: number;
-//   product_3?: number;
-//   product_4?: number;
-//   product_5?: number;
-// }
-
-// export interface TopSellingProductsChartConfigType {
-//   product_1?: {
-//     label: string;
-//     color: string;
-//   };
-//   product_2?: {
-//     label: string;
-//     color: string;
-//   };
-//   product_3?: {
-//     label: string;
-//     color: string;
-//   };
-//   product_4?: {
-//     label: string;
-//     color: string;
-//   };
-//   product_5?: {
-//     label: string;
-//     color: string;
-//   };
-// }
-
-// export interface HomeClientHttpResponseDataType<SliderData, GalleryTData> {
-//   message: string;
-//   data: {
-//     galleryData: GalleryTData[];
-//     mainSlider: SliderData[];
-//   };
-// }

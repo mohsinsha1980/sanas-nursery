@@ -135,57 +135,6 @@ export const videoSchema = z.object({
     .length(YT_VIDEOS_LENGTH),
 });
 
-// export const gallerySchema = z.object({
-//   pictures:
-//     typeof window === "undefined"
-//       ? z.any()
-//       : z
-//           .instanceof(FileList, { message: "Pictures are required" })
-//           .transform((list) => Array.from(list))
-//           .refine(
-//             (files) => {
-//               return files.every(
-//                 (file) => ACCEPTED_IMAGE_TYPES.indexOf(file.type) > -1
-//               );
-//             },
-//             { message: "Only .jpg, .jpeg, .png and .webp files are accepted." }
-//           ),
-// });
-
-// const baseHomeSliderSchema = z.object({
-//   h1: z.string().nonempty("Main Heading is required"),
-//   h1Color: z.string(),
-//   h2: z.string().nonempty("Heading is required"),
-//   h2Color: z.string(),
-//   h3: z.string().nonempty("Sub-heading is required"),
-//   h3Color: z.string(),
-//   link: z.object({
-//     label: z.string().nonempty("Link label is required"),
-//     address: z.string().nonempty("Link address is required"),
-//     color: z.string().nonempty("Link color is required"),
-//   }),
-//   status: z.boolean(),
-// });
-
-// export const homeSliderSchema = baseHomeSliderSchema.extend({
-//   picture: z
-//     .instanceof(File)
-//     .refine((file) => ACCEPTED_IMAGE_TYPES.includes(file.type), {
-//       message: "Only .jpg, .jpeg, .png, and .webp files are allowed",
-//     }),
-// });
-
-// export const editHomeSliderSchema = baseHomeSliderSchema.extend({
-//   _id: z.string(),
-//   picture: z.union([
-//     z
-//       .instanceof(File)
-//       .refine((file) => ACCEPTED_IMAGE_TYPES.includes(file.type), {
-//         message: "Only .jpg, .jpeg, .png, and .webp files are allowed",
-//       }),
-//     z.string().nonempty("Image URL is required"),
-//   ]),
-
 export const PlantFilterSchema = z.object({
   title: z.string().optional(),
   plantId: z.string().optional(),

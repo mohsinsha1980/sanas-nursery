@@ -10,6 +10,7 @@ import { fileURLToPath } from "url";
 import Otp from "../models/Otp.js";
 import log from "../services/logger.js";
 import { clearAuthCookies, setAuthCookies } from "../middleware/user-auth.js";
+import Wishlist from "../models/Wishlist.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -157,9 +158,16 @@ export const signin = async (req, res, next) => {
 
     const formattedUser = formatUserData(foundUser.toObject());
 
+    const wishlistItems = await Wishlist.find({ userId: foundUser._id }).select(
+      "plantId -_id"
+    );
+    const wishlistPlantIds = wishlistItems.map((item) =>
+      item.plantId.toString()
+    );
+
     req.successResponse = {
       message: "Sign-in successful.",
-      data: formattedUser,
+      data: { user: formattedUser, wishlist: wishlistPlantIds },
     };
     return next();
   } catch (e) {
@@ -326,7 +334,7 @@ export const logout = async (req, res, next) => {
     res.clearCookie("accessToken", { httpOnly: true, secure: true });
     res.clearCookie("refreshToken", { httpOnly: true, secure: true });
 
-    req.successResponse = { message: "Logout successful" };
+    req.successResponse = { message: "success" };
     return next();
   } catch (e) {
     return next({ status: 500, message: e.message });
@@ -352,9 +360,16 @@ export const getLogedInUser = async (req, res, next) => {
 
     const formattedUser = formatUserData(foundUser.toObject());
 
+    const wishlistItems = await Wishlist.find({ userId: foundUser._id }).select(
+      "plantId -_id"
+    );
+    const wishlistPlantIds = wishlistItems.map((item) =>
+      item.plantId.toString()
+    );
+
     req.successResponse = {
       message: "User retrieved successfully.",
-      data: formattedUser,
+      data: { user: formattedUser, wishlist: wishlistPlantIds },
     };
     return next();
   } catch (e) {
