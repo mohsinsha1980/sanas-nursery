@@ -140,3 +140,17 @@ export const PlantFilterSchema = z.object({
   plantId: z.string().optional(),
   status: z.string().optional(),
 });
+
+export const testimonialSchema = z.object({
+  author: z.string().nonempty("Author name is required"),
+  content: z.string().nonempty("Testimonial content is required"),
+  rating: z
+    .string()
+    .nonempty("Rating is required")
+    .refine(
+      (val) => ["1", "2", "3", "4", "5"].includes(val),
+      "Rating must be between 1 and 5"
+    ),
+  link: z.string().url("Must be a valid URL").optional(),
+  status: z.boolean(),
+});

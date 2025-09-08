@@ -3,6 +3,7 @@ import {
   addPlantSchema,
   editPlantSchema,
   PlantFilterSchema,
+  testimonialSchema,
 } from "../schemas/admin";
 import { DataTableActionType, HomeCardType } from "./common-types";
 import { MASTER_DATA_TYPE } from "../constants";
@@ -70,3 +71,14 @@ export interface UserTableDataType {
 }
 
 export type PlantFilterTypes = z.infer<typeof PlantFilterSchema>;
+
+export type AddTestimonialType = z.infer<typeof testimonialSchema>;
+export type EditTestimonialType = z.infer<typeof testimonialSchema>;
+
+// export interface PlantTableDataType {
+//   title: string;
+//   plantId: string;
+//   status: string;
+//   actions: DataTableActionType[];
+//   picture: string;
+// }

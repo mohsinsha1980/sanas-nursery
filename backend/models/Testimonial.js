@@ -1,4 +1,5 @@
-const mongoose = require("mongoose");
+import mongoose, { model } from "mongoose";
+import { STATUS } from "../lib/constants.js";
 const { Schema } = mongoose;
 
 const TestimonialSchema = new Schema(
@@ -19,6 +20,16 @@ const TestimonialSchema = new Schema(
       min: 1,
       max: 5,
     },
+    link: {
+      type: String,
+      trim: true,
+    },
+    status: {
+      type: String,
+      required: true,
+      default: STATUS.ACTIVE,
+      enum: STATUS,
+    },
   },
   {
     collection: "Testimonials",
@@ -26,8 +37,4 @@ const TestimonialSchema = new Schema(
   }
 );
 
-const Testimonial =
-  mongoose.models.Testimonial ||
-  mongoose.model("Testimonial", TestimonialSchema);
-
-module.exports = Testimonial;
+export default model("Testimonials", TestimonialSchema);

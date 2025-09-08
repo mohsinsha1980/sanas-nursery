@@ -1,5 +1,5 @@
 import { ColumnDef } from "@tanstack/react-table";
-import { AddPlantFields } from "./admin-types";
+import { AddPlantFields, AddTestimonialType } from "./admin-types";
 import {
   contactEnquirySchema,
   orderEnquirySchema,
@@ -161,3 +161,8 @@ export interface CategoryPlantsHttpResDataType {
   data: { plants: PlantDataType[]; total: number };
 }
 export type EmailType = z.infer<typeof SubscriptionSchema>;
+
+export type TestimonialType = Omit<AddTestimonialType, "status"> & {
+  _id: string;
+  status: string;
+};

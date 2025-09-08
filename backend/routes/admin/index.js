@@ -6,6 +6,7 @@ import userRoutes from "./users.js";
 import { getPlantsForGreenChoices } from "../../controllers/admin/plants.js";
 const router = Router();
 import homeRoutes from "./home.js";
+import testimonialsRoutes from "./testimonials.js";
 // import reviewsRoutes from "./reviews.js";
 // import galleryRoutes from "./gallery.js";
 // import promotionRoutes from "./promotions.js";
@@ -20,10 +21,10 @@ import homeRoutes from "./home.js";
 // import enquiryCtrl from "../../controllers/admin/enquiry";
 
 router.use("/users", adminAuth, userRoutes);
+router.use("/testimonials", testimonialsRoutes);
 router.use("/master-data", adminAuth, settingsRoutes);
 router.use("/plants", adminAuth, plantRoutes);
 router.get("/plants-list", getPlantsForGreenChoices);
-
 // router.use("/categories", adminAuth, categoryRoutes);
 router.use("/home", adminAuth, homeRoutes);
 // router.use("/reviews", adminAuth, reviewsRoutes);

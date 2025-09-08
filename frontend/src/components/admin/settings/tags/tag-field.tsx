@@ -115,72 +115,77 @@ export default function TagsField({ data }: Props) {
 
   return (
     <div className="pt-5 ">
-        <div className="flex flex-row">
-          <div className="basis-1/4">
-            <h2>Tags</h2>
-          </div>
-          <div className="basis-2/4">
-            <Input
-              placeholder="Search a tag"
-              className="h-8"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-            />
-          </div>
-          <div className="basis-1/4 text-right">
-            <Button variant={"orange"} type="button" size="sm" onClick={() => setOpenTag(true)}>
-              <CirclePlusIcon /> Add
-            </Button>
-          </div>
+      <div className="flex flex-row">
+        <div className="basis-1/4">
+          <h2>Tags</h2>
         </div>
+        <div className="basis-2/4">
+          <Input
+            placeholder="Search a tag"
+            className="h-8"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        </div>
+        <div className="basis-1/4 text-right">
+          <Button
+            variant={"orange"}
+            type="button"
+            size="sm"
+            onClick={() => setOpenTag(true)}
+          >
+            <CirclePlusIcon /> Add
+          </Button>
+        </div>
+      </div>
 
-        <Table className="mb-4 border rounded-lg table-auto w-full">
-          <TableHeader>
-            <TableRow className="bg-gray-100">
-              <TableHead className="text-left">Tag Label</TableHead>
-              <TableHead className="text-left">Tag Value</TableHead>
-              <TableHead className="text-right w-20">Actions</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {tags.length ? (
-              tags.map((data, index) => (
-                <TableRow key={index}>
-                  <TableCell className="text-left">{data.label}</TableCell>
-                  <TableCell className="text-left">{data.value}</TableCell>
-                  <TableCell className="text-right">
-                    <div className="flex justify-end gap-1">
-                      <Trash2Icon
-                        size="18"
-                        color="red"
-                        onClick={() => deleteHandler(data._id)}
-                        className="icon_action cursor-pointer"
-                      />
-                    </div>
-                  </TableCell>
-                </TableRow>
-              ))
-            ) : (
-              <TableRow>
-                <TableCell className="text-left" colSpan={3}>
-                  No Records added
+      <Table className="mb-4 border border-gray-200 rounded-lg table-auto w-full">
+        <TableHeader>
+          <TableRow className="bg-gray-100">
+            <TableHead className="text-left">Tag Label</TableHead>
+            <TableHead className="text-left">Tag Value</TableHead>
+            <TableHead className="text-right w-20">Actions</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {tags.length ? (
+            tags.map((data, index) => (
+              <TableRow key={index}>
+                <TableCell className="text-left">{data.label}</TableCell>
+                <TableCell className="text-left">{data.value}</TableCell>
+                <TableCell className="text-right">
+                  <div className="flex justify-end gap-1">
+                    <Trash2Icon
+                      size="18"
+                      color="red"
+                      onClick={() => deleteHandler(data._id)}
+                      className="icon_action cursor-pointer"
+                    />
+                  </div>
                 </TableCell>
               </TableRow>
-            )}
-          </TableBody>
-        </Table>
+            ))
+          ) : (
+            <TableRow>
+              <TableCell className="text-left" colSpan={3}>
+                No Records added
+              </TableCell>
+            </TableRow>
+          )}
+        </TableBody>
+      </Table>
 
-        <CustomPagination
-          total={tagData.length}
-          perPage={PAGINATION.PER_PAGE}
-          pageChange={setPage}
-        />
+      <CustomPagination
+        total={tagData.length}
+        perPage={PAGINATION.PER_PAGE}
+        pageChange={setPage}
+      />
 
       <CustomDialog
         title="Add a new tag"
         open={openTag}
         onclose={(open: boolean) => setOpenTag(open)}
-        className="max-w-[300px]"
+        className="max-w-[400px]"
       >
         <AddTagData
           onAdd={(data) => {

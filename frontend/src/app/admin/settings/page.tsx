@@ -1,5 +1,6 @@
 "use client";
 import TagsField from "@/components/admin/settings/tags/tag-field";
+import { Card } from "@/components/ui/card";
 import { getMasterData } from "@/lib/api-routes/api-admin";
 import { getErrorMessage, showErrorToast } from "@/lib/helper";
 import { MasterData } from "@/lib/types/admin-types";
@@ -48,9 +49,11 @@ const SettingsPage = () => {
         </div>
       </div>
       <div className="flex gap-4">
-        <div className="w-1/2">
-          <TagsField data={masterData.tags} />
-        </div>
+        <Card className="w-1/2 px-4 bg-white">
+          <div>
+            <TagsField data={masterData.tags} />
+          </div>
+        </Card>
       </div>
     </>
   );

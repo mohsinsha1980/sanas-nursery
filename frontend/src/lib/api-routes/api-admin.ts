@@ -8,7 +8,9 @@ import {
 } from "../types/common-types";
 import {
   AddPlantFields,
+  AddTestimonialType,
   EditPlantFields,
+  EditTestimonialType,
   MasterDataFields,
   PasswordData,
   PlantFilterTypes,
@@ -240,4 +242,50 @@ export const updateHomeVideos = (
   return axiosInstance.put(`${config.API_ADMIN_PATH}/home/videos`, data, {
     signal: controller?.signal,
   });
+};
+
+export const createTestimonial = (
+  data: AddTestimonialType,
+  controller?: Controller
+) => {
+  return axiosInstance.post(`${config.API_ADMIN_PATH}/testimonials`, data, {
+    signal: controller?.signal,
+  });
+};
+
+export const getTestimonialById = (_id: string, controller?: Controller) => {
+  return axiosInstance.get(`${config.API_ADMIN_PATH}/testimonials/${_id}`, {
+    signal: controller?.signal,
+  });
+};
+
+export const updateTestimonial = (
+  data: EditTestimonialType & { _id: string },
+  controller?: Controller
+) => {
+  return axiosInstance.put(
+    `${config.API_ADMIN_PATH}/testimonials/${data._id}`,
+    data,
+    {
+      signal: controller?.signal,
+    }
+  );
+};
+
+export const getTestimonials = (controller?: AbortController) => {
+  return axiosInstance.get(`${config.API_ADMIN_PATH}/testimonials`, {
+    signal: controller?.signal,
+  });
+};
+
+export const deleteTestimonial = (
+  testimonialId: string,
+  controller?: AbortController
+) => {
+  return axiosInstance.delete(
+    `${config.API_ADMIN_PATH}/testimonials/${testimonialId}`,
+    {
+      signal: controller?.signal,
+    }
+  );
 };
