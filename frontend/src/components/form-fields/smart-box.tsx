@@ -35,6 +35,8 @@ interface SmartBoxProps<T extends FieldValues> {
   newFieldLabel?: string;
   readOnly?: boolean;
   className?: string;
+  labelClassName?: string; // 👈 added for label styling
+  descriptionClassName?: string; // 👈 added for description styling
 }
 
 const SmartBox = <T extends FieldValues>({
@@ -49,6 +51,8 @@ const SmartBox = <T extends FieldValues>({
   newFieldLabel = "Other",
   readOnly = false,
   className = "",
+  labelClassName = "",
+  descriptionClassName = "",
 }: SmartBoxProps<T>) => {
   const [isCustomValue, setIsCustomValue] = useState(false);
 
@@ -58,7 +62,9 @@ const SmartBox = <T extends FieldValues>({
       name={name}
       render={({ field }) => (
         <FormItem>
-          <FormLabel>{label}</FormLabel>
+          {/* Label with custom styling */}
+          <FormLabel className={labelClassName}>{label}</FormLabel>
+
           {!isCustomValue ? (
             <Select
               disabled={readOnly}
@@ -78,7 +84,7 @@ const SmartBox = <T extends FieldValues>({
                   <SelectValue placeholder={placeholder} />
                 </SelectTrigger>
               </FormControl>
-              <SelectContent>
+              <SelectContent className="bg-white text-black">
                 {options.map((item) => (
                   <SelectItem key={item.value} value={item.value}>
                     {item.label}
@@ -110,7 +116,12 @@ const SmartBox = <T extends FieldValues>({
               />
             </FormControl>
           )}
-          {description && <FormDescription>{description}</FormDescription>}
+
+          {description && (
+            <FormDescription className={descriptionClassName}>
+              {description}
+            </FormDescription>
+          )}
           <FormMessage />
         </FormItem>
       )}

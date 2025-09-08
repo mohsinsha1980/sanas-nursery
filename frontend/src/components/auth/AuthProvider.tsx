@@ -4,6 +4,7 @@ import { decryptData } from "@/lib/helper";
 import { RootState } from "@/redux/store";
 import { hideLoader, showLoader } from "@/redux/uiSlice";
 import { updateUser } from "@/redux/userSlice";
+import { mergeWishlistFromDB } from "@/redux/wishListSlice";
 import React, { ReactNode, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -21,9 +22,12 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       try {
         dispatch(showLoader());
         const response = await getLogedInUser(controller);
-        const encryptedUserData = response.data.data;
+        const encryptedUserData = response.data.data?.user;
         const userData = decryptData(encryptedUserData);
         dispatch(updateUser(userData));
+        if (response.data.data?.wishlist?.length) {
+          dispatch(mergeWishlistFromDB(response.data.data?.wishlist));
+        }
       } finally {
         dispatch(hideLoader());
       }

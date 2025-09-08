@@ -21,6 +21,7 @@ import { useReCaptcha } from "next-recaptcha-v3";
 import TextField from "../form-fields/text-field";
 import { Button } from "../ui/button";
 import Link from "next/link";
+import { mergeWishlistFromDB } from "@/redux/wishListSlice";
 
 export default function SignIn() {
   const dispatch = useDispatch();
@@ -42,9 +43,12 @@ export default function SignIn() {
       const clonedData = structuredClone(data);
       const updatedData = { ...clonedData, token: token };
       const response = await signin(updatedData);
-      const encryptedUserData = response.data?.data;
+      const encryptedUserData = response.data?.data?.user;
       const userData = decryptData(encryptedUserData);
-      dispatch(updateUser(userData));
+      dispatch(updateUser(userData.data));
+      if (response.data.data?.wishlist?.length) {
+        dispatch(mergeWishlistFromDB(response.data.data?.wishlist));
+      }
       showSuccessToast("Signed in successfully");
       router.push("/");
     } catch (error: unknown) {
@@ -82,7 +86,7 @@ export default function SignIn() {
                 placeholder="Enter Email"
                 inputType="email"
                 formControl={form.control}
-                className="w-full h-[53px] rounded-md border border-gray-300 px-3 text-black bg-white"
+                className="w-full rounded-md border border-gray-300 px-3 text-black bg-white"
               />
 
               <div className="w-full">
@@ -92,7 +96,7 @@ export default function SignIn() {
                   placeholder="At least 8 characters"
                   inputType="password"
                   formControl={form.control}
-                  className="w-full h-[53px] rounded-md border border-gray-300 px-3 text-black bg-white"
+                  className="w-full rounded-md border border-gray-300 px-3 text-black bg-white"
                 />
                 <div className="flex justify-end mt-2">
                   <Link href="/auth/forgot-password">

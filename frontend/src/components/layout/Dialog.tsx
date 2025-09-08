@@ -40,8 +40,7 @@ export default function CustomDialog({
     >
       <DialogTrigger asChild>{trigger}</DialogTrigger>
       <DialogContent
-        className={className? className : ""}
-        // ***
+        className={className ? className : ""}
         onPointerDownOutside={(e) => {
           if (disableOutsideClick) e.preventDefault();
         }}

@@ -16,6 +16,7 @@ interface RichTextFieldProps<T extends FieldValues> {
   placeholder: string;
   description?: string;
   formControl: Control<T>;
+  labelClassName?: string; // 👈 added for label styling
 }
 
 const RichTextField = <T extends FieldValues>({
@@ -24,6 +25,7 @@ const RichTextField = <T extends FieldValues>({
   placeholder,
   description,
   formControl,
+  labelClassName = "",
 }: RichTextFieldProps<T>) => {
   return (
     <FormField
@@ -31,7 +33,9 @@ const RichTextField = <T extends FieldValues>({
       name={name}
       render={({ field }) => (
         <FormItem>
-          <FormLabel>{label}</FormLabel>
+          {/* Label with optional custom styles */}
+          <FormLabel className={labelClassName}>{label}</FormLabel>
+
           <FormControl>
             <div className="flex w-full items-center">
               <Editor
@@ -43,6 +47,7 @@ const RichTextField = <T extends FieldValues>({
               />
             </div>
           </FormControl>
+
           {description && <FormDescription>{description}</FormDescription>}
           <FormMessage />
         </FormItem>

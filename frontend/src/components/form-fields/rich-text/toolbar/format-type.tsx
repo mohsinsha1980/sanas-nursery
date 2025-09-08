@@ -56,15 +56,16 @@ export function FormatType({ editor }: FormatTypeProps) {
       <SelectTrigger className="h-8 w-[120px] invisible sm:visible">
         <SelectValue placeholder="Select format" />
       </SelectTrigger>
-      <SelectContent>
+      {/* Add styling here */}
+      <SelectContent className="bg-white text-black shadow-md">
         <SelectGroup>
-          <SelectItem value="paragraph">Paragraph</SelectItem>
-          <SelectItem value="h1">H1</SelectItem>
-          <SelectItem value="h2">H2</SelectItem>
-          <SelectItem value="h3">H3</SelectItem>
-          <SelectItem value="h4">H4</SelectItem>
-          <SelectItem value="h5">H5</SelectItem>
-          <SelectItem value="h6">H6</SelectItem>
+          <SelectItem value="paragraph" className="hover:bg-gray-100">Paragraph</SelectItem>
+          <SelectItem value="h1" className="hover:bg-gray-100">H1</SelectItem>
+          <SelectItem value="h2" className="hover:bg-gray-100">H2</SelectItem>
+          <SelectItem value="h3" className="hover:bg-gray-100">H3</SelectItem>
+          <SelectItem value="h4" className="hover:bg-gray-100">H4</SelectItem>
+          <SelectItem value="h5" className="hover:bg-gray-100">H5</SelectItem>
+          <SelectItem value="h6" className="hover:bg-gray-100">H6</SelectItem>
         </SelectGroup>
       </SelectContent>
     </Select>

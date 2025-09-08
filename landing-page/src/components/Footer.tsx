@@ -17,7 +17,7 @@ export default function Footer() {
           {/* Company Info */}
           <div className="col-span-1 md:col-span-2">
             <p className="text-gray-400 text-sm">
-              Stay tuned for updates and exciting announcements.
+              Stay tuned for updates and exciting announcements.Q
             </p>
             <div className="mt-4 space-y-2 text-sm text-gray-400">
               <p>Email: sanasnursery@gmail.com</p>

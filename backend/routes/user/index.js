@@ -1,35 +1,20 @@
-const express = require("express");
-const router = express.Router();
-const wishlistCtrl = require("../../controllers/user/wishlist");
-const profileCtrl = require("../../controllers/user/profile");
-const { userAuth } = require("../../middleware/user-auth");
-const cartRoutes = require("./carts");
-const reviewsRoutes = require("./reviews");
-const checkoutRoutes = require("./checkout");
-const orderRoutes = require("./orders");
-const shiprocketRoutes = require("./shiprocket");
-const commonCtrl = require("../../controllers/user/common");
+import { Router } from "express";
+import {
+  getEnquiries,
+  getUserWishlist,
+  removeFromWishlist,
+  saveToWishlist,
+  updateUserPassword,
+  updateUserProfile,
+} from "../../controllers/user/index.js";
+import { userAuth } from "../../middleware/user-auth.js";
+const router = Router();
 
-router.post("/updateUserProfile", userAuth, profileCtrl.updateUserProfile);
-router.post("/updateUserPassword", userAuth, profileCtrl.updateUserPassword);
-router.post("/getEmailOtp", userAuth, profileCtrl.getEmailOtp);
-router.post("/validateEmailOtp", userAuth, profileCtrl.validateEmailOtp);
-router.post("/addAddress", userAuth, profileCtrl.addAddress);
-router.post("/deleteAddress", userAuth, profileCtrl.deleteAddress);
-router.use("/carts", userAuth, cartRoutes);
-router.post("/wishlist", userAuth, wishlistCtrl.addProductToWishList);
-router.get("/wishlist", userAuth, wishlistCtrl.getWishlistProducts);
-router.delete(
-  "/wishlist/:productId",
-  userAuth,
-  wishlistCtrl.removeProductFromWishList
-);
+router.post("/profile", userAuth, updateUserProfile);
+router.put("/update-password", userAuth, updateUserPassword);
+router.get("/enquiries", userAuth, getEnquiries);
+router.get("/wishlist", userAuth, getUserWishlist);
+router.delete("/wishlist/:plantId", userAuth, removeFromWishlist);
+router.post("/wishlist", userAuth, saveToWishlist);
 
-router.use("/reviews", userAuth, reviewsRoutes);
-router.use("/checkout", userAuth, checkoutRoutes);
-router.use("/orders", userAuth, orderRoutes);
-router.use("/delivery", userAuth, shiprocketRoutes);
-
-router.post("/support", commonCtrl.createSupport);
-
-module.exports = router;
+export default router;

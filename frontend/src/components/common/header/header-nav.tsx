@@ -36,9 +36,9 @@ export default function HeaderNav() {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: -8, scale: 0.98 }}
                 transition={{ duration: 0.18, ease: "easeOut" }}
-                className="absolute left-1/2 -translate-x-1/2 mt-3 w-48 rounded-md border border-gray-200 bg-white shadow-lg z-50"
+                className="absolute left-0 mt-3 w-48 rounded-md border border-gray-200 bg-white shadow-lg z-50"
               >
-                <ol className="flex flex-col items-center text-center">
+                <ol className="flex flex-col items-start text-center">
                   <li>
                     <Link
                       href="/plants/indoor"
@@ -84,10 +84,18 @@ export default function HeaderNav() {
         </li>
         <li>
           <Link
-            href="/contact"
+            href="/contact-us"
             className={pathname === "/contact" ? "active" : ""}
           >
             Contact
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blogs"
+            className={pathname === "/contact" ? "active" : ""}
+          >
+            Blog
           </Link>
         </li>
       </ul>

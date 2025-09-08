@@ -1,4 +1,3 @@
-import MainHeader from "@/components/common/header/main-header";
 import ReduxProvider from "@/components/layout/ReduxProvider";
 import config from "@/config/env-config";
 import type { Metadata } from "next";
@@ -10,6 +9,8 @@ import { Toaster } from "sonner";
 import "./globals.css";
 import AuthProvider from "@/components/auth/AuthProvider";
 import MainFooter from "@/components/common/footer/main-footer";
+import WhatsappBadge from "@/components/common/footer/whatsapp-badge";
+import MainHeader from "@/components/common/header/main-header";
 
 const catamaran = Catamaran({
   variable: "--font-catamaran",
@@ -45,19 +46,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
           }}
         />
 
-        <ReCaptchaProvider reCaptchaKey={config.RECAPTCHA_SITE_KEY}>
-          <NuqsAdapter>
-            <ReduxProvider>
+        <ReduxProvider>
+          <ReCaptchaProvider reCaptchaKey={config.RECAPTCHA_SITE_KEY}>
+            <NuqsAdapter>
               {/* <Loader /> */}
               <AuthProvider>
-                <MainHeader />
-                <main>{children}</main>
-                <MainFooter />
+                <div className="min-h-screen flex flex-col">
+                  <MainHeader />
+                  <main className="flex-grow">{children}</main>
+                  <MainFooter />
+                  <WhatsappBadge />
+                </div>
                 <Toaster richColors />
               </AuthProvider>
-            </ReduxProvider>
-          </NuqsAdapter>
-        </ReCaptchaProvider>
+            </NuqsAdapter>
+          </ReCaptchaProvider>
+        </ReduxProvider>
       </body>
     </html>
   );

@@ -7,7 +7,7 @@ const CollectionSection = () => {
     <div className="w-full h-full flex items-center justify-center lg:pt-30 lg:pb-30 md:pt-20 md:pb-20 pt-10 pb-10 bg-[rgba(228,255,240,1)]">
       <div className="max-w-[1200px] w-full h-full flex flex-col md:flex-col lg:flex-row justify-between items-center gap-15 md:px-10">
         {/* LEFT CARD */}
-        <div className="relative lg:w-full md:w-[80%] md:h-[472px] h-[350px] w-[95%] rounded-2xl overflow-hidden group ">
+        <div className="relative lg:w-full lg:h-[400px] md:w-[80%] md:h-[472px] h-[350px] w-[92%] rounded-2xl overflow-hidden group ">
           <Image
             src="/site/home/collection/collecton-banner1.webp"
             alt="Left collection background"
@@ -34,7 +34,7 @@ const CollectionSection = () => {
         </div>
 
         {/* RIGHT CARD */}
-        <div className="relative lg:w-full md:w-[80%] md:h-[472px] h-[350px] w-[95%] rounded-2xl overflow-hidden group">
+        <div className="relative lg:w-full lg:h-[400px] md:w-[80%] md:h-[472px] h-[350px] w-[92%] rounded-2xl overflow-hidden group">
           <Image
             src="/site/home/collection/collection-banner2.webp"
             alt="Right collection background"

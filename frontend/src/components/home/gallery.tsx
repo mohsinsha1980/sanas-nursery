@@ -89,7 +89,7 @@ export default function Gallery() {
 
       {selectedIndex !== null && (
         <motion.div
-          className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50"
+          className="fixed inset-0 bg-black flex items-center justify-center z-50"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           onClick={() => setSelectedIndex(null)}
@@ -127,7 +127,7 @@ export default function Gallery() {
               key={selectedIndex}
               src={images[selectedIndex]}
               alt="Full View"
-              className="max-w-full max-h-[90vh] rounded-lg shadow-lg    "
+              className="max-w-full max-h-[70vh] rounded-lg shadow-lg    "
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
             />

@@ -36,25 +36,6 @@ export const ACCEPTED_IMAGE_TYPES = [
 
 export const ACCEPTED_FILE_TYPES = ["application/pdf"];
 
-// export const PRODUCT_SORT_OPTIONS: VariantType[] = [
-//   {
-//     label: "Price: Low to High",
-//     value: "price-asc",
-//   },
-//   {
-//     label: "Price: High to Low",
-//     value: "price-desc",
-//   },
-//   {
-//     label: "Customer Ratings",
-//     value: "customer-ratings",
-//   },
-//   {
-//     label: "Best Seller",
-//     value: "best-seller",
-//   },
-// ];
-
 export const ACTION_TYPES = {
   EDIT: "Edit",
   DELETE: "Delete",
@@ -231,3 +212,56 @@ export const defultHomeData = {
     "https://www.youtube.com/watch?v=9wY_-ZMQ-jQ",
   ],
 };
+
+export const SITE_DATA = {
+  EMAIL: "sanasnursery@gmail.com",
+  phone: "+91 8999481616",
+  LOCATION: `Sanas Wholesale Nursery, Bori Fata, near ITI collage, Uruli Kanchan, Maharashtra, 412201`,
+  SOCIAL: {
+    facebook: "https://www.facebook.com/share/1GmrYmkSHp/?mibextid=wwXIfr",
+    insta:
+      "https://www.instagram.com/wholesalenursery?igsh=MXZ5MnFlMzVvM2Vsaw%3D%3D&utm_source=qr",
+    youtube: "https://youtube.com/@sanasnursery?si=g2njg_7Z2kfy6fw7",
+  },
+} as const;
+
+export const FOOTER_LINKS = {
+  COMPANY: [
+    {
+      label: " Contact Us",
+      pageUrl: "/contact-us",
+    },
+    {
+      label: "Privacy Policy",
+      pageUrl: "/privacy-policy",
+    },
+    {
+      label: " Terms & Conditions",
+      pageUrl: "/terms-conditions",
+    },
+  ],
+  INFORMATION: [
+    {
+      label: "Home",
+      pageUrl: "/",
+    },
+    {
+      label: " About Us",
+      pageUrl: "/about-us",
+    },
+    {
+      label: "Blogs",
+      pageUrl: "/blogs",
+    },
+  ],
+} as const;
+
+export const EnquiryStatus = {
+  PENDING: "pending",
+  IN_PROGRESS: "in_progress",
+  RESOLVED: "resolved",
+  CLOSED: "closed",
+} as const;
+
+export type EnquiryStatusType =
+  (typeof EnquiryStatus)[keyof typeof EnquiryStatus];

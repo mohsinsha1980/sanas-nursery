@@ -4,7 +4,12 @@ import {
   getPlantsForGreenChoices,
   updateGreenChoices,
 } from "@/lib/api-routes/api-admin";
-import { getErrorMessage, getPicURL, showErrorToast, showSuccessToast } from "@/lib/helper";
+import {
+  getErrorMessage,
+  getPicURL,
+  showErrorToast,
+  showSuccessToast,
+} from "@/lib/helper";
 import { hideLoader, showLoader } from "@/redux/uiSlice";
 import { AxiosError } from "axios";
 import React, { useEffect, useState } from "react";
@@ -81,7 +86,7 @@ const GreenChoices = ({ data }: { data: HomeGreenPlantType[] }) => {
       const selected = greenChoicesPlants?.map((plant) => plant._id);
       setSelectedPlants(selected);
       setOpen(false);
-      showSuccessToast("Grren Choices plants updated successfully!")
+      showSuccessToast("Grren Choices plants updated successfully!");
     } catch (e) {
       showErrorToast(getErrorMessage(e as AxiosError));
     } finally {
@@ -94,8 +99,9 @@ const GreenChoices = ({ data }: { data: HomeGreenPlantType[] }) => {
       <div className="flex items-center justify-between mb-4">
         <h1 className="text-2xl font-bold">Manage Green Choices</h1>
         <Button
-          variant="outline"
-          className="bg-[#F37521] hover:bg-[#e0661c] text-white"
+          size="md"
+          variant="orange"
+          className=""
           onClick={() => setOpen(true)}
         >
           Update
@@ -123,7 +129,7 @@ const GreenChoices = ({ data }: { data: HomeGreenPlantType[] }) => {
                     />
                   </div>
                 </div>
-                <p className="mt-4 text-center text-lg font-medium text-gray-700 group-hover:text-green-700">
+                <p className="mt-4 text-center text-lg font-medium group-hover:text-green-700">
                   {plant.title}
                 </p>
               </div>

@@ -26,6 +26,8 @@ interface TextFieldProps<T extends FieldValues> {
   onchange?: (val: any) => void;
   className?: string;
   upperCase?: boolean;
+  labelClassName?: string;        // 👈 for label styling
+  descriptionClassName?: string;  // 👈 for description styling
 }
 
 const TextField = <T extends FieldValues>({
@@ -41,6 +43,8 @@ const TextField = <T extends FieldValues>({
   onchange,
   className = "",
   upperCase = false,
+  labelClassName = "",
+  descriptionClassName = "",
 }: TextFieldProps<T>) => {
   const [isView, setIsView] = useState(false);
 
@@ -50,7 +54,9 @@ const TextField = <T extends FieldValues>({
       name={name}
       render={({ field }) => (
         <FormItem>
-          <FormLabel>{label}</FormLabel>
+          {/* Label with custom styling */}
+          <FormLabel className={labelClassName}>{label}</FormLabel>
+
           <FormControl>
             <div className="relative w-full">
               <div className="flex h-9 items-center">
@@ -98,7 +104,12 @@ const TextField = <T extends FieldValues>({
               </div>
             </div>
           </FormControl>
-          {description && <FormDescription>{description}</FormDescription>}
+
+          {description && (
+            <FormDescription className={descriptionClassName}>
+              {description}
+            </FormDescription>
+          )}
           <FormMessage />
         </FormItem>
       )}

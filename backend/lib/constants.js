@@ -164,3 +164,10 @@ export const ORDER_TAB_TYPE = {
 
 export const TOP_SELLING_PRODUCT_COUNT = 10;
 export const YT_VIDEOS_LENGTH = 2;
+
+export const ENQUIRY_STATUS = {
+  PENDING: "pending",
+  CONTACTED: "contacted",
+  RESOLVED: "resolved",
+  CLOSED: "closed",
+};
