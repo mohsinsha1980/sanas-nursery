@@ -1,6 +1,5 @@
 import ConfirmButton from "@/components/common/ConfirmButton";
 import { CustomPagination } from "@/components/common/custom-pagination";
-import CustomCard from "@/components/layout/CustomCard";
 import CustomDialog from "@/components/layout/Dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -12,6 +11,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { deleteMasterRecord } from "@/lib/api-routes/api-admin";
 import { MASTER_DATA_TYPE, PAGINATION } from "@/lib/constants";
 import {
   getErrorMessage,
@@ -26,7 +26,6 @@ import { CirclePlusIcon, Trash2Icon } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import AddTagData from "./add-tags-data";
-import { deleteMasterRecord } from "@/lib/api-routes/api-admin";
 
 type Props = {
   data: MasterDataOption[];

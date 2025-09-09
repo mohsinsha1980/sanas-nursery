@@ -3,7 +3,6 @@ import { OrderEnquiry } from "../../models/OrderEnquiry.js";
 
 export const getCompOrderEnquiries = async (req, res, next) => {
   try {
-    console.log("getCompOrderEnquiries");
     if (!("page" in req.query) || !("per_page" in req.query)) {
       return next({ status: 400, message: "Pagination is required." });
     }
@@ -15,13 +14,12 @@ export const getCompOrderEnquiries = async (req, res, next) => {
       status: { $in: [ENQUIRY_STATUS.CLOSED, ENQUIRY_STATUS.RESOLVED] },
     };
 
-    console.log("skip,skip", skip);
     const total = await OrderEnquiry.countDocuments(filter);
     const enquiries = await OrderEnquiry.find(filter)
       .sort({ createdAt: -1 })
       .skip(skip)
       .limit(per_page)
-      .populate("plantId", "title picture")
+      .populate("plantId", "title pictures")
       .select("-__v")
       .exec();
 

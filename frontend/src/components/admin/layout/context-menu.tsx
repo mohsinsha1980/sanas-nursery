@@ -6,11 +6,9 @@ import {
   Headset,
   LayoutPanelTopIcon,
   MailOpen,
-  MessageCircleIcon,
   MessageSquareQuote,
   SettingsIcon,
   ShoppingCartIcon,
-  Star,
   UserRound,
 } from "lucide-react";
 import Link from "next/link";

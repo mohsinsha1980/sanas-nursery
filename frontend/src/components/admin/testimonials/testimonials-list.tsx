@@ -10,6 +10,7 @@ import {
 } from "@/lib/helper";
 import { TestimonialType } from "@/lib/types/common-types";
 import { hideLoader, showLoader } from "@/redux/uiSlice";
+import { AxiosError } from "axios";
 import { Edit2Icon, Quote, Star, Trash2Icon } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -30,7 +31,7 @@ const TestimonialsList = () => {
         const response = await getTestimonials(controller);
         setTestimonials(response.data.data);
       } catch (error: unknown) {
-        showErrorToast(getErrorMessage(error as any));
+        showErrorToast(getErrorMessage(error as AxiosError));
       } finally {
         dispatch(hideLoader());
       }
@@ -60,7 +61,7 @@ const TestimonialsList = () => {
         setIdToDelete("");
         setConfirmVal(false);
       } catch (error: unknown) {
-        showErrorToast(getErrorMessage(error as any));
+        showErrorToast(getErrorMessage(error as AxiosError));
         setIdToDelete("");
         setConfirmVal(false);
       } finally {

@@ -19,17 +19,22 @@ import {
   Phone,
   User,
 } from "lucide-react";
+import Image from "next/image";
 
 interface EnquiryItemProps {
   enquiry: OrderEnquiryDataType;
   onViewDetails: (enquiryId: string) => void;
   onUpdateStatus: (enquiryId: string, newStatus: string) => void;
+  showActions?: boolean;
+  showStatus?: boolean;
 }
 
 export default function EnquiryItem({
   enquiry,
   onViewDetails,
   onUpdateStatus,
+  showActions = true,
+  showStatus = true,
 }: EnquiryItemProps) {
   const nextStatus = getNextStatus(enquiry.status);
 
@@ -40,9 +45,11 @@ export default function EnquiryItem({
           <div className="relative">
             <div className="w-16 h-16 rounded-xl overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 shadow-sm">
               {enquiry.plantId?.pictures?.[0] ? (
-                <img
+                <Image
                   src={getPicURL(enquiry.plantId.pictures[0])}
                   alt={enquiry.plantId.title}
+                  width={64}
+                  height={64}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
                 />
               ) : (
@@ -64,18 +71,20 @@ export default function EnquiryItem({
             </div>
           </div>
         </div>
-        <Badge
-          variant={getStatusBadgeVariant(enquiry.status)}
-          className={`px-3 py-1.5 text-sm font-bold rounded-full ${getStatusColor(
-            enquiry.status
-          )} shadow-sm`}
-        >
-          {enquiry.status.charAt(0).toUpperCase() + enquiry.status.slice(1)}
-        </Badge>
+        {showStatus && (
+          <Badge
+            variant={getStatusBadgeVariant(enquiry.status)}
+            className={`px-3 py-1.5 text-sm font-bold rounded-full ${getStatusColor(
+              enquiry.status
+            )} shadow-sm`}
+          >
+            {enquiry.status.charAt(0).toUpperCase() + enquiry.status.slice(1)}
+          </Badge>
+        )}
       </div>
 
       <div className="flex-1 flex flex-col">
-        {/* Customer Information */}
+        ss{" "}
         <div className="bg-gray-50 rounded-lg p-4 mb-4">
           <div className="flex items-center space-x-2 mb-3">
             <User className="w-4 h-4 text-gray-600" />
@@ -134,8 +143,6 @@ export default function EnquiryItem({
             )}
           </div>
         </div>
-
-        {/* Message Section */}
         <div className="bg-green-50 rounded-lg p-4 mb-4 flex-1">
           <div className="flex items-center space-x-2 mb-2">
             <MessageSquare className="w-4 h-4 text-orange-600" />
@@ -149,32 +156,47 @@ export default function EnquiryItem({
         </div>
       </div>
 
-      {/* Action Buttons - Always at bottom */}
-      <div className="flex items-center justify-between pt-2 mt-auto">
-        <div className="flex items-center space-x-2">
+      {showActions && (
+        <div className="flex items-center justify-between pt-2 mt-auto">
+          <div className="flex items-center space-x-2">
+            <Button
+              variant="outline"
+              size="md"
+              onClick={() => onViewDetails(enquiry._id)}
+              className="flex items-center space-x-2 font-semibold border-gray-300 hover:border-gray-400 hover:bg-gray-50"
+            >
+              <Eye className="w-4 h-4" />
+              <span>View Details</span>
+            </Button>
+          </div>
+
+          {nextStatus && (
+            <Button
+              size="md"
+              onClick={() => onUpdateStatus(enquiry._id, nextStatus.status)}
+              className={`flex items-center space-x-2 font-semibold px-4 py-2 rounded-lg shadow-sm hover:shadow-md transition-all duration-200 ${getActionColor(
+                enquiry.status
+              )}`}
+            >
+              <span>{nextStatus.label}</span>
+            </Button>
+          )}
+        </div>
+      )}
+
+      {!showActions && (
+        <div className="flex items-center justify-center pt-2 mt-auto">
           <Button
             variant="outline"
             size="md"
             onClick={() => onViewDetails(enquiry._id)}
             className="flex items-center space-x-2 font-semibold border-gray-300 hover:border-gray-400 hover:bg-gray-50"
           >
-            <Eye className="w-4 h-4" />
+            <Eye className="w-5 h-5" />
             <span>View Details</span>
           </Button>
         </div>
-
-        {nextStatus && (
-          <Button
-            size="md"
-            onClick={() => onUpdateStatus(enquiry._id, nextStatus.status)}
-            className={`flex items-center space-x-2 font-semibold px-4 py-2 rounded-lg shadow-sm hover:shadow-md transition-all duration-200 ${getActionColor(
-              enquiry.status
-            )}`}
-          >
-            <span>{nextStatus.label}</span>
-          </Button>
-        )}
-      </div>
+      )}
     </div>
   );
 }

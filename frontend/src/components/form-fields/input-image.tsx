@@ -20,8 +20,8 @@ interface InputImageFieldProps<T extends FieldValues> {
   accept?: string;
   onchange?: (data: FileList) => void;
   className?: string;
-  labelClassName?: string;        // ✅ Added
-  descriptionClassName?: string;  // ✅ Added
+  labelClassName?: string;
+  descriptionClassName?: string;
 }
 
 const InputImageField = <T extends FieldValues>({

@@ -1,5 +1,4 @@
 "use client";
-import CustomCard from "@/components/layout/CustomCard";
 import { useEffect, useState } from "react";
 
 import { Form } from "@/components/ui/form";
@@ -145,13 +144,8 @@ export default function AddPlant() {
     <>
       <div className="flex justify-between items-center pb-5">
         <h1 className="">Add a plant</h1>
-        <Button
-          variant="orange"
-          type="button"
-          size="md"
-          className="h-fit "
-        >
-           <a href="http://localhost:3333/admin/plants">Back</a>
+        <Button variant="orange" type="button" size="md" className="h-fit ">
+          <a href="http://localhost:3333/admin/plants">Back</a>
         </Button>
       </div>
       <Form {...form}>
