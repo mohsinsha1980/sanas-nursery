@@ -5,37 +5,27 @@ import { Button } from "@/components/ui/button";
 import {
   getActionColor,
   getNextStatus,
-  getPicURL,
   getStatusBadgeVariant,
   getStatusColor,
 } from "@/lib/helper";
-import { OrderEnquiryDataType } from "@/lib/types/admin-types";
-import {
-  Calendar,
-  Eye,
-  Mail,
-  MessageSquare,
-  Package,
-  Phone,
-  User,
-} from "lucide-react";
-import Image from "next/image";
+import { ContactEnquiryDataType } from "@/lib/types/admin-types";
+import { Calendar, Eye, Mail, MessageSquare, Phone, User } from "lucide-react";
 
-interface EnquiryItemProps {
-  enquiry: OrderEnquiryDataType;
+interface ContactEnquiryItemProps {
+  enquiry: ContactEnquiryDataType;
   onViewDetails: (enquiryId: string) => void;
   onUpdateStatus: (enquiryId: string, newStatus: string) => void;
   showActions?: boolean;
   showStatus?: boolean;
 }
 
-export default function EnquiryItem({
+export default function ContactEnquiryItem({
   enquiry,
   onViewDetails,
   onUpdateStatus,
   showActions = true,
   showStatus = true,
-}: EnquiryItemProps) {
+}: ContactEnquiryItemProps) {
   const nextStatus = getNextStatus(enquiry.status);
 
   return (
@@ -43,26 +33,14 @@ export default function EnquiryItem({
       <div className="flex items-start justify-between mb-4">
         <div className="flex items-center space-x-4">
           <div className="relative">
-            <div className="w-16 h-16 rounded-xl overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 shadow-sm">
-              {enquiry.plantId?.pictures?.[0] ? (
-                <Image
-                  src={getPicURL(enquiry.plantId.pictures[0])}
-                  alt={enquiry.plantId.title}
-                  width={64}
-                  height={64}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
-                />
-              ) : (
-                <div className="w-full h-full flex items-center justify-center">
-                  <Package className="w-8 h-8 text-gray-400" />
-                </div>
-              )}
+            <div className="w-16 h-16 rounded-xl overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 shadow-sm flex items-center justify-center">
+              <MessageSquare className="w-8 h-8 text-gray-400" />
             </div>
           </div>
           <div>
-            <h3 className="text-xl font-bold text-gray-900 mb-1">
-              {enquiry.plantId?.title || "N/A"}
-            </h3>
+            <h4 className="text-xl font-bold text-gray-900 mb-1">
+              #{enquiry._id}
+            </h4>
             <div className="flex items-center space-x-2">
               <Calendar className="w-4 h-4 text-gray-400" />
               <span className="text-sm text-gray-500 font-medium">
@@ -88,7 +66,7 @@ export default function EnquiryItem({
           <div className="flex items-center space-x-2 mb-3">
             <User className="w-4 h-4 text-gray-600" />
             <span className="text-sm font-semibold text-gray-700">
-              Customer Details
+              Contact Details
             </span>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -125,28 +103,14 @@ export default function EnquiryItem({
                 </p>
               </div>
             </div>
-            {enquiry.preferredContactTime && (
-              <div className="flex items-center space-x-3">
-                <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center shadow-sm">
-                  <Calendar className="w-4 h-4 text-gray-500" />
-                </div>
-                <div>
-                  <p className="text-xs text-gray-500 font-medium">
-                    Preferred Time
-                  </p>
-                  <p className="text-sm font-semibold text-gray-900">
-                    {enquiry.preferredContactTime}
-                  </p>
-                </div>
-              </div>
-            )}
           </div>
         </div>
-        <div className="bg-green-50 rounded-lg p-4 mb-4 flex-1">
+
+        <div className="bg-blue-50 rounded-lg p-4 mb-4 flex-1">
           <div className="flex items-center space-x-2 mb-2">
-            <MessageSquare className="w-4 h-4 text-orange-600" />
-            <span className="text-sm font-semibold text-orange-600">
-              Enquiry Message
+            <MessageSquare className="w-4 h-4 text-blue-600" />
+            <span className="text-sm font-semibold text-blue-800">
+              Contact Message
             </span>
           </div>
           <p className="text-sm text-gray-800 leading-relaxed line-clamp-3">
@@ -191,7 +155,7 @@ export default function EnquiryItem({
             onClick={() => onViewDetails(enquiry._id)}
             className="flex items-center space-x-2 font-semibold border-gray-300 hover:border-gray-400 hover:bg-gray-50"
           >
-            <Eye className="w-5 h-5" />
+            <Eye className="w-4 h-4" />
             <span>View Details</span>
           </Button>
         </div>

@@ -8,17 +8,17 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
-import { OrderEnquiryFilterTypes } from "@/lib/types/admin-types";
+import { EnquiryFilterTypes } from "@/lib/types/admin-types";
 import { ENQUIRY_STATUS } from "@/lib/constants";
 import { getStatusColor } from "@/lib/helper";
 import { Filter, X, RotateCcw, Clock, CheckCircle, Circle } from "lucide-react";
 import { useEffect, useState } from "react";
 
-interface OrderEnquiryFilterProps {
-  setFilters: (filters: OrderEnquiryFilterTypes) => void;
+interface EnquiryFilterProps {
+  setFilters: (filters: EnquiryFilterTypes) => void;
 }
 
-const OrderEnquiryFilter = ({ setFilters }: OrderEnquiryFilterProps) => {
+const EnquiryFilter = ({ setFilters }: EnquiryFilterProps) => {
   const [status, setStatus] = useState<"pending" | "contacted" | undefined>(
     undefined
   );
@@ -202,4 +202,4 @@ const OrderEnquiryFilter = ({ setFilters }: OrderEnquiryFilterProps) => {
   );
 };
 
-export default OrderEnquiryFilter;
+export default EnquiryFilter;

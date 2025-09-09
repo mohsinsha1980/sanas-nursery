@@ -3,7 +3,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import {
   ChartAreaIcon,
   Gamepad2,
-  Headset,
   LayoutPanelTopIcon,
   MailOpen,
   MessageSquareQuote,
@@ -86,21 +85,15 @@ export default function ContextMenu() {
             </Link>
           </li>
 
-          <li className={getActiveClass("/admin/support")}>
-            <Link href="/admin/support" className="flex items-center gap-3">
-              <div className="">
-                <Headset strokeWidth={1} className="h-6 font-bold" />
-              </div>
-              Support
-            </Link>
-          </li>
-
-          <li className={getActiveClass("/admin/enquiry")}>
-            <Link href="/admin/enquiry" className="flex items-center gap-3">
+          <li className={getActiveClass("/admin/contact-enquiries")}>
+            <Link
+              href="/admin/contact-enquiries"
+              className="flex items-center gap-3"
+            >
               <div className="">
                 <MailOpen strokeWidth={1} className="h-6 font-bold" />
               </div>
-              Enquiry
+              Contact Enquiries
             </Link>
           </li>
 

@@ -106,7 +106,21 @@ export interface OrderEnquiryDataType {
   createdAt: string;
 }
 
-export interface OrderEnquiryFilterTypes {
+export interface EnquiryFilterTypes {
+  status?: "pending" | "contacted" | "resolved" | "closed";
+}
+
+export interface ContactEnquiryDataType {
+  _id: string;
+  name: string;
+  email: string;
+  phone: string;
+  message: string;
+  status: "pending" | "contacted" | "resolved" | "closed";
+  createdAt: string;
+}
+
+export interface ContactEnquiryFilterTypes {
   status?: "pending" | "contacted" | "resolved" | "closed";
 }
 

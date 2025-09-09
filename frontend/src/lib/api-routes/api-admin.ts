@@ -341,3 +341,57 @@ export const getCompOrderEnquiries = (
     }
   );
 };
+
+export const getInCompContactEnquiries = (
+  pagination: PaginationDataType,
+  status?: "pending" | "contacted",
+  controller?: Controller
+) => {
+  const { page, perPage } = pagination;
+  const params = new URLSearchParams();
+  params.append("page", String(page));
+  params.append("per_page", String(perPage));
+  if (status) {
+    params.append("status", status);
+  }
+
+  return axiosInstance.get(
+    `${
+      config.API_ADMIN_PATH
+    }/contact-enquiries/incomplete?${params.toString()}`,
+    {
+      signal: controller?.signal,
+    }
+  );
+};
+
+export const getCompContactEnquiries = (
+  pagination: PaginationDataType,
+  controller?: Controller
+) => {
+  const { page, perPage } = pagination;
+  const params = new URLSearchParams();
+  params.append("page", String(page));
+  params.append("per_page", String(perPage));
+
+  return axiosInstance.get(
+    `${config.API_ADMIN_PATH}/contact-enquiries/completed?${params.toString()}`,
+    {
+      signal: controller?.signal,
+    }
+  );
+};
+
+export const updateContactEnquiryStatus = (
+  enquiryId: string,
+  status: "pending" | "contacted" | "resolved" | "closed",
+  controller?: Controller
+) => {
+  return axiosInstance.put(
+    `${config.API_ADMIN_PATH}/contact-enquiries/${enquiryId}`,
+    { status },
+    {
+      signal: controller?.signal,
+    }
+  );
+};
