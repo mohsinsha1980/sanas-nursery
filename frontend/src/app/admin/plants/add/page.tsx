@@ -49,6 +49,7 @@ import { Trash2Icon } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
+import Link from "next/link";
 
 const defaultMasterData: MasterData = {
   tags: [],
@@ -145,7 +146,7 @@ export default function AddPlant() {
       <div className="flex justify-between items-center pb-5">
         <h1 className="">Add a plant</h1>
         <Button variant="orange" type="button" size="md" className="h-fit ">
-          <a href="http://localhost:3333/admin/plants">Back</a>
+          <Link href="/admin/plants">Back</Link>
         </Button>
       </div>
       <Form {...form}>

@@ -1,4 +1,7 @@
+import { STATUS } from "./helper";
+
 export const PLANTS_PER_PAGE = 20;
+export const BLOGS_PER_PAGE = 20;
 export const PRICE_RANGE_MAX = 15000;
 export const ALLOWED_MAX_FILE_SIZE = 300000;
 export const DEFAULT_PER_PAGE = 10;
@@ -44,6 +47,22 @@ export const ACTION_TYPES = {
 
 export const PAGINATION = {
   PER_PAGE: 5,
+};
+
+export const BLOG_CATEGORIES = {
+  PLANT_CARE: { label: "Plant Care", value: "plant-care" },
+  GARDENING_TIPS: { label: "Gardening Tips", value: "gardening-tips" },
+  PLANT_SPECIES: { label: "Plant Species", value: "plant-species" },
+  SEASONAL_GUIDES: { label: "Seasonal Guides", value: "seasonal-guides" },
+  NURSERY_NEWS: { label: "Nursery News", value: "nursery-news" },
+  SUSTAINABLE_LIVING: {
+    label: "Sustainable Living",
+    value: "sustainable-living",
+  },
+  INDOOR_PLANTS: { label: "Indoor Plants", value: "indoor-plants" },
+  OUTDOOR_GARDENING: { label: "Outdoor Gardening", value: "outdoor-gardening" },
+  PLANT_DISEASES: { label: "Plant Diseases", value: "plant-diseases" },
+  FERTILIZERS: { label: "Fertilizers & Soil", value: "fertilizers-soil" },
 };
 
 export const ROLES = {
@@ -179,6 +198,11 @@ export const ADMIN_ROUTES = [
   "/admin/support",
   "/admin/transactions",
   "/admin/users",
+  "/admin/blogs",
+  "/admin/blogs/add",
+  "/admin/blogs/edit",
+  "/admin/order-enquiries",
+  "/admin/contact-enquiries",
 ];
 
 export const MASTER_DATA_TYPE = {

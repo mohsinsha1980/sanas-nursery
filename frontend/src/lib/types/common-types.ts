@@ -1,5 +1,5 @@
 import { ColumnDef } from "@tanstack/react-table";
-import { AddPlantFields, AddTestimonialType } from "./admin-types";
+import { AddBlogType, AddPlantFields, AddTestimonialType } from "./admin-types";
 import {
   contactEnquirySchema,
   orderEnquirySchema,
@@ -166,4 +166,16 @@ export type EmailType = z.infer<typeof SubscriptionSchema>;
 export type TestimonialType = Omit<AddTestimonialType, "status"> & {
   _id: string;
   status: string;
+};
+
+export type BlogDataType = Omit<
+  AddBlogType,
+  "coverImage" | "status" | "featured"
+> & {
+  _id: string;
+  coverImage: string;
+  featured: boolean;
+  status: string;
+  createdAt: string;
+  updatedAt: string;
 };

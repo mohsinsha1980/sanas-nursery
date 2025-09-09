@@ -1,6 +1,8 @@
 import z from "zod";
 import {
+  addBlogSchema,
   addPlantSchema,
+  editBlogSchema,
   editPlantSchema,
   PlantFilterSchema,
   testimonialSchema,
@@ -108,6 +110,16 @@ export interface OrderEnquiryDataType {
 
 export interface EnquiryFilterTypes {
   status?: "pending" | "contacted" | "resolved" | "closed";
+}
+
+export type AddBlogType = z.infer<typeof addBlogSchema>;
+export type EditBlogFields = z.infer<typeof editBlogSchema>;
+
+export interface BlogFilterTypes {
+  status?: "0" | "1";
+  category?: string;
+  featured?: boolean;
+  search?: string;
 }
 
 export interface ContactEnquiryDataType {

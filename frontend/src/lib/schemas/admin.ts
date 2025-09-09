@@ -154,3 +154,90 @@ export const testimonialSchema = z.object({
   link: z.string().url("Must be a valid URL").optional(),
   status: z.boolean(),
 });
+
+const baseBlogSchema = {
+  title: z.string().nonempty("Title is required"),
+  slug: slugValidation,
+  excerpt: z
+    .string()
+    .nonempty("Excerpt is required")
+    .max(300, "Excerpt must be less than 300 characters"),
+  content: z.string().nonempty("Content is required"),
+  author: z.string().optional(),
+  category: z.string().optional(),
+  tags: z.array(z.string()).optional(),
+  metaTitle: z
+    .string()
+    .max(60, "Meta title must be less than 60 characters")
+    .optional(),
+  metaDescription: z
+    .string()
+    .max(160, "Meta description must be less than 160 characters")
+    .optional(),
+  readingTime: z
+    .number()
+    .min(1, "Reading time must be at least 1 minute")
+    .optional(),
+  featured: z.boolean().optional(),
+  status: z.enum(["0", "1"]).optional(),
+};
+
+export const addBlogSchema = z
+  .object({
+    ...baseBlogSchema,
+    coverImage: z
+      .any()
+      .refine((file) => file instanceof File, {
+        message: "Cover image is required",
+      })
+      .refine(
+        (file) => ACCEPTED_IMAGE_TYPES.includes((file as File)?.type || ""),
+        {
+          message: ".jpg, .jpeg, .png and .webp files are accepted",
+        }
+      ),
+  })
+  .superRefine((data, ctx) => {
+    const generatedSlug = data?.title
+      ?.trim()
+      .toLowerCase()
+      .replaceAll(" ", "-");
+
+    const slugResult = slugValidation.safeParse(generatedSlug);
+    if (!slugResult.success) {
+      ctx.addIssue({
+        path: ["title"],
+        message:
+          "Title can't contain special characters (used to generate slug).",
+        code: z.ZodIssueCode.custom,
+      });
+    }
+  });
+
+export const editBlogSchema = z
+  .object({
+    blogId: z.string().nonempty("Blog ID is required"),
+    ...baseBlogSchema,
+    coverImage: z.union([
+      z.string(),
+      z.instanceof(File),
+      z.null(),
+      z.undefined(),
+    ]),
+  })
+  .superRefine((data, ctx) => {
+    const generatedSlug = data?.title
+      ?.trim()
+      .toLowerCase()
+      .replaceAll(" ", "-");
+
+    const slugResult = slugValidation.safeParse(generatedSlug);
+    if (!slugResult.success) {
+      ctx.addIssue({
+        path: ["title"],
+        message:
+          "Title can't contain special characters (used to generate slug).",
+        code: z.ZodIssueCode.custom,
+      });
+    }
+  });

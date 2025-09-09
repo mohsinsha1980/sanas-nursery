@@ -6,6 +6,7 @@ import {
   LayoutPanelTopIcon,
   MailOpen,
   MessageSquareQuote,
+  Notebook,
   SettingsIcon,
   ShoppingCartIcon,
   UserRound,
@@ -82,6 +83,15 @@ export default function ContextMenu() {
                 <UserRound strokeWidth={1} className="h-6 font-bold" />
               </div>
               Users
+            </Link>
+          </li>
+
+          <li className={getActiveClass("/admin/blogs")}>
+            <Link href="/admin/blogs" className="flex items-center gap-3">
+              <div className="">
+                <Notebook  strokeWidth={1} className="h-6 font-bold" />
+              </div>
+              Blogs
             </Link>
           </li>
 

@@ -272,6 +272,11 @@ export const STATUS = {
   DELETED: "2",
 };
 
+export const STATUS_OPTIONS = [
+  { label: "Active", value: STATUS.ACTIVE },
+  { label: "Inactive", value: STATUS.INACTIVE },
+];
+
 export const capitalize = (str: string): string => {
   return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 };
