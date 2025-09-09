@@ -3,10 +3,8 @@ import UsersList from "@/components/admin/users/users-list";
 export default function UsersListPage() {
   return (
     <>
-      <div className="flex flex-row">
-        <div className="basis-3/4">
-          <h1>Users</h1>
-        </div>
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center pb-4 gap-3">
+        <h1>Users</h1>
       </div>
       <UsersList />
     </>

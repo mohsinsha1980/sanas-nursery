@@ -7,7 +7,7 @@ export default function WhatsappBadge() {
       <div className="floating-bg-animate">
         <FloatingWhatsApp
           phoneNumber="+91-96574 80645"
-          accountName="Maxima Business Solution"
+          accountName="Sanas Nursery"
           darkMode={true}
           placeholder="Type Something...."
           avatar="./maxima-wapp.webp"

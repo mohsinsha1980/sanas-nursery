@@ -42,14 +42,15 @@ export default function AddSpecificatin({
 
   return (
     <Form {...form}>
-      <form className="space-y-4">
-        <div className="grid grid-cols-4 gap-4 mb-4">
+      <form className="">
+        <div className="grid grid-cols-3 gap-4 mb-4">
           <div>
             <TextField
               name="label"
               label="Key specification Label"
               placeholder="for e.g. Height, Width"
               formControl={form.control}
+              className="rounded-md border-none shadow-md"
             />
           </div>
           <div>
@@ -58,6 +59,7 @@ export default function AddSpecificatin({
               label="Key specification value"
               placeholder="for e.g. 5 feet, 10 inch"
               formControl={form.control}
+              className="rounded-md border-none shadow-md"
             />
           </div>
           <div>
@@ -66,7 +68,7 @@ export default function AddSpecificatin({
               <div className="flex h-9 w-full items-center">
                 <Button
                   type="button"
-                  className="rounded-md"
+                  className="rounded-md bg-orange-500 text-white"
                   onClick={form.handleSubmit(onSubmit)}
                 >
                   Add Specification

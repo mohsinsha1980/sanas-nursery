@@ -1,6 +1,5 @@
 import ConfirmButton from "@/components/common/ConfirmButton";
 import { CustomPagination } from "@/components/common/custom-pagination";
-import CustomCard from "@/components/layout/CustomCard";
 import CustomDialog from "@/components/layout/Dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -122,7 +121,7 @@ export default function TagsField({ data }: Props) {
           <div className="basis-2/4">
             <Input
               placeholder="Search a tag"
-              className="h-8"
+              className="h-8 border-none rounded-lg"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
@@ -134,21 +133,21 @@ export default function TagsField({ data }: Props) {
           </div>
         </div>
 
-        <Table className="mb-4 border rounded-lg table-auto w-full">
+        <Table className="mb-4 rounded-lg table-auto w-full">
           <TableHeader>
-            <TableRow className="bg-gray-100">
-              <TableHead className="text-left">Tag Label</TableHead>
-              <TableHead className="text-left">Tag Value</TableHead>
-              <TableHead className="text-right w-20">Actions</TableHead>
+            <TableRow className="bg-slate-50 hover:bg-slate-50 border-b border-slate-200">
+              <TableHead className="text-left font-semibold text-slate-700 py-2 px-3 sm:px-6 text-xs sm:text-sm">Tag Label</TableHead>
+              <TableHead className="text-left font-semibold text-slate-700 py-2 px-3 sm:px-6 text-xs sm:text-sm">Tag Value</TableHead>
+              <TableHead className="text-right w-20 font-semibold text-slate-700 py-2 px-3 sm:px-6 text-xs sm:text-sm">Actions</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {tags.length ? (
               tags.map((data, index) => (
-                <TableRow key={index}>
-                  <TableCell className="text-left">{data.label}</TableCell>
-                  <TableCell className="text-left">{data.value}</TableCell>
-                  <TableCell className="text-right">
+                <TableRow key={index} className="border-b border-slate-100 last:border-b-0 hover:bg-slate-50 transition-colors duration-150">
+                  <TableCell className="text-left py-2 px-3 sm:px-6 text-slate-600 text-xs sm:text-sm break-words">{data.label}</TableCell>
+                  <TableCell className="text-left py-2 px-3 sm:px-6 text-slate-600 text-xs sm:text-sm break-words">{data.value}</TableCell>
+                  <TableCell className="text-right py-2 px-3 sm:px-6 text-slate-600 text-xs sm:text-sm break-words">
                     <div className="flex justify-end gap-1">
                       <Trash2Icon
                         size="18"

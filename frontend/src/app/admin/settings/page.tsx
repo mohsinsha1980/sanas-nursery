@@ -42,10 +42,8 @@ const SettingsPage = () => {
 
   return (
     <>
-      <div className="flex flex-row">
-        <div className="basis-3/4">
-          <h1>Settings</h1>
-        </div>
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center pb-4 gap-3">
+        <h1>Settings</h1>
       </div>
       <div className="flex gap-4">
         <div className="w-1/2">

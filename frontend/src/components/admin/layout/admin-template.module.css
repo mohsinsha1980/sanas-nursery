@@ -8,18 +8,19 @@
   gap: 30px;
 }
 
-.bl_admin_template > div {
+.bl_admin_template>div {
   flex: 1;
 }
 
 .admin_nav {
-  max-width: 300px;
+  max-width: 200px;
 }
 
 .pg_content h1 {
-  color: black;        
-  font-weight: 600;      
-  font-size: 42px;       
+  color: black;
+  /* font-weight: 600;       */
+  font-size: 30px;
+  padding: 0 10px;
 }
 
 .pg_content h2 {

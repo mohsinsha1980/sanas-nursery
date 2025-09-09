@@ -41,7 +41,7 @@ const PlantFilter = ({
                 placeholder="Filter by plant name"
                 formControl={form.control}
                 inputType="text"
-                className="p-5 border rounded-md"
+                className="p-5 border-none rounded-md"
               />
             </div>
             <div>
@@ -51,7 +51,7 @@ const PlantFilter = ({
                 placeholder="Filter by plant ID"
                 formControl={form.control}
                 inputType="text"
-                className="p-5 border rounded-md"
+                className="p-5 border-none rounded-md"
               />
             </div>
             <div>
@@ -64,11 +64,11 @@ const PlantFilter = ({
                   { label: "Active", value: "0" },
                   { label: "In-Active", value: "1" },
                 ]}
-                className="p-5 mt-2"
+                className="p-5 border-none mt-2"
               />
             </div>
             <div className="flex gap-5">
-              <Button size="md" variant="orange" type="submit" className="">
+              <Button size="sm" variant="orange" type="submit" className="">
                 Apply Filter
               </Button>
               {form.getValues("title") ||
