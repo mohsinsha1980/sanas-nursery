@@ -49,7 +49,7 @@ const Contact = () => {
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
-        <div className="lg:w-[100%] lg:h-[870px] md:w-[100%] md:h-[1100px] w-[100%] h-[1020px] flex justify-center items-center bg-[#E4FFF0]   ">
+        <div className="lg:w-[100%] lg:h-[870px] md:w-[100%] md:h-[1100px] w-[100%] h-[920px] flex justify-center items-center bg-[#E4FFF0]   ">
           <div className="contact-form lg:w-[61%] flex justify-center items-center bg-white rounded-xl">
             <div className="contact-form-innerdiv lg:w-[60%] lg:h-auto md:w-[80%] w-[95%]  lg:gap-y-0 gap-y-10 flex lg:flex-row flex-col justify-between items-center absolute z-10 bg-white p-2 md:p-3 lg:px-3 rounded-xl     ">
               {/* Left Section */}

@@ -304,6 +304,10 @@ footer {
   color: white !important;
 }
 
+.floating-whatsapp-chatbox {
+  padding-top: 70px !important; 
+}
+
 
 
 .main_header .header-actions {
@@ -353,41 +357,21 @@ footer {
 }
 
 @keyframes scroll {
-  0% {
+  from {
     transform: translateX(0);
   }
-  100% {
-    transform: translateX(-50%); 
-  }
-}
-
-@keyframes scroll-left {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
+  to {
     transform: translateX(-100%);
   }
 }
 
-.animate-scroll-left {
-  animation: scroll-left 30s linear infinite;
-}
-
-.animate-scroll-left:hover {
-  animation-play-state: paused;
-}
-
 .animate-scroll {
-  animation: scroll 70s linear infinite;
-  animation-play-state: running; /* default running */
+  animation: scroll 80s linear infinite;
 }
 
-/* Pause on hover */
-.group:hover .animate-scroll {
-  animation-play-state: paused;
+.animate-scroll:hover {
+  animation-play-state: paused; 
 }
-
 
 
 .bl__slider,
@@ -569,4 +553,8 @@ footer {
 .custom-container {
   max-width: 1200px;
   width: 100%;
+}
+
+.rn-whatsapp-button .rn-whatsapp-popup {
+  height: 500px !important; /* increase widget height */
 }

@@ -20,8 +20,8 @@ interface InputImageFieldProps<T extends FieldValues> {
   accept?: string;
   onchange?: (data: FileList) => void;
   className?: string;
-  labelClassName?: string;        // ✅ Added
-  descriptionClassName?: string;  // ✅ Added
+  labelClassName?: string;
+  descriptionClassName?: string;
 }
 
 const InputImageField = <T extends FieldValues>({
@@ -43,7 +43,11 @@ const InputImageField = <T extends FieldValues>({
       name={name}
       render={({ field: { value, onChange, ...fieldProps } }) => (
         <FormItem>
-          <FormLabel className={labelClassName}>{label}</FormLabel>
+          {/* Add spacing below label */}
+          <FormLabel className={`mb-2 block ${labelClassName}`}>
+            {label}
+          </FormLabel>
+
           <FormControl>
             {multiple ? (
               <Input
@@ -51,7 +55,7 @@ const InputImageField = <T extends FieldValues>({
                 placeholder={placeholder}
                 type="file"
                 multiple
-                className={className}
+                className={`mb-2 ${className}`} // spacing below input
                 accept={accept}
                 onChange={(event) => {
                   if (event.target?.files) {
@@ -65,7 +69,7 @@ const InputImageField = <T extends FieldValues>({
                 {...fieldProps}
                 placeholder={placeholder}
                 type="file"
-                className={className}
+                className={`mb-2 ${className}`} // spacing below input
                 accept={accept}
                 onChange={(event) => {
                   if (event.target?.files) {
@@ -76,12 +80,14 @@ const InputImageField = <T extends FieldValues>({
               />
             )}
           </FormControl>
+
           {description && (
-            <FormDescription className={descriptionClassName}>
+            <FormDescription className={`mt-1 ${descriptionClassName}`}>
               {description}
             </FormDescription>
           )}
-          <FormMessage />
+
+          <FormMessage className="mt-1" />
         </FormItem>
       )}
     />

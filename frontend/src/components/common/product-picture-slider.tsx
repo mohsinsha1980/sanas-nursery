@@ -24,13 +24,13 @@ export default function ProductPictureSlider({
   const { selectedIndex, onDotButtonClick } = useDotButton(emblaApi);
 
   return (
-    <div className="bl__product__slider sm:mt-2">
-      <div className="bl__product__slider__container sm:!me-2" ref={emblaRef}>
+    <div className="bl__product__slider sm:mt-2 flex justify-evenly">
+      <div className="bl__product__slider__container sm:!me-2  " ref={emblaRef}>
         <div className="bl__slider__container">
           {pictures.length ? (
             pictures.map((item) => (
               <div className="bl__slider__slide" key={item}>
-                <Image src={item} width={501} height={668} alt="" />
+                <Image src={item} width={501} height={668} alt="" className="rounded-lg"/>
               </div>
             ))
           ) : (
@@ -38,7 +38,7 @@ export default function ProductPictureSlider({
           )}
         </div>
       </div>
-      <div className="bl__thumbnail__container">
+      <div className="bl__thumbnail__container   ">
         <ScrollArea className="h-full">
           {pictures.length
             ? pictures.map((item, index) => (
@@ -49,7 +49,7 @@ export default function ProductPictureSlider({
                     index === selectedIndex ? " selected" : ""
                   )}
                 >
-                  <Image src={item} width={100} height={125} alt="" />
+                  <Image src={item} width={100} height={125} alt="" className="rounded-lg"/>
                 </DotButton>
               ))
             : null}

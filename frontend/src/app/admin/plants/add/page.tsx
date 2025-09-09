@@ -144,7 +144,7 @@ export default function AddPlant() {
   return (
     <>
       <div className="flex justify-between items-center pb-5">
-        <h1 className="">Add a plant</h1>
+        <h1 className="">Add a Plant</h1>
         <Button
           variant="orange"
           type="button"
@@ -216,7 +216,7 @@ export default function AddPlant() {
 
             <div className="col-span-4">
               <div className="grid grid-cols-4 gap-4 ">
-                <div className="col-span-3">
+                <div className="col-span-3 ">
                   <h2 className="">
                     <h3 className="text-[20px] font-semibold pt-5">
                       Key Specifications
@@ -232,9 +232,9 @@ export default function AddPlant() {
                   <Button
                     variant="orange"
                     type="button"
-                    size="sm"
+                    size="md"
                     onClick={() => setOpenKeySpec(true)}
-                    className="mt-5"
+                    className="mt-3"
                   >
                     Add New
                   </Button>
@@ -347,7 +347,7 @@ export default function AddPlant() {
                   <Button
                     variant="orange"
                     type="button"
-                    size="sm"
+                    size="md"
                     onClick={() => setOpenAddFAQ(true)}
                     className=""
                   >
