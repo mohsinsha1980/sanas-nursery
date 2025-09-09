@@ -289,3 +289,55 @@ export const deleteTestimonial = (
     }
   );
 };
+
+export const updateOrderEnquiryStatus = (
+  enquiryId: string,
+  status: "pending" | "contacted" | "resolved" | "closed",
+  controller?: Controller
+) => {
+  return axiosInstance.put(
+    `${config.API_ADMIN_PATH}/order-enquiries/${enquiryId}`,
+    { status },
+    {
+      signal: controller?.signal,
+    }
+  );
+};
+
+export const getInCompOrderEnquiries = (
+  pagination: PaginationDataType,
+  status?: "pending" | "contacted",
+  controller?: Controller
+) => {
+  const { page, perPage } = pagination;
+  const params = new URLSearchParams();
+  params.append("page", String(page));
+  params.append("per_page", String(perPage));
+  if (status) {
+    params.append("status", status);
+  }
+
+  return axiosInstance.get(
+    `${config.API_ADMIN_PATH}/order-enquiries/incomplete?${params.toString()}`,
+    {
+      signal: controller?.signal,
+    }
+  );
+};
+
+export const getCompOrderEnquiries = (
+  pagination: PaginationDataType,
+  controller?: Controller
+) => {
+  const { page, perPage } = pagination;
+  const params = new URLSearchParams();
+  params.append("page", String(page));
+  params.append("per_page", String(perPage));
+
+  return axiosInstance.get(
+    `${config.API_ADMIN_PATH}/order-enquiries/completed?${params.toString()}`,
+    {
+      signal: controller?.signal,
+    }
+  );
+};

@@ -75,6 +75,41 @@ export type PlantFilterTypes = z.infer<typeof PlantFilterSchema>;
 export type AddTestimonialType = z.infer<typeof testimonialSchema>;
 export type EditTestimonialType = z.infer<typeof testimonialSchema>;
 
+export interface OrderEnquiryTableDataType {
+  _id: string;
+  name: string;
+  email: string;
+  phone: string;
+  message: string;
+  preferredContactTime?: string;
+  plantTitle: string;
+  plantPicture: string;
+  status: "pending" | "contacted" | "resolved" | "closed";
+  createdAt: string;
+  actions: DataTableActionType[];
+}
+
+export interface OrderEnquiryDataType {
+  _id: string;
+  name: string;
+  email: string;
+  phone: string;
+  message: string;
+  preferredContactTime?: string;
+  plantId: {
+    _id: string;
+    title: string;
+    pictures: string[];
+  };
+  userId: string;
+  status: "pending" | "contacted" | "resolved" | "closed";
+  createdAt: string;
+}
+
+export interface OrderEnquiryFilterTypes {
+  status?: "pending" | "contacted" | "resolved" | "closed";
+}
+
 // export interface PlantTableDataType {
 //   title: string;
 //   plantId: string;

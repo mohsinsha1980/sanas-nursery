@@ -256,12 +256,12 @@ export const FOOTER_LINKS = {
   ],
 } as const;
 
-export const EnquiryStatus = {
+export const ENQUIRY_STATUS = {
   PENDING: "pending",
-  IN_PROGRESS: "in_progress",
+  CONTACTED: "contacted",
   RESOLVED: "resolved",
   CLOSED: "closed",
-} as const;
+};
 
 export type EnquiryStatusType =
-  (typeof EnquiryStatus)[keyof typeof EnquiryStatus];
+  (typeof ENQUIRY_STATUS)[keyof typeof ENQUIRY_STATUS];

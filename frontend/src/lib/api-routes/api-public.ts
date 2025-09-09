@@ -78,7 +78,7 @@ export const getPlantDetailsByID = (
 };
 
 export const createOrderEnquiry = (
-  data: OrderEnquiryType,
+  data: OrderEnquiryType & { token: string },
   controller?: Controller
 ) => {
   return axiosInstance.post(`${config.API_PUBLIC_PATH}/order-enquiry`, data, {

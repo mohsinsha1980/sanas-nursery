@@ -50,6 +50,7 @@ export interface DataTableActionType {
   actionType: string;
   actionIcon?: React.ReactNode;
   action: (id: string) => void;
+  actionLabel?: string;
 }
 
 export type PlantTypes = Omit<AddPlantFields, "pictures" | "status"> & {
