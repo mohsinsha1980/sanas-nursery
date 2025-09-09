@@ -9,6 +9,7 @@ import homeRoutes from "./home.js";
 import testimonialsRoutes from "./testimonials.js";
 import orderEnquiriesRoutes from "./order-enquiries.js";
 import contactEnquiriesRoutes from "./contact-enquiries.js";
+import blogRoutes from "./blogs.js";
 
 router.use("/users", adminAuth, userRoutes);
 router.use("/testimonials", testimonialsRoutes);
@@ -16,6 +17,7 @@ router.use("/master-data", adminAuth, settingsRoutes);
 router.use("/plants", adminAuth, plantRoutes);
 router.use("/order-enquiries", orderEnquiriesRoutes);
 router.use("/contact-enquiries", contactEnquiriesRoutes);
+router.use("/blogs", blogRoutes);
 router.get("/plants-list", getPlantsForGreenChoices);
 router.use("/home", adminAuth, homeRoutes);
 

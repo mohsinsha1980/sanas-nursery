@@ -18,11 +18,11 @@ import {
   getPicURL,
   showErrorToast,
   showSuccessToast,
-  STATUS,
-  STATUS_OPTIONS,
+  STATUS_OPTIONS
 } from "@/lib/helper";
 import { editBlogSchema } from "@/lib/schemas/admin";
 import { EditBlogFields } from "@/lib/types/admin-types";
+import { BlogDataType } from "@/lib/types/common-types";
 import { hideLoader, showLoader } from "@/redux/uiSlice";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { AxiosError } from "axios";
@@ -31,7 +31,6 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { BlogDataType } from "@/lib/types/common-types";
 
 const defaultValues: EditBlogFields = {
   blogId: "",

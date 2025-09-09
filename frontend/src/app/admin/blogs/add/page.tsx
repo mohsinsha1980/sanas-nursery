@@ -1,10 +1,8 @@
 "use client";
-import { useEffect, useState } from "react";
-
+import { useState } from "react";
 import { Form } from "@/components/ui/form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SubmitHandler, useForm } from "react-hook-form";
-
 import { Button } from "@/components/ui/button";
 import { BLOG_CATEGORIES } from "@/lib/constants";
 
@@ -25,13 +23,13 @@ import TextArea from "@/components/form-fields/text-area";
 import TextField from "@/components/form-fields/text-field";
 import { createBlog } from "@/lib/api-routes/api-admin";
 import { addBlogSchema } from "@/lib/schemas/admin";
+import { AddBlogType } from "@/lib/types/admin-types";
 import { hideLoader, showLoader } from "@/redux/uiSlice";
 import { AxiosError } from "axios";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
-import { AddBlogType } from "@/lib/types/admin-types";
-import Link from "next/link";
 
 const defaultFormData: AddBlogType = {
   title: "",

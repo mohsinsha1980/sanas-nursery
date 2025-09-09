@@ -31,16 +31,6 @@ export const MASTER_DATA_TYPE = {
 };
 
 export const MEDIA = {
-  // Gallery: {
-  //   destination: "public/pictures/gallery",
-  //   resizeOptions: {
-  //     width: 501,
-  //     height: 668,
-  //     fit: "cover",
-  //   },
-  //   pictures: { count: 10, fileSize: 0.5 * 1024 * 1024 },
-  //   limits: { fileSize: 0.5 * 1024 * 1024 },
-  // },
   Plants: {
     destination: "public/pictures/Plants",
     resizeOptions: {
@@ -50,6 +40,16 @@ export const MEDIA = {
     },
     pictures: { count: 20, fileSize: 0.5 * 1024 * 1024 },
     limits: { fileSize: 0.5 * 1024 * 1024 },
+  },
+  Blogs: {
+    destination: "public/pictures/Blogs",
+    resizeOptions: {
+      width: 800,
+      height: 450,
+      fit: "cover",
+    },
+    pictures: { count: 1, fileSize: 1 * 1024 * 1024 },
+    limits: { fileSize: 1 * 1024 * 1024 },
   },
   Home: {
     Cards: {
@@ -123,6 +123,7 @@ export const MEDIA = {
 };
 
 export const PLANTS_PER_PAGE = 20;
+export const BLOGS_PER_PAGE = 12;
 export const GREEN_CHOICES_PRODUCT_LIMIT = 12;
 
 export const HOME_SECTIONS = {

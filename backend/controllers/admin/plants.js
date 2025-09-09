@@ -116,7 +116,7 @@ export const createPlant = async (req, res, next) => {
 
     const slug = generateSlug(title);
     if (invalidSlug(slug)) {
-      return next({ message: invalidSlug(slug), status: 400 });
+      return next({ message: "Invalid Slug", status: 400 });
     }
 
     let plantId = uuidv4();

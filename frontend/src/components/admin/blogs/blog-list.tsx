@@ -1,36 +1,36 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { AxiosError } from "axios";
+import ConfirmButton from "@/components/common/ConfirmButton";
+import { CustomPagination } from "@/components/common/custom-pagination";
+import CustomDialog from "@/components/layout/Dialog";
+import { Button } from "@/components/ui/button";
+import {
+  deleteBlog,
+  getAllBlogs,
+  toggleBlogFeatured,
+  toggleBlogStatus,
+} from "@/lib/api-routes/api-admin";
+import { BLOGS_PER_PAGE } from "@/lib/constants";
 import {
   getErrorMessage,
   showErrorToast,
   showSuccessToast,
 } from "@/lib/helper";
-import {
-  getAllBlogs,
-  deleteBlog,
-  toggleBlogStatus,
-  toggleBlogFeatured,
-} from "@/lib/api-routes/api-admin";
 import { BlogFilterTypes } from "@/lib/types/admin-types";
 import {
-  TableDataResponseType,
-  PaginationDataType,
   BlogDataType,
+  PaginationDataType,
+  TableDataResponseType,
 } from "@/lib/types/common-types";
-import { BLOGS_PER_PAGE, PLANTS_PER_PAGE } from "@/lib/constants";
+import { hideLoader, showLoader } from "@/redux/uiSlice";
+import { AxiosError } from "axios";
+import { FileText, Plus, Search } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { useCallback, useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import BlogFilter from "./blog-filter";
 import BlogItem from "./blog-item";
-import { Plus, FileText, Search } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { useRouter } from "next/navigation";
-import { hideLoader, showLoader } from "@/redux/uiSlice";
 import SkeletonCard from "./skeleton-card";
-import CustomDialog from "@/components/layout/Dialog";
-import ConfirmButton from "@/components/common/ConfirmButton";
-import { CustomPagination } from "@/components/common/custom-pagination";
 
 const BlogList = () => {
   const dispatch = useDispatch();
@@ -51,8 +51,6 @@ const BlogList = () => {
   });
   const [filterData, setFilterData] = useState<BlogFilterTypes>({});
   const [isLoading, setIsLoading] = useState(false);
-
-  console.log("blogsData ", blogsData);
 
   useEffect(() => {
     const controller = new AbortController();
