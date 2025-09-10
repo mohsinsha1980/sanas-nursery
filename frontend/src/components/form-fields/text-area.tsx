@@ -19,6 +19,7 @@ interface TextAreaProps<T extends FieldValues> {
   readOnly?: boolean;
   resize?: boolean;
   rows?: number;
+  className?:string,
   onChange?: (val: string) => void;
   labelClassName?: string;        
   descriptionClassName?: string;  

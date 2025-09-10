@@ -8,8 +8,6 @@ export default function WhatsappBadge() {
         <FloatingWhatsApp
           phoneNumber="+91-96574 80645"
           accountName="Sanas Nursery"
-          phoneNumber=""
-          accountName="Sanas Nursery"
           darkMode={true}
           placeholder="Type Something...."
           avatar="/favicon.ico"
