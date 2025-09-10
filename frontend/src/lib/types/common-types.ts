@@ -157,10 +157,17 @@ export interface PlantFilterType {
   perPage?: string;
 }
 
+export interface BlogFilterType {
+  search?: string;
+  page?: string | undefined;
+  perPage?: string;
+}
+
 export interface CategoryPlantsHttpResDataType {
   message: string;
   data: { plants: PlantDataType[]; total: number };
 }
+
 export type EmailType = z.infer<typeof SubscriptionSchema>;
 
 export type TestimonialType = Omit<AddTestimonialType, "status"> & {
@@ -179,3 +186,8 @@ export type BlogDataType = Omit<
   createdAt: string;
   updatedAt: string;
 };
+
+export interface BlogsHttpResDataType {
+  message: string;
+  data: { blogs: BlogDataType[]; total: number };
+}
