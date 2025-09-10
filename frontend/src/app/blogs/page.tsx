@@ -74,7 +74,7 @@ export default async function BlogsPage({
           {blogs.length > 0 ? (
             <>
               {featuredBlogs.length > 0 && (
-                <div className="mb-20">
+                <div className="mb-20 md:px-10">
                   <div className="text-center mb-12">
                     <div className="inline-flex items-center gap-3 mb-4">
                       <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-pink-500 rounded-2xl flex items-center justify-center">
@@ -98,7 +98,7 @@ export default async function BlogsPage({
               )}
 
               {regularBlogs.length ? (
-                <div className="mb-12">
+                <div className="mb-12 md:px-10">
                   <div className="text-center mb-12">
                     <div className="inline-flex items-center gap-3 mb-4">
                       <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-blue-500 rounded-2xl flex items-center justify-center">

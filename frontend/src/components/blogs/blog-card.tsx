@@ -21,33 +21,35 @@ interface BlogCardProps {
 export default function BlogCard({ blog }: BlogCardProps) {
   return (
     <article className="group bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden h-full flex flex-col border border-gray-100 hover:border-green-200">
-      <div className="relative h-52 w-full overflow-hidden">
-        <Image
-          src={getPicURL(blog.coverImage)}
-          alt={blog.title}
-          fill
-          className="object-cover group-hover:scale-105 transition-transform duration-500"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
+      <Link href={`/blogs/${blog.slug}`}>
+        <div className="relative h-52 w-full overflow-hidden">
+          <Image
+            src={getPicURL(blog.coverImage)}
+            alt={blog.title}
+            fill
+            className="object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
 
-        {blog.category && (
-          <div className="absolute top-3 left-3">
-            <Badge className="bg-white/90 text-gray-700 font-medium text-xs px-2 py-1">
-              <Tag className="h-3 w-3 mr-1" />
-              {getCategoryLabel(blog.category)}
-            </Badge>
-          </div>
-        )}
+          {blog.category && (
+            <div className="absolute top-3 left-3">
+              <Badge className="bg-white/90 text-gray-700 font-medium text-xs px-2 py-1">
+                <Tag className="h-3 w-3 mr-1" />
+                {getCategoryLabel(blog.category)}
+              </Badge>
+            </div>
+          )}
 
-        {blog.featured && (
-          <div className="absolute top-3 right-3">
-            <Badge className="bg-orange-500 text-white font-semibold text-xs px-2 py-1">
-              <Star className="h-3 w-3 mr-1" />
-              Featured
-            </Badge>
-          </div>
-        )}
-      </div>
+          {blog.featured && (
+            <div className="absolute top-3 right-3">
+              <Badge className="bg-orange-500 text-white font-semibold text-xs px-2 py-1">
+                <Star className="h-3 w-3 mr-1" />
+                Featured
+              </Badge>
+            </div>
+          )}
+        </div>
+      </Link>
 
       <div className="p-6 flex flex-col flex-1">
         <h2 className="text-lg font-bold text-gray-900 mb-3 line-clamp-2 group-hover:text-green-600 transition-colors leading-tight">

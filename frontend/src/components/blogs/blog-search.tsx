@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Search, X } from "lucide-react";
 import { useQueryState } from "nuqs";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 export default function BlogSearch() {
   const [search, setSearch] = useQueryState("search", {
@@ -12,6 +12,10 @@ export default function BlogSearch() {
     shallow: false,
   });
   const [searchText, setSearchText] = useState("");
+
+  useEffect(() => {
+    setSearchText(search || "");
+  }, [search]);
 
   const [page, setPage] = useQueryState("page", {
     defaultValue: "1",

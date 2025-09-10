@@ -1,0 +1,351 @@
+/* Blog Details Page Styles */
+.heroSection {
+  padding-top: 70px;
+  background: white;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.heroContent {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #64748b;
+  text-decoration: none;
+  margin-bottom: 2rem;
+  transition: color 0.2s;
+  font-weight: 500;
+}
+
+.backLink:hover {
+  color: #059669;
+}
+
+.categoryBadge {
+  background: linear-gradient(135deg, #059669, #0d9488);
+  color: white;
+  font-weight: 500;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.875rem;
+}
+
+.featuredBadge {
+background: linear-gradient(135deg, #f97316, #ea580c); 
+
+  color: white;
+  font-weight: 600;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.875rem;
+}
+
+.blogTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.blogExcerpt {
+  font-size: 1.125rem;
+  color: #6b7280;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.metaInfo {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  color: #6b7280;
+  font-size: 0.875rem;
+  margin-bottom: 1.5rem;
+}
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.authorAvatar {
+  width: 2.5rem;
+  height: 2.5rem;
+  background: linear-gradient(135deg, #059669, #0d9488);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.coverImage {
+  position: relative;
+  height: 20rem;
+  width: 100%;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  margin: 2rem 0 3rem 0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.articleContent {
+  color: #1a1a1a;
+  line-height: 1.7;
+  font-size: 1.125rem;
+  max-width: 680px;
+  margin: 0 auto;
+  font-family: 'Georgia', 'Times New Roman', serif;
+}
+
+/* Content Styling */
+.articleContent h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 2rem 0 1rem 0;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+.articleContent h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 1.75rem 0 0.75rem 0;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+.articleContent h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 1.5rem 0 0.5rem 0;
+  line-height: 1.4;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+.articleContent h4 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 1.25rem 0 0.5rem 0;
+  line-height: 1.4;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+.articleContent p {
+  margin: 1.5rem 0;
+  color: #1a1a1a;
+  line-height: 1.7;
+}
+
+.articleContent ul,
+.articleContent ol {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.articleContent li {
+  margin: 0.5rem 0;
+  color: #1a1a1a;
+  line-height: 1.6;
+}
+
+.articleContent blockquote {
+  border-left: 4px solid #059669;
+  padding-left: 1.5rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: #64748b;
+  background: #f8fafc;
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+}
+
+.articleContent code {
+  background: #f1f5f9;
+  color: #e11d48;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 0.875rem;
+}
+
+.articleContent pre {
+  background: #1e293b;
+  color: #e2e8f0;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+
+.articleContent pre code {
+  background: transparent;
+  color: inherit;
+  padding: 0;
+}
+
+.articleContent img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  margin: 1.5rem 0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.articleContent a {
+  color: #059669;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  transition: all 0.2s;
+}
+
+.articleContent a:hover {
+  color: #047857;
+  text-decoration-color: #047857;
+}
+
+.articleContent strong {
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.articleContent em {
+  font-style: italic;
+  color: #6b7280;
+}
+
+
+
+.relatedSection {
+  background: white;
+  padding: 4rem 0;
+}
+
+.relatedContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.relatedHeader {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.relatedTitle {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0;
+}
+
+.relatedDescription {
+  color: #64748b;
+  font-size: 1.125rem;
+}
+
+.relatedGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+@media (max-width: 1024px) {
+  .relatedGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .relatedGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ctaSection {
+  text-align: center;
+}
+
+.ctaButton {
+  background: linear-gradient(135deg, #ea580c, #dc2626);
+  color: white;
+  padding: 0.75rem 2rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.ctaButton:hover {
+  background: linear-gradient(135deg, #c2410c, #b91c1c);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .heroContent {
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+  
+  .blogTitle {
+    font-size: 2rem;
+  }
+  
+  .blogExcerpt {
+    font-size: 1rem;
+  }
+  
+  .metaInfo {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .coverImage {
+    height: 16rem;
+    margin: 1rem 0 2rem 0;
+  }
+  
+  .articleContent {
+    max-width: 100%;
+  }
+  
+  .articleContent h1 {
+    font-size: 1.75rem;
+  }
+  
+  .articleContent h2 {
+    font-size: 1.375rem;
+  }
+  
+}
