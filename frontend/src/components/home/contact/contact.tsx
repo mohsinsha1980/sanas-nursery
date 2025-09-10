@@ -3,12 +3,9 @@ import { Button } from "@/components/ui/button";
 import { addContactUs } from "@/lib/api-routes/api-public";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
-  Facebook,
-  Instagram,
   Mail,
   MapPin,
   Phone,
-  Youtube,
 } from "lucide-react";
 import React from "react";
 import { useForm } from "react-hook-form";

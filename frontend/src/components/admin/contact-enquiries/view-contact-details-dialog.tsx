@@ -28,7 +28,7 @@ export default function ViewContactDetailsDialog({
     <CustomDialog
       title="Contact Enquiry Details"
       open={isOpen}
-      onclose={(_open: boolean) => onClose()}
+      onclose={() => onClose()}
       className="max-w-4xl"
     >
       <div className="space-y-6">

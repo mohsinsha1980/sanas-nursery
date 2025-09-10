@@ -36,6 +36,9 @@ const WhyChoose = () => {
     },
   ];
 
+                const [hover, setHover] = useState(false);
+
+
   return (
     <div>
       <div className="h-full w-full lg:pt-30 lg:pb-30 md:pt-20 md:pb-20 pt-10 pb-10 flex flex-row justify-center bg-white">
@@ -46,14 +49,13 @@ const WhyChoose = () => {
               Why Choose <span className="text-[#00611F]">Sanas Nursery</span>
             </h1>
             <p className="text-[#505050] lg:text-[20px] md:text-[22px] text-[16px] font-semibold lg:px-0 px-2 lg:text-start text-center">
-              Five reasons why we're your perfect gardening partner
+              Five reasons why we&apos;re your perfect gardening partner
             </p>
           </div>
 
           {/* Cards */}
           <div className="h-[285px] w-full flex justify-between flex-wrap gap-4 lg:gap-0">
             {data.map((item, i) => {
-              const [hover, setHover] = useState(false);
 
               return (
                 <div
