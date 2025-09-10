@@ -1,6 +1,5 @@
 "use client";
 
-import CustomCard from "@/components/layout/CustomCard";
 import CustomDialog from "@/components/layout/Dialog";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";

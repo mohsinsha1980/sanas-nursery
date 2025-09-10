@@ -11,6 +11,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { deleteMasterRecord } from "@/lib/api-routes/api-admin";
 import { MASTER_DATA_TYPE, PAGINATION } from "@/lib/constants";
 import {
   getErrorMessage,
@@ -25,7 +26,6 @@ import { CirclePlusIcon, Trash2Icon } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import AddTagData from "./add-tags-data";
-import { deleteMasterRecord } from "@/lib/api-routes/api-admin";
 
 type Props = {
   data: MasterDataOption[];
@@ -169,17 +169,17 @@ export default function TagsField({ data }: Props) {
           </TableBody>
         </Table>
 
-        <CustomPagination
-          total={tagData.length}
-          perPage={PAGINATION.PER_PAGE}
-          pageChange={setPage}
-        />
+      <CustomPagination
+        total={tagData.length}
+        perPage={PAGINATION.PER_PAGE}
+        pageChange={setPage}
+      />
 
       <CustomDialog
         title="Add a new tag"
         open={openTag}
         onclose={(open: boolean) => setOpenTag(open)}
-        className="max-w-[300px]"
+        className="max-w-[400px]"
       >
         <AddTagData
           onAdd={(data) => {

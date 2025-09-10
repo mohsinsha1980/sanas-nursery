@@ -15,6 +15,7 @@ import { orderEnquirySchema } from "@/lib/schemas/common";
 import { hideLoader, showLoader } from "@/redux/uiSlice";
 import { createOrderEnquiry } from "@/lib/api-routes/api-public";
 import { Form } from "../ui/form";
+import { useReCaptcha } from "next-recaptcha-v3";
 
 const defaultValues: OrderEnquiryFields = {
   name: "",
@@ -28,6 +29,7 @@ const BuyNowBtn = ({ plant }: { plant: PlantDataType }) => {
   const dispatch = useDispatch();
   const [openDialog, setOpenDialog] = useState(false);
   const user = useSelector((state: RootState) => state.user);
+  const { executeRecaptcha } = useReCaptcha();
 
   const form = useForm<OrderEnquiryFields>({
     defaultValues: defaultValues,
@@ -48,12 +50,16 @@ const BuyNowBtn = ({ plant }: { plant: PlantDataType }) => {
   const onSubmit = async (values: OrderEnquiryFields) => {
     try {
       dispatch(showLoader());
+      const token = await executeRecaptcha("form_submit");
       const payload = {
         ...values,
+        token,
         plantId: plant._id,
         userId: user?._id || "",
       };
-      createOrderEnquiry(payload);
+      console.log(token);
+      const res = await createOrderEnquiry(payload);
+      console.log("res ", res);
       showSuccessToast(
         "Your enquiry has been submitted. We will contact you soon!"
       );
@@ -83,7 +89,7 @@ const BuyNowBtn = ({ plant }: { plant: PlantDataType }) => {
             onSubmit={form.handleSubmit(onSubmit)}
             className="space-y-4 px-2 py-1"
           >
-            {user && (
+            {!user?._id && (
               <div className="p-3 bg-orange-50 border border-orange-200 rounded-md text-sm flex justify-between items-center">
                 <span>
                   You are not logged in. <strong>Login</strong> to autofill your

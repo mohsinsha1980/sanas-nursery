@@ -142,8 +142,8 @@ export default function AddPlant() {
 
   return (
     <>
-      <div className="flex justify-between items-center pb-5">
-        <h1 className="">Add a Plant</h1>
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center pb-5 gap-3">
+        <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold">Add a plant</h1>
         <Button
           variant="orange"
           type="button"
@@ -151,7 +151,7 @@ export default function AddPlant() {
           onClick={() => router.back()}
           className="w-full sm:w-auto"
         >
-           Back
+          Back
         </Button>
       </div>
 
@@ -256,9 +256,15 @@ export default function AddPlant() {
                 <Table className="min-w-full">
                   <TableHeader>
                     <TableRow className="flex bg-slate-50 hover:bg-slate-50 border-b border-slate-200">
-                      <TableHead className="w-1/3 font-semibold text-slate-700 py-2 px-3 sm:px-6 text-xs sm:text-sm">Key</TableHead>
-                      <TableHead className="w-1/3 font-semibold text-slate-700 py-2 px-3 sm:px-6 text-xs sm:text-sm">Value</TableHead>
-                      <TableHead className="w-1/3 text-end font-semibold text-slate-700 py-2 px-3 sm:px-6 text-xs sm:text-sm">Actions</TableHead>
+                      <TableHead className="w-1/3 font-semibold text-slate-700 py-2 px-3 sm:px-6 text-xs sm:text-sm">
+                        Key
+                      </TableHead>
+                      <TableHead className="w-1/3 font-semibold text-slate-700 py-2 px-3 sm:px-6 text-xs sm:text-sm">
+                        Value
+                      </TableHead>
+                      <TableHead className="w-1/3 text-end font-semibold text-slate-700 py-2 px-3 sm:px-6 text-xs sm:text-sm">
+                        Actions
+                      </TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
@@ -269,8 +275,12 @@ export default function AddPlant() {
                           key={`specification ${index}`}
                           className="flex justify-center border-b border-slate-100 last:border-b-0 hover:bg-slate-50 transition-colors duration-150"
                         >
-                          <TableCell className="w-1/3 py-2 px-3 sm:px-6 text-slate-600 text-xs sm:text-sm break-words">{obj.label}</TableCell>
-                          <TableCell className="w-1/3 py-2 px-3 sm:px-6 text-slate-600 text-xs sm:text-sm break-words">{obj.value}</TableCell>
+                          <TableCell className="w-1/3 py-2 px-3 sm:px-6 text-slate-600 text-xs sm:text-sm break-words">
+                            {obj.label}
+                          </TableCell>
+                          <TableCell className="w-1/3 py-2 px-3 sm:px-6 text-slate-600 text-xs sm:text-sm break-words">
+                            {obj.value}
+                          </TableCell>
                           <TableCell className="w-1/3 py-2 px-3 sm:px-6 text-slate-600">
                             <div className="flex justify-end">
                               <Trash2Icon
@@ -285,7 +295,10 @@ export default function AddPlant() {
                       ))
                     ) : (
                       <TableRow>
-                        <TableCell colSpan={8} className="text-center py-2 px-3 sm:px-6 text-slate-600 text-xs sm:text-sm">
+                        <TableCell
+                          colSpan={8}
+                          className="text-center py-2 px-3 sm:px-6 text-slate-600 text-xs sm:text-sm"
+                        >
                           No records added
                         </TableCell>
                       </TableRow>
@@ -419,10 +432,7 @@ export default function AddPlant() {
             <div className="lg:col-span-2 flex flex-wrap gap-2">
               {previews.map((item, index) => {
                 return (
-                  <div
-                    className="relative w-20 h-20"
-                    key={`preview_${index}`}
-                  >
+                  <div className="relative w-20 h-20" key={`preview_${index}`}>
                     <Image src={item} alt="" fill objectFit="contain" />
                   </div>
                 );
@@ -441,7 +451,12 @@ export default function AddPlant() {
 
             {/* Submit Button */}
             <div className="lg:col-span-4">
-              <Button variant="orange" size="md" type="submit" className="w-full sm:w-auto">
+              <Button
+                variant="orange"
+                size="md"
+                type="submit"
+                className="w-full sm:w-auto"
+              >
                 Save
               </Button>
             </div>

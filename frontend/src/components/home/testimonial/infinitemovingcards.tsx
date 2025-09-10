@@ -18,7 +18,7 @@ interface Item {
 export default function InfiniteOrSlider() {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const scrollerRef = useRef<HTMLDivElement | null>(null);
-  const [start, setStart] = useState(false);
+  const [start] = useState(false);
   const [isLargeScreen, setIsLargeScreen] = useState(false);
   const sliderRef = useRef<Slider | null>(null);
 
@@ -64,7 +64,6 @@ export default function InfiniteOrSlider() {
     window.addEventListener("resize", checkScreen);
     return () => window.removeEventListener("resize", checkScreen);
   }, []);
-
 
   // Adjust scroller height for small screens
   useEffect(() => {

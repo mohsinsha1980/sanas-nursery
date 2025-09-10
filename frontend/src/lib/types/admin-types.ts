@@ -1,8 +1,11 @@
 import z from "zod";
 import {
+  addBlogSchema,
   addPlantSchema,
+  editBlogSchema,
   editPlantSchema,
   PlantFilterSchema,
+  testimonialSchema,
 } from "../schemas/admin";
 import { DataTableActionType, HomeCardType } from "./common-types";
 import { MASTER_DATA_TYPE } from "../constants";
@@ -70,3 +73,73 @@ export interface UserTableDataType {
 }
 
 export type PlantFilterTypes = z.infer<typeof PlantFilterSchema>;
+
+export type AddTestimonialType = z.infer<typeof testimonialSchema>;
+export type EditTestimonialType = z.infer<typeof testimonialSchema>;
+
+export interface OrderEnquiryTableDataType {
+  _id: string;
+  name: string;
+  email: string;
+  phone: string;
+  message: string;
+  preferredContactTime?: string;
+  plantTitle: string;
+  plantPicture: string;
+  status: "pending" | "contacted" | "resolved" | "closed";
+  createdAt: string;
+  actions: DataTableActionType[];
+}
+
+export interface OrderEnquiryDataType {
+  _id: string;
+  name: string;
+  email: string;
+  phone: string;
+  message: string;
+  preferredContactTime?: string;
+  plantId: {
+    _id: string;
+    title: string;
+    pictures: string[];
+  };
+  userId: string;
+  status: "pending" | "contacted" | "resolved" | "closed";
+  createdAt: string;
+}
+
+export interface EnquiryFilterTypes {
+  status?: "pending" | "contacted" | "resolved" | "closed";
+}
+
+export type AddBlogType = z.infer<typeof addBlogSchema>;
+export type EditBlogFields = z.infer<typeof editBlogSchema>;
+
+export interface BlogFilterTypes {
+  status?: "0" | "1";
+  category?: string;
+  featured?: boolean;
+  search?: string;
+}
+
+export interface ContactEnquiryDataType {
+  _id: string;
+  name: string;
+  email: string;
+  phone: string;
+  message: string;
+  status: "pending" | "contacted" | "resolved" | "closed";
+  createdAt: string;
+}
+
+export interface ContactEnquiryFilterTypes {
+  status?: "pending" | "contacted" | "resolved" | "closed";
+}
+
+// export interface PlantTableDataType {
+//   title: string;
+//   plantId: string;
+//   status: string;
+//   actions: DataTableActionType[];
+//   picture: string;
+// }
