@@ -18,7 +18,7 @@ export default function Home() {
     <>
       <HomeBanner />
       <Categories />
-      {/* <BestSellingProduct />
+      <BestSellingProduct />
       <GreenChoices
         plants={plantsData}
         heading="Your Green Choices"
@@ -28,7 +28,7 @@ export default function Home() {
       <Gallery />
       <Testimonials />
       <YoutubeSection />
-      <ContactForm /> */}
+      <ContactForm />
     </>
   );
 }
