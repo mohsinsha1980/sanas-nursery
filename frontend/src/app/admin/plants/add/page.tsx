@@ -49,7 +49,6 @@ import { Trash2Icon } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
-import Link from "next/link";
 
 const defaultMasterData: MasterData = {
   tags: [],
@@ -143,105 +142,124 @@ export default function AddPlant() {
 
   return (
     <>
-      <div className="flex justify-between items-center pb-5">
-        <h1 className="">Add a plant</h1>
-        <Button variant="orange" type="button" size="md" className="h-fit ">
-          <Link href="/admin/plants">Back</Link>
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center pb-5 gap-3">
+        <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold">Add a plant</h1>
+        <Button
+          variant="orange"
+          type="button"
+          size="md"
+          onClick={() => router.back()}
+          className="w-full sm:w-auto"
+        >
+           Back
         </Button>
       </div>
+
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-          <div className="grid grid-cols-4 gap-4 mb-4">
-            <div className="col-span-2">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 mb-4">
+            {/* Title Field */}
+            <div className="lg:col-span-2">
               <TextField
                 name="title"
                 label="Title"
                 placeholder="Title"
                 inputType="text"
-                className="rounded-md"
-                labelClassName="text-[20px] font-semibold "
+                className="rounded-md border-none"
+                labelClassName="text-base sm:text-lg lg:text-xl font-semibold"
                 formControl={form.control}
                 onchange={(val) => {
                   form.setValue("slug", generateSlug(val));
                 }}
               />
             </div>
-            <div className="col-span-2">
+
+            {/* Meta Description Field */}
+            <div className="lg:col-span-2">
               <TextField
                 name="metaDescription"
                 label="Meta Description"
                 placeholder="Meta Description"
                 formControl={form.control}
-                className="rounded-md"
-                labelClassName="text-[20px] font-semibold "
+                className="rounded-md border-none"
+                labelClassName="text-base sm:text-lg lg:text-xl font-semibold"
                 description="Description to show in global search and for meta tag."
-                descriptionClassName="text-md font-lg"
+                descriptionClassName="text-xs sm:text-sm"
               />
             </div>
-            <div className="col-span-4">
+
+            {/* Plant Summary */}
+            <div className="lg:col-span-4">
               <TextArea
                 name="summary"
                 label="Plant Summary"
-                labelClassName="text-[20px] font-semibold "
+                labelClassName="text-base sm:text-lg lg:text-xl font-semibold"
                 placeholder="Add summary about the plant"
                 formControl={form.control}
                 description="Summary to display on plant card"
-                descriptionClassName="text-md font-lg"
+                descriptionClassName="text-xs sm:text-sm"
+                className="border-none bg-white"
               />
             </div>
-            <div className="col-span-4">
+
+            {/* Plant Details */}
+            <div className="lg:col-span-4">
               <RichTextField
                 name="details"
                 label="Plant Details"
-                labelClassName="text-[20px] font-semibold "
+                labelClassName="text-base sm:text-lg lg:text-xl font-semibold"
                 placeholder="Details"
                 formControl={form.control}
               />
             </div>
 
-            <div className="col-span-4">
+            {/* Plant Description */}
+            <div className="lg:col-span-4">
               <RichTextField
                 name="description"
                 label="Plant Description"
-                labelClassName="text-[20px] font-semibold "
+                labelClassName="text-base sm:text-lg lg:text-xl font-semibold"
                 placeholder="Add description about the plant"
                 formControl={form.control}
               />
             </div>
 
-            <div className="col-span-4">
-              <div className="grid grid-cols-4 gap-4 ">
-                <div className="col-span-3">
-                  <h2 className="">
-                    <h3 className="text-[20px] font-semibold pt-5">
+            {/* Key Specifications Section */}
+            <div className="lg:col-span-4">
+              <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
+                <div className="sm:col-span-3">
+                  <h2>
+                    <h3 className="text-base sm:text-lg lg:text-xl font-semibold pt-5">
                       Key Specifications
                     </h3>
                     {form?.formState?.errors?.specifications?.message ? (
-                      <div className="text-[0.8rem] font-medium text-destructive">
+                      <div className="text-xs sm:text-sm font-medium text-destructive">
                         {form?.formState?.errors?.specifications?.message}
                       </div>
                     ) : null}
                   </h2>
                 </div>
-                <div className="text-right">
+                <div className="text-left sm:text-right">
                   <Button
                     variant="orange"
                     type="button"
                     size="sm"
                     onClick={() => setOpenKeySpec(true)}
-                    className="mt-5"
+                    className="mt-5 w-full sm:w-auto"
                   >
                     Add New
                   </Button>
                 </div>
               </div>
-              <div className="rounded-md border mb-4">
-                <Table>
+
+              {/* Specifications Table - Responsive */}
+              <div className="rounded-md mb-4 overflow-x-auto">
+                <Table className="min-w-full">
                   <TableHeader>
-                    <TableRow className="flex ">
-                      <TableHead className="w-1/3 ">Key</TableHead>
-                      <TableHead className="w-1/3 ">Value</TableHead>
-                      <TableHead className="w-1/3 text-end">Actions</TableHead>
+                    <TableRow className="flex bg-slate-50 hover:bg-slate-50 border-b border-slate-200">
+                      <TableHead className="w-1/3 font-semibold text-slate-700 py-2 px-3 sm:px-6 text-xs sm:text-sm">Key</TableHead>
+                      <TableHead className="w-1/3 font-semibold text-slate-700 py-2 px-3 sm:px-6 text-xs sm:text-sm">Value</TableHead>
+                      <TableHead className="w-1/3 text-end font-semibold text-slate-700 py-2 px-3 sm:px-6 text-xs sm:text-sm">Actions</TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
@@ -250,17 +268,17 @@ export default function AddPlant() {
                       form.getValues("specifications")?.map((obj, index) => (
                         <TableRow
                           key={`specification ${index}`}
-                          className="flex justify-center"
+                          className="flex justify-center border-b border-slate-100 last:border-b-0 hover:bg-slate-50 transition-colors duration-150"
                         >
-                          <TableCell className="w-1/3 ">{obj.label}</TableCell>
-                          <TableCell className="w-1/3 ">{obj.value}</TableCell>
-                          <TableCell className="w-1/3 ">
+                          <TableCell className="w-1/3 py-2 px-3 sm:px-6 text-slate-600 text-xs sm:text-sm break-words">{obj.label}</TableCell>
+                          <TableCell className="w-1/3 py-2 px-3 sm:px-6 text-slate-600 text-xs sm:text-sm break-words">{obj.value}</TableCell>
+                          <TableCell className="w-1/3 py-2 px-3 sm:px-6 text-slate-600">
                             <div className="flex justify-end">
                               <Trash2Icon
-                                size="20"
+                                size="16"
                                 color="red"
                                 onClick={() => remove(index)}
-                                className="icon_action"
+                                className="icon_action sm:w-5 sm:h-5 cursor-pointer"
                               />
                             </div>
                           </TableCell>
@@ -268,7 +286,7 @@ export default function AddPlant() {
                       ))
                     ) : (
                       <TableRow>
-                        <TableCell colSpan={8} className="text-center">
+                        <TableCell colSpan={8} className="text-center py-2 px-3 sm:px-6 text-slate-600 text-xs sm:text-sm">
                           No records added
                         </TableCell>
                       </TableRow>
@@ -277,42 +295,50 @@ export default function AddPlant() {
                 </Table>
               </div>
             </div>
-            <div>
+
+            {/* Form Fields Row - Responsive Grid */}
+            <div className="">
               <SmartBox
                 name="category"
                 label="Category"
-                labelClassName="text-[17px] font-semibold"
+                labelClassName="text-sm sm:text-base lg:text-lg font-semibold"
                 placeholder="Select"
                 formControl={form.control}
                 allowCustomValue={false}
                 options={CATEGORY_ARR}
+                className="border-none"
               />
             </div>
-            <div>
+
+            <div className="">
               <SmartBox
                 name="size"
                 label="Size"
-                labelClassName="text-[17px] font-semibold"
+                labelClassName="text-sm sm:text-base lg:text-lg font-semibold"
                 placeholder="Select"
                 formControl={form.control}
                 allowCustomValue={false}
                 options={PLANT_SIZES_ARR}
+                className="border-none"
               />
             </div>
-            <div>
+
+            <div className="">
               <SmartBox
                 name="careLevel"
                 label="Care Level"
-                labelClassName="text-[17px] font-semibold"
+                labelClassName="text-sm sm:text-base lg:text-lg font-semibold"
                 placeholder="Select"
                 formControl={form.control}
                 allowCustomValue={false}
                 options={CARE_LEVEL_ARR}
+                className="border-none"
               />
             </div>
 
-            <div className="col-span-3">
-              {masterData?.tags?.length && (
+            {/* Tags Field */}
+            <div className="">
+              {masterData?.tags?.length ? (
                 <MultipleSelectField
                   name="tags"
                   label="Tags"
@@ -322,37 +348,41 @@ export default function AddPlant() {
                     console.log(_id);
                     return rest;
                   })}
+                  className="border-none rounded-lg !bg-white"
                 />
-              )}
+              ) : null}
             </div>
 
-            <div className="col-span-4">
-              <div className="grid grid-cols-4 ">
-                <div className="col-span-3">
-                  <h4 className="mb-0">
+            {/* FAQ Section */}
+            <div className="lg:col-span-4">
+              <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
+                <div className="sm:col-span-3">
+                  <h4 className="mb-0 text-base sm:text-lg lg:text-xl font-semibold">
                     Frequently Asked Questions
                     {form?.formState?.errors?.faqs?.message ? (
-                      <div className="text-[0.8rem] font-medium text-destructive">
+                      <div className="text-xs sm:text-sm font-medium text-destructive">
                         {form?.formState?.errors?.faqs?.message}
                       </div>
                     ) : null}
                   </h4>
                 </div>
-                <div className="text-right">
+                <div className="text-left sm:text-right">
                   <Button
                     variant="orange"
                     type="button"
                     size="sm"
                     onClick={() => setOpenAddFAQ(true)}
-                    className=""
+                    className="w-full sm:w-auto"
                   >
                     Add New FAQ
                   </Button>
                 </div>
               </div>
             </div>
+
+            {/* FAQ Display */}
             {getFaqAccrItems(form.getValues("faqs"))?.length ? (
-              <div className="col-span-4">
+              <div className="lg:col-span-4">
                 <ProductAccordion
                   items={getFaqAccrItems(form.getValues("faqs"))}
                   onDelete={(index) => removeFaq(index)}
@@ -360,36 +390,38 @@ export default function AddPlant() {
                 />
               </div>
             ) : (
-              <div className="col-span-4 text-gray-500 mb-5">
-                <p>
+              <div className="lg:col-span-4 text-gray-500 mb-5">
+                <p className="text-sm sm:text-base">
                   No FAQ added yet. Click on &ldquo;Add New FAQ &ldquo; to add.
                 </p>
               </div>
             )}
 
-            <div>
+            {/* Image Upload */}
+            <div className="lg:col-span-2">
               <InputImageField
                 name="pictures"
                 label="Plants Pictures"
-                labelClassName="text-[20px] font-semibold"
+                labelClassName="text-base sm:text-lg lg:text-xl font-semibold"
                 multiple={true}
                 accept="image/jpeg, image/jpg, image/png, image/webp"
                 placeholder="Pictures"
-                className="rounded-md"
+                className="rounded-md border-none p-2"
                 formControl={form.control}
-                // description="Insert images of the plant"
                 description={`Pictures with ${
                   ALLOWED_MAX_FILE_SIZE / 1000
                 } Kb file size and .jpg, .jpeg, .png and .webp formats are allowed`}
-                descriptionClassName="text-md font-lg"
+                descriptionClassName="text-xs sm:text-sm"
                 onchange={(data) => processPictures(data)}
               />
             </div>
-            <div className="col-span-3 flex column">
+
+            {/* Image Previews */}
+            <div className="lg:col-span-2 flex flex-wrap gap-2">
               {previews.map((item, index) => {
                 return (
                   <div
-                    className="relative w-28 h-28 mr-2"
+                    className="relative w-20 h-20"
                     key={`preview_${index}`}
                   >
                     <Image src={item} alt="" fill objectFit="contain" />
@@ -397,7 +429,9 @@ export default function AddPlant() {
                 );
               })}
             </div>
-            <div className="mt-3 ">
+
+            {/* Status Switch */}
+            <div className="mt-3">
               <SwitchField
                 name="status"
                 label="Status"
@@ -405,18 +439,23 @@ export default function AddPlant() {
                 className="data-[state=checked]:bg-orange-500 data-[state=unchecked]:bg-gray-300"
               />
             </div>
-            <div className="col-span-4">
-              <Button variant="orange" size="md" type="submit">
+
+            {/* Submit Button */}
+            <div className="lg:col-span-4">
+              <Button variant="orange" size="md" type="submit" className="w-full sm:w-auto">
                 Save
               </Button>
             </div>
           </div>
         </form>
       </Form>
+
+      {/* Modals */}
       <CustomDialog
         title="Add a key specification"
         open={openKeySpec}
         onclose={(open: boolean) => setOpenKeySpec(open)}
+        className="max-w-(--container-2xl)"
       >
         <AddSpecificatin
           onAdd={(data) => append(data)}

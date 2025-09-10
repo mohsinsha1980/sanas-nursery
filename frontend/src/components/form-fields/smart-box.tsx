@@ -80,7 +80,7 @@ const SmartBox = <T extends FieldValues>({
               value={field.value || ""}
             >
               <FormControl>
-                <SelectTrigger>
+                <SelectTrigger className={className ? className: ""}>
                   <SelectValue placeholder={placeholder} />
                 </SelectTrigger>
               </FormControl>

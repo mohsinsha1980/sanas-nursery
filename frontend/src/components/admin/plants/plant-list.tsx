@@ -185,24 +185,21 @@ const PlantsList = () => {
 
   return (
     <>
-     <div>
-       <div className="">
-        <PlantFilter setFilters={setFilters} />
-      </div>
-      
       <div>
-        <div className="">
+        <PlantFilter setFilters={setFilters} />
+
+        <div>
           <DataTable columns={columns} data={tableData.data} />
+
+          {tableData?.total / paginationData?.perPage > 1 ? (
+            <CustomPagination
+              total={tableData.total}
+              perPage={paginationData.perPage}
+              pageChange={handlePageChange}
+            />
+          ) : null}
         </div>
-        {tableData?.total / paginationData?.perPage > 1 ? (
-          <CustomPagination
-            total={tableData.total}
-            perPage={paginationData.perPage}
-            pageChange={handlePageChange}
-          />
-        ) : null}
       </div>
-     </div>
 
       <CustomDialog
         title="Are you sure you want to delete this plant?"

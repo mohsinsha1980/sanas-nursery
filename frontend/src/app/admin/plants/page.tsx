@@ -8,25 +8,19 @@ export default function PlantsListPage() {
   const router = useRouter();
   return (
     <>
-      <div className="h-fit w-full lg:space-y-5  ">
-        <div className="flex flex-row">
-          <div className="basis-3/4  ">
-            <h1 className="">Plants</h1>
-          </div>
-          <div className="basis-1/4 text-right  ">
-            <Button
-              type="button"
-              variant="orange"
-              size="lg"
-              onClick={() => router.push("/admin/plants/add")}
-            >
-              <CirclePlusIcon /> Add New Plant
-            </Button>
-          </div>
-        </div>
-        <div className="">
-          <PlantsList />
-        </div>
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center pb-4 gap-3">
+        <h1>Plants</h1>
+          <Button
+            type="button"
+            variant="orange"
+            size="sm"
+            onClick={() => router.push("/admin/plants/add")}
+          >
+            <CirclePlusIcon /> Add New Plant
+          </Button>
+      </div>
+      <div className="">
+        <PlantsList />
       </div>
     </>
   );

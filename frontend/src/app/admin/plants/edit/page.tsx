@@ -8,10 +8,9 @@ export default async function EditPlantPage({
   searchParams: Promise<{ [key: string]: string | undefined }>;
 }) {
   const plant = (await searchParams).plant;
-
+  console.log("plant", plant);
   return (
     <>
-      <h1>Edit Plant</h1>
       <Suspense fallback={<Loading />}>
         <EditPlantForm plantId={plant} />
       </Suspense>

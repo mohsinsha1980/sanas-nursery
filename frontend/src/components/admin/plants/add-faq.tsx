@@ -48,7 +48,7 @@ export default function AddFAQ({ onAdd, onClose }: AddFAQProps) {
               label="Question"
               placeholder="Enter FAQ question here"
               formControl={form.control}
-              className="rounded-md"
+              className="rounded-md border-none"
             />
           </div>
           <div>
@@ -57,6 +57,7 @@ export default function AddFAQ({ onAdd, onClose }: AddFAQProps) {
               label="FAQ Answer"
               placeholder="Enter FAQ answer here"
               formControl={form.control}
+              className="border-none p-4"
             />
           </div>
           <div>

@@ -16,6 +16,7 @@ interface MultiSelectFieldProps<T extends FieldValues> {
   description?: string;
   formControl: Control<T>;
   options: Option[];
+  className?: string;
 }
 
 const MultipleSelectField = <T extends FieldValues>({
@@ -25,6 +26,7 @@ const MultipleSelectField = <T extends FieldValues>({
   description,
   formControl,
   options,
+  className = "",
 }: MultiSelectFieldProps<T>) => {
   return (
     <FormField
@@ -35,7 +37,7 @@ const MultipleSelectField = <T extends FieldValues>({
           <FormLabel>{label}</FormLabel>
           <FormControl>
             <div className="flex min-h-9 w-full items-center">
-              <div className="w-full bg-white">
+              <div className="w-full">
                 <MultipleSelector
                   {...field}
                   defaultOptions={options}
@@ -46,7 +48,31 @@ const MultipleSelectField = <T extends FieldValues>({
                     </p>
                   }
                   hidePlaceholderWhenSelected
+                  className={className ? className : ""}
                 />
+                <style jsx global>{`
+                  [data-radix-popper-content-wrapper] {
+                    background-color: white !important;
+                  }
+                  .multiple-selector-content {
+                    background-color: white !important;
+                  }
+                  .multiple-selector-list {
+                    background-color: white !important;
+                  }
+                  [cmdk-root],
+                  [cmdk-list],
+                  [cmdk-group] {
+                    background-color: white !important;
+                    border: none !important;
+                  }
+                  [cmdk-item] {
+                    background-color: white !important;
+                  }
+                  [cmdk-item][data-selected="true"] {
+                    background-color: #f3f4f6 !important;
+                  }
+                `}</style>
               </div>
             </div>
           </FormControl>

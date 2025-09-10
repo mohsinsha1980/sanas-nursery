@@ -201,7 +201,21 @@ export default function EditPlantForm({ plantId }: EditPlantProps) {
 
   return (
     <>
-      <CustomCard>
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center pb-5 gap-3">
+        <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold">
+          Edit plant
+        </h1>
+        <Button
+          variant="orange"
+          type="button"
+          size="md"
+          onClick={() => router.back()}
+          className="w-full sm:w-auto"
+        >
+          Back
+        </Button>
+      </div>
+      <CustomCard className="shadow-none">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
             <div className="grid grid-cols-4 gap-4 mb-4">
@@ -211,7 +225,7 @@ export default function EditPlantForm({ plantId }: EditPlantProps) {
                   label="Title"
                   placeholder="Title"
                   inputType="text"
-                  className="rounded-md"
+                  className="rounded-md border-none"
                   formControl={form.control}
                   onchange={(val) => {
                     form.setValue("slug", generateSlug(val));
@@ -224,7 +238,7 @@ export default function EditPlantForm({ plantId }: EditPlantProps) {
                   label="Meta Description"
                   placeholder="Meta Description"
                   formControl={form.control}
-                  className="rounded-md"
+                  className="rounded-md border-none"
                   description="Description to show in global search and for meta tag."
                 />
               </div>
@@ -235,6 +249,7 @@ export default function EditPlantForm({ plantId }: EditPlantProps) {
                   placeholder="Add summary about the plant"
                   formControl={form.control}
                   description="Summary to display on plant card"
+                  className="rounded-md border-none bg-white"
                 />
               </div>
 
@@ -247,6 +262,7 @@ export default function EditPlantForm({ plantId }: EditPlantProps) {
                   label="Plant Details"
                   placeholder="Details"
                   formControl={form.control}
+                  className="rounded-md border-none"
                 />
               </div>
 
@@ -259,6 +275,7 @@ export default function EditPlantForm({ plantId }: EditPlantProps) {
                   label="Plant Description"
                   placeholder="Add description about the plant"
                   formControl={form.control}
+                  className="rounded-md border-none"
                 />
               </div>
 
@@ -278,19 +295,20 @@ export default function EditPlantForm({ plantId }: EditPlantProps) {
                     <Button
                       type="button"
                       size="sm"
+                      variant="orange"
                       onClick={() => setOpenKeySpec(true)}
                     >
                       Add New
                     </Button>
                   </div>
                 </div>
-                <div className="rounded-md border mb-4">
+                <div className="rounded-md mb-4">
                   <Table>
                     <TableHeader>
-                      <TableRow className="flex ">
-                        <TableHead className="w-1/3 ">Key</TableHead>
-                        <TableHead className="w-1/3 ">Value</TableHead>
-                        <TableHead className="w-1/3 text-end">
+                      <TableRow className="flex bg-slate-50 hover:bg-slate-50 border-b border-slate-200">
+                        <TableHead className="w-1/3 font-semibold text-slate-700 py-2 px-3 sm:px-6 text-xs sm:text-sm">Key</TableHead>
+                        <TableHead className="w-1/3 font-semibold text-slate-700 py-2 px-3 sm:px-6 text-xs sm:text-sm">Value</TableHead>
+                        <TableHead className="w-1/3 text-end font-semibold text-slate-700 py-2 px-3 sm:px-6 text-xs sm:text-sm">
                           Actions
                         </TableHead>
                       </TableRow>
@@ -301,15 +319,15 @@ export default function EditPlantForm({ plantId }: EditPlantProps) {
                         form.getValues("specifications")?.map((obj, index) => (
                           <TableRow
                             key={`specification ${index}`}
-                            className="flex justify-center"
+                            className="flex justify-center border-b border-slate-100 last:border-b-0 hover:bg-slate-50 transition-colors duration-150"
                           >
-                            <TableCell className="w-1/3 ">
+                            <TableCell className="w-1/3 py-2 px-3 sm:px-6 text-slate-600 text-xs sm:text-sm break-words">
                               {obj.label}
                             </TableCell>
-                            <TableCell className="w-1/3 ">
+                            <TableCell className="w-1/3 py-2 px-3 sm:px-6 text-slate-600 text-xs sm:text-sm break-words">
                               {obj.value}
                             </TableCell>
-                            <TableCell className="w-1/3 ">
+                            <TableCell className="w-1/3 py-2 px-3 sm:px-6 text-slate-600 text-xs sm:text-sm break-words">
                               <div className="flex justify-end">
                                 <Trash2Icon
                                   size="20"
@@ -340,6 +358,7 @@ export default function EditPlantForm({ plantId }: EditPlantProps) {
                   formControl={form.control}
                   allowCustomValue={false}
                   options={CATEGORY_ARR}
+                  className="rounded-md border-none"
                 />
               </div>
               <div>
@@ -350,6 +369,7 @@ export default function EditPlantForm({ plantId }: EditPlantProps) {
                   formControl={form.control}
                   allowCustomValue={false}
                   options={PLANT_SIZES_ARR}
+                  className="rounded-md border-none"
                 />
               </div>
               <div>
@@ -360,6 +380,7 @@ export default function EditPlantForm({ plantId }: EditPlantProps) {
                   formControl={form.control}
                   allowCustomValue={false}
                   options={CARE_LEVEL_ARR}
+                  className="rounded-md border-none"
                 />
               </div>
 
@@ -371,6 +392,7 @@ export default function EditPlantForm({ plantId }: EditPlantProps) {
                   formControl={form.control}
                   options={CARE_LEVEL_ARR}
                   // TODO: change options
+                  className="rounded-md border-none"
                 />
               </div>
 
@@ -389,6 +411,7 @@ export default function EditPlantForm({ plantId }: EditPlantProps) {
                   <div className="text-right">
                     <Button
                       type="button"
+                      variant="orange"
                       size="sm"
                       onClick={() => setOpenAddFAQ(true)}
                     >
@@ -413,14 +436,14 @@ export default function EditPlantForm({ plantId }: EditPlantProps) {
                 </div>
               )}
 
-              <div>
+              <div className="col-span-2">
                 <InputImageField
                   name="pictures"
                   label="Plants Pictures"
                   multiple={true}
                   accept="image/jpeg, image/jpg, image/png, image/webp"
                   placeholder="Pictures"
-                  className="rounded-md"
+                  className="rounded-md border-none"
                   formControl={form.control}
                   // description="Insert images of the plant"
                   description={`Pictures with ${
@@ -429,7 +452,7 @@ export default function EditPlantForm({ plantId }: EditPlantProps) {
                   onchange={(data) => processPictures(data)}
                 />
               </div>
-              <div className="col-span-3 flex column">
+              <div className="col-span-2 flex column">
                 {previews.map((item, index) => {
                   return (
                     <div
@@ -446,10 +469,13 @@ export default function EditPlantForm({ plantId }: EditPlantProps) {
                   name="status"
                   label="Status"
                   formControl={form.control}
+                  className="data-[state=checked]:bg-orange-500 data-[state=unchecked]:bg-gray-300"
                 />
               </div>
               <div className="col-span-4">
-                <Button type="submit">Save</Button>
+                <Button variant="orange" type="submit">
+                  Save
+                </Button>
               </div>
             </div>
           </form>

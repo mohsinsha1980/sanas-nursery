@@ -20,8 +20,8 @@ interface InputImageFieldProps<T extends FieldValues> {
   accept?: string;
   onchange?: (data: FileList) => void;
   className?: string;
-  labelClassName?: string;
-  descriptionClassName?: string;
+  labelClassName?: string; // ✅ Added
+  descriptionClassName?: string; // ✅ Added
 }
 
 const InputImageField = <T extends FieldValues>({
@@ -41,6 +41,7 @@ const InputImageField = <T extends FieldValues>({
     <FormField
       control={formControl}
       name={name}
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       render={({ field: { value, onChange, ...fieldProps } }) => (
         <FormItem>
           <FormLabel className={labelClassName}>{label}</FormLabel>

@@ -1,5 +1,3 @@
-import { STATUS } from "./helper";
-
 export const PLANTS_PER_PAGE = 20;
 export const BLOGS_PER_PAGE = 20;
 export const PRICE_RANGE_MAX = 15000;
