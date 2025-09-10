@@ -1,19 +1,14 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-
-const categories = [
-  { name: "Fruit Trees", slug: "fruit-trees", image: "/plant3.png" },
-  { name: "Flower Trees", slug: "flower-trees", image: "/plant2.png" },
-  { name: "Shadow Trees", slug: "shadow-trees", image: "/plant1.png" },
-  { name: "Show Trees", slug: "show-trees", image: "/plant3.png" },
-  { name: "Masala", slug: "masala", image: "/plant2.png" },
-  { name: "Others", slug: "others", image: "/plant1.png" },
-];
+import { categories } from "@/lib/helper";
 
 export default function Categories() {
   return (
-    <div className="h-full w-full lg:pt-30 lg:pb-30 md:pt-20 md:pb-20 pt-10 pb-10 flex flex-row justify-center    ">
+    <div
+      className="h-full w-full lg:pt-30 lg:pb-30 md:pt-20 md:pb-20 pt-10 pb-10 flex flex-row justify-center    "
+      id="categories-section"
+    >
       <div className="h-full max-w-[1370px] md:w-[90%] w-[100%]    ">
         <div className="h-full w-full flex flex-col justify-center items-center lg:pb-10  pb-5  ">
           <h1 className="lg:text-[42px] md:text-[36px] text-[28px] font-semibold text-center">
