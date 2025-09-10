@@ -15,12 +15,12 @@ export default function Footer() {
           <Logo />
           <h3 className="text-xl font-bold text-primary-400">Sanas Nursery</h3>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div className="col-span-1 md:col-span-2">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mt-10 ">
+          <div className="col-span-1 md:col-span-2 ">
             <p className="text-gray-400 text-sm">
               Stay tuned for updates and exciting announcements.
             </p>
-            <div className="mt-4 space-y-2 text-sm text-gray-400">
+            <div className="mt-4 space-y-2 text-sm text-gray-400 ">
               <p>
                 Email:
                 <Link
@@ -43,7 +43,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <div>
+          <div className="flex flex-col justify-center items-baseline-last">
             <h4 className="text-lg font-semibold mb-4">Information</h4>
             <ul className="space-y-2">
               {FOOTER_LINKS.INFORMATION.map((link) => (
@@ -59,7 +59,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div>
+          <div className="flex flex-col justify-center items-baseline-last">
             <h4 className="text-lg font-semibold mb-4">Company</h4>
             <ul className="space-y-2">
               {FOOTER_LINKS.COMPANY.map((link) => (
@@ -76,8 +76,8 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2  mt-8">
-          <div className="">
+        <div className="grid grid-cols-1 md:grid-cols-2 mt-8 ">
+          <div className=" ">
             <p className="text-gray-400 text-sm mb-3">
               Follow us on social media:
             </p>
@@ -86,7 +86,9 @@ export default function Footer() {
             </div>
           </div>
 
-          <SubscribeEmail />
+          <div className="flex justify-end ">
+            <SubscribeEmail />
+          </div>
         </div>
 
         <div className="border-t border-accent-800 mt-8 pt-8 flex flex-col md:flex-row items-center justify-evenly gap-4">

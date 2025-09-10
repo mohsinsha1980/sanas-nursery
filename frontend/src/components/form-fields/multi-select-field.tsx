@@ -16,6 +16,8 @@ interface MultiSelectFieldProps<T extends FieldValues> {
   description?: string;
   formControl: Control<T>;
   options: Option[];
+  labelClassName?: string; // ✅ added support
+  descriptionClassName?: string; // optional (if you want consistent styling)
   className?: string;
 }
 
@@ -26,7 +28,9 @@ const MultipleSelectField = <T extends FieldValues>({
   description,
   formControl,
   options,
-  className = "",
+  labelClassName, // ✅ receive
+  descriptionClassName,
+  className ="",
 }: MultiSelectFieldProps<T>) => {
   return (
     <FormField
@@ -34,7 +38,8 @@ const MultipleSelectField = <T extends FieldValues>({
       name={name}
       render={({ field }) => (
         <FormItem>
-          <FormLabel>{label}</FormLabel>
+          <FormLabel className={labelClassName}>{label}</FormLabel>{" "}
+          {/* ✅ applied */}
           <FormControl>
             <div className="flex min-h-9 w-full items-center">
               <div className="w-full">
@@ -76,7 +81,11 @@ const MultipleSelectField = <T extends FieldValues>({
               </div>
             </div>
           </FormControl>
-          {description && <FormDescription>{description}</FormDescription>}
+          {description && (
+            <FormDescription className={descriptionClassName}>
+              {description}
+            </FormDescription>
+          )}
           <FormMessage />
         </FormItem>
       )}

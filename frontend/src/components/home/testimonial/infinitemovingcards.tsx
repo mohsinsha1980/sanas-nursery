@@ -17,7 +17,7 @@ interface Item {
 
 export default function InfiniteOrSlider() {
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const scrollerRef = useRef<HTMLUListElement | null>(null);
+  const scrollerRef = useRef<HTMLDivElement | null>(null);
   const [start, setStart] = useState(false);
   const [isLargeScreen, setIsLargeScreen] = useState(false);
   const sliderRef = useRef<Slider | null>(null);
@@ -65,22 +65,6 @@ export default function InfiniteOrSlider() {
     return () => window.removeEventListener("resize", checkScreen);
   }, []);
 
-  // Duplicate items for infinite scroll
-  useEffect(() => {
-    if (scrollerRef.current && items.length > 0 && !start) {
-      const listItems = Array.from(scrollerRef.current.children).slice(
-        0,
-        items.length
-      );
-      listItems.forEach((item) => {
-        const clone = item.cloneNode(true);
-        scrollerRef.current?.appendChild(clone);
-        const clone2 = item.cloneNode(true);
-        scrollerRef.current?.appendChild(clone2);
-      });
-      setStart(true);
-    }
-  }, [items, start]);
 
   // Adjust scroller height for small screens
   useEffect(() => {
@@ -119,17 +103,12 @@ export default function InfiniteOrSlider() {
             "speed-normal direction-left"
           )}
         >
-          <ul
+          <div
             ref={scrollerRef}
-            className={cn(
-              "flex w-max min-w-full shrink-0 flex-nowrap lg:gap-6 gap-4 py-4",
-              start
-                ? "animate-scroll group-hover:[animation-play-state:paused]"
-                : ""
-            )}
+            className="flex w-max min-w-full shrink-0 flex-nowrap lg:gap-6 gap-4 py-4 animate-scroll group-hover:[animation-play-state:paused]"
           >
             {duplicatedItems.map((item, idx) => (
-              <li
+              <div
                 key={idx}
                 className="relative lg:w-[600px] w-[400px] shrink-0 rounded-lg bg-[#4CB390] lg:px-8 md:px-6 px-5 lg:py-14 md:py-10 py-6 text-white flex flex-col justify-between"
               >
@@ -164,9 +143,9 @@ export default function InfiniteOrSlider() {
                     Website Link
                   </Link>
                 </div>
-              </li>
+              </div>
             ))}
-          </ul>
+          </div>
         </div>
       ) : (
         <>

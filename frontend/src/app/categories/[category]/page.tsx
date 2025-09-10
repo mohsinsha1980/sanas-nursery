@@ -18,6 +18,7 @@ import {
 import { Metadata } from "next";
 import { Suspense } from "react";
 
+
 export async function generateMetadata({
   params,
 }: CategoryPageParamsProps): Promise<Metadata> {
@@ -53,8 +54,10 @@ async function fetchPlants(
 ): Promise<CategoryPlantsHttpResDataType> {
   const response = await getCategoryPlants(slug, searchParamsData);
   const catProdData = await response.json();
+    console.log("res",catProdData)
   return catProdData;
 }
+
 
 export default async function CollectionPage({
   params,
@@ -81,29 +84,49 @@ export default async function CollectionPage({
     updatedPlants = plants.map((item) => getPlantsCardData(item));
   }
 
+  const categoryData = Object.values(CATEGORIES).find(
+  (cat) => cat.value === category
+);
+
+
+
   return (
     <Suspense fallback={<Loading />}>
-      <div className="pt-40">
-        <CategoryHero categoryValue={category} />
-        <div>
-          <Categories category={category} />
+      <div className="relative flex flex-col justify-between items-center ">
+
+        <div className="w-full h-[500px]">
+          <CategoryHero categoryValue={category} />
+        </div>
+
+         <div className="w-full h-full pt-20 text-center">
+          <h2 className="text-[#0D6536] lg:text-[64px] font-bold leading-18">
+            {categoryData?.label || category}
+          </h2>
+          <p className="text-[#505050] lg:text-[20px] font-medium">
+            Explore a variety of fruit trees perfect for your garden
+          </p>
         </div>
 
         <div
           key="plant-list-main-div"
-          className="h-full w-full lg:pt-30 lg:pb-30 md:pt-20 md:pb-20 pt-10 pb-10 flex flex-col justify-center items-center"
+          className="h-full max-w-[1250px] lg:pt-20 lg:pb-20 flex flex-col justify-center items-center     "
         >
-          <div key="filter-list-sort" className="relative  w-[70%] h-full ">
+          <div
+            key="filter-list-sort"
+            className="relative  w-full h-full     "
+          >
             <div
               key="filter-and-list"
-              className="h-full w-full flex justify-between "
+              className="h-full w-full flex justify-between    "
             >
-              <CategoryFilter />
+              <div className="">
+                <CategoryFilter />
+              </div>
               <div
                 key="list-div"
-                className="w-[82%] h-[100%] flex flex-col justify-center "
+                className="w-[80%] h-[100%] flex flex-col justify-center "
               >
-                <div className="grid grid-cols-4 gap-6">
+                <div className="grid grid-cols-4 gap-6 ">
                   {updatedPlants.length > 0 ? (
                     updatedPlants.map((plant) => (
                       <PlantCard key={plant.id} data={plant} />
