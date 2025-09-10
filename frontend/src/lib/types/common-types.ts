@@ -1,5 +1,5 @@
 import { ColumnDef } from "@tanstack/react-table";
-import { AddPlantFields } from "./admin-types";
+import { AddBlogType, AddPlantFields, AddTestimonialType } from "./admin-types";
 import {
   contactEnquirySchema,
   orderEnquirySchema,
@@ -50,6 +50,7 @@ export interface DataTableActionType {
   actionType: string;
   actionIcon?: React.ReactNode;
   action: (id: string) => void;
+  actionLabel?: string;
 }
 
 export type PlantTypes = Omit<AddPlantFields, "pictures" | "status"> & {
@@ -161,3 +162,20 @@ export interface CategoryPlantsHttpResDataType {
   data: { plants: PlantDataType[]; total: number };
 }
 export type EmailType = z.infer<typeof SubscriptionSchema>;
+
+export type TestimonialType = Omit<AddTestimonialType, "status"> & {
+  _id: string;
+  status: string;
+};
+
+export type BlogDataType = Omit<
+  AddBlogType,
+  "coverImage" | "status" | "featured"
+> & {
+  _id: string;
+  coverImage: string;
+  featured: boolean;
+  status: string;
+  createdAt: string;
+  updatedAt: string;
+};

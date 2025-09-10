@@ -1,6 +1,5 @@
 import CategoryHero from "@/components/categories/caregory-hero";
 import CategoryFilter from "@/components/categories/category-filter";
-import Categories from "@/components/categories/catogories";
 import PlantCard from "@/components/categories/plant-card";
 import { ServerPagination } from "@/components/common/server-pagination";
 import Loading from "@/components/layout/Loading";
@@ -17,7 +16,6 @@ import {
 } from "@/lib/types/common-types";
 import { Metadata } from "next";
 import { Suspense } from "react";
-
 
 export async function generateMetadata({
   params,
@@ -54,10 +52,9 @@ async function fetchPlants(
 ): Promise<CategoryPlantsHttpResDataType> {
   const response = await getCategoryPlants(slug, searchParamsData);
   const catProdData = await response.json();
-    console.log("res",catProdData)
+  console.log("res", catProdData);
   return catProdData;
 }
-
 
 export default async function CollectionPage({
   params,
@@ -85,20 +82,17 @@ export default async function CollectionPage({
   }
 
   const categoryData = Object.values(CATEGORIES).find(
-  (cat) => cat.value === category
-);
-
-
+    (cat) => cat.value === category
+  );
 
   return (
     <Suspense fallback={<Loading />}>
       <div className="relative flex flex-col justify-between items-center ">
-
         <div className="w-full h-[500px]">
           <CategoryHero categoryValue={category} />
         </div>
 
-         <div className="w-full h-full pt-20 text-center">
+        <div className="w-full h-full pt-20 text-center">
           <h2 className="text-[#0D6536] lg:text-[64px] font-bold leading-18">
             {categoryData?.label || category}
           </h2>
@@ -111,10 +105,7 @@ export default async function CollectionPage({
           key="plant-list-main-div"
           className="h-full max-w-[1250px] lg:pt-20 lg:pb-20 flex flex-col justify-center items-center     "
         >
-          <div
-            key="filter-list-sort"
-            className="relative  w-full h-full     "
-          >
+          <div key="filter-list-sort" className="relative  w-full h-full     ">
             <div
               key="filter-and-list"
               className="h-full w-full flex justify-between    "

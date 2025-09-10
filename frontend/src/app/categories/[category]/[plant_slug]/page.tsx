@@ -9,6 +9,7 @@ import ProductPictureSlider from "@/components/common/product-picture-slider";
 import PlantDescTabs from "@/components/categories/plant-desc-tabs";
 import Link from "next/link";
 import Image from "next/image";
+import BuyNowBtn from "@/components/categories/buy-now-btn";
 
 async function fetchProductDetails(plantSlug: string): Promise<{
   data: {
@@ -115,6 +116,7 @@ export default async function ProductDetailsPageBySlug({
                 dangerouslySetInnerHTML={{ __html: plant.details }}
               />
             )}
+            <BuyNowBtn plant={plant} />
           </div>
         </div>
       </section>

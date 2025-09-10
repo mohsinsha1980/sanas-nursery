@@ -8,11 +8,16 @@ import {
 } from "../types/common-types";
 import {
   AddPlantFields,
+  AddTestimonialType,
   EditPlantFields,
+  EditTestimonialType,
   MasterDataFields,
   PasswordData,
   PlantFilterTypes,
   UpdateHomeCardTypes,
+  BlogFilterTypes,
+  AddBlogType,
+  EditBlogFields,
 } from "../types/admin-types";
 import { STATUS } from "../helper";
 
@@ -240,4 +245,293 @@ export const updateHomeVideos = (
   return axiosInstance.put(`${config.API_ADMIN_PATH}/home/videos`, data, {
     signal: controller?.signal,
   });
+};
+
+export const createTestimonial = (
+  data: AddTestimonialType,
+  controller?: Controller
+) => {
+  return axiosInstance.post(`${config.API_ADMIN_PATH}/testimonials`, data, {
+    signal: controller?.signal,
+  });
+};
+
+export const getTestimonialById = (_id: string, controller?: Controller) => {
+  return axiosInstance.get(`${config.API_ADMIN_PATH}/testimonials/${_id}`, {
+    signal: controller?.signal,
+  });
+};
+
+export const updateTestimonial = (
+  data: EditTestimonialType & { _id: string },
+  controller?: Controller
+) => {
+  return axiosInstance.put(
+    `${config.API_ADMIN_PATH}/testimonials/${data._id}`,
+    data,
+    {
+      signal: controller?.signal,
+    }
+  );
+};
+
+export const getTestimonials = (controller?: AbortController) => {
+  return axiosInstance.get(`${config.API_ADMIN_PATH}/testimonials`, {
+    signal: controller?.signal,
+  });
+};
+
+export const deleteTestimonial = (
+  testimonialId: string,
+  controller?: AbortController
+) => {
+  return axiosInstance.delete(
+    `${config.API_ADMIN_PATH}/testimonials/${testimonialId}`,
+    {
+      signal: controller?.signal,
+    }
+  );
+};
+
+export const updateOrderEnquiryStatus = (
+  enquiryId: string,
+  status: "pending" | "contacted" | "resolved" | "closed",
+  controller?: Controller
+) => {
+  return axiosInstance.put(
+    `${config.API_ADMIN_PATH}/order-enquiries/${enquiryId}`,
+    { status },
+    {
+      signal: controller?.signal,
+    }
+  );
+};
+
+export const getInCompOrderEnquiries = (
+  pagination: PaginationDataType,
+  status?: "pending" | "contacted",
+  controller?: Controller
+) => {
+  const { page, perPage } = pagination;
+  const params = new URLSearchParams();
+  params.append("page", String(page));
+  params.append("per_page", String(perPage));
+  if (status) {
+    params.append("status", status);
+  }
+
+  return axiosInstance.get(
+    `${config.API_ADMIN_PATH}/order-enquiries/incomplete?${params.toString()}`,
+    {
+      signal: controller?.signal,
+    }
+  );
+};
+
+export const getCompOrderEnquiries = (
+  pagination: PaginationDataType,
+  controller?: Controller
+) => {
+  const { page, perPage } = pagination;
+  const params = new URLSearchParams();
+  params.append("page", String(page));
+  params.append("per_page", String(perPage));
+
+  return axiosInstance.get(
+    `${config.API_ADMIN_PATH}/order-enquiries/completed?${params.toString()}`,
+    {
+      signal: controller?.signal,
+    }
+  );
+};
+
+export const getInCompContactEnquiries = (
+  pagination: PaginationDataType,
+  status?: "pending" | "contacted",
+  controller?: Controller
+) => {
+  const { page, perPage } = pagination;
+  const params = new URLSearchParams();
+  params.append("page", String(page));
+  params.append("per_page", String(perPage));
+  if (status) {
+    params.append("status", status);
+  }
+
+  return axiosInstance.get(
+    `${
+      config.API_ADMIN_PATH
+    }/contact-enquiries/incomplete?${params.toString()}`,
+    {
+      signal: controller?.signal,
+    }
+  );
+};
+
+export const getCompContactEnquiries = (
+  pagination: PaginationDataType,
+  controller?: Controller
+) => {
+  const { page, perPage } = pagination;
+  const params = new URLSearchParams();
+  params.append("page", String(page));
+  params.append("per_page", String(perPage));
+
+  return axiosInstance.get(
+    `${config.API_ADMIN_PATH}/contact-enquiries/completed?${params.toString()}`,
+    {
+      signal: controller?.signal,
+    }
+  );
+};
+
+export const updateContactEnquiryStatus = (
+  enquiryId: string,
+  status: "pending" | "contacted" | "resolved" | "closed",
+  controller?: Controller
+) => {
+  return axiosInstance.put(
+    `${config.API_ADMIN_PATH}/contact-enquiries/${enquiryId}`,
+    { status },
+    {
+      signal: controller?.signal,
+    }
+  );
+};
+
+export const getAllBlogs = (
+  pagination: PaginationDataType,
+  filters?: BlogFilterTypes,
+  controller?: Controller
+) => {
+  const { page, perPage } = pagination;
+  const params = new URLSearchParams();
+  params.append("page", String(page));
+  params.append("per_page", String(perPage));
+
+  if (filters?.status) {
+    params.append("status", filters.status);
+  }
+  if (filters?.category) {
+    params.append("category", filters.category);
+  }
+  if (filters?.featured !== undefined) {
+    params.append("featured", String(filters.featured));
+  }
+  if (filters?.search) {
+    params.append("search", filters.search);
+  }
+
+  return axiosInstance.get(
+    `${config.API_ADMIN_PATH}/blogs?${params.toString()}`,
+    {
+      signal: controller?.signal,
+    }
+  );
+};
+
+export const getBlogById = (blogId: string, controller?: Controller) => {
+  return axiosInstance.get(`${config.API_ADMIN_PATH}/blogs/${blogId}`, {
+    signal: controller?.signal,
+  });
+};
+
+export const createBlog = (data: AddBlogType, controller?: AbortController) => {
+  const form = new FormData();
+
+  form.append("title", data.title);
+  form.append("slug", data.slug);
+  form.append("excerpt", data.excerpt);
+  form.append("content", data.content);
+  form.append(
+    "status",
+    data.status === STATUS.ACTIVE ? STATUS.ACTIVE : STATUS.INACTIVE
+  );
+
+  if (data.author) form.append("author", data.author);
+  if (data.category) form.append("category", data.category);
+  if (data.metaTitle) form.append("metaTitle", data.metaTitle);
+  if (data.metaDescription)
+    form.append("metaDescription", data.metaDescription);
+  if (data.readingTime) form.append("readingTime", String(data.readingTime));
+  if (typeof data.featured === "boolean") {
+    form.append("featured", String(data.featured));
+  }
+
+  if (data.tags?.length) {
+    form.append("tags", JSON.stringify(data.tags));
+  }
+
+  if (data.coverImage) {
+    form.append("pictures", data.coverImage);
+  }
+
+  return axiosInstance.post(`${config.API_ADMIN_PATH}/blogs`, form, {
+    signal: controller?.signal,
+  });
+};
+
+export const updateBlog = (
+  blogId: string,
+  data: EditBlogFields,
+  controller?: AbortController
+) => {
+  const form = new FormData();
+
+  form.append("title", data.title);
+  form.append("slug", data.slug);
+  form.append("excerpt", data.excerpt);
+  form.append("content", data.content);
+  form.append(
+    "status",
+    data.status === STATUS.ACTIVE ? STATUS.ACTIVE : STATUS.INACTIVE
+  );
+
+  if (data.author) form.append("author", data.author);
+  if (data.category) form.append("category", data.category);
+  if (data.metaTitle) form.append("metaTitle", data.metaTitle);
+  if (data.metaDescription)
+    form.append("metaDescription", data.metaDescription);
+  if (data.readingTime) form.append("readingTime", String(data.readingTime));
+  if (typeof data.featured === "boolean") {
+    form.append("featured", String(data.featured));
+  }
+
+  if (data.tags?.length) {
+    form.append("tags", JSON.stringify(data.tags));
+  }
+
+  if (data.coverImage) {
+    form.append("pictures", data.coverImage);
+  }
+
+  return axiosInstance.put(`${config.API_ADMIN_PATH}/blogs/${blogId}`, form, {
+    signal: controller?.signal,
+  });
+};
+
+export const deleteBlog = (blogId: string, controller?: Controller) => {
+  return axiosInstance.delete(`${config.API_ADMIN_PATH}/blogs/${blogId}`, {
+    signal: controller?.signal,
+  });
+};
+
+export const toggleBlogStatus = (blogId: string, controller?: Controller) => {
+  return axiosInstance.patch(
+    `${config.API_ADMIN_PATH}/blogs/${blogId}/status`,
+    {},
+    {
+      signal: controller?.signal,
+    }
+  );
+};
+
+export const toggleBlogFeatured = (blogId: string, controller?: Controller) => {
+  return axiosInstance.patch(
+    `${config.API_ADMIN_PATH}/blogs/${blogId}/featured`,
+    {},
+    {
+      signal: controller?.signal,
+    }
+  );
 };

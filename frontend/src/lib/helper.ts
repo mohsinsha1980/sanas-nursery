@@ -11,7 +11,7 @@ import {
   PlantFilterType,
   PlantsCardType,
 } from "./types/common-types";
-import { EnquiryStatus, EnquiryStatusType } from "./constants";
+import { ENQUIRY_STATUS, EnquiryStatusType } from "./constants";
 
 type InputDate = string | Date;
 interface errorType {
@@ -272,6 +272,11 @@ export const STATUS = {
   DELETED: "2",
 };
 
+export const STATUS_OPTIONS = [
+  { label: "Active", value: STATUS.ACTIVE },
+  { label: "Inactive", value: STATUS.INACTIVE },
+];
+
 export const capitalize = (str: string): string => {
   return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 };
@@ -389,15 +394,64 @@ export const getInitials = (name: string) => {
 
 export const getStatusColor = (status: EnquiryStatusType) => {
   switch (status) {
-    case EnquiryStatus.PENDING:
-      return "bg-yellow-100 text-yellow-800";
-    case EnquiryStatus.IN_PROGRESS:
+    case ENQUIRY_STATUS.PENDING:
+      return "bg-orange-100 text-orange-800";
+    case ENQUIRY_STATUS.CONTACTED:
       return "bg-blue-100 text-blue-800";
-    case EnquiryStatus.RESOLVED:
+    case ENQUIRY_STATUS.RESOLVED:
       return "bg-green-100 text-green-800";
-    case EnquiryStatus.CLOSED:
+    case ENQUIRY_STATUS.CLOSED:
       return "bg-gray-100 text-gray-800";
     default:
       return "bg-gray-100 text-gray-800";
   }
+};
+
+export const getActionColor = (status: EnquiryStatusType) => {
+  switch (status) {
+    case ENQUIRY_STATUS.PENDING:
+      return "bg-blue-100 text-blue-800 hover:bg-blue-200 hover:text-blue-900";
+    case ENQUIRY_STATUS.CONTACTED:
+      return "bg-green-100 text-green-800 hover:bg-green-200 hover:text-green-900";
+    case ENQUIRY_STATUS.RESOLVED:
+      return "bg-gray-100 text-gray-800 hover:bg-gray-200 hover:text-gray-900";
+    case ENQUIRY_STATUS.CLOSED:
+      return "bg-gray-100 text-gray-800 hover:bg-gray-200 hover:text-gray-900";
+    default:
+      return "bg-orange-100 text-orange-800 hover:bg-orange-200 hover:text-orange-900";
+  }
+};
+
+export const getStatusBadgeVariant = (status: string) => {
+  switch (status) {
+    case ENQUIRY_STATUS.PENDING:
+      return "destructive";
+    case ENQUIRY_STATUS.CONTACTED:
+      return "secondary";
+    case ENQUIRY_STATUS.RESOLVED:
+      return "default";
+    default:
+      return "outline";
+  }
+};
+
+export const getNextStatus = (currentStatus: string) => {
+  switch (currentStatus) {
+    case ENQUIRY_STATUS.PENDING:
+      return { status: ENQUIRY_STATUS.CONTACTED, label: "Mark as Contacted" };
+    case ENQUIRY_STATUS.CONTACTED:
+      return { status: ENQUIRY_STATUS.RESOLVED, label: "Mark as Resolved" };
+    default:
+      return null;
+  }
+};
+
+export const formatDate = (dateString: string) => {
+  return new Date(dateString).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
 };
