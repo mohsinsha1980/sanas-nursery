@@ -142,9 +142,8 @@ export default function AddPlant() {
 
   return (
     <>
-      {/* Page Header - Responsive */}
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center pb-5 gap-3">
-        <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold">Add a plant</h1>
+      <div className="flex justify-between items-center pb-5">
+        <h1 className="">Add a Plant</h1>
         <Button
           variant="orange"
           type="button"
@@ -225,12 +224,11 @@ export default function AddPlant() {
               />
             </div>
 
-            {/* Key Specifications Section */}
-            <div className="lg:col-span-4">
-              <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
-                <div className="sm:col-span-3">
-                  <h2>
-                    <h3 className="text-base sm:text-lg lg:text-xl font-semibold pt-5">
+            <div className="col-span-4">
+              <div className="grid grid-cols-4 gap-4 ">
+                <div className="col-span-3 ">
+                  <h2 className="">
+                    <h3 className="text-[20px] font-semibold pt-5">
                       Key Specifications
                     </h3>
                     {form?.formState?.errors?.specifications?.message ? (
@@ -244,9 +242,9 @@ export default function AddPlant() {
                   <Button
                     variant="orange"
                     type="button"
-                    size="sm"
+                    size="md"
                     onClick={() => setOpenKeySpec(true)}
-                    className="mt-5 w-full sm:w-auto"
+                    className="mt-3"
                   >
                     Add New
                   </Button>
@@ -371,7 +369,7 @@ export default function AddPlant() {
                   <Button
                     variant="orange"
                     type="button"
-                    size="sm"
+                    size="md"
                     onClick={() => setOpenAddFAQ(true)}
                     className="w-full sm:w-auto"
                   >

@@ -76,44 +76,53 @@ export default async function ProductDetailsPageByID({
 
   return (
     <Suspense fallback={<DetailsLoading />}>
-      <section className="bg-white border-b py-6 mt-40">
-        <div className="container mx-auto px-4">
-          <h1 className="text-3xl font-bold text-gray-900">{plant.title}</h1>
-        </div>
-      </section>
-
-      <section className="bg-white py-10">
-        <div className="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-10">
-          <div>
+      <section className="bg-white py-10 mt-30">
+        <div className="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-10  ">
+          <div className=" ">
             <ProductPictureSlider pictures={pictures} />
           </div>
 
-          <div className="space-y-6">
+          <div className="space-y-5  ">
+            <div>
+              <h1 className="text-[40px] font-bold text-[#0D6536]">
+                {plant.title}
+              </h1>
+            </div>
+
             {plant.summary && (
-              <p className="text-gray-700 text-lg leading-relaxed">
+              <p className="text-[18px] font-semibold leading-relaxed ">
                 {plant.summary}
               </p>
             )}
 
-            {plant.specifications?.length > 0 && (
-              <div className="bg-gray-50 border rounded-xl p-4 space-y-2">
-                <h2 className="text-lg font-semibold text-gray-900">
-                  Key Specifications
-                </h2>
-                {plant.specifications.map((spec, index) => (
-                  <p key={spec.label + index} className="text-gray-600">
-                    <span className="font-medium">{spec.label}:</span>{" "}
-                    <span>{spec.value}</span>
-                  </p>
-                ))}
-              </div>
-            )}
-
             {plant.details && (
               <div
-                className="prose max-w-none"
+                className="text-[18px] font-semibold leading-relaxed  "
                 dangerouslySetInnerHTML={{ __html: plant.details }}
               />
+            )}
+
+            {plant.specifications?.length > 0 && (
+              <div className="">
+                <table className="w-full border-collapse bg-green-50 rounded-lg">
+                  {/* Table Body */}
+                  <tbody>
+                    {plant.specifications.map((spec, index) => (
+                      <tr key={spec.label + index} className="">
+                        {/* Label Column */}
+                        <td className="text-[18px] py-2 px-3 font-medium text-gray-800">
+                          {spec.label}
+                        </td>
+
+                        {/* Value Column */}
+                        <td className="text-[18px] py-2 px-3 font-medium text-gray-800">
+                          {spec.value}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             )}
 
             <BuyNowBtn plant={plant} />
@@ -121,36 +130,38 @@ export default async function ProductDetailsPageByID({
         </div>
       </section>
 
-      <section className="container mx-auto px-4 mb-10">
+      <section className="container mx-auto px-4 mb-10  ">
         <PlantDescTabs plant={plant} />
       </section>
 
       {similarPlants.length > 0 && (
-        <section className="bg-gray-50 py-10">
+        <section className="py-10 bg-orange-50">
           <div className="container mx-auto px-4">
-            <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">
-              Similar Plants You Might Like
+            <h2 className="lg:text-[42px] md:text-[36px] text-[28px] font-semibold text-center mb-15 ">
+              Similar <span className="text-[#00611F]">Plant</span> You Might Like
             </h2>
+
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
               {similarPlants.map((sp) => (
                 <Link
                   key={sp._id}
                   href={`/categories/${sp.category}/${sp.slug}/${sp._id}`}
                 >
-                  <div className="group bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden">
-                    <div className="relative w-full h-64">
+                  <div className="relative cursor-pointer transition-transform duration-300 hover:scale-105 overflow-hidden group  ">
+                    {/* Image */}
+                    <div className="relative w-[90%] h-[400px]">
                       <Image
                         src={getPicURL(sp.pictures[0])}
                         alt={sp.title}
                         fill
-                        className="object-cover transition-transform duration-300 group-hover:scale-105"
+                        className="object-cover rounded-lg"
                       />
                     </div>
-                    <div className="p-4 text-center">
-                      <p className="text-gray-800 font-medium text-lg group-hover:text-[#DA5700] transition-colors">
-                        {sp.title}
-                      </p>
-                    </div>
+
+                    {/* Title */}
+                    <p className="text-[#505050] text-lg font-semibold mt-3 mb-4 text-center transition-colors duration-300 group-hover:text-[#DA5700]">
+                      {sp.title}
+                    </p>
                   </div>
                 </Link>
               ))}

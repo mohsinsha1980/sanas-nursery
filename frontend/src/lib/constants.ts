@@ -1,4 +1,4 @@
-export const PLANTS_PER_PAGE = 20;
+export const PLANTS_PER_PAGE = 8;
 export const PRICE_RANGE_MAX = 15000;
 export const ALLOWED_MAX_FILE_SIZE = 300000;
 export const DEFAULT_PER_PAGE = 10;

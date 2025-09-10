@@ -4,9 +4,9 @@ import { CATEGORY_ARR } from "@/lib/constants";
 
 export default function Categories({ category }: { category: string }) {
   return (
-    <div className="h-full w-full lg:pt-30 lg:pb-30 md:pt-20 md:pb-20 pt-10 pb-10 flex flex-row justify-center">
-      <div className="h-full max-w-[1370px] md:w-[90%] w-[95%]">
-        <div className="flex gap-8 flex-wrap justify-center">
+    <div className="h-full w-full lg:pt-30 lg:pb-30 md:pt-20 md:pb-20 pt-10 pb-10 flex flex-row justify-center   border-2 border-violet-500">
+      <div className="h-full max-w-[1370px] border-2 border-pink-500">
+        <div className="flex gap-8 flex-wrap justify-center   border-2 border-black">
           {CATEGORY_ARR.map((cat) => {
             const isActive = category === cat.value;
             return (

@@ -122,8 +122,8 @@ export const MEDIA = {
   // },
 };
 
-export const PLANTS_PER_PAGE = 20;
-export const GREEN_CHOICES_PRODUCT_LIMIT = 12;
+export const PLANTS_PER_PAGE = 12;
+export const GREEN_CHOICES_PRODUCT_LIMIT = 20;
 
 export const HOME_SECTIONS = {
   TOP: "top",
