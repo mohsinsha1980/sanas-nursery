@@ -19,10 +19,10 @@ interface TextAreaProps<T extends FieldValues> {
   readOnly?: boolean;
   resize?: boolean;
   rows?: number;
+  className?:string,
   onChange?: (val: string) => void;
-  labelClassName?: string;        // 👈 for label styling
-  descriptionClassName?: string;  // 👈 for description styling
-  className?: string;
+  labelClassName?: string;        
+  descriptionClassName?: string;  
 }
 
 const TextArea = <T extends FieldValues>({

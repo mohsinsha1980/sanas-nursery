@@ -46,10 +46,10 @@ export function ProductAccordion({
           <AccordionItem
             key={item.id}
             value={item.id}
-            className="px-4 hover:bg-gray-50 dark:hover:bg-neutral-800 transition-colors"
+            className="px-4 bg-gray-50 dark:hover:bg-neutral-800 transition-colors"
           >
             <div className="flex justify-between items-center">
-              <AccordionTrigger>{item.title}</AccordionTrigger>
+              <AccordionTrigger className="text-[18px] font-semibold text-gray-800">{item.title}</AccordionTrigger>
               {onDelete && typeof item.index === "number" && (
                 <Trash2Icon
                   size={18}
@@ -59,7 +59,7 @@ export function ProductAccordion({
                 />
               )}
             </div>
-            <AccordionContent className="flex flex-col gap-3 text-sm text-gray-600 dark:text-gray-300 pb-4">
+            <AccordionContent className="flex flex-col gap-3 text-[18px] font-semibold text-gray-800 dark:text-gray-300 pb-4">
               {item.content.map((text, index) => (
                 <p key={index} className="leading-relaxed">
                   {text}

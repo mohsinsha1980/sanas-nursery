@@ -59,7 +59,7 @@ export function ServerPagination({
   const visiblePages = getVisiblePages();
 
   return (
-    <div className="rounded-md bg-white p-2 mb-6">
+    <div className="rounded-md bg-white mt-5 p-2 mb-6 ">
       <Pagination>
         <PaginationContent>
           <PaginationItem
@@ -70,7 +70,7 @@ export function ServerPagination({
             }
             onClick={previousClickHandler}
           >
-            <PaginationPrevious href="" />
+            <PaginationPrevious href="" className="text-[18px] font-medium p-5 mr-2 " />
           </PaginationItem>
 
           {visiblePages.map((page) => (
@@ -79,6 +79,11 @@ export function ServerPagination({
                 href=""
                 isActive={active === page}
                 onClick={() => setPage(page)}
+                className={`${
+                  active === page
+                    ? "bg-[#F37521] text-white font-semibold rounded-[10px] p-5 "
+                    : "p-5"
+                }`}
               >
                 {page}
               </PaginationLink>
@@ -93,11 +98,11 @@ export function ServerPagination({
             onClick={nextClickHandler}
             className={
               active === pages || pages === 1
-                ? "pointer-events-none opacity-50"
+                ? "pointer-events-none opacity-50 "
                 : undefined
             }
           >
-            <PaginationNext href="" />
+            <PaginationNext href="" className="text-[18px] font-medium p-5 ml-2 "/>
           </PaginationItem>
         </PaginationContent>
       </Pagination>

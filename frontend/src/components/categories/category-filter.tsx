@@ -70,12 +70,12 @@ export default function Filters() {
     <>
       <div className={classes.bl_filters}>
         <div
-          className={`${classes.bl_filter} pt-2 !pb-2 flex items-center justify-between sm:!border-r-0`}
+          className={`w-full h-full p-3 rounded-lg shadow-lg shadow-gray-400 flex items-center justify-between `}
         >
-          <h3>Filters</h3>
+          <h3 className="text-[16px] font-semibold">Filters</h3>
           <Button
             variant="link"
-            className="justify-end btn-red"
+            className="justify-end btn-red text-[14px] font-semibold"
             size="sm"
             onClick={reset}
           >
@@ -85,7 +85,7 @@ export default function Filters() {
 
         {PLANT_SIZES_ARR.length ? (
           <div
-            className={`sm:!border-r-0 ${classes.bl_filter}`}
+            className={` mt-5`}
             key="materials"
           >
             <MultiCheckBoxFilter
@@ -98,7 +98,7 @@ export default function Filters() {
         ) : null}
 
         {CARE_LEVEL_ARR?.length ? (
-          <div className={`${classes.bl_filter} sm:!border-r-0`} key="sizes">
+          <div className={` mt-5`} key="sizes">
             <MultiCheckBoxFilter
               label="Select Care Levels"
               value={care_levels ? care_levels.split(",") : []}
