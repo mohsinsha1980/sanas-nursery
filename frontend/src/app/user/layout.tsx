@@ -36,12 +36,14 @@ export default function UserLayout({ children }: UserLayoutProps) {
     }
 
     if (user.role === ROLES.USER) {
-      router.push("/");
-      return;
+      // router.push("/");
+      // return;
+      setIsAuthenticated(true);
+      setIsLoading(false);
     }
 
-    setIsAuthenticated(true);
-    setIsLoading(false);
+    // setIsAuthenticated(true);
+    // setIsLoading(false);
   }, [user, router]);
 
   if (isLoading) {

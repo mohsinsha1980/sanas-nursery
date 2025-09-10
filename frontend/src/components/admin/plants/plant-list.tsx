@@ -6,6 +6,7 @@ import {
   getPicURL,
   showErrorToast,
   showSuccessToast,
+  toCamelCase,
 } from "@/lib/helper";
 
 import {
@@ -14,7 +15,7 @@ import {
 } from "@/lib/types/common-types";
 import { hideLoader, showLoader } from "@/redux/uiSlice";
 import axios, { AxiosError } from "axios";
-import { Edit2Icon, Eye, Trash2Icon } from "lucide-react";
+import { Edit2Icon, Trash2Icon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
@@ -26,17 +27,11 @@ import { CustomPagination } from "@/components/common/custom-pagination";
 import { DataTable } from "@/components/ui/data-table/data-table";
 import ConfirmButton from "@/components/common/ConfirmButton";
 
-type plantListCategoryType = {
-  label: string;
-};
-
 export interface plantListType {
+  category: string;
   title: string;
   plantId: string;
   status: boolean;
-  l1_category: plantListCategoryType;
-  l2_category: plantListCategoryType;
-  l3_category?: plantListCategoryType;
   pictures: string;
 }
 
@@ -87,6 +82,7 @@ const PlantsList = () => {
             picture: getPicURL(plant.pictures[0]),
             plantId: plant.plantId,
             status: plant.status,
+            category: toCamelCase(plant.category),
             actions: [
               {
                 actionType: ACTION_TYPES.EDIT,
@@ -101,11 +97,6 @@ const PlantsList = () => {
                   <Trash2Icon size={16} strokeWidth={1.5} color="red" />
                 ),
                 action: (id: string) => deleteHandler(id),
-              },
-              {
-                actionType: ACTION_TYPES.VIEW,
-                actionIcon: <Eye size={16} strokeWidth={1.5} color="green" />,
-                action: (id: string) => viewHandler(id),
               },
             ],
           })

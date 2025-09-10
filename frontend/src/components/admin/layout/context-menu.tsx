@@ -2,13 +2,13 @@
 import { Card, CardContent } from "@/components/ui/card";
 import {
   ChartAreaIcon,
-  Gamepad2,
   LayoutPanelTopIcon,
   MailOpen,
   MessageSquareQuote,
   Notebook,
   SettingsIcon,
   ShoppingCartIcon,
+  Sprout,
   UserRound,
 } from "lucide-react";
 import Link from "next/link";
@@ -25,7 +25,7 @@ export default function ContextMenu() {
   return (
     <Card className={`${classes.bl_context_menu}`}>
       <CardContent className={`${classes.card_content} `}>
-        <ul className={`${classes.context_menu} space-y-5`}>
+        <ul className={`${classes.context_menu} space-y-2`}>
           <li className={`${getActiveClass("/admin/dashboard")} `}>
             <Link href="/admin/dashboard" className="flex items-center gap-3">
               <div className="">
@@ -38,7 +38,7 @@ export default function ContextMenu() {
           <li className={getActiveClass("/admin/plants")}>
             <Link href="/admin/plants" className="flex items-center gap-3">
               <div className="">
-                <Gamepad2 strokeWidth={1} className="h-6 font-bold" />
+                <Sprout strokeWidth={1} className="h-6 font-bold" />
               </div>
               Plants
             </Link>
@@ -65,7 +65,7 @@ export default function ContextMenu() {
             </Link>
           </li>
 
-          <li className={getActiveClass("/admin/support")}>
+          <li className={getActiveClass("/admin/order-enquiries")}>
             <Link
               href="/admin/order-enquiries"
               className="flex items-center gap-3"
@@ -89,7 +89,7 @@ export default function ContextMenu() {
           <li className={getActiveClass("/admin/blogs")}>
             <Link href="/admin/blogs" className="flex items-center gap-3">
               <div className="">
-                <Notebook  strokeWidth={1} className="h-6 font-bold" />
+                <Notebook strokeWidth={1} className="h-6 font-bold" />
               </div>
               Blogs
             </Link>

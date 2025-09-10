@@ -80,42 +80,62 @@ const TestimonialsList = () => {
 
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {testimonials.map((item, idx) => (
           <div
             key={idx}
-            className={`rounded-lg px-6 py-8 text-white flex flex-col justify-between h-full ${
-              item.status === STATUS.INACTIVE ? "bg-green-300" : "bg-[#4CB390]"
+            className={`group rounded-xl px-6 py-8 flex flex-col justify-between h-full min-h-[280px] shadow-md hover:shadow-lg transition-all duration-300 hover:scale-[1.02] border ${
+              item.status === STATUS.INACTIVE
+                ? "bg-white border-gray-200 text-gray-600"
+                : "bg-white border-[#4CB390] text-gray-800"
             }`}
           >
             <div className="flex justify-between items-center mb-5">
               <div className="flex items-center gap-2">
-                <Quote size={24} className="text-white" />
-                <span className="font-bold text-[18px]">{item.author}</span>
+                <Quote
+                  size={24}
+                  className={`${
+                    item.status === STATUS.INACTIVE
+                      ? "text-gray-400"
+                      : "text-[#4CB390]"
+                  } group-hover:scale-110 transition-all duration-200`}
+                />
+                <span className="font-bold text-[18px] group-hover:text-[#00611F] transition-colors">
+                  {item.author}
+                </span>
               </div>
-              <div className="flex items-center gap-1">
-                <Star size={16} className="text-white" />
+              <div
+                className={`flex items-center gap-1 rounded-full px-3 py-1 transition-colors ${
+                  item.status === STATUS.INACTIVE
+                    ? "bg-gray-100 group-hover:bg-gray-200"
+                    : "bg-[#E4FFF0] group-hover:bg-[#4CB390] group-hover:text-white"
+                }`}
+              >
+                <Star size={16} className="text-yellow-500" fill="#ffa534" />
                 <span className="font-bold text-[16px]">{item.rating}</span>
               </div>
             </div>
-            <p className="text-[16px] leading-relaxed">{item.content}</p>
 
-            <div className={`flex justify-between items-start mt-4`}>
+            <p className="text-[16px] leading-relaxed text-gray-600 group-hover:text-gray-800 transition-colors flex-grow break-words">
+              {item.content}
+            </p>
+
+            <div className="flex justify-between items-start mt-6">
               {item.link && (
                 <Link
                   href={item.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white underline text-[16px] md:text-[18px] lg:text-[20px] hover:text-gray-200 transition-colors"
+                  className="text-[#4CB390] underline text-[14px] hover:text-[#00611F] hover:bg-[#E4FFF0] px-2 py-1 rounded transition-all duration-200"
                 >
                   Visit Website
                 </Link>
               )}
 
-              <div className="flex gap-4">
+              <div className="flex gap-3">
                 <Link
                   href={`/admin/testimonials/edit?testimonial=${item._id}`}
-                  className="flex items-center gap-1 text-white underline hover:text-orange-600  transition-colors"
+                  className="flex items-center gap-1 text-[#4CB390] hover:text-orange-500 hover:bg-orange-50 px-2 py-1 rounded transition-all duration-200"
                 >
                   <Edit2Icon size={16} /> Edit
                 </Link>
@@ -123,7 +143,7 @@ const TestimonialsList = () => {
                 <button
                   type="button"
                   onClick={() => deleteHandler(item._id)}
-                  className="cursor-pointer flex items-center gap-1 underline hover:text-red-600 transition-colors"
+                  className="cursor-pointer flex items-center gap-1 text-red-500 hover:text-red-600 hover:bg-red-50 px-2 py-1 rounded transition-all duration-200"
                 >
                   <Trash2Icon size={16} /> Delete
                 </button>

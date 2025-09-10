@@ -455,3 +455,10 @@ export const formatDate = (dateString: string) => {
     minute: "2-digit",
   });
 };
+
+export const toCamelCase = (str: string) => {
+  return str
+    .toLowerCase()
+    .replace(/[-_]/g, " ")
+    .replace(/\b\w/g, (char) => char.toUpperCase());
+};

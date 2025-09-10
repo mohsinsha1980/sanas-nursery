@@ -8,17 +8,16 @@ export default function ContactEnquiriesPage() {
   return (
     <>
       <div className="h-fit w-full lg:space-y-6">
-        <div className="flex flex-row">
-          <div className="basis-3/4">
-            <h1 className="text-3xl font-bold text-gray-900">
-              Contact Enquiries
-            </h1>
-            <p className="text-gray-600 mt-2">
+        <div className="flex flex-row pb-6">
+          <div>
+            <h1>Contact Enquiries</h1>
+            <p className="text-gray-600 mt-2 px-2">
               Manage and track customer contact enquiries
             </p>
           </div>
         </div>
-        <div className="">
+
+        <div>
           <Tabs defaultValue="incomplete">
             <TabsList className="inline-flex bg-gray-100 p-1 rounded-lg shadow-sm">
               <TabsTrigger
@@ -36,10 +35,10 @@ export default function ContactEnquiriesPage() {
                 <span>Completed</span>
               </TabsTrigger>
             </TabsList>
-            <TabsContent value="incomplete" className="mt-6">
+            <TabsContent value="incomplete" className="mt-6 md:!px-0">
               <PendingContactEnquiries />
             </TabsContent>
-            <TabsContent value="completed" className="mt-6">
+            <TabsContent value="completed" className="mt-6 md:!px-0">
               <ResolvedContactEnquiries />
             </TabsContent>
           </Tabs>

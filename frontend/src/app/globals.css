@@ -5,6 +5,7 @@
 :root {
   --txt-green: #0d6536;
   --txt-orange: #f37521;
+  --dark-orange: #DA5700;
   --bg-green: #4cba9b;
   --bg-green-light: #e4fff0;
   --heading-txt: #1d2f33;
@@ -141,7 +142,7 @@
 
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
-
+  --header-height: 90px;
 }
 
 @theme inline {

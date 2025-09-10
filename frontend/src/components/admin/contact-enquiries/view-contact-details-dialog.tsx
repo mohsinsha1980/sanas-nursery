@@ -3,13 +3,7 @@ import CustomDialog from "@/components/layout/Dialog";
 import { Badge } from "@/components/ui/badge";
 import { getStatusBadgeVariant, getStatusColor } from "@/lib/helper";
 import { ContactEnquiryDataType } from "@/lib/types/admin-types";
-import {
-  Calendar,
-  Mail,
-  MessageSquare,
-  Phone,
-  User
-} from "lucide-react";
+import { Calendar, Mail, MessageSquare, Phone, User } from "lucide-react";
 
 interface ViewContactDetailsDialogProps {
   isOpen: boolean;
@@ -28,7 +22,7 @@ export default function ViewContactDetailsDialog({
     <CustomDialog
       title="Contact Enquiry Details"
       open={isOpen}
-      onclose={(_open: boolean) => onClose()}
+      onclose={() => onClose()}
       className="max-w-4xl"
     >
       <div className="space-y-6">

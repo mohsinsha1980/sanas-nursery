@@ -68,7 +68,7 @@ const BlogFilter = ({ setFilters }: BlogFilterProps) => {
               placeholder="Search blogs..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-10"
+              className="pl-10 border-black/10 rounded-md "
             />
           </div>
         </div>
@@ -80,7 +80,7 @@ const BlogFilter = ({ setFilters }: BlogFilterProps) => {
             Status
           </label>
           <Select value={statusFilter} onValueChange={setStatusFilter}>
-            <SelectTrigger className="w-full">
+            <SelectTrigger className="w-full border-black/10 rounded-md">
               <SelectValue placeholder="Select status" />
             </SelectTrigger>
             <SelectContent className="bg-white border border-gray-200 shadow-lg">
@@ -112,7 +112,7 @@ const BlogFilter = ({ setFilters }: BlogFilterProps) => {
             Category
           </label>
           <Select value={categoryFilter} onValueChange={setCategoryFilter}>
-            <SelectTrigger className="w-full">
+            <SelectTrigger className="w-full border-black/10 rounded-md">
               <SelectValue placeholder="Select category" />
             </SelectTrigger>
             <SelectContent className="bg-white border border-gray-200 shadow-lg">
@@ -144,7 +144,7 @@ const BlogFilter = ({ setFilters }: BlogFilterProps) => {
             Featured
           </label>
           <Select value={featuredFilter} onValueChange={setFeaturedFilter}>
-            <SelectTrigger className="w-full">
+            <SelectTrigger className="w-full border-black/10 rounded-md">
               <SelectValue placeholder="Select featured" />
             </SelectTrigger>
             <SelectContent className="bg-white border border-gray-200 shadow-lg">
@@ -173,21 +173,14 @@ const BlogFilter = ({ setFilters }: BlogFilterProps) => {
 
       <div className="flex items-center justify-between mt-6">
         {hasActiveFilters ? (
-          <Button
-            variant="outline"
-            onClick={handleClear}
-            className="flex items-center gap-2 text-gray-600 hover:text-gray-800"
-          >
+          <Button variant="orange" size="sm" onClick={handleClear}>
             <X className="h-4 w-4" />
             Clear Filters
           </Button>
         ) : (
           <div></div>
         )}
-        <Button
-          onClick={handleSearch}
-          className="bg-green-600 hover:bg-green-700 text-white px-6"
-        >
+        <Button onClick={handleSearch} variant="orange" size="sm">
           Apply Filters
         </Button>
       </div>

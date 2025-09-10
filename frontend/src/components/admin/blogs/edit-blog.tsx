@@ -147,7 +147,7 @@ export default function EditBlogForm({ blogId }: EditBlogProps) {
                     label="Blog Title"
                     placeholder="Enter blog title"
                     inputType="text"
-                    className="rounded-md"
+                    className="rounded-md border-black/10"
                     labelClassName="text-base font-medium"
                     formControl={form.control}
                     onchange={(val) => {
@@ -163,6 +163,7 @@ export default function EditBlogForm({ blogId }: EditBlogProps) {
                     formControl={form.control}
                     description="Short description that appears in blog listings (max 300 characters)"
                     descriptionClassName="text-sm text-gray-500"
+                    className="rounded-md border-black/10"
                   />
 
                   <RichTextField
@@ -171,6 +172,7 @@ export default function EditBlogForm({ blogId }: EditBlogProps) {
                     labelClassName="text-base font-medium"
                     placeholder="Write your blog content here..."
                     formControl={form.control}
+                    className="rounded-md border-black/10"
                   />
                 </div>
               </div>
@@ -185,7 +187,7 @@ export default function EditBlogForm({ blogId }: EditBlogProps) {
                     label="Meta Title"
                     placeholder="SEO title for search engines"
                     formControl={form.control}
-                    className="rounded-md"
+                    className="rounded-md border-black/10"
                     labelClassName="text-base font-medium"
                     description="Title for search engines (max 60 characters)"
                     descriptionClassName="text-sm text-gray-500"
@@ -199,6 +201,7 @@ export default function EditBlogForm({ blogId }: EditBlogProps) {
                     formControl={form.control}
                     description="Description for search engines (max 160 characters)"
                     descriptionClassName="text-sm text-gray-500"
+                    className="rounded-md border-black/10"
                   />
                 </div>
               </div>
@@ -216,7 +219,7 @@ export default function EditBlogForm({ blogId }: EditBlogProps) {
                   multiple={false}
                   accept="image/jpeg, image/jpg, image/png, image/webp"
                   placeholder="Choose cover image"
-                  className="rounded-md"
+                  className="rounded-md border-black/10"
                   formControl={form.control}
                   description="Recommended size: 800x450px"
                   descriptionClassName="text-sm text-gray-500"
@@ -249,6 +252,7 @@ export default function EditBlogForm({ blogId }: EditBlogProps) {
                     formControl={form.control}
                     allowCustomValue={false}
                     options={Object.values(BLOG_CATEGORIES)}
+                    className="rounded-md border-black/10"
                   />
 
                   <TextField
@@ -256,7 +260,7 @@ export default function EditBlogForm({ blogId }: EditBlogProps) {
                     label="Author"
                     placeholder="Enter author name"
                     inputType="text"
-                    className="rounded-md"
+                    className="rounded-md border-black/10"
                     labelClassName="text-base font-medium"
                     formControl={form.control}
                   />
@@ -266,10 +270,10 @@ export default function EditBlogForm({ blogId }: EditBlogProps) {
                     label="Reading Time (minutes)"
                     placeholder="5"
                     inputType="number"
-                    className="rounded-md"
+                    className="rounded-md border-black/10"
                     labelClassName="text-base font-medium"
                     formControl={form.control}
-                    suffix="Minutes"
+                    suffix="Mins"
                   />
 
                   <MultipleSelectField
@@ -278,6 +282,7 @@ export default function EditBlogForm({ blogId }: EditBlogProps) {
                     placeholder="Select or add tags"
                     formControl={form.control}
                     options={[]}
+                    className="rounded-md border-black/10"
                   />
 
                   <div className="space-y-3">
@@ -296,6 +301,7 @@ export default function EditBlogForm({ blogId }: EditBlogProps) {
                       formControl={form.control}
                       allowCustomValue={false}
                       options={STATUS_OPTIONS}
+                      className="rounded-md border-black/10"
                     />
                   </div>
                 </div>
@@ -306,8 +312,8 @@ export default function EditBlogForm({ blogId }: EditBlogProps) {
           <div className="flex justify-end">
             <Button
               type="submit"
-              className="bg-green-600 hover:bg-green-700 text-white px-8"
-            >
+              variant="orange"
+              size="sm"            >
               Update Blog
             </Button>
           </div>
