@@ -9,7 +9,7 @@ export default async function EditPlantPage({
   searchParams: Promise<{ [key: string]: string | undefined }>;
 }) {
   const plant = (await searchParams).plant;
-
+  console.log("plant", plant);
   return (
     <>
       <div className="flex justify-between items-center">

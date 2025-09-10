@@ -41,6 +41,7 @@ const InputImageField = <T extends FieldValues>({
     <FormField
       control={formControl}
       name={name}
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       render={({ field: { value, onChange, ...fieldProps } }) => (
         <FormItem>
           {/* Add spacing below label */}

@@ -9,7 +9,7 @@ export default function AdminTemplate({
   children?: React.ReactNode;
 }>) {
   return (
-    <div className="bg-white pt-32">
+    <div className="container bg-white pt-32">
       <div className={`${classes.bl_admin_template} `}>
         <div className={`${classes.admin_nav}  h-full`}>
           <ContextMenu />

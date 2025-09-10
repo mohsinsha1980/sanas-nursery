@@ -6,6 +6,8 @@ export default function WhatsappBadge() {
     <div className="relative w-fit">
       <div className="">
         <FloatingWhatsApp
+          phoneNumber="+91-96574 80645"
+          accountName="Sanas Nursery"
           phoneNumber=""
           accountName="Sanas Nursery"
           darkMode={true}

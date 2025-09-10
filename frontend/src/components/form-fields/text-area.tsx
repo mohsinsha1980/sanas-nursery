@@ -36,6 +36,7 @@ const TextArea = <T extends FieldValues>({
   onChange,
   labelClassName = "",
   descriptionClassName = "",
+  className = "",
 }: TextAreaProps<T>) => {
   return (
     <FormField
@@ -51,7 +52,7 @@ const TextArea = <T extends FieldValues>({
               readOnly={readOnly}
               placeholder={placeholder}
               rows={rows}
-              className={resize ? "" : "resize-none"}
+              className={resize || className ? `${className}` : "resize-none"}
               {...field}
               value={field.value ?? ""} // ensures no uncontrolled warning
               onChange={(e) => {

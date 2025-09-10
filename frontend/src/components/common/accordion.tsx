@@ -32,7 +32,7 @@ export function ProductAccordion({
   return (
     <div
       className={cn(
-        "w-full bg-transparent",
+        "w-full rounded-xl shadow-sm bg-white ",
         className
       )}
     >
