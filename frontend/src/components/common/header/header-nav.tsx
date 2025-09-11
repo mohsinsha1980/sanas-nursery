@@ -3,6 +3,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { categories } from "@/lib/helper";
 
 export default function HeaderNav() {
   const pathname = usePathname();
@@ -23,7 +24,7 @@ export default function HeaderNav() {
           onMouseLeave={() => setOpen(false)}
         >
           <Link
-            href="/plants"
+            href="#categories-section"
             className={pathname.startsWith("/plants") ? "active" : ""}
           >
             Plants
@@ -36,41 +37,19 @@ export default function HeaderNav() {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: -8, scale: 0.98 }}
                 transition={{ duration: 0.18, ease: "easeOut" }}
-                className="absolute left-0 mt-3 w-48 rounded-md border border-gray-200 bg-white shadow-lg z-50"
+                className="absolute left-0 mt-3 w-48 h-fit rounded-md border border-gray-200 bg-white shadow-lg z-50"
               >
-                <ol className="flex flex-col items-start text-center">
-                  <li>
-                    <Link
-                      href="/plants/indoor"
-                      className="block px-4 py-2 text-gray-800"
-                    >
-                      Indoor Plants
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="/plants/outdoor"
-                      className="block px-4 py-2 text-gray-800"
-                    >
-                      Outdoor Plants
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="/plants/succulents"
-                      className="block px-4 py-2 text-gray-800"
-                    >
-                      Succulents
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="/plants/shadow"
-                      className="block px-4 py-2 text-gray-800"
-                    >
-                      Shadow Plants
-                    </Link>
-                  </li>
+                <ol className="flex flex-col items-center text-center mb-2">
+                  {categories.map((cat) => (
+                    <li key={cat.slug}>
+                      <Link
+                        href={`/categories/${cat.slug}`}
+                        className="block px-4 py-2 text-gray-800"
+                      >
+                        {cat.name}
+                      </Link>
+                    </li>
+                  ))}
                 </ol>
               </motion.div>
             )}
