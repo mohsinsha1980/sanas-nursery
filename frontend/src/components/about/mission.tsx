@@ -43,15 +43,23 @@ const Mission = () => {
             <div className="h-[349px] lg:w-[656px] w-full md:w-[90%] bg-[#4CBA9B] flex justify-center items-center rounded-lg px-3">
               <div className="h-[286px] w-[560px] ">
                 <div className="h-full w-full flex flex-col justify-between items-center ">
-                    <Image
-                  src="/site/about/div1.png"
-                  alt={""}
-                  height={100}
-                  width={100}
-                  className="h-[64px] w-[64px] object-cover rounded-full"
-                />
-                <h1 className="text-white lg:text-[32px] md:text-[22px] text-[16px] font-bold ">Our Vision</h1>
-                <p className="text-white lg:text-[20px] md:text-[22px] text-[16px] font-medium text-center">To become the leading nursery in sustainable plant cultivation and environmental education, creating greener communities one garden at a time. We envision a future  where every home and space is enhanced by the natural beauty and benefits of healthy plant life.</p>
+                  <Image
+                    src="/site/about/div1.png"
+                    alt={""}
+                    height={100}
+                    width={100}
+                    className="h-[64px] w-[64px] object-cover rounded-full"
+                  />
+                  <h1 className="text-white lg:text-[32px] md:text-[22px] text-[16px] font-bold ">
+                    Our Vision
+                  </h1>
+                  <p className="text-white lg:text-[20px] md:text-[22px] text-[16px] font-medium text-center">
+                    To become the leading nursery in sustainable plant
+                    cultivation and environmental education, creating greener
+                    communities one garden at a time. We envision a future where
+                    every home and space is enhanced by the natural beauty and
+                    benefits of healthy plant life.
+                  </p>
                 </div>
               </div>
             </div>
