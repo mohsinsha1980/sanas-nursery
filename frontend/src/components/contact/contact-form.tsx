@@ -1,216 +1,192 @@
 "use client";
-import schema, { ContactFormData } from "@/components/contact/schema";
-import { Button } from "@/components/ui/button";
-import { addContactUs } from "@/lib/api-routes/api-public";
-import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  Facebook,
-  Instagram,
-  Mail,
-  MapPin,
-  Phone,
-  Youtube,
-} from "lucide-react";
-import React from "react";
-import { useForm } from "react-hook-form";
-import toast from "react-hot-toast";
 
-const Contact = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm({
-    resolver: zodResolver(schema),
+import WhatsAppIcon from "@/components/common/icons/whatapp";
+import TextArea from "@/components/form-fields/text-area";
+import TextField from "@/components/form-fields/text-field";
+import { Button } from "@/components/ui/button";
+import { Form } from "@/components/ui/form";
+import { createContactEnquiry } from "@/lib/api-routes/api-public";
+import { showErrorToast, showSuccessToast } from "@/lib/helper";
+import { contactEnquirySchema } from "@/lib/schemas/common";
+import { ContactEnquiryFields } from "@/lib/types/common-types";
+import { hideLoader, showLoader } from "@/redux/uiSlice";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useReCaptcha } from "next-recaptcha-v3";
+import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { Mail, MapPin } from "lucide-react";
+
+const defaultValues = {
+  name: "",
+  email: "",
+  phone: "",
+  message: "",
+};
+
+export default function ContactPage() {
+  const dispatch = useDispatch();
+  const { executeRecaptcha } = useReCaptcha();
+  const form = useForm<ContactEnquiryFields>({
+    defaultValues: defaultValues,
+    resolver: zodResolver(contactEnquirySchema),
   });
 
-  const [loading, setLoading] = React.useState(false);
-  const [, setError] = React.useState("");
-  const [, setSuccess] = React.useState("");
-
-  const onSubmit = async (data: ContactFormData) => {
-    setLoading(true);
-    setError("");
-    setSuccess("");
+  const onSubmit = async (values: ContactEnquiryFields) => {
     try {
-      const response = await addContactUs(data);
-      toast.success("Message sent successfully!");
-      reset();
-      console.log(response);
-    } catch (err) {
-      console.log(err);
-      toast.error("Something went wrong. Please try again.");
+      dispatch(showLoader());
+      const token = await executeRecaptcha("form_submit");
+      const updatedData = { ...values, token };
+      await createContactEnquiry(updatedData);
+      showSuccessToast(
+        "Thank you for your message! We will get back to you within 24 hours."
+      );
+      form.reset(defaultValues);
+    } catch (error) {
+      console.log(error);
+      showErrorToast("Failed to submit enquiry. Please try again.");
     } finally {
-      setLoading(false);
+      dispatch(hideLoader());
     }
   };
 
   return (
-    <>
-      <form onSubmit={handleSubmit(onSubmit)} noValidate>
-        <div className="lg:w-[100%] lg:h-[870px] md:w-[100%] md:h-[1100px] w-[100%] h-[1020px] flex justify-center items-center bg-[#E4FFF0]   ">
-          <div className="contact-form lg:w-[61%] flex justify-center items-center bg-white rounded-xl">
-            <div className="contact-form-innerdiv lg:w-[60%] lg:h-auto md:w-[80%] w-[95%]  lg:gap-y-0 gap-y-10 flex lg:flex-row flex-col justify-between items-center absolute z-10 bg-white p-2 md:p-3 lg:px-3 rounded-xl     ">
-              {/* Left Section */}
-              <div className="contact-form-left-div lg:w-[45%] lg:h-[600px] md:w-full w-full flex lg:justify-center lg:items-center md:justify-center justify-start items-start bg-[#4CBA9B] px-4 lg:px-0 py-4 lg:py-0 rounded-xl   ">
-                <div className="lg:w-[80%] lg:h-[85%] w-full lg:gap-y-10 gap-y-10 flex flex-col justify-between items-start ">
-                  <div className="lg:w-[100%] lg:h-auto lg:gap-y-3 gap-y-3 flex flex-col justify-between   ">
-                    <p className="lg:text-[42px] md:text-[36px] text-[24px] text-white font-semibold lg:leading-13 ">
-                      Connect with <span className="text-[#00611F]">Sanas</span>{" "}
-                      Nursery
-                    </p>
-                    <p className="lg:text-[20px] md:text-[22px] text-[16px] text-white lg:font-semibold">
-                      Watch how our plants are spreading smiles and freshness.
-                    </p>
-                  </div>
-                  <div className="lg:w-[100%] lg:h-[45%] lg:gap-y-3 gap-y-3 flex flex-col justify-evenly text-[20px] text-white   ">
-                    <div className="flex items-center lg:gap-x-5 gap-3">
-                      <Phone className="lg:text-[22px] md:h-6 md:w-6 h-4 w-4" />
-                      <p className="lg:text-[20px] md:text-[20px] text-[16px] lg:font-semibold">
-                        +1012 3456 789
-                      </p>
-                    </div>
-                    <div className="flex items-center lg:gap-x-5 gap-3">
-                      <Mail className="lg:text-[22px] md:h-6 md:w-6 h-4 w-4" />
-                      <p className="theight lg:text-[20px] md:text-[20px] text-[16px] lg:font-semibold">
-                        demo@gmail.com
-                      </p>
-                    </div>
-                    <div className="flex items-start lg:gap-x-5 gap-3 ">
-                      <MapPin className="lg:h-10 lg:w-10" />
-                      <p className="lg:text-[20px] md:text-[20px] text-[16px] lg:font-semibold">
-                        Lorem ipsum dolor sit amet consectetur. Vel quam amet
-                      </p>
-                    </div>
-                  </div>
-                  <div
-                    key="3-icons"
-                    className=" flex flex-row justify-between items-center text-white lg:space-x-4 md:space-x-3 space-x-5  "
-                  >
-                    <div className="h-[40px] w-[40px] bg-[#DA5700] shadow-md  rounded-lg flex justify-center items-center">
-                      <Facebook className="z-10 hover:text-blue-600" />
-                    </div>
-                    <div className="h-[40px] w-[40px] bg-[#DA5700] shadow-md  rounded-lg flex justify-center items-center">
-                      <Instagram className=" hover:text-pink-700" />
-                    </div>
-                    <div className="h-[40px] w-[40px] bg-[#DA5700] shadow-md  rounded-lg flex justify-center items-center">
-                      <Youtube className=" h-7 w-7 hover:text-red-600" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Right Section */}
-              <div className="lg:w-[50%] lg:h-[550px] md:w-[100%] h-fit w-[100%] lg:gap-y-9 md:gap-y-8 gap-y-5 flex flex-col justify-evenly  text-[#8D8D8D] lg:px-0 md:px-3 px-4  ">
-                {/* <div>
-                  {error && <p className="text-red-600 mb-5">{error}</p>}
-                </div>
-                <div>
-                  {success && <p className="text-green-600 mb-5">{success}</p>}
-                </div> */}
-
-                <div className=" lg:w-[95%] w-[100%] flex lg:flex-row flex-col justify-between lg:space-y-0 md:space-y-8 space-y-5 ">
-                  <div className="lg:w-[45%] md:w-[70%] w-[90%] flex flex-col lg:gap-y-4 gap-y-2 ">
-                    <p className="lg:text-[20px] md:text-[24px] text-[20px] font-semibold">
-                      Name
-                    </p>
-                    <input
-                      type="text"
-                      {...register("name")}
-                      style={{
-                        WebkitBoxShadow: "0 0 0 1000px white inset",
-                        WebkitTextFillColor: "black",
-                      }}
-                      className=" lg:border-b-2 border-b-1  border-[#8D8D8D] lg:h-[35px] lg:text-[18px]  text-[16px] bg-transparent focus:outline-none focus:bg-transparent autofill:bg-transparent autofill:text-[#1d2f33]"
-                    />
-                    {errors.name && (
-                      <p className="text-red-500 text-sm">
-                        {errors.name.message}
-                      </p>
-                    )}
-                  </div>
-
-                  <div className="lg:w-[45%] md:w-[70%] w-[90%] flex flex-col justify-between lg:gap-y-4 gap-y-2 ">
-                    <p className="ftheight lg:text-[20px] text-[20px] font-semibold">
-                      Phone Number
-                    </p>
-                    <input
-                      type="text"
-                      {...register("phonenumber")}
-                      style={{
-                        WebkitBoxShadow: "0 0 0 1000px white inset",
-                        WebkitTextFillColor: "black",
-                      }}
-                      className="lg:border-b-2 border-b-1 border-[#8D8D8D] lg:h-[35px] lg:text-[18px] text-[16px] bg-transparent focus:outline-none focus:bg-transparent autofill:bg-transparent autofill:text-[#1d2f33]"
-                    />
-                    {errors.phonenumber && (
-                      <p className="text-red-500 text-sm">
-                        {errors.phonenumber.message}
-                      </p>
-                    )}
-                  </div>
-                </div>
-
-                <div className="lg:w-[95%] w-[100%] flex lg:flex-row flex-col justify-between lg:space-y-0 md:space-y-8 space-y-5 ">
-                  <div className="lg:w-[100%] md:w-[70%] w-[90%] flex flex-col lg:gap-y-4 gap-y-2 ">
-                    <p className="lg:text-[20px] text-[20px] font-semibold">
-                      Email
-                    </p>
-                    <input
-                      type="text"
-                      {...register("email")}
-                      style={{
-                        WebkitBoxShadow: "0 0 0 1000px white inset",
-                        WebkitTextFillColor: "black",
-                      }}
-                      className="lg:border-b-2 border-b-1 border-[#8D8D8D] lg:h-[35px] lg:text-[18px] text-[16px] bg-transparent focus:outline-none focus:bg-transparent autofill:bg-transparent autofill:text-[#1d2f33]"
-                    />
-                    {errors.email && (
-                      <p className="text-red-500 text-sm">
-                        {errors.email.message}
-                      </p>
-                    )}
-                  </div>
-                </div>
-
-                <div className="lg:w-[95%] md:w-[70%] w-[90%] flex flex-col justify-between lg:space-y-4 space-y-0">
-                  <p className="lg:text-[20px] text-[20px] font-semibold">
-                    Message
-                  </p>
-                  <textarea
-                    {...register("message")}
-                    style={{
-                      WebkitBoxShadow: "0 0 0 1000px white inset",
-                      WebkitTextFillColor: "black",
-                    }}
-                    className="lg:border-b-2 border-b-1 border-[#8D8D8D] lg:h-[80px] h-[60px] lg:text-[18px] text-[16px] bg-transparent focus:outline-none resize-none overflow-y-auto"
+    <div className="">
+      <section className="py-20  ">
+        <div className="container-custom  space-y-10 ">
+          <div className="">
+            <h1 className="text-[#00611F] lg:text-[50px] md:text-[50px] text-[40px] font-bold lg:leading-[72px] leading-[52px] md:text-start text-center">
+              Contact Us
+            </h1>
+            <p className="text-[#505050] lg:text-[20px] md:text-[20px] text-[20px] font-medium md:text-start text-center">
+              Have questions or want to stay updated? We&apos;d love to hear
+              from you!
+            </p>
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 ">
+            <div className="bg-orange-50 shadow-xl rounded-2xl p-8 hover:shadow-2xl transition-shadow duration-300">
+              <h2 className="text-2xl md:text-3xl font-bold text-green-900 mb-6">
+                Send us a Message
+              </h2>
+              <Form {...form}>
+                <form
+                  onSubmit={form.handleSubmit(onSubmit)}
+                  className="space-y-7"
+                >
+                  <TextField
+                    name="name"
+                    label="Full Name *"
+                    labelClassName="text-[16px] font-semibold "
+                    placeholder="Enter your full name"
+                    formControl={form.control}
+                    className="rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-500 mt-3"
                   />
 
-                  {errors.message && (
-                    <p className="text-red-500 text-sm">
-                      {errors.message.message}
+                  <TextField
+                    name="email"
+                    label="Email Address *"
+                    labelClassName="text-[16px] font-semibold "
+                    placeholder="Enter your email address"
+                    inputType="email"
+                    formControl={form.control}
+                    className="rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-500 mt-3"
+                  />
+
+                  <TextField
+                    name="phone"
+                    label="Phone/WhatsApp Number *"
+                    labelClassName="text-[16px] font-semibold "
+                    placeholder="Enter 10-digit number (e.g. 9876543210)"
+                    inputType="tel"
+                    formControl={form.control}
+                    className="rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-500 mt-3"
+                  />
+
+                  <TextArea
+                    name="message"
+                    label="Message *"
+                    labelClassName="text-[16px] font-semibold "
+                    placeholder="Tell us more about your inquiry..."
+                    formControl={form.control}
+                    className="rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-500 mt-3"
+                  />
+
+                  <div className="flex justify-start mt-4">
+                    <Button
+                      type="submit"
+                      variant="orange"
+                      className=""
+                      size={"lg"}
+                    >
+                      Submit Enquiry
+                    </Button>
+                  </div>
+                </form>
+              </Form>
+            </div>
+
+            {/* Contact Info Card */}
+            <div className="bg-green-50 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-shadow duration-300">
+              <h2 className="text-2xl md:text-3xl font-bold text-green-900 mb-6">
+                Get in Touch
+              </h2>
+              <div className="space-y-8">
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Mail className="w-6 h-6 text-green-600" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-green-900 mb-1">
+                      Email
+                    </h3>
+                    <p className="text-green-700 font-medium">
+                      sanasnursery@gmail.com
                     </p>
-                  )}
+                  </div>
                 </div>
 
-                <div className="">
-                  <Button
-                    type="submit"
-                    disabled={loading}
-                    variant="orange"
-                    size="lg"
-                  >
-                    {loading ? "Sending..." : "Subscribe"}
-                  </Button>
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <WhatsAppIcon />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-green-900 mb-1">
+                      WhatsApp
+                    </h3>
+                    <p className="text-green-700 font-medium">
+                      +91 8999481616 / +91 9090401616
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <MapPin className="w-6 h-6 text-green-600" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-green-900 mb-1">
+                      Location
+                    </h3>
+                    <p className="text-green-700 font-medium">
+                      Sanas Wholesale Nursery, Bori Fata, near ITI College,
+                      Uruli Kanchan, Maharashtra
+                    </p>
+                  </div>
+                </div>
+
+                <div className="bg-white p-4 rounded-xl shadow-inner">
+                  <h3 className="text-lg font-semibold text-green-900 mb-2">
+                    Response Time
+                  </h3>
+                  <p className="text-green-700 font-medium">
+                    We typically respond to all inquiries within 24 hours. Your
+                    message is important to us!
+                  </p>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </form>
-    </>
+      </section>
+    </div>
   );
-};
-
-export default Contact;
+}

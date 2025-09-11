@@ -2,7 +2,7 @@ import CollectionSection from "@/components/home/collection-section";
 import Gallery from "@/components/home/gallery";
 import HomeBanner from "@/components/home/home-banner";
 import ContactForm from "@/components/home/contact/contact";
-import BestSellingProduct from "@/components/home/best-selling-product";
+import BestSellingProduct from "@/components/home/corousel/best-selling-product";
 import Testimonials from "@/components/home/testimonial/testimonials";
 import Categories from "@/components/home/catogories";
 import YoutubeSection from "@/components/home/youtube-section";

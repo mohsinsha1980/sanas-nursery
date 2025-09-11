@@ -7,11 +7,17 @@ import { toast } from "sonner";
 import { UserInSessionTypes } from "./types/user-types";
 import { AddPlantFields } from "./types/admin-types";
 import {
+  BlogFilterType,
   PlantDataType,
   PlantFilterType,
   PlantsCardType,
 } from "./types/common-types";
-import { ENQUIRY_STATUS, EnquiryStatusType } from "./constants";
+import {
+  ENQUIRY_STATUS,
+  EnquiryStatusType,
+  BLOGS_PER_PAGE,
+  BLOG_CATEGORIES,
+} from "./constants";
 
 type InputDate = string | Date;
 interface errorType {
@@ -383,6 +389,20 @@ export const buildQueryString = (searchParams: PlantFilterType) => {
   return params.toString() ? "?" + params.toString() : "";
 };
 
+export const buildBlogQueryString = (searchParams: BlogFilterType) => {
+  const params = new URLSearchParams();
+
+  if (searchParams.search && searchParams.search.trim()) {
+    params.set("search", searchParams.search.trim());
+  }
+
+  // Always include pagination params as backend requires them
+  params.set("page", searchParams.page ?? "1");
+  params.set("per_page", searchParams.perPage ?? String(BLOGS_PER_PAGE));
+
+  return params.toString() ? "?" + params.toString() : "";
+};
+
 export const getInitials = (name: string) => {
   return name
     .split(" ")
@@ -454,6 +474,21 @@ export const formatDate = (dateString: string) => {
     hour: "2-digit",
     minute: "2-digit",
   });
+};
+
+export const categories = [
+  { name: "Fruit Trees", slug: "fruit-trees", image: "/plant3.png" },
+  { name: "Flower Trees", slug: "flower-trees", image: "/plant2.png" },
+  { name: "Shadow Trees", slug: "shadow-trees", image: "/plant1.png" },
+  { name: "Show Trees", slug: "show-trees", image: "/plant3.png" },
+  { name: "Masala", slug: "masala", image: "/plant2.png" },
+  { name: "Others", slug: "others", image: "/plant1.png" },
+];
+export const getCategoryLabel = (categoryValue: string) => {
+  const category = Object.values(BLOG_CATEGORIES).find(
+    (cat) => cat.value === categoryValue
+  );
+  return category?.label || categoryValue;
 };
 
 export const toCamelCase = (str: string) => {
