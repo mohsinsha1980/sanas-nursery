@@ -116,6 +116,10 @@ export const TagsSchema = z.object({
   label: z.string().nonempty("Tag label is required"),
 });
 
+export const BlogTagsSchema = z.object({
+  label: z.string().nonempty("Blog tag label is required"),
+});
+
 export const homeCardSchema = z.object({
   small: z.string().nonempty("Sub-heading is required"),
   smallColor: z.string().nonempty("Sub-heading color is required"),
@@ -165,7 +169,7 @@ const baseBlogSchema = {
   content: z.string().nonempty("Content is required"),
   author: z.string().optional(),
   category: z.string().optional(),
-  tags: z.array(z.string()).optional(),
+  tags: z.array(tagSchema).optional(),
   metaTitle: z
     .string()
     .max(60, "Meta title must be less than 60 characters")

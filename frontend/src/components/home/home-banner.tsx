@@ -31,9 +31,11 @@ export default function HomeBanner() {
             collection is designed to brighten your space, purify your air, and
             bring the calming touch of nature into your everyday life.
           </p>
-          <Button variant="orange" size="lg" className="">
-            <Link href="/categories/fruit-trees">View Collection</Link>
-          </Button>
+          <Link href="/categories/fruit-trees">
+            <Button variant="orange" size="lg" className="">
+              View Collection
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

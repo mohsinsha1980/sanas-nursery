@@ -41,6 +41,12 @@ export const getMasterData = (controller?: Controller) => {
   });
 };
 
+export const getPublicHomeData = (controller?: Controller) => {
+  return axiosInstance.get(`${config.API_PUBLIC_PATH}/home`, {
+    signal: controller?.signal,
+  });
+};
+
 export const getPlantDetailsBySlug = (
   plantSlug: string,
   controller?: Controller

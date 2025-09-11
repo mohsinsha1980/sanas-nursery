@@ -11,6 +11,9 @@ const Settings = new Schema(
     tags: {
       type: [fieldSchema],
     },
+    blogTags: {
+      type: [fieldSchema],
+    },
   },
   {
     collection: "MasterData",

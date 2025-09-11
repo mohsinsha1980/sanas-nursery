@@ -3,13 +3,17 @@ import {
   PLANTS_PER_PAGE,
   SIMILAR_PLANTS_COUNT,
   STATUS,
+  BEST_SELLING_TAG,
+  BEST_SELLING_PLANTS_LIMIT,
 } from "../lib/constants.js";
 import { buildPlantFilter, emailRegEx, phoneRegEx } from "../lib/util.js";
 import { ContactUs } from "../models/ContactUs.js";
+import Home from "../models/Home.js";
 import { OrderEnquiry } from "../models/OrderEnquiry.js";
 import Plant from "../models/Plant.js";
 import Settings from "../models/Settings.js";
 import Subscription from "../models/Subscription.js";
+import Testimonial from "../models/Testimonial.js";
 import { SendMailClient } from "zeptomail";
 import fs from "fs";
 import path from "path";
@@ -397,6 +401,72 @@ export const subscribeEmail = async (req, res, next) => {
   }
 };
 
+export const getPublicHomeData = async (req, res, next) => {
+  try {
+    const homeData = await Home.findOne({})
+      .populate({
+        path: "greenChoices",
+        select: "_id title plantId category pictures",
+        match: { status: STATUS.ACTIVE },
+      })
+      .lean();
+
+    const testimonials = await Testimonial.find({ status: STATUS.ACTIVE })
+      .select("_id author content rating link")
+      .sort({ createdAt: -1 })
+      .lean();
+
+    const bestSellingPlants = await Plant.find({
+      status: STATUS.ACTIVE,
+      "tags.value": BEST_SELLING_TAG,
+    })
+      .select("_id title plantId category pictures")
+      .limit(BEST_SELLING_PLANTS_LIMIT)
+      .sort({ createdAt: -1 })
+      .lean();
+
+    if (!homeData) {
+      const defaultHomeData = {
+        greenChoices: [],
+        cards: {},
+        gallery: {},
+        videos: [],
+        testimonials: [],
+        bestSellingPlants: [],
+      };
+
+      req.successResponse = {
+        message: "Home data retrieved successfully",
+        data: defaultHomeData,
+      };
+      return next();
+    }
+
+    const filteredGreenChoices =
+      homeData.greenChoices?.filter((plant) => plant !== null) || [];
+
+    const responseData = {
+      greenChoices: filteredGreenChoices,
+      cards: homeData.cards || {},
+      gallery: homeData.gallery || {},
+      videos: homeData.videos || [],
+      testimonials: testimonials || [],
+      bestSellingPlants: bestSellingPlants || [],
+    };
+
+    req.successResponse = {
+      message: "Home data retrieved successfully",
+      data: responseData,
+    };
+    return next();
+  } catch (error) {
+    console.log(error);
+    return next({
+      status: 500,
+      message: "Internal server error while fetching home data.",
+    });
+  }
+};
 const searchOptionsByField = (field, products) => {
   console.log("products", products);
   return products.map((product) => {

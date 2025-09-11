@@ -25,17 +25,17 @@ import { AxiosError } from "axios";
 import { CirclePlusIcon, Trash2Icon, XIcon } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import AddTagData from "./add-tags-data";
+import AddBlogTagsData from "./add-blog-tags-data";
 
 type Props = {
   data: MasterDataOption[];
 };
 
-export default function TagsField({ data }: Props) {
+export default function BlogTagsField({ data }: Props) {
   const dispatch = useDispatch();
-  const [openTag, setOpenTag] = useState<boolean>(false);
-  const [tagData, setTagData] = useState<MasterDataOption[]>(data);
-  const [tags, setTags] = useState<MasterDataOption[]>([]);
+  const [openBlogTag, setOpenBlogTag] = useState<boolean>(false);
+  const [blogTagData, setBlogTagData] = useState<MasterDataOption[]>(data);
+  const [blogTags, setBlogTags] = useState<MasterDataOption[]>([]);
   const [page, setPage] = useState<number>(1);
   const [search, setSearch] = useState<string>("");
   const [openConfirm, setOpenConfirm] = useState<boolean>(false);
@@ -44,27 +44,29 @@ export default function TagsField({ data }: Props) {
 
   useEffect(() => {
     if (data) {
-      setTagData(data);
+      setBlogTagData(data);
     }
   }, [data]);
 
   useEffect(() => {
     if (
       page &&
-      tagData &&
-      tagData.length &&
-      tagData.length > PAGINATION.PER_PAGE
+      blogTagData &&
+      blogTagData.length &&
+      blogTagData.length > PAGINATION.PER_PAGE
     ) {
-      setTags(getPaginatedMasterData(tagData, page, PAGINATION.PER_PAGE));
+      setBlogTags(
+        getPaginatedMasterData(blogTagData, page, PAGINATION.PER_PAGE)
+      );
     } else {
-      setTags(tagData);
+      setBlogTags(blogTagData);
     }
-  }, [page, tagData]);
+  }, [page, blogTagData]);
 
   useEffect(() => {
     if (data && data.length) {
       if (search) {
-        setTagData(
+        setBlogTagData(
           data.filter(
             (item) =>
               item.label.toLowerCase().includes(search.toLowerCase()) ||
@@ -72,7 +74,7 @@ export default function TagsField({ data }: Props) {
           )
         );
       } else {
-        setTagData(data);
+        setBlogTagData(data);
       }
     }
   }, [search, data]);
@@ -87,12 +89,16 @@ export default function TagsField({ data }: Props) {
     const deleteHandler = async () => {
       try {
         dispatch(showLoader());
-        await deleteMasterRecord(MASTER_DATA_TYPE.TAGS, idToDelete, controller);
-        setTagData((prev) => prev.filter((tag) => tag._id !== idToDelete));
-        showSuccessToast("Tag deleted successfully.");
+        await deleteMasterRecord(
+          MASTER_DATA_TYPE.BLOG_TAGS,
+          idToDelete,
+          controller
+        );
+        setBlogTagData((prev) => prev.filter((tag) => tag._id !== idToDelete));
+        showSuccessToast("Blog Tag deleted successfully.");
       } catch (e: unknown) {
         console.log(getErrorMessage(e as AxiosError));
-        showErrorToast("Error while deleting Tag.");
+        showErrorToast("Error while deleting Blog Tag.");
       } finally {
         setIdToDelete("");
         setConfirmVal(false);
@@ -116,12 +122,12 @@ export default function TagsField({ data }: Props) {
     <div className="pt-5 ">
       <div className="flex flex-row">
         <div className="basis-1/4">
-          <h2>Plant Tags</h2>
+          <h2>Blog Tags</h2>
         </div>
         <div className="basis-2/4 relative">
           <Input
-            placeholder="Search a tag"
-            className="h-8 border-none rounded-lg"
+            placeholder="Search a blog tag"
+            className="h-8 border-none rounded-lg pr-8"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
@@ -138,7 +144,7 @@ export default function TagsField({ data }: Props) {
             variant={"orange"}
             type="button"
             size="sm"
-            onClick={() => setOpenTag(true)}
+            onClick={() => setOpenBlogTag(true)}
           >
             <CirclePlusIcon /> Add
           </Button>
@@ -149,10 +155,10 @@ export default function TagsField({ data }: Props) {
         <TableHeader>
           <TableRow className="bg-slate-50 hover:bg-slate-50 border-b border-slate-200">
             <TableHead className="text-left font-semibold text-slate-700 py-2 px-3 sm:px-6 text-xs sm:text-sm">
-              Tag Label
+              Blog Tag Label
             </TableHead>
             <TableHead className="text-left font-semibold text-slate-700 py-2 px-3 sm:px-6 text-xs sm:text-sm">
-              Tag Value
+              Blog Tag Value
             </TableHead>
             <TableHead className="text-right w-20 font-semibold text-slate-700 py-2 px-3 sm:px-6 text-xs sm:text-sm">
               Actions
@@ -160,8 +166,8 @@ export default function TagsField({ data }: Props) {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {tags.length ? (
-            tags.map((data, index) => (
+          {blogTags.length ? (
+            blogTags.map((data, index) => (
               <TableRow
                 key={index}
                 className="border-b border-slate-100 last:border-b-0 hover:bg-slate-50 transition-colors duration-150"
@@ -195,28 +201,28 @@ export default function TagsField({ data }: Props) {
       </Table>
 
       <CustomPagination
-        total={tagData.length}
+        total={blogTagData.length}
         perPage={PAGINATION.PER_PAGE}
         pageChange={setPage}
       />
 
       <CustomDialog
-        title="Add a new tag"
-        open={openTag}
-        onclose={(open: boolean) => setOpenTag(open)}
+        title="Add a new blog tag"
+        open={openBlogTag}
+        onclose={(open: boolean) => setOpenBlogTag(open)}
         className="max-w-[400px]"
       >
-        <AddTagData
+        <AddBlogTagsData
           onAdd={(data) => {
-            setTagData((prev) => [...prev, data]);
+            setBlogTagData((prev) => [...prev, data]);
           }}
-          onClose={() => setOpenTag(false)}
+          onClose={() => setOpenBlogTag(false)}
         />
       </CustomDialog>
 
       <CustomDialog
-        title="Are you sure you want to delete this tag?"
-        description="This action cannot be undone and will permanently delete your tag."
+        title="Are you sure you want to delete this blog tag?"
+        description="This action cannot be undone and will permanently delete your blog tag."
         open={openConfirm}
         onclose={(open: boolean) => setOpenConfirm(open)}
         className="max-w-[500px]"

@@ -1,5 +1,6 @@
 "use client";
 import TagsField from "@/components/admin/settings/tags/tag-field";
+import BlogTagsField from "@/components/admin/settings/blog-tags/blog-tags-field";
 import { Card } from "@/components/ui/card";
 import { getMasterData } from "@/lib/api-routes/api-admin";
 import { getErrorMessage, showErrorToast } from "@/lib/helper";
@@ -11,6 +12,7 @@ import { useDispatch } from "react-redux";
 
 const defaultMasterData = {
   tags: [],
+  blogTags: [],
 };
 
 const SettingsPage = () => {
@@ -19,7 +21,6 @@ const SettingsPage = () => {
 
   useEffect(() => {
     const controller = new AbortController();
-
     const getMasterDataHandler = async () => {
       try {
         dispatch(showLoader());
@@ -50,6 +51,11 @@ const SettingsPage = () => {
         <Card className="w-1/2 px-4 bg-white">
           <div>
             <TagsField data={masterData.tags} />
+          </div>
+        </Card>
+        <Card className="w-1/2 px-4 bg-white">
+          <div>
+            <BlogTagsField data={masterData.blogTags} />
           </div>
         </Card>
       </div>

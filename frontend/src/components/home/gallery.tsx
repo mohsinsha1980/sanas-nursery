@@ -4,13 +4,34 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { HomeGallery } from "@/lib/types/public-types";
+import { defultHomeData } from "@/lib/constants";
+import { getPicURL } from "@/lib/helper";
 
-export default function Gallery() {
-  const images = [
-    "/site/home/gallery/gallery1.webp",
-    "/site/home/gallery/gallery2.webp",
-    "/site/home/gallery/gallery3.webp",
-  ];
+export default function HomeGallerySection({
+  gallery,
+}: {
+  gallery: HomeGallery;
+}) {
+  const images = [];
+
+  if (gallery.G1) {
+    images.push(getPicURL(gallery.G1));
+  } else {
+    images.push(defultHomeData.Gallery.G1);
+  }
+
+  if (gallery.G2) {
+    images.push(getPicURL(gallery.G2));
+  } else {
+    images.push(defultHomeData.Gallery.G2);
+  }
+
+  if (gallery.G3) {
+    images.push(getPicURL(gallery.G3));
+  } else {
+    images.push(defultHomeData.Gallery.G3);
+  }
 
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
@@ -29,7 +50,6 @@ export default function Gallery() {
   return (
     <section className="w-full flex lg:pt-26 lg:pb-30 md:pt-20 md:pb-20 pt-10 pb-10 justify-center bg-white ">
       <div className="w-full max-w-[1920px] flex flex-col items-center justify-center px-4 md:px-8 ">
-        {/* Heading */}
         <div className="text-center lg:mb-12 md:mb-10 mb-5 ">
           <h2 className="lg:text-[42px] md:text-[36px] text-[28px] font-semibold text-center">
             <span className="text-[rgba(0,97,31,1)]">Green</span> Moments
@@ -41,10 +61,8 @@ export default function Gallery() {
           </p>
         </div>
 
-        {/* Grid */}
         <div className="w-full max-w-[1200px] flex items-center justify-center    ">
           <div className="grid grid-cols-1 lg:grid-cols-[529px_828px] gap-4 max-w-[1200px] w-full    ">
-            {/* Left Big Image */}
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -98,15 +116,12 @@ export default function Gallery() {
             className="relative max-w-[90%] max-h-[90%]"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Close button */}
             <button
               className="absolute top-4 right-4 text-white text-3xl z-50"
               onClick={() => setSelectedIndex(null)}
             >
               <X size={32} />
             </button>
-
-            {/* Prev Arrow */}
             <button
               className="absolute left-4 top-1/2 -translate-y-1/2 text-white text-4xl z-50"
               onClick={handlePrev}
@@ -114,7 +129,6 @@ export default function Gallery() {
               <ChevronLeft size={40} />
             </button>
 
-            {/* Next Arrow */}
             <button
               className="absolute right-4 top-1/2 -translate-y-1/2 text-white text-4xl z-50"
               onClick={handleNext}
@@ -122,7 +136,6 @@ export default function Gallery() {
               <ChevronRight size={40} />
             </button>
 
-            {/* Image */}
             <motion.img
               key={selectedIndex}
               src={images[selectedIndex]}

@@ -11,6 +11,7 @@
   --heading-txt: #1d2f33;
   --txt-dark: #1d2f33;
   --radius: 0.625rem;
+  --testimonial-time:20s
 
   /* Standardized Height Values */
   --height-xs: 1.5rem;
@@ -630,13 +631,16 @@ footer {
   }
 }
 
-/* Custom Container */
 .custom-container {
   max-width: 1200px;
   width: 100%;
 }
 
 .rn-whatsapp-button .rn-whatsapp-popup {
-  height: 500px !important;
-  /* increase widget height */
+  height: 500px !important; 
 }
+
+.styles-module_status__-ln3V{
+  display : none
+}
+

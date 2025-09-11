@@ -12,6 +12,8 @@ routes.get("/plants/:category_slug", publicCtrl.getCatProducts);
 
 routes.get("/master-data", publicCtrl.getMasterData);
 
+routes.get("/home", publicCtrl.getPublicHomeData);
+
 routes.get("/plant-slug/:slug", publicCtrl.getPlantDetailsBySlug);
 
 routes.get("/plant-ID/:id", publicCtrl.getPlantDetailsByID);
