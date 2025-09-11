@@ -15,27 +15,10 @@ import {
   PlantFilterType,
 } from "../types/common-types";
 import config from "@/config/env-config";
-import { ContactFormData } from "@/components/home/contact/schema";
 import { buildBlogQueryString, buildQueryString } from "../helper";
 
 export const refreshToken = (controller?: Controller) => {
   return axiosInstance.get(`${config.API_USER_PATH}/refreshToken`, {
-    signal: controller?.signal,
-  });
-};
-
-export const addContactUs = (
-  data: ContactFormData,
-  controller?: Controller
-) => {
-  const formData = new FormData();
-
-  formData.append("name", data.name);
-  formData.append("email", data.email);
-  formData.append("phonenumber", data.phonenumber);
-  formData.append("message", data.message);
-
-  return axiosInstance.post(`/contact-us`, formData, {
     signal: controller?.signal,
   });
 };
@@ -128,5 +111,11 @@ export const getRelatedBlogs = (blogId: string, controller?: Controller) => {
   return fetch(`${config.API_PUBLIC_PATH}/blogs/related/${blogId}`, {
     signal: controller?.signal,
     cache: "no-store",
+  });
+};
+
+export const getGlobalSearchOpt = (controller: Controller) => {
+  return axiosInstance.get(`${config.API_PUBLIC_PATH}/global-search-opt`, {
+    signal: controller?.signal,
   });
 };

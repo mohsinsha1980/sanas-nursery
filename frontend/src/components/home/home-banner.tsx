@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export default function HomeBanner() {
   return (
@@ -31,7 +32,7 @@ export default function HomeBanner() {
             bring the calming touch of nature into your everyday life.
           </p>
           <Button variant="orange" size="lg" className="">
-            View Collection
+            <Link href="/categories/fruit-trees">View Collection</Link>
           </Button>
         </div>
       </div>

@@ -90,7 +90,7 @@ export default function InfiniteOrSlider() {
     arrows: false,
   };
 
-  const duplicatedItems = [...items, ...items, ...items];
+  const duplicatedItems = [...items, ...items];
 
   return (
     <>

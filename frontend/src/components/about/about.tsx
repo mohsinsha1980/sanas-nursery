@@ -18,7 +18,9 @@ const About = () => {
               wide variety of fruit trees, flower trees, show trees, and shadow
               trees. Each plant is nurtured with care using eco-friendly
               practices and expert horticultural knowledge, ensuring healthy and
-              high-quality growth. Our mission is to inspire sustainable
+              high-quality growth. 
+              <br />
+              Our mission is to inspire sustainable
               gardening and help our customers create vibrant green spaces. We
               guide plant lovers, hobbyists, and professional landscapers in
               choosing and caring for plants while introducing rare and unique

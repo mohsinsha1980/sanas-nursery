@@ -28,14 +28,14 @@ export default function MainHeader() {
   return (
     <header className="md:relative flex justify-center items-center w-full">
       <div
-        className={`bg-nav fixed top-0 transition-transform flex justify-center w-full ${
+        className={`bg-nav fixed top-0 z-50 transition-transform flex justify-center w-full overflow-visible ${
           isScrolled
             ? "bg-white/30 backdrop-blur-md md:absolute md:translate-y-0 md:top-0"
             : "md:absolute"
         }`}
       >
         <div
-          className={`main_header w-[95%] md:max-w-[var(--container-7xl)] md:px-[var(--spacing-lg)] mx-auto`}
+          className={`main_header w-[95%] md:max-w-[var(--container-7xl)] md:px-[var(--spacing-lg)] mx-auto overflow-visible`}
         >
           <div>
             <Logo size={60} />
