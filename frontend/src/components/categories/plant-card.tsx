@@ -68,7 +68,7 @@ const PlantCard = ({ data }: { data: PlantsCardType }) => {
         </button>
 
         <ProductListItemPics pics={data.pictures} />
-        <p className="text-[#505050] lg:text-[18px] md:text-[36px] text-[28px] font-semibold mt-2 text-center transition-colors duration-300 group-hover:text-[#DA5700]">
+        <p className="text-[#505050] lg:text-[18px] md:text-[36px] text-[18px] font-semibold mt-2 text-center transition-colors duration-300 group-hover:text-[#DA5700]">
           {data.title}
         </p>
       </div>

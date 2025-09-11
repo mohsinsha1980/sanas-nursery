@@ -87,36 +87,37 @@ export default async function CollectionPage({
   return (
     <Suspense fallback={<Loading />}>
       <div className="relative flex flex-col justify-between items-center ">
-        <div className="w-full h-[500px]">
+        <div className="w-full lg:h-[500px] ">
           <CategoryHero categoryValue={category} />
         </div>
 
-        <div className="w-full h-full pt-20 text-center">
-          <h2 className="text-[#0D6536] lg:text-[64px] font-bold leading-18">
+        <div className="w-full h-full lg:pt-20 pt-10 text-center">
+          <h2 className="text-[#0D6536] lg:text-[64px] md:text-[36px] text-[38px] font-semibold text-center">
             {categoryData?.label || category}
           </h2>
-          <p className="text-[#505050] lg:text-[20px] font-medium">
+          <p className="text-[#505050] lg:text-[20px] md:text-[22px] text-[16px] font-semibold">
             Explore a variety of fruit trees perfect for your garden
           </p>
         </div>
 
         <div
           key="plant-list-main-div"
-          className="h-full max-w-[1250px] lg:pt-20 lg:pb-20 flex flex-col justify-center items-center     "
+          className="h-full lg:max-w-[1250px] w-full lg:pt-20 lg:pb-20 pt-10 pb-10 flex flex-col justify-center items-center   lg:px-0 px-3  "
         >
           <div key="filter-list-sort" className="relative  w-full h-full     ">
             <div
               key="filter-and-list"
-              className="h-full w-full flex justify-between    "
+              className="h-full w-full flex lg:flex-row flex-col justify-between gap-y-10   "
             >
               <div className="">
                 <CategoryFilter />
               </div>
+
               <div
                 key="list-div"
-                className="w-[80%] h-[100%] flex flex-col justify-center "
+                className="lg:w-[80%] w-full h-[100%] flex flex-col justify-center "
               >
-                <div className="grid grid-cols-4 gap-6 ">
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 ">
                   {updatedPlants.length > 0 ? (
                     updatedPlants.map((plant) => (
                       <PlantCard key={plant.id} data={plant} />

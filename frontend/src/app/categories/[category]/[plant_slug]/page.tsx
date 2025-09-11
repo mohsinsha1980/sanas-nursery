@@ -83,7 +83,7 @@ export default async function ProductDetailsPageBySlug({
         </div>
       </section>
 
-      <section className="bg-white py-10">
+      <section className="bg-white py-10 ">
         <div className="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-10">
           <div>
             <ProductPictureSlider pictures={pictures} />

@@ -10,7 +10,7 @@ export default function PlantDescTabs({ plant }: { plant: PlantDataType }) {
       className="w-full mx-auto p-5 rounded-lg bg-green-50"
     >
       {/* Tabs List */}
-      <TabsList className="flex w-full justify-start gap-4 ">
+      <TabsList className="flex w-full justify-start gap-4 lg:mb-0 mb-5">
         <TabsTrigger
           value="description"
           className="px-4 py-2 text-[18px] font-medium text-gray-800 data-[state=active]:bg-[#F37521] data-[state=active]:text-white hover:bg-orange-100 transition"
@@ -29,7 +29,10 @@ export default function PlantDescTabs({ plant }: { plant: PlantDataType }) {
       </TabsList>
 
       {/* Description Tab */}
-      <TabsContent value="description" className=" text-[18px] font-semibold text-gray-800 leading-relaxed">
+      <TabsContent
+        value="description"
+        className=" text-[18px] font-semibold text-gray-800 leading-relaxed"
+      >
         <div
           dangerouslySetInnerHTML={{ __html: plant.description }}
           className="prose max-w-none"

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { categories } from "@/lib/helper";
+import { categories } from "@/lib/constants";
 
 export default function HeaderNav() {
   const pathname = usePathname();
