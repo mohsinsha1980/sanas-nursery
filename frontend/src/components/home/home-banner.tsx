@@ -15,7 +15,7 @@ export default function HomeBanner() {
         />
         <div
           className="z-1 absolute 
-        lg:max-w-[611px] lg:h-[385px] lg:top-[58%] lg:left-[28%] lg:space-y-4
+        lg:max-w-[611px] lg:h-[385px] lg:top-[50%] lg:left-[28%] lg:space-y-4
         md:w-[500px] md:h-fit md:top-1/2 md:left-[40%] md:-translate-y-1/2 md:space-y-6 md:items-start
         w-[90%] h-fit top-[55%] -translate-y-1/2 left-1/2 -translate-x-1/2 space-y-5 flex flex-col justify-center items-center
         "

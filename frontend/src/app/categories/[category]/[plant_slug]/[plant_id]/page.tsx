@@ -76,28 +76,28 @@ export default async function ProductDetailsPageByID({
 
   return (
     <Suspense fallback={<DetailsLoading />}>
-      <section className="bg-white py-10 mt-30">
-        <div className="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-10  ">
-          <div className=" ">
+      <section className="bg-white py-10 mt-30 ">
+        <div className="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 lg:gap-10 gap-5  ">
+          <div className="">
             <ProductPictureSlider pictures={pictures} />
           </div>
 
-          <div className="space-y-5  ">
+          <div className="space-y-5 flex flex-col lg:justify-start justify-between lg:items-start items-center ">
             <div>
-              <h1 className="text-[40px] font-bold text-[#0D6536]">
+              <h1 className="text-[40px] font-bold text-[#0D6536] lg:text-start text-center">
                 {plant.title}
               </h1>
             </div>
 
             {plant.summary && (
-              <p className="text-[18px] font-semibold leading-relaxed ">
+              <p className="text-[18px] font-semibold leading-relaxed lg:text-start text-center">
                 {plant.summary}
               </p>
             )}
 
             {plant.details && (
               <div
-                className="text-[18px] font-semibold leading-relaxed  "
+                className="text-[18px] font-semibold leading-relaxed lg:text-start text-center "
                 dangerouslySetInnerHTML={{ __html: plant.details }}
               />
             )}
@@ -130,18 +130,19 @@ export default async function ProductDetailsPageByID({
         </div>
       </section>
 
-      <section className="container mx-auto px-4 mb-10  ">
+      <section className="container mx-auto lg:px-0 px-3 lg:mb-30 md:mb-20 mb-10  ">
         <PlantDescTabs plant={plant} />
       </section>
 
       {similarPlants.length > 0 && (
-        <section className="py-10 bg-orange-50">
-          <div className="container mx-auto px-4">
-            <h2 className="lg:text-[42px] md:text-[36px] text-[28px] font-semibold text-center mb-15 ">
-              Similar <span className="text-[#00611F]">Plant</span> You Might Like
+        <section className="lg:pt-30 lg:pb-30 md:pt-20 md:pb-20 pt-10 pb-10 bg-orange-50 ">
+          <div className="container mx-auto px-4 ">
+            <h2 className="lg:text-[42px] md:text-[36px] text-[28px] font-semibold text-center mb-10 ">
+              Similar <span className="text-[#00611F]">Plant</span> You Might
+              Like
             </h2>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-between items-center gap-6 ">
               {similarPlants.map((sp) => (
                 <Link
                   key={sp._id}
@@ -149,7 +150,7 @@ export default async function ProductDetailsPageByID({
                 >
                   <div className="relative cursor-pointer transition-transform duration-300 hover:scale-105 overflow-hidden group  ">
                     {/* Image */}
-                    <div className="relative w-[90%] h-[400px]">
+                    <div className="relative w-[90%] h-[400px] mx-auto">
                       <Image
                         src={getPicURL(sp.pictures[0])}
                         alt={sp.title}

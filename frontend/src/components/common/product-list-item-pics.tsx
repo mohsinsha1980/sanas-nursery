@@ -32,7 +32,13 @@ export default function ProductListItemPics({ pics }: { pics: string[] }) {
         <div className="bl__slider__container">
           {pics.map((item, index) => (
             <div className="bl__slider__slide" key={item + index}>
-              <Image src={item} width={260} height={325} alt="" className="rounded-lg"/>
+              <Image
+                src={item}
+                width={260}
+                height={325}
+                alt=""
+                className="rounded-lg lg:w-full lg:h-full"
+              />
             </div>
           ))}
         </div>

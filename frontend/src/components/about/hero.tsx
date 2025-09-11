@@ -11,7 +11,7 @@ const Hero = () => {
         alt=""
         className="h-screen w-full"
       />
-      <div className="z-10 absolute left-[9%] top-1/2 -translate-y-1/2 w-[600px] h-fit flex flex-col justify-center items-center lg:pb-10  pb-5  ">
+      <div className="z-10 absolute lg:left-[9%] top-1/2 -translate-y-1/2 lg:w-[600px] w-full h-fit flex flex-col justify-center items-center lg:pb-10  pb-5  ">
         <h1 className="lg:text-[42px] md:text-[36px] text-[28px] font-semibold lg:text-start text-center">
           Your Go-To <span className="text-[#00611F]">Plants and Trees</span>{" "}
           Supplier in Uruli Kanchan – Sanas Nursery.

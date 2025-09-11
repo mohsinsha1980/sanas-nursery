@@ -54,7 +54,7 @@ export default function BlogSearch() {
             placeholder="Search..."
             value={searchText || ""}
             onChange={(e) => setSearchText(e.target.value)}
-            className="w-full pl-12 pr-20 py-6 text-lg border-2 border-gray-200 rounded-2xl focus:border-green-500 focus:ring-green-500 bg-white shadow-lg"
+            className="w-full pl-12 pr-20 py-6 text-lg border-2 border-gray-200 rounded-lg bg-white shadow-lg"
           />
           <div className="absolute inset-y-0 right-0 flex items-center pr-2">
             {hasSearch && (
@@ -68,10 +68,7 @@ export default function BlogSearch() {
                 <X className="h-6 w-6" />
               </Button>
             )}
-            <Button
-              type="submit"
-              className="bg-gradient-to-r from-green-600 to-orange-500 hover:from-green-700 hover:to-orange-600 text-white px-6 py-2 rounded-xl font-medium transition-all duration-300 shadow-lg hover:shadow-xl"
-            >
+            <Button type="submit" variant={"orange"} size={"lg"} className="">
               <Search className="h-4 w-4 mr-2" />
               Search
             </Button>

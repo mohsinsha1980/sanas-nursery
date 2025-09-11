@@ -4,9 +4,9 @@ import Image from "next/image";
 const About = () => {
   return (
     <div>
-      <div className="h-full w-full lg:pt-30 lg:pb-30 md:pt-20 md:pb-20 pt-10 pb-10 flex flex-row justify-center    ">
-        <div className="h-[545px] max-w-[1370px] md:w-[90%] w-[100%] flex justify-around  ">
-          <div className="h-full w-[621px] py-10 flex flex-col justify-between items-start ">
+      <div className="h-full w-full lg:pt-30 lg:pb-30 md:pt-20 md:pb-20 pt-10 pb-10 flex flex-row justify-center     ">
+        <div className="lg:h-[545px] h-full max-w-[1370px] md:w-[90%] w-[100%] flex lg:flex-row flex-col justify-around   ">
+          <div className="h-full lg:w-[621px] w-full lg:py-10 lg:pb-0 pb-10 flex flex-col justify-between lg:items-start lg:space-y-0 space-y-2 ">
             <h1 className="text-[#00611F] lg:text-[42px] md:text-[36px] text-[28px] font-semibold lg:text-start text-center ">
               About Sanas Nursery
             </h1>
@@ -29,7 +29,7 @@ const About = () => {
               garden flourish.
             </p>
           </div>
-          <div className="h-full w-[559px]  ">
+          <div className="h-full lg:w-[559px] w-full  ">
             <Image
               src="/about-about.jpg"
               height={900}

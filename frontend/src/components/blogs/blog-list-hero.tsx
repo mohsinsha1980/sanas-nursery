@@ -1,41 +1,39 @@
-import { BookOpen, Sparkles, TrendingUp } from "lucide-react";
-import React from "react";
+import { Sparkles, TrendingUp } from "lucide-react";
+import Image from "next/image";
 
 const BlogListHero = () => {
   return (
-    <div className="relative bg-gradient-to-br from-green-600 via-green-700 to-orange-500 py-20 overflow-hidden min-h-[600px]">
-      <div className="absolute inset-0 bg-black/10"></div>
-      <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full -translate-y-48 translate-x-48"></div>
-      <div className="absolute bottom-0 left-0 w-80 h-80 bg-white/5 rounded-full translate-y-40 -translate-x-40"></div>
-
-      <div className="container mx-auto px-4 text-center relative z-10" 
-      style={{
-        position: 'absolute',
-        top: `50%`,
-        left: '50%',
-        transform: 'translateX(-50%) translateY(-50%)',
-        width: '100%'
-      }}>
-        <div className="flex items-center justify-center mb-6">
-          <div className="bg-white/20 backdrop-blur-sm rounded-full p-3 mr-4">
-            <BookOpen className="h-8 w-8 text-white" />
-          </div>
-          <h1 className="text-5xl md:text-6xl font-bold text-white">
-            Our Blog
-          </h1>
-        </div>
-        <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto mb-8 leading-relaxed">
+    <div className="relative">
+      <Image
+        src="/site/blogs/hero.jpg"
+        height={1700}
+        width={1700}
+        alt=""
+        className="h-screen w-full"
+      />
+      <div
+        className="z-1 absolute 
+        lg:w-[911px] lg:h-[300px] lg:top-[70%] lg:left-[40%] lg:space-y-7
+        md:w-[500px] md:h-fit md:top-1/2 md:left-[40%] md:-translate-y-1/2 md:space-y-6 md:items-start
+        w-[90%] h-fit top-[55%] -translate-y-1/2 left-1/2 -translate-x-1/2 space-y-5 flex flex-col justify-center items-center  "
+      >
+        <h1 className="text-[#354733] lg:text-[64px] md:text-[50px] text-[40px] font-bold lg:leading-18 leading-13 md:text-start text-center">
+          Our Blog
+        </h1>
+        <p className="text-[#505050] lg:text-[22px] md:text-[20px] text-[20px] font-semibold md:text-start text-center">
           Discover expert gardening tips, plant care guides, and nursery
           insights to help you grow a thriving garden.
         </p>
-        <div className="flex items-center justify-center gap-8 text-white/80">
-          <div className="flex items-center gap-2">
-            <TrendingUp className="h-5 w-5" />
-            <span className="text-sm font-medium">Expert Tips</span>
+        <div className="flex items-center justify-between gap-15 text-[#505050] lg:text-[22px] md:text-[20px] text-[20px] font-medium ">
+          <div className="w-full h-full flex items-center gap-2">
+            <TrendingUp className="h-7 w-10" />
+            <span className="text-md font-semibold">Expert Tips</span>
           </div>
-          <div className="flex items-center gap-2">
-            <Sparkles className="h-5 w-5" />
-            <span className="text-sm font-medium">Fresh Content</span>
+          <div className="w-full h-full flex items-center gap-2">
+            <Sparkles className="h-7 w-10" />
+            <p className="text-md font-semibold whitespace-nowrap">
+              Fresh Content
+            </p>
           </div>
         </div>
       </div>
