@@ -137,6 +137,23 @@ export interface ContactEnquiryFilterTypes {
   status?: "pending" | "contacted" | "resolved" | "closed";
 }
 
+export interface DashboardStats {
+  orderEnquiries: {
+    total: number;
+    pending: number;
+    contacted: number;
+    resolved: number;
+    closed: number;
+  };
+  contactEnquiries: {
+    total: number;
+    pending: number;
+    contacted: number;
+    resolved: number;
+    closed: number;
+  };
+}
+
 // export interface PlantTableDataType {
 //   title: string;
 //   plantId: string;
@@ -144,3 +161,20 @@ export interface ContactEnquiryFilterTypes {
 //   actions: DataTableActionType[];
 //   picture: string;
 // }
+
+export interface DashboardStats {
+  orderEnquiries: {
+    total: number;
+    pending: number;
+    contacted: number;
+    resolved: number;
+    closed: number;
+  };
+  contactEnquiries: {
+    total: number;
+    pending: number;
+    contacted: number;
+    resolved: number;
+    closed: number;
+  };
+}

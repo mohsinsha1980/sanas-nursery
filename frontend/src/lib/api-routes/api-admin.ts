@@ -535,3 +535,9 @@ export const toggleBlogFeatured = (blogId: string, controller?: Controller) => {
     }
   );
 };
+
+export const getDashboardStats = (controller?: Controller) => {
+  return axiosInstance.get(`${config.API_ADMIN_PATH}/dashboard/stats`, {
+    signal: controller?.signal,
+  });
+};
