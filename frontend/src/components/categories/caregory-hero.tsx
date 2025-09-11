@@ -1,11 +1,8 @@
 import { CATEGORY_ARR } from "@/lib/constants";
 import Image from "next/image";
-import { title } from "process";
-import React from "react";
 
 const CategoryHero = ({ categoryValue }: { categoryValue: string }) => {
   const category = CATEGORY_ARR.find((cat) => cat.value === categoryValue);
-  console.log(category);
   return (
     <div key="hero">
       <div className="relative w-full lg:h-[500px] h-screen">

@@ -1,5 +1,4 @@
-import { BookOpen, Sparkles, TrendingUp } from "lucide-react";
-import React from "react";
+import { Sparkles, TrendingUp } from "lucide-react";
 import Image from "next/image";
 
 const BlogListHero = () => {

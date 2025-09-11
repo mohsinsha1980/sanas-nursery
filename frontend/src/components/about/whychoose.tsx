@@ -11,41 +11,41 @@ interface CardProps {
   };
 }
 
-const Card = ({ item }: CardProps) => {
-  const [isHovered, setIsHovered] = useState(false);
+// const Card = ({ item }: CardProps) => {
+//   const [isHovered, setIsHovered] = useState(false);
 
-  return (
-    <div
-      className="flex-1 min-w-[200px] max-w-[250px] flex justify-center items-center border-2 border-[#4CBA9B] rounded-lg hover:bg-[#4CBA9B] transition-colors duration-300"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      <div className="w-[170px] h-[227px] flex flex-col justify-evenly items-center text-center">
-        <Image
-          src={isHovered ? item.img : item.imgonhover}
-          alt={item.title}
-          width={200}
-          height={200}
-          className="mb-4 w-[64px] h-[64px]"
-        />
-        <h3
-          className={`font-semibold lg:text-[20px] text-[16px] mb-2 ${
-            isHovered ? "text-white" : "text-[#323F32]"
-          }`}
-        >
-          {item.title}
-        </h3>
-        <p
-          className={`lg:text-[16px] text-[14px] ${
-            isHovered ? "text-white" : "text-[#505050]"
-          }`}
-        >
-          {item.desc}
-        </p>
-      </div>
-    </div>
-  );
-};
+//   return (
+//     <div
+//       className="flex-1 min-w-[200px] max-w-[250px] flex justify-center items-center border-2 border-[#4CBA9B] rounded-lg hover:bg-[#4CBA9B] transition-colors duration-300"
+//       onMouseEnter={() => setIsHovered(true)}
+//       onMouseLeave={() => setIsHovered(false)}
+//     >
+//       <div className="w-[170px] h-[227px] flex flex-col justify-evenly items-center text-center">
+//         <Image
+//           src={isHovered ? item.img : item.imgonhover}
+//           alt={item.title}
+//           width={200}
+//           height={200}
+//           className="mb-4 w-[64px] h-[64px]"
+//         />
+//         <h3
+//           className={`font-semibold lg:text-[20px] text-[16px] mb-2 ${
+//             isHovered ? "text-white" : "text-[#323F32]"
+//           }`}
+//         >
+//           {item.title}
+//         </h3>
+//         <p
+//           className={`lg:text-[16px] text-[14px] ${
+//             isHovered ? "text-white" : "text-[#505050]"
+//           }`}
+//         >
+//           {item.desc}
+//         </p>
+//       </div>
+//     </div>
+//   );
+// };
 
 const WhyChoose = () => {
   const data = [
