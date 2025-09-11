@@ -80,9 +80,9 @@ export default function AddBlog() {
 
   return (
     <>
-      <div className="flex justify-between items-center pb-5">
-        <h1 className="text-2xl font-bold text-gray-900">Add New Blog</h1>
-        <Button variant="orange" type="button" size="md" className="h-fit ">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center pb-4 gap-3">
+        <h1 className="!p-0">Add New Blog</h1>
+        <Button variant="orange" type="button" size="sm">
           <Link href="/admin/blogs">Back</Link>
         </Button>
       </div>
@@ -100,7 +100,7 @@ export default function AddBlog() {
                     name="title"
                     label="Blog Title"
                     placeholder="Enter blog title"
-                    className="rounded-md"
+                    className="rounded-md border-black/10"
                     labelClassName="text-base font-medium"
                     formControl={form.control}
                     onchange={(val) => {
@@ -116,6 +116,7 @@ export default function AddBlog() {
                     formControl={form.control}
                     description="Short description that appears in blog listings (max 300 characters)"
                     descriptionClassName="text-sm text-gray-500"
+                    className="rounded-md border-black/10"
                   />
 
                   <RichTextField
@@ -124,6 +125,7 @@ export default function AddBlog() {
                     labelClassName="text-base font-medium"
                     placeholder="Write your blog content here..."
                     formControl={form.control}
+                    className="rounded-md border-black/10"
                   />
                 </div>
               </div>
@@ -138,7 +140,7 @@ export default function AddBlog() {
                     label="Meta Title"
                     placeholder="SEO title for search engines"
                     formControl={form.control}
-                    className="rounded-md"
+                    className="rounded-md border-black/10"
                     labelClassName="text-base font-medium"
                     description="Title for search engines (max 60 characters)"
                     descriptionClassName="text-sm text-gray-500"
@@ -152,6 +154,7 @@ export default function AddBlog() {
                     formControl={form.control}
                     description="Description for search engines (max 160 characters)"
                     descriptionClassName="text-sm text-gray-500"
+                    className="rounded-md border-black/10"
                   />
                 </div>
               </div>
@@ -169,7 +172,7 @@ export default function AddBlog() {
                   multiple={false}
                   accept="image/jpeg, image/jpg, image/png, image/webp"
                   placeholder="Choose cover image"
-                  className="rounded-md"
+                  className="rounded-md border-black/10"
                   formControl={form.control}
                   description="Recommended size: 800x450px"
                   descriptionClassName="text-sm text-gray-500"
@@ -202,6 +205,7 @@ export default function AddBlog() {
                     formControl={form.control}
                     allowCustomValue={false}
                     options={Object.values(BLOG_CATEGORIES)}
+                    className="rounded-md border-black/10"
                   />
 
                   <TextField
@@ -209,7 +213,7 @@ export default function AddBlog() {
                     label="Author"
                     placeholder="Enter author name"
                     inputType="text"
-                    className="rounded-md"
+                    className="rounded-md border-black/10"
                     labelClassName="text-base font-medium"
                     formControl={form.control}
                   />
@@ -219,10 +223,10 @@ export default function AddBlog() {
                     label="Reading Time (minutes)"
                     placeholder="5"
                     inputType="number"
-                    className="rounded-md"
+                    className="rounded-md border-black/10"
                     labelClassName="text-base font-medium"
                     formControl={form.control}
-                    suffix="Minutes"
+                    suffix="Mins"
                   />
 
                   <MultipleSelectField
@@ -231,6 +235,7 @@ export default function AddBlog() {
                     placeholder="Select or add tags"
                     formControl={form.control}
                     options={[]}
+                    className="rounded-md border-black/10"
                   />
 
                   <div className="space-y-3">
@@ -249,6 +254,7 @@ export default function AddBlog() {
                       formControl={form.control}
                       allowCustomValue={false}
                       options={STATUS_OPTIONS}
+                      className="rounded-md border-black/10"
                     />
                   </div>
                 </div>
@@ -256,10 +262,11 @@ export default function AddBlog() {
             </div>
           </div>
 
-          <div className="flex justify-end">
+          <div className="">
             <Button
               type="submit"
-              className="bg-green-600 hover:bg-green-700 text-white px-8"
+              variant="orange"
+              size="sm"
             >
               Create Blog
             </Button>

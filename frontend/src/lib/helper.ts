@@ -482,3 +482,10 @@ export const getCategoryLabel = (categoryValue: string) => {
   );
   return category?.label || categoryValue;
 };
+
+export const toCamelCase = (str: string) => {
+  return str
+    .toLowerCase()
+    .replace(/[-_]/g, " ")
+    .replace(/\b\w/g, (char) => char.toUpperCase());
+};

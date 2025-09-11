@@ -81,7 +81,7 @@ export default function VideoSection({ videos }: VideoSectionProps) {
 
         <div className="mt-8">
           <Button
-            size="md"
+            size="sm"
             variant={"orange"}
             onClick={() => setOpenEditForm(true)}
           >
@@ -107,6 +107,7 @@ export default function VideoSection({ videos }: VideoSectionProps) {
                   label={`Video ${idx + 1} URL`}
                   placeholder="https://www.youtube.com/watch?v=..."
                   formControl={form.control}
+                  className="border border-black/10 rounded-sm"
                 />
               ))}
 

@@ -8,23 +8,20 @@ export default function TestimonialsPage() {
   const router = useRouter();
   return (
     <>
-      <div className="h-fit w-full lg:space-y-5  ">
-        <div className="flex flex-row">
-          <div className="basis-3/4  ">
-            <h1 className="">Testimonials</h1>
-          </div>
-          <div className="basis-1/4 text-right  ">
-            <Button
-              type="button"
-              variant="orange"
-              size="lg"
-              onClick={() => router.push("/admin/testimonials/add")}
-            >
-              <CirclePlusIcon /> Add New Testimonial
-            </Button>
-          </div>
+      <div className="h-fit w-full lg:space-y-1">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center pb-4 gap-3">
+          <h1>Testimonials</h1>
+          <Button
+            type="button"
+            variant="orange"
+            size="sm"
+            onClick={() => router.push("/admin/testimonials/add")}
+          >
+            <CirclePlusIcon /> Add New Testimonial
+          </Button>
         </div>
-        <div className="">
+
+        <div>
           <TestimonialsList />
         </div>
       </div>

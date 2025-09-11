@@ -66,6 +66,7 @@ export default function AddFAQ({ onAdd, onClose }: AddFAQProps) {
               <div className="flex h-9 w-full items-center">
                 <Button
                   type="button"
+                  variant="orange"
                   className="rounded-md"
                   onClick={form.handleSubmit(onSubmit)}
                 >

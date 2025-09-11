@@ -124,7 +124,7 @@ export default function ContactEnquiryItem({
           <div className="flex items-center space-x-2">
             <Button
               variant="outline"
-              size="md"
+              size="sm"
               onClick={() => onViewDetails(enquiry._id)}
               className="flex items-center space-x-2 font-semibold border-gray-300 hover:border-gray-400 hover:bg-gray-50"
             >
@@ -135,7 +135,7 @@ export default function ContactEnquiryItem({
 
           {nextStatus && (
             <Button
-              size="md"
+              size="sm"
               onClick={() => onUpdateStatus(enquiry._id, nextStatus.status)}
               className={`flex items-center space-x-2 font-semibold px-4 py-2 rounded-lg shadow-sm hover:shadow-md transition-all duration-200 ${getActionColor(
                 enquiry.status
@@ -151,7 +151,7 @@ export default function ContactEnquiryItem({
         <div className="flex items-center justify-center pt-2 mt-auto">
           <Button
             variant="outline"
-            size="md"
+            size="sm"
             onClick={() => onViewDetails(enquiry._id)}
             className="flex items-center space-x-2 font-semibold border-gray-300 hover:border-gray-400 hover:bg-gray-50"
           >

@@ -24,7 +24,7 @@ import {
 } from "@/lib/types/common-types";
 import { hideLoader, showLoader } from "@/redux/uiSlice";
 import { AxiosError } from "axios";
-import { FileText, Plus, Search } from "lucide-react";
+import { CirclePlusIcon, FileText, Search } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
@@ -191,22 +191,22 @@ const BlogList = () => {
 
   return (
     <>
-      <div className="space-y-6">
-        <div className="flex items-center justify-between">
+      <div className="space-y-3">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center pb-4 gap-3">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">
-              Blog Management
-            </h1>
+            <h1 className="!p-0">Blog Management</h1>
             <p className="text-gray-600 mt-1">
               Manage your blog posts, create content, and engage with your
               audience.
             </p>
           </div>
           <Button
+            type="button"
+            variant="orange"
+            size="sm"
             onClick={() => router.push("/admin/blogs/add")}
-            className="bg-green-600 hover:bg-green-700 text-white px-6"
           >
-            <Plus className="h-4 w-4 mr-2" />
+            <CirclePlusIcon />
             Add New Blog
           </Button>
         </div>
@@ -241,9 +241,10 @@ const BlogList = () => {
             {!hasActiveFilters && (
               <Button
                 onClick={() => router.push("/admin/blogs/add")}
-                className="bg-green-600 hover:bg-green-700 text-white"
+                variant="orange"
+                size="sm"
               >
-                <Plus className="h-4 w-4 mr-2" />
+                <CirclePlusIcon />
                 Create Your First Blog
               </Button>
             )}
