@@ -60,7 +60,7 @@ export default function PasswordChangeForm({
             placeholder="At least 8 characters"
             inputType="password"
             formControl={form.control}
-            className="rounded-sm"
+            className="rounded-md border-black/10"
           />
 
           <TextField
@@ -69,7 +69,7 @@ export default function PasswordChangeForm({
             placeholder="New Password"
             inputType="password"
             formControl={form.control}
-            className="rounded-sm"
+            className="rounded-md border-black/10"
           />
 
           <TextField
@@ -78,7 +78,7 @@ export default function PasswordChangeForm({
             placeholder="Confirm New Password"
             inputType="password"
             formControl={form.control}
-            className="rounded-sm"
+            className="rounded-md border-black/10"
           />
 
           <div className="flex justify-end gap-3 mt-4">

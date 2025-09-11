@@ -68,7 +68,7 @@ export default function ProfileEditForm({
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="space-y-4 px-2 py-1"
+          className="space-y-4 px-2 py-1 z-[99999]"
         >
           <p>
             {" "}
@@ -80,7 +80,7 @@ export default function ProfileEditForm({
             label="Your Name"
             placeholder="Enter your name"
             formControl={form.control}
-            className="rounded-lg"
+            className="rounded-md border-black/10"
           />
 
           <TextField
@@ -89,7 +89,7 @@ export default function ProfileEditForm({
             placeholder="Enter your phone number"
             formControl={form.control}
             inputType="tel"
-            className="rounded-lg"
+            className="rounded-md border-black/10"
           />
 
           <div className="flex justify-end gap-3 mt-4">
