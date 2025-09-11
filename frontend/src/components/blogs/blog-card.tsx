@@ -83,13 +83,13 @@ export default function BlogCard({ blog }: BlogCardProps) {
 
         {blog.tags && blog.tags.length > 0 && (
           <div className="flex flex-wrap gap-1 mb-4">
-            {blog.tags.slice(0, 2).map((tag: string, index: number) => (
+            {blog.tags.slice(0, 2).map((tag, index: number) => (
               <Badge
                 key={index}
                 variant="outline"
                 className="text-xs bg-gray-50 hover:bg-gray-100"
               >
-                {tag}
+                {tag.label}
               </Badge>
             ))}
             {blog.tags.length > 2 && (

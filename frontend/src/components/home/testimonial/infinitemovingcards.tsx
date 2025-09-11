@@ -1,62 +1,25 @@
 "use client";
 
-import React, { useEffect, useState, useRef, useMemo } from "react";
-import Slider, { Settings as SlickSettings } from "react-slick";
-import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
+import { Testimonial } from "@/lib/types/public-types";
 import { cn } from "@/lib/utils";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import { ChevronLeft, ChevronRight, Quote, Star } from "lucide-react";
 import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
+import Slider, { Settings as SlickSettings } from "react-slick";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
+import TestimonialCard from "./testimonial-card";
 
-interface Item {
-  quote: string;
-  name: string;
-  rating: string;
-  website: string;
-}
-
-export default function InfiniteOrSlider() {
+export default function InfiniteOrSlider({
+  testimonials,
+}: {
+  testimonials: Testimonial[];
+}) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const scrollerRef = useRef<HTMLDivElement | null>(null);
   const [start] = useState(false);
   const [isLargeScreen, setIsLargeScreen] = useState(false);
   const sliderRef = useRef<Slider | null>(null);
-
-  const items: Item[] = useMemo(
-    () => [
-      {
-        name: "John Doe",
-        quote: "This service exceeded my expectations. Highly recommended!",
-        rating: "5",
-        website: "https://lucide.dev/icons/quote",
-      },
-      {
-        name: "Jane Smith",
-        quote: "Amazing experience! Will definitely come back again.",
-        rating: "4.8",
-        website: "https://lucide.dev/icons/quote",
-      },
-      {
-        name: "Alice Johnson",
-        quote: "Friendly staff and great support throughout the process.",
-        rating: "4.9",
-        website: "https://lucide.dev/icons/quote",
-      },
-      {
-        name: "Bob Williams",
-        quote: "Very satisfied with the quality and attention to detail.",
-        rating: "5",
-        website: "https://lucide.dev/icons/quote",
-      },
-      {
-        name: "Emily Brown",
-        quote: "A seamless experience from start to finish. Loved it!",
-        rating: "4.7",
-        website: "https://lucide.dev/icons/quote",
-      },
-    ],
-    []
-  );
 
   useEffect(() => {
     const checkScreen = () => setIsLargeScreen(window.innerWidth >= 1024);
@@ -65,7 +28,6 @@ export default function InfiniteOrSlider() {
     return () => window.removeEventListener("resize", checkScreen);
   }, []);
 
-  // Adjust scroller height for small screens
   useEffect(() => {
     if (scrollerRef.current) {
       if (!isLargeScreen) {
@@ -78,9 +40,8 @@ export default function InfiniteOrSlider() {
         scrollerRef.current.style.height = "auto";
       }
     }
-  }, [isLargeScreen, items, start]);
+  }, [isLargeScreen, testimonials, start]);
 
-  // Slider settings
   const sliderSettings: SlickSettings = {
     dots: true,
     infinite: true,
@@ -90,7 +51,7 @@ export default function InfiniteOrSlider() {
     arrows: false,
   };
 
-  const duplicatedItems = [...items, ...items, ...items];
+  const duplicatedItems = [...testimonials, ...testimonials, ...testimonials];
 
   return (
     <>
@@ -106,56 +67,23 @@ export default function InfiniteOrSlider() {
             ref={scrollerRef}
             className="flex w-max min-w-full shrink-0 flex-nowrap lg:gap-6 gap-4 py-4 animate-scroll group-hover:[animation-play-state:paused]"
           >
-            {duplicatedItems.map((item, idx) => (
-              <div
-                key={idx}
-                className="relative lg:w-[600px] w-[400px] shrink-0 rounded-lg bg-[#4CB390] lg:px-8 md:px-6 px-5 lg:py-14 md:py-10 py-6 text-white flex flex-col justify-between"
-              >
-                {/* Top Section: Name & Rating */}
-                <div className="flex justify-between items-center lg:mb-8 md:mb-5 mb-5">
-                  <div className="flex items-center gap-2">
-                    <Quote size={28} className="text-white rotate-180" />
-                    <span className="lg:font-bold lg:text-[24px] md:text-[20px] text-[18px]">
-                      {item.name}
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <Star size={18} className="" />
-                    <span className="lg:font-bold lg:text-[24px] md:text-[20px] text-[18px]">
-                      {item.rating}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Quote Section */}
-                <p className="lg:text-[20px] md:text-[18px] text-[16px] leading-relaxed mb-4">
-                  {item.quote}
-                </p>
-
-                <div>
-                  <Link
-                    href={item.website}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-block text-white underline lg:text-[20px] md:text-[18px] text-[16px]"
-                  >
-                    Website Link
-                  </Link>
-                </div>
-              </div>
+            {duplicatedItems.map((item, index) => (
+              <TestimonialCard item={item} key={index} />
             ))}
           </div>
         </div>
       ) : (
         <>
           <Slider {...sliderSettings} ref={sliderRef}>
-            {items.map((item, idx) => (
-              <div key={idx} className="px-4">
+            {testimonials.map((item, idx) => (
+              <div key={item._id + idx} className="px-4">
                 <div className="rounded-lg bg-[#4CB390] px-6 py-8 text-white">
                   <div className="flex justify-between items-center mb-5">
                     <div className="flex items-center gap-2">
                       <Quote size={24} className="text-white" />
-                      <span className="font-bold text-[18px]">{item.name}</span>
+                      <span className="font-bold text-[18px]">
+                        {item.author}
+                      </span>
                     </div>
                     <div className="flex items-center gap-1">
                       <Star size={16} className="text-white" />
@@ -164,10 +92,10 @@ export default function InfiniteOrSlider() {
                       </span>
                     </div>
                   </div>
-                  <p className="text-[16px] leading-relaxed">{item.quote}</p>
+                  <p className="text-[16px] leading-relaxed">{item.content}</p>
                   <div>
                     <Link
-                      href={item.website}
+                      href={item.link || ""}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-block text-white underline lg:text-[20px] md:text-[18px] text-[16px] mt-4 md:mt-5"

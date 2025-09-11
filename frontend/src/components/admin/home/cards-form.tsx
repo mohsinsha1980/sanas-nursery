@@ -95,12 +95,10 @@ export default function CardsForm({ defaultData, field, data }: CardFormProps) {
 
   return (
     <>
-      {/* Card */}
       <div
         onClick={() => setOpenConfirm(true)}
         className="relative w-full md:w-[659px] h-[350px] sm:h-[420px] md:h-[472px] lg:h-[350px] rounded-2xl overflow-hidden cursor-pointer group"
       >
-        {/* Card Image */}
         <Image
           src={imageSrc}
           alt="Card background"
@@ -118,7 +116,7 @@ export default function CardsForm({ defaultData, field, data }: CardFormProps) {
             style={{ color: form.getValues("largeColor") || "white" }}
             className="text-[24px] sm:text-[28px] md:text-[32px] font-semibold mb-3 sm:mb-4"
           >
-            {form.getValues("large") || defaultData.big}
+            {form.getValues("large") || defaultData.large}
           </h2>
           <p
             style={{ color: form.getValues("smallColor") || "white" }}
@@ -126,10 +124,8 @@ export default function CardsForm({ defaultData, field, data }: CardFormProps) {
           >
             {form.getValues("small") || defaultData.small}
           </p>
-          <button
-            className="w-[140px] h-[46px] rounded-lg bg-white text-[#F37521] font-semibold shadow-md transition-all duration-300 hover:bg-[#F37521] hover:text-white hover:shadow-lg"
-          >
-            {form.getValues("link.label") || defaultData.linkLabel}
+          <button className="w-[140px] h-[46px] rounded-lg bg-white text-[#F37521] font-semibold shadow-md transition-all duration-300 hover:bg-[#F37521] hover:text-white hover:shadow-lg">
+            {form.getValues("link.label") || defaultData.link.label}
           </button>
         </div>
       </div>
@@ -152,6 +148,7 @@ export default function CardsForm({ defaultData, field, data }: CardFormProps) {
                 label="Big heading"
                 placeholder="Big heading"
                 formControl={form.control}
+                className="border-black/10 rounded-md"
               />
               <ColorPickerField
                 name="largeColor"
@@ -168,6 +165,7 @@ export default function CardsForm({ defaultData, field, data }: CardFormProps) {
                 label="Small heading"
                 placeholder="Small heading"
                 formControl={form.control}
+                className="border-black/10 rounded-md"
               />
               <ColorPickerField
                 name="smallColor"
@@ -184,6 +182,7 @@ export default function CardsForm({ defaultData, field, data }: CardFormProps) {
                 label="Link label"
                 placeholder="Shop now"
                 formControl={form.control}
+                className="border-black/10 rounded-md"
               />
               <ColorPickerField
                 name="link.color"
@@ -201,6 +200,7 @@ export default function CardsForm({ defaultData, field, data }: CardFormProps) {
                   label="Link address"
                   placeholder="https://yourlink.com/"
                   formControl={form.control}
+                  className="border-black/10 rounded-md"
                 />
               </div>
 
@@ -210,6 +210,7 @@ export default function CardsForm({ defaultData, field, data }: CardFormProps) {
                 placeholder="Picture.jpg"
                 formControl={form.control}
                 description="Valid image extensions: .jpg, .jpeg, .png, .webp"
+                className="border-black/10 rounded-md"
               />
 
               {form.getValues("picture") && imageSrc && (

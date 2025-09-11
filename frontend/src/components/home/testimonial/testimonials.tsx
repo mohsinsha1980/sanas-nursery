@@ -1,7 +1,8 @@
 import React from "react";
 import InfiniteMovingCardsDemo from "./infinitemovingcards";
+import { Testimonial } from "@/lib/types/public-types";
 
-const Testimonials = () => {
+const Testimonials = ({ testimonials }: { testimonials: Testimonial[] }) => {
   return (
     <>
       <div className="h-full w-full lg:pt-27 lg:pb-27 md:pt-20 md:pb-20 pt-10 pb-10 flex flex-row justify-center bg-[#E4FFF0]">
@@ -15,7 +16,7 @@ const Testimonials = () => {
             </p>
           </div>
           <div className="w-[100%]   ">
-            <InfiniteMovingCardsDemo />
+            <InfiniteMovingCardsDemo testimonials={testimonials} />
           </div>
         </div>
       </div>

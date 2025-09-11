@@ -43,9 +43,16 @@ const Blog = new Schema(
     },
     tags: [
       {
-        type: String,
-        trim: true,
-        lowercase: true,
+        label: {
+          type: String,
+          required: true,
+          trim: true,
+        },
+        value: {
+          type: String,
+          required: true,
+          trim: true,
+        },
       },
     ],
     metaTitle: {

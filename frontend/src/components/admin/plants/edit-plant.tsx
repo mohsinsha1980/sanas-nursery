@@ -73,6 +73,7 @@ const defaultValues: EditPlantFields = {
 
 const defaultMasterData: MasterData = {
   tags: [],
+  blogTags: [],
 };
 
 type EditPlantProps = {
@@ -85,7 +86,7 @@ export default function EditPlantForm({ plantId }: EditPlantProps) {
   const [openKeySpec, setOpenKeySpec] = useState<boolean>(false);
   const [openAddFAQ, setOpenAddFAQ] = useState<boolean>(false);
   const [previews, setPreviews] = useState<string[]>([]);
-  const [, setMasterData] = useState<MasterData>(defaultMasterData);
+  const [masterData, setMasterData] = useState<MasterData>(defaultMasterData);
 
   const form = useForm<EditPlantFields>({
     resolver: zodResolver(editPlantSchema),
@@ -311,7 +312,10 @@ export default function EditPlantForm({ plantId }: EditPlantProps) {
                   <TableBody>
                     {form.getValues("specifications")?.length ? (
                       form.getValues("specifications").map((obj, index) => (
-                        <TableRow key={`specification-${index}`} className="flex justify-center border-b border-slate-100 last:border-b-0 hover:bg-slate-50 transition-colors duration-150">
+                        <TableRow
+                          key={`specification-${index}`}
+                          className="flex justify-center border-b border-slate-100 last:border-b-0 hover:bg-slate-50 transition-colors duration-150"
+                        >
                           <TableCell className="w-1/3 py-2 px-3 sm:px-6 text-slate-600 text-xs sm:text-sm break-words">
                             {obj.label}
                           </TableCell>
@@ -382,17 +386,19 @@ export default function EditPlantForm({ plantId }: EditPlantProps) {
               />
             </div>
 
-            <div className="col-span-3">
+            {masterData?.tags?.length ? (
               <MultipleSelectField
                 name="tags"
                 label="Tags"
-                labelClassName="text-[17px] font-semibold"
                 placeholder="Select"
                 formControl={form.control}
-                options={CARE_LEVEL_ARR}
-                className="border-none"
+                options={masterData.tags.map(({ _id, ...rest }) => {
+                  console.log(_id);
+                  return rest;
+                })}
+                className="border-none rounded-lg !bg-white"
               />
-            </div>
+            ) : null}
 
             <div className="col-span-4 mt-4 ">
               <div className="grid grid-cols-4  ">

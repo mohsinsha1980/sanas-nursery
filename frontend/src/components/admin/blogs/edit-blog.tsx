@@ -10,7 +10,11 @@ import SmartBox from "@/components/form-fields/smart-box";
 import SwitchField from "@/components/form-fields/switch-field";
 import TextArea from "@/components/form-fields/text-area";
 import TextField from "@/components/form-fields/text-field";
-import { getBlogById, updateBlog } from "@/lib/api-routes/api-admin";
+import {
+  getBlogById,
+  getMasterData,
+  updateBlog,
+} from "@/lib/api-routes/api-admin";
 import { BLOG_CATEGORIES } from "@/lib/constants";
 import {
   generateSlug,
@@ -18,10 +22,10 @@ import {
   getPicURL,
   showErrorToast,
   showSuccessToast,
-  STATUS_OPTIONS
+  STATUS_OPTIONS,
 } from "@/lib/helper";
 import { editBlogSchema } from "@/lib/schemas/admin";
-import { EditBlogFields } from "@/lib/types/admin-types";
+import { EditBlogFields, MasterData } from "@/lib/types/admin-types";
 import { BlogDataType } from "@/lib/types/common-types";
 import { hideLoader, showLoader } from "@/redux/uiSlice";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -49,6 +53,11 @@ const defaultValues: EditBlogFields = {
   status: "0",
 };
 
+const defaultMasterData: MasterData = {
+  tags: [],
+  blogTags: [],
+};
+
 type EditBlogProps = {
   blogId: string | undefined;
 };
@@ -57,6 +66,7 @@ export default function EditBlogForm({ blogId }: EditBlogProps) {
   const dispatch = useDispatch();
   const router = useRouter();
   const [preview, setPreview] = useState<string>("");
+  const [masterData, setMasterData] = useState<MasterData>(defaultMasterData);
 
   const form = useForm<EditBlogFields>({
     resolver: zodResolver(editBlogSchema),
@@ -123,13 +133,33 @@ export default function EditBlogForm({ blogId }: EditBlogProps) {
     }
   };
 
-  const s = form.watch();
-  console.log(s);
   const processCoverImage = (pictures: FileList) => {
     if (pictures?.length) {
       setPreview(URL.createObjectURL(pictures[0]));
     }
   };
+
+  useEffect(() => {
+    const controller = new AbortController();
+    const getMasterDataHandler = async () => {
+      try {
+        dispatch(showLoader());
+        const response = await getMasterData(controller);
+        const masterData: MasterData = response.data.data;
+        setMasterData(masterData);
+        dispatch(hideLoader());
+      } catch (e: unknown) {
+        showErrorToast(getErrorMessage(e as AxiosError));
+        dispatch(hideLoader());
+      }
+    };
+
+    getMasterDataHandler();
+    return () => {
+      controller.abort();
+      dispatch(hideLoader());
+    };
+  }, [dispatch]);
 
   return (
     <>
@@ -276,14 +306,19 @@ export default function EditBlogForm({ blogId }: EditBlogProps) {
                     suffix="Mins"
                   />
 
-                  <MultipleSelectField
-                    name="tags"
-                    label="Tags"
-                    placeholder="Select or add tags"
-                    formControl={form.control}
-                    options={[]}
-                    className="rounded-md border-black/10"
-                  />
+                  {masterData?.blogTags?.length ? (
+                    <MultipleSelectField
+                      name="tags"
+                      label="Tags"
+                      placeholder="Select or add tags"
+                      formControl={form.control}
+                      options={masterData.blogTags.map(({ _id, ...rest }) => {
+                        console.log(_id);
+                        return rest;
+                      })}
+                      className="rounded-md border-black/10"
+                    />
+                  ) : null}
 
                   <div className="space-y-3">
                     <SwitchField
@@ -310,10 +345,7 @@ export default function EditBlogForm({ blogId }: EditBlogProps) {
           </div>
 
           <div className="flex justify-end">
-            <Button
-              type="submit"
-              variant="orange"
-              size="sm"            >
+            <Button type="submit" variant="orange" size="sm">
               Update Blog
             </Button>
           </div>

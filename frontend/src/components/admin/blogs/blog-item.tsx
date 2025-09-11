@@ -8,7 +8,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { getFormattedDate, getPicURL } from "@/lib/helper";
+import { getFormattedDate, getPicURL, STATUS } from "@/lib/helper";
 import { BlogDataType } from "@/lib/types/common-types";
 import {
   Calendar,
@@ -133,9 +133,9 @@ const BlogItem = ({
 
         {blog.tags && blog.tags.length > 0 && (
           <div className="flex flex-wrap gap-1 mb-4">
-            {blog.tags.slice(0, 3).map((tag: string, index: number) => (
+            {blog.tags.slice(0, 3).map((tag, index: number) => (
               <Badge key={index} variant="secondary" className="text-xs">
-                {tag}
+                {tag.label}
               </Badge>
             ))}
             {blog.tags.length > 3 && (
@@ -161,15 +161,17 @@ const BlogItem = ({
               Edit
             </Button>
 
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => router.push(`/blogs/${blog._id}`)}
-              className="text-green-600 hover:text-green-700 hover:bg-green-50"
-            >
-              <Eye className="h-4 w-4 mr-1" />
-              View
-            </Button>
+            {blog.status === STATUS.ACTIVE ? (
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => router.push(`/blogs/${blog._id}`)}
+                className="text-green-600 hover:text-green-700 hover:bg-green-50"
+              >
+                <Eye className="h-4 w-4 mr-1" />
+                View
+              </Button>
+            ) : null}
 
             <Button
               variant="outline"

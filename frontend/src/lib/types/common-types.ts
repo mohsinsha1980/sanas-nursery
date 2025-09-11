@@ -141,13 +141,18 @@ export interface HomeDataType {
   videos: string[];
 }
 
-export interface DefultHomeCardType {
+export type DefultHomeCardType = {
   picture: string;
   small: string;
-  big: string;
-  linkLabel: string;
-  linkAddress: string;
-}
+  smallColor: string;
+  large: string;
+  largeColor: string;
+  link: {
+    label: string;
+    address: string;
+    color: string;
+  };
+};
 
 export interface PlantFilterType {
   sizes?: string[];

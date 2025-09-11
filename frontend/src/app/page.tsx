@@ -1,34 +1,53 @@
-import CollectionSection from "@/components/home/collection-section";
-import Gallery from "@/components/home/gallery";
-import HomeBanner from "@/components/home/home-banner";
-import ContactForm from "@/components/home/contact/contact";
-import BestSellingProduct from "@/components/home/corousel/best-selling-product";
-import Testimonials from "@/components/home/testimonial/testimonials";
 import Categories from "@/components/home/catogories";
+import Contact from "@/components/home/contact/contact";
+import BestSellingProduct from "@/components/home/corousel/best-selling-product";
+import HomeGallerySection from "@/components/home/gallery";
+import HomeBanner from "@/components/home/home-banner";
+import HomeCardsSection from "@/components/home/home-card-section";
+import GreenChoices from "@/components/home/public-green-choices";
+import Testimonials from "@/components/home/testimonial/testimonials";
 import YoutubeSection from "@/components/home/youtube-section";
-import GreenChoices from "@/components/home/products";
+import { getPublicHomeData } from "@/lib/api-routes/api-public";
+import { HomeData } from "@/lib/types/public-types";
 
-export default function Home() {
-  const plantsData = Array.from({ length: 10 }, (_, i) => ({
-    id: i + 1,
-    src: "/site/home/products/greenchoices.webp",
-    title: "Natural Plant",
-  }));
+async function getHomeDataServer() {
+  try {
+    const response = await getPublicHomeData();
+    return response.data.data;
+  } catch (error) {
+    console.log(error);
+    return {
+      greenChoices: [],
+      cards: {},
+      gallery: {},
+      videos: [],
+      testimonials: [],
+      bestSellingPlants: [],
+    };
+  }
+}
+
+export default async function Home() {
+  const homeData: HomeData = await getHomeDataServer();
+
   return (
     <>
       <HomeBanner />
       <Categories />
-      <BestSellingProduct />
-      <GreenChoices
-        plants={plantsData}
-        heading="Your Green Choices"
-        description="Fresh, healthy plants for every space."
-      />
-      <CollectionSection />
-      <Gallery />
-      <Testimonials />
-      <YoutubeSection />
-      <ContactForm />
+
+      {homeData?.bestSellingPlants?.length && (
+        <BestSellingProduct plants={homeData.bestSellingPlants} />
+      )}
+
+      {homeData?.greenChoices?.length && (
+        <GreenChoices plants={homeData.greenChoices} />
+      )}
+
+      <HomeCardsSection cards={homeData.cards} />
+      <HomeGallerySection gallery={homeData.gallery} />
+      <Testimonials testimonials={homeData.testimonials} />
+      <YoutubeSection videos={homeData.videos} />
+      <Contact />
     </>
   );
 }

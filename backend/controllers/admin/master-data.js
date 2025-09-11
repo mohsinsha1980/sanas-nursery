@@ -8,6 +8,7 @@ export const getMasterData = async (req, res, next) => {
     const updatedData = masterData
       ? {
           tags: masterData.tags || [],
+          blogTags: masterData.blogTags || [],
         }
       : {
           tags: [],

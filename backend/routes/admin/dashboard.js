@@ -1,12 +1,11 @@
-const express = require("express");
-const routes = express.Router();
-const dashboardCtrl = require("../../controllers/admin/dashboard");
+import { Router } from "express";
+import adminAuth from "../../middleware/admin-auth.js";
+import { getDashboardStats } from "../../controllers/admin/dashboard.js";
 
-// /api/admin/dashboard
+const router = Router();
 
-routes.get("/dashboard_stats", dashboardCtrl.getDashboardStats);
-routes.get("/orders_stats", dashboardCtrl.getOrdersStats);
-routes.get("/top_selling_product", dashboardCtrl.topSellingProducts);
-routes.get("/inventory_report", dashboardCtrl.getInventoryReport);
+router.use(adminAuth);
 
-module.exports = routes;
+router.get("/stats", getDashboardStats);
+
+export default router;

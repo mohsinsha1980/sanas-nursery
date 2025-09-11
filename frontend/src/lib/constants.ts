@@ -227,6 +227,7 @@ export const ADMIN_ROUTES = [
 
 export const MASTER_DATA_TYPE = {
   TAGS: "tags",
+  BLOG_TAGS: "blogTags",
 } as const;
 
 export const defultHomeData = {
@@ -234,16 +235,27 @@ export const defultHomeData = {
     C1: {
       picture: "/site/home/collection/collecton-banner1.webp",
       small: "Fresh, lush plants perfect for the summer season.",
-      big: "Summer Special Green",
-      linkLabel: "View Collection",
-      linkAddress: "#",
+      smallColor: "black",
+      large: "Summer Special Green",
+      largeColor: "white",
+      link: {
+        label: "View Collection",
+        address: "#",
+        color: "black",
+      },
     },
+
     C2: {
       picture: "/site/home/collection/collection-banner2.webp",
       small: "Fresh, lush plants perfect for the rainy season.",
-      big: "Monsoon Special Green",
-      linkLabel: "View Collection",
-      linkAddress: "#",
+      smallColor: "black",
+      large: "Monsoon Special Green",
+      largeColor: "black",
+      link: {
+        label: "View Collection",
+        address: "#",
+        color: "orange",
+      },
     },
   },
   Gallery: {
