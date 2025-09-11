@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Form } from "@/components/ui/form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -21,9 +21,9 @@ import SmartBox from "@/components/form-fields/smart-box";
 import SwitchField from "@/components/form-fields/switch-field";
 import TextArea from "@/components/form-fields/text-area";
 import TextField from "@/components/form-fields/text-field";
-import { createBlog } from "@/lib/api-routes/api-admin";
+import { createBlog, getMasterData } from "@/lib/api-routes/api-admin";
 import { addBlogSchema } from "@/lib/schemas/admin";
-import { AddBlogType } from "@/lib/types/admin-types";
+import { AddBlogType, MasterData } from "@/lib/types/admin-types";
 import { hideLoader, showLoader } from "@/redux/uiSlice";
 import { AxiosError } from "axios";
 import Image from "next/image";
@@ -47,10 +47,16 @@ const defaultFormData: AddBlogType = {
   status: "0",
 };
 
+const defaultMasterData: MasterData = {
+  tags: [],
+  blogTags: [],
+};
+
 export default function AddBlog() {
   const dispatch = useDispatch();
   const router = useRouter();
   const [preview, setPreview] = useState<string>("");
+  const [masterData, setMasterData] = useState<MasterData>(defaultMasterData);
 
   const form = useForm<AddBlogType>({
     defaultValues: defaultFormData,
@@ -77,6 +83,27 @@ export default function AddBlog() {
       setPreview(URL.createObjectURL(pictures[0]));
     }
   };
+
+  useEffect(() => {
+    const controller = new AbortController();
+    const getMasterDataHandler = async () => {
+      try {
+        dispatch(showLoader());
+        const response = await getMasterData(controller);
+        const masterData: MasterData = response.data.data;
+        setMasterData(masterData);
+        dispatch(hideLoader());
+      } catch (e: unknown) {
+        showErrorToast(getErrorMessage(e as AxiosError));
+        dispatch(hideLoader());
+      }
+    };
+    getMasterDataHandler();
+    return () => {
+      controller.abort();
+      dispatch(hideLoader());
+    };
+  }, [dispatch]);
 
   return (
     <>
@@ -229,14 +256,19 @@ export default function AddBlog() {
                     suffix="Mins"
                   />
 
-                  <MultipleSelectField
-                    name="tags"
-                    label="Tags"
-                    placeholder="Select or add tags"
-                    formControl={form.control}
-                    options={[]}
-                    className="rounded-md border-black/10"
-                  />
+                  {masterData?.blogTags?.length ? (
+                    <MultipleSelectField
+                      name="tags"
+                      label="Tags"
+                      placeholder="Select or add tags"
+                      formControl={form.control}
+                      options={masterData.blogTags.map(({ _id, ...rest }) => {
+                        console.log(_id);
+                        return rest;
+                      })}
+                      className="rounded-md border-black/10"
+                    />
+                  ) : null}
 
                   <div className="space-y-3">
                     <SwitchField
@@ -263,11 +295,7 @@ export default function AddBlog() {
           </div>
 
           <div className="">
-            <Button
-              type="submit"
-              variant="orange"
-              size="sm"
-            >
+            <Button type="submit" variant="orange" size="sm">
               Create Blog
             </Button>
           </div>

@@ -205,6 +205,7 @@ export const ADMIN_ROUTES = [
 
 export const MASTER_DATA_TYPE = {
   TAGS: "tags",
+  BLOG_TAGS: "blogTags",
 } as const;
 
 export const defultHomeData = {

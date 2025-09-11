@@ -35,7 +35,7 @@ export const getAllBlogs = async (req, res, next) => {
       filter.$or = [
         { title: { $regex: search, $options: "i" } },
         { excerpt: { $regex: search, $options: "i" } },
-        { content: { $regex: search, $options: "i" } },
+        { "tags.value": { $regex: search, $options: "i" } },
         { tags: { $regex: search, $options: "i" } },
       ];
     }

@@ -3,7 +3,10 @@ import Link from "next/link";
 import styles from "./blog-tags.module.css";
 
 interface BlogTagsProps {
-  tags: string[];
+  tags: {
+    label: string;
+    value: string;
+  }[];
 }
 
 export default function BlogTags({ tags }: BlogTagsProps) {
@@ -18,9 +21,9 @@ export default function BlogTags({ tags }: BlogTagsProps) {
         Tags
       </h3>
       <div className={styles.tagsList}>
-        {tags.map((tag: string, index: number) => {
+        {tags.map((tag, index: number) => {
           const searchParams = new URLSearchParams();
-          searchParams.set("search", tag);
+          searchParams.set("search", tag.value);
 
           return (
             <Link
@@ -28,7 +31,7 @@ export default function BlogTags({ tags }: BlogTagsProps) {
               href={`/blogs?${searchParams.toString()}`}
               className={styles.tag}
             >
-              {tag}
+              {tag.label}
             </Link>
           );
         })}

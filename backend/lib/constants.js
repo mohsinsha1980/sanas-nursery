@@ -29,6 +29,7 @@ export const CATEGORY_ARR = Object.values(CATEGORIES).map(
 
 export const MASTER_DATA_TYPE = {
   TAGS: "tags",
+  BLOG_TAGS: "blogTags",
 };
 
 export const MEDIA = {

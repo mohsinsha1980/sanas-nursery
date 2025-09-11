@@ -52,6 +52,7 @@ import { useDispatch } from "react-redux";
 
 const defaultMasterData: MasterData = {
   tags: [],
+  blogTags: [],
 };
 
 const defaultFormData = {
@@ -350,7 +351,6 @@ export default function AddPlant() {
               />
             </div>
 
-            {/* Tags Field */}
             <div className="">
               {masterData?.tags?.length ? (
                 <MultipleSelectField

@@ -32,6 +32,7 @@ export type AddMasterDataProps = {
 
 export interface MasterData {
   tags: MasterDataOption[];
+  blogTags: MasterDataOption[];
 }
 
 export type MasterDataFields =
