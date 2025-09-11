@@ -1,45 +1,56 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { addContactUs } from "@/lib/api-routes/api-public";
+import { createContactEnquiry } from "@/lib/api-routes/api-public";
+import { showErrorToast, showSuccessToast } from "@/lib/helper";
+import { contactEnquirySchema } from "@/lib/schemas/common";
+import { ContactEnquiryFields } from "@/lib/types/common-types";
+import { hideLoader, showLoader } from "@/redux/uiSlice";
 import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  Mail,
-  MapPin,
-  Phone,
-} from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
+import { useReCaptcha } from "next-recaptcha-v3";
 import React from "react";
 import { useForm } from "react-hook-form";
-import toast from "react-hot-toast";
-import schema, { ContactFormData } from "./schema";
+import { useDispatch } from "react-redux";
+
+const defaultValues = {
+  name: "",
+  email: "",
+  phone: "",
+  message: "",
+};
 
 const Contact = () => {
+  const dispatch = useDispatch();
+  const { executeRecaptcha } = useReCaptcha();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
   } = useForm({
-    resolver: zodResolver(schema),
+    resolver: zodResolver(contactEnquirySchema),
   });
 
   const [loading, setLoading] = React.useState(false);
-  const [, setError] = React.useState("");
-  const [, setSuccess] = React.useState("");
 
-  const onSubmit = async (data: ContactFormData) => {
-    setLoading(true);
-    setError("");
-    setSuccess("");
+  const onSubmit = async (values: ContactEnquiryFields) => {
     try {
-      const response = await addContactUs(data);
-      toast.success("Message sent successfully!");
-      reset();
-      console.log(response);
-    } catch (err) {
-      console.log(err);
-      toast.error("Something went wrong. Please try again.");
+      setLoading(true);
+      dispatch(showLoader());
+      const token = await executeRecaptcha("form_submit");
+      const updatedData = { ...values, token };
+      await createContactEnquiry(updatedData);
+      showSuccessToast(
+        "Thank you for your message! We will get back to you within 24 hours."
+      );
+      reset(defaultValues);
+    } catch (error) {
+      console.log(error);
+      showErrorToast("Failed to submit enquiry. Please try again.");
     } finally {
       setLoading(false);
+      dispatch(hideLoader());
     }
   };
 
@@ -49,7 +60,6 @@ const Contact = () => {
         <div className="lg:w-[100%] lg:h-[870px] md:w-[100%] md:h-[1100px] w-[100%] h-[920px] flex justify-center items-center bg-[#E4FFF0]   ">
           <div className="contact-form lg:w-[61%] flex justify-center items-center bg-white rounded-xl">
             <div className="contact-form-innerdiv lg:w-[60%] lg:h-auto md:w-[80%] w-[95%]  lg:gap-y-0 gap-y-10 flex lg:flex-row flex-col justify-between items-center absolute z-10 bg-white p-2 md:p-3 lg:px-3 rounded-xl     ">
-              {/* Left Section */}
               <div className="contact-form-left-div lg:w-[45%] lg:h-[600px] md:w-full w-full flex lg:justify-center lg:items-center md:justify-center justify-start items-start bg-[#4CBA9B] px-4 lg:px-0 py-4 lg:py-0 rounded-xl   ">
                 <div className="lg:w-[80%] lg:h-[85%] w-full lg:gap-y-10 gap-y-10 flex flex-col justify-between items-start ">
                   <div className="lg:w-[100%] lg:h-auto lg:gap-y-3 gap-y-3 flex flex-col justify-between   ">
@@ -116,7 +126,6 @@ const Contact = () => {
                 </div>
               </div>
 
-              {/* Right Section */}
               <div className="lg:w-[50%] lg:h-[550px] md:w-[100%] h-fit w-[100%] lg:gap-y-9 md:gap-y-8 gap-y-5 flex flex-col justify-evenly  text-[#8D8D8D] lg:px-0 md:px-3 px-4  ">
                 <div className=" lg:w-[95%] w-[100%] flex lg:flex-row flex-col justify-between lg:space-y-0 md:space-y-8 space-y-5 ">
                   <div className="lg:w-[45%] md:w-[70%] w-[90%] flex flex-col lg:gap-y-4 gap-y-2 ">
@@ -145,16 +154,16 @@ const Contact = () => {
                     </p>
                     <input
                       type="text"
-                      {...register("phonenumber")}
+                      {...register("phone")}
                       style={{
                         WebkitBoxShadow: "0 0 0 1000px white inset",
                         WebkitTextFillColor: "black",
                       }}
                       className="lg:border-b-2 border-b-1 border-[#8D8D8D] lg:h-[35px] lg:text-[18px] text-[16px] bg-transparent focus:outline-none focus:bg-transparent autofill:bg-transparent autofill:text-[#1d2f33]"
                     />
-                    {errors.phonenumber && (
+                    {errors.phone && (
                       <p className="text-red-500 text-sm">
-                        {errors.phonenumber.message}
+                        {errors.phone.message}
                       </p>
                     )}
                   </div>
@@ -209,7 +218,7 @@ const Contact = () => {
                     variant="orange"
                     size="lg"
                   >
-                    {loading ? "Sending..." : "Subscribe"}
+                    {loading ? "Sending..." : "Submit"}
                   </Button>
                 </div>
               </div>

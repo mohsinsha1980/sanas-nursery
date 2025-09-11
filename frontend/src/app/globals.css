@@ -11,6 +11,7 @@
   --heading-txt: #1d2f33;
   --txt-dark: #1d2f33;
   --radius: 0.625rem;
+  --testimonial-time:20s
 
   /* Standardized Height Values */
   --height-xs: 1.5rem;
@@ -426,7 +427,7 @@ footer {
 }
 
 .animate-scroll {
-  animation: scroll 80s linear infinite;
+  animation: scroll 20s linear infinite;
 }
 
 .animate-scroll:hover {
@@ -632,5 +633,9 @@ footer {
 
 .rn-whatsapp-button .rn-whatsapp-popup {
   height: 500px !important; /* increase widget height */
+}
+
+.styles-module_status__-ln3V{
+  display : none
 }
 

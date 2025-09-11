@@ -116,6 +116,8 @@ export const ORDER_TAB_TYPE = {
 
 export const TOP_SELLING_PRODUCT_COUNT = 10;
 export const YT_VIDEOS_LENGTH = 2;
+export const BEST_SELLING_TAG = "best selling";
+export const BEST_SELLING_PLANTS_LIMIT = 10;
 
 export const ENQUIRY_STATUS = {
   PENDING: "pending",
