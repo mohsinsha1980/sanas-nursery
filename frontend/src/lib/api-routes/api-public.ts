@@ -119,3 +119,9 @@ export const getRelatedBlogs = (blogId: string, controller?: Controller) => {
     cache: "no-store",
   });
 };
+
+export const getGlobalSearchOpt = (controller: Controller) => {
+  return axiosInstance.get(`${config.API_PUBLIC_PATH}/global-search-opt`, {
+    signal: controller?.signal,
+  });
+};

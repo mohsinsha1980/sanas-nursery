@@ -51,7 +51,7 @@ export default function BlogSearch() {
           </div>
           <Input
             type="text"
-            placeholder="Search articles by title, content, or tags..."
+            placeholder="Search..."
             value={searchText || ""}
             onChange={(e) => setSearchText(e.target.value)}
             className="w-full pl-12 pr-20 py-6 text-lg border-2 border-gray-200 rounded-2xl focus:border-green-500 focus:ring-green-500 bg-white shadow-lg"

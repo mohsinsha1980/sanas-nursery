@@ -3,13 +3,14 @@ import Link from "next/link";
 
 export default function Logo({ size = 80 }: { size?: number }) {
   return (
-    <Link href="/">
+    <Link href="/" className="flex items-center gap-1">
       <Image
         src="/site/sanas-nursery-logo.webp"
         alt="Sanas Nursery"
         width={size}
         height={size}
       />
+      <h3 className="text-xl font-bold text-primary-400">Sanas Nursery</h3>
     </Link>
   );
 }

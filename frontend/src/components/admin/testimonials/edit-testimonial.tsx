@@ -123,7 +123,7 @@ export default function EditTestimonialForm({
               label="Author Name"
               placeholder="Enter author name"
               inputType="text"
-              className="rounded-md"
+              className="rounded-md border-none"
               labelClassName="text-[20px] font-semibold"
               formControl={form.control}
             />
@@ -134,6 +134,7 @@ export default function EditTestimonialForm({
               placeholder="Write testimonial here"
               formControl={form.control}
               labelClassName="text-[20px] font-semibold"
+              className="border-none rounded-md"
             />
 
             <SmartBox
@@ -149,6 +150,7 @@ export default function EditTestimonialForm({
                 { label: "(4) ⭐⭐⭐⭐", value: "4" },
                 { label: "(5) ⭐⭐⭐⭐⭐", value: "5" },
               ]}
+              className="border-none rounded-md"
             />
 
             <TextField
@@ -156,7 +158,7 @@ export default function EditTestimonialForm({
               label="Author Link (Optional)"
               placeholder="https://example.com"
               inputType="text"
-              className="rounded-md"
+              className="rounded-md border-none"
               labelClassName="text-[20px] font-semibold"
               formControl={form.control}
             />

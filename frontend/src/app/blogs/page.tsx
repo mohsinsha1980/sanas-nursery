@@ -63,7 +63,7 @@ export default async function BlogsPage({
         </div>
       }
     >
-      <div className="min-h-screen bg-gray-50 mt-30">
+      <div className="min-h-screen bg-gray-50">
         <BlogListHero />
 
         <div className="container mx-auto px-4 py-16">

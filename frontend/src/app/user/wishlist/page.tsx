@@ -70,54 +70,61 @@ export default function WishlistPage() {
 
   return (
     <div>
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">My Wishlist</h1>
-        <p className="text-gray-600">Your favorite plants and items</p>
+      <div className="mb-6 sm:mb-8">
+        <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
+          My Wishlist
+        </h1>
+        <p className="text-sm sm:text-base text-gray-600">
+          Your favorite plants and items
+        </p>
       </div>
 
       {wishlist.length === 0 ? (
         <Card>
-          <CardContent className="p-8 text-center">
+          <CardContent className="p-6 sm:p-8 text-center">
             <div className="text-gray-400 mb-4">
-              <Heart className="mx-auto h-12 w-12" />
+              <Heart className="mx-auto h-10 w-10 sm:h-12 sm:w-12" />
             </div>
-            <h3 className="text-lg font-medium text-gray-900 mb-2">
+            <h3 className="text-base sm:text-lg font-medium text-gray-900 mb-2">
               No items in wishlist
             </h3>
-            <p className="text-gray-600">
+            <p className="text-sm sm:text-base text-gray-600">
               Start adding plants you love to your wishlist!
             </p>
           </CardContent>
         </Card>
       ) : (
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:gap-x-6 gap-x-1 lg:gap-y-12 gap-y-5 justify-items-center">
+        <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6">
           {wishlist.map((plant) => (
             <div
               key={plant._id}
-              className="flex flex-col items-center cursor-pointer relative"
+              className="flex flex-col items-center cursor-pointer relative group"
             >
-              <div className="w-[200px] md:w-[240px] lg:w-[250px] h-[300px] sm:h-[320px] md:h-[350px] lg:h-[375px] rounded-[10px] overflow-hidden transition-transform duration-300 hover:scale-105 group lg:px-0 px-4 relative">
+              <div className="w-full max-w-[200px] sm:max-w-[220px] md:max-w-[240px] lg:max-w-[250px] aspect-[3/4] rounded-lg overflow-hidden transition-transform duration-300 hover:scale-105 relative">
                 <button
                   onClick={() => handleRemove(plant._id)}
-                  className="absolute top-2 right-2 z-20 bg-white/80 hover:bg-white text-red-600 rounded-full p-1 shadow-md transition cursor-pointer"
+                  className="absolute top-2 right-2 z-20 bg-white/90 hover:bg-white text-red-600 rounded-full p-1.5 shadow-md transition-all duration-200 hover:scale-110"
                 >
-                  <X className="w-4 h-4" />
+                  <X className="w-3 h-3 sm:w-4 sm:h-4" />
                 </button>
 
                 <div className="relative w-full h-full">
                   <Image
-                    // src={getPicURL(plant.picture)}
                     src={plant.picture || "/images/placeholder-plant.jpg"}
                     alt={plant.title}
-                    width={250}
-                    height={300}
-                    className="rounded-[10px] object-cover"
+                    fill
+                    className="object-cover rounded-lg"
+                    sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 20vw"
                   />
 
                   {/* Overlay + See Details Button */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-40 transition-opacity duration-300 rounded-[10px] flex items-center justify-center">
+                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg flex items-center justify-center">
                     <Link href={`/plants/${plant._id}`}>
-                      <Button variant="orange" className="bg-orange-700">
+                      <Button
+                        variant="orange"
+                        size="sm"
+                        className="bg-orange-600 hover:bg-orange-700"
+                      >
                         See Details
                       </Button>
                     </Link>
@@ -125,7 +132,7 @@ export default function WishlistPage() {
                 </div>
               </div>
 
-              <p className="mt-4 text-center text-lg font-medium text-gray-700">
+              <p className="mt-3 text-center text-sm sm:text-base font-medium text-gray-700 line-clamp-2 px-2">
                 {plant.title}
               </p>
             </div>
@@ -135,7 +142,3 @@ export default function WishlistPage() {
     </div>
   );
 }
-
-
-
-

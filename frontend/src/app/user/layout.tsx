@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 import { useRouter } from "next/navigation";
-import { ROLES } from "@/lib/constants";
 import dynamic from "next/dynamic";
 import ErrorBoundary from "@/components/common/error-boundary";
 
@@ -35,15 +34,8 @@ export default function UserLayout({ children }: UserLayoutProps) {
       return;
     }
 
-    if (user.role === ROLES.USER) {
-      // router.push("/");
-      // return;
-      setIsAuthenticated(true);
-      setIsLoading(false);
-    }
-
-    // setIsAuthenticated(true);
-    // setIsLoading(false);
+    setIsAuthenticated(true);
+    setIsLoading(false);
   }, [user, router]);
 
   if (isLoading) {
@@ -72,11 +64,14 @@ export default function UserLayout({ children }: UserLayoutProps) {
 
   return (
     <ErrorBoundary>
-      <div className="min-h-screen bg-gray-50 mt-30 ">
-        <div className="flex">
+      <div
+        className="min-h-screen bg-gray-50"
+        style={{ paddingTop: "var(--header-height)" }}
+      >
+        <div className="flex flex-col lg:flex-row">
           <UserSidebar />
-          <div className="flex-1">
-            <div className="custom-container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="flex-1 gap-10">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8">
               {children}
             </div>
           </div>

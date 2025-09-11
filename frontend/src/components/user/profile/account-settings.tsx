@@ -18,7 +18,7 @@ export default function AccountSettings() {
 
         <Card>
           <CardContent className="p-6">
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col gap-4 md:flex-row items-center justify-between">
               <div className="flex items-center space-x-4">
                 <div className="p-3 bg-green-100 rounded-full">
                   <Lock className="h-6 w-6 text-green-600" />
@@ -36,7 +36,7 @@ export default function AccountSettings() {
                 onClick={() => setShowPasswordForm(true)}
                 variant="orange"
                 size="sm"
-                className="flex items-center gap-2"
+                className="flex items-center gap-2 w-full sm:w-auto"
               >
                 Change Password
               </Button>

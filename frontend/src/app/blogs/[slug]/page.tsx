@@ -66,6 +66,7 @@ export async function generateMetadata({
       },
     };
   } catch (_error) {
+    console.log(_error);
     return {
       title: "Blog Not Found",
       description: "The blog you're looking for could not be found.",
@@ -87,6 +88,7 @@ async function fetchRelatedBlogs(blogId: string) {
     const relatedData = await response.json();
     return relatedData.data?.blogs || [];
   } catch (_error) {
+    console.log(_error);
     return [];
   }
 }

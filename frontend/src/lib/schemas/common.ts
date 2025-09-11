@@ -21,14 +21,15 @@ export const nameSchema = z
   .max(50, { message: "Name must be less than 50 characters" })
   .regex(/^[a-zA-Z\s]+$/, {
     message: "Name can only contain letters and spaces",
-  });
+  }).nonempty("Name is required");
 
 export const emailSchema = z
   .string()
   .trim()
   .min(1, { message: "Email is required" })
   .max(100, { message: "Email must be less than 100 characters" })
-  .regex(emailRegEx, { message: "Please enter a valid email address" });
+  .regex(emailRegEx, { message: "Please enter a valid email address" })
+  .nonempty("Email is required");
 
 export const phoneSchema = z
   .string()
@@ -42,7 +43,7 @@ export const phoneSchema = z
   })
   .regex(/^[+]?[\d\s\-\(\)]+$/, {
     message: "Please enter a valid phone number",
-  });
+  }).nonempty("Phone number is required");
 
 export const messageSchema = z
   .string()

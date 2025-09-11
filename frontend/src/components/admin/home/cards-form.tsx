@@ -148,6 +148,7 @@ export default function CardsForm({ defaultData, field, data }: CardFormProps) {
                 label="Big heading"
                 placeholder="Big heading"
                 formControl={form.control}
+                className="border-black/10 rounded-md"
               />
               <ColorPickerField
                 name="largeColor"
@@ -164,6 +165,7 @@ export default function CardsForm({ defaultData, field, data }: CardFormProps) {
                 label="Small heading"
                 placeholder="Small heading"
                 formControl={form.control}
+                className="border-black/10 rounded-md"
               />
               <ColorPickerField
                 name="smallColor"
@@ -180,6 +182,7 @@ export default function CardsForm({ defaultData, field, data }: CardFormProps) {
                 label="Link label"
                 placeholder="Shop now"
                 formControl={form.control}
+                className="border-black/10 rounded-md"
               />
               <ColorPickerField
                 name="link.color"
@@ -197,6 +200,7 @@ export default function CardsForm({ defaultData, field, data }: CardFormProps) {
                   label="Link address"
                   placeholder="https://yourlink.com/"
                   formControl={form.control}
+                  className="border-black/10 rounded-md"
                 />
               </div>
 
@@ -206,6 +210,7 @@ export default function CardsForm({ defaultData, field, data }: CardFormProps) {
                 placeholder="Picture.jpg"
                 formControl={form.control}
                 description="Valid image extensions: .jpg, .jpeg, .png, .webp"
+                className="border-black/10 rounded-md"
               />
 
               {form.getValues("picture") && imageSrc && (

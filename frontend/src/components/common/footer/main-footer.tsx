@@ -14,7 +14,7 @@ export default function Footer() {
         {/* Logo and Brand */}
         <div className="flex items-center justify-center md:justify-start space-x-3 mb-8">
           <Logo />
-          <h3 className="text-xl font-bold text-primary-400">Sanas Nursery</h3>
+          {/* <h3 className="text-xl font-bold text-primary-400">Sanas Nursery</h3> */}
         </div>
 
         {/* Main Content Grid */}
