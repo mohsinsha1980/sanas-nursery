@@ -11,7 +11,6 @@ const BestSellingProduct = () => {
     { src: "/plant2.png", title: "Plant 2" },
     { src: "/plant3.png", title: "Plant 3" },
     { src: "/plant4.webp", title: "Plant 4" },
-    { src: "/plant5.webp", title: "Plant 5" },
   ];
 
   useEffect(() => {

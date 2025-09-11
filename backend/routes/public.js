@@ -32,4 +32,6 @@ routes.post("/subscriptions", isHuman, rateLimiter, publicCtrl.subscribeEmail);
 
 routes.use("/blogs", blogRoutes);
 
+routes.get("/global-search-opt", publicCtrl.getGlobalSearchOpt);
+
 export default routes;

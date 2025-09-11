@@ -1,16 +1,14 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { addContactUs } from "@/lib/api-routes/api-public";
+import { createContactEnquiry } from "@/lib/api-routes/api-public";
 import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  Mail,
-  MapPin,
-  Phone,
-} from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 import React from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import schema, { ContactFormData } from "./schema";
+import { useReCaptcha } from "next-recaptcha-v3";
+import Link from "next/link";
 
 const Contact = () => {
   const {
@@ -21,6 +19,7 @@ const Contact = () => {
   } = useForm({
     resolver: zodResolver(schema),
   });
+  const { executeRecaptcha } = useReCaptcha();
 
   const [loading, setLoading] = React.useState(false);
   const [, setError] = React.useState("");
@@ -31,7 +30,8 @@ const Contact = () => {
     setError("");
     setSuccess("");
     try {
-      const response = await addContactUs(data);
+      const token = await executeRecaptcha("form_submit");
+      const response = await createContactEnquiry({ ...data, token });
       toast.success("Message sent successfully!");
       reset();
       console.log(response);
@@ -65,19 +65,24 @@ const Contact = () => {
                     <div className="flex items-center lg:gap-x-5 gap-3">
                       <Phone className="lg:text-[22px] md:h-6 md:w-6 h-4 w-4" />
                       <p className="lg:text-[20px] md:text-[20px] text-[16px] lg:font-semibold">
-                        +1012 3456 789
+                        <Link href="tel:+918999481616">
+                          +91 8999481616/+91 9090401616
+                        </Link>
                       </p>
                     </div>
                     <div className="flex items-center lg:gap-x-5 gap-3">
                       <Mail className="lg:text-[22px] md:h-6 md:w-6 h-4 w-4" />
                       <p className="theight lg:text-[20px] md:text-[20px] text-[16px] lg:font-semibold">
-                        demo@gmail.com
+                        <Link href="mailto:sanasnursery@gmail.com">
+                          sanasnursery@gmail.com
+                        </Link>
                       </p>
                     </div>
                     <div className="flex items-start lg:gap-x-5 gap-3 ">
                       <MapPin className="lg:h-10 lg:w-10" />
                       <p className="lg:text-[20px] md:text-[20px] text-[16px] lg:font-semibold">
-                        Lorem ipsum dolor sit amet consectetur. Vel quam amet
+                        Sanas Wholesale Nursery, Bori Fata, near ITI collage,
+                        Uruli Kanchan, Maharashtra, 412201
                       </p>
                     </div>
                   </div>
@@ -85,7 +90,7 @@ const Contact = () => {
                     key="3-icons"
                     className=" flex flex-row justify-between items-center text-white lg:space-x-4 md:space-x-3 space-x-5  "
                   >
-                    <div className="h-[40px] w-[40px] flex justify-center items-center">
+                    {/* <div className="h-[40px] w-[40px] flex justify-center items-center">
                       <svg
                         className="w-6 h-6"
                         fill="currentColor"
@@ -111,7 +116,7 @@ const Contact = () => {
                       >
                         <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
                       </svg>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>
@@ -145,16 +150,16 @@ const Contact = () => {
                     </p>
                     <input
                       type="text"
-                      {...register("phonenumber")}
+                      {...register("phone")}
                       style={{
                         WebkitBoxShadow: "0 0 0 1000px white inset",
                         WebkitTextFillColor: "black",
                       }}
                       className="lg:border-b-2 border-b-1 border-[#8D8D8D] lg:h-[35px] lg:text-[18px] text-[16px] bg-transparent focus:outline-none focus:bg-transparent autofill:bg-transparent autofill:text-[#1d2f33]"
                     />
-                    {errors.phonenumber && (
+                    {errors.phone && (
                       <p className="text-red-500 text-sm">
-                        {errors.phonenumber.message}
+                        {errors.phone.message}
                       </p>
                     )}
                   </div>
