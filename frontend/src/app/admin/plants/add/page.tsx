@@ -143,11 +143,11 @@ export default function AddPlant() {
   return (
     <>
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center pb-5 gap-3">
-        <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold">Add a plant</h1>
+        <h1 className="!p-0">Add a plant</h1>
         <Button
           variant="orange"
           type="button"
-          size="md"
+          size="sm"
           onClick={() => router.back()}
           className="w-full sm:w-auto"
         >
@@ -210,6 +210,7 @@ export default function AddPlant() {
                 labelClassName="text-base sm:text-lg lg:text-xl font-semibold"
                 placeholder="Details"
                 formControl={form.control}
+                className="border-none"
               />
             </div>
 
@@ -221,6 +222,7 @@ export default function AddPlant() {
                 labelClassName="text-base sm:text-lg lg:text-xl font-semibold"
                 placeholder="Add description about the plant"
                 formControl={form.control}
+                className="border-none"
               />
             </div>
 
@@ -242,7 +244,7 @@ export default function AddPlant() {
                   <Button
                     variant="orange"
                     type="button"
-                    size="md"
+                    size="sm"
                     onClick={() => setOpenKeySpec(true)}
                     className="mt-3"
                   >
@@ -382,7 +384,7 @@ export default function AddPlant() {
                   <Button
                     variant="orange"
                     type="button"
-                    size="md"
+                    size="sm"
                     onClick={() => setOpenAddFAQ(true)}
                     className="w-full sm:w-auto"
                   >
@@ -453,7 +455,7 @@ export default function AddPlant() {
             <div className="lg:col-span-4">
               <Button
                 variant="orange"
-                size="md"
+                size="sm"
                 type="submit"
                 className="w-full sm:w-auto"
               >

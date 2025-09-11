@@ -31,8 +31,8 @@ export default function ViewDetailsDialog({
     <CustomDialog
       title="Enquiry Details"
       open={isOpen}
-      onclose={(_open: boolean) => onClose()}
-      className="max-w-4xl"
+      onclose={() => onClose()}
+      className="max-w-4xl z-[9999]"
     >
       <div className="space-y-6">
         <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-lg p-6">

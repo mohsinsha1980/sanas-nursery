@@ -59,7 +59,7 @@ export default function AddTestimonial() {
     <>
       <div className="flex justify-between items-center pb-5">
         <h1 className="text-2xl font-bold">Add Testimonial</h1>
-        <Button variant="orange" type="button" size="md">
+        <Button variant="orange" type="button" size="sm">
           <Link href="/admin/testimonials">Back</Link>
         </Button>
       </div>
@@ -72,7 +72,7 @@ export default function AddTestimonial() {
               label="Author Name"
               placeholder="Enter author name"
               inputType="text"
-              className="rounded-md"
+              className="rounded-md border-none"
               labelClassName="text-[20px] font-semibold"
               formControl={form.control}
             />
@@ -83,6 +83,7 @@ export default function AddTestimonial() {
               placeholder="Write testimonial here"
               formControl={form.control}
               labelClassName="text-[20px] font-semibold"
+              className="border-none"
             />
 
             <SmartBox
@@ -91,6 +92,7 @@ export default function AddTestimonial() {
               placeholder="Select rating"
               formControl={form.control}
               allowCustomValue={false}
+              className="border-none"
               options={[
                 { label: "(1) ⭐", value: "1" },
                 { label: "(2) ⭐⭐", value: "2" },
@@ -105,7 +107,7 @@ export default function AddTestimonial() {
               label="Author Link (Optional)"
               placeholder="https://example.com"
               inputType="text"
-              className="rounded-md"
+              className="rounded-md border-none"
               labelClassName="text-[20px] font-semibold"
               formControl={form.control}
             />
@@ -118,7 +120,7 @@ export default function AddTestimonial() {
             />
 
             <div>
-              <Button variant="orange" size="md" type="submit">
+              <Button variant="orange" size="sm" type="submit">
                 Save Testimonial
               </Button>
             </div>

@@ -28,14 +28,15 @@ export default function MainHeader() {
   return (
     <header className="md:relative flex justify-center items-center w-full">
       <div
-        className={`bg-nav fixed top-0 z-[50] transition-transform flex justify-center w-full  ${
+        className={`bg-nav fixed top-0 transition-transform flex justify-center w-full ${
           isScrolled
             ? "bg-white/30 backdrop-blur-md md:absolute md:translate-y-0 md:top-0"
-            : "md:max-w-[var(--container-8xl)] md:px-[var(--spacing-lg)] mx-auto md:absolute md:translate-y-5 md:top-5"
-        }
-  `}
+            : "md:absolute"
+        }`}
       >
-        <div className="main_header w-[95%] ">
+        <div
+          className={`main_header w-[95%] md:max-w-[var(--container-7xl)] md:px-[var(--spacing-lg)] mx-auto`}
+        >
           <div>
             <Logo size={60} />
           </div>
@@ -50,7 +51,11 @@ export default function MainHeader() {
 
           <div className="md:hidden flex items-center">
             <button onClick={() => setMobileOpen(!mobileOpen)}>
-              {mobileOpen ? <X className="text-orange-500" size={28} /> : <Menu className="text-orange-500" size={28} />}
+              {mobileOpen ? (
+                <X className="text-orange-500" size={28} />
+              ) : (
+                <Menu className="text-orange-500" size={28} />
+              )}
             </button>
           </div>
 

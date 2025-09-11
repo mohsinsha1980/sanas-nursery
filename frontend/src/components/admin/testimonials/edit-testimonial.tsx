@@ -108,7 +108,7 @@ export default function EditTestimonialForm({
         <Button
           variant="orange"
           type="button"
-          size="md"
+          size="sm"
           onClick={() => router.back()}
         >
           Back
@@ -169,7 +169,7 @@ export default function EditTestimonialForm({
             />
 
             <div>
-              <Button variant="orange" size="md" type="submit">
+              <Button variant="orange" size="sm" type="submit">
                 Update Testimonial
               </Button>
             </div>

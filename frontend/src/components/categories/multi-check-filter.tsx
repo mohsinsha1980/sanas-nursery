@@ -32,7 +32,7 @@ const MultiCheckBoxFilter: React.FC<MultiCheckBoxFieldProps> = ({
         <Button
           variant="link"
           className="pr-0 mb-1 justify-end text-[16px] font-semibold"
-          size="md"
+          size="sm"
           onClick={reset}
         >
           Clear

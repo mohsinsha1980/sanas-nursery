@@ -14,7 +14,7 @@ export default async function EditPlantPage({
     <>
       <div className="flex justify-between items-center">
         <h1>Edit Plant</h1>
-        <Button variant="orange" type="button" size="md" className="h-fit ">
+        <Button variant="orange" type="button" size="sm">
           <a href="http://localhost:3333/admin/plants">Back</a>
         </Button>
       </div>

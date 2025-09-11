@@ -61,7 +61,7 @@ const TextField = <T extends FieldValues>({
             <div className="relative w-full">
               <div className="flex h-9 items-center">
                 {prefix && (
-                  <div className="flex items-center justify-center rounded-md h-full p-2 bg-white-200 min-w-10 me-2 border border-gray-300">
+                  <div className="flex items-center justify-center rounded-md h-full p-3 bg-white-200 min-w-10 me-2 border border-gray-300">
                     {prefix}
                   </div>
                 )}
@@ -97,7 +97,7 @@ const TextField = <T extends FieldValues>({
                 )}
 
                 {suffix && (
-                  <div className="flex items-center justify-center h-full p-2 bg-zinc-200 min-w-10 rounded-md ms-1">
+                  <div className="flex items-center justify-center h-full p-3 bg-zinc-200 min-w-10 rounded-md ms-1">
                     {suffix}
                   </div>
                 )}

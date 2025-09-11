@@ -50,7 +50,7 @@ const SubscribeEmail = () => {
         placeholder="Enter Email Address"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        className="lg:w-[260px] md:w-[180px] w-[160px] lg:pl-5 md:pl-2 pl-1 outline-none text-black"
+        className="lg:w-[260px] md:w-[180px] w-[160px] lg:pl-5 md:pl-2 px-2 outline-none text-black rounded-lg"
       />
       <button
         type="button"

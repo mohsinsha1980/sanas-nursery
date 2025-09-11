@@ -7,18 +7,18 @@ import { Clock, CheckCircle } from "lucide-react";
 export default function OrderEnquiriesPage() {
   return (
     <>
-      <div className="h-fit w-full lg:space-y-6">
-        <div className="flex flex-row">
-          <div className="basis-3/4">
-            <h1 className="text-3xl font-bold text-gray-900">
+      <div>
+        <div className="flex flex-row pb-6">
+          <div>
+            <h1>
               Order Enquiries
             </h1>
-            <p className="text-gray-600 mt-2">
+            <p className="text-gray-600 mt-2 px-2">
               Manage and track customer order enquiries
             </p>
           </div>
         </div>
-        <div className="">
+        <div>
           <Tabs defaultValue="incomplete">
             <TabsList className="inline-flex bg-gray-100 p-1 rounded-lg shadow-sm">
               <TabsTrigger
@@ -36,10 +36,10 @@ export default function OrderEnquiriesPage() {
                 <span>Completed</span>
               </TabsTrigger>
             </TabsList>
-            <TabsContent value="incomplete" className="mt-6">
+            <TabsContent value="incomplete" className="mt-6 md:!px-0">
               <PendingOrderEnquiries />
             </TabsContent>
-            <TabsContent value="completed" className="mt-6">
+            <TabsContent value="completed" className="mt-6 md:!px-0">
               <ResolvedOrderEnquiries />
             </TabsContent>
           </Tabs>
