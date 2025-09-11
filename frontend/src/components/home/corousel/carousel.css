@@ -1,0 +1,106 @@
+.slider-container {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  overflow: hidden;
+}
+
+.slider-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.slider-single {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  opacity: 0;
+  transform: translateX(-50%) scale(0.7);
+  transition: all 0.8s ease;
+  z-index: 0;
+}
+
+.slider-single img {
+  width: 330px;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.slider-single.active {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+  z-index: 3;
+}
+
+.slider-single.preactive {
+  opacity: 0.6;
+  transform: translateX(-150%) scale(0.8);
+  z-index: 2;
+}
+
+.slider-single.proactive {
+  opacity: 0.6;
+  transform: translateX(50%) scale(0.8);
+  z-index: 2;
+}
+
+.slider-single.proactivede {
+  opacity: 0;
+  transform: translateX(-50%) scale(0.5);
+  z-index: 1;
+}
+
+@media (max-width: 640px) {
+  .slider-container {
+    width: 100%;
+    height: auto; /* adjust height automatically */
+  }
+
+  .slider-single {
+    position: relative !important;  /* override absolute */
+    left: auto !important;          /* remove left 50% */
+    top: auto !important;           /* remove top 0 */
+    transform: none !important;     /* remove translateX(-50%) scale(0.7) */
+    margin: 0 auto;                 /* center the slide */
+  }
+
+  .slider-single img {
+    width: 95%;   /* bigger image */
+    height: auto; /* maintain aspect ratio */
+    display: block;
+    margin: 0 auto;
+  }
+
+  /* Only show the active slide */
+  .slider-single.preactive,
+  .slider-single.proactive,
+  .slider-single.proactivede {
+    display: none;
+  }
+
+  /* Arrows below image */
+  .slider-arrows {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 15px;
+  }
+
+  .slider-left,
+  .slider-right {
+    position: relative; /* remove absolute positioning */
+    top: auto;
+    left: auto;
+    transform: none;
+    cursor: pointer;
+  }
+
+  .slider-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}

@@ -52,7 +52,6 @@ async function fetchPlants(
 ): Promise<CategoryPlantsHttpResDataType> {
   const response = await getCategoryPlants(slug, searchParamsData);
   const catProdData = await response.json();
-  console.log("res", catProdData);
   return catProdData;
 }
 

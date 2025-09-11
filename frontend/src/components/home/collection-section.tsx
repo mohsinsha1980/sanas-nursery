@@ -18,7 +18,7 @@ const CollectionSection = () => {
 
           {/* Full-width overlay */}
           <div
-            className="absolute bottom-0 left-0 w-full bg-transparent group-hover:bg-[rgba(255,255,255,0.5)] group-hover:scale-y-90 origin-bottom transition-all duration-400 ease-in-out text-white group-hover:text-black flex flex-col items-start justify-center text-left p-4 md:p-10"
+            className="absolute bottom-0 left-0 w-full bg-transparent group-hover:bg-[rgba(255,255,255,0.5)] transition-all duration-400 ease-in-out text-white group-hover:text-black flex flex-col items-start justify-center text-left p-4 md:p-10"
             style={{ height: "230px" }}
           >
             <h2 className="text-[24px] sm:text-[28px] md:text-[32px] font-semibold mb-3 sm:mb-3">
@@ -27,7 +27,7 @@ const CollectionSection = () => {
             <p className="text-[16px] sm:text-[18px] md:text-[20px] leading-relaxed mb-4 sm:mb-3">
               Fresh, lush plants perfect for the summer season.
             </p>
-            <Button variant="secondary" size="lg" className="w-fit">
+            <Button variant="outline" size="lg" className="w-fit">
               View Collection
             </Button>
           </div>
@@ -45,7 +45,7 @@ const CollectionSection = () => {
 
           {/* Full-width overlay */}
           <div
-            className="absolute bottom-0 left-0 w-full group-hover:bg-[rgba(76,186,155,0.70)] group-hover:scale-y-90 origin-bottom transition-all duration-400 ease-in-out text-black group-hover:text-white flex flex-col items-start justify-center text-left p-6 sm:p-8 md:p-10"
+            className="absolute bottom-0 left-0 w-full group-hover:bg-[rgba(76,186,155,0.70)] transition-all duration-400 ease-in-out text-black group-hover:text-white flex flex-col items-start justify-center text-left p-6 sm:p-8 md:p-10"
             style={{ height: "235px" }}
           >
             <h2 className="text-[24px] sm:text-[28px] md:text-[32px] font-semibold mb-3 sm:mb-4">
