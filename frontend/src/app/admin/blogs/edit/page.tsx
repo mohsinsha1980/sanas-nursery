@@ -14,9 +14,9 @@ export default async function EditBlogPage({
   return (
     <>
       <Suspense fallback={<Loading />}>
-        <div className="flex justify-between items-center pb-5">
-          <h1 className="text-2xl font-bold text-gray-900">Edit Blog</h1>
-          <Button variant="outline" type="button" size="md" className="h-fit">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center pb-4 gap-3">
+          <h1 className="!p-0">Edit Blog</h1>
+          <Button variant="orange" type="button" size="sm">
             <Link href="/admin/blogs">Back</Link>
           </Button>
         </div>

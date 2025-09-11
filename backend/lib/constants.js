@@ -1,6 +1,7 @@
 const COUNTRY_NAME = "India";
 export const PASSWORD_HASH_ROUND = 10;
 export const SIMILAR_PLANTS_COUNT = 10;
+export const RELATED_BLOG_COUNT = 4;
 
 export const ROLES = {
   USER: "User",
@@ -68,58 +69,7 @@ export const MEDIA = {
       pictures: { count: 1, fileSize: 0.5 * 1024 * 1024 },
       limits: { fileSize: 0.5 * 1024 * 1024 },
     },
-    // Top: {
-    //   A1: {
-    //     destination: "public/pictures/home",
-    //     resizeOptions: {
-    //       // width: 505,
-    //       // height: 457,
-    //       fit: "cover",
-    //     },
-    //     pictures: { count: 1, fileSize: 0.5 * 1024 * 1024 },
-    //     limits: { fileSize: 0.5 * 1024 * 1024 },
-    //   },
-    //   B1: {
-    //     destination: "public/pictures/home",
-    //     resizeOptions: {
-    //       width: 505,
-    //       height: 214,
-    //       fit: "cover",
-    //     },
-    //     pictures: { count: 1, fileSize: 0.5 * 1024 * 1024 },
-    //     limits: { fileSize: 0.5 * 1024 * 1024 },
-    //   },
-    //   B2: {
-    //     destination: "public/pictures/home",
-    //     resizeOptions: {
-    //       width: 242,
-    //       height: 214,
-    //       fit: "cover",
-    //     },
-    //     pictures: { count: 1, fileSize: 0.5 * 1024 * 1024 },
-    //     limits: { fileSize: 0.5 * 1024 * 1024 },
-    //   },
-    // },
-    // Cards: {
-    //   destination: "public/pictures/home",
-    //   resizeOptions: {
-    //     width: 1899,
-    //     height: 584,
-    //     fit: "cover",
-    //   },
-    //   pictures: { count: 1, fileSize: 0.5 * 1024 * 1024 },
-    //   limits: { fileSize: 0.5 * 1024 * 1024 },
-    // },
   },
-  // ContactUs: {
-  //   destination: "public/pictures/contact-us",
-  //   resizeOptions: {
-  //     fit: "cover",
-  //   },
-  //   pictures: { count: 10, fileSize: 0.5 * 1024 * 1024 },
-  //   files: { count: 1, fileSize: 0.5 * 1024 * 1024 },
-  //   limits: { fileSize: 0.5 * 1024 * 1024 },
-  // },
 };
 
 export const PLANTS_PER_PAGE = 20;

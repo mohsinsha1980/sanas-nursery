@@ -40,6 +40,24 @@ export const columns: ColumnDef<PlantTableDataType>[] = [
     },
   },
   {
+    accessorKey: "category",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          className="px-0 gap-0"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Category
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      );
+    },
+    cell: ({ row }) => {
+      return <span>{row.getValue("category")}</span>;
+    },
+  },
+  {
     accessorKey: "plantId",
     header: ({ column }) => {
       return (

@@ -95,13 +95,12 @@ const GreenChoices = ({ data }: { data: HomeGreenPlantType[] }) => {
   };
 
   return (
-    <div className="p-6">
-      <div className="flex items-center justify-between mb-4">
-        <h1 className="text-2xl font-bold">Manage Green Choices</h1>
+    <div>
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center pb-4 gap-3">
+        <h1>Manage Green Choices</h1>
         <Button
-          size="md"
+          size="sm"
           variant="orange"
-          className=""
           onClick={() => setOpen(true)}
         >
           Update
@@ -119,7 +118,7 @@ const GreenChoices = ({ data }: { data: HomeGreenPlantType[] }) => {
                 key={plant._id}
                 className="flex flex-col items-center cursor-pointer"
               >
-                <div className="w-[200px] sm:w-[220px] md:w-[240px] lg:w-[250px] h-[300px] sm:h-[320px] md:h-[350px] lg:h-[375px] rounded-[10px] overflow-hidden shadow-md bg-white transition-transform duration-300 hover:scale-105">
+                <div className="w-[200px] sm:w-[220px] md:w-[240px] lg:w-[200px] h-[300px] sm:h-[320px] md:h-[350px] lg:h-[275px] rounded-[10px] overflow-hidden shadow-md bg-white transition-transform duration-300 hover:scale-105">
                   <div className="relative w-full h-full">
                     <Image
                       src={getPicURL(plant.pictures[0]) || "/placeholder.png"}
@@ -134,6 +133,7 @@ const GreenChoices = ({ data }: { data: HomeGreenPlantType[] }) => {
                 </p>
               </div>
             ))}
+            
           </div>
         )}
       </div>
@@ -147,7 +147,7 @@ const GreenChoices = ({ data }: { data: HomeGreenPlantType[] }) => {
       >
         <div className="space-y-4">
           <Command>
-            <CommandInput placeholder="Search plants..." />
+            <CommandInput placeholder="Search plants..."/>
             <CommandList>
               <CommandEmpty>No plants found.</CommandEmpty>
               <CommandGroup>
@@ -163,6 +163,7 @@ const GreenChoices = ({ data }: { data: HomeGreenPlantType[] }) => {
                       checked={selectedPlants.includes(plant._id)}
                       onCheckedChange={() => togglePlant(plant._id)}
                       onClick={(e) => e.stopPropagation()}
+                      className="border-black/20 rounded-sm"
                     />
 
                     {/* Plant image */}
@@ -186,10 +187,7 @@ const GreenChoices = ({ data }: { data: HomeGreenPlantType[] }) => {
                 ))}
               </CommandGroup>
             </CommandList>
-          </Command>
-
-          {/* Action buttons */}
-          <div className="flex justify-end gap-3 pt-4">
+            <div className="flex justify-end gap-3 pt-4">
             <Button
               variant="outline"
               onClick={() => setOpen(false)}
@@ -205,6 +203,10 @@ const GreenChoices = ({ data }: { data: HomeGreenPlantType[] }) => {
               Save
             </Button>
           </div>
+          </Command>
+
+          {/* Action buttons */}
+          
         </div>
       </CustomDialog>
     </div>

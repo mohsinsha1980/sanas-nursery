@@ -98,7 +98,7 @@ export default function CardsForm({ defaultData, field, data }: CardFormProps) {
       {/* Card */}
       <div
         onClick={() => setOpenConfirm(true)}
-        className="relative w-full md:w-1/2 h-[350px] sm:h-[420px] md:h-[472px] lg:h-[350px] rounded-2xl overflow-hidden cursor-pointer group"
+        className="relative w-full md:w-[659px] h-[350px] sm:h-[420px] md:h-[472px] lg:h-[350px] rounded-2xl overflow-hidden cursor-pointer group"
       >
         {/* Card Image */}
         <Image

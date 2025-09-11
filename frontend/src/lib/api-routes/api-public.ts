@@ -7,6 +7,7 @@
 
 import { axiosInstance } from "@/config/http";
 import {
+  BlogFilterType,
   ContactEnquiryFields,
   Controller,
   EmailType,
@@ -15,7 +16,7 @@ import {
 } from "../types/common-types";
 import config from "@/config/env-config";
 import { ContactFormData } from "@/components/home/contact/schema";
-import { buildQueryString } from "../helper";
+import { buildBlogQueryString, buildQueryString } from "../helper";
 
 export const refreshToken = (controller?: Controller) => {
   return axiosInstance.get(`${config.API_USER_PATH}/refreshToken`, {
@@ -103,5 +104,29 @@ export const subscribeEmail = (
 ) => {
   return axiosInstance.post(`${config.API_PUBLIC_PATH}/subscriptions`, data, {
     signal: controller?.signal,
+  });
+};
+
+export const getPublishedBlogs = (searchParams?: BlogFilterType) => {
+  const queryString = searchParams ? buildBlogQueryString(searchParams) : "";
+  const url = queryString
+    ? `${config.API_PUBLIC_PATH}/blogs${queryString}`
+    : `${config.API_PUBLIC_PATH}/blogs`;
+
+  return fetch(url, { cache: "no-store" });
+};
+
+export const getBlogBySlug = (slug: string, controller?: Controller) => {
+  return fetch(`${config.API_PUBLIC_PATH}/blogs/${slug}`, {
+    signal: controller?.signal,
+    cache: "no-store",
+  });
+};
+
+export const getRelatedBlogs = (blogId: string, controller?: Controller) => {
+  console.log("getRelatedBlogs");
+  return fetch(`${config.API_PUBLIC_PATH}/blogs/related/${blogId}`, {
+    signal: controller?.signal,
+    cache: "no-store",
   });
 };
