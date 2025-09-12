@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { categories } from "@/lib/helper";
+import { categories } from "@/lib/constants";
 
 export default function Categories() {
   return (

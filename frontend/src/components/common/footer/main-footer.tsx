@@ -18,9 +18,9 @@ export default function Footer() {
         </div>
 
         {/* Main Content Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 ">
           {/* Company Info - Centered on mobile */}
-          <div className="col-span-1 md:col-span-2 text-center md:text-left">
+          <div className="col-span-2 md:col-span-2 text-center md:text-left    ">
             <p className="text-gray-400 text-sm mb-4">
               Stay tuned for updates and exciting announcements.
             </p>
@@ -47,41 +47,42 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Information Links - Centered on mobile */}
-          <div className="text-center md:text-left">
-            <h4 className="text-lg font-semibold mb-4">Information</h4>
-            <ul className="space-y-2">
-              {FOOTER_LINKS.INFORMATION.map((link) => (
-                <li key={link.label}>
-                  <Link
-                    href={link.pageUrl}
-                    className="text-gray-300 hover:text-primary-400 transition-colors duration-200"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <div className="col-span-1 flex justify-between">
+            {/* Information Links - Centered on mobile */}
+            <div className="flex flex-col justify-between items-start ">
+              <h4 className="text-lg font-semibold mb-4">Information</h4>
+              <ul className="space-y-2 text-start">
+                {FOOTER_LINKS.INFORMATION.map((link) => (
+                  <li key={link.label}>
+                    <Link
+                      href={link.pageUrl}
+                      className="text-gray-300 text-start hover:text-primary-400 transition-colors duration-200 "
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          {/* Company Links - Centered on mobile */}
-          <div className="text-center md:text-left">
-            <h4 className="text-lg font-semibold mb-4">Company</h4>
-            <ul className="space-y-2">
-              {FOOTER_LINKS.COMPANY.map((link) => (
-                <li key={link.label}>
-                  <Link
-                    href={link.pageUrl}
-                    className="text-gray-300 hover:text-primary-400 transition-colors duration-200"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            {/* Company Links - Centered on mobile */}
+            <div className="flex flex-col justify-between items-end">
+              <h4 className="text-lg font-semibold mb-4">Company</h4>
+              <ul className="space-y-2 text-end">
+                {FOOTER_LINKS.COMPANY.map((link) => (
+                  <li key={link.label}>
+                    <Link
+                      href={link.pageUrl}
+                      className="text-gray-300 hover:text-primary-400 transition-colors duration-200"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
-
         {/* Social Media and Newsletter */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
           <div className="text-center md:text-left">

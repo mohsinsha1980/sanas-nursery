@@ -81,7 +81,7 @@ Based on the Sanas Nursery logo:
    ```
 
 5. **Open your browser**
-   Navigate to [http://localhost:3000](http://localhost:3000)
+   Navigate to [http://localhost:3333](http://localhost:3333)
 
 ### Build for Production
 

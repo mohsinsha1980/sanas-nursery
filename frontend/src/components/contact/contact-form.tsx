@@ -15,7 +15,7 @@ import { useReCaptcha } from "next-recaptcha-v3";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { Mail, MapPin } from "lucide-react";
-import { CONTACT_INFO } from "@/lib/constants";
+import { SITE_DATA } from "@/lib/constants";
 import Link from "next/link";
 
 const defaultValues = {
@@ -141,7 +141,7 @@ export default function ContactPage() {
                       Email
                     </h3>
                     <p className="text-green-700 font-medium">
-                     <Link href={`mailto:${CONTACT_INFO.EMAIL}`}> {CONTACT_INFO.EMAIL}</Link>
+                     <Link href={`mailto:${SITE_DATA.EMAIL}`}> {SITE_DATA.EMAIL}</Link>
                     </p>
                   </div>
                 </div>
@@ -155,7 +155,7 @@ export default function ContactPage() {
                       WhatsApp
                     </h3>
                     <p className="text-green-700 font-medium">
-                      <Link href={`tel:${CONTACT_INFO.CONTACT_1}`}> {CONTACT_INFO.CONTACT_1} / {CONTACT_INFO.CONTACT_2}</Link>
+                      <Link href={`tel:${SITE_DATA.phone}`}> {SITE_DATA.phone}</Link>
                     </p>
                   </div>
                 </div>
@@ -169,7 +169,7 @@ export default function ContactPage() {
                       Location
                     </h3>
                     <p className="text-green-700 font-medium">
-                      {CONTACT_INFO.LOCATION}
+                      {SITE_DATA.LOCATION}
                     </p>
                   </div>
                 </div>
