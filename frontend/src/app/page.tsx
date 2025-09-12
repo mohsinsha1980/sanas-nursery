@@ -14,8 +14,7 @@ async function getHomeDataServer() {
   try {
     const response = await getPublicHomeData();
     return response.data.data;
-  } catch (error) {
-    console.log(error);
+  } catch (_error) {
     return {
       greenChoices: [],
       cards: {},

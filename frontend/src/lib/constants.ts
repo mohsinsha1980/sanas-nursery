@@ -1,3 +1,5 @@
+import { HOME_GALLERY } from "@/assets";
+
 export const PLANTS_PER_PAGE = 12;
 export const BLOGS_PER_PAGE = 20;
 export const PRICE_RANGE_MAX = 15000;
@@ -68,12 +70,6 @@ export const ROLES = {
   ADMIN: "Admin",
 };
 
-export const HOME_SECTIONS = {
-  TOP: "top",
-  MIDDLE: "middle",
-  BOTTOM: "bottom",
-};
-
 export const categories = [
   { name: "Fruit Trees", slug: "fruit-trees", image: "/plant3.png" },
   { name: "Flower Trees", slug: "flower-trees", image: "/plant2.png" },
@@ -89,19 +85,25 @@ export const CATEGORIES = {
     value: "fruit-trees",
     title: "Trusted Fruit Tree Nursery for Every Garden and Farm.",
     picture: "/site/categories/fruit tree.png",
-    description: "Supplying strong, healthy fruit trees grown with care to bring freshness, shade and harvests.",
+    description:
+      "Supplying strong, healthy fruit trees grown with care to bring freshness, shade and harvests.",
     seoTitle: "Trusted Fruit Tree Nursery for Every Garden and Farm.",
-    seoDescription: "Supplying strong, healthy fruit trees grown with care to bring freshness, shade, and harvests.",
+    seoDescription:
+      "Supplying strong, healthy fruit trees grown with care to bring freshness, shade, and harvests.",
     heroImage: "/site/categories/fruit tree.png",
   },
   FLOWER_TREES: {
     label: "Flower Trees",
     value: "flower-trees",
-    title: "Nursery Flower Plants that bring color and freshness to every space.",
+    title:
+      "Nursery Flower Plants that bring color and freshness to every space.",
     picture: "/site/categories/flower tree.png",
-    description: "Discover seasonal and ornamental flower plants, nurtured with care to thrive in gardens, farms, and landscapes.",
-    seoTitle: "Nursery Flower Plants that bring color and freshness to every space.",
-    seoDescription: "Discover seasonal and ornamental flower plants, nurtured with care to thrive in gardens, farms, and landscapes.",
+    description:
+      "Discover seasonal and ornamental flower plants, nurtured with care to thrive in gardens, farms, and landscapes.",
+    seoTitle:
+      "Nursery Flower Plants that bring color and freshness to every space.",
+    seoDescription:
+      "Discover seasonal and ornamental flower plants, nurtured with care to thrive in gardens, farms, and landscapes.",
     heroImage: "/site/categories/flower tree.png",
   },
   SHADOW_TREES: {
@@ -109,9 +111,11 @@ export const CATEGORIES = {
     value: "shadow-trees",
     title: "Shadow Trees that bring natural shade, greenery, and comfort.",
     picture: "/site/categories/shadow tree.png",
-    description: "Discover strong shadow trees that create cool spaces, enhance outdoor beauty, and support sustainable living.",
+    description:
+      "Discover strong shadow trees that create cool spaces, enhance outdoor beauty, and support sustainable living.",
     seoTitle: "Shadow Trees that bring natural shade, greenery, and comfort.",
-    seoDescription: "Discover strong shadow trees that create cool spaces, enhance outdoor beauty, and support sustainable living.",
+    seoDescription:
+      "Discover strong shadow trees that create cool spaces, enhance outdoor beauty, and support sustainable living.",
     heroImage: "/site/categories/shadow tree.png",
   },
   SHOW_TREES: {
@@ -119,19 +123,25 @@ export const CATEGORIES = {
     value: "show-trees",
     title: "Show Trees for Gardens that Transform Your Landscape.",
     picture: "/site/categories/show tree.png",
-    description: "Add beauty, shade, and elegance to your garden with our wide selection of ornamental show trees designed to thrive in any outdoor space.",
+    description:
+      "Add beauty, shade, and elegance to your garden with our wide selection of ornamental show trees designed to thrive in any outdoor space.",
     seoTitle: "Show Trees for Gardens that Transform Your Landscape.",
-    seoDescription: "Add beauty, shade, and elegance to your garden with our wide selection of ornamental show trees designed to thrive in any outdoor space.",
+    seoDescription:
+      "Add beauty, shade, and elegance to your garden with our wide selection of ornamental show trees designed to thrive in any outdoor space.",
     heroImage: "/site/categories/show tree.png",
   },
   MASALA: {
     label: "Masala",
     value: "masala",
-    title: "Authentic Masala Collection - Avocado, Clove, Cinnamon, Bay Leaf & More.",
+    title:
+      "Authentic Masala Collection - Avocado, Clove, Cinnamon, Bay Leaf & More.",
     picture: "/site/categories/flower tree.png",
-    description: "Discover premium masalas like avocado, clove, cinnamon, bay leaf, and mix masala, carefully crafted to add richness and authenticity to your meals.",
-    seoTitle: "Authentic Masala Collection - Avocado, Clove, Cinnamon, Bay Leaf & More.",
-    seoDescription: "Discover premium masalas like avocado, clove, cinnamon, bay leaf, and mix masala, carefully crafted to add richness and authenticity to your meals.",
+    description:
+      "Discover premium masalas like avocado, clove, cinnamon, bay leaf, and mix masala, carefully crafted to add richness and authenticity to your meals.",
+    seoTitle:
+      "Authentic Masala Collection - Avocado, Clove, Cinnamon, Bay Leaf & More.",
+    seoDescription:
+      "Discover premium masalas like avocado, clove, cinnamon, bay leaf, and mix masala, carefully crafted to add richness and authenticity to your meals.",
     heroImage: "/site/categories/flower tree.png",
   },
   OTHERS: {
@@ -139,13 +149,14 @@ export const CATEGORIES = {
     value: "others",
     title: "Fruit Tree Nursery in Uruli Kanchan – Sanas Nursery",
     picture: "/site/categories/flower tree.png",
-    description: "A wholesale plant nursery providing healthy fruit trees, flower plants, and greenery grown with expert care.",
+    description:
+      "A wholesale plant nursery providing healthy fruit trees, flower plants, and greenery grown with expert care.",
     seoTitle: "Fruit Tree Nursery in Uruli Kanchan – Sanas Nursery",
-    seoDescription: "A wholesale plant nursery providing healthy fruit trees, flower plants, and greenery grown with expert care.",
+    seoDescription:
+      "A wholesale plant nursery providing healthy fruit trees, flower plants, and greenery grown with expert care.",
     heroImage: "/site/categories/flower tree.png",
   },
 };
-
 
 export const CATEGORY_ARR = Object.values(CATEGORIES).map(
   (category) => category
@@ -258,11 +269,7 @@ export const defultHomeData = {
       },
     },
   },
-  Gallery: {
-    G1: "/site/home/gallery/gallery1.webp",
-    G2: "/site/home/gallery/gallery2.webp",
-    G3: "/site/home/gallery/gallery3.webp",
-  },
+  Gallery: HOME_GALLERY,
   Videos: [
     "https://www.youtube.com/watch?v=WNe8EDa8WPY",
     "https://www.youtube.com/watch?v=9wY_-ZMQ-jQ",

@@ -5,7 +5,7 @@ export const getUsers = async (req, res, next) => {
     if (!req.query.page || !req.query.per_page) {
       return next({ status: 400, message: "Pagination is required." });
     }
-    
+
     const page = parseInt(req.query.page);
     const per_page = req.query.per_page ? parseInt(req.query.per_page) : 10;
     const skip = (page - 1) * per_page;
@@ -27,7 +27,6 @@ export const getUsers = async (req, res, next) => {
 
     return next();
   } catch (e) {
-    console.log("e", e, req.query);
     return next({
       status: 500,
       message: e.message || "Internal server error while fetching users.",

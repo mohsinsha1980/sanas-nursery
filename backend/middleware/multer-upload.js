@@ -90,14 +90,6 @@ const mediaUpload = (mediaType) => async (req, res, next) => {
           });
         }
 
-        // check if incoming pictures count is equals to models pictures count
-        //   if (mediaType.pictures?.count !== imageFiles.length) {
-        //     next({
-        //       status: 400,
-        //       message: `accept ${mediaType.pictures?.count} pictures, provide ${imageFiles.length}`,
-        //     });
-        //   }
-
         if (mediaType.pictures?.count === 1) {
           try {
             req.optimizedImagePath = await optimizeImage(
@@ -137,14 +129,6 @@ const mediaUpload = (mediaType) => async (req, res, next) => {
             message: "Files upload is not allowd!",
           });
         }
-
-        // check if incoming files count is equals to models files count
-        // if (mediaType.files?.count !== pdfFiles.length) {
-        //   next({
-        //     status: 400,
-        //     message: `accept ${mediaType.files?.count} files, provide ${pdfFiles.length}`,
-        //   });
-        // }
 
         try {
           if (mediaType.files?.count === 1) {

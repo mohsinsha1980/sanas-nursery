@@ -59,7 +59,6 @@ export const setAuthCookies = (res, accessToken, refreshToken) => {
   const options = {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
-    // maxAge: 15 * 60 * 1000, // 15 minutes
   };
   res.cookie("accessToken", accessToken, options);
   res.cookie("refreshToken", refreshToken, options);

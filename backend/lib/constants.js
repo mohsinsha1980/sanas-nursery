@@ -1,7 +1,13 @@
-const COUNTRY_NAME = "India";
+export const COUNTRY_NAME = "India";
 export const PASSWORD_HASH_ROUND = 10;
 export const SIMILAR_PLANTS_COUNT = 10;
-export const RELATED_BLOG_COUNT = 4;
+export const PLANTS_PER_PAGE = 20;
+export const RELATED_BLOG_COUNT = 6;
+export const BLOGS_PER_PAGE = 12;
+export const GREEN_CHOICES_PRODUCT_LIMIT = 12;
+export const YT_VIDEOS_LENGTH = 2;
+export const BEST_SELLING_PLANTS_LIMIT = 10;
+export const BEST_SELLING_TAG = "best selling";
 
 export const ROLES = {
   USER: "User",
@@ -73,16 +79,6 @@ export const MEDIA = {
   },
 };
 
-export const PLANTS_PER_PAGE = 20;
-export const BLOGS_PER_PAGE = 12;
-export const GREEN_CHOICES_PRODUCT_LIMIT = 12;
-
-export const HOME_SECTIONS = {
-  TOP: "top",
-  MIDDLE: "middle",
-  BOTTOM: "bottom",
-};
-
 export const HOME_FIELDS = {
   GREEN_CHOICES: "greenChoices",
   CARDS: {
@@ -100,24 +96,17 @@ export const HOME_FIELDS = {
   },
 };
 
-export const SORT = {
-  BEST_SELLER: "best-seller",
-  TOP_RATED: "customer-ratings",
-  PRICE_ASC: "price-asc",
-  PRICE_DESC: "price-desc",
-};
-
-// const PRICE_FILTER_OPT = [500, 1000, 1500, 2000, 3000, 4000, 5000];
+// export const SORT = {
+//   BEST_SELLER: "best-seller",
+//   TOP_RATED: "customer-ratings",
+//   PRICE_ASC: "price-asc",
+//   PRICE_DESC: "price-desc",
+// };
 
 export const ORDER_TAB_TYPE = {
   COMPLETED: "completed",
   INCOMPLETED: "incompleted",
 };
-
-export const TOP_SELLING_PRODUCT_COUNT = 10;
-export const YT_VIDEOS_LENGTH = 2;
-export const BEST_SELLING_TAG = "best selling";
-export const BEST_SELLING_PLANTS_LIMIT = 10;
 
 export const ENQUIRY_STATUS = {
   PENDING: "pending",

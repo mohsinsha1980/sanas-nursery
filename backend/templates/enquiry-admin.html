@@ -21,24 +21,6 @@
         line-height: 1.6;
       }
 
-      table {
-        border-spacing: 0;
-        border-collapse: collapse;
-        width: 100%;
-      }
-
-      img {
-        max-width: 100%;
-        height: auto;
-        display: block;
-      }
-
-      a {
-        color: #444;
-        text-decoration: none;
-        font-weight: 600;
-      }
-
       .email-container {
         max-width: 600px;
         margin: 30px auto;
@@ -50,7 +32,7 @@
       }
 
       .email-header {
-        background-color: #e4fff0;
+        background: linear-gradient(135deg, #16a34a, #22c55e);
         text-align: center;
         padding: 20px 20px;
       }
@@ -62,37 +44,49 @@
 
       .email-body {
         padding: 40px 30px;
-        text-align: center;
+        text-align: left;
       }
 
       .email-body h2 {
         color: #333;
-        font-size: 24px;
+        font-size: 22px;
         margin-bottom: 12px;
+        text-align: center;
       }
 
       .email-body p {
-        margin: 0 0 15px;
+        margin: 0 0 12px;
         color: #555;
+      }
+
+      .enquiry-details {
+        margin: 20px 0;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        padding: 15px;
+        background: #f9fafb;
+      }
+
+      .enquiry-details p {
+        margin: 6px 0;
+        font-size: 14px;
       }
 
       .cta-button {
         display: inline-block;
         background: #f37521;
-        color: #fff;
+        color: #fff !important;
         font-weight: 600;
         text-transform: uppercase;
         padding: 12px 30px;
         border-radius: 6px;
         margin-top: 20px;
+        text-align: center;
+        text-decoration: none;
       }
 
       .cta-button:hover {
         background: #e07a50;
-      }
-
-      .cta-button a {
-        color: #444 !important;
       }
 
       .footer {
@@ -114,9 +108,8 @@
         }
 
         .cta-button {
-          width: 80%;
+          width: 100%;
           padding: 12px;
-          margin: 0 auto;
         }
       }
     </style>
@@ -125,7 +118,7 @@
   <body>
     <center>
       <div class="email-container">
-        <!-- Header Section -->
+        <!-- Header -->
         <div class="email-header">
           <img
             src="https://sanasnursery.com/api/public/pictures/sanas-logo.png"
@@ -133,17 +126,30 @@
           />
         </div>
 
-        <!-- Body Section -->
+        <!-- Body -->
         <div class="email-body">
           <h2>New Enquiry Received</h2>
           <p>Dear Admin,</p>
-          <p>A new enquiry form has been submitted on your website.</p>
           <p>
-            Please log in to your account to review the details and take the
-            necessary action.
+            A new enquiry has been submitted on your website. Here are the
+            details:
           </p>
 
-          <a href="{{enquiryLink}}" class="cta-button"> View Enquiry </a>
+          <div class="enquiry-details">
+            <p><strong>Name:</strong> {{name}}</p>
+            <p><strong>Email:</strong> {{email}}</p>
+            <p><strong>Phone:</strong> {{phone}}</p>
+            <p><strong>Message:</strong> {{message}}</p>
+          </div>
+
+          <p>
+            You can take quick action by viewing this enquiry in your admin
+            dashboard:
+          </p>
+
+          <div style="text-align: center; margin-top: 20px">
+            <a href="{{urlLink}}" class="cta-button">View on Website</a>
+          </div>
 
           <p style="margin-top: 30px">
             Thank you, <br />
@@ -151,11 +157,11 @@
           </p>
         </div>
 
-        <!-- Footer Section -->
+        <!-- Footer -->
         <div class="footer">
           <p>
             Need help? Contact our support team at
-            <a href="`mailto:{{supportEmail}}`">{{supportEmail}}</a>
+            <a href="mailto:{{supportEmail}}">{{supportEmail}}</a>
           </p>
         </div>
       </div>

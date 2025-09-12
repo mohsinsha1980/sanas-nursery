@@ -6,7 +6,7 @@ import isHuman, { rateLimiter } from "../middleware/public-api.js";
 const routes = Router();
 
 routes.post("/signup", rateLimiter, isHuman, authCtrl.signup);
-routes.get("/verify-email/:token", rateLimiter, isHuman, authCtrl.verifyEmail);
+routes.get("/verify-email/:token", rateLimiter, authCtrl.verifyEmail);
 routes.post("/signin", rateLimiter, isHuman, authCtrl.signin);
 routes.post("/forgot-password", rateLimiter, isHuman, authCtrl.forgotPassword);
 routes.post("/reset-password", rateLimiter, isHuman, authCtrl.resetPassword);
