@@ -9,6 +9,7 @@ import {
   SettingsIcon,
   ShoppingCartIcon,
   Sprout,
+  UserPlus,
   UserRound,
 } from "lucide-react";
 import Link from "next/link";
@@ -83,6 +84,15 @@ export default function ContextMenu() {
                 <UserRound strokeWidth={1} className="h-6 font-bold" />
               </div>
               Users
+            </Link>
+          </li>
+
+          <li className={getActiveClass("/admin/subscribe")}>
+            <Link href="/admin/subscribe" className="flex items-center gap-3">
+              <div className="">
+                <UserPlus strokeWidth={1} className="h-6 font-bold" />
+              </div>
+              Subscribe
             </Link>
           </li>
 

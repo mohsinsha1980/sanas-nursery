@@ -484,6 +484,7 @@ export const categories = [
   { name: "Masala", slug: "masala", image: "/plant2.png" },
   { name: "Others", slug: "others", image: "/plant1.png" },
 ];
+
 export const getCategoryLabel = (categoryValue: string) => {
   const category = Object.values(BLOG_CATEGORIES).find(
     (cat) => cat.value === categoryValue

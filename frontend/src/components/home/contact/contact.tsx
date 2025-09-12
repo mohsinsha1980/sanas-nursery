@@ -1,6 +1,7 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { createContactEnquiry } from "@/lib/api-routes/api-public";
+import { CONTACT_INFO } from "@/lib/constants";
 import { showErrorToast, showSuccessToast } from "@/lib/helper";
 import { contactEnquirySchema } from "@/lib/schemas/common";
 import { ContactEnquiryFields } from "@/lib/types/common-types";
@@ -75,24 +76,23 @@ const Contact = () => {
                     <div className="flex items-center lg:gap-x-5 gap-3">
                       <Phone className="lg:text-[22px] md:h-6 md:w-6 h-4 w-4" />
                       <p className="lg:text-[20px] md:text-[20px] text-[16px] lg:font-semibold">
-                        <Link href="tel:+918999481616">
-                          +91 8999481616/+91 9090401616
+                        <Link href={`tel:${CONTACT_INFO.CONTACT_1}`}>
+                          {CONTACT_INFO.CONTACT_1} / {CONTACT_INFO.CONTACT_2}
                         </Link>
                       </p>
                     </div>
                     <div className="flex items-center lg:gap-x-5 gap-3">
                       <Mail className="lg:text-[22px] md:h-6 md:w-6 h-4 w-4" />
                       <p className="theight lg:text-[20px] md:text-[20px] text-[16px] lg:font-semibold">
-                        <Link href="mailto:sanasnursery@gmail.com">
-                          sanasnursery@gmail.com
+                        <Link href={`mailto:${CONTACT_INFO.EMAIL}`}>
+                          {CONTACT_INFO.EMAIL}
                         </Link>
                       </p>
                     </div>
                     <div className="flex items-start lg:gap-x-5 gap-3 ">
-                      <MapPin className="lg:h-10 lg:w-10" />
+                      <MapPin className="lg:text-[22px] md:h-12 md:w-12 h-10 w-10" />
                       <p className="lg:text-[20px] md:text-[20px] text-[16px] lg:font-semibold">
-                        Sanas Wholesale Nursery, Bori Fata, near ITI collage,
-                        Uruli Kanchan, Maharashtra, 412201
+                        {CONTACT_INFO.LOCATION}
                       </p>
                     </div>
                   </div>

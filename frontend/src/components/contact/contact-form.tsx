@@ -15,6 +15,8 @@ import { useReCaptcha } from "next-recaptcha-v3";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { Mail, MapPin } from "lucide-react";
+import { CONTACT_INFO } from "@/lib/constants";
+import Link from "next/link";
 
 const defaultValues = {
   name: "",
@@ -139,7 +141,7 @@ export default function ContactPage() {
                       Email
                     </h3>
                     <p className="text-green-700 font-medium">
-                      sanasnursery@gmail.com
+                     <Link href={`mailto:${CONTACT_INFO.EMAIL}`}> {CONTACT_INFO.EMAIL}</Link>
                     </p>
                   </div>
                 </div>
@@ -153,7 +155,7 @@ export default function ContactPage() {
                       WhatsApp
                     </h3>
                     <p className="text-green-700 font-medium">
-                      +91 8999481616 / +91 9090401616
+                      <Link href={`tel:${CONTACT_INFO.CONTACT_1}`}> {CONTACT_INFO.CONTACT_1} / {CONTACT_INFO.CONTACT_2}</Link>
                     </p>
                   </div>
                 </div>
@@ -167,8 +169,7 @@ export default function ContactPage() {
                       Location
                     </h3>
                     <p className="text-green-700 font-medium">
-                      Sanas Wholesale Nursery, Bori Fata, near ITI College,
-                      Uruli Kanchan, Maharashtra
+                      {CONTACT_INFO.LOCATION}
                     </p>
                   </div>
                 </div>

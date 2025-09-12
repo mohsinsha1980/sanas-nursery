@@ -1,11 +1,8 @@
-const Subscription = require("../../models/Subscription");
+import Subscription from "../../models/Subscription.js";
 
-const getSubscription = async (req, res, next) => {
+export const getSubscription = async (req, res, next) => {
   try {
-    if (
-      !req.query.hasOwnProperty("page") ||
-      !req.query.hasOwnProperty("per_page")
-    ) {
+    if (!("page" in req.query) || !("per_page" in req.query)) {
       return next({ status: 400, message: "Pagination is required." });
     }
     const page = parseInt(req.query.page);
@@ -29,11 +26,7 @@ const getSubscription = async (req, res, next) => {
     return next({
       status: 500,
       message:
-        error.message || "Internal server error while fetching Subscribers.",
+        e.message || "Internal server error while fetching Subscribers.",
     });
   }
-};
-
-module.exports = {
-  getSubscription,
 };

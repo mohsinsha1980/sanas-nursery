@@ -36,8 +36,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-5L6QZ5TL');`}
       </Script>
-      <meta name="google-site-verification" content="TODO" />
-      {/* TODO change  data */}
+      <meta
+        name="google-site-verification"
+        content="bspwJaWHUbp2AJp3d4AuEk7QaaMgeFdyComfMMajsHU"
+      />
+
       <body className={`${catamaran.variable} antialiased`}>
         <noscript
           dangerouslySetInnerHTML={{

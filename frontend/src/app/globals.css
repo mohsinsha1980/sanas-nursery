@@ -11,10 +11,9 @@
   --heading-txt: #1d2f33;
   --txt-dark: #1d2f33;
   --radius: 0.625rem;
-  --testimonial-time:20s
-
-  /* Standardized Height Values */
-  --height-xs: 1.5rem;
+  --testimonial-time: 20s
+    /* Standardized Height Values */
+    --height-xs: 1.5rem;
   /* 24px */
   --height-sm: 2rem;
   /* 32px */
@@ -428,7 +427,7 @@ footer {
   }
 
   to {
-    transform: translateX(-50%);
+    transform: translateX(-33.33%);
   }
 }
 
@@ -637,10 +636,9 @@ footer {
 }
 
 .rn-whatsapp-button .rn-whatsapp-popup {
-  height: 500px !important; 
+  height: 500px !important;
 }
 
-.styles-module_status__-ln3V{
-  display : none
+.styles-module_status__-ln3V {
+  display: none
 }
-

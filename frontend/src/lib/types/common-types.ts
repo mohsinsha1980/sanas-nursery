@@ -196,3 +196,4 @@ export interface BlogsHttpResDataType {
   message: string;
   data: { blogs: BlogDataType[]; total: number };
 }
+
