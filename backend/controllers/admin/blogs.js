@@ -238,7 +238,6 @@ export const updateBlog = async (req, res, next) => {
           }
         }
       } catch (error) {
-        console.log(error);
         if (error.code !== "ENOENT") {
           return next({ status: 500, message: "Internal Server Error" });
         }
@@ -256,7 +255,6 @@ export const updateBlog = async (req, res, next) => {
     };
     return next();
   } catch (error) {
-    console.log("error", error);
     return next({
       message: error.message,
       status: 500,

@@ -29,7 +29,7 @@ export const getPlants = async (req, res, next) => {
       filter.$or.push({ plantId: { $regex: plant_id, $options: "i" } });
     }
 
-    if (status && (status === "0" || status === "1")) {
+    if (status && (status === STATUS.ACTIVE || status === STATUS.INACTIVE)) {
       filter.status = status;
     }
 
@@ -58,7 +58,6 @@ export const getPlants = async (req, res, next) => {
 };
 
 export const getPlantById = async (req, res, next) => {
-  console.log("getPlantById");
   try {
     const { plantId } = req.params;
 
@@ -165,7 +164,6 @@ export const createPlant = async (req, res, next) => {
 
 export const updatePlant = async (req, res, next) => {
   try {
-    console.log("updatePlant");
     const { plantId } = req.params;
     if (!plantId) {
       return next({ message: "Plant ID is required.", status: 400 });
@@ -295,7 +293,6 @@ export const deletePlant = async (req, res, next) => {
 
 export const getPlantsForGreenChoices = async (req, res, next) => {
   try {
-    console.log("getPlantsForGreenChoices");
     let filter = { status: STATUS.ACTIVE };
     const plants = await Plant.find(filter)
       .select("title plantId category pictures")
@@ -310,7 +307,6 @@ export const getPlantsForGreenChoices = async (req, res, next) => {
 
     return next();
   } catch (error) {
-    console.log("error ", error);
     return next({
       status: 500,
       message: error.message || "Internal server error while fetching Plants.",

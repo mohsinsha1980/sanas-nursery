@@ -1,10 +1,10 @@
 import { Router } from "express";
 import {
   createTestimonial,
-  updateTestimonial,
+  deleteTestimonial,
   getAllTestimonials,
   getTestimonialById,
-  deleteTestimonial,
+  updateTestimonial,
 } from "../../controllers/admin/testimonials.js";
 
 const routes = Router();

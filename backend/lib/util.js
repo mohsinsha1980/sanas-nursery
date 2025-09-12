@@ -1,7 +1,6 @@
-import fs from "fs";
-import { SORT } from "./constants.js";
-import { Types } from "mongoose";
 import CryptoJS from "crypto-js";
+import fs from "fs";
+import { Types } from "mongoose";
 import config from "../config/env-config.js";
 const ObjectId = Types.ObjectId;
 
@@ -22,15 +21,7 @@ export const readHTMLFile = function (path, callback) {
   });
 };
 
-// function toBase64(filePath) {
-//   const img = fs.readFileSync(filePath);
-//   const mime_type = mime.getType(filePath);
-//   const base64String = Buffer.from(img).toString("base64");
-//   const withPrefix = `data:${mime_type};base64,` + base64String;
-//   return withPrefix;
-// }
-
-const isValidObjectId = (id) => {
+export const isValidObjectId = (id) => {
   if (ObjectId.isValid(id)) {
     if (String(new ObjectId(id)) === id) return true;
     return false;
@@ -98,40 +89,11 @@ const getFormattedDate = (inputDate) => {
   return `${MONTH_NAMES[month]}, ${formattedDay} ${year}`;
 };
 
-const unlinkAsync = (path) => {
+export const unlinkAsync = (path) => {
   return new Promise((resolve, reject) => {
     fs.unlink(path, (err) => (err ? reject(err) : resolve()));
   });
 };
-
-const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-const phoneRegex = /^[6-9]\d{9}$/;
-
-// const buildCategoryTree = (categories) => {
-//   try {
-//     const categoryMap = {};
-//     const tree = [];
-
-//     categories.forEach((cat) => {
-//       categoryMap[cat._id] = { ...cat, children: [] };
-//     });
-
-//     categories.forEach((cat) => {
-//       if (cat.level === CATEGORY_LEVEL.LEVEL1) {
-//         tree.push(categoryMap[cat._id]);
-//       } else if (cat.level === CATEGORY_LEVEL.LEVEL2 && cat.l1_category) {
-//         categoryMap[cat.l1_category]?.children.push(categoryMap[cat._id]);
-//       } else if (cat.level === CATEGORY_LEVEL.LEVEL3 && cat.l2_category) {
-//         categoryMap[cat.l2_category]?.children.push(categoryMap[cat._id]);
-//       }
-//     });
-
-//     return { error: false, data: tree };
-//   } catch (error) {
-//     return { error: true, data: [] };
-//   }
-// };
 
 export const buildPlantFilter = async (query) => {
   const { sizes, tags, care_levels } = query;
@@ -152,94 +114,8 @@ export const buildPlantFilter = async (query) => {
   return filter;
 };
 
-const productSortQuery = (sort) => {
-  switch (sort) {
-    case SORT.BEST_SELLER:
-      return [
-        { $addFields: { totalSold: { $sum: "$variants.soldQuantity" } } },
-        { $sort: { totalSold: -1 } },
-      ];
-    case SORT.TOP_RATED:
-      return { avgRating: -1 };
-    case SORT.PRICE_ASC:
-      return [
-        { $addFields: { minPrice: { $min: "$variants.sellingPrice" } } },
-        { $sort: { minPrice: 1 } },
-      ];
-    case SORT.PRICE_DESC:
-      return [
-        { $addFields: { maxPrice: { $max: "$variants.sellingPrice" } } },
-        { $sort: { maxPrice: -1 } },
-      ];
-    default:
-      return { createdAt: -1 };
-  }
-};
-
-// const formatNavList = (categories, parentPath = "") => {
-//   return categories.map((category) => {
-//     const categoryPath = `${parentPath}/${category.slug}`;
-
-//     const formattedCategory = {
-//       id: category._id.toString(),
-//       label: category.label,
-//       link: categoryPath,
-//     };
-
-//     if (category.children && category.children.length > 0) {
-//       formattedCategory.children = formatNavList(
-//         category.children,
-//         categoryPath
-//       );
-//     }
-
-//     return formattedCategory;
-//   });
-// };
-
-const capitalize = (str) => {
+export const capitalize = (str) => {
   return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
-};
-
-const getFormattedPicURL = (endpoint) => {
-  if (!endpoint) return "";
-  return `${process.env.NEXT_PUBLIC_BACKEND}/${endpoint}`;
-};
-
-// const constructProductLink = (product) => {
-//   let link = "/";
-//   link = link + product.l1_category.slug + "/" + product.l2_category.slug;
-//   if (product.l3_category?.slug) {
-//     link = link + "/" + product.l3_category.slug;
-//   }
-//   link = link + "/" + product.slug + "/" + product._id;
-//   return link;
-// };
-
-// const constructCategoryLink = (product) => {
-//   let link = "/";
-//   link = link + product.l1_category.slug + "/" + product.l2_category.slug;
-//   if (product.l3_category?.slug) {
-//     link = link + "/" + product.l3_category.slug;
-//   }
-//   link = link + "/" + product.slug + "/" + product._id;
-//   return link;
-// };
-
-const buildQueryString = (searchParams) => {
-  const params = new URLSearchParams();
-
-  Object.entries(searchParams).forEach(([Key, value]) => {
-    if (value !== undefined && value !== null) {
-      if (Array.isArray(value)) {
-        value.forEach((v) => params.append(Key, v.toString()));
-      } else {
-        params.append(Key, value.toString());
-      }
-    }
-  });
-
-  return params.toString() ? "?" + params.toString() : "";
 };
 
 const encryptData = (data) => {

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Thank You for Your Enquiry | Sanas Nursery</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #f3f4f6;
+        font-family: "Montserrat", sans-serif;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      table {
+        border-spacing: 0;
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      img {
+        width: 150px;
+        margin-bottom: 10px;
+      }
+
+      a {
+        color: #16a34a;
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .email-container {
+        max-width: 600px;
+        margin: 30px auto;
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+        border: 1px solid #e5e7eb;
+      }
+
+      .email-header {
+        background: linear-gradient(135deg, #16a34a, #22c55e);
+        text-align: center;
+        padding: 25px 20px;
+      }
+
+      .email-header img {
+        width: 150px;
+        margin-bottom: 10px;
+      }
+
+      .email-body {
+        padding: 30px 25px;
+        text-align: center;
+      }
+
+      .email-body h2 {
+        color: #16a34a;
+        font-size: 26px;
+        margin-bottom: 12px;
+      }
+
+      .email-body p {
+        margin: 0 0 15px;
+        color: #444;
+        font-size: 15px;
+      }
+
+      .message-box {
+        background-color: #f9fafb;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        padding: 20px;
+        margin: 20px 0;
+        text-align: left;
+        border-left: 4px solid #16a34a;
+      }
+
+      .message-box p {
+        margin: 0;
+        color: #333;
+        font-style: italic;
+        font-size: 14px;
+      }
+
+      .cta-button {
+        display: inline-block;
+        background: #f37521;
+        color: #fff !important;
+        font-weight: 600;
+        text-transform: uppercase;
+        padding: 12px 30px;
+        border-radius: 6px;
+        margin-top: 25px;
+        text-decoration: none;
+        font-size: 14px;
+        transition: background 0.3s ease-in-out;
+      }
+
+      .cta-button:hover {
+        background: #e3641a;
+      }
+
+      .highlight-box {
+        background-color: #f0fdf4;
+        border: 1px solid #16a34a;
+        border-radius: 8px;
+        padding: 15px;
+        margin: 25px 0;
+        text-align: left;
+      }
+
+      .highlight-box p {
+        margin: 0;
+        color: #166534;
+        font-size: 14px;
+      }
+
+      .footer {
+        text-align: center;
+        padding: 15px 30px;
+        background-color: #f9fafb;
+        border-top: 1px solid #e5e7eb;
+        color: #6b7280;
+        font-size: 12px;
+      }
+
+      .footer a {
+        color: #16a34a;
+        font-weight: 600;
+      }
+
+      @media only screen and (max-width: 600px) {
+        .email-body {
+          padding: 25px 18px;
+        }
+
+        .cta-button {
+          width: 85%;
+          padding: 12px;
+          margin: 20px auto 0 auto;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <center>
+      <div class="email-container">
+        <!-- Header Section -->
+        <div class="email-header">
+          <img
+            src="https://sanasnursery.com/api/public/pictures/sanas-logo.png"
+            alt="Sanas Nursery"
+          />
+        </div>
+
+        <!-- Body Section -->
+        <div class="email-body">
+          <h2>Thank You, {{name}}! 🌱</h2>
+          <p>
+            We’ve received your enquiry and our team will get back to you
+            shortly.
+          </p>
+
+          <div class="message-box">
+            <p><strong>Your Message:</strong></p>
+            <p>{{message}}</p>
+          </div>
+
+          <a href="https://sanasnursery.com" class="cta-button"
+            >Visit Our Store</a
+          >
+
+          <div class="highlight-box">
+            <p>
+              📞 For urgent queries, call us at
+              <strong><a href="tel:{{phone}}">{{phone}}</a></strong
+              ><br />
+              📧 Or email us at
+              <strong><a href="mailto:{{email}}">{{email}}</a></strong>
+            </p>
+          </div>
+
+          <p style="margin-top: 30px">
+            Thank you for choosing <strong>Sanas Nursery</strong>! <br />
+            <em>We’re here to grow with you.</em>
+          </p>
+        </div>
+
+        <div class="footer">
+          <p>
+            Need help? Contact our support team at
+            <a href="mailto:{{supportEmail}}">{{supportEmail}}</a>
+          </p>
+        </div>
+      </div>
+    </center>
+  </body>
+</html>

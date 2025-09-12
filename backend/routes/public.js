@@ -1,8 +1,12 @@
 import { Router } from "express";
-const routes = Router();
 import * as publicCtrl from "../controllers/public-controller.js";
+import {
+  getBlogBySlug,
+  getPublishedBlogs,
+  getRelatedBlogs,
+} from "../controllers/public/blogs.js";
 import isHuman, { rateLimiter } from "../middleware/public-api.js";
-import blogRoutes from "./public/blogs.js";
+const routes = Router();
 
 routes.get("/test", (req, res) => {
   res.send("App is up and running ");
@@ -32,7 +36,9 @@ routes.post(
 );
 routes.post("/subscriptions", isHuman, rateLimiter, publicCtrl.subscribeEmail);
 
-routes.use("/blogs", blogRoutes);
+routes.get("/blogs/", getPublishedBlogs);
+routes.get("/blogs/:slug", getBlogBySlug);
+routes.get("/blogs/related/:blogId", getRelatedBlogs);
 
 routes.get("/global-search-opt", publicCtrl.getGlobalSearchOpt);
 
