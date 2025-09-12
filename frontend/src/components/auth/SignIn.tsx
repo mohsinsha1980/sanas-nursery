@@ -60,17 +60,17 @@ export default function SignIn() {
 
   return (
     <div
-      className="relative flex min-h-screen w-full items-center justify-center bg-cover bg-center overflow-hidden"
+      className="relative flex min-h-screen w-full items-center justify-center bg-cover bg-center overflow-hidden px-5"
       style={{ backgroundImage: "url('/site/auth/auth-banner.webp')" }}
     >
-      <div className="absolute inset-0 bg-black/20 border-2 border-amber-500"></div>
+      <div className="absolute inset-0 bg-black/20 "></div>
 
-      <div className="relative bg-white/80 backdrop-blur-md shadow-lg rounded-2xl flex justify-center items-center mt-13 w-full max-w-[713px] mx-4 sm:mx-0 sm:p-6 h-auto sm:h-[768px]   border-2 border-amber-500">
-        <div className="w-full max-w-[574px] flex flex-col px-4 sm:px-0 py-6 sm:py-0  border-2 border-amber-500">
-          <h1 className="text-2xl sm:text-4xl font-semibold text-gray-900">
+      <div className="absolute lg:w-full w-[96%] max-w-[600px] top-[53%] -translate-y-1/2 bg-white/80 backdrop-blur-md shadow-lg rounded-2xl flex justify-center items-center lg:p-15  p-5 ">
+        <div className="w-full max-w-[574px] flex flex-col px-4 sm:px-0 py-6 sm:py-0  ">
+          <h1 className="lg:text-[40px] text-[25px] font-semibold text-gray-900 lg:leading-13 leading-10">
             Welcome Back To Your Green Space!
           </h1>
-          <p className="text-base sm:text-[20px] text-gray-600 mt-4">
+          <p className="lg:text-[20px] text-[16px] text-gray-600 lg:mt-2 mt-3 ">
             Sign in to explore our plant collections, read product details, and
             learn more about each variety.
           </p>
@@ -78,7 +78,7 @@ export default function SignIn() {
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(onSubmit)}
-              className="mt-8 flex flex-col space-y-5  "
+              className="lg:mt-8 mt-4 flex flex-col space-y-5  "
             >
               <TextField
                 name="email"
@@ -111,7 +111,8 @@ export default function SignIn() {
 
               <Button
                 type="submit"
-                className="w-full h-[53px] text-lg font-medium text-white bg-orange-500 rounded-md hover:bg-orange-600"
+                variant={"orange"}
+                className="w-full h-[53px] text-lg font-medium text-white "
               >
                 Sign In
               </Button>

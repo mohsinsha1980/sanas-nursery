@@ -26,12 +26,12 @@ const MultiCheckBoxFilter: React.FC<MultiCheckBoxFieldProps> = ({
   };
 
   return (
-    <div className={`flex flex-col gap-1 p-3 rounded-lg shadow-lg  shadow-gray-400`}>
+    <div className={`flex flex-col gap-1 p-3 rounded-lg shadow-md  shadow-gray-400`}>
       <div className="flex items-center justify-between font-semibold">
         <h3 className="mb-1 text-md">{label}</h3>
         <Button
           variant="link"
-          className="pr-0 mb-1 justify-end text-[16px] font-semibold"
+          className="pr-0 mb-1 justify-end text-[16px] font-semibold text-red-600"
           size="sm"
           onClick={reset}
         >
@@ -49,7 +49,7 @@ const MultiCheckBoxFilter: React.FC<MultiCheckBoxFieldProps> = ({
                 id={item.label}
                 disabled={item.disable}
                 checked={isChecked}
-                className="cursor-pointer data-[state=checked]:bg-orange-500 data-[state=checked]:border-orange-500"
+                className="cursor-pointer data-[state=checked]:bg-orange-500 data-[state=checked]:border-orange-500 mt-1"
                 onCheckedChange={(checked) => {
                   return checked
                     ? setValue([...value, item.value])

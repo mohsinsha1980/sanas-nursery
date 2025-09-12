@@ -4,11 +4,17 @@ import Link from "next/link";
 import { HOME_HERO } from "@/assets";
 
 export default function HomeBanner() {
+    const heroImages = Object.values(HOME_HERO);
+
+  const today = new Date().getDate();
+  const imageIndex = today % heroImages.length;
+
+  const selectedImage = heroImages[imageIndex];
   return (
     <section>
       <div className="relative w-full h-screen ">
         <Image
-          src={HOME_HERO}
+          src={selectedImage}
           alt=""
           width={1920}
           height={1013}

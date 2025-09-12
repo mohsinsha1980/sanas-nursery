@@ -50,7 +50,7 @@ export default function MainHeader() {
   return (
     <header className="md:relative flex justify-center items-center w-full">
       <div
-        className={`bg-nav fixed top-0 z-50 transition-transform flex justify-center w-full overflow-visible ${
+        className={`bg-nav fixed top-0 z-50 transition-transform flex justify-center w-full overflow-visible bg-white/30 backdrop-blur-md ${
           isScrolled
             ? "bg-white/30 backdrop-blur-md md:absolute md:translate-y-0 md:top-0"
             : "md:absolute"
@@ -88,7 +88,7 @@ export default function MainHeader() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 50 }}
                 transition={{ duration: 0.5 }}
-                className="absolute top-[80px] right-0 h-fit w-full bg-white shadow-md p-4 flex flex-col justify-between items-center gap-4 lg:hidden z-50  "
+                className="absolute top-[80px] right-0 h-fit w-full bg-white shadow-md p-4 flex flex-col justify-between items-center gap-4 lg:hidden z-50 "
               >
                 <nav className="">
                   <ul className="flex flex-col gap-4 w-full items-center">
