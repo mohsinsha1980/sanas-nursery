@@ -7,7 +7,7 @@ import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { categories } from "@/lib/helper";
+import { categories } from "@/lib/constants";
 
 export default function MainHeader() {
   const [isScrolled, setIsScrolled] = useState(false);
