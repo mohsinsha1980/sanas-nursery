@@ -14,25 +14,14 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: false,
   },
 
-  experimental: {
-    turbo: {
-      resolveAlias: {
-        underscore: "lodash",
-        mocha: { browser: "mocha/browser-entry.js" },
-      },
-      resolveExtensions: [
-        ".mdx",
-        ".tsx",
-        ".ts",
-        ".jsx",
-        ".js",
-        ".mjs",
-        ".json",
-      ],
+  turbopack: {
+    resolveAlias: {
+      underscore: "lodash",
+      mocha: { browser: "mocha/browser-entry.js" },
     },
+    resolveExtensions: [".mdx", ".tsx", ".ts", ".jsx", ".js", ".mjs", ".json"],
   },
   images: {
-    domains: ["img.youtube.com"],
     remotePatterns: [
       {
         protocol: "http",
@@ -76,6 +65,11 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "www.facebook.com",
+        pathname: "**",
+      },
+      {
+        protocol: "https",
+        hostname: "img.youtube.com",
         pathname: "**",
       },
     ],

@@ -25,10 +25,12 @@ const config = {
     process.env.ENCRYPTION_SECRET_KEY || "pO202BcuTe90xMCCccOk40gApbLS8Exw",
   RECAPTCHA_SECRET_KEY: process.env.RECAPTCHA_SECRET_KEY || "",
 
-  ALLOWED_ORIGIN: process.env.ALLOWED_ORIGIN || "http://localhost:3333",
+  ALLOWED_ORIGIN:
+    process.env.ALLOWED_ORIGIN ||
+    "http://localhost:3333, https://sanasnursery.com",
   NEXT_PUBLIC_BACKEND:
-    process.env.NEXT_PUBLIC_BACKEND || "http://localhost:6900",
-  FRONTEND_HOME: process.env.FRONTEND_HOME || "http://localhost:3333",
+    process.env.NEXT_PUBLIC_BACKEND || "https://sanasnursery.com",
+  FRONTEND_HOME: process.env.FRONTEND_HOME || "https://sanasnursery.com",
 
   ZEPTO_API_KEY: process.env.ZEPTO_API_KEY || "",
   ZEPTO_FROM_EMAIL: process.env.ZEPTO_FROM_EMAIL || "noreply@sanasnursery.com",
