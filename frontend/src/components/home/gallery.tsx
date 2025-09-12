@@ -61,14 +61,15 @@ export default function HomeGallerySection({
           </p>
         </div>
 
-        <div className="w-full max-w-[1200px] flex items-center justify-center    ">
-          <div className="grid grid-cols-1 lg:grid-cols-[529px_828px] gap-4 max-w-[1200px] w-full    ">
+        <div className="w-full max-w-[1200px] flex items-center justify-center">
+          {/* Desktop Layout */}
+          <div className="hidden lg:grid grid-cols-[529px_828px] gap-4 max-w-[1200px] w-full">
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="rounded-xl overflow-hidden shadow-md cursor-pointer    "
+              className="rounded-xl overflow-hidden shadow-md cursor-pointer"
               onClick={() => setSelectedIndex(0)}
             >
               <Image
@@ -76,11 +77,11 @@ export default function HomeGallerySection({
                 alt="Gallery Big"
                 width={529}
                 height={793}
-                className="w-full lg:h-[793px] h-auto object-cover transition-transform duration-500 hover:scale-105    "
+                className="w-full h-[793px] object-cover transition-transform duration-500 hover:scale-105"
               />
             </motion.div>
 
-            <div className="flex flex-col gap-4 lg:w-[78%] w-full ">
+            <div className="flex flex-col gap-4 w-[78%]">
               {images.slice(1).map((img, i) => (
                 <motion.div
                   key={i + 1}
@@ -88,7 +89,7 @@ export default function HomeGallerySection({
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: (i + 1) * 0.2 }}
                   viewport={{ once: true }}
-                  className="rounded-xl overflow-hidden shadow-md cursor-pointer lg:h-[389px] h-auto    "
+                  className="rounded-xl overflow-hidden shadow-md cursor-pointer h-[389px]"
                   onClick={() => setSelectedIndex(i + 1)}
                 >
                   <Image
@@ -96,11 +97,76 @@ export default function HomeGallerySection({
                     alt={`Gallery ${i + 2}`}
                     width={500}
                     height={389}
-                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105    "
+                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                   />
                 </motion.div>
               ))}
             </div>
+          </div>
+
+          {/* Tablet Layout */}
+          <div className="hidden md:grid lg:hidden grid-cols-[350px_550px] gap-3 max-w-[850px] w-full">
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="rounded-xl overflow-hidden shadow-md cursor-pointer"
+              onClick={() => setSelectedIndex(0)}
+            >
+              <Image
+                src={images[0]}
+                alt="Gallery Big"
+                width={350}
+                height={525}
+                className="w-full h-[525px] object-cover transition-transform duration-500 hover:scale-105"
+              />
+            </motion.div>
+
+            <div className="flex flex-col gap-3 w-[62%]">
+              {images.slice(1).map((img, i) => (
+                <motion.div
+                  key={i + 1}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: (i + 1) * 0.2 }}
+                  viewport={{ once: true }}
+                  className="rounded-xl overflow-hidden shadow-md cursor-pointer h-[257px]"
+                  onClick={() => setSelectedIndex(i + 1)}
+                >
+                  <Image
+                    src={img}
+                    alt={`Gallery ${i + 2}`}
+                    width={500}
+                    height={257}
+                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                  />
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Mobile Layout - Single Row */}
+          <div className="grid md:hidden grid-cols-3 gap-2 w-full">
+            {images.map((img, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: i * 0.2 }}
+                viewport={{ once: true }}
+                className="rounded-xl overflow-hidden shadow-md cursor-pointer h-[200px]"
+                onClick={() => setSelectedIndex(i)}
+              >
+                <Image
+                  src={img}
+                  alt={`Gallery ${i + 1}`}
+                  width={300}
+                  height={200}
+                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                />
+              </motion.div>
+            ))}
           </div>
         </div>
       </div>

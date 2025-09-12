@@ -7,7 +7,10 @@ import {
   PlantFilterSchema,
   testimonialSchema,
 } from "../schemas/admin";
-import { DataTableActionType, HomeCardType } from "./common-types";
+import {
+  DataTableActionType,
+  HomeCardType,
+} from "./common-types";
 import { MASTER_DATA_TYPE } from "../constants";
 
 export interface SelectOption {
@@ -177,4 +180,16 @@ export interface DashboardStats {
     resolved: number;
     closed: number;
   };
+}
+
+export interface SubscribersDataType {
+  _id: string;
+  email: string;
+  createdAt: string;
+}
+
+export interface SubscriptionTableDataType {
+  _id: string;
+  email: string;
+  createdDate: string;
 }

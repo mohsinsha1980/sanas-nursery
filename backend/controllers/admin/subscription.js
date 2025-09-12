@@ -1,16 +1,15 @@
+import Subscribe from "./../../models/Subscription";
+
 export const getSubscription = async (req, res, next) => {
   try {
-    if (
-      !req.query.hasOwnProperty("page") ||
-      !req.query.hasOwnProperty("per_page")
-    ) {
+    if (!("page" in req.query) || !("per_page" in req.query)) {
       return next({ status: 400, message: "Pagination is required." });
     }
     const page = parseInt(req.query.page);
     const per_page = req.query.per_page ? parseInt(req.query.per_page) : 10;
     const skip = (page - 1) * per_page;
 
-    const subscribed = await find()
+    const subscribed = await Subscribe.find()
       .limit(per_page)
       .skip(skip)
       .sort("createdAt")
@@ -27,7 +26,7 @@ export const getSubscription = async (req, res, next) => {
     return next({
       status: 500,
       message:
-        error.message || "Internal server error while fetching Subscribers.",
+        e.message || "Internal server error while fetching Subscribers.",
     });
   }
 };

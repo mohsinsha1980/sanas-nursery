@@ -43,7 +43,7 @@ export const phoneSchema = z
   })
   .regex(/^[+]?[\d\s\-\(\)]+$/, {
     message: "Please enter a valid phone number",
-  }).nonempty("Phone number is required");
+  });
 
 export const messageSchema = z
   .string()

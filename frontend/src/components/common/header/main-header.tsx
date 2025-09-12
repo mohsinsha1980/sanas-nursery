@@ -7,10 +7,12 @@ import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { categories } from "@/lib/constants";
 
 export default function MainHeader() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -25,6 +27,26 @@ export default function MainHeader() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Close mobile dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        mobileDropdownOpen &&
+        !(event.target as Element).closest("li.relative")
+      ) {
+        setMobileDropdownOpen(false);
+      }
+    };
+
+    if (mobileDropdownOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [mobileDropdownOpen]);
   return (
     <header className="md:relative flex justify-center items-center w-full">
       <div
@@ -81,16 +103,62 @@ export default function MainHeader() {
                         Home
                       </Link>
                     </li>
-                    <li>
-                      <Link
-                        href="/plants"
-                        className={`dropdown-link ${
+                    <li className="relative">
+                      <button
+                        className={`dropdown-link flex items-center justify-center w-full text-[20px] ${
                           pathname.startsWith("/plants") ? "active" : ""
                         }`}
-                        onClick={() => setMobileOpen(false)}
+                        onClick={() =>
+                          setMobileDropdownOpen(!mobileDropdownOpen)
+                        }
                       >
                         Plants
-                      </Link>
+                        <svg
+                          className={`ml-1 w-4 h-4 transition-transform duration-200 ${
+                            mobileDropdownOpen ? "rotate-180" : ""
+                          }`}
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M19 9l-7 7-7-7"
+                          />
+                        </svg>
+                      </button>
+                      <AnimatePresence>
+                        {mobileDropdownOpen && (
+                          <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: "auto" }}
+                            exit={{ opacity: 0, height: 0 }}
+                            transition={{ duration: 0.2, ease: "easeOut" }}
+                            className="overflow-hidden"
+                          >
+                            <div className="mt-2 w-full">
+                              <ol className="flex flex-col">
+                                {categories.map((cat) => (
+                                  <li key={cat.slug}>
+                                    <Link
+                                      href={`/categories/${cat.slug}`}
+                                      className="block text-center px-4 py-3 !text-[var(--txt-orange)] transition-colors duration-200"
+                                      onClick={() => {
+                                        setMobileOpen(false);
+                                        setMobileDropdownOpen(false);
+                                      }}
+                                    >
+                                      {cat.name}
+                                    </Link>
+                                  </li>
+                                ))}
+                              </ol>
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
                     </li>
                     <li>
                       <Link

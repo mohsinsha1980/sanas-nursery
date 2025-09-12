@@ -541,3 +541,17 @@ export const getDashboardStats = (controller?: Controller) => {
     signal: controller?.signal,
   });
 };
+
+export const getSubscription = (
+  paginationData: PaginationDataType,
+  controller?: Controller
+) => {
+  const { page, perPage } = paginationData;
+
+  return axiosInstance.get(
+    `${config.API_ADMIN_PATH}/subscriptions?page=${page}&per_page=${perPage}`,
+    {
+      signal: controller?.signal,
+    }
+  );
+};
