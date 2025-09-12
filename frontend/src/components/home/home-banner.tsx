@@ -1,13 +1,14 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { HOME_HERO } from "@/assets";
 
 export default function HomeBanner() {
   return (
     <section>
       <div className="relative w-full h-screen ">
         <Image
-          src="/home-hero.webp"
+          src={HOME_HERO}
           alt=""
           width={1920}
           height={1013}

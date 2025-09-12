@@ -2,14 +2,14 @@
 import Image from "next/image";
 import React, { useState } from "react";
 
-interface CardProps {
-  item: {
-    img: string;
-    imgonhover: string;
-    title: string;
-    desc: string;
-  };
-}
+// interface CardProps {
+//   item: {
+//     img: string;
+//     imgonhover: string;
+//     title: string;
+//     desc: string;
+//   };
+// }
 
 // const Card = ({ item }: CardProps) => {
 //   const [isHovered, setIsHovered] = useState(false);
