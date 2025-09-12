@@ -1,3 +1,5 @@
+import { HOME_GALLERY } from "@/assets";
+
 export const PLANTS_PER_PAGE = 12;
 export const BLOGS_PER_PAGE = 20;
 export const PRICE_RANGE_MAX = 15000;
@@ -267,11 +269,7 @@ export const defultHomeData = {
       },
     },
   },
-  Gallery: {
-    G1: "/site/home/gallery/gallery1.webp",
-    G2: "/site/home/gallery/gallery2.webp",
-    G3: "/site/home/gallery/gallery3.webp",
-  },
+  Gallery: HOME_GALLERY,
   Videos: [
     "https://www.youtube.com/watch?v=WNe8EDa8WPY",
     "https://www.youtube.com/watch?v=9wY_-ZMQ-jQ",
