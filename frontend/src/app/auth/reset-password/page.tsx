@@ -79,36 +79,40 @@ export default function ResetPasswordPage() {
                 name="email"
                 placeholder="Enter Email"
                 label="Email"
+                labelClassName="text-[18px] font-semibold"
                 inputType="email"
                 formControl={form.control}
-                className="w-full h-[48px] sm:h-[53px]"
+                className="w-full rounded-md border border-gray-800 px-3 text-black bg-white"
               />
 
               <TextField
                 name="otp"
                 placeholder="Enter OTP"
                 label="OTP"
+                labelClassName="text-[18px] font-semibold"
                 inputType="text"
                 formControl={form.control}
-                className="w-full h-[48px] sm:h-[53px]"
+                className="w-full rounded-md border border-gray-800 px-3 text-black bg-white"
               />
 
               <TextField
                 name="password"
                 placeholder="Enter Password"
                 label="Password"
+                labelClassName="text-[18px] font-semibold"
                 inputType="password"
                 formControl={form.control}
-                className="w-full h-[48px] sm:h-[53px]"
+                className="w-full rounded-md border border-gray-800 px-3 text-black bg-white"
               />
 
               <TextField
                 name="confirmPassword"
                 placeholder="Confirm Password"
                 label="Confirm Password"
+                labelClassName="text-[18px] font-semibold"
                 inputType="password"
                 formControl={form.control}
-                className="w-full h-[48px] sm:h-[53px]"
+                className="w-full rounded-md border border-gray-800 px-3 text-black bg-white"
               />
 
               <Button

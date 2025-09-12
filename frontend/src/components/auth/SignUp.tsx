@@ -58,7 +58,7 @@ const SignUpForm = () => {
     >
       <div className="absolute inset-0 bg-black/20"></div>
 
-      <div className="relative bg-white/80 backdrop-blur-md shadow-lg rounded-2xl ring-1 ring-black/10 flex flex-col justify-start mt-30 items-start w-full max-w-[686px] py-8 px-6 sm:px-10">
+      <div className="relative bg-white/80 backdrop-blur-md shadow-lg rounded-2xl ring-1 ring-black/10 flex flex-col justify-start lg:mt-13 mt-16 items-start w-full max-w-[686px] py-8 px-6 sm:px-10">
         <h1 className="text-3xl sm:text-4xl font-semibold text-gray-900 mb-2">
           Join Us For An Exclusive Green Experience!
         </h1>
@@ -70,51 +70,56 @@ const SignUpForm = () => {
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className="flex flex-col gap-4 w-full"
+            className="flex flex-col gap-5 w-full "
           >
             <TextField
               name="name"
               label="Full Name"
+              labelClassName="text-[18px] font-semibold"
               placeholder="Enter Full Name"
               inputType="text"
               formControl={form.control}
-              className="w-full h-[54px] rounded-md border border-gray-300 px-3 text-gray-900 bg-white/40 placeholder:text-gray-500"
+              className="w-full rounded-md border border-gray-800 px-3 text-black bg-white  "
             />
 
             <TextField
               name="email"
               label="Email"
+              labelClassName="text-[18px] font-semibold"
               placeholder="Enter Email"
               inputType="email"
               formControl={form.control}
-              className="w-full h-[54px] rounded-md border border-gray-300 px-3 text-gray-900 bg-white/40 placeholder:text-gray-500"
+              className="w-full rounded-md border border-gray-800 px-3 text-black bg-white "
             />
 
             <TextField
               name="phone"
               label="Contact Number"
+              labelClassName="text-[18px] font-semibold"
               placeholder="Enter Contact Number"
               inputType="text"
               formControl={form.control}
-              className="w-full h-[54px] rounded-md border border-gray-300 px-3 text-gray-900 bg-white/40 placeholder:text-gray-500"
+              className="w-full rounded-md border border-gray-800 px-3 text-black bg-white "
             />
 
             <TextField
               name="password"
               label="Password"
+              labelClassName="text-[18px] font-semibold "
               placeholder="At least 8 characters"
               inputType="password"
               formControl={form.control}
-              className="w-full h-[54px] rounded-md border border-gray-300 px-3 text-gray-900 bg-white/40 placeholder:text-gray-500"
+              className="w-full rounded-md border border-gray-800 px-3 text-black bg-white "
             />
 
             <TextField
               name="confirmPassword"
               label="Confirm Password"
+              labelClassName="text-[18px] font-semibold"
               placeholder="Re-enter Password"
               inputType="password"
               formControl={form.control}
-              className="w-full h-[54px] rounded-md border border-gray-300 px-3 text-gray-900 bg-white/40 placeholder:text-gray-500"
+              className="w-full rounded-md border border-gray-800 px-3 text-black bg-white "
             />
 
             {/* Signup Button */}

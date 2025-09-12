@@ -85,7 +85,7 @@ const BestSellingProduct = ({ plants }: { plants: BestSellingPlant[] }) => {
                 key={i}
                 className={`slider-single ${
                   plants.length < 3
-                    ? "!relative !opacity-100 !transform-none !static"
+                    ? "!relative !opacity-100 !transform-none "
                     : ""
                 }`}
               >
