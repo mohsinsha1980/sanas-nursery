@@ -37,7 +37,6 @@ export default async function Home() {
       {homeData?.bestSellingPlants?.length && (
         <BestSellingProduct plants={homeData.bestSellingPlants} />
       )}
-
       {homeData?.greenChoices?.length && (
         <GreenChoices plants={homeData.greenChoices} />
       )}

@@ -2,8 +2,7 @@
 
 import { Testimonial } from "@/lib/types/public-types";
 import { cn } from "@/lib/utils";
-import { ChevronLeft, ChevronRight, Quote, Star } from "lucide-react";
-import Link from "next/link";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import Slider, { Settings as SlickSettings } from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
@@ -20,6 +19,9 @@ export default function InfiniteOrSlider({
   const [start] = useState(false);
   const [isLargeScreen, setIsLargeScreen] = useState(false);
   const sliderRef = useRef<Slider | null>(null);
+
+  // Only show carousel if there are 3 or more testimonials
+  const shouldShowCarousel = testimonials.length >= 3;
 
   useEffect(() => {
     const checkScreen = () => setIsLargeScreen(window.innerWidth >= 1024);
@@ -45,13 +47,32 @@ export default function InfiniteOrSlider({
   const sliderSettings: SlickSettings = {
     dots: true,
     infinite: true,
-    speed: 1500,
+    speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    pauseOnHover: true,
+    swipeToSlide: true,
+    touchMove: true,
+    accessibility: true,
   };
 
   const duplicatedItems = [...testimonials, ...testimonials, ...testimonials];
+
+  // If less than 3 testimonials, show a simple grid layout
+  if (!shouldShowCarousel) {
+    return (
+      <div className="container flex flex-wrap justify-center gap-6 py-4">
+        {testimonials.map((item, idx) => (
+          <div key={item._id + idx} className="w-full max-w-md">
+            <TestimonialCard item={item} isMobile={true} />
+          </div>
+        ))}
+      </div>
+    );
+  }
 
   return (
     <>
@@ -68,7 +89,7 @@ export default function InfiniteOrSlider({
             className="flex w-max min-w-full shrink-0 flex-nowrap lg:gap-6 gap-4 py-4 animate-scroll group-hover:[animation-play-state:paused]"
           >
             {duplicatedItems.map((item, index) => (
-              <TestimonialCard item={item} key={index} />
+              <TestimonialCard item={item} key={index} isMobile={false} />
             ))}
           </div>
         </div>
@@ -76,48 +97,36 @@ export default function InfiniteOrSlider({
         <>
           <Slider {...sliderSettings} ref={sliderRef}>
             {testimonials.map((item, idx) => (
-              <div key={item._id + idx} className="px-4">
-                <div className="rounded-lg bg-[#4CB390] px-6 py-8 text-white">
-                  <div className="flex justify-between items-center mb-5">
-                    <div className="flex items-center gap-2">
-                      <Quote size={24} className="text-white" />
-                      <span className="font-bold text-[18px]">
-                        {item.author}
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <Star size={16} className="text-white" />
-                      <span className="font-bold text-[18px]">
-                        {item.rating}
-                      </span>
-                    </div>
-                  </div>
-                  <p className="text-[16px] leading-relaxed">{item.content}</p>
-                  <div>
-                    <Link
-                      href={item.link || ""}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-block text-white underline lg:text-[20px] md:text-[18px] text-[16px] mt-4 md:mt-5"
-                    >
-                      Website Link
-                    </Link>
-                  </div>
-                </div>
-              </div>
+              <TestimonialCard
+                key={item._id + idx}
+                item={item}
+                isMobile={true}
+              />
             ))}
           </Slider>
 
           <div className="w-[80%] mx-auto flex justify-between gap-6 mt-10 ">
             <button
-              onClick={() => sliderRef.current?.slickPrev()}
-              className="p-3 bg-[#4CB390] rounded-full text-white hover:bg-[#3a8c6e] transition"
+              onClick={() => {
+                if (sliderRef.current) {
+                  sliderRef.current.slickPrev();
+                }
+              }}
+              className="p-3 bg-[#4CB390] rounded-full text-white hover:bg-[#3a8c6e] transition active:scale-95 touch-manipulation"
+              type="button"
+              aria-label="Previous testimonial"
             >
               <ChevronLeft size={20} />
             </button>
             <button
-              onClick={() => sliderRef.current?.slickNext()}
-              className="p-3 bg-[#4CB390] rounded-full text-white hover:bg-[#3a8c6e] transition"
+              onClick={() => {
+                if (sliderRef.current) {
+                  sliderRef.current.slickNext();
+                }
+              }}
+              className="p-3 bg-[#4CB390] rounded-full text-white hover:bg-[#3a8c6e] transition active:scale-95 touch-manipulation"
+              type="button"
+              aria-label="Next testimonial"
             >
               <ChevronRight size={20} />
             </button>

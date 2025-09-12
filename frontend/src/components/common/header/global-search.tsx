@@ -65,7 +65,7 @@ const GlobalSearch = ({ className }: { className?: string }) => {
             <SearchIcon strokeWidth={2} className="size-6"/>
           </Button>
         </PopoverTrigger>
-        <PopoverContent sideOffset={-30} className="w-[350px] p-0 sm:w-[340px] xs:!w-[280px] mr-[330px] lg:mr-[130px] sm:!mr-4 sm:mt-[50px] shadow-none border-black/10">
+        <PopoverContent sideOffset={-30} className="w-[350px] p-0 sm:w-[340px] xs:!w-[280px] mr-[330px] lg:mr-[130px] sm:!mr-4 sm:mt-[50px] shadow-none border-black/10 bg-white">
           <Command>
             <CommandInput placeholder="Search Products"/>
             <CommandList>

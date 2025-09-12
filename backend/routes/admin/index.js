@@ -11,6 +11,7 @@ import orderEnquiriesRoutes from "./order-enquiries.js";
 import contactEnquiriesRoutes from "./contact-enquiries.js";
 import blogRoutes from "./blogs.js";
 import dashboardRoutes from "./dashboard.js";
+import subscriptionRoutes from "./subscription.js";
 
 router.use(adminAuth);
 
@@ -24,5 +25,6 @@ router.use("/blogs", blogRoutes);
 router.use("/dashboard", dashboardRoutes);
 router.get("/plants-list", getPlantsForGreenChoices);
 router.use("/home", homeRoutes);
+router.use("/subscriptions", subscriptionRoutes);
 
 export default router;
