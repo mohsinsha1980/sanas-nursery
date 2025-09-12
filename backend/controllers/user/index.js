@@ -1,8 +1,8 @@
 import bcrypt from "bcryptjs";
 import { PASSWORD_HASH_ROUND } from "../../lib/constants.js";
 import { phoneRegEx } from "../../lib/util.js";
-import User from "../../models/User.js";
 import { OrderEnquiry } from "../../models/OrderEnquiry.js";
+import User from "../../models/User.js";
 import Wishlist from "../../models/Wishlist.js";
 
 export const updateUserProfile = async (req, res, next) => {

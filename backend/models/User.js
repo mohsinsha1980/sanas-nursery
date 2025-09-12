@@ -1,7 +1,7 @@
-import mongoose from "mongoose";
 import jwt from "jsonwebtoken";
-import { ROLES } from "../lib/constants.js";
+import mongoose from "mongoose";
 import config from "../config/env-config.js";
+import { ROLES } from "../lib/constants.js";
 const { Schema } = mongoose;
 
 const UserSchema = new Schema(
@@ -20,12 +20,7 @@ const UserSchema = new Schema(
     },
     password: {
       type: String,
-      required: function () {
-        return !this.googleId && this.email;
-      },
-    },
-    googleId: {
-      type: String,
+      required: true,
     },
     isVerified: {
       type: Boolean,

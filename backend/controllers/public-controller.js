@@ -1,10 +1,12 @@
+import path from "path";
+import config from "../config/env-config.js";
 import {
+  BEST_SELLING_PLANTS_LIMIT,
+  BEST_SELLING_TAG,
   CATEGORY_ARR,
   PLANTS_PER_PAGE,
   SIMILAR_PLANTS_COUNT,
   STATUS,
-  BEST_SELLING_TAG,
-  BEST_SELLING_PLANTS_LIMIT,
 } from "../lib/constants.js";
 import { buildPlantFilter, emailRegEx, phoneRegEx } from "../lib/util.js";
 import { ContactUs } from "../models/ContactUs.js";
@@ -14,11 +16,7 @@ import Plant from "../models/Plant.js";
 import Settings from "../models/Settings.js";
 import Subscription from "../models/Subscription.js";
 import Testimonial from "../models/Testimonial.js";
-import { SendMailClient } from "zeptomail";
-import fs from "fs";
-import path from "path";
-import config from "../config/env-config.js";
-
+import sendEmail from "../services/sendEmail.js";
 
 export const getCatProducts = async (req, res, next) => {
   try {
@@ -51,7 +49,6 @@ export const getCatProducts = async (req, res, next) => {
       category: category_slug,
     });
 
-    console.log("filter ", filter, category_slug, skip);
     const plants = await Plant.find({
       ...filter,
       status: STATUS.ACTIVE,
@@ -62,8 +59,6 @@ export const getCatProducts = async (req, res, next) => {
       .limit(PLANTS_PER_PAGE)
       .lean()
       .exec();
-
-    console.log(plants);
 
     req.successResponse = {
       message: "Data retrieved successfully.",
@@ -87,11 +82,11 @@ export const getMasterData = async (req, res, next) => {
 
     const updatedData = masterData
       ? {
-        tags: masterData.tags || [],
-      }
+          tags: masterData.tags || [],
+        }
       : {
-        tags: [],
-      };
+          tags: [],
+        };
 
     req.successResponse = {
       message: "MasterData retrieved successfully",
@@ -254,6 +249,53 @@ export const createOrderEnquiry = async (req, res, next) => {
     });
 
     const savedEnquiry = await enquiry.save();
+
+    const adminTemplatePath = path.join(
+      process.cwd(),
+      "templates",
+      "enquiry-admin.html"
+    );
+
+    const AdminReplacements = {
+      name,
+      email,
+      phone,
+      message,
+      supportEmail: config.SUPPORT_EMAIL,
+      urlLink: `${config.FRONTEND_HOME}/admin/`,
+    };
+
+    const data = await sendEmail({
+      templatePath: adminTemplatePath,
+      // receiverEmail: "bokarevaibhav2001@gmail.com",
+      receiverEmail: config.ADMIN_EMAIL,
+      subject: "New Contact Form Submission",
+      replacements: AdminReplacements,
+    });
+
+    const usertemplatePath = path.join(
+      process.cwd(),
+      "templates",
+      "enquiry-user.html"
+    );
+
+    const userReplacements = {
+      name,
+      message,
+      phone: config.CONTACT_NUMBER,
+      email: config.ADMIN_EMAIL,
+      supportEmail: config.SUPPORT_EMAIL,
+    };
+
+    const resData = await sendEmail({
+      templatePath: usertemplatePath,
+      receiverEmail: email,
+      subject: "Thank You for Your Enquiry | Sanas Nursery",
+      replacements: userReplacements,
+    });
+
+    // not handling email error, because email is not importtant here
+
     req.successResponse = {
       message: "Enquiry submitted successfully.",
       data: savedEnquiry,
@@ -298,66 +340,51 @@ export const createContactEnquiry = async (req, res, next) => {
 
     const savedEnquiry = await contactEnquiry.save();
 
-    const templatePath = path.join(process.cwd(), "templates", "enquiry.html");
-    let htmlTemplate = fs.readFileSync(templatePath, "utf8");
+    const adminTemplatePath = path.join(
+      process.cwd(),
+      "templates",
+      "enquiry-admin.html"
+    );
 
-    htmlTemplate = htmlTemplate
-      .replace(/{{enquiryLink}}/g, config.FRONTEND_ADMIN_ENQUIRY)
-      .replace(/{{supportEmail}}/g, config.ADMIN_EMAIL);
+    const AdminReplacements = {
+      name,
+      email,
+      phone,
+      message,
+      supportEmail: config.SUPPORT_EMAIL,
+      urlLink: `${config.FRONTEND_HOME}/admin/`,
+    };
 
-    const client = new SendMailClient({
-      url: config.ZEPTO_URL,
-      token: config.ZEPTO_API_KEY,
+    const data = await sendEmail({
+      templatePath: adminTemplatePath,
+      // receiverEmail: "bokarevaibhav2001@gmail.com",
+      receiverEmail: config.ADMIN_EMAIL,
+      subject: "New Contact Form Submission",
+      replacements: AdminReplacements,
     });
 
-    const ZEPTO_FROM_EMAIL = config.ZEPTO_FROM_EMAIL || "noreply@sanasnursery.com";
-    const ADMIN_EMAIL = config.ADMIN_EMAIL || "sanasnursery@gmail.com";
+    const usertemplatePath = path.join(
+      process.cwd(),
+      "templates",
+      "enquiry-user.html"
+    );
 
-    const adminEmailContent = {
-      from: { address: ZEPTO_FROM_EMAIL, name: "Sanas Nursery" },
-      to: [{ email_address: { address: ADMIN_EMAIL, name: "Admin" } }],
-      subject: "New Contact Form Submission",
-      htmlbody: htmlTemplate,
-      textbody: `
-Thank you, ${name}!
-
-
-Our team will get back to you within 24 hours.
-
-Sanas Nursery
-https://sanasnursery.com
-      `,
+    const userReplacements = {
+      name,
+      message,
+      phone: config.CONTACT_NUMBER,
+      email: config.ADMIN_EMAIL,
+      supportEmail: config.SUPPORT_EMAIL,
     };
 
-    await client.sendMail(adminEmailContent);
+    const resData = await sendEmail({
+      templatePath: usertemplatePath,
+      receiverEmail: email,
+      subject: "Thank You for Your Enquiry | Sanas Nursery",
+      replacements: userReplacements,
+    });
 
-
-    const usertemplatePath = path.join(process.cwd(), "templates", "confirmation.html");
-    let userhtmlTemplate = fs.readFileSync(usertemplatePath, "utf8");
-
-    userhtmlTemplate = userhtmlTemplate
-      .replace(/{{name}}/g, name)
-      .replace(/{{message}}/g, message);
-
-    const userEmailContent = {
-      from: { address: ZEPTO_FROM_EMAIL, name: "Sanas Nursery" },
-      to: [{ email_address: { address: email, name } }],
-      subject: "Thank You for Contacting Sanas Nursery 🌱",
-      htmlbody: userhtmlTemplate,
-      textbody: `
-Thank you, ${name}!
-
-We have received your enquiry:
-"${message}"
-
-Our team will get back to you within 24 hours.
-
-Sanas Nursery
-https://sanasnursery.com
-      `,
-    };
-
-    await client.sendMail(userEmailContent);
+    // not handling email error, because email is not importtant here
 
     req.successResponse = {
       message: "Contact Enquiry submitted successfully.",
@@ -460,15 +487,14 @@ export const getPublicHomeData = async (req, res, next) => {
     };
     return next();
   } catch (error) {
-    console.log(error);
     return next({
       status: 500,
       message: "Internal server error while fetching home data.",
     });
   }
 };
+
 const searchOptionsByField = (field, products) => {
-  console.log("products", products);
   return products.map((product) => {
     if (!product[field]) return;
     return {
@@ -493,7 +519,6 @@ export const getGlobalSearchOpt = async (req, res, next) => {
 
     return next();
   } catch (error) {
-    console.log(error);
     return next({ message: "Internal Server Error", status: 500 });
   }
 };

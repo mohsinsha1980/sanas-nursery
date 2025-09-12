@@ -4,12 +4,12 @@ import {
   deletePlant,
   getPlantById,
   getPlants,
-  getPlantsForGreenChoices,
   updatePlant,
 } from "../../controllers/admin/plants.js";
 import { MEDIA } from "../../lib/constants.js";
 import mediaUpload from "../../middleware/multer-upload.js";
 const routes = Router();
+
 // /api/admin/products
 
 routes.get("/", getPlants);

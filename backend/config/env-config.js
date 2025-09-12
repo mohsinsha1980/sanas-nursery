@@ -38,10 +38,7 @@ const config = {
   FE_EMAIL_VERIFIED_PAGE: process.env.FE_EMAIL_VERIFIED_PAGE,
   FRONTEND_ADMIN_ENQUIRY: process.env.FRONTEND_ADMIN_ENQUIRY,
   ZEPTO_URL: process.env.ZEPTO_URL,
-  ZEPTO_API_KEY: process.env.ZEPTO_API_KEY,
-  ZEPTO_FROM_EMAIL: process.env.ZEPTO_FROM_EMAIL,
-  ADMIN_EMAIL: process.env.ADMIN_EMAIL,
-  SUPPORT_EMAIL: process.env.SUPPORT_EMAIL,
+  CONTACT_NUMBER: process.env.CONTACT_NUMBER,
 };
 
 export default config;
