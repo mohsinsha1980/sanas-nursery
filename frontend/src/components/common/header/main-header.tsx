@@ -52,9 +52,9 @@ export default function MainHeader() {
           <div className="md:hidden flex items-center">
             <button onClick={() => setMobileOpen(!mobileOpen)}>
               {mobileOpen ? (
-                <X className="text-orange-500" size={28} />
+                <X className="text-black" size={28} />
               ) : (
-                <Menu className="text-orange-500" size={28} />
+                <Menu className="text-black" size={28} />
               )}
             </button>
           </div>

@@ -6,27 +6,24 @@ const About = () => {
     <div>
       <div className="h-full w-full lg:pt-30 lg:pb-30 md:pt-20 md:pb-20 pt-10 pb-10 flex flex-row justify-center     ">
         <div className="lg:h-[545px] h-full max-w-[1370px] md:w-[90%] w-[100%] flex lg:flex-row flex-col justify-around   ">
-          <div className="h-full lg:w-[621px] w-full lg:py-10 lg:pb-0 pb-10 flex flex-col justify-between lg:items-start lg:space-y-0 space-y-2 ">
-            <h1 className="text-[#00611F] lg:text-[42px] md:text-[36px] text-[28px] font-semibold lg:text-start text-center ">
-              About Sanas Nursery
+          <div className="h-full lg:w-[621px] w-full lg:pt-7 lg:pb-7 pb-10 flex flex-col justify-between lg:items-start lg:space-y-0 space-y-2 ">
+            <h1 className="lg:text-[42px] md:text-[36px] text-[28px] font-semibold text-center">
+              <span className="text-[#00611F]">Sanas Nursery</span> Plants and
+              Trees Supplier
             </h1>
             <p className="text-[#505050] lg:text-[20px] md:text-[22px] text-[16px] font-semibold lg:px-0 px-2 lg:text-start text-center ">
-              Sanas Nursery was founded in [Year] by [Founder Name] with a
-              passion for plants and a vision to bring the beauty of nature into
-              every home and garden. Starting as a small nursery with a few
-              saplings, it has now grown into a trusted destination offering a
-              wide variety of fruit trees, flower trees, show trees, and shadow
-              trees. Each plant is nurtured with care using eco-friendly
-              practices and expert horticultural knowledge, ensuring healthy and
-              high-quality growth. 
-              <br />
-              Our mission is to inspire sustainable
-              gardening and help our customers create vibrant green spaces. We
-              guide plant lovers, hobbyists, and professional landscapers in
-              choosing and caring for plants while introducing rare and unique
-              varieties to enrich gardens and outdoor spaces. At Sanas Nursery,
-              we combine expertise, quality, and a love for nature to make every
-              garden flourish.
+              Welcome to Sanas Wholesale Nursery, a trusted plants and trees
+              supplier dedicated to bringing greenery to large-scale projects,
+              landscaping, and plantation drives. With years of experience in
+              cultivating and supplying healthy plants, we have become a
+              reliable partner for businesses, organizations, and community
+              leaders who value quality and sustainability. At our nursery,
+              every plant and tree is grown with care, ensuring strength,
+              longevity, and adaptability. Beyond supplying, we also provide
+              expert guidance on plantation and maintenance, helping our clients
+              build thriving green spaces. From bulk plant supplies to large
+              environmental projects, Sanas Nursery stands as a one-stop
+              destination for all your wholesale greenery needs.
             </p>
           </div>
           <div className="h-full lg:w-[559px] w-full  ">

@@ -31,11 +31,10 @@ const Mission = () => {
                     Our Mission
                   </h1>
                   <p className="text-white lg:text-[20px] md:text-[22px] text-[16px] font-medium text-center">
-                    To provide the highest quality plants and gardening
-                    solutions while promoting sustainable practices and
-                    environmental stewardship. We aim to inspire and educate our
-                    community about the beauty and benefits of connecting with
-                    nature through gardening.
+                    Our mission is to make large-scale greenery projects
+                    successful by providing high-quality plants and expert
+                    support, while encouraging sustainable practices that
+                    benefit people and the environment.
                   </p>
                 </div>
               </div>
@@ -54,11 +53,10 @@ const Mission = () => {
                     Our Vision
                   </h1>
                   <p className="text-white lg:text-[20px] md:text-[22px] text-[16px] font-medium text-center">
-                    To become the leading nursery in sustainable plant
-                    cultivation and environmental education, creating greener
-                    communities one garden at a time. We envision a future where
-                    every home and space is enhanced by the natural beauty and
-                    benefits of healthy plant life.
+                    We envision becoming a trusted partner for urban and rural
+                    greening across India—helping create thriving landscapes,
+                    sustainable plantations, and healthier communities for
+                    generations to come.
                   </p>
                 </div>
               </div>

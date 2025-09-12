@@ -63,14 +63,14 @@ export default function SignIn() {
       className="relative flex min-h-screen w-full items-center justify-center bg-cover bg-center overflow-hidden"
       style={{ backgroundImage: "url('/site/auth/auth-banner.webp')" }}
     >
-      <div className="absolute inset-0 bg-black/20"></div>
+      <div className="absolute inset-0 bg-black/20 border-2 border-amber-500"></div>
 
-      <div className="relative bg-white shadow-lg rounded-2xl flex justify-center items-center mt-30 w-full max-w-[713px] mx-4 sm:mx-0 sm:p-6 h-auto sm:h-[768px]">
+      <div className="relative bg-white/80 backdrop-blur-md shadow-lg rounded-2xl flex justify-center items-center mt-13 w-full max-w-[713px] mx-4 sm:mx-0 sm:p-6 h-auto sm:h-[768px]">
         <div className="w-full max-w-[574px] flex flex-col px-4 sm:px-0 py-6 sm:py-0">
           <h1 className="text-2xl sm:text-4xl font-semibold text-gray-900">
             Welcome Back To Your Green Space!
           </h1>
-          <p className="text-base sm:text-lg text-gray-600 mt-4">
+          <p className="text-base sm:text-[20px] text-gray-600 mt-4">
             Sign in to explore our plant collections, read product details, and
             learn more about each variety.
           </p>
@@ -78,27 +78,29 @@ export default function SignIn() {
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(onSubmit)}
-              className="mt-8 flex flex-col space-y-4 sm:space-y-6"
+              className="mt-8 flex flex-col space-y-5  "
             >
               <TextField
                 name="email"
                 label="Email"
+                labelClassName="lg:text-[18px] text-[16px] font-semibold"
                 placeholder="Enter Email"
                 inputType="email"
                 formControl={form.control}
-                className="w-full rounded-md border border-gray-300 px-3 text-black bg-white"
+                className="w-full rounded-md border border-gray-800 px-3 text-black bg-white "
               />
 
               <div className="w-full">
                 <TextField
                   name="password"
                   label="Password"
+                  labelClassName="lg:text-[18px] text-[16px] font-semibold"
                   placeholder="At least 8 characters"
                   inputType="password"
                   formControl={form.control}
-                  className="w-full rounded-md border border-gray-300 px-3 text-black bg-white"
+                  className="w-full rounded-md border border-gray-800 px-3 text-black bg-white "
                 />
-                <div className="flex justify-end mt-2">
+                <div className="flex justify-end mt-4">
                   <Link href="/auth/forgot-password">
                     <span className="text-sm text-orange-500 cursor-pointer">
                       Forgot Password?

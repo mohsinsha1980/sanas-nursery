@@ -37,7 +37,6 @@ export default function HomeCardsSection({ cards }: HomeCardsSectionProps) {
     <div className="w-full h-full flex items-center justify-center lg:pt-30 lg:pb-30 md:pt-20 md:pb-20 pt-10 pb-10 bg-[rgba(228,255,240,1)]">
       <div className="max-w-[1200px] w-full h-full flex flex-col md:flex-col lg:flex-row justify-between items-center gap-15 md:px-10">
         {cardEntries?.map((card, i) => {
-          console.log(card);
           return (
             <div
               className="relative lg:w-full lg:h-[400px] md:w-[80%] md:h-[472px] h-[350px] w-[92%] rounded-2xl overflow-hidden group "

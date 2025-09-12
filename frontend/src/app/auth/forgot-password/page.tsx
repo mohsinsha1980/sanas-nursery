@@ -55,7 +55,7 @@ export default function ForgotPasswordPage() {
       }}
     >
       <div
-        className="bg-white shadow-lg rounded-2xl flex justify-center items-center"
+        className="bg-white/80 backdrop-blur-md shadow-lg rounded-2xl flex justify-center items-center"
         style={{
           width: "686px",
           height: "426px",
@@ -83,9 +83,10 @@ export default function ForgotPasswordPage() {
                 name="email"
                 placeholder="Enter Email"
                 label="Email"
+                labelClassName="text-[18px] font-semibold"
                 inputType="email"
                 formControl={form.control}
-                className="rounded-md border border-gray-300 px-3 text-black bg-white"
+                className="rounded-md border border-gray-800 px-3 text-black bg-white"
               />
 
               <Button

@@ -35,11 +35,11 @@ export default async function Home() {
       <HomeBanner />
       <Categories />
 
-      {homeData?.bestSellingPlants?.length && (
+      {homeData?.bestSellingPlants?.length > 0 && (
         <BestSellingProduct plants={homeData.bestSellingPlants} />
       )}
 
-      {homeData?.greenChoices?.length && (
+      {homeData?.greenChoices?.length > 0 && (
         <GreenChoices plants={homeData.greenChoices} />
       )}
 
