@@ -65,8 +65,8 @@ export default function SignIn() {
     >
       <div className="absolute inset-0 bg-black/20 border-2 border-amber-500"></div>
 
-      <div className="relative bg-white/80 backdrop-blur-md shadow-lg rounded-2xl flex justify-center items-center mt-13 w-full max-w-[713px] mx-4 sm:mx-0 sm:p-6 h-auto sm:h-[768px]">
-        <div className="w-full max-w-[574px] flex flex-col px-4 sm:px-0 py-6 sm:py-0">
+      <div className="relative bg-white/80 backdrop-blur-md shadow-lg rounded-2xl flex justify-center items-center mt-13 w-full max-w-[713px] mx-4 sm:mx-0 sm:p-6 h-auto sm:h-[768px]   border-2 border-amber-500">
+        <div className="w-full max-w-[574px] flex flex-col px-4 sm:px-0 py-6 sm:py-0  border-2 border-amber-500">
           <h1 className="text-2xl sm:text-4xl font-semibold text-gray-900">
             Welcome Back To Your Green Space!
           </h1>
