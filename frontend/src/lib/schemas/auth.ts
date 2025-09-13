@@ -10,8 +10,8 @@ export const nameSchema = z
 
 export const phoneSchema = z
   .string()
-  .nonempty("Please enter your phone number.")
-  .regex(phoneRegEx, "Invalid phone number. Please enter a valid number.");
+  .nonempty("Please enter your 10 digit phone number.")
+  .regex(phoneRegEx, "Invalid phone number. Please enter a valid 10 digit number. (9876543210) ");
 
 export const emailSchema = z
   .string()

@@ -1,11 +1,10 @@
+import { refreshToken } from "@/lib/api-routes/api-auth";
+import { removeUser } from "@/redux/userSlice";
 import axios from "axios";
 import store from "../redux/store";
-import { removeUser } from "@/redux/userSlice";
-import { refreshToken } from "@/lib/api-routes/api-public";
-// import { clearCartSlice } from "@/redux/wishListSlice";
 
 export const axiosInstance = axios.create({
-  withCredentials: true, //  cookies (accessToken, refreshToken) to send with every request
+  withCredentials: true,
 });
 
 axiosInstance.interceptors.request.use(
@@ -61,14 +60,14 @@ axiosInstance.interceptors.response.use(
       error?.response?.data?.message === "RefreshTokenExpiredError"
     ) {
       store.dispatch(removeUser());
-      // store.dispatch(clearCartSlice());
       if (typeof window !== "undefined") {
         const currentPath = window.location.pathname;
         const isProtectedPage =
           currentPath.includes("/user") || currentPath.includes("/admin");
 
         if (isProtectedPage) {
-          window.location.href = "/auth";
+          // showErrorToast("Session Expired!");
+          window.location.href = "/auth/signin";
         }
       }
       error.response.data.message = "Session Expired!";

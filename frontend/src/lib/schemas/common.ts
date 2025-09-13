@@ -1,17 +1,5 @@
-// import { z } from "zod";
-// import { ACCEPTED_FILE_TYPES, ALLOWED_MAX_FILE_SIZE } from "../constants";
-// import { emailRegEx, phoneRegEx } from "../helper";
-
 import z from "zod";
 import { emailRegEx } from "../helper";
-
-export const MAX_FILE_SIZE = 500000;
-export const ACCEPTED_IMAGE_TYPES = [
-  "image/jpeg",
-  "image/jpg",
-  "image/png",
-  "image/webp",
-];
 
 export const nameSchema = z
   .string()
@@ -21,7 +9,8 @@ export const nameSchema = z
   .max(50, { message: "Name must be less than 50 characters" })
   .regex(/^[a-zA-Z\s]+$/, {
     message: "Name can only contain letters and spaces",
-  }).nonempty("Name is required");
+  })
+  .nonempty("Name is required");
 
 export const emailSchema = z
   .string()

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { categories } from "@/lib/constants";
+import { categories, CATEGORY_ARR } from "@/lib/constants";
 
 export default function Categories() {
   return (
@@ -19,13 +19,13 @@ export default function Categories() {
         </div>
 
         <div className="flex gap-8 flex-wrap justify-center  ">
-          {categories.map((cat) => (
-            <Link key={cat.slug} href={`/categories/${cat.slug}`}>
+          {CATEGORY_ARR.map((cat) => (
+            <Link key={cat.value} href={`/categories/${cat.value}`}>
               <div className="flex flex-col items-center cursor-pointer">
                 <div className="relative lg:w-[160px] lg:h-[160px] w-[150px] h-[150px] rounded-full overflow-hidden group">
                   <Image
-                    src={cat.image}
-                    alt={cat.name}
+                    src={cat.picture}
+                    alt={cat.label}
                     fill
                     className="object-cover rounded-full"
                   />
@@ -33,7 +33,7 @@ export default function Categories() {
                 </div>
 
                 <p className="text-[#505050] lg:text-[20px] md:text-[22px] text-[16px] font-semibold lg:pt-5 pt-3">
-                  {cat.name}
+                  {cat.label}
                 </p>
               </div>
             </Link>

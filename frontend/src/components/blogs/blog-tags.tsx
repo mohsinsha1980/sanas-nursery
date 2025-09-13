@@ -28,8 +28,9 @@ export default function BlogTags({ tags }: BlogTagsProps) {
           return (
             <Link
               key={index}
-              href={`/blogs?${searchParams.toString()}`}
+              href={`/blogs?${searchParams.toString()}#blogSearch`}
               className={styles.tag}
+              scroll={true}
             >
               {tag.label}
             </Link>

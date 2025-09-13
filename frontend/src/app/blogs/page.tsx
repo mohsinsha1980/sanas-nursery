@@ -66,7 +66,7 @@ export default async function BlogsPage({
       <div className="">
         <BlogListHero />
 
-        <div className="container mx-auto px-4 py-16">
+        <div className="container mx-auto px-4 py-16" id="blogSearch">
           <div className="mb-12">
             <BlogSearch />
           </div>

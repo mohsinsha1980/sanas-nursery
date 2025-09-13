@@ -55,3 +55,9 @@ export const getLogedInUser = (controller: Controller) => {
     signal: controller?.signal,
   });
 };
+
+export const refreshToken = (controller?: Controller) => {
+  return axiosInstance.get(`${config.API_AUTH_PATH}/refresh-token`, {
+    signal: controller?.signal,
+  });
+};

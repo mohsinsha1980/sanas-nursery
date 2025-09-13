@@ -1,13 +1,13 @@
 "use client";
-import HeaderActions from "./header-actions";
-import Logo from "../logo";
-import HeaderNav from "./header-nav";
-import { useState, useEffect } from "react";
+import { CATEGORY_ARR } from "@/lib/constants";
+import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { categories } from "@/lib/constants";
+import { useEffect, useState } from "react";
+import Logo from "../logo";
+import HeaderActions from "./header-actions";
+import HeaderNav from "./header-nav";
 
 export default function MainHeader() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -140,17 +140,17 @@ export default function MainHeader() {
                           >
                             <div className="mt-2 w-full">
                               <ol className="flex flex-col">
-                                {categories.map((cat) => (
-                                  <li key={cat.slug}>
+                                {CATEGORY_ARR.map((cat) => (
+                                  <li key={cat.value}>
                                     <Link
-                                      href={`/categories/${cat.slug}`}
+                                      href={`/categories/${cat.value}`}
                                       className="block text-center px-4 py-3 !text-[var(--txt-orange)] transition-colors duration-200"
                                       onClick={() => {
                                         setMobileOpen(false);
                                         setMobileDropdownOpen(false);
                                       }}
                                     >
-                                      {cat.name}
+                                      {cat.label}
                                     </Link>
                                   </li>
                                 ))}
