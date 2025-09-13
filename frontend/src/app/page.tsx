@@ -27,10 +27,8 @@ async function getHomeDataServer() {
   }
 }
 
-
 export default async function Home() {
   const homeData: HomeData = await getHomeDataServer();
-
 
   return (
     <>
@@ -51,7 +49,9 @@ export default async function Home() {
 
       <HomeCardsSection cards={homeData.cards} />
       <HomeGallerySection gallery={homeData.gallery} />
-      <Testimonials testimonials={homeData.testimonials} />
+      {homeData.testimonials.length > 0 && (
+        <Testimonials testimonials={homeData.testimonials} />
+      )}
       <YoutubeSection videos={homeData.videos} />
       <Contact />
     </>

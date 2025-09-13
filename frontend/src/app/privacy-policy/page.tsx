@@ -2,12 +2,12 @@ export default function PrivacyPolicyPage() {
   return (
     <div className="bg-white">
       {/* Page Header */}
-      <section className="bg-gradient-to-r from-[#ea580c] to-[#14532d] py-20 ">
-        <div className="container-custom text-center pt-20">
-          <h1 className="text-4xl md:text-5xl font-bold text-white">
+      <section className="bg-gradient-to-r from-[#ea580c] to-[#14532d] py-12 sm:py-16 md:py-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center pt-16 sm:pt-20">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6">
             Privacy Policy
           </h1>
-          <p className="text-xl text-[#ffedd5] max-w-2xl mx-auto pt-5">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-[#ffedd5] max-w-2xl mx-auto leading-relaxed">
             Sanas Nursery respects your privacy and is committed to protecting
             your personal information.
           </p>
@@ -15,32 +15,32 @@ export default function PrivacyPolicyPage() {
       </section>
 
       {/* Privacy Policy Content */}
-      <section className="py-20 ">
-        <div className="container-custom max-w-4xl">
-          <div className="prose prose-lg max-w-none">
-            <div className="bg-[#f8fafc] p-8 rounded-lg mb-8">
-              <p className="text-[#475569] text-center">
+      <section className="py-12 sm:py-16 md:py-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+          <div className="prose prose-sm sm:prose-base md:prose-lg lg:prose-xl max-w-none">
+            <div className="bg-[#f8fafc] p-4 sm:p-6 md:p-8 rounded-lg mb-6 sm:mb-8">
+              <p className="text-sm sm:text-base md:text-lg text-[#475569] text-center">
                 <strong>Last updated:</strong> 12 August 2025
               </p>
             </div>
 
-            <div className="space-y-8">
+            <div className="space-y-6 sm:space-y-8">
               {/* Introduction */}
               <div>
-                <h2 className="text-2xl font-bold text-[#0f172a] mb-4">
+                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#0f172a] mb-3 sm:mb-4">
                   1. Information We Collect
                 </h2>
-                <p className="text-[#475569] mb-4">
+                <p className="text-sm sm:text-base md:text-lg text-[#475569] mb-3 sm:mb-4 leading-relaxed">
                   When you contact us through our website or WhatsApp, we may
                   collect:
                 </p>
-                <ul className="list-disc list-inside text-[#475569] space-y-2 ml-4">
+                <ul className="list-disc list-inside text-sm sm:text-base md:text-lg text-[#475569] space-y-1 sm:space-y-2 ml-4 leading-relaxed">
                   <li>Your name</li>
                   <li>Your email address</li>
                   <li>Your phone number / WhatsApp number</li>
                   <li>Any message or enquiry details you submit</li>
                 </ul>
-                <p className="text-[#475569] mt-4">
+                <p className="text-sm sm:text-base md:text-lg text-[#475569] mt-3 sm:mt-4 leading-relaxed">
                   We do not collect payment details online, as no online
                   transactions take place through our website.
                 </p>
@@ -160,9 +160,8 @@ export default function PrivacyPolicyPage() {
                     <strong>Phone/WhatsApp:</strong> 77986
                   </p>
                   <p className="text-[#475569] mb-2">
-                    <strong>Location:</strong> Sanas Wholesale Nursery,
-                    Bori Fata, near ITI collage, Uruli Kanchan, Maharashtra,
-                    412201
+                    <strong>Location:</strong> Sanas Wholesale Nursery, Bori
+                    Fata, near ITI collage, Uruli Kanchan, Maharashtra, 412201
                   </p>
                   <p className="text-[#475569] mt-4">
                     <strong>Contact Form:</strong>{" "}
