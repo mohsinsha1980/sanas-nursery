@@ -51,17 +51,17 @@ export default function ResetPasswordPage() {
 
   return (
     <div
-      className="relative flex min-h-screen w-full items-center justify-center bg-cover bg-center overflow-hidden border-2 border-amber-500"
+      className="relative flex min-h-screen w-full items-center justify-center bg-cover bg-center overflow-hidden "
       style={{
         backgroundImage: "url('/site/auth/auth-banner.webp')",
       }}
     >
-      <div className="absolute lg:w-full w-[96%] max-w-[600px] top-[53%] -translate-y-1/2 bg-white/80 backdrop-blur-md shadow-lg rounded-2xl flex justify-center items-center lg:p-15 p-10">
+      <div className="absolute lg:w-full w-[96%] max-w-[600px] top-[56%] -translate-y-1/2 bg-white/80 backdrop-blur-md shadow-lg rounded-2xl flex justify-center items-center lg:p-10 p-5">
         <div className="w-full max-w-[574px] flex flex-col">
-          <h1 className="lg:text-[40px] text-[25px] font-semibold text-gray-900 leading-13">
+          <h1 className="lg:text-[30px] text-[25px] font-semibold text-gray-900 leading-10">
             Reset Password
           </h1>
-          <p className="lg:text-[20px] text-[16px] text-gray-600 lg:mt-2">
+          <p className="lg:text-[16px] text-[16px] text-gray-600 ">
             Enter the OTP sent to your email and set a new password to continue
             exploring our plant collection.
           </p>
@@ -69,53 +69,54 @@ export default function ResetPasswordPage() {
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(onSubmit)}
-              className="mt-5 flex flex-col space-y-5 sm:space-y-6"
+              className="mt-4 flex flex-col space-y-4 sm:space-y-6"
             >
               {/* Email */}
               <TextField
                 name="email"
                 placeholder="Enter Email"
                 label="Email"
-                labelClassName="text-[18px] font-semibold"
+                labelClassName="text-[16px] font-medium"
                 inputType="email"
                 formControl={form.control}
-                className="w-full rounded-md border border-gray-800 px-3 text-black bg-white"
+                className="w-full rounded-md border border-gray-400 px-3 text-black bg-white"
               />
 
               <TextField
                 name="otp"
                 placeholder="Enter OTP"
                 label="OTP"
-                labelClassName="text-[18px] font-semibold"
+                labelClassName="text-[16px] font-medium"
                 inputType="text"
                 formControl={form.control}
-                className="w-full rounded-md border border-gray-800 px-3 text-black bg-white"
+                className="w-full rounded-md border border-gray-400 px-3 text-black bg-white"
               />
 
               <TextField
                 name="password"
                 placeholder="Enter Password"
                 label="Password"
-                labelClassName="text-[18px] font-semibold"
+                labelClassName="text-[16px] font-medium"
                 inputType="password"
                 formControl={form.control}
-                className="w-full rounded-md border border-gray-800 px-3 text-black bg-white"
+                className="w-full rounded-md border border-gray-400 px-3 text-black bg-white"
               />
 
               <TextField
                 name="confirmPassword"
                 placeholder="Confirm Password"
                 label="Confirm Password"
-                labelClassName="text-[18px] font-semibold"
+                labelClassName="text-[16px] font-medium"
                 inputType="password"
                 formControl={form.control}
-                className="w-full rounded-md border border-gray-800 px-3 text-black bg-white"
+                className="w-full rounded-md border border-gray-400 px-3 text-black bg-white"
               />
 
               <Button
                 type="submit"
                 variant={"orange"}
-                className="w-full h-[48px] sm:h-[53px] text-base sm:text-lg font-medium text-white "
+                size={"md"}
+                className="w-full lg:text-lg text-md font-medium text-white sm:p-2"
               >
                 Reset Password
               </Button>

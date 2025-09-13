@@ -122,7 +122,7 @@ export default function Filters() {
   return (
     <>
       {/* Filter button visible only on small devices */}
-      <div className="sm:flex md:hidden lg:hidden justify-end mb-3">
+      <div className="sm:flex lg:hidden justify-end mb-3">
         <Button
           variant="orange"
           size="sm"
@@ -134,11 +134,11 @@ export default function Filters() {
       </div>
 
       {/* Desktop filters */}
-      <div className="hidden md:block">{FilterContent}</div>
+      <div className="hidden lg:block">{FilterContent}</div>
 
       {/* Bottom drawer (only sm) */}
       <div
-        className={`fixed inset-0 z-50 flex sm:flex md:hidden transition-opacity duration-300 ${
+        className={`fixed inset-0 z-50 flex md:flex lg:hidden transition-opacity duration-300 ${
           isOpen
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
