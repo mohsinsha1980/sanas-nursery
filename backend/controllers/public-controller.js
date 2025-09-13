@@ -458,8 +458,8 @@ export const getPublicHomeData = async (req, res, next) => {
         cards: {},
         gallery: {},
         videos: [],
-        testimonials: [],
-        bestSellingPlants: [],
+        testimonials: testimonials || [],
+        bestSellingPlants: bestSellingPlants || [],
       };
 
       req.successResponse = {

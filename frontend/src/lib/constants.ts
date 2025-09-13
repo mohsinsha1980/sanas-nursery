@@ -1,33 +1,14 @@
 import { HOME_GALLERY } from "@/assets";
 
-export const PLANTS_PER_PAGE = 12;
+export const PLANTS_PER_PAGE = 20;
 export const BLOGS_PER_PAGE = 20;
-export const PRICE_RANGE_MAX = 15000;
 export const ALLOWED_MAX_FILE_SIZE = 300000;
-export const DEFAULT_PER_PAGE = 10;
-export const MAX_ADDRESS_COUNT = 4;
+export const DEFAULT_PER_PAGE = 20;
 export const USER_STORE_DATA_KEY = "vb9n5ysag59vp";
-export const PRODUCT_DETAILS_REVIEW_COUNT = 6;
-export const DISPLAY_LIMIT = 6;
 export const YT_VIDEOS_LENGTH = 2;
+export const BEST_SELLING_PLANTS_LIMIT = 10;
 export const LOGO =
   process.env.NEXT_PUBLIC_BASE_PATH + "/site/images/logo-full.svg"; // change here take from config
-
-export const SIZES = [
-  { label: "Extra Small", value: "xs" },
-  { label: "Small", value: "sm" },
-  { label: "Medium", value: "md" },
-  { label: "Large", value: "lg" },
-  { label: "XL", value: "xl" },
-  { label: "XXL", value: "xxl" },
-];
-
-export const DISCOUNT = [
-  { label: "0%-20%", value: "0-20" },
-  { label: "20%-40%", value: "20-40" },
-  { label: "40%-60%", value: "40-60" },
-  { label: "60%-80%", value: "60-80" },
-];
 
 export const ACCEPTED_IMAGE_TYPES = [
   "image/jpeg",
@@ -39,6 +20,11 @@ export const ACCEPTED_IMAGE_TYPES = [
 
 export const ACCEPTED_FILE_TYPES = ["application/pdf"];
 
+export const ROLES = {
+  USER: "User",
+  ADMIN: "Admin",
+};
+
 export const ACTION_TYPES = {
   EDIT: "Edit",
   DELETE: "Delete",
@@ -46,7 +32,7 @@ export const ACTION_TYPES = {
 };
 
 export const PAGINATION = {
-  PER_PAGE: 5,
+  PER_PAGE: 20,
 };
 
 export const BLOG_CATEGORIES = {
@@ -65,11 +51,6 @@ export const BLOG_CATEGORIES = {
   FERTILIZERS: { label: "Fertilizers & Soil", value: "fertilizers-soil" },
 };
 
-export const ROLES = {
-  USER: "User",
-  ADMIN: "Admin",
-};
-
 export const categories = [
   { name: "Fruit Trees", slug: "fruit-trees", image: "/plant3.png" },
   { name: "Flower Trees", slug: "flower-trees", image: "/plant2.png" },
@@ -84,7 +65,7 @@ export const CATEGORIES = {
     label: "Fruit Trees",
     value: "fruit-trees",
     title: "Trusted Fruit Tree Nursery for Every Garden and Farm.",
-    picture: "/site/categories/fruit tree.png",
+    picture: "/plant3.png",
     description:
       "Supplying strong, healthy fruit trees grown with care to bring freshness, shade and harvests.",
     seoTitle: "Trusted Fruit Tree Nursery for Every Garden and Farm.",
@@ -97,7 +78,7 @@ export const CATEGORIES = {
     value: "flower-trees",
     title:
       "Nursery Flower Plants that bring color and freshness to every space.",
-    picture: "/site/categories/flower tree.png",
+    picture: "/plant2.png",
     description:
       "Discover seasonal and ornamental flower plants, nurtured with care to thrive in gardens, farms, and landscapes.",
     seoTitle:
@@ -110,7 +91,7 @@ export const CATEGORIES = {
     label: "Shadow Trees",
     value: "shadow-trees",
     title: "Shadow Trees that bring natural shade, greenery, and comfort.",
-    picture: "/site/categories/shadow tree.png",
+    picture: "/plant1.png",
     description:
       "Discover strong shadow trees that create cool spaces, enhance outdoor beauty, and support sustainable living.",
     seoTitle: "Shadow Trees that bring natural shade, greenery, and comfort.",
@@ -122,7 +103,7 @@ export const CATEGORIES = {
     label: "Show Trees",
     value: "show-trees",
     title: "Show Trees for Gardens that Transform Your Landscape.",
-    picture: "/site/categories/show tree.png",
+    picture: "/plant3.png",
     description:
       "Add beauty, shade, and elegance to your garden with our wide selection of ornamental show trees designed to thrive in any outdoor space.",
     seoTitle: "Show Trees for Gardens that Transform Your Landscape.",
@@ -135,7 +116,7 @@ export const CATEGORIES = {
     value: "masala",
     title:
       "Authentic Masala Collection - Avocado, Clove, Cinnamon, Bay Leaf & More.",
-    picture: "/site/categories/flower tree.png",
+    picture: "/plant2.png",
     description:
       "Discover premium masalas like avocado, clove, cinnamon, bay leaf, and mix masala, carefully crafted to add richness and authenticity to your meals.",
     seoTitle:
@@ -148,7 +129,7 @@ export const CATEGORIES = {
     label: "Others",
     value: "others",
     title: "Fruit Tree Nursery in Uruli Kanchan – Sanas Nursery",
-    picture: "/site/categories/flower tree.png",
+    picture: "/plant1.png",
     description:
       "A wholesale plant nursery providing healthy fruit trees, flower plants, and greenery grown with expert care.",
     seoTitle: "Fruit Tree Nursery in Uruli Kanchan – Sanas Nursery",
