@@ -62,6 +62,18 @@ export default function Filters() {
     };
   }, [dispatch]);
 
+  // 🚀 Prevent background scroll when drawer is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isOpen]);
+
   const reset = (): void => {
     setSizes("");
     setTags("");
