@@ -26,15 +26,17 @@ async function getHomeDataServer() {
   }
 }
 
+
 export default async function Home() {
   const homeData: HomeData = await getHomeDataServer();
+
 
   return (
     <>
       <HomeBanner />
       <Categories />
 
-      {/* {homeData?.bestSellingPlants?.length > 0 && (
+      {homeData?.bestSellingPlants?.length > 0 && (
         <BestSellingProduct plants={homeData.bestSellingPlants} />
       )}
 
@@ -46,7 +48,7 @@ export default async function Home() {
       <HomeGallerySection gallery={homeData.gallery} />
       <Testimonials testimonials={homeData.testimonials} />
       <YoutubeSection videos={homeData.videos} />
-      <Contact /> */}
+      <Contact />
     </>
   );
 }

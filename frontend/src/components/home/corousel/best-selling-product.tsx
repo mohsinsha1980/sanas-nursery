@@ -61,7 +61,7 @@ const BestSellingProduct = ({ plants }: { plants: BestSellingPlant[] }) => {
       <div className="lg:max-w-[1100px] w-[95%]">
         <div className="text-center mb-10">
           <h1 className="text-[#00611F] lg:text-[42px] text-[28px] font-semibold">
-            Best Selling <span className="text-black">Products</span>
+            Best Selling <span className="text-black">Plants</span>
           </h1>
           <p className="text-[#505050] lg:text-[20px] text-[16px] font-semibold">
             Find what you are looking for
@@ -80,27 +80,30 @@ const BestSellingProduct = ({ plants }: { plants: BestSellingPlant[] }) => {
               plants.length < 3 ? "justify-center gap-8" : "justify-center"
             }`}
           >
-            {plants.map((item, i) => (
-              <div
-                key={i}
-                className={`slider-single ${
-                  plants.length < 3
-                    ? "!relative !opacity-100 !transform-none "
-                    : ""
-                }`}
-              >
-                <Image
-                  src={getPicURL(item.pictures[0])}
-                  alt={item.title}
-                  width={330}
-                  height={500}
-                  className="rounded-lg object-cover"
-                />
-                <p className="text-[#505050] text-[20px] font-semibold mt-2 text-center">
-                  {item.title}
-                </p>
-              </div>
-            ))}
+            {plants.map((item, i) => {
+              console.log(item)
+              return (
+                <div
+                  key={i}
+                  className={`slider-single ${
+                    plants.length < 3
+                      ? "!relative !opacity-100 !transform-none "
+                      : ""
+                  }`}
+                >
+                  <Image
+                    src={getPicURL(item.pictures[0])}
+                    alt={item.title}
+                    width={330}
+                    height={500}
+                    className="rounded-lg object-cover"
+                  />
+                  <p className="text-[#505050] text-[20px] font-semibold mt-2 text-center">
+                    {item.title}
+                  </p>
+                </div>
+              );
+            })}
           </div>
 
           {showArrows && (

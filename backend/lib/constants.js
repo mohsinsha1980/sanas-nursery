@@ -1,7 +1,7 @@
 export const COUNTRY_NAME = "India";
 export const PASSWORD_HASH_ROUND = 10;
 export const SIMILAR_PLANTS_COUNT = 10;
-export const PLANTS_PER_PAGE = 20;
+export const PLANTS_PER_PAGE = 12;
 export const RELATED_BLOG_COUNT = 6;
 export const BLOGS_PER_PAGE = 12;
 export const GREEN_CHOICES_PRODUCT_LIMIT = 12;
