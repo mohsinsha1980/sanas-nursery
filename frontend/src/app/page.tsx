@@ -27,8 +27,10 @@ async function getHomeDataServer() {
   }
 }
 
+
 export default async function Home() {
   const homeData: HomeData = await getHomeDataServer();
+
 
   return (
     <>

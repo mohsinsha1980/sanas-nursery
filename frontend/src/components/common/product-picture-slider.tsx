@@ -44,12 +44,38 @@ export default function ProductPictureSlider({
           )}
         </div>
       </div>
-      <div className="bl__thumbnail__container lg:pt-0 pt-5 ">
-        <ScrollArea className="h-full">
+      <div className="lg:bl__thumbnail__container w-full lg:pt-0 pt-5">
+        {/* For lg and up → horizontal scroll */}
+        <ScrollArea className="hidden lg:block w-full ">
+          <div className="flex flex-col gap-3 pl-10">
+            {pictures.length
+              ? pictures.map((item, index) => (
+                  <DotButton
+                    key={`thumb_${index}`}
+                    onClick={() => onDotButtonClick(index)}
+                    className={"slider__dot".concat(
+                      index === selectedIndex ? " selected" : ""
+                    )}
+                  >
+                    <Image
+                      src={item}
+                      width={100}
+                      height={125}
+                      alt=""
+                      className="rounded-lg"
+                    />
+                  </DotButton>
+                ))
+              : null}
+          </div>
+        </ScrollArea>
+
+        {/* For small devices → grid 3 per row */}
+        <div className="w-full grid grid-cols-3 gap-3 lg:hidden ">
           {pictures.length
             ? pictures.map((item, index) => (
                 <DotButton
-                  key={`thumb_${index}`}
+                  key={`grid_thumb_${index}`}
                   onClick={() => onDotButtonClick(index)}
                   className={"slider__dot".concat(
                     index === selectedIndex ? " selected" : ""
@@ -60,12 +86,12 @@ export default function ProductPictureSlider({
                     width={100}
                     height={125}
                     alt=""
-                    className="rounded-lg"
+                    className="rounded-lg w-full h-auto"
                   />
                 </DotButton>
               ))
             : null}
-        </ScrollArea>
+        </div>
       </div>
     </div>
   );

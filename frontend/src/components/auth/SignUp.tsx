@@ -53,16 +53,16 @@ const SignUpForm = () => {
 
   return (
     <div
-      className="relative flex min-h-screen w-full items-center justify-center bg-cover bg-center overflow-hidden px-4"
+      className="relative flex min-h-screen w-full items-center justify-center bg-cover bg-center overflow-hidden "
       style={{ backgroundImage: "url('/site/auth/auth-banner.webp')" }}
     >
       <div className="absolute inset-0 bg-black/20"></div>
 
-      <div className="relative bg-white/80 backdrop-blur-md shadow-lg rounded-2xl ring-1 ring-black/10 flex flex-col justify-start lg:mt-13 mt-16 items-start w-full max-w-[686px] py-8 px-6 sm:px-10">
-        <h1 className="text-3xl sm:text-4xl font-semibold text-gray-900 mb-2">
+      <div className="absolute top-[53%] -translate-y-1/2 lg:w-full w-[96%] bg-white/80 backdrop-blur-md shadow-lg rounded-2xl ring-1 ring-black/10 flex flex-col justify-start items-start max-w-[600px] lg:px-10 lg:py-8 p-10">
+        <h1 className="lg:text-[40px] text-[25px] font-semibold text-gray-900 lg:leading-13">
           Join Us For An Exclusive Green Experience!
         </h1>
-        <p className="text-base sm:text-lg text-gray-600 mb-6">
+        <p className="lg:text-[20px] text-[16px] text-gray-600 mt-3">
           Sign up to access beautiful plant varieties and stay updated with new
           arrivals.
         </p>
@@ -70,7 +70,7 @@ const SignUpForm = () => {
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className="flex flex-col gap-5 w-full "
+            className="flex flex-col lg:gap-5 gap-3 w-full lg:mt-5 mt-3"
           >
             <TextField
               name="name"
@@ -125,7 +125,8 @@ const SignUpForm = () => {
             {/* Signup Button */}
             <Button
               type="submit"
-              className="w-full h-[54px] text-[16px] font-medium text-white bg-orange-500 rounded-md hover:bg-orange-600 mt-2"
+              variant={"orange"}
+              className="w-full h-[54px] text-[16px] font-medium text-white mt-2"
             >
               Sign Up
             </Button>

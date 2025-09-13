@@ -37,11 +37,11 @@ export default function HeaderNav() {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: -8, scale: 0.98 }}
                 transition={{ duration: 0.18, ease: "easeOut" }}
-                className="absolute left-0 mt-3 w-48 h-fit rounded-md border border-gray-200 bg-white shadow-lg z-50"
+                className="absolute left-0 mt-3 w-48 h-fit rounded-md border border-gray-200 bg-white shadow-lg z-50 "
               >
-                <ol className="flex flex-col items-center text-center mb-2">
-                  {CATEGORY_ARR.map((cat) => (
-                    <li key={cat.value}>
+                <ol className="flex flex-col items-start text-center mb-2">
+                  {categories.map((cat) => (
+                    <li key={cat.slug}>
                       <Link
                         href={`/categories/${cat.value}`}
                         className="block px-4 py-2 text-gray-800"

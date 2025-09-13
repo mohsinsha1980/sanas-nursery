@@ -31,7 +31,7 @@ export default function PlantDescTabs({ plant }: { plant: PlantDataType }) {
       {/* Description Tab */}
       <TabsContent
         value="description"
-        className=" text-[18px] font-semibold text-gray-800 leading-relaxed"
+        className=" text-[18px] font-medium text-gray-800 leading-relaxed"
       >
         <div
           dangerouslySetInnerHTML={{ __html: plant.description }}
@@ -45,6 +45,7 @@ export default function PlantDescTabs({ plant }: { plant: PlantDataType }) {
           <ProductAccordion
             items={getFaqAccrItems(plant.faqs)}
             className="mt-2"
+            // defaultOpen={false}
           />
         </TabsContent>
       ) : null}

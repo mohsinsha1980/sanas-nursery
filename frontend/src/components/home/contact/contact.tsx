@@ -73,25 +73,26 @@ const Contact = () => {
                     </p>
                   </div>
                   <div className="lg:w-[100%] lg:h-[45%] lg:gap-y-3 gap-y-3 flex flex-col justify-evenly text-[20px] text-white   ">
-                    <div className="flex items-center lg:gap-x-5 gap-3">
-                      <Phone className="lg:text-[22px] md:h-6 md:w-6 h-4 w-4" />
-                      <p className="lg:text-[20px] md:text-[20px] text-[16px] lg:font-semibold">
+                    <div className="flex items-center lg:gap-x-5 gap-3 group">
+                      <Phone className="lg:text-[22px] md:h-6 md:w-6 h-4 w-4 group-hover:text-[#0d6536]" />
+                      <p className="lg:text-[20px] md:text-[20px] text-[16px] lg:font-semibold group-hover:text-[#0d6536]">
                         <Link href={`tel:${SITE_DATA.phone}`}>
                           {SITE_DATA.phone}{" "}
                         </Link>
                       </p>
                     </div>
-                    <div className="flex items-center lg:gap-x-5 gap-3">
-                      <Mail className="lg:text-[22px] md:h-6 md:w-6 h-4 w-4" />
-                      <p className="theight lg:text-[20px] md:text-[20px] text-[16px] lg:font-semibold">
+                    <div className="flex items-center lg:gap-x-5 gap-3 group">
+                      <Mail className="lg:text-[22px] md:h-6 md:w-6 h-4 w-4 group-hover:text-[#0d6536]" />
+                      <p className="theight lg:text-[20px] md:text-[20px] text-[16px] lg:font-semibold group-hover:text-[#0d6536]">
                         <Link href={`mailto:${SITE_DATA.EMAIL}`}>
                           {SITE_DATA.EMAIL}
                         </Link>
                       </p>
                     </div>
-                    <div className="flex items-start lg:gap-x-5 gap-3 ">
-                      <MapPin className="lg:text-[22px] md:h-12 md:w-12 h-10 w-10" />
-                      <p className="lg:text-[20px] md:text-[20px] text-[16px] lg:font-semibold">
+
+                    <div className="flex items-start lg:gap-x-5 gap-3 group">
+                      <MapPin className="lg:text-[22px] md:h-12 md:w-12 h-10 w-10 group-hover:text-[#0d6536]" />
+                      <p className="lg:text-[20px] md:text-[20px] text-[16px] lg:font-semibold group-hover:text-[#0d6536]">
                         {SITE_DATA.LOCATION}
                       </p>
                     </div>
@@ -100,9 +101,9 @@ const Contact = () => {
                     key="3-icons"
                     className=" flex flex-row justify-between items-center text-white lg:space-x-4 md:space-x-3 space-x-5  "
                   >
-                    {/* <div className="h-[40px] w-[40px] flex justify-center items-center">
+                    <div className="h-[40px] w-[40px] flex justify-center items-center">
                       <svg
-                        className="w-6 h-6"
+                        className="w-6 h-6 mb-1 hover:text-blue-600"
                         fill="currentColor"
                         viewBox="0 0 24 24"
                       >
@@ -111,7 +112,7 @@ const Contact = () => {
                     </div>
                     <div className="h-[40px] w-[40px] flex justify-center items-center">
                       <svg
-                        className="w-6 h-6"
+                        className="w-6 h-6 hover:text-pink-600"
                         fill="currentColor"
                         viewBox="0 0 24 24"
                       >
@@ -120,13 +121,13 @@ const Contact = () => {
                     </div>
                     <div className="h-[40px] w-[40px] flex justify-center items-center">
                       <svg
-                        className="w-7 h-7"
+                        className="w-7 h-7 hover:text-red-600"
                         fill="currentColor"
                         viewBox="0 0 24 24"
                       >
                         <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
                       </svg>
-                    </div> */}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -208,7 +209,7 @@ const Contact = () => {
                       WebkitBoxShadow: "0 0 0 1000px white inset",
                       WebkitTextFillColor: "black",
                     }}
-                    className="lg:border-b-2 border-b-1 border-[#8D8D8D] lg:h-[80px] h-[60px] lg:text-[18px] text-[16px] bg-transparent focus:outline-none resize-none overflow-y-auto"
+                    className="lg:border-b-2 border-b-1 border-[#8D8D8D] lg:h-[80px] h-[60px] lg:text-[18px] text-[16px] bg-transparent focus:outline-none resize-none overflow-y-auto flex items-end"
                   />
 
                   {errors.message && (

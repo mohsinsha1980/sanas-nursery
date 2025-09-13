@@ -21,6 +21,8 @@ export default function Filters() {
   const [masterData, setMasterData] =
     useState<MasterDataOptionsType>(defaultMasterData);
 
+  const [isOpen, setIsOpen] = useState(false); // sidebar state
+
   const [sizes, setSizes] = useQueryState("sizes", {
     defaultValue: "",
     shallow: false,
@@ -66,58 +68,107 @@ export default function Filters() {
     setCareLevels("");
   };
 
+  const FilterContent = (
+    <div className={classes.bl_filters}>
+      <div
+        className={`w-full h-full p-3 rounded-lg shadow-md shadow-gray-400 flex items-center justify-between`}
+      >
+        <h3 className="text-[16px] font-semibold">Filters</h3>
+        <Button
+          variant="link"
+          className="justify-end btn-red text-[14px] font-semibold text-red-600"
+          size="sm"
+          onClick={reset}
+        >
+          Clear All
+        </Button>
+      </div>
+
+      {PLANT_SIZES_ARR.length ? (
+        <div className={`mt-5`} key="sizes">
+          <MultiCheckBoxFilter
+            label="Select Size"
+            value={sizes ? sizes.split(",") : []}
+            setValue={(value: string[]) => setSizes(value.join(","))}
+            options={PLANT_SIZES_ARR}
+          />
+        </div>
+      ) : null}
+
+      {CARE_LEVEL_ARR?.length ? (
+        <div className={`mt-5`} key="care">
+          <MultiCheckBoxFilter
+            label="Select Care Levels"
+            value={care_levels ? care_levels.split(",") : []}
+            setValue={(value: string[]) => setCareLevels(value.join(","))}
+            options={CARE_LEVEL_ARR}
+          />
+        </div>
+      ) : null}
+
+      {masterData?.tags.length ? (
+        <div className={`${classes.bl_filter} sm:!border-r-0`} key="tags">
+          <MultiCheckBoxFilter
+            label="Select Tags"
+            value={tags ? tags.split(",") : []}
+            setValue={(value: string[]) => setTags(value.join(","))}
+            options={masterData.tags}
+          />
+        </div>
+      ) : null}
+    </div>
+  );
+
   return (
     <>
-      <div className={classes.bl_filters}>
-        <div
-          className={`w-full h-full p-3 rounded-lg shadow-lg shadow-gray-400 flex items-center justify-between `}
+      {/* Filter button visible only on small devices */}
+      <div className="sm:flex md:hidden lg:hidden justify-end mb-3">
+        <Button
+          variant="orange"
+          size="sm"
+          onClick={() => setIsOpen(true)}
+          className="flex items-center gap-2"
         >
-          <h3 className="text-[16px] font-semibold">Filters</h3>
-          <Button
-            variant="link"
-            className="justify-end btn-red text-[14px] font-semibold"
-            size="sm"
-            onClick={reset}
-          >
-            Clear All
-          </Button>
+          <span className="text-sm font-medium">Filters</span>
+        </Button>
+      </div>
+
+      {/* Desktop filters */}
+      <div className="hidden md:block">{FilterContent}</div>
+
+      {/* Bottom drawer (only sm) */}
+      <div
+        className={`fixed inset-0 z-50 flex sm:flex md:hidden transition-opacity duration-300 ${
+          isOpen
+            ? "opacity-100 pointer-events-auto"
+            : "opacity-0 pointer-events-none"
+        }`}
+      >
+        {/* Background overlay */}
+        <div
+          className="fixed inset-0 bg-black/40"
+          onClick={() => setIsOpen(false)}
+        />
+
+        {/* Drawer content at bottom */}
+        <div
+          className={`fixed bottom-0 left-0 w-full bg-white shadow-lg p-4 
+          transform transition-transform duration-300 ease-in-out
+          ${isOpen ? "translate-y-0" : "translate-y-full"}`}
+        >
+          <div className="flex justify-between items-center mb-4">
+            <h2 className="text-lg font-semibold pl-2">Filters</h2>
+            <Button
+              variant="ghost"
+              size="md"
+              className="font-bold"
+              onClick={() => setIsOpen(false)}
+            >
+              ✕
+            </Button>
+          </div>
+          {FilterContent}
         </div>
-
-        {PLANT_SIZES_ARR.length ? (
-          <div
-            className={` mt-5`}
-            key="materials"
-          >
-            <MultiCheckBoxFilter
-              label="Select Size"
-              value={sizes ? sizes.split(",") : []}
-              setValue={(value: string[]) => setSizes(value.join(","))}
-              options={PLANT_SIZES_ARR}
-            />
-          </div>
-        ) : null}
-
-        {CARE_LEVEL_ARR?.length ? (
-          <div className={` mt-5`} key="sizes">
-            <MultiCheckBoxFilter
-              label="Select Care Levels"
-              value={care_levels ? care_levels.split(",") : []}
-              setValue={(value: string[]) => setCareLevels(value.join(","))}
-              options={CARE_LEVEL_ARR}
-            />
-          </div>
-        ) : null}
-
-        {masterData?.tags.length ? (
-          <div className={`${classes.bl_filter} sm:!border-r-0`} key="styles">
-            <MultiCheckBoxFilter
-              label="Select Tags"
-              value={tags ? tags.split(",") : []}
-              setValue={(value: string[]) => setTags(value.join(","))}
-              options={masterData.tags}
-            />
-          </div>
-        ) : null}
       </div>
     </>
   );
