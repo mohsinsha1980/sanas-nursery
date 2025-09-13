@@ -30,7 +30,7 @@ export default function HomeBanner() {
           <p className="text-[#F37521] lg:text-[20px] md:text-[20px] text-[20px] font-medium ">
             Love for Nature
           </p>
-          <h1 className="text-[#354733] lg:text-[64px] md:text-[50px] text-[40px] font-bold lg:leading-18 leading-13 md:text-start text-center">
+          <h1 className="text-[#354733] lg:text-[60px] md:text-[50px] text-[40px] font-bold lg:leading-18 leading-13 md:text-start text-center">
             Leading Wholesale Plant Nursery in Uruli Kanchan.
           </h1>
           <p className="text-[#505050] lg:text-[20px] md:text-[20px] text-[20px] font-medium md:text-start text-center">

@@ -76,13 +76,13 @@ export default async function ProductDetailsPageByID({
 
   return (
     <Suspense fallback={<DetailsLoading />}>
-      <section className="bg-white py-10 mt-30 ">
+      <section className="bg-white py-10 lg:mt-30 mt-10">
         <div className="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 lg:gap-10 gap-5  ">
           <div className="">
             <ProductPictureSlider pictures={pictures} />
           </div>
 
-          <div className="space-y-5 flex flex-col lg:justify-start justify-between lg:items-start items-center ">
+          <div className="space-y-5 flex flex-col lg:justify-start justify-between items-start ">
             <div>
               <h1 className="text-[40px] font-bold text-[#0D6536] lg:text-start text-center">
                 {plant.title}
@@ -90,33 +90,33 @@ export default async function ProductDetailsPageByID({
             </div>
 
             {plant.summary && (
-              <p className="text-[18px] font-semibold leading-relaxed lg:text-start text-center">
+              <p className="text-[18px] font-medium leading-relaxed text-start ">
                 {plant.summary}
               </p>
             )}
 
             {plant.details && (
               <div
-                className="text-[18px] font-semibold leading-relaxed lg:text-start text-center "
+                className="text-[18px] font-medium leading-relaxed text-start "
                 dangerouslySetInnerHTML={{ __html: plant.details }}
               />
             )}
 
             {plant.specifications?.length > 0 && (
               <div className="">
-                <table className="w-full border-collapse bg-green-50 rounded-lg">
+                <table className="w-full border-separate border-spacing-y-2">
                   {/* Table Body */}
                   <tbody>
                     {plant.specifications.map((spec, index) => (
                       <tr key={spec.label + index} className="">
                         {/* Label Column */}
-                        <td className="text-[18px] py-2 px-3 font-medium text-gray-800">
+                        <td className="text-[18px] py-2 px-3 font-medium text-gray-800 border-r border-gray-900">
                           {spec.label}
                         </td>
 
                         {/* Value Column */}
                         <td className="text-[18px] py-2 px-3 font-medium text-gray-800">
-                          {spec.value}
+                           {spec.value}
                         </td>
                       </tr>
                     ))}
@@ -130,7 +130,7 @@ export default async function ProductDetailsPageByID({
         </div>
       </section>
 
-      <section className="container mx-auto lg:px-0 px-3 lg:mb-30 md:mb-20 mb-10 ">
+      <section className="lg:px-40 mx-auto  lg:mb-30 md:mb-20 mb-10 ">
         <PlantDescTabs plant={plant} />
       </section>
 
@@ -150,7 +150,7 @@ export default async function ProductDetailsPageByID({
                 >
                   <div className="relative cursor-pointer transition-transform duration-300 hover:scale-105 overflow-hidden group  ">
                     {/* Image */}
-                    <div className="relative w-[90%] h-[400px] mx-auto">
+                    <div className="relative lg:w-[90%] w-[80%] lg:h-[400px] h-[300px] mx-auto ">
                       <Image
                         src={getPicURL(sp.pictures[0])}
                         alt={sp.title}

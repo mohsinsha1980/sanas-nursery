@@ -81,7 +81,6 @@ const BestSellingProduct = ({ plants }: { plants: BestSellingPlant[] }) => {
             }`}
           >
             {plants.map((item, i) => {
-              console.log(item)
               return (
                 <div
                   key={i}

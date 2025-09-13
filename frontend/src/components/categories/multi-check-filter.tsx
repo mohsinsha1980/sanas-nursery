@@ -60,7 +60,7 @@ const MultiCheckBoxFilter: React.FC<MultiCheckBoxFieldProps> = ({
               <div className="flex space-x-2 items-center">
                 <Label
                   className={`text-md cursor-pointer ${
-                    isChecked ? "text-orange-500 font-semibold" : "text-black"
+                    isChecked ? "text-orange-500 font-semibold" : "text-[#505050] font-medium"
                   }`}
                   htmlFor={item.label}
                 >
