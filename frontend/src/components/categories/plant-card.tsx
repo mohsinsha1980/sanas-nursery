@@ -36,14 +36,20 @@ const PlantCard = ({ data }: { data: PlantsCardType }) => {
         dispatch(removeFromWishlistStore(data.id));
         showSuccessToast("Removed from wishlist");
       } else {
-        if (user?.role !== ROLES.USER) {
+        if (user?.role === ROLES.USER) {
           await saveToWishlist(data.id);
         }
         dispatch(addToWishlist(data.id));
         showSuccessToast("Added to wishlist");
       }
-    } catch (error: unknown) {
-      showErrorToast(getErrorMessage(error as AxiosError));
+    } catch (_error: unknown) {
+      console.log(_error);
+      // do not show error as : if plant1 is saved in db for  logedin user and plan2 and plant3 was already saved in localstorage , all three will be shown like they are users wishlist , but if user click on plant2 or plant3 to remove from wishlist it backend will give error that no plant found in that speciic users wishlist , so here ignore that error only remove that from localstorage as it was only in localstorage od that specific device
+      // when user logedout plant which are in his database will remian in localstorage 
+      if (isInWishlist) {
+        dispatch(removeFromWishlistStore(data.id));
+        showSuccessToast("Removed from wishlist");
+      }
     } finally {
       setLoading(false);
     }

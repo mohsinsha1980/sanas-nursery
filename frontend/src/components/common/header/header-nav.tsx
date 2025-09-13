@@ -3,7 +3,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { categories } from "@/lib/constants";
+import { categories, CATEGORY_ARR } from "@/lib/constants";
 
 export default function HeaderNav() {
   const pathname = usePathname();
@@ -43,10 +43,10 @@ export default function HeaderNav() {
                   {categories.map((cat) => (
                     <li key={cat.slug}>
                       <Link
-                        href={`/categories/${cat.slug}`}
+                        href={`/categories/${cat.value}`}
                         className="block px-4 py-2 text-gray-800"
                       >
-                        {cat.name}
+                        {cat.label}
                       </Link>
                     </li>
                   ))}

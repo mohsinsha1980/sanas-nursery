@@ -17,12 +17,6 @@ import {
 import config from "@/config/env-config";
 import { buildBlogQueryString, buildQueryString } from "../helper";
 
-export const refreshToken = (controller?: Controller) => {
-  return axiosInstance.get(`${config.API_USER_PATH}/refreshToken`, {
-    signal: controller?.signal,
-  });
-};
-
 export const getCategoryPlants = (
   category: string,
   searchParams: PlantFilterType | undefined

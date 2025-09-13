@@ -43,12 +43,6 @@ const PendingOrderEnquiries = () => {
   const [openView, setOpenView] = useState<boolean>(false);
   const [viewData, setViewData] = useState<OrderEnquiryDataType | null>(null);
 
-  const viewHandler = (_id: string): void => {
-    const found = enquiriesData.data.find((e) => e._id === _id) || null;
-    setViewData(found);
-    setOpenView(true);
-  };
-
   useEffect(() => {
     const controller = new AbortController();
     const getAllEnquiries = async () => {
@@ -81,6 +75,12 @@ const PendingOrderEnquiries = () => {
       dispatch(hideLoader());
     };
   }, [dispatch, paginationData, filters]);
+
+  const viewHandler = (_id: string): void => {
+    const found = enquiriesData.data.find((e) => e._id === _id) || null;
+    setViewData(found);
+    setOpenView(true);
+  };
 
   const updateStatusHandler = async (enquiryId: string, newStatus: string) => {
     try {
@@ -118,6 +118,7 @@ const PendingOrderEnquiries = () => {
   };
 
   const handlePageChange = useCallback((page: number): void => {
+    console.log(1);
     setPaginationData((prev) =>
       prev.page === page ? prev : { ...prev, page }
     );
