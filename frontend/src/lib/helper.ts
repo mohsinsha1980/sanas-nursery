@@ -1,4 +1,3 @@
-import store from "@/redux/store";
 import { AxiosError } from "axios";
 import CryptoJS from "crypto-js";
 
@@ -44,28 +43,6 @@ export const WEEK_DAYS = [
 export const isNumeric = (str: number) => {
   if (typeof str != "string") return false;
   return !isNaN(str) && !isNaN(parseFloat(str));
-};
-
-export const getUserData = () => {
-  const currStore = store.getState();
-  const { user } = currStore;
-  return user;
-};
-
-export const isAdmin = () => {
-  const { user } = store.getState();
-  if (!user || !user.role) {
-    return false;
-  }
-  return user.role === "admin";
-};
-
-export const isUser = () => {
-  const { user } = store.getState();
-  if (!user || !user.role) {
-    return false;
-  }
-  return user.role === "user";
 };
 
 const monthNames = [
