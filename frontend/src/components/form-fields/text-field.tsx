@@ -41,7 +41,7 @@ const TextField = <T extends FieldValues>({
   suffix,
   readonly,
   onchange,
-  className = "",
+  className = "border border-black/20",
   upperCase = false,
   labelClassName = "",
   descriptionClassName = "",

@@ -121,7 +121,7 @@ export default function TagsField({ data }: Props) {
         <div className="basis-2/4 relative">
           <Input
             placeholder="Search a tag"
-            className="h-8 border-none rounded-lg"
+            className="h-8 border-black/10 rounded-lg"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />

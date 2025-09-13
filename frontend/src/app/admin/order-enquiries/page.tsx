@@ -10,7 +10,7 @@ export default function OrderEnquiriesPage() {
       <div>
         <div className="flex flex-row pb-6">
           <div>
-            <h1>
+            <h1 className="text-3xl font-bold text-gray-900 !px-2">
               Order Enquiries
             </h1>
             <p className="text-gray-600 mt-2 px-2">
@@ -20,7 +20,7 @@ export default function OrderEnquiriesPage() {
         </div>
         <div>
           <Tabs defaultValue="incomplete">
-            <TabsList className="inline-flex bg-gray-100 p-1 rounded-lg shadow-sm">
+            <TabsList className="inline-flex bg-gray-100 !p-0 rounded-lg shadow-sm">
               <TabsTrigger
                 value="incomplete"
                 className="flex items-center space-x-2 data-[state=active]:bg-orange-500 data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-200 font-semibold px-4 py-2"
@@ -36,10 +36,10 @@ export default function OrderEnquiriesPage() {
                 <span>Completed</span>
               </TabsTrigger>
             </TabsList>
-            <TabsContent value="incomplete" className="mt-6 md:!px-0">
+            <TabsContent value="incomplete" className="mt-6 md:!p-0 md:!pt-2">
               <PendingOrderEnquiries />
             </TabsContent>
-            <TabsContent value="completed" className="mt-6 md:!px-0">
+            <TabsContent value="completed" className="mt-6 md:!p-0 md:!pt-2">
               <ResolvedOrderEnquiries />
             </TabsContent>
           </Tabs>

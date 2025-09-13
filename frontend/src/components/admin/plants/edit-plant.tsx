@@ -1,7 +1,6 @@
 "use client";
 
 import CustomDialog from "@/components/layout/Dialog";
-import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import {
   Table,
@@ -46,7 +45,7 @@ import { PlantTypes } from "@/lib/types/common-types";
 import { hideLoader, showLoader } from "@/redux/uiSlice";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { AxiosError } from "axios";
-import { Trash2Icon } from "lucide-react";
+import {  Trash2Icon } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -54,6 +53,10 @@ import { SubmitHandler, useFieldArray, useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import AddFAQ from "./add-faq";
 import AddSpecificatin from "./add-specification";
+import UpdateButton from "../action-buttons/update";
+import CancelButton from "../action-buttons/cancel";
+import BackButton from "../action-buttons/back";
+import AddNew from "../action-buttons/add-new";
 
 const defaultValues: EditPlantFields = {
   plantId: "",
@@ -199,6 +202,10 @@ export default function EditPlantForm({ plantId }: EditPlantProps) {
 
   return (
     <>
+      <div className="flex justify-between items-center">
+        <h1 className="text-3xl font-bold text-gray-900 !px-0">Edit Plant</h1>
+        <BackButton onClick={() => router.back()} />
+      </div>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           <div className="grid grid-cols-4 gap-4 mb-4 mt-5">
@@ -208,7 +215,7 @@ export default function EditPlantForm({ plantId }: EditPlantProps) {
                 label="Title"
                 placeholder="Title"
                 inputType="text"
-                className="rounded-md border-none"
+                className="rounded-md border-black/20"
                 labelClassName="text-[20px] font-semibold"
                 formControl={form.control}
                 onchange={(val) => {
@@ -222,7 +229,7 @@ export default function EditPlantForm({ plantId }: EditPlantProps) {
                 label="Meta Description"
                 placeholder="Meta Description"
                 formControl={form.control}
-                className="rounded-md border-none"
+                className="rounded-md border-black/20"
                 labelClassName="text-[20px] font-semibold"
                 description="Description to show in global search and for meta tag."
                 descriptionClassName="text-md font-lg"
@@ -237,7 +244,7 @@ export default function EditPlantForm({ plantId }: EditPlantProps) {
                 formControl={form.control}
                 description="Summary to display on plant card"
                 descriptionClassName="text-md font-lg"
-                className="border-none"
+                className="border-black/20"
               />
             </div>
 
@@ -251,7 +258,7 @@ export default function EditPlantForm({ plantId }: EditPlantProps) {
                 labelClassName="text-[20px] font-semibold"
                 placeholder="Details"
                 formControl={form.control}
-                className="border-none"
+                className="border-black/20 rounded-md"
               />
             </div>
 
@@ -265,7 +272,7 @@ export default function EditPlantForm({ plantId }: EditPlantProps) {
                 labelClassName="text-[20px] font-semibold"
                 placeholder="Add description about the plant"
                 formControl={form.control}
-                className="border-none"
+                className="border-black/20 rounded-md"
               />
             </div>
 
@@ -282,20 +289,12 @@ export default function EditPlantForm({ plantId }: EditPlantProps) {
                   </p>
                 </div>
                 <div className="text-right">
-                  <Button
-                    variant="orange"
-                    type="button"
-                    size="sm"
-                    onClick={() => setOpenKeySpec(true)}
-                    className="mt-5"
-                  >
-                    Add New
-                  </Button>
+                  <AddNew label="Specifications" onClick={() => setOpenKeySpec(true)} />
                 </div>
               </div>
 
               <div className="rounded-md mb-4">
-                <Table className="min-w-full border-none">
+                <Table className="min-w-full border-black/20">
                   <TableHeader>
                     <TableRow className="flex bg-slate-50 hover:bg-slate-50 border-b border-slate-200">
                       <TableHead className="w-1/3 font-semibold text-slate-700 py-2 px-3 sm:px-6 text-xs sm:text-sm">
@@ -358,7 +357,7 @@ export default function EditPlantForm({ plantId }: EditPlantProps) {
                 formControl={form.control}
                 allowCustomValue={false}
                 options={CATEGORY_ARR}
-                className="border-none"
+                className="border-black/20"
               />
             </div>
             <div>
@@ -370,7 +369,7 @@ export default function EditPlantForm({ plantId }: EditPlantProps) {
                 formControl={form.control}
                 allowCustomValue={false}
                 options={PLANT_SIZES_ARR}
-                className="border-none"
+                className="border-black/20"
               />
             </div>
             <div>
@@ -382,7 +381,7 @@ export default function EditPlantForm({ plantId }: EditPlantProps) {
                 formControl={form.control}
                 allowCustomValue={false}
                 options={CARE_LEVEL_ARR}
-                className="border-none"
+                className="border-black/20"
               />
             </div>
 
@@ -396,7 +395,7 @@ export default function EditPlantForm({ plantId }: EditPlantProps) {
                   console.log(_id);
                   return rest;
                 })}
-                className="border-none rounded-lg !bg-white"
+                className="border-black/20 rounded-lg !bg-white"
               />
             ) : null}
 
@@ -413,14 +412,7 @@ export default function EditPlantForm({ plantId }: EditPlantProps) {
                   </h4>
                 </div>
                 <div className="text-right">
-                  <Button
-                    variant="orange"
-                    type="button"
-                    size="sm"
-                    onClick={() => setOpenAddFAQ(true)}
-                  >
-                    Add New FAQ
-                  </Button>
+                  <AddNew label="FAQ" onClick={() => setOpenAddFAQ(true)} />
                 </div>
               </div>
             </div>
@@ -448,7 +440,7 @@ export default function EditPlantForm({ plantId }: EditPlantProps) {
                 multiple={true}
                 accept="image/jpeg, image/jpg, image/png, image/webp"
                 placeholder="Pictures"
-                className="rounded-md border-none"
+                className="rounded-md border-black/20"
                 formControl={form.control}
                 description={`Pictures with ${
                   ALLOWED_MAX_FILE_SIZE / 1000
@@ -478,9 +470,8 @@ export default function EditPlantForm({ plantId }: EditPlantProps) {
               />
             </div>
             <div className="col-span-4">
-              <Button variant="orange" size="sm" type="submit">
-                Save
-              </Button>
+              <CancelButton onClick={() => router.back()} />
+              <UpdateButton type="submit" />
             </div>
           </div>
         </form>

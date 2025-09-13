@@ -31,6 +31,7 @@ import { useDispatch } from "react-redux";
 import BlogFilter from "./blog-filter";
 import BlogItem from "./blog-item";
 import SkeletonCard from "./skeleton-card";
+import AddNew from "../action-buttons/add-new";
 
 const BlogList = () => {
   const dispatch = useDispatch();
@@ -194,21 +195,19 @@ const BlogList = () => {
       <div className="space-y-3">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center pb-4 gap-3">
           <div>
-            <h1 className="!p-0">Blog Management</h1>
+            <h1 className="text-3xl font-bold text-gray-900 !px-0">
+              Blog Management
+            </h1>
             <p className="text-gray-600 mt-1">
               Manage your blog posts, create content, and engage with your
               audience.
             </p>
           </div>
-          <Button
-            type="button"
-            variant="orange"
-            size="sm"
+
+          <AddNew
+            label="Blog"
             onClick={() => router.push("/admin/blogs/add")}
-          >
-            <CirclePlusIcon />
-            Add New Blog
-          </Button>
+          />
         </div>
 
         <BlogFilter setFilters={handleFilterChange} />

@@ -17,7 +17,8 @@ import { AddMasterDataProps } from "@/lib/types/admin-types";
 import { addMasterData } from "@/lib/api-routes/api-admin";
 import { MASTER_DATA_TYPE } from "@/lib/constants";
 import TextField from "@/components/form-fields/text-field";
-import { Button } from "@/components/ui/button";
+import CancelButton from "../../action-buttons/cancel";
+import SaveButton from "../../action-buttons/save";
 
 type FormFields = z.infer<typeof BlogTagsSchema>;
 
@@ -62,7 +63,7 @@ export default function AddBlogTagsData({
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
         <div className="grid grid-cols-1 gap-x-4 mb-4">
           <TextField
             name="label"
@@ -70,10 +71,12 @@ export default function AddBlogTagsData({
             placeholder="gardening, plant care, tips"
             formControl={form.control}
             inputType="text"
+            className="rounded-md"
           />
         </div>
-        <div className="flex h-9 w-full items-center">
-          <Button type="submit">Save</Button>
+        <div className="flex h-9 w-full items-center mt-10">
+          <CancelButton onClick={() => onClose?.()} />
+          <SaveButton type="submit" />
         </div>
       </form>
     </Form>

@@ -61,7 +61,7 @@ export default function ViewDetailsDialog({
                 </h3>
                 <Badge
                   variant={getStatusBadgeVariant(enquiry.status)}
-                  className={`px-3 py-1.5 text-sm font-bold rounded-full ${getStatusColor(
+                  className={`px-3 py-1.5 text-sm font-bold rounded-md ${getStatusColor(
                     enquiry.status
                   )} shadow-sm`}
                 >
@@ -80,7 +80,7 @@ export default function ViewDetailsDialog({
           </div>
         </div>
 
-        <div className="bg-white border border-gray-200 rounded-lg p-6">
+        <div className="bg-white border border-gray-200 rounded-lg p-4">
           <div className="flex items-center space-x-2 mb-4">
             <User className="w-5 h-5 text-gray-600" />
             <h4 className="text-lg font-semibold text-gray-900">
@@ -147,7 +147,7 @@ export default function ViewDetailsDialog({
           </div>
         </div>
 
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
           <div className="flex items-center space-x-2 mb-3">
             <MessageSquare className="w-5 h-5 text-blue-600" />
             <h4 className="text-lg font-semibold text-blue-900">
@@ -162,7 +162,7 @@ export default function ViewDetailsDialog({
         </div>
 
         {enquiry.plantId && (
-          <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
+          <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
             <div className="flex items-center space-x-2 mb-3">
               <Package className="w-5 h-5 text-gray-600" />
               <h4 className="text-lg font-semibold text-gray-900">

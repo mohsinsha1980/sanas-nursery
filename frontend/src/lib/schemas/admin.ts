@@ -1,11 +1,25 @@
 import { z } from "zod";
-import { slugRegEx } from "../helper";
+import { generateSlug, slugRegEx } from "../helper";
 import { ACCEPTED_IMAGE_TYPES, YT_VIDEOS_LENGTH } from "../constants";
 
 export const slugValidation = z
   .string()
   .nonempty("Slug is required")
   .regex(slugRegEx, "Slug must be URL-friendly, Change title.");
+
+export const titleSchema = z
+  .string()
+  .nonempty("Title is required")
+  .refine(
+    (title) => {
+      const generatedSlug = generateSlug(title);
+      return slugValidation.safeParse(generatedSlug).success;
+    },
+    {
+      message:
+        "Title can't generate a valid slug (contains invalid characters).",
+    }
+  );
 
 const picturesSchema =
   typeof window === "undefined"
@@ -41,7 +55,7 @@ export const tagSchema = z.object({
 
 export const addPlantSchema = z
   .object({
-    title: z.string().nonempty("Title is required"),
+    title: titleSchema,
     slug: slugValidation,
     summary: z.string().nonempty("Plant summary is required"),
     category: z.string().nonempty("Plant Category is required"),
@@ -65,7 +79,7 @@ export const addPlantSchema = z
     const slugResult = slugValidation.safeParse(generatedSlug);
     if (!slugResult.success) {
       ctx.addIssue({
-        path: ["title"],
+        path: ["title"], // attach to title
         message:
           "Title can't contain special characters (used to generate slug).",
         code: z.ZodIssueCode.custom,
@@ -155,7 +169,7 @@ export const testimonialSchema = z.object({
       (val) => ["1", "2", "3", "4", "5"].includes(val),
       "Rating must be between 1 and 5"
     ),
-  link: z.string().url("Must be a valid URL").optional(),
+  link: z.string().optional(),
   status: z.boolean(),
 });
 

@@ -8,6 +8,8 @@ import TextArea from "@/components/form-fields/text-area";
 import TextField from "@/components/form-fields/text-field";
 import { Button } from "@/components/ui/button";
 import { faqsSchema } from "@/lib/schemas/admin";
+import CancelButton from "../action-buttons/cancel";
+import { Save } from "lucide-react";
 
 type FormFields = z.infer<typeof faqsSchema>;
 type AddFAQProps = {
@@ -48,7 +50,7 @@ export default function AddFAQ({ onAdd, onClose }: AddFAQProps) {
               label="Question"
               placeholder="Enter FAQ question here"
               formControl={form.control}
-              className="rounded-md border-none"
+              className="rounded-md border-black/20"
             />
           </div>
           <div>
@@ -57,20 +59,22 @@ export default function AddFAQ({ onAdd, onClose }: AddFAQProps) {
               label="FAQ Answer"
               placeholder="Enter FAQ answer here"
               formControl={form.control}
-              className="border-none p-4"
+              className="border-black/20 p-4"
             />
           </div>
           <div>
             <div className="space-y-2">
               <FormLabel>&nbsp;</FormLabel>
               <div className="flex h-9 w-full items-center">
+                <CancelButton onClick={() => onClose?.()} />
+
                 <Button
                   type="button"
                   variant="orange"
-                  className="rounded-md"
                   onClick={form.handleSubmit(onSubmit)}
+                  className="rounded-md"
                 >
-                  Add FAQ
+                  <Save /> Save
                 </Button>
               </div>
             </div>

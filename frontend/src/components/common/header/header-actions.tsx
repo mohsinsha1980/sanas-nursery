@@ -53,7 +53,7 @@ export default function HeaderActions() {
             <DropdownMenuPortal>
               <DropdownMenuContent
                 align="end"
-                className="w-56 z-[9999]"
+                className="w-56 z-[9999] border-black/20"
                 sideOffset={8}
                 avoidCollisions={true}
                 collisionPadding={10}
@@ -65,7 +65,7 @@ export default function HeaderActions() {
                 <DropdownMenuSeparator />
                 {user.role === ROLES.ADMIN ? (
                   <DropdownMenuItem asChild>
-                    <Link href="/admin/dashboard" className="cursor-pointer">
+                    <Link href="/admin/dashboard" className="cursor-pointer hover:text-orange-500">
                       <LayoutDashboard className="mr-2 h-4 w-4" />
                       Dashboard
                     </Link>

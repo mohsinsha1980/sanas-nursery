@@ -16,7 +16,7 @@ export const getSubscription = async (req, res, next) => {
       .lean()
       .exec();
 
-    const total = await countDocuments();
+    const total = await Subscribe.countDocuments();
     req.successResponse = {
       message: "Subscribers retrieved successfully",
       data: { subscribed, total },

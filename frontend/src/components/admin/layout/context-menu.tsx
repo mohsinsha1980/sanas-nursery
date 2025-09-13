@@ -87,12 +87,12 @@ export default function ContextMenu() {
             </Link>
           </li>
 
-          <li className={getActiveClass("/admin/subscribe")}>
-            <Link href="/admin/subscribe" className="flex items-center gap-3">
+          <li className={getActiveClass("/admin/subscription")}>
+            <Link href="/admin/subscription" className="flex items-center gap-3">
               <div className="">
                 <UserPlus strokeWidth={1} className="h-6 font-bold" />
               </div>
-              Subscribe
+              Subscription
             </Link>
           </li>
 

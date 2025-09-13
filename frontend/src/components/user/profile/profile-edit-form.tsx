@@ -17,6 +17,7 @@ import { hideLoader, showLoader } from "@/redux/uiSlice";
 import { updateUser } from "@/redux/userSlice";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { AxiosError } from "axios";
+import { X } from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
@@ -94,7 +95,7 @@ export default function ProfileEditForm({
 
           <div className="flex justify-end gap-3 mt-4">
             <Button type="button" variant="secondary" onClick={onClose}>
-              Cancel
+               <X /> Cancel
             </Button>
             <Button type="submit" variant="orange" disabled={isLoading}>
               {isLoading ? "Saving" : "Save"}

@@ -9,11 +9,12 @@ import { YT_VIDEOS_LENGTH } from "@/lib/constants";
 import { showErrorToast, showSuccessToast } from "@/lib/helper";
 import { videoSchema } from "@/lib/schemas/admin";
 import { hideLoader, showLoader } from "@/redux/uiSlice";
-import { Edit } from "lucide-react";
+import { Edit, Save } from "lucide-react";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { z } from "zod";
+import CancelButton from "../action-buttons/cancel";
 
 type VideoFormFields = z.infer<typeof videoSchema>;
 interface VideoSectionProps {
@@ -79,7 +80,7 @@ export default function VideoSection({ videos }: VideoSectionProps) {
           ))}
         </div>
 
-        <div className="mt-8">
+        <div className="mt-8 flex items-center justify-center">
           <Button
             size="sm"
             variant={"orange"}
@@ -112,11 +113,9 @@ export default function VideoSection({ videos }: VideoSectionProps) {
               ))}
 
               <div className="flex justify-end pt-2">
-                <Button
-                  type="submit"
-                  className="bg-[#00611F] hover:bg-[#004d18] text-white rounded-lg px-4 py-2"
-                >
-                  Save Videos
+                <CancelButton onClick={() => setOpenEditForm(false)} />
+                <Button type="submit" variant={"orange"}>
+                  <Save /> Save Videos
                 </Button>
               </div>
             </form>

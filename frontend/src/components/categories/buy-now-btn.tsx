@@ -16,6 +16,7 @@ import { hideLoader, showLoader } from "@/redux/uiSlice";
 import { createOrderEnquiry } from "@/lib/api-routes/api-public";
 import { Form } from "../ui/form";
 import { useReCaptcha } from "next-recaptcha-v3";
+import { X } from "lucide-react";
 
 const defaultValues: OrderEnquiryFields = {
   name: "",
@@ -146,7 +147,7 @@ const BuyNowBtn = ({ plant }: { plant: PlantDataType }) => {
                 variant="secondary"
                 onClick={() => setOpenDialog(false)}
               >
-                Cancel
+                <X /> Cancel
               </Button>
               <Button type="submit" variant="orange">
                 Submit Enquiry
