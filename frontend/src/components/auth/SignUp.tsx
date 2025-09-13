@@ -96,7 +96,7 @@ const SignUpForm = () => {
               name="phone"
               label="Contact Number"
               labelClassName="text-[18px] font-semibold"
-              placeholder="Enter Contact Number"
+              placeholder="Enter Contact Number (99876543210)"
               inputType="text"
               formControl={form.control}
               className="w-full rounded-md border border-gray-800 px-3 text-black bg-white "
