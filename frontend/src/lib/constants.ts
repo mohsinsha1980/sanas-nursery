@@ -51,15 +51,6 @@ export const BLOG_CATEGORIES = {
   FERTILIZERS: { label: "Fertilizers & Soil", value: "fertilizers-soil" },
 };
 
-export const categories = [
-  { name: "Fruit Trees", slug: "fruit-trees", image: "/plant3.png" },
-  { name: "Flower Trees", slug: "flower-trees", image: "/plant2.png" },
-  { name: "Shadow Trees", slug: "shadow-trees", image: "/plant1.png" },
-  { name: "Show Trees", slug: "show-trees", image: "/plant3.png" },
-  { name: "Masala", slug: "masala", image: "/plant2.png" },
-  { name: "Others", slug: "others", image: "/plant1.png" },
-];
-
 export const CATEGORIES = {
   FRUIT_TREES: {
     label: "Fruit Trees",
