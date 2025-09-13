@@ -146,8 +146,8 @@ export default function HomeGallerySection({
             </div>
           </div>
 
-          {/* Mobile Layout - Single Row */}
-          <div className="grid md:hidden grid-cols-3 gap-2 w-full">
+          {/* Mobile Layout - Single Column */}
+          <div className="flex md:hidden flex-col gap-4 w-full">
             {images.map((img, i) => (
               <motion.div
                 key={i}
@@ -155,14 +155,14 @@ export default function HomeGallerySection({
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: i * 0.2 }}
                 viewport={{ once: true }}
-                className="rounded-xl overflow-hidden shadow-md cursor-pointer h-[200px]"
+                className="rounded-xl overflow-hidden shadow-md cursor-pointer h-[250px] w-full"
                 onClick={() => setSelectedIndex(i)}
               >
                 <Image
                   src={img}
                   alt={`Gallery ${i + 1}`}
-                  width={300}
-                  height={200}
+                  width={400}
+                  height={250}
                   className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                 />
               </motion.div>
