@@ -1,6 +1,6 @@
-import Link from "next/link";
+import { CATEGORY_ARR } from "@/lib/constants";
 import Image from "next/image";
-import { categories, CATEGORY_ARR } from "@/lib/constants";
+import Link from "next/link";
 
 export default function Categories() {
   return (

@@ -1,9 +1,9 @@
 "use client";
+import { CATEGORY_ARR } from "@/lib/constants";
+import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { categories, CATEGORY_ARR } from "@/lib/constants";
 
 export default function HeaderNav() {
   const pathname = usePathname();
@@ -40,8 +40,8 @@ export default function HeaderNav() {
                 className="absolute left-0 mt-3 w-48 h-fit rounded-md border border-gray-200 bg-white shadow-lg z-50 "
               >
                 <ol className="flex flex-col items-start text-center mb-2">
-                  {categories.map((cat) => (
-                    <li key={cat.slug}>
+                  {CATEGORY_ARR.map((cat) => (
+                    <li key={cat.value}>
                       <Link
                         href={`/categories/${cat.value}`}
                         className="block px-4 py-2 text-gray-800"
