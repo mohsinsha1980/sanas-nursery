@@ -41,7 +41,7 @@ export function ProductAccordion({
           <AccordionItem
             key={item.id}
             value={item.id}
-            className="px-4 shadow-sm shadow-gray-400 transition-colors bg-white border-none"
+            className="px-4 shadow-sm shadow-gray-400 transition-colors bg-white rounded-lg border-none"
           >
             <div className="flex items-center">
               {/* Question with chevron icon at the right edge */}
