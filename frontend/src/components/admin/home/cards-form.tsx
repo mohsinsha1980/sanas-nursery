@@ -18,6 +18,7 @@ import { DefultHomeCardType, HomeCardType } from "@/lib/types/common-types";
 import { hideLoader, showLoader } from "@/redux/uiSlice";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { AxiosError } from "axios";
+import { Save, X } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -138,18 +139,21 @@ export default function CardsForm({ defaultData, field, data }: CardFormProps) {
           form.reset();
           setOpenConfirm(open);
         }}
-        className="w-full max-w-lg"
+        className="w-full max-w-lg z-[9999]"
       >
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <TextField
-                name="large"
-                label="Big heading"
-                placeholder="Big heading"
-                formControl={form.control}
-                className="border-black/10 rounded-md"
-              />
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="col-span-2">
+                <TextField
+                  name="large"
+                  label="Big heading"
+                  placeholder="Big heading"
+                  formControl={form.control}
+                  className="border-black/10 rounded-md"
+                />
+              </div>
+
               <ColorPickerField
                 name="largeColor"
                 label="Big heading color"
@@ -159,14 +163,15 @@ export default function CardsForm({ defaultData, field, data }: CardFormProps) {
                   form.setValue("largeColor", color as string)
                 }
               />
-
-              <TextField
-                name="small"
-                label="Small heading"
-                placeholder="Small heading"
-                formControl={form.control}
-                className="border-black/10 rounded-md"
-              />
+              <div className="col-span-2">
+                <TextField
+                  name="small"
+                  label="Small heading"
+                  placeholder="Small heading"
+                  formControl={form.control}
+                  className="border-black/10 rounded-md"
+                />
+              </div>
               <ColorPickerField
                 name="smallColor"
                 label="Small heading color"
@@ -177,6 +182,7 @@ export default function CardsForm({ defaultData, field, data }: CardFormProps) {
                 }
               />
 
+              <div className="col-span-2">
               <TextField
                 name="link.label"
                 label="Link label"
@@ -184,6 +190,7 @@ export default function CardsForm({ defaultData, field, data }: CardFormProps) {
                 formControl={form.control}
                 className="border-black/10 rounded-md"
               />
+              </div>
               <ColorPickerField
                 name="link.color"
                 label="Link label color"
@@ -194,7 +201,7 @@ export default function CardsForm({ defaultData, field, data }: CardFormProps) {
                 }
               />
 
-              <div className="col-span-2">
+              <div className="col-span-3">
                 <TextField
                   name="link.address"
                   label="Link address"
@@ -203,6 +210,7 @@ export default function CardsForm({ defaultData, field, data }: CardFormProps) {
                   className="border-black/10 rounded-md"
                 />
               </div>
+
 
               <InputImageField
                 name="picture"
@@ -213,6 +221,7 @@ export default function CardsForm({ defaultData, field, data }: CardFormProps) {
                 className="border-black/10 rounded-md"
               />
 
+              <div className="col-span-2">
               {form.getValues("picture") && imageSrc && (
                 <Image
                   src={imageSrc}
@@ -222,14 +231,20 @@ export default function CardsForm({ defaultData, field, data }: CardFormProps) {
                   className="object-contain"
                 />
               )}
+              </div>
             </div>
 
             <div className="flex justify-end pt-2">
               <Button
-                type="submit"
-                className="bg-[#F37521] hover:bg-[#e0661c] text-white rounded-lg px-4 py-2"
+                type="button"
+                variant="outline"
+                onClick={() => setOpenConfirm(false)}
+                className="mr-4"
               >
-                Save
+                  <X /> Cancel
+              </Button>
+              <Button variant="orange" type="submit">
+                 <Save /> Save
               </Button>
             </div>
           </form>

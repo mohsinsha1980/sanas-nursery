@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "../ui/button";
+import { StepForward, X } from "lucide-react";
 
 interface ConfirmButtonProps {
   handleConfirm: (value: boolean) => void;
@@ -7,14 +8,25 @@ interface ConfirmButtonProps {
 
 const ConfirmButton: React.FC<ConfirmButtonProps> = ({ handleConfirm }) => {
   return (
-    <div className="flex justify-end space-x-3">
-      <Button type="button" onClick={() => handleConfirm(false)}>
-        Cancel
-      </Button>
+    <div className="">
+      <div className="pt-5 flex justify-end space-x-3 ">
+        <Button
+          type="button"
+          variant="outline"
+          onClick={() => handleConfirm(false)}
+        >
+          <X /> Cancel
+        </Button>
 
-      <Button type="button" onClick={() => handleConfirm(true)}>
-        Continue
-      </Button>
+        <Button
+          type="button"
+          variant="orange"
+          onClick={() => handleConfirm(true)}
+        >
+          <StepForward />
+          Continue
+        </Button>
+      </div>
     </div>
   );
 };

@@ -5,7 +5,6 @@ import { Form } from "@/components/ui/form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SubmitHandler, useFieldArray, useForm } from "react-hook-form";
 
-import { Button } from "@/components/ui/button";
 import {
   ALLOWED_MAX_FILE_SIZE,
   CARE_LEVEL_ARR,
@@ -45,10 +44,14 @@ import { addPlantSchema } from "@/lib/schemas/admin";
 import { AddPlantFields, MasterData } from "@/lib/types/admin-types";
 import { hideLoader, showLoader } from "@/redux/uiSlice";
 import { AxiosError } from "axios";
-import { Trash2Icon } from "lucide-react";
+import {  Trash2Icon } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
+import SaveButton from "@/components/admin/action-buttons/save";
+import CancelButton from "@/components/admin/action-buttons/cancel";
+import BackButton from "@/components/admin/action-buttons/back";
+import AddNew from "@/components/admin/action-buttons/add-new";
 
 const defaultMasterData: MasterData = {
   tags: [],
@@ -82,6 +85,9 @@ export default function AddPlant() {
     defaultValues: defaultFormData,
     resolver: zodResolver(addPlantSchema),
   });
+
+
+  console.log(form.formState.errors)
 
   const onSubmit: SubmitHandler<AddPlantFields> = async (
     values: AddPlantFields
@@ -144,16 +150,8 @@ export default function AddPlant() {
   return (
     <>
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center pb-5 gap-3">
-        <h1 className="!p-0">Add a plant</h1>
-        <Button
-          variant="orange"
-          type="button"
-          size="sm"
-          onClick={() => router.back()}
-          className="w-full sm:w-auto"
-        >
-          Back
-        </Button>
+        <h1 className="text-3xl font-bold text-gray-900 !p-0">Add a plant</h1>
+        <BackButton onClick={() => router.back()} />
       </div>
 
       <Form {...form}>
@@ -166,7 +164,7 @@ export default function AddPlant() {
                 label="Title"
                 placeholder="Title"
                 inputType="text"
-                className="rounded-md border-none"
+                className="rounded-md border-black/20"
                 labelClassName="text-base sm:text-lg lg:text-xl font-semibold"
                 formControl={form.control}
                 onchange={(val) => {
@@ -182,7 +180,7 @@ export default function AddPlant() {
                 label="Meta Description"
                 placeholder="Meta Description"
                 formControl={form.control}
-                className="rounded-md border-none"
+                className="rounded-md border-black/20"
                 labelClassName="text-base sm:text-lg lg:text-xl font-semibold"
                 description="Description to show in global search and for meta tag."
                 descriptionClassName="text-xs sm:text-sm"
@@ -199,7 +197,7 @@ export default function AddPlant() {
                 formControl={form.control}
                 description="Summary to display on plant card"
                 descriptionClassName="text-xs sm:text-sm"
-                className="border-none bg-white"
+                className="border-black/20 bg-white"
               />
             </div>
 
@@ -211,7 +209,7 @@ export default function AddPlant() {
                 labelClassName="text-base sm:text-lg lg:text-xl font-semibold"
                 placeholder="Details"
                 formControl={form.control}
-                className="border-none"
+                className="rounded-md border-black/20"
               />
             </div>
 
@@ -223,7 +221,7 @@ export default function AddPlant() {
                 labelClassName="text-base sm:text-lg lg:text-xl font-semibold"
                 placeholder="Add description about the plant"
                 formControl={form.control}
-                className="border-none"
+                className="rounded-md border-black/20"
               />
             </div>
 
@@ -242,15 +240,7 @@ export default function AddPlant() {
                   </h2>
                 </div>
                 <div className="text-left sm:text-right">
-                  <Button
-                    variant="orange"
-                    type="button"
-                    size="sm"
-                    onClick={() => setOpenKeySpec(true)}
-                    className="mt-3"
-                  >
-                    Add New
-                  </Button>
+                  <AddNew label="Specifications" onClick={() => setOpenKeySpec(true)} />
                 </div>
               </div>
 
@@ -321,7 +311,7 @@ export default function AddPlant() {
                 formControl={form.control}
                 allowCustomValue={false}
                 options={CATEGORY_ARR}
-                className="border-none"
+                className="border-black/20"
               />
             </div>
 
@@ -334,7 +324,7 @@ export default function AddPlant() {
                 formControl={form.control}
                 allowCustomValue={false}
                 options={PLANT_SIZES_ARR}
-                className="border-none"
+                className="border-black/20"
               />
             </div>
 
@@ -347,7 +337,7 @@ export default function AddPlant() {
                 formControl={form.control}
                 allowCustomValue={false}
                 options={CARE_LEVEL_ARR}
-                className="border-none"
+                className="border-black/20"
               />
             </div>
 
@@ -362,7 +352,7 @@ export default function AddPlant() {
                     console.log(_id);
                     return rest;
                   })}
-                  className="border-none rounded-lg !bg-white"
+                  className="border-black/20 rounded-lg !bg-white"
                 />
               ) : null}
             </div>
@@ -381,15 +371,7 @@ export default function AddPlant() {
                   </h4>
                 </div>
                 <div className="text-left sm:text-right">
-                  <Button
-                    variant="orange"
-                    type="button"
-                    size="sm"
-                    onClick={() => setOpenAddFAQ(true)}
-                    className="w-full sm:w-auto"
-                  >
-                    Add New FAQ
-                  </Button>
+                  <AddNew label="FAQ" onClick={() => setOpenAddFAQ(true)} />
                 </div>
               </div>
             </div>
@@ -420,7 +402,7 @@ export default function AddPlant() {
                 multiple={true}
                 accept="image/jpeg, image/jpg, image/png, image/webp"
                 placeholder="Pictures"
-                className="rounded-md border-none p-2"
+                className="rounded-md border-black/20 p-2"
                 formControl={form.control}
                 description={`Pictures with ${
                   ALLOWED_MAX_FILE_SIZE / 1000
@@ -453,14 +435,8 @@ export default function AddPlant() {
 
             {/* Submit Button */}
             <div className="lg:col-span-4">
-              <Button
-                variant="orange"
-                size="sm"
-                type="submit"
-                className="w-full sm:w-auto"
-              >
-                Save
-              </Button>
+              <CancelButton onClick={() => router.back()} />
+              <SaveButton type="submit" />
             </div>
           </div>
         </form>

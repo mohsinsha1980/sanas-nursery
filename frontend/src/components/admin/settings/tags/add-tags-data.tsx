@@ -19,7 +19,8 @@ import { AddMasterDataProps } from "@/lib/types/admin-types";
 import { addMasterData } from "@/lib/api-routes/api-admin";
 import { MASTER_DATA_TYPE } from "@/lib/constants";
 import TextField from "@/components/form-fields/text-field";
-import { Button } from "@/components/ui/button";
+import SaveButton from "../../action-buttons/save";
+import CancelButton from "../../action-buttons/cancel";
 
 type FormFields = z.infer<typeof TagsSchema>;
 
@@ -66,10 +67,12 @@ export default function AddTagData({ onAdd, onClose }: AddMasterDataProps) {
             placeholder="indoor, outdoor, low maintenance"
             formControl={form.control}
             inputType="text"
+            className="rounded-md"
           />
         </div>
-        <div className="flex h-9 w-full items-center">
-          <Button type="submit">Save</Button>
+        <div className="flex h-9 w-full items-center mt-10">
+          <CancelButton onClick={() => onClose?.()} />
+          <SaveButton type="submit" />
         </div>
       </form>
     </Form>

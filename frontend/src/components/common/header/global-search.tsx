@@ -62,26 +62,37 @@ const GlobalSearch = ({ className }: { className?: string }) => {
             role="combobox"
             className={`justify-start gap-3 px-3 font-normal border-none p-1 shadow-none bg-transparent`}
           >
-            <SearchIcon strokeWidth={2} className="size-6"/>
+            <SearchIcon strokeWidth={2} className="!size-5" />
           </Button>
         </PopoverTrigger>
-        <PopoverContent sideOffset={-30} className="w-[350px] p-0 sm:w-[340px] xs:!w-[280px] mr-[330px] lg:mr-[130px] sm:!mr-4 sm:mt-[50px] shadow-none border-black/10 bg-white">
+        <PopoverContent
+          side="bottom"
+          align="end"
+          sideOffset={5}
+          className="w-[350px] p-0 sm:w-[340px] xs:!w-[280px] shadow-none border-black/10 bg-white"
+        >
           <Command>
-            <CommandInput placeholder="Search Products"/>
+            <CommandInput placeholder="Search Products" />
             <CommandList>
               <CommandEmpty>No option found</CommandEmpty>
               <CommandGroup>
                 {options.map((option, index) => (
-                    <CommandItem
-                      key={index}
-                      value={option.label}
-                      onSelect={() => {
-                        setOpen(false);
-                      }}
+                  <CommandItem
+                    key={index}
+                    value={option.label}
+                    onSelect={() => {
+                      setOpen(false);
+                    }}
+                  >
+                    <Link
+                      href={option.url}
+                      key={`${option.url}-${index}`}
+                      className="w-full"
                     >
-                      <Link href={option.url} key={`${option.url}-${index}`} className="w-full"> {option.label}</Link>
-                     
-                    </CommandItem>
+                      {" "}
+                      {option.label}
+                    </Link>
+                  </CommandItem>
                 ))}
               </CommandGroup>
             </CommandList>

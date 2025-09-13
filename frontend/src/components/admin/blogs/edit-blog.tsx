@@ -1,6 +1,5 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 
 import InputImageField from "@/components/form-fields/input-image";
@@ -35,6 +34,9 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
+import BackButton from "../action-buttons/back";
+import CancelButton from "../action-buttons/cancel";
+import UpdateButton from "../action-buttons/update";
 
 const defaultValues: EditBlogFields = {
   blogId: "",
@@ -163,6 +165,11 @@ export default function EditBlogForm({ blogId }: EditBlogProps) {
 
   return (
     <>
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center pb-4 gap-3">
+        <h1 className="text-3xl font-bold text-gray-900 !px-0">Edit Blog</h1>
+
+        <BackButton onClick={() => router.back()} />
+      </div>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -344,10 +351,10 @@ export default function EditBlogForm({ blogId }: EditBlogProps) {
             </div>
           </div>
 
-          <div className="flex justify-end">
-            <Button type="submit" variant="orange" size="sm">
-              Update Blog
-            </Button>
+          <div className="flex">
+            <CancelButton onClick={() => router.back()} />
+
+            <UpdateButton type="submit" />
           </div>
         </form>
       </Form>

@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { Form } from "@/components/ui/form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { Button } from "@/components/ui/button";
 import { BLOG_CATEGORIES } from "@/lib/constants";
 
 import {
@@ -27,9 +26,11 @@ import { AddBlogType, MasterData } from "@/lib/types/admin-types";
 import { hideLoader, showLoader } from "@/redux/uiSlice";
 import { AxiosError } from "axios";
 import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
+import CancelButton from "@/components/admin/action-buttons/cancel";
+import SaveButton from "@/components/admin/action-buttons/save";
+import BackButton from "@/components/admin/action-buttons/back";
 
 const defaultFormData: AddBlogType = {
   title: "",
@@ -108,17 +109,15 @@ export default function AddBlog() {
   return (
     <>
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center pb-4 gap-3">
-        <h1 className="!p-0">Add New Blog</h1>
-        <Button variant="orange" type="button" size="sm">
-          <Link href="/admin/blogs">Back</Link>
-        </Button>
+        <h1 className="text-3xl font-bold text-gray-900 !px-0">Add New Blog</h1>
+        <BackButton onClick={() => router.back()} />
       </div>
 
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <div className="lg:col-span-2 space-y-6">
-              <div className="bg-white p-6 rounded-lg border border-gray-200">
+              <div className="bg-white p-5 rounded-lg border border-gray-200">
                 <h2 className="text-lg font-semibold text-gray-900 mb-4">
                   Basic Information
                 </h2>
@@ -157,7 +156,7 @@ export default function AddBlog() {
                 </div>
               </div>
 
-              <div className="bg-white p-6 rounded-lg border border-gray-200">
+              <div className="bg-white p-4 rounded-lg border border-gray-200">
                 <h2 className="text-lg font-semibold text-gray-900 mb-4">
                   SEO Settings
                 </h2>
@@ -188,7 +187,7 @@ export default function AddBlog() {
             </div>
 
             <div className="space-y-6">
-              <div className="bg-white p-6 rounded-lg border border-gray-200">
+              <div className="bg-white p-4 rounded-lg border border-gray-200">
                 <h2 className="text-lg font-semibold text-gray-900 mb-4">
                   Cover Image
                 </h2>
@@ -199,7 +198,7 @@ export default function AddBlog() {
                   multiple={false}
                   accept="image/jpeg, image/jpg, image/png, image/webp"
                   placeholder="Choose cover image"
-                  className="rounded-md border-black/10"
+                  className="rounded-md border-black/10 p-2"
                   formControl={form.control}
                   description="Recommended size: 800x450px"
                   descriptionClassName="text-sm text-gray-500"
@@ -219,7 +218,7 @@ export default function AddBlog() {
                 )}
               </div>
 
-              <div className="bg-white p-6 rounded-lg border border-gray-200">
+              <div className="bg-white p-4 rounded-lg border border-gray-200">
                 <h2 className="text-lg font-semibold text-gray-900 mb-4">
                   Blog Settings
                 </h2>
@@ -295,9 +294,9 @@ export default function AddBlog() {
           </div>
 
           <div className="">
-            <Button type="submit" variant="orange" size="sm">
-              Create Blog
-            </Button>
+            <CancelButton onClick={() => router.back()} />
+
+            <SaveButton type="submit" />
           </div>
         </form>
       </Form>

@@ -45,7 +45,7 @@ const SettingsPage = () => {
   return (
     <>
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center pb-4 gap-3">
-        <h1>Settings</h1>
+        <h1 className="text-3xl font-bold text-gray-900 !px-0">Settings</h1>
       </div>
       <div className="flex gap-4">
         <Card className="w-1/2 px-4 bg-white">

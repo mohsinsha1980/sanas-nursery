@@ -60,7 +60,7 @@ const EnquiryFilter = ({ setFilters }: EnquiryFilterProps) => {
         )}
       </div>
 
-      <div className="flex flex-col sm:flex-row sm:items-end gap-4">
+      <div className="flex flex-col justify-center sm:flex-row sm:items-end gap-4">
         <div className="flex-1 min-w-[280px]">
           <label className="block text-sm font-medium text-gray-700 mb-2">
             Filter by Status
@@ -73,7 +73,7 @@ const EnquiryFilter = ({ setFilters }: EnquiryFilterProps) => {
               )
             }
           >
-            <SelectTrigger className="h-11 border-gray-300 focus:border-orange-300 focus:ring-orange-300">
+            <SelectTrigger className="h-9 border-gray-300 focus:border-orange-300 focus:ring-orange-300">
               <SelectValue placeholder="All Enquiries">
                 {status ? (
                   <div className="flex items-center space-x-3">
@@ -104,7 +104,7 @@ const EnquiryFilter = ({ setFilters }: EnquiryFilterProps) => {
                 )}
               </SelectValue>
             </SelectTrigger>
-            <SelectContent className="bg-white border-gray-200 shadow-lg rounded-lg p-1">
+            <SelectContent className="bg-white border-gray-200 shadow-lg rounded-lg">
               <SelectItem
                 value="all"
                 className="py-3 px-4 rounded-md hover:bg-gray-50 focus:bg-gray-50 cursor-pointer"
@@ -163,27 +163,27 @@ const EnquiryFilter = ({ setFilters }: EnquiryFilterProps) => {
           </Select>
         </div>
 
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center space-x-2 h-9">
           {status && (
             <Button
               variant="outline"
               size="sm"
               onClick={() => setStatus(undefined)}
-              className="flex items-center space-x-2 text-gray-600 hover:text-gray-800 hover:bg-gray-50 h-11"
+              className="h-full"
             >
-              <X className="w-4 h-4" />
-              <span>Clear Filter</span>
+              <X  />
+              Clear Filter
             </Button>
           )}
 
           <Button
-            variant="ghost"
+            variant="orange"
             size="sm"
             onClick={() => setStatus(undefined)}
-            className="flex items-center space-x-2 text-gray-500 hover:text-gray-700 h-11"
+            className="h-full"
           >
-            <RotateCcw className="w-4 h-4" />
-            <span>Reset All</span>
+            <RotateCcw />
+            Reset All
           </Button>
         </div>
       </div>

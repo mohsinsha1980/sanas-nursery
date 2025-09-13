@@ -11,7 +11,16 @@ import {
 } from "@/components/ui/select";
 import { BLOG_CATEGORIES } from "@/lib/constants";
 import { BlogFilterTypes } from "@/lib/types/admin-types";
-import { Filter, Search, X, FileText, Activity, Tag, Star } from "lucide-react";
+import {
+  Filter,
+  Search,
+  FileText,
+  Activity,
+  Tag,
+  Star,
+  ListFilterPlus,
+  RotateCcw,
+} from "lucide-react";
 import { useState } from "react";
 
 interface BlogFilterProps {
@@ -171,18 +180,18 @@ const BlogFilter = ({ setFilters }: BlogFilterProps) => {
         </div>
       </div>
 
-      <div className="flex items-center justify-between mt-6">
+      <div className="flex items-center justify-start gap-4 mt-6">
+        <Button onClick={handleSearch} variant="orange" size="sm">
+          <ListFilterPlus /> Apply Filters
+        </Button>
         {hasActiveFilters ? (
-          <Button variant="orange" size="sm" onClick={handleClear}>
-            <X className="h-4 w-4" />
+          <Button variant="outline" size="sm" onClick={handleClear}>
+            <RotateCcw className="h-4 w-4" />
             Clear Filters
           </Button>
         ) : (
           <div></div>
         )}
-        <Button onClick={handleSearch} variant="orange" size="sm">
-          Apply Filters
-        </Button>
       </div>
     </div>
   );

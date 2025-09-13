@@ -50,7 +50,7 @@ export default function AddSpecificatin({
               label="Key specification Label"
               placeholder="for e.g. Height, Width"
               formControl={form.control}
-              className="rounded-md border-none shadow-md"
+              className="rounded-md border-black/20 shadow-md"
             />
           </div>
           <div>
@@ -59,7 +59,7 @@ export default function AddSpecificatin({
               label="Key specification value"
               placeholder="for e.g. 5 feet, 10 inch"
               formControl={form.control}
-              className="rounded-md border-none shadow-md"
+              className="rounded-md border-black/20 shadow-md"
             />
           </div>
           <div>
@@ -68,7 +68,8 @@ export default function AddSpecificatin({
               <div className="flex h-9 w-full items-center">
                 <Button
                   type="button"
-                  className="rounded-md bg-orange-500 text-white"
+                  variant={'orange'}
+                  className=""
                   onClick={form.handleSubmit(onSubmit)}
                 >
                   Add Specification

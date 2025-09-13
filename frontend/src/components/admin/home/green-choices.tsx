@@ -28,6 +28,8 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { HomeGreenPlantType } from "@/lib/types/common-types";
 import CustomDialog from "@/components/layout/Dialog";
+import { Save, X } from "lucide-react";
+import UpdateButton from "../action-buttons/update";
 
 const GreenChoices = ({ data }: { data: HomeGreenPlantType[] }) => {
   const dispatch = useDispatch();
@@ -96,15 +98,11 @@ const GreenChoices = ({ data }: { data: HomeGreenPlantType[] }) => {
 
   return (
     <div>
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center pb-4 gap-3">
-        <h1>Manage Green Choices</h1>
-        <Button
-          size="sm"
-          variant="orange"
-          onClick={() => setOpen(true)}
-        >
-          Update
-        </Button>
+      <div className="flex flex-col sm:flex-row justify-between items-center pb-4 gap-3">
+        <h1 className="text-3xl font-bold text-gray-900 text-center flex-1">
+          Manage Green Choices
+        </h1>
+        <UpdateButton type="submit" onClick={() => setOpen(true)} />
       </div>
 
       {/* Green choices grid */}
@@ -133,7 +131,6 @@ const GreenChoices = ({ data }: { data: HomeGreenPlantType[] }) => {
                 </p>
               </div>
             ))}
-            
           </div>
         )}
       </div>
@@ -147,7 +144,7 @@ const GreenChoices = ({ data }: { data: HomeGreenPlantType[] }) => {
       >
         <div className="space-y-4">
           <Command>
-            <CommandInput placeholder="Search plants..."/>
+            <CommandInput placeholder="Search plants..." />
             <CommandList>
               <CommandEmpty>No plants found.</CommandEmpty>
               <CommandGroup>
@@ -163,7 +160,7 @@ const GreenChoices = ({ data }: { data: HomeGreenPlantType[] }) => {
                       checked={selectedPlants.includes(plant._id)}
                       onCheckedChange={() => togglePlant(plant._id)}
                       onClick={(e) => e.stopPropagation()}
-                      className="border-black/20 rounded-sm"
+                      className="border-black/20 rounded-[4px]"
                     />
 
                     {/* Plant image */}
@@ -188,25 +185,24 @@ const GreenChoices = ({ data }: { data: HomeGreenPlantType[] }) => {
               </CommandGroup>
             </CommandList>
             <div className="flex justify-end gap-3 pt-4">
-            <Button
-              variant="outline"
-              onClick={() => setOpen(false)}
-              className="rounded-lg"
-            >
-              Cancel
-            </Button>
-            <Button
-              onClick={handleSave}
-              disabled={selectedPlants.length === 0}
-              className="bg-[#F37521] hover:bg-[#e0661c] text-white rounded-lg"
-            >
-              Save
-            </Button>
-          </div>
+              <Button
+                variant="outline"
+                onClick={() => setOpen(false)}
+                className="rounded-lg "
+              >
+                <X /> Cancel
+              </Button>
+              <Button
+                onClick={handleSave}
+                disabled={selectedPlants.length === 0}
+                className="bg-[#F37521] hover:bg-[#e0661c] text-white rounded-lg"
+              >
+                <Save /> Save
+              </Button>
+            </div>
           </Command>
 
           {/* Action buttons */}
-          
         </div>
       </CustomDialog>
     </div>

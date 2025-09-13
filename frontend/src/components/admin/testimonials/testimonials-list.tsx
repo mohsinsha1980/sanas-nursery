@@ -11,7 +11,7 @@ import {
 import { TestimonialType } from "@/lib/types/common-types";
 import { hideLoader, showLoader } from "@/redux/uiSlice";
 import { AxiosError } from "axios";
-import { Edit2Icon, Quote, Star, Trash2Icon } from "lucide-react";
+import { Edit2Icon, Filter, Quote, Star, Trash2Icon } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
@@ -22,6 +22,9 @@ const TestimonialsList = () => {
   const [openConfirm, setOpenConfirm] = useState(false);
   const [idToDelete, setIdToDelete] = useState("");
   const [confirmVal, setConfirmVal] = useState(false);
+  const [filterStatus, setFilterStatus] = useState<
+    "all" | "active" | "inactive"
+  >("all");
 
   useEffect(() => {
     const controller = new AbortController();
@@ -78,16 +81,72 @@ const TestimonialsList = () => {
     return () => controller.abort();
   }, [confirmVal, idToDelete, dispatch]);
 
+  // Filter testimonials based on selected status
+  const filteredTestimonials = testimonials.filter((testimonial) => {
+    if (filterStatus === "all") return true;
+    if (filterStatus === "active") return testimonial.status === STATUS.ACTIVE;
+    if (filterStatus === "inactive")
+      return testimonial.status === STATUS.INACTIVE;
+    return true;
+  });
+
   return (
     <>
+      {/* Filter Section */}
+      <div className="mb-6 p-4 bg-white rounded-lg shadow-sm border">
+        <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2">
+            <Filter size={20} className="text-gray-600" />
+            <span className="font-semibold text-gray-700">
+              Filter by Status:
+            </span>
+          </div>
+          <div className="flex gap-2">
+            <button
+              onClick={() => setFilterStatus("all")}
+              className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+                filterStatus === "all"
+                  ? "bg-orange-500 text-white"
+                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+              }`}
+            >
+              All ({testimonials.length})
+            </button>
+            <button
+              onClick={() => setFilterStatus("active")}
+              className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+                filterStatus === "active"
+                  ? "bg-green-500 text-white"
+                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+              }`}
+            >
+              Active (
+              {testimonials.filter((t) => t.status === STATUS.ACTIVE).length})
+            </button>
+            <button
+              onClick={() => setFilterStatus("inactive")}
+              className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+                filterStatus === "inactive"
+                  ? "bg-gray-500 text-white"
+                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+              }`}
+            >
+              Inactive (
+              {testimonials.filter((t) => t.status === STATUS.INACTIVE).length})
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Testimonials Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {testimonials.map((item, idx) => (
+        {filteredTestimonials.map((item, idx) => (
           <div
             key={idx}
             className={`group rounded-xl px-6 py-8 flex flex-col justify-between h-full min-h-[280px] shadow-md hover:shadow-lg transition-all duration-300 hover:scale-[1.02] border ${
               item.status === STATUS.INACTIVE
                 ? "bg-white border-gray-200 text-gray-600"
-                : "bg-white border-[#4CB390] text-gray-800"
+                : "bg-orange-50 border-none text-gray-800"
             }`}
           >
             <div className="flex justify-between items-center mb-5">

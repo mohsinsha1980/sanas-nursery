@@ -8,7 +8,7 @@ interface GreenChoicesProps {
 
 export default function GreenChoices({ plants }: GreenChoicesProps) {
   return (
-    <section className="w-full bg-white flex justify-center items-center lg:pb-30 md:pb-20 pb-10   ">
+    <section className="w-full bg-white flex justify-center items-center lg:pt-30 lg:pb-30 md:pt-20 md:pb-20 pt-10 pb-10 ">
       <div className="lg:max-w-[1200px] w-full">
         {/* Heading */}
         <div className="text-center lg:mb-12 mb-8 ">

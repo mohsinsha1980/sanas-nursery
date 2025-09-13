@@ -127,16 +127,13 @@ const PendingOrderEnquiries = () => {
   return (
     <>
       <div>
-        {/* <div className="mb-6">
+        <div className="mb-6">
           <OrderEnquiryFilter setFilters={setFilters} />
-        </div> */}
+        </div>
 
         <div>
           {enquiriesData.data?.length ? (
             <>
-              <div className="mb-6">
-                <OrderEnquiryFilter setFilters={setFilters} />
-              </div>
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                 {enquiriesData.data.map((enquiry) => (
                   <EnquiryItem

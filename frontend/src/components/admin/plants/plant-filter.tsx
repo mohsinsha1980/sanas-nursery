@@ -5,6 +5,7 @@ import { Form } from "@/components/ui/form";
 import { PlantFilterSchema } from "@/lib/schemas/admin";
 import { PlantFilterTypes } from "@/lib/types/admin-types";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { ListFilterPlus, RotateCcw } from "lucide-react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 const defaultFilters = {
@@ -41,7 +42,7 @@ const PlantFilter = ({
                 placeholder="Filter by plant name"
                 formControl={form.control}
                 inputType="text"
-                className="p-5 border-none rounded-md"
+                className="p-5 border-black/20 rounded-md"
               />
             </div>
             <div>
@@ -51,7 +52,7 @@ const PlantFilter = ({
                 placeholder="Filter by plant ID"
                 formControl={form.control}
                 inputType="text"
-                className="p-5 border-none rounded-md"
+                className="p-5 border-black/20 rounded-md"
               />
             </div>
             <div>
@@ -64,25 +65,25 @@ const PlantFilter = ({
                   { label: "Active", value: "0" },
                   { label: "In-Active", value: "1" },
                 ]}
-                className="p-5 border-none mt-2"
+                className="p-5 border-black/20 mt-2"
               />
             </div>
-            <div className="flex gap-5">
-              <Button size="sm" variant="orange" type="submit" className="">
-                Apply Filter
+            <div className="flex items-center gap-5">
+              <Button size="sm" variant="orange" type="submit" className="py-5">
+               <ListFilterPlus /> Apply Filter
               </Button>
               {form.getValues("title") ||
               form.getValues("plantId") ||
               form.getValues("status") ? (
                 <Button
-                  variant="link"
+                  variant="outline"
                   onClick={() => {
                     setFilters(defaultFilters);
                     form.reset();
                   }}
-                  className="text-red-500"
+                  className="py-5"
                 >
-                  Clear Filter
+                   <RotateCcw />Clear Filter
                 </Button>
               ) : null}
             </div>

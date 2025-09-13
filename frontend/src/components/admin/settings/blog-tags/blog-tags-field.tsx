@@ -127,7 +127,7 @@ export default function BlogTagsField({ data }: Props) {
         <div className="basis-2/4 relative">
           <Input
             placeholder="Search a blog tag"
-            className="h-8 border-none rounded-lg pr-8"
+            className="h-8 border-black/10 rounded-lg pr-8"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />

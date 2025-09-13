@@ -4,12 +4,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-
-import SmartBox from "@/components/form-fields/smart-box";
 import SwitchField from "@/components/form-fields/switch-field";
 import TextArea from "@/components/form-fields/text-area";
 import TextField from "@/components/form-fields/text-field";
-import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 
 import { createTestimonial } from "@/lib/api-routes/api-admin";
@@ -22,7 +19,10 @@ import { testimonialSchema } from "@/lib/schemas/admin";
 import { AddTestimonialType } from "@/lib/types/admin-types";
 import { hideLoader, showLoader } from "@/redux/uiSlice";
 import { AxiosError } from "axios";
-import Link from "next/link";
+import { Star } from "lucide-react";
+import CancelButton from "@/components/admin/action-buttons/cancel";
+import SaveButton from "@/components/admin/action-buttons/save";
+import BackButton from "@/components/admin/action-buttons/back";
 
 const defaultFormData: AddTestimonialType = {
   author: "",
@@ -59,9 +59,7 @@ export default function AddTestimonial() {
     <>
       <div className="flex justify-between items-center pb-5">
         <h1 className="text-2xl font-bold">Add Testimonial</h1>
-        <Button variant="orange" type="button" size="sm">
-          <Link href="/admin/testimonials">Back</Link>
-        </Button>
+        <BackButton onClick={() => router.back()} />
       </div>
 
       <div>
@@ -72,7 +70,7 @@ export default function AddTestimonial() {
               label="Author Name"
               placeholder="Enter author name"
               inputType="text"
-              className="rounded-md border-none"
+              className="rounded-md border-black/20"
               labelClassName="text-[20px] font-semibold"
               formControl={form.control}
             />
@@ -83,31 +81,48 @@ export default function AddTestimonial() {
               placeholder="Write testimonial here"
               formControl={form.control}
               labelClassName="text-[20px] font-semibold"
-              className="border-none"
+              className="border-black/20"
             />
 
-            <SmartBox
-              name="rating"
-              label="Rating"
-              placeholder="Select rating"
-              formControl={form.control}
-              allowCustomValue={false}
-              className="border-none"
-              options={[
-                { label: "(1) ⭐", value: "1" },
-                { label: "(2) ⭐⭐", value: "2" },
-                { label: "(3) ⭐⭐⭐", value: "3" },
-                { label: "(4)⭐⭐⭐⭐", value: "4" },
-                { label: "(5) ⭐⭐⭐⭐⭐", value: "5" },
-              ]}
-            />
+            <div className="space-y-2">
+              <label className="text-[20px] font-semibold text-gray-700">
+                Rating
+              </label>
+              <div className="flex items-center gap-1">
+                {[1, 2, 3, 4, 5].map((star) => {
+                  const currentRating = parseInt(form.watch("rating") || "0");
+                  return (
+                    <button
+                      key={star}
+                      type="button"
+                      onClick={() => form.setValue("rating", star.toString())}
+                      className="p-1 rounded transition-colors hover:bg-gray-100"
+                    >
+                      <Star
+                        size={24}
+                        className={
+                          star <= currentRating
+                            ? "text-yellow-400 fill-yellow-400"
+                            : "text-gray-300 hover:text-yellow-200"
+                        }
+                      />
+                    </button>
+                  );
+                })}
+              </div>
+              {form.formState.errors.rating && (
+                <p className="text-red-500 text-sm">
+                  {form.formState.errors.rating.message}
+                </p>
+              )}
+            </div>
 
             <TextField
               name="link"
-              label="Author Link (Optional)"
+              label="Redirection Link (Optional)"
               placeholder="https://example.com"
               inputType="text"
-              className="rounded-md border-none"
+              className="rounded-md border-black/20"
               labelClassName="text-[20px] font-semibold"
               formControl={form.control}
             />
@@ -118,11 +133,10 @@ export default function AddTestimonial() {
               formControl={form.control}
               className="data-[state=checked]:bg-orange-500 data-[state=unchecked]:bg-gray-300"
             />
-
             <div>
-              <Button variant="orange" size="sm" type="submit">
-                Save Testimonial
-              </Button>
+              <CancelButton onClick={() => router.back()} />
+
+              <SaveButton type="submit" />
             </div>
           </form>
         </Form>

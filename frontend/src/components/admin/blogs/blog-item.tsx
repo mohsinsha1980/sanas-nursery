@@ -62,8 +62,8 @@ const BlogItem = ({
 
   const getStatusBadge = (status: string) => {
     const statusMap = {
-      "0": { label: "Active", color: "bg-green-100 text-green-800" },
-      "1": { label: "Inactive", color: "bg-orange-100 text-orange-800" },
+      "0": { label: "Active", color: "bg-green-100 text-green-800 hover:bg-green-200" },
+      "1": { label: "Inactive", color: "bg-orange-100 text-orange-800 hover:bg-orange-200" },
     };
 
     const statusInfo =
@@ -88,7 +88,7 @@ const BlogItem = ({
         />
         <div className="absolute top-3 right-3 flex items-center gap-2">
           {blog.featured && (
-            <Badge className="bg-orange-100 text-orange-800 font-medium">
+            <Badge className="bg-orange-100 text-orange-800 font-medium hover:bg-orange-200">
               <Star className="h-3 w-3 mr-1" />
               Featured
             </Badge>
@@ -190,7 +190,7 @@ const BlogItem = ({
                 <MoreVertical className="h-4 w-4" />
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
+            <DropdownMenuContent align="end" className="border-black/20">
               <DropdownMenuItem
                 onClick={handleToggleStatus}
                 disabled={isLoading}
