@@ -1,13 +1,13 @@
 "use client";
-import HeaderActions from "./header-actions";
-import Logo from "../logo";
-import HeaderNav from "./header-nav";
-import { useState, useEffect } from "react";
+import { CATEGORY_ARR } from "@/lib/constants";
+import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { categories } from "@/lib/constants";
+import { useEffect, useState } from "react";
+import Logo from "../logo";
+import HeaderActions from "./header-actions";
+import HeaderNav from "./header-nav";
 
 export default function MainHeader() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -50,7 +50,7 @@ export default function MainHeader() {
   return (
     <header className="md:relative flex justify-center items-center w-full">
       <div
-        className={`bg-nav fixed top-0 z-50 transition-transform flex justify-center w-full overflow-visible ${
+        className={`bg-nav fixed top-0 z-50 transition-transform flex justify-center w-full overflow-visible bg-white/30 backdrop-blur-md ${
           isScrolled
             ? "bg-white/30 backdrop-blur-md md:absolute md:translate-y-0 md:top-0"
             : "md:absolute"
@@ -88,7 +88,7 @@ export default function MainHeader() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 50 }}
                 transition={{ duration: 0.5 }}
-                className="absolute top-[80px] right-0 h-fit w-full bg-white shadow-md p-4 flex flex-col justify-between items-center gap-4 lg:hidden z-50  "
+                className="absolute top-[80px] right-0 h-fit w-full bg-white shadow-md p-4 flex flex-col justify-between items-center gap-4 lg:hidden z-50 "
               >
                 <nav className="">
                   <ul className="flex flex-col gap-4 w-full items-center">
@@ -140,17 +140,17 @@ export default function MainHeader() {
                           >
                             <div className="mt-2 w-full">
                               <ol className="flex flex-col">
-                                {categories.map((cat) => (
-                                  <li key={cat.slug}>
+                                {CATEGORY_ARR.map((cat) => (
+                                  <li key={cat.value}>
                                     <Link
-                                      href={`/categories/${cat.slug}`}
+                                      href={`/categories/${cat.value}`}
                                       className="block text-center px-4 py-3 !text-[var(--txt-orange)] transition-colors duration-200"
                                       onClick={() => {
                                         setMobileOpen(false);
                                         setMobileDropdownOpen(false);
                                       }}
                                     >
-                                      {cat.name}
+                                      {cat.label}
                                     </Link>
                                   </li>
                                 ))}

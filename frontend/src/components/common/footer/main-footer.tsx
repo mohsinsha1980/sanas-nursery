@@ -47,7 +47,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="col-span-1 flex justify-between">
+          <div className="col-span-1 flex justify-between lg:pl-0 md:pl-0 pl-10 ">
             {/* Information Links - Centered on mobile */}
             <div className="flex flex-col justify-between items-start ">
               <h4 className="text-lg font-semibold mb-4">Information</h4>
@@ -66,7 +66,7 @@ export default function Footer() {
             </div>
 
             {/* Company Links - Centered on mobile */}
-            <div className="flex flex-col justify-between items-end">
+            <div className="flex flex-col justify-between items-end lg:pr-0 pr-2 ">
               <h4 className="text-lg font-semibold mb-4">Company</h4>
               <ul className="space-y-2 text-end">
                 {FOOTER_LINKS.COMPANY.map((link) => (

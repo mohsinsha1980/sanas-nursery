@@ -1,3 +1,4 @@
+import BestSellProdCards from "@/components/home/best-sellinh-product";
 import Categories from "@/components/home/catogories";
 import Contact from "@/components/home/contact/contact";
 import BestSellingProduct from "@/components/home/corousel/best-selling-product";
@@ -26,17 +27,23 @@ async function getHomeDataServer() {
   }
 }
 
+
 export default async function Home() {
   const homeData: HomeData = await getHomeDataServer();
+
 
   return (
     <>
       <HomeBanner />
       <Categories />
 
-      {homeData?.bestSellingPlants?.length > 0 && (
-        <BestSellingProduct plants={homeData.bestSellingPlants} />
-      )}
+      {homeData?.bestSellingPlants?.length > 0 ? (
+        homeData?.bestSellingPlants?.length > 3 ? (
+          <BestSellProdCards plants={homeData.bestSellingPlants} />
+        ) : (
+          <BestSellingProduct plants={homeData.bestSellingPlants} />
+        )
+      ) : null}
 
       {homeData?.greenChoices?.length > 0 && (
         <GreenChoices plants={homeData.greenChoices} />

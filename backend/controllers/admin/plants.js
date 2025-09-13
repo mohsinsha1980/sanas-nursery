@@ -1,8 +1,8 @@
-import fs, { existsSync } from "fs";
+import fs, { existsSync, unlinkSync } from "fs";
 import mongoose from "mongoose";
 import { v4 as uuidv4 } from "uuid";
 import { STATUS } from "../../lib/constants.js";
-import { generateSlug, invalidSlug } from "../../lib/util.js";
+import { generateSlug, invalidSlug, unlinkAsync } from "../../lib/util.js";
 import Plant from "../../models/Plant.js";
 
 export const getPlants = async (req, res, next) => {
@@ -223,11 +223,12 @@ export const updatePlant = async (req, res, next) => {
         if (oldPlant.pictures && oldPlant.pictures.length) {
           oldPlant.pictures.forEach((picture) => {
             if (existsSync(picture)) {
-              unlinkSync(picture);
+              unlinkAsync(picture);
             }
           });
         }
       } catch (error) {
+        console.log(error)
         if (error.code !== "ENOENT") {
           // ENOENT: no such file or directory
           return next({ status: 500, message: "Internal Server Error" });

@@ -49,35 +49,29 @@ export default function ForgotPasswordPage() {
 
   return (
     <div
-      className="flex min-h-screen w-full items-center justify-center  bg-cover bg-center overflow-hidden pt-24 pb-10"
+      className="relative flex min-h-screen w-full items-center justify-center  bg-cover bg-center overflow-hidden "
       style={{
         backgroundImage: "url('/site/auth/auth-banner.webp')",
       }}
     >
       <div
-        className="bg-white/80 backdrop-blur-md shadow-lg rounded-2xl flex justify-center items-center"
-        style={{
-          width: "686px",
-          height: "426px",
-          maxWidth: "95%",
-          padding: "24px",
-        }}
+        className="absolute lg:w-full w-[96%] max-w-[600px] top-[50%] -translate-y-1/2  bg-white/80 backdrop-blur-md shadow-lg rounded-2xl flex justify-center items-center lg:p-15 p-10"
       >
         <div className="flex flex-col w-full" style={{ maxWidth: "500px" }}>
           <h1
-            className="font-semibold text-gray-900 "
+            className="lg:text-[40px] text-[25px] font-semibold text-gray-900 leading-13"
             style={{ fontSize: "32px" }}
           >
             Forgot Password
           </h1>
-          <p className="text-gray-600 mt-3" style={{ fontSize: "18px" }}>
+          <p className="lg:text-[20px] text-[16px] text-gray-600 mt-4" style={{ fontSize: "18px" }}>
             Enter your email to receive password reset instructions.
           </p>
 
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(onSubmit)}
-              className="mt-8 flex flex-col space-y-5"
+              className="mt-4 flex flex-col space-y-5 "
             >
               <TextField
                 name="email"
@@ -91,7 +85,8 @@ export default function ForgotPasswordPage() {
 
               <Button
                 type="submit"
-                className="text-lg font-medium text-white bg-orange-500 rounded-md hover:bg-orange-600"
+                variant={"orange"}
+                className="text-lg font-medium text-white mt-2"
                 style={{ width: "100%", height: "48px" }}
               >
                 Proceed

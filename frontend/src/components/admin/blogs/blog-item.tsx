@@ -165,7 +165,7 @@ const BlogItem = ({
               <Button
                 variant="outline"
                 size="sm"
-                onClick={() => router.push(`/blogs/${blog._id}`)}
+                onClick={() => router.push(`/blogs/${blog.slug}`)}
                 className="text-green-600 hover:text-green-700 hover:bg-green-50"
               >
                 <Eye className="h-4 w-4 mr-1" />

@@ -11,12 +11,7 @@ routes.post("/signin", rateLimiter, isHuman, authCtrl.signin);
 routes.post("/forgot-password", rateLimiter, isHuman, authCtrl.forgotPassword);
 routes.post("/reset-password", rateLimiter, isHuman, authCtrl.resetPassword);
 routes.post("/logout", rateLimiter, isAuthenticated, authCtrl.logout);
-routes.get(
-  "/refresh-token",
-  rateLimiter,
-  isAuthenticated,
-  authCtrl.refreshToken
-);
+routes.get("/refresh-token", authCtrl.refreshToken);
 routes.get(
   "/login-user",
   rateLimiter,

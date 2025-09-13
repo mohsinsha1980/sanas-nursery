@@ -51,20 +51,17 @@ export default function ResetPasswordPage() {
 
   return (
     <div
-      className="flex min-h-screen w-full items-center justify-center bg-cover bg-center overflow-hidden pt-24 pb-10"
+      className="relative flex min-h-screen w-full items-center justify-center bg-cover bg-center overflow-hidden border-2 border-amber-500"
       style={{
         backgroundImage: "url('/site/auth/auth-banner.webp')",
       }}
     >
-      <div
-        className="bg-white shadow-lg rounded-2xl flex justify-center items-center mt-20 
-        w-[713px] h-[768px] max-w-[95%] sm:max-w-[713px] sm:h-[768px] p-6 sm:p-0"
-      >
+      <div className="absolute lg:w-full w-[96%] max-w-[600px] top-[53%] -translate-y-1/2 bg-white/80 backdrop-blur-md shadow-lg rounded-2xl flex justify-center items-center lg:p-15 p-10">
         <div className="w-full max-w-[574px] flex flex-col">
-          <h1 className="text-2xl sm:text-[40px] font-semibold text-gray-900">
+          <h1 className="lg:text-[40px] text-[25px] font-semibold text-gray-900 leading-13">
             Reset Password
           </h1>
-          <p className="text-base sm:text-[20px] text-gray-600 mt-3 sm:mt-4">
+          <p className="lg:text-[20px] text-[16px] text-gray-600 lg:mt-2">
             Enter the OTP sent to your email and set a new password to continue
             exploring our plant collection.
           </p>
@@ -72,7 +69,7 @@ export default function ResetPasswordPage() {
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(onSubmit)}
-              className="mt-8 sm:mt-10 flex flex-col space-y-5 sm:space-y-6"
+              className="mt-5 flex flex-col space-y-5 sm:space-y-6"
             >
               {/* Email */}
               <TextField
@@ -117,7 +114,8 @@ export default function ResetPasswordPage() {
 
               <Button
                 type="submit"
-                className="w-full h-[48px] sm:h-[53px] text-base sm:text-lg font-medium text-white bg-orange-500 rounded-md hover:bg-orange-600"
+                variant={"orange"}
+                className="w-full h-[48px] sm:h-[53px] text-base sm:text-lg font-medium text-white "
               >
                 Reset Password
               </Button>

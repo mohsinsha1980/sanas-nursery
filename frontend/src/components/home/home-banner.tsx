@@ -4,11 +4,17 @@ import Link from "next/link";
 import { HOME_HERO } from "@/assets";
 
 export default function HomeBanner() {
+    const heroImages = Object.values(HOME_HERO);
+
+  const today = new Date().getDate();
+  const imageIndex = today % heroImages.length;
+
+  const selectedImage = heroImages[imageIndex];
   return (
     <section>
       <div className="relative w-full h-screen ">
         <Image
-          src={HOME_HERO}
+          src={selectedImage}
           alt=""
           width={1920}
           height={1013}
@@ -24,7 +30,7 @@ export default function HomeBanner() {
           <p className="text-[#F37521] lg:text-[20px] md:text-[20px] text-[20px] font-medium ">
             Love for Nature
           </p>
-          <h1 className="text-[#354733] lg:text-[64px] md:text-[50px] text-[40px] font-bold lg:leading-18 leading-13 md:text-start text-center">
+          <h1 className="text-[#354733] lg:text-[60px] md:text-[50px] text-[40px] font-bold lg:leading-18 leading-13 md:text-start text-center">
             Leading Wholesale Plant Nursery in Uruli Kanchan.
           </h1>
           <p className="text-[#505050] lg:text-[20px] md:text-[20px] text-[20px] font-medium md:text-start text-center">
