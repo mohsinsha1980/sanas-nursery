@@ -22,6 +22,7 @@ export interface GreenChoicePlant {
   _id: string;
   title: string;
   plantId: string;
+  slug: string;
   category: string;
   pictures: string[];
 }

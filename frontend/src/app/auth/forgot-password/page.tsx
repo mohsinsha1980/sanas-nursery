@@ -55,7 +55,7 @@ export default function ForgotPasswordPage() {
         backgroundImage: `url(${AUTH.BANNER})`,
       }}
     >
-      <div className="absolute lg:w-full w-[96%] max-w-[600px] top-[50%] -translate-y-1/2  bg-white/80 backdrop-blur-md shadow-lg rounded-2xl flex justify-center items-center lg:p-10 p-5">
+      <div className="absolute lg:w-full max-w-xs lg:max-w-[450px] top-[50%] -translate-y-1/2 bg-white/80 backdrop-blur-md shadow-lg rounded-2xl flex justify-center items-center lg:p-10 p-5">
         <div className="flex flex-col w-full" style={{ maxWidth: "500px" }}>
           <h1
             className="lg:text-[40px] text-[25px] font-semibold text-gray-900 leading-13"
@@ -82,7 +82,7 @@ export default function ForgotPasswordPage() {
                 labelClassName="text-[16px] font-medium"
                 inputType="email"
                 formControl={form.control}
-                className="rounded-md border border-gray-400 px-3 text-black bg-white"
+                className="rounded-md border border-black/20 px-3 text-black bg-white"
               />
 
               <Button
