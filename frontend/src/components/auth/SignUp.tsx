@@ -62,7 +62,7 @@ const SignUpForm = () => {
         <h1 className="lg:text-[40px] text-[25px] font-semibold text-gray-900 lg:leading-13">
           Join Us For An Exclusive Green Experience!
         </h1>
-        <p className="lg:text-[20px] text-[16px] text-gray-600 mt-3">
+        <p className="hidden md:block lg:text-[20px] text-[16px] text-gray-600 mt-3">
           Sign up to access beautiful plant varieties and stay updated with new
           arrivals.
         </p>
@@ -70,66 +70,70 @@ const SignUpForm = () => {
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className="flex flex-col lg:gap-5 gap-3 w-full lg:mt-5 mt-3"
+            className="grid grid-cols-1 md:grid-cols-2 lg:gap-5 gap-3 w-full lg:mt-5 mt-3"
           >
             <TextField
               name="name"
               label="Full Name"
-              labelClassName="text-[18px] font-semibold"
+              labelClassName="text-[15px] font-semibold"
               placeholder="Enter Full Name"
               inputType="text"
               formControl={form.control}
-              className="w-full rounded-md border border-gray-800 px-3 text-black bg-white  "
+              className="w-full rounded-md border border-black/20 px-3 text-black bg-white  "
             />
 
             <TextField
               name="email"
               label="Email"
-              labelClassName="text-[18px] font-semibold"
+              labelClassName="text-[15px] font-semibold"
               placeholder="Enter Email"
               inputType="email"
               formControl={form.control}
-              className="w-full rounded-md border border-gray-800 px-3 text-black bg-white "
+              className="w-full rounded-md border border-black/20 px-3 text-black bg-white "
             />
 
             <TextField
               name="phone"
               label="Contact Number"
-              labelClassName="text-[18px] font-semibold"
-              placeholder="Enter Contact Number (99876543210)"
+              labelClassName="text-[15px] font-semibold"
+              placeholder="99876543210"
               inputType="text"
               formControl={form.control}
-              className="w-full rounded-md border border-gray-800 px-3 text-black bg-white "
+              className="w-full rounded-md border border-black/20 px-3 text-black bg-white "
             />
 
             <TextField
               name="password"
               label="Password"
-              labelClassName="text-[18px] font-semibold "
+              labelClassName="text-[15px] font-semibold "
               placeholder="At least 8 characters"
               inputType="password"
               formControl={form.control}
-              className="w-full rounded-md border border-gray-800 px-3 text-black bg-white "
+              className="w-full rounded-md border border-black/20 px-3 text-black bg-white "
             />
 
-            <TextField
-              name="confirmPassword"
-              label="Confirm Password"
-              labelClassName="text-[18px] font-semibold"
-              placeholder="Re-enter Password"
-              inputType="password"
-              formControl={form.control}
-              className="w-full rounded-md border border-gray-800 px-3 text-black bg-white "
-            />
+            <div className="md:col-span-2">
+              <TextField
+                name="confirmPassword"
+                label="Confirm Password"
+                labelClassName="text-[15px] font-semibold"
+                placeholder="Re-enter Password"
+                inputType="password"
+                formControl={form.control}
+                className="w-full rounded-md border border-black/20 px-3 text-black bg-white "
+              />
+            </div>
 
             {/* Signup Button */}
-            <Button
+            <div className="md:col-span-2">
+              <Button
               type="submit"
               variant={"orange"}
-              className="w-full h-[54px] text-[16px] font-medium text-white mt-2"
+              className="w-full h-[44px] md:h-[54px] text-[16px] font-medium text-white mt-2"
             >
               Sign Up
             </Button>
+            </div>
           </form>
         </Form>
 

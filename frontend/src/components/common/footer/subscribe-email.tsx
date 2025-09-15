@@ -42,7 +42,7 @@ const SubscribeEmail = () => {
       dispatch(hideLoader());
     }
   };
-
+console.log("form",)
   return (
     <div className="mt-2 input-div h-fit w-fit  p-0.5 bg-white  flex flex-row justify-between lg:rounded-xl md:rounded-xl rounded-[5px] ">
       <input

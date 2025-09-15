@@ -255,7 +255,7 @@ export const SITE_DATA = {
   GOOGLE_MAP:
     "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7568.098377421458!2d74.166644!3d18.481431!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2e1579a8e3dc1%3A0xd82516d259aa5ea!2zU2FuYXMgV2hvbGVzYWxlIE51cnNlcnkg4KS24KS-4KSW4KS-IChVcnVsaS1LYW5jaGFuKSBVbml0IDI!5e0!3m2!1sen!2sin!4v1757677710819!5m2!1sen!2sin",
   SOCIAL: {
-    facebook: "https://www.facebook.com/share/1GmrYmkSHp/?mibextid=wwXIfr",
+    facebook: "https://www.facebook.com/Sanasnursery",
     insta:
       "https://www.instagram.com/wholesalenursery?igsh=MXZ5MnFlMzVvM2Vsaw%3D%3D&utm_source=qr",
     youtube: "https://youtube.com/@sanasnursery?si=g2njg_7Z2kfy6fw7",
@@ -284,7 +284,7 @@ export const FOOTER_LINKS = {
     },
     {
       label: " About Us",
-      pageUrl: "/about-us",
+      pageUrl: "/about",
     },
     {
       label: "Blogs",
