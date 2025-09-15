@@ -22,6 +22,7 @@ import TextField from "../form-fields/text-field";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import { mergeWishlistFromDB } from "@/redux/wishListSlice";
+import { AUTH } from "@/assets";
 
 export default function SignIn() {
   const dispatch = useDispatch();
@@ -61,7 +62,7 @@ export default function SignIn() {
   return (
     <div
       className="relative flex min-h-screen w-full items-center justify-center bg-cover bg-center overflow-hidden px-5"
-      style={{ backgroundImage: "url('/site/auth/auth-banner.webp')" }}
+      style={{ backgroundImage: `url(${AUTH.BANNER})` }}
     >
       <div className="absolute inset-0 bg-black/20 "></div>
 
