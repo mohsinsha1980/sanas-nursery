@@ -36,7 +36,7 @@ export default async function Home() {
       <Categories />
 
       {homeData?.bestSellingPlants?.length > 0 ? (
-        homeData?.bestSellingPlants?.length > 3 ? (
+        homeData?.bestSellingPlants?.length < 3 ? (
           <BestSellProdCards plants={homeData.bestSellingPlants} />
         ) : (
           <BestSellingProduct plants={homeData.bestSellingPlants} />

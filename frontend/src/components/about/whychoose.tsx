@@ -41,7 +41,7 @@ const WhyChoose = () => {
 
   return (
     <div>
-      <div className="h-full w-full lg:pt-30 lg:pb-30 md:pt-20 md:pb-20 pt-10 pb-10 flex flex-row justify-center bg-white px-2 ">
+      <div className="h-full w-full lg:pt-30 lg:pb-30 md:pt-20 md:pb-20 pt-10 pb-10 flex flex-row justify-center bg-white px-4 ">
         <div className="lg:h-[430px] h-full max-w-[1370px] md:w-[90%] w-[100%] flex flex-col justify-between items-center lg:gap-y-0 md:gap-y-10 gap-y-5 ">
           <div className="h-fit w-full flex flex-col justify-center items-center">
             <h1 className="lg:text-[42px] md:text-[36px] text-[28px] font-semibold text-center">
@@ -53,13 +53,17 @@ const WhyChoose = () => {
           </div>
 
           {/* Cards */}
-          <div className="lg:h-[285px] h-full w-full grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-0 justify-items-center items-center ">
+          <div className="lg:h-[285px] h-full w-full flex flex-wrap gap-4 justify-center items-center ">
             {data.map((item, i) => (
               <div
                 key={i}
-                className="flex-1 h-[260px] lg:min-w-[250px] md:min-w-[230px] min-w-[250px] lg:max-w-[250px] max-w-[230px]  flex justify-center items-center border-2 border-[#4CBA9B] rounded-lg hover:bg-[#4CBA9B] transition-colors duration-300 "
-                onMouseEnter={() => setHoveredIndex(i)}
-                onMouseLeave={() => setHoveredIndex(null)}
+                className="flex-1 h-[260px] lg:min-w-[250px] md:min-w-[230px] min-w-[250px] lg:max-w-[250px] max-w-[230px]  flex justify-center items-center border-2 border-[#4CBA9B] rounded-lg md:hover:bg-[#4CBA9B] transition-colors duration-300 "
+                onMouseEnter={() =>
+                  window.innerWidth >= 768 && setHoveredIndex(i)
+                }
+                onMouseLeave={() =>
+                  window.innerWidth >= 768 && setHoveredIndex(null)
+                }
               >
                 <div className="w-[170px] h-[227px] flex flex-col lg:justify-evenly justify-center-safe items-center text-center ">
                   <Image
@@ -71,14 +75,18 @@ const WhyChoose = () => {
                   />
                   <h3
                     className={`font-semibold lg:text-[20px] text-[16px] mb-2 ${
-                      hoveredIndex === i ? "" : "text-[#323F32]"
+                      hoveredIndex === i && window.innerWidth >= 768
+                        ? "text-white"
+                        : "text-[#323F32]"
                     }`}
                   >
                     {item.title}
                   </h3>
                   <p
                     className={`lg:text-[16px] text-[14px] ${
-                      hoveredIndex === i ? "" : "text-[#505050]"
+                      hoveredIndex === i && window.innerWidth >= 768
+                        ? "text-white"
+                        : "text-[#505050]"
                     }`}
                   >
                     {item.desc}

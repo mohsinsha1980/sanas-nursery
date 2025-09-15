@@ -66,12 +66,12 @@ export default function SignIn() {
     >
       <div className="absolute inset-0 bg-black/20 "></div>
 
-      <div className="absolute lg:w-full w-[96%] max-w-[600px] lg:top-[56%] top-[50%] -translate-y-1/2 bg-white/80 backdrop-blur-md shadow-lg rounded-2xl flex justify-center items-center lg:p-10 ">
+      <div className="absolute top-[53%] -translate-y-1/2 lg:w-full w-[96%] bg-white/80 backdrop-blur-md shadow-lg rounded-2xl ring-1 ring-black/10 flex flex-col justify-start items-start max-w-[600px] lg:p-10 p-5">
         <div className="w-full max-w-[574px] flex flex-col px-4 sm:px-0 py-6 sm:py-0  ">
           <h1 className="lg:text-[30px] text-[25px] font-semibold text-gray-900 lg:leading-13 leading-8">
             Welcome Back To Your Green Space!
           </h1>
-          <p className="lg:text-[18px] text-[16px] text-gray-600 lg:mt-2 mt-3 ">
+          <p className="hidden sm:block lg:text-[18px] text-[16px] text-gray-600 lg:mt-2 mt-3 ">
             Sign in to explore our plant collections, read product details, and
             learn more about each variety.
           </p>
@@ -88,7 +88,7 @@ export default function SignIn() {
                 placeholder="Enter Email"
                 inputType="email"
                 formControl={form.control}
-                className="w-full rounded-md border border-gray-400 px-3 text-black bg-white "
+                className="w-full rounded-md border border-black/20 px-3 text-black bg-white "
               />
 
               <div className="w-full">
@@ -99,7 +99,7 @@ export default function SignIn() {
                   placeholder="At least 8 characters"
                   inputType="password"
                   formControl={form.control}
-                  className="w-full rounded-md border border-gray-400 px-3 text-black bg-white "
+                  className="w-full rounded-md border border-black/20 px-3 text-black bg-white "
                 />
                 <div className="flex justify-end mt-4">
                   <Link href="/auth/forgot-password">

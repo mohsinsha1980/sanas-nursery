@@ -52,7 +52,7 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="">
+    <div className="" id="contact-form">
       <section className="py-20  ">
         <div className="container-custom  space-y-10 ">
           <div className="">

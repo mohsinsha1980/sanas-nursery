@@ -221,9 +221,9 @@ export default function AddPlant() {
               <div className="grid grid-cols-4 gap-4 ">
                 <div className="col-span-3 ">
                   <h2 className="">
-                    <h3 className="text-[20px] font-semibold pt-5">
+                    <p className="text-[20px] font-semibold pt-5">
                       Key Specifications
-                    </h3>
+                    </p>
                     {form?.formState?.errors?.specifications?.message ? (
                       <div className="text-xs sm:text-sm font-medium text-destructive">
                         {form?.formState?.errors?.specifications?.message}
