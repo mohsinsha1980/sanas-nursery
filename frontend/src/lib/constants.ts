@@ -1,4 +1,4 @@
-import { HOME_GALLERY } from "@/assets";
+import { CARDS, CATEGORIES_IMG, HERO, HOME_GALLERY, SITE } from "@/assets";
 
 export const PLANTS_PER_PAGE = 20;
 export const BLOGS_PER_PAGE = 20;
@@ -7,8 +7,8 @@ export const DEFAULT_PER_PAGE = 20;
 export const USER_STORE_DATA_KEY = "vb9n5ysag59vp";
 export const YT_VIDEOS_LENGTH = 2;
 export const BEST_SELLING_PLANTS_LIMIT = 10;
-export const LOGO =
-  process.env.NEXT_PUBLIC_BASE_PATH + "/site/sanas-nursery-logo.webp"; // change here take from config
+export const LOGO = SITE.LOGO;
+
 export const MASTERDATA_PER_PAGE = 5;
 
 export const ACCEPTED_IMAGE_TYPES = [
@@ -57,77 +57,77 @@ export const CATEGORIES = {
     label: "Fruit Trees",
     value: "fruit-trees",
     title: "Trusted Fruit Tree Nursery for Every Garden and Farm.",
-    picture: "/plant3.png",
+    picture: CATEGORIES_IMG.FRUIT_TREES,
     description:
       "Supplying strong, healthy fruit trees grown with care to bring freshness, shade and harvests.",
     seoTitle: "Trusted Fruit Tree Nursery for Every Garden and Farm.",
     seoDescription:
       "Supplying strong, healthy fruit trees grown with care to bring freshness, shade, and harvests.",
-    heroImage: "/site/categories/fruit tree.png",
+    heroImage: HERO.FRUIT_TREES,
   },
   FLOWER_TREES: {
     label: "Flower Trees",
     value: "flower-trees",
     title:
       "Nursery Flower Plants that bring color and freshness to every space.",
-    picture: "/plant2.png",
+    picture: CATEGORIES_IMG.FLOWER_TREES,
     description:
       "Discover seasonal and ornamental flower plants, nurtured with care to thrive in gardens, farms, and landscapes.",
     seoTitle:
       "Nursery Flower Plants that bring color and freshness to every space.",
     seoDescription:
       "Discover seasonal and ornamental flower plants, nurtured with care to thrive in gardens, farms, and landscapes.",
-    heroImage: "/site/categories/flower tree.png",
+    heroImage: HERO.FLOWER_TREES,
   },
   SHADOW_TREES: {
     label: "Shadow Trees",
     value: "shadow-trees",
     title: "Shadow Trees that bring natural shade, greenery, and comfort.",
-    picture: "/plant1.png",
+    picture: CATEGORIES_IMG.SHADOW_TREES,
     description:
       "Discover strong shadow trees that create cool spaces, enhance outdoor beauty, and support sustainable living.",
     seoTitle: "Shadow Trees that bring natural shade, greenery, and comfort.",
     seoDescription:
       "Discover strong shadow trees that create cool spaces, enhance outdoor beauty, and support sustainable living.",
-    heroImage: "/site/categories/shadow tree.png",
+    heroImage: HERO.SHADOW_TREES,
   },
   SHOW_TREES: {
     label: "Show Trees",
     value: "show-trees",
     title: "Show Trees for Gardens that Transform Your Landscape.",
-    picture: "/plant3.png",
+    picture: CATEGORIES_IMG.SHOW_TREES,
     description:
       "Add beauty, shade, and elegance to your garden with our wide selection of ornamental show trees designed to thrive in any outdoor space.",
     seoTitle: "Show Trees for Gardens that Transform Your Landscape.",
     seoDescription:
       "Add beauty, shade, and elegance to your garden with our wide selection of ornamental show trees designed to thrive in any outdoor space.",
-    heroImage: "/site/categories/show tree.png",
+    heroImage: HERO.SHOW_TREES,
   },
   MASALA: {
     label: "Masala",
     value: "masala",
     title:
       "Authentic Masala Collection - Avocado, Clove, Cinnamon, Bay Leaf & More.",
-    picture: "/plant2.png",
+    picture: CATEGORIES_IMG.MASALA_PLANTS,
     description:
       "Discover premium masalas like avocado, clove, cinnamon, bay leaf, and mix masala, carefully crafted to add richness and authenticity to your meals.",
     seoTitle:
       "Authentic Masala Collection - Avocado, Clove, Cinnamon, Bay Leaf & More.",
     seoDescription:
       "Discover premium masalas like avocado, clove, cinnamon, bay leaf, and mix masala, carefully crafted to add richness and authenticity to your meals.",
-    heroImage: "/site/categories/flower tree.png",
+    heroImage: HERO.MASALA_PLANTS,
   },
   OTHERS: {
     label: "Others",
     value: "others",
     title: "Fruit Tree Nursery in Uruli Kanchan – Sanas Nursery",
-    picture: "/plant1.png",
+    picture: CATEGORIES_IMG.OTHER_PLANTS,
     description:
       "A wholesale plant nursery providing healthy fruit trees, flower plants, and greenery grown with expert care.",
     seoTitle: "Fruit Tree Nursery in Uruli Kanchan – Sanas Nursery",
     seoDescription:
       "A wholesale plant nursery providing healthy fruit trees, flower plants, and greenery grown with expert care.",
-    heroImage: "/site/categories/flower tree.png",
+    heroImage: HERO.OTHER_PLANTS,
   },
 };
 
@@ -217,7 +217,7 @@ export const MASTER_DATA_TYPE = {
 export const defultHomeData = {
   Cards: {
     C1: {
-      picture: "/site/home/collection/collecton-banner1.webp",
+      picture: CARDS.C1,
       small: "Fresh, lush plants perfect for the summer season.",
       smallColor: "black",
       large: "Summer Special Green",
@@ -230,7 +230,7 @@ export const defultHomeData = {
     },
 
     C2: {
-      picture: "/site/home/collection/collection-banner2.webp",
+      picture: CARDS.C2,
       small: "Fresh, lush plants perfect for the rainy season.",
       smallColor: "black",
       large: "Monsoon Special Green",

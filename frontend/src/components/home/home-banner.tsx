@@ -1,10 +1,10 @@
-import Image from "next/image";
+import { HERO } from "@/assets";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 import Link from "next/link";
-import { HOME_HERO } from "@/assets";
 
 export default function HomeBanner() {
-  const heroImages = Object.values(HOME_HERO);
+  const heroImages = Object.values(HERO.HOME);
 
   const today = new Date().getDate();
   const imageIndex = today % heroImages.length;
