@@ -1,9 +1,12 @@
+import { SITE_DATA } from "@/lib/constants";
+
+
 export default function PrivacyPolicyPage() {
   return (
     <div className="bg-white">
       {/* Page Header */}
       <section className="bg-gradient-to-r from-[#ea580c] to-[#14532d] py-12 sm:py-16 md:py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center pt-16 sm:pt-20">
+        <div className="lg:max-w-[1000px] mx-auto px-4 sm:px-6 lg:px-8 text-center pt-16 sm:pt-20 ">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6">
             Privacy Policy
           </h1>
@@ -16,7 +19,7 @@ export default function PrivacyPolicyPage() {
 
       {/* Privacy Policy Content */}
       <section className="py-12 sm:py-16 md:py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+        <div className="lg:max-w-[900px] mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
           <div className="prose prose-sm sm:prose-base md:prose-lg lg:prose-xl max-w-none">
             <div className="bg-[#f8fafc] p-4 sm:p-6 md:p-8 rounded-lg mb-6 sm:mb-8">
               <p className="text-sm sm:text-base md:text-lg text-[#475569] text-center">
@@ -27,7 +30,7 @@ export default function PrivacyPolicyPage() {
             <div className="space-y-6 sm:space-y-8">
               {/* Introduction */}
               <div>
-                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#0f172a] mb-3 sm:mb-4">
+                <h2 className="text-xl sm:text-2xl md:text-2xl font-bold text-[#0f172a] mb-3 sm:mb-4">
                   1. Information We Collect
                 </h2>
                 <p className="text-sm sm:text-base md:text-lg text-[#475569] mb-3 sm:mb-4 leading-relaxed">
@@ -48,7 +51,7 @@ export default function PrivacyPolicyPage() {
 
               {/* How We Use Your Information */}
               <div>
-                <h2 className="text-2xl font-bold text-[#0f172a] mb-4">
+                <h2 className="text-xl sm:text-2xl md:text-2xl font-bold text-[#0f172a] mb-3 sm:mb-4">
                   2. How We Use Your Information
                 </h2>
                 <p className="text-[#475569] mb-4">
@@ -66,7 +69,7 @@ export default function PrivacyPolicyPage() {
 
               {/* Communication */}
               <div>
-                <h2 className="text-2xl font-bold text-[#0f172a] mb-4">
+                <h2 className="text-xl sm:text-2xl md:text-2xl font-bold text-[#0f172a] mb-3 sm:mb-4">
                   3. Communication
                 </h2>
                 <ul className="list-disc list-inside text-[#475569] space-y-2 ml-4">
@@ -86,7 +89,7 @@ export default function PrivacyPolicyPage() {
 
               {/* Data Sharing */}
               <div>
-                <h2 className="text-2xl font-bold text-[#0f172a] mb-4">
+                <h2 className="text-xl sm:text-2xl md:text-2xl font-bold text-[#0f172a] mb-3 sm:mb-4">
                   4. Data Sharing
                 </h2>
                 <ul className="list-disc list-inside text-[#475569] space-y-2 ml-4">
@@ -107,7 +110,7 @@ export default function PrivacyPolicyPage() {
 
               {/* Data Security */}
               <div>
-                <h2 className="text-2xl font-bold text-[#0f172a] mb-4">
+                <h2 className="text-xl sm:text-2xl md:text-2xl font-bold text-[#0f172a] mb-3 sm:mb-4">
                   5. Data Security
                 </h2>
                 <ul className="list-disc list-inside text-[#475569] space-y-2 ml-4">
@@ -124,7 +127,7 @@ export default function PrivacyPolicyPage() {
 
               {/* Third-Party Links */}
               <div>
-                <h2 className="text-2xl font-bold text-[#0f172a] mb-4">
+                <h2 className="text-xl sm:text-2xl md:text-2xl font-bold text-[#0f172a] mb-3 sm:mb-4">
                   6. Third-Party Links
                 </h2>
                 <p className="text-[#475569]">
@@ -136,7 +139,7 @@ export default function PrivacyPolicyPage() {
 
               {/* Changes to Policy */}
               <div>
-                <h2 className="text-2xl font-bold text-[#0f172a] mb-4">
+                <h2 className="text-xl sm:text-2xl md:text-2xl font-bold text-[#0f172a] mb-3 sm:mb-4">
                   7. Changes to This Policy
                 </h2>
                 <p className="text-[#475569]">
@@ -148,25 +151,24 @@ export default function PrivacyPolicyPage() {
 
               {/* Contact Information */}
               <div>
-                <h2 className="text-2xl font-bold text-[#0f172a] mb-4">
+                <h2 className="text-xl sm:text-2xl md:text-2xl font-bold text-[#0f172a] mb-3 sm:mb-4">
                   8. Contact Us
                 </h2>
                 <p className="text-[#475569] mb-4">Sanas Nursery</p>
                 <div className="bg-[#f8fafc] p-6 rounded-lg">
                   <p className="text-[#475569] mb-2">
-                    <strong>Email:</strong> sanasnursery@gmail.com
+                    <strong>Email : </strong> {SITE_DATA.EMAIL}
                   </p>
                   <p className="text-[#475569] mb-2">
-                    <strong>Phone/WhatsApp:</strong> 77986
+                    <strong>Phone/WhatsApp : </strong> {SITE_DATA.phone} 
                   </p>
                   <p className="text-[#475569] mb-2">
-                    <strong>Location:</strong> Sanas Wholesale Nursery, Bori
-                    Fata, near ITI collage, Uruli Kanchan, Maharashtra, 412201
+                    <strong>Location : </strong> {SITE_DATA.LOCATION}
                   </p>
                   <p className="text-[#475569] mt-4">
-                    <strong>Contact Form:</strong>{" "}
+                    <strong>Contact Form : </strong>
                     <a
-                      href="/contact"
+                      href="/contact-us"
                       className="text-[#ea580c] hover:text-[#c2410c] underline"
                     >
                       Visit our Contact page

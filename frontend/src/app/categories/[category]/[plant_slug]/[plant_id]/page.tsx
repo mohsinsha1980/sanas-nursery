@@ -3,8 +3,10 @@ import PlantDescTabs from "@/components/categories/plant-desc-tabs";
 import ProductPictureSlider from "@/components/common/product-picture-slider";
 import DetailsLoading from "@/components/layout/DetailsLoader";
 import { getPlantDetailsByID } from "@/lib/api-routes/api-public";
+import { CATEGORIES } from "@/lib/constants";
 import { getPicURL } from "@/lib/helper";
 import { PlantDataType } from "@/lib/types/common-types";
+import { ChevronRight } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -64,20 +66,54 @@ export default async function ProductDetailsPageByID({
     };
   } = await fetchProductDetails(plantID);
 
-  console.log("response ", response);
-
   if (!response.data.plant) {
     return notFound();
   }
 
   const plant = response.data.plant;
+  console.log(plant);
   const similarPlants = response.data.similarPlants;
   const pictures = plant.pictures.map((item: string) => getPicURL(item));
 
+  const category = Object.values(CATEGORIES).find(
+    (cat) => cat.value === plant.category
+  )!;
+
   return (
     <Suspense fallback={<DetailsLoading />}>
-      <section className="bg-white py-10 lg:mt-30 mt-10">
-        <div className="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 lg:gap-10 gap-5  ">
+      <section className="bg-white py-10 lg:mt-15 mt-10 lg:px-0 px-4">
+        <div className="lg:max-w-[1200px] mx-auto w-full h-full flex flex-col justify-between items-start lg:pb-10 lg:pt-0 pt-2 pb-5">
+          <h2 className="text-[#0D6536] lg:text-[40px] md:text-[36px] text-[38px] font-bold text-start  ">{category.label}</h2>
+          <div className="flex items-center gap-x-2">
+            {/* Home */}
+            <Link
+              href="/"
+              className="text-[20px] text-[#505050] font-semibold text-start hover:text-[#f37521]"
+            >
+              Home
+            </Link>
+            <ChevronRight  className="text-[#505050]" />
+
+            {/* Category */}
+            {category && (
+              <>
+                <Link href={`/categories/${category.value}`}>
+                  <p className="text-[21px] font-semibold text-[#505050] lg:pt-1 hover:text-[#f37521]">
+                    {category.label}
+                  </p>
+                </Link>
+                <ChevronRight  className="text-[#505050]" />
+              </>
+            )}
+
+            {/* Plant Title */}
+            <p className="text-[21px] font-semibold text-[#f37521] lg:pt-1">
+              {plant.title}
+            </p>
+          </div>
+        </div>
+
+        <div className="lg:max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 lg:gap-10 gap-5  ">
           <div className="">
             <ProductPictureSlider pictures={pictures} />
           </div>
@@ -116,7 +152,7 @@ export default async function ProductDetailsPageByID({
 
                         {/* Value Column */}
                         <td className="text-[18px] py-2 px-3 font-medium text-gray-800">
-                           {spec.value}
+                          {spec.value}
                         </td>
                       </tr>
                     ))}
@@ -130,13 +166,13 @@ export default async function ProductDetailsPageByID({
         </div>
       </section>
 
-      <section className="lg:max-w-[1400px] mx-auto  lg:mb-30 md:mb-20 mb-10">
+      <section className="lg:max-w-[1200px] mx-auto  mb-10">
         <PlantDescTabs plant={plant} />
       </section>
 
       {similarPlants.length > 0 && (
-        <section className="lg:pt-30 lg:pb-30 md:pt-20 md:pb-20 pt-10 pb-10 bg-orange-50 ">
-          <div className="container mx-auto px-4 ">
+        <section className="pb-10 ">
+          <div className="lg:max-w-[1200px] mx-auto px-4 ">
             <h2 className="lg:text-[42px] md:text-[36px] text-[28px] font-semibold text-center mb-10 ">
               Similar <span className="text-[#00611F]">Plant</span> You Might
               Like

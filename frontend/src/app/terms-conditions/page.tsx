@@ -1,3 +1,5 @@
+import { SITE_DATA } from "@/lib/constants";
+
 export default function TermsConditionsPage() {
   return (
     <div className="bg-white">
@@ -16,18 +18,18 @@ export default function TermsConditionsPage() {
 
       {/* Terms & Conditions Content */}
       <section className="py-12 sm:py-16 md:py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+        <div className="lg:max-w-[900px] mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
           <div className="prose prose-sm sm:prose-base md:prose-lg lg:prose-xl max-w-none">
             <div className="bg-[#f8fafc] p-4 sm:p-6 md:p-8 rounded-lg mb-6 sm:mb-8">
               <p className="text-sm sm:text-base md:text-lg text-[#475569] text-center">
-                <strong>Last Updated:</strong> 12 August 2025
+                <strong>Last Updated : </strong> 12 August 2025
               </p>
             </div>
 
             <div className="space-y-6 sm:space-y-8">
               {/* Section 1 */}
               <div>
-                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#0f172a] mb-3 sm:mb-4">
+                <h2 className="text-xl sm:text-2xl md:text-2xl font-bold text-[#0f172a] mb-3 sm:mb-4">
                   1. Nature of Our Website
                 </h2>
                 <ul className="list-disc list-inside text-sm sm:text-base md:text-lg text-[#475569] space-y-1 sm:space-y-2 ml-4 leading-relaxed">
@@ -45,7 +47,7 @@ export default function TermsConditionsPage() {
 
               {/* Section 2 */}
               <div>
-                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#0f172a] mb-3 sm:mb-4">
+                <h2 className="text-xl sm:text-2xl md:text-2xl font-bold text-[#0f172a] mb-3 sm:mb-4">
                   2. Product Information
                 </h2>
                 <ul className="list-disc list-inside text-sm sm:text-base md:text-lg text-[#475569] space-y-1 sm:space-y-2 ml-4 leading-relaxed">
@@ -62,7 +64,7 @@ export default function TermsConditionsPage() {
 
               {/* Section 3 */}
               <div>
-                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#0f172a] mb-3 sm:mb-4">
+                <h2 className="text-xl sm:text-2xl md:text-2xl font-bold text-[#0f172a] mb-3 sm:mb-4">
                   3. Enquiry & Communication
                 </h2>
                 <ul className="list-disc list-inside text-sm sm:text-base md:text-lg text-[#475569] space-y-1 sm:space-y-2 ml-4 leading-relaxed">
@@ -84,7 +86,7 @@ export default function TermsConditionsPage() {
 
               {/* Section 4 */}
               <div>
-                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#0f172a] mb-3 sm:mb-4">
+                <h2 className="text-xl sm:text-2xl md:text-2xl font-bold text-[#0f172a] mb-3 sm:mb-4">
                   4. Orders & Payments
                 </h2>
                 <ul className="list-disc list-inside text-sm sm:text-base md:text-lg text-[#475569] space-y-1 sm:space-y-2 ml-4 leading-relaxed">
@@ -107,7 +109,7 @@ export default function TermsConditionsPage() {
 
               {/* Section 5 */}
               <div>
-                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#0f172a] mb-3 sm:mb-4">
+                <h2 className="text-xl sm:text-2xl md:text-2xl font-bold text-[#0f172a] mb-3 sm:mb-4">
                   5. Delivery & Pickup
                 </h2>
                 <ul className="list-disc list-inside text-sm sm:text-base md:text-lg text-[#475569] space-y-1 sm:space-y-2 ml-4 leading-relaxed">
@@ -124,7 +126,7 @@ export default function TermsConditionsPage() {
 
               {/* Section 6 */}
               <div>
-                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#0f172a] mb-3 sm:mb-4">
+                <h2 className="text-xl sm:text-2xl md:text-2xl font-bold text-[#0f172a] mb-3 sm:mb-4">
                   6. WhatsApp & SMS Communication
                 </h2>
                 <p className="text-sm sm:text-base md:text-lg text-[#475569] mb-3 sm:mb-4 leading-relaxed">
@@ -143,7 +145,7 @@ export default function TermsConditionsPage() {
 
               {/* Section 7 */}
               <div>
-                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#0f172a] mb-3 sm:mb-4">
+                <h2 className="text-xl sm:text-2xl md:text-2xl font-bold text-[#0f172a] mb-3 sm:mb-4">
                   7. Intellectual Property
                 </h2>
                 <p className="text-sm sm:text-base md:text-lg text-[#475569] leading-relaxed">
@@ -156,7 +158,7 @@ export default function TermsConditionsPage() {
 
               {/* Section 8 */}
               <div>
-                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#0f172a] mb-3 sm:mb-4">
+                <h2 className="text-xl sm:text-2xl md:text-2xl font-bold text-[#0f172a] mb-3 sm:mb-4">
                   8. Limitation of Liability
                 </h2>
                 <p className="text-sm sm:text-base md:text-lg text-[#475569] mb-3 sm:mb-4 leading-relaxed">
@@ -177,7 +179,7 @@ export default function TermsConditionsPage() {
 
               {/* Section 9 */}
               <div>
-                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#0f172a] mb-3 sm:mb-4">
+                <h2 className="text-xl sm:text-2xl md:text-2xl font-bold text-[#0f172a] mb-3 sm:mb-4">
                   9. Third-Party Links
                 </h2>
                 <p className="text-sm sm:text-base md:text-lg text-[#475569] leading-relaxed">
@@ -189,7 +191,7 @@ export default function TermsConditionsPage() {
 
               {/* Section 10 */}
               <div>
-                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#0f172a] mb-3 sm:mb-4">
+                <h2 className="text-xl sm:text-2xl md:text-2xl font-bold text-[#0f172a] mb-3 sm:mb-4">
                   10. Changes to Terms
                 </h2>
                 <p className="text-sm sm:text-base md:text-lg text-[#475569] leading-relaxed">
@@ -200,7 +202,7 @@ export default function TermsConditionsPage() {
 
               {/* Section 11 */}
               <div>
-                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#0f172a] mb-3 sm:mb-4">
+                <h2 className="text-xl sm:text-2xl md:text-2xl font-bold text-[#0f172a] mb-3 sm:mb-4">
                   11. Contact Us
                 </h2>
                 <p className="text-sm sm:text-base md:text-lg text-[#475569] mb-3 sm:mb-4 leading-relaxed">
@@ -208,20 +210,18 @@ export default function TermsConditionsPage() {
                 </p>
                 <div className="bg-[#f8fafc] p-4 sm:p-6 rounded-lg">
                   <p className="text-sm sm:text-base md:text-lg text-[#475569] mb-2 leading-relaxed">
-                    <strong>Email:</strong> sanasnursery@gmail.com
+                    <strong>Email : </strong> {SITE_DATA.EMAIL}
                   </p>
                   <p className="text-sm sm:text-base md:text-lg text-[#475569] mb-2 leading-relaxed">
-                    <strong>Phone/WhatsApp:</strong> +91 8999481616 / +91
-                    9090401616
+                    <strong>Phone/WhatsApp : </strong> {SITE_DATA.phone}
                   </p>
                   <p className="text-sm sm:text-base md:text-lg text-[#475569] mb-2 leading-relaxed">
-                    <strong>Location:</strong> Sanas Wholesale Nursery, Bori
-                    Fata, near ITI collage, Uruli Kanchan, Maharashtra, 412201
+                    <strong>Location : </strong> {SITE_DATA.LOCATION} 
                   </p>
                   <p className="text-sm sm:text-base md:text-lg text-[#475569] mt-3 sm:mt-4 leading-relaxed">
-                    <strong>Contact Form:</strong>{" "}
+                    <strong>Contact Form : </strong>
                     <a
-                      href="/contact"
+                      href="/contact-us"
                       className="text-[#ea580c] hover:text-[#c2410c] underline"
                     >
                       Visit our Contact page

@@ -6,7 +6,7 @@ const Mission = () => {
   return (
     <div>
       <div className="h-full w-full lg:pt-30 lg:pb-30 md:pt-20 md:pb-20 pt-10 pb-10 flex flex-row justify-center bg-[#E4FFF0]  ">
-        <div className="lg:h-[485px] h-full max-w-[1370px] md:w-[90%] w-[100%] flex flex-col justify-between">
+        <div className="lg:h-[485px] h-full max-w-[1200px] md:w-[90%] w-[100%] flex flex-col justify-between">
           <div className="h-fit w-full flex flex-col justify-center items-center lg:pb-10 md:pb-8 pb-5">
             <h1 className="lg:text-[42px] md:text-[38px] text-[28px] font-semibold text-center">
               <span className="text-[#00611F]">Mission</span> &{" "}
