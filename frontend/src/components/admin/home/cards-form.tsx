@@ -125,7 +125,10 @@ export default function CardsForm({ defaultData, field, data }: CardFormProps) {
           >
             {form.getValues("small") || defaultData.small}
           </p>
-          <button className="w-[140px] h-[46px] rounded-lg bg-white text-[#F37521] font-semibold shadow-md transition-all duration-300 hover:bg-[#F37521] hover:text-white hover:shadow-lg">
+          <button
+            style={{ color: form.getValues("link.color") || "#F37521" }}
+            className="w-[140px] h-[46px] rounded-lg bg-white text-[#F37521] font-semibold shadow-md transition-all duration-300 hover:bg-[#F37521] hover:text-white hover:shadow-lg"
+          >
             {form.getValues("link.label") || defaultData.link.label}
           </button>
         </div>
@@ -183,13 +186,13 @@ export default function CardsForm({ defaultData, field, data }: CardFormProps) {
               />
 
               <div className="col-span-2">
-              <TextField
-                name="link.label"
-                label="Link label"
-                placeholder="Shop now"
-                formControl={form.control}
-                className="border-black/10 rounded-md"
-              />
+                <TextField
+                  name="link.label"
+                  label="Link label"
+                  placeholder="Shop now"
+                  formControl={form.control}
+                  className="border-black/10 rounded-md"
+                />
               </div>
               <ColorPickerField
                 name="link.color"
@@ -211,26 +214,26 @@ export default function CardsForm({ defaultData, field, data }: CardFormProps) {
                 />
               </div>
 
-
-              <InputImageField
-                name="picture"
-                label="Picture"
-                placeholder="Picture.jpg"
-                formControl={form.control}
-                description="Valid image extensions: .jpg, .jpeg, .png, .webp"
-                className="border-black/10 rounded-md"
-              />
-
-              <div className="col-span-2">
-              {form.getValues("picture") && imageSrc && (
-                <Image
-                  src={imageSrc}
-                  alt="Selected Category"
-                  height={200}
-                  width={200}
-                  className="object-contain"
+              <div className="col-span-1">
+                <InputImageField
+                  name="picture"
+                  label="Picture"
+                  placeholder="Picture.jpg"
+                  formControl={form.control}
+                  description="Valid image extensions: .jpg, .jpeg, .png, .webp"
+                  className="border-black/10 rounded-md"
                 />
-              )}
+              </div>
+              <div className="col-span-2 text-right">
+                {form.getValues("picture") && imageSrc && (
+                  <Image
+                    src={imageSrc}
+                    alt="Selected Category"
+                    height={200}
+                    width={200}
+                    className="object-contain inline-block"
+                  />
+                )}
               </div>
             </div>
 
@@ -241,10 +244,10 @@ export default function CardsForm({ defaultData, field, data }: CardFormProps) {
                 onClick={() => setOpenConfirm(false)}
                 className="mr-4"
               >
-                  <X /> Cancel
+                <X /> Cancel
               </Button>
               <Button variant="orange" type="submit">
-                 <Save /> Save
+                <Save /> Save
               </Button>
             </div>
           </form>

@@ -130,7 +130,7 @@ export default async function ProductDetailsPageByID({
         </div>
       </section>
 
-      <section className="lg:px-40 mx-auto  lg:mb-30 md:mb-20 mb-10 ">
+      <section className="lg:max-w-[1400px] mx-auto  lg:mb-30 md:mb-20 mb-10">
         <PlantDescTabs plant={plant} />
       </section>
 

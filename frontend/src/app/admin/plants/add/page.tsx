@@ -44,7 +44,7 @@ import { addPlantSchema } from "@/lib/schemas/admin";
 import { AddPlantFields, MasterData } from "@/lib/types/admin-types";
 import { hideLoader, showLoader } from "@/redux/uiSlice";
 import { AxiosError } from "axios";
-import {  Trash2Icon } from "lucide-react";
+import { Trash2Icon } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
@@ -85,9 +85,6 @@ export default function AddPlant() {
     defaultValues: defaultFormData,
     resolver: zodResolver(addPlantSchema),
   });
-
-
-  console.log(form.formState.errors)
 
   const onSubmit: SubmitHandler<AddPlantFields> = async (
     values: AddPlantFields
@@ -157,7 +154,6 @@ export default function AddPlant() {
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 mb-4">
-            {/* Title Field */}
             <div className="lg:col-span-2">
               <TextField
                 name="title"
@@ -173,7 +169,6 @@ export default function AddPlant() {
               />
             </div>
 
-            {/* Meta Description Field */}
             <div className="lg:col-span-2">
               <TextField
                 name="metaDescription"
@@ -187,7 +182,6 @@ export default function AddPlant() {
               />
             </div>
 
-            {/* Plant Summary */}
             <div className="lg:col-span-4">
               <TextArea
                 name="summary"
@@ -201,7 +195,6 @@ export default function AddPlant() {
               />
             </div>
 
-            {/* Plant Details */}
             <div className="lg:col-span-4">
               <RichTextField
                 name="details"
@@ -213,7 +206,6 @@ export default function AddPlant() {
               />
             </div>
 
-            {/* Plant Description */}
             <div className="lg:col-span-4">
               <RichTextField
                 name="description"
@@ -240,7 +232,10 @@ export default function AddPlant() {
                   </h2>
                 </div>
                 <div className="text-left sm:text-right">
-                  <AddNew label="Specifications" onClick={() => setOpenKeySpec(true)} />
+                  <AddNew
+                    label="Specifications"
+                    onClick={() => setOpenKeySpec(true)}
+                  />
                 </div>
               </div>
 
@@ -301,7 +296,6 @@ export default function AddPlant() {
               </div>
             </div>
 
-            {/* Form Fields Row - Responsive Grid */}
             <div className="">
               <SmartBox
                 name="category"
@@ -357,7 +351,6 @@ export default function AddPlant() {
               ) : null}
             </div>
 
-            {/* FAQ Section */}
             <div className="lg:col-span-4">
               <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
                 <div className="sm:col-span-3">
@@ -376,13 +369,11 @@ export default function AddPlant() {
               </div>
             </div>
 
-            {/* FAQ Display */}
             {getFaqAccrItems(form.getValues("faqs"))?.length ? (
               <div className="lg:col-span-4">
                 <ProductAccordion
                   items={getFaqAccrItems(form.getValues("faqs"))}
                   onDelete={(index) => removeFaq(index)}
-                  className="mt-4"
                 />
               </div>
             ) : (
@@ -393,8 +384,7 @@ export default function AddPlant() {
               </div>
             )}
 
-            {/* Image Upload */}
-            <div className="lg:col-span-2">
+            <div className="lg:col-span-2 mt-2">
               <InputImageField
                 name="pictures"
                 label="Plants Pictures"
@@ -412,7 +402,6 @@ export default function AddPlant() {
               />
             </div>
 
-            {/* Image Previews */}
             <div className="lg:col-span-2 flex flex-wrap gap-2">
               {previews.map((item, index) => {
                 return (
@@ -423,9 +412,9 @@ export default function AddPlant() {
               })}
             </div>
 
-            {/* Status Switch */}
             <div className="mt-3">
               <SwitchField
+                labelClassName="text-base sm:text-lg lg:text-xl font-semibold"
                 name="status"
                 label="Status"
                 formControl={form.control}
@@ -433,7 +422,6 @@ export default function AddPlant() {
               />
             </div>
 
-            {/* Submit Button */}
             <div className="lg:col-span-4">
               <CancelButton onClick={() => router.back()} />
               <SaveButton type="submit" />
@@ -442,7 +430,6 @@ export default function AddPlant() {
         </form>
       </Form>
 
-      {/* Modals */}
       <CustomDialog
         title="Add a key specification"
         open={openKeySpec}

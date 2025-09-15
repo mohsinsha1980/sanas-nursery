@@ -87,11 +87,11 @@ export default async function CollectionPage({
   return (
     <Suspense fallback={<Loading />}>
       <div className="relative flex flex-col justify-between items-center ">
-        <div className="w-full lg:h-[500px] ">
+        <div className="w-full lg:h-[500px] h-fit ">
           <CategoryHero categoryValue={category} />
         </div>
 
-        <div className="w-full h-full lg:pt-20 pt-10 text-center">
+        <div className="w-full h-full lg:pt-20 pt-10 text-center ">
           <h2 className="text-[#0D6536] lg:text-[64px] md:text-[36px] text-[38px] font-semibold text-center">
             {categoryData?.label || category}
           </h2>

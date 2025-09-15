@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { generateSlug, slugRegEx } from "../helper";
+import { generateSlug, invalidSlug, slugRegEx } from "../helper";
 import { ACCEPTED_IMAGE_TYPES, YT_VIDEOS_LENGTH } from "../constants";
 
 export const slugValidation = z
@@ -13,7 +13,7 @@ export const titleSchema = z
   .refine(
     (title) => {
       const generatedSlug = generateSlug(title);
-      return slugValidation.safeParse(generatedSlug).success;
+      return !invalidSlug(generatedSlug);
     },
     {
       message:
@@ -71,17 +71,15 @@ export const addPlantSchema = z
     status: z.boolean(),
   })
   .superRefine((data, ctx) => {
-    const generatedSlug = data?.title
-      ?.trim()
-      .toLowerCase()
-      .replaceAll(" ", "-");
-
-    const slugResult = slugValidation.safeParse(generatedSlug);
-    if (!slugResult.success) {
+    const generatedSlug = generateSlug(data.title);
+    const slugResult = invalidSlug(generatedSlug);
+    if (slugResult) {
       ctx.addIssue({
-        path: ["title"], // attach to title
+        path: ["title"],
         message:
-          "Title can't contain special characters (used to generate slug).",
+          typeof slugResult === "string"
+            ? slugResult
+            : "Title can't contain special characters (used to generate slug).",
         code: z.ZodIssueCode.custom,
       });
     }
@@ -110,17 +108,15 @@ export const editPlantSchema = addPlantSchema
     pictures: editPlantPicturesSchema,
   })
   .superRefine((data, ctx) => {
-    const generatedSlug = data?.title
-      ?.trim()
-      .toLowerCase()
-      .replaceAll(" ", "-");
-
-    const slugResult = slugValidation.safeParse(generatedSlug);
-    if (!slugResult.success) {
+    const generatedSlug = generateSlug(data.title);
+    const slugResult = invalidSlug(generatedSlug);
+    if (slugResult) {
       ctx.addIssue({
         path: ["title"],
         message:
-          "Title can't contain special characters (used to generate slug).",
+          typeof slugResult === "string"
+            ? slugResult
+            : "Title can't contain special characters (used to generate slug).",
         code: z.ZodIssueCode.custom,
       });
     }
@@ -216,17 +212,16 @@ export const addBlogSchema = z
       ),
   })
   .superRefine((data, ctx) => {
-    const generatedSlug = data?.title
-      ?.trim()
-      .toLowerCase()
-      .replaceAll(" ", "-");
+    const generatedSlug = generateSlug(data.title);
 
-    const slugResult = slugValidation.safeParse(generatedSlug);
-    if (!slugResult.success) {
+    const slugResult = invalidSlug(generatedSlug);
+    if (slugResult) {
       ctx.addIssue({
         path: ["title"],
         message:
-          "Title can't contain special characters (used to generate slug).",
+          typeof slugResult === "string"
+            ? slugResult
+            : "Title can't contain special characters (used to generate slug).",
         code: z.ZodIssueCode.custom,
       });
     }
@@ -244,17 +239,15 @@ export const editBlogSchema = z
     ]),
   })
   .superRefine((data, ctx) => {
-    const generatedSlug = data?.title
-      ?.trim()
-      .toLowerCase()
-      .replaceAll(" ", "-");
-
-    const slugResult = slugValidation.safeParse(generatedSlug);
-    if (!slugResult.success) {
+    const generatedSlug = generateSlug(data.title);
+    const slugResult = invalidSlug(generatedSlug);
+    if (slugResult) {
       ctx.addIssue({
         path: ["title"],
         message:
-          "Title can't contain special characters (used to generate slug).",
+          typeof slugResult === "string"
+            ? slugResult
+            : "Title can't contain special characters (used to generate slug).",
         code: z.ZodIssueCode.custom,
       });
     }

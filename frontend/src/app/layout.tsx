@@ -8,9 +8,7 @@ import { NuqsAdapter } from "nuqs/adapters/next/app";
 import { Toaster } from "sonner";
 import "./globals.css";
 import AuthProvider from "@/components/auth/AuthProvider";
-import MainFooter from "@/components/common/footer/main-footer";
-import WhatsappBadge from "@/components/common/footer/whatsapp-badge";
-import MainHeader from "@/components/common/header/main-header";
+import ClientLayout from "@/components/layout/ClientLayout";
 
 const catamaran = Catamaran({
   variable: "--font-catamaran",
@@ -20,6 +18,9 @@ const catamaran = Catamaran({
 export const metadata: Metadata = {
   title: "Sanas Nursery",
   description: "One stop shop for all your nursery needs",
+  alternates: {
+    canonical: "https://sanasnursery.com/",
+  },
 };
 
 export default function RootLayout({
@@ -52,14 +53,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
         <ReduxProvider>
           <ReCaptchaProvider reCaptchaKey={config.RECAPTCHA_SITE_KEY}>
             <NuqsAdapter>
-              {/* <Loader /> */}
               <AuthProvider>
-                <div className="min-h-screen flex flex-col">
-                  <MainHeader />
-                  <main className="flex-grow">{children}</main>
-                  <MainFooter />
-                  <WhatsappBadge />
-                </div>
+                <ClientLayout>{children}</ClientLayout>
                 <Toaster richColors />
               </AuthProvider>
             </NuqsAdapter>

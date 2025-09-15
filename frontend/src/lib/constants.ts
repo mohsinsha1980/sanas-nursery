@@ -8,7 +8,8 @@ export const USER_STORE_DATA_KEY = "vb9n5ysag59vp";
 export const YT_VIDEOS_LENGTH = 2;
 export const BEST_SELLING_PLANTS_LIMIT = 10;
 export const LOGO =
-  process.env.NEXT_PUBLIC_BASE_PATH + "/site/images/logo-full.svg"; // change here take from config
+  process.env.NEXT_PUBLIC_BASE_PATH + "/site/sanas-nursery-logo.webp"; // change here take from config
+export const MASTERDATA_PER_PAGE = 5;
 
 export const ACCEPTED_IMAGE_TYPES = [
   "image/jpeg",
