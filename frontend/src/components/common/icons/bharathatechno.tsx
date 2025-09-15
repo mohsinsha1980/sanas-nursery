@@ -1,4 +1,4 @@
-import BharathaIconSvg from "../../../../public/site/images/icon-bharathatechno.svg";
+import BharathaIconSvg from "../../../../public/site/images/bharathatechno-it-pvt-ltd.svg";
 
 const BharathaIcon = ({
   width,

@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import { ABOUT } from "@/assets";
 
 const Mission = () => {
   return (
@@ -21,7 +22,7 @@ const Mission = () => {
               <div className="h-[286px] w-full max-w-[560px]">
                 <div className="h-full w-full flex flex-col justify-between items-center">
                   <Image
-                    src="/site/about/div.png"
+                    src={ABOUT.MISSION}
                     alt={""}
                     height={100}
                     width={100}
@@ -43,7 +44,7 @@ const Mission = () => {
               <div className="h-[286px] w-full max-w-[560px]">
                 <div className="h-full w-full flex flex-col justify-between items-center">
                   <Image
-                    src="/site/about/div1.png"
+                    src={ABOUT.VISION}
                     alt={""}
                     height={100}
                     width={100}

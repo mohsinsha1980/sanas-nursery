@@ -1,4 +1,5 @@
 "use client";
+import { AUTH } from "@/assets";
 import TextField from "@/components/form-fields/text-field";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
@@ -53,7 +54,7 @@ export default function ResetPasswordPage() {
     <div
       className="relative flex min-h-screen w-full items-center justify-center bg-cover bg-center overflow-hidden "
       style={{
-        backgroundImage: "url('/site/auth/auth-banner.webp')",
+        backgroundImage: `url(${AUTH.BANNER})`,
       }}
     >
       <div className="absolute lg:w-full w-[96%] max-w-[600px] top-[56%] -translate-y-1/2 bg-white/80 backdrop-blur-md shadow-lg rounded-2xl flex justify-center items-center lg:p-10 p-5">

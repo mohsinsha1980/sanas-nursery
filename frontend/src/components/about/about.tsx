@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import { ABOUT } from "@/assets";
 
 const About = () => {
   return (
@@ -28,10 +29,10 @@ const About = () => {
           </div>
           <div className="h-full md:w-[559px] w-full m-auto">
             <Image
-              src="/about-about.jpg"
+              src={ABOUT.WELCOME}
               height={900}
               width={900}
-              alt=""
+              alt={ABOUT.WELCOME}
               className="h-full w-full object-cover"
             />
           </div>

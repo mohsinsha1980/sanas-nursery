@@ -1,3 +1,4 @@
+import { HERO } from "@/assets";
 import { Sparkles, TrendingUp } from "lucide-react";
 import Image from "next/image";
 
@@ -5,7 +6,7 @@ const BlogListHero = () => {
   return (
     <div className="relative w-full h-screen">
       <Image
-        src="/site/blogs/hero.jpg"
+        src={HERO.BLOGS}
         height={1700}
         width={1700}
         alt=""

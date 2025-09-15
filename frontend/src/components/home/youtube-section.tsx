@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { defultHomeData } from "@/lib/constants";
 
 function getYoutubeId(url: string): string | null {
   try {
@@ -21,6 +22,9 @@ function getYoutubeId(url: string): string | null {
 
 const YoutubeSection = ({ videos }: { videos: string[] }) => {
   const [openVideo, setOpenVideo] = useState<string | null>(null);
+
+  const displayVideos =
+    videos && videos.length >= 2 ? videos : defultHomeData.Videos;
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -43,7 +47,7 @@ const YoutubeSection = ({ videos }: { videos: string[] }) => {
         </div>
 
         <div className="flex flex-col md:flex-row gap-6 justify-center w-full">
-          {videos.map((url, idx) => {
+          {displayVideos.map((url, idx) => {
             const id = getYoutubeId(url);
             if (!id) return null;
             const thumbnail = `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
