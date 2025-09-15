@@ -9,7 +9,6 @@ export default function PlantDescTabs({ plant }: { plant: PlantDataType }) {
       defaultValue="description"
       className="w-full mx-auto p-5 rounded-lg bg-green-50 "
     >
-      {/* Tabs List */}
       <TabsList className="flex w-full justify-start gap-4 lg:mb-0 mb-5 ">
         <TabsTrigger
           value="description"
@@ -28,7 +27,6 @@ export default function PlantDescTabs({ plant }: { plant: PlantDataType }) {
         ) : null}
       </TabsList>
 
-      {/* Description Tab */}
       <TabsContent
         value="description"
         className=" text-[18px] font-medium text-gray-800 leading-relaxed"
@@ -39,7 +37,6 @@ export default function PlantDescTabs({ plant }: { plant: PlantDataType }) {
         />
       </TabsContent>
 
-      {/* FAQs Tab */}
       {plant.faqs?.length ? (
         <TabsContent value="faqs" className="p-6">
           <ProductAccordion

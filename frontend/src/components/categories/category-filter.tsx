@@ -12,7 +12,6 @@ import { Button } from "../ui/button";
 import classes from "./filter.module.css";
 import MultiCheckBoxFilter from "./multi-check-filter";
 import { CATEGORY_ARR } from "@/lib/constants";
-import { useParams } from "next/navigation";
 import Link from "next/link";
 
 const defaultMasterData = {
@@ -158,7 +157,6 @@ export default function Filters({ category }: CategoryFilterProps) {
 
   return (
     <>
-      {/* Filter button visible only on small devices */}
       <div className="sm:flex lg:hidden justify-end mb-3">
         <Button
           variant="orange"
@@ -170,10 +168,8 @@ export default function Filters({ category }: CategoryFilterProps) {
         </Button>
       </div>
 
-      {/* Desktop filters */}
       <div className="hidden lg:block">{FilterContent}</div>
 
-      {/* Bottom drawer (only sm) */}
       <div
         className={`fixed inset-0 z-50 flex md:flex lg:hidden transition-opacity duration-300 ${
           isOpen
@@ -181,13 +177,11 @@ export default function Filters({ category }: CategoryFilterProps) {
             : "opacity-0 pointer-events-none"
         }`}
       >
-        {/* Background overlay */}
         <div
           className="fixed inset-0 bg-black/40"
           onClick={() => setIsOpen(false)}
         />
 
-        {/* Drawer content at bottom */}
         <div
           className={`fixed bottom-0 left-0 w-full bg-white shadow-lg p-4 
           transform transition-transform duration-300 ease-in-out
