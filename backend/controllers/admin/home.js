@@ -61,7 +61,8 @@ export const updateGreenChoices = async (req, res, next) => {
 
 export const updateHomeCard = async (req, res, next) => {
   try {
-    const { field, small, smallColor, large, largeColor, link } = req.body;
+    const { field, small, smallColor, large, largeColor, link, pictures } =
+      req.body;
     const linkData = JSON.parse(link);
 
     if (
@@ -72,8 +73,7 @@ export const updateHomeCard = async (req, res, next) => {
       !largeColor ||
       !linkData?.label ||
       !linkData?.address ||
-      !linkData?.color ||
-      !req.optimizedImagePath
+      !linkData?.color
     ) {
       return next({ message: "Missing required fields.", status: 400 });
     }
@@ -82,6 +82,10 @@ export const updateHomeCard = async (req, res, next) => {
     const imagePath = req.optimizedImagePath;
 
     if (!homeData) {
+      if (!req.optimizedImagePath) {
+        return next({ message: "Picture is required.", status: 400 });
+      }
+
       homeData = new Home({
         cards: {
           [field]: {
@@ -90,7 +94,7 @@ export const updateHomeCard = async (req, res, next) => {
             large,
             largeColor,
             link: linkData,
-            picture: imagePath,
+            picture: req.optimizedImagePath,
           },
         },
       });
@@ -99,26 +103,31 @@ export const updateHomeCard = async (req, res, next) => {
         homeData["cards"] = {};
       }
 
-      const existingImage = homeData["cards"][field]?.picture;
-      if (existingImage) {
-        fs.unlink(existingImage, (err) => {
-          if (err) {
-            return next({
-              message: "Internal Server Error while deleting image.",
-              status: 500,
-            });
-          }
-        });
-      }
-
-      homeData["cards"][field] = {
+      const data = {
         small,
         smallColor,
         large,
         largeColor,
         link: linkData,
-        picture: imagePath,
+        picture: pictures,
       };
+
+      if (req.optimizedImagePath) {
+        data.picture = req.optimizedImagePath;
+        const existingImage = homeData["cards"][field]?.picture;
+        if (existingImage) {
+          fs.unlink(existingImage, (err) => {
+            if (err) {
+              return next({
+                message: "Internal Server Error while deleting image.",
+                status: 500,
+              });
+            }
+          });
+        }
+      }
+
+      homeData["cards"][field] = data;
     }
 
     await homeData.save();
@@ -129,6 +138,7 @@ export const updateHomeCard = async (req, res, next) => {
     };
     return next();
   } catch (error) {
+    console.log(error);
     return next({ status: 500, message: "Internal server error." });
   }
 };

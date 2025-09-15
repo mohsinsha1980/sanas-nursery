@@ -31,7 +31,7 @@ export default function ProfileDetails({ user }: ProfileHeaderProps) {
         <Card>
           <CardContent className="p-4 sm:p-6">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-              <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+              <div className="flex items-center space-x-4">
                 <Avatar className="h-16 w-16 flex-shrink-0">
                   <AvatarFallback className="bg-green-100 text-gray-700 text-lg font-semibold">
                     {getInitials(user.name)}

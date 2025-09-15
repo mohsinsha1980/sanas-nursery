@@ -1,7 +1,13 @@
 import { SITE_DATA } from "@/lib/constants";
 import React from "react";
 
-const SocialMedia: React.FC = () => {
+interface SocialMediaProps {
+  color?: string;
+}
+
+const SocialMedia: React.FC<SocialMediaProps> = ({
+  color = "text-gray-600",
+}) => {
   const socialLinks = [
     {
       name: "Instagram",
@@ -43,7 +49,7 @@ const SocialMedia: React.FC = () => {
           href={social.url}
           target="_blank"
           rel="noopener noreferrer"
-          className={`text-gray-600 transition-colors duration-200 ${social.color} hover:scale-110 transform`}
+          className={`${color} transition-colors duration-200 ${social.color} hover:scale-110 transform`}
           title={social.name}
         >
           {social.icon}

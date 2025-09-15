@@ -12,7 +12,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { deleteMasterRecord } from "@/lib/api-routes/api-admin";
-import { MASTER_DATA_TYPE, PAGINATION } from "@/lib/constants";
+import { MASTER_DATA_TYPE, MASTERDATA_PER_PAGE } from "@/lib/constants";
 import {
   getErrorMessage,
   getPaginatedMasterData,
@@ -53,9 +53,9 @@ export default function TagsField({ data }: Props) {
       page &&
       tagData &&
       tagData.length &&
-      tagData.length > PAGINATION.PER_PAGE
+      tagData.length > MASTERDATA_PER_PAGE
     ) {
-      setTags(getPaginatedMasterData(tagData, page, PAGINATION.PER_PAGE));
+      setTags(getPaginatedMasterData(tagData, page, MASTERDATA_PER_PAGE));
     } else {
       setTags(tagData);
     }
@@ -196,7 +196,7 @@ export default function TagsField({ data }: Props) {
 
       <CustomPagination
         total={tagData.length}
-        perPage={PAGINATION.PER_PAGE}
+        perPage={MASTERDATA_PER_PAGE}
         pageChange={setPage}
       />
 

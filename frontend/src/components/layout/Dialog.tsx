@@ -19,7 +19,7 @@ export default function CustomDialog({
   closeLabel,
   open,
   onclose,
-  className = "max-w-4xl",
+  className = "max-w-4xl z-[9999]",
   disableOutsideClick = false,
 }: {
   children: React.ReactNode;
@@ -40,7 +40,9 @@ export default function CustomDialog({
     >
       <DialogTrigger asChild>{trigger}</DialogTrigger>
       <DialogContent
-        className={className ? className : ""}
+        className={`${
+          className ? className : ""
+        } max-h-[90vh] overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] z-[9999]`}
         onPointerDownOutside={(e) => {
           if (disableOutsideClick) e.preventDefault();
         }}

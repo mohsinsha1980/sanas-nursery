@@ -42,7 +42,7 @@
 
 @media only screen and (max-width: 1370px){
   .bl_admin_template{
-    max-width: 1200px;
+    /* max-width: 1200px; */
     margin: auto;
     margin-top: var(--header-height);
     margin-bottom: 50px;

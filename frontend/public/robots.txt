@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://sanasnursery.com
+
+# Sitemaps
+Sitemap: https://sanasnursery.com/sitemap.xml
