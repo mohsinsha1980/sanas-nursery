@@ -1,4 +1,5 @@
 "use client";
+import { AUTH } from "@/assets";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -7,7 +8,7 @@ export default function VerifyEmailPage() {
     <div className="flex flex-col md:flex-row justify-center items-center h-screen p-6 ">
       <div className="mb-8 md:mb-0 md:mr-10">
         <Image
-          src="/site/signin/banner.png"
+          src={AUTH.BANNER}
           width={800}
           height={600}
           alt="Sign-in Banner"

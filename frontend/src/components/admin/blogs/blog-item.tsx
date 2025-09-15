@@ -80,7 +80,6 @@ const BlogItem = ({
     <div className="bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-shadow duration-200 flex flex-col h-full">
       <div className="relative h-48 w-full rounded-t-lg overflow-hidden">
         <Image
-          // src={"/plant1.png"}
           src={getPicURL(blog.coverImage)}
           alt={blog.title}
           fill

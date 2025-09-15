@@ -17,6 +17,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import TextField from "../form-fields/text-field";
 import Link from "next/link";
+import { AUTH } from "@/assets";
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
@@ -54,7 +55,7 @@ const SignUpForm = () => {
   return (
     <div
       className="relative flex min-h-screen w-full items-center justify-center bg-cover bg-center overflow-hidden "
-      style={{ backgroundImage: "url('/site/auth/auth-banner.webp')" }}
+      style={{ backgroundImage: `url(${AUTH.BANNER})` }}
     >
       <div className="absolute inset-0 bg-black/20"></div>
 
