@@ -5,7 +5,7 @@ const CategoryHero = ({ categoryValue }: { categoryValue: string }) => {
   const category = CATEGORY_ARR.find((cat) => cat.value === categoryValue);
   return (
     <div key="hero">
-      <div className="relative w-full lg:h-[500px] h-screen">
+      <div className="relative w-full lg:h-[500px]">
         <div className="relative w-full h-[600px] sm:h-[550px] md:h-[500px] lg:h-[550px] xl:h-[550px]">
           {/* Background Image */}
           <Image
