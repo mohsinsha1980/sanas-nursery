@@ -9,7 +9,7 @@ const BlogListHero = () => {
         height={1700}
         width={1700}
         alt=""
-        className="h-screen w-full"
+        className="h-screen w-full object-cover object-center"
       />
       <div
         className="z-1 absolute p-8 rounded-lg

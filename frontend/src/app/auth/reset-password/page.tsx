@@ -25,7 +25,7 @@ export default function ResetPasswordPage() {
   const form = useForm<ResetPassType>({
     defaultValues: {
       email: "",
-      otp: undefined,
+      otp: "",
       password: "",
       confirmPassword: "",
     },
@@ -79,7 +79,7 @@ export default function ResetPasswordPage() {
                 labelClassName="text-[16px] font-medium"
                 inputType="email"
                 formControl={form.control}
-                className="w-full rounded-md border border-gray-400 px-3 text-black bg-white"
+                className="w-full rounded-md border border-black/20 px-3 text-black bg-white"
               />
 
               <TextField
@@ -89,7 +89,7 @@ export default function ResetPasswordPage() {
                 labelClassName="text-[16px] font-medium"
                 inputType="text"
                 formControl={form.control}
-                className="w-full rounded-md border border-gray-400 px-3 text-black bg-white"
+                className="w-full rounded-md border border-black/20 px-3 text-black bg-white"
               />
 
               <TextField
@@ -99,7 +99,7 @@ export default function ResetPasswordPage() {
                 labelClassName="text-[16px] font-medium"
                 inputType="password"
                 formControl={form.control}
-                className="w-full rounded-md border border-gray-400 px-3 text-black bg-white"
+                className="w-full rounded-md border border-black/20 px-3 text-black bg-white"
               />
 
               <TextField
@@ -109,7 +109,7 @@ export default function ResetPasswordPage() {
                 labelClassName="text-[16px] font-medium"
                 inputType="password"
                 formControl={form.control}
-                className="w-full rounded-md border border-gray-400 px-3 text-black bg-white"
+                className="w-full rounded-md border border-black/20 px-3 text-black bg-white"
               />
 
               <Button

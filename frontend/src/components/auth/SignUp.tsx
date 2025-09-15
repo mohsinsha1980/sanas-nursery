@@ -75,7 +75,7 @@ const SignUpForm = () => {
               placeholder="Enter Full Name"
               inputType="text"
               formControl={form.control}
-              className="w-full rounded-md border border-gray-400 px-3 text-black bg-white  "
+              className="w-full rounded-md border border-black/20 px-3 text-black bg-white  "
             />
 
             <TextField
@@ -85,7 +85,7 @@ const SignUpForm = () => {
               placeholder="Enter Email"
               inputType="email"
               formControl={form.control}
-              className="w-full rounded-md border border-gray-400 px-3 text-black bg-white "
+              className="w-full rounded-md border border-black/20 px-3 text-black bg-white "
             />
 
             <TextField
@@ -95,7 +95,7 @@ const SignUpForm = () => {
               placeholder="Enter Contact Number (99876543210)"
               inputType="text"
               formControl={form.control}
-              className="w-full rounded-md border border-gray-400 px-3 text-black bg-white "
+              className="w-full rounded-md border border-black/20 px-3 text-black bg-white "
             />
 
             <TextField
@@ -105,7 +105,7 @@ const SignUpForm = () => {
               placeholder="At least 8 characters"
               inputType="password"
               formControl={form.control}
-              className="w-full rounded-md border border-gray-400 px-3 text-black bg-white "
+              className="w-full rounded-md border border-black/20 px-3 text-black bg-white "
             />
 
             <TextField
@@ -115,7 +115,7 @@ const SignUpForm = () => {
               placeholder="Re-enter Password"
               inputType="password"
               formControl={form.control}
-              className="w-full rounded-md border border-gray-400 px-3 text-black bg-white "
+              className="w-full rounded-md border border-black/20 px-3 text-black bg-white "
             />
 
             {/* Signup Button */}
