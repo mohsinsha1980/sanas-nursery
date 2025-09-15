@@ -123,8 +123,10 @@ export default function MainHeader() {
                         </span>
 
                         <svg
-                          className={`w-4 h-4 cursor-pointer transition-transform duration-200 ${
-                            mobileDropdownOpen ? "rotate-180" : ""
+                          className={`w-4 h-4 cursor-pointer transition-all duration-200 hover:text-green-600 ${
+                            mobileDropdownOpen
+                              ? "rotate-180 text-green-600"
+                              : "text-gray-500"
                           }`}
                           fill="none"
                           stroke="currentColor"

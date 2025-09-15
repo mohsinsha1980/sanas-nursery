@@ -21,8 +21,8 @@ export default function Categories() {
         <div className="flex gap-8 flex-wrap justify-center  ">
           {CATEGORY_ARR.map((cat) => (
             <Link key={cat.value} href={`/categories/${cat.value}`}>
-              <div className="flex flex-col items-center cursor-pointer">
-                <div className="relative lg:w-[160px] lg:h-[160px] w-[150px] h-[150px] rounded-full overflow-hidden group">
+              <div className="flex flex-col items-center cursor-pointer group">
+                <div className="relative lg:w-[160px] lg:h-[160px] w-[150px] h-[150px] rounded-full overflow-hidden">
                   <Image
                     src={cat.picture}
                     alt={cat.label}
@@ -32,7 +32,7 @@ export default function Categories() {
                   <div className="absolute inset-0 bg-[#DA5700] opacity-0 group-hover:opacity-40 transition-opacity duration-300 rounded-full"></div>
                 </div>
 
-                <p className="text-[#505050] lg:text-[20px] md:text-[22px] text-[16px] font-semibold lg:pt-5 pt-3">
+                <p className="text-[#505050] lg:text-[20px] md:text-[22px] text-[16px] font-semibold lg:pt-5 pt-3 group-hover:text-green-600 transition-colors duration-300">
                   {cat.label}
                 </p>
               </div>

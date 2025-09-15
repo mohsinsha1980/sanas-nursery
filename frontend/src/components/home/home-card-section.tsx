@@ -1,10 +1,8 @@
-import React from "react";
-import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { HomeCard, HomeCards } from "@/lib/types/public-types";
-import { getPicURL } from "@/lib/helper";
-import Link from "next/link";
 import { defultHomeData } from "@/lib/constants";
+import { getPicURL } from "@/lib/helper";
+import { HomeCard, HomeCards } from "@/lib/types/public-types";
+import Image from "next/image";
+import Link from "next/link";
 
 interface HomeCardsSectionProps {
   cards: HomeCards;
@@ -67,16 +65,14 @@ export default function HomeCardsSection({ cards }: HomeCardsSectionProps) {
                 </p>
 
                 <Link href={card.link.address}>
-                  <Button
-                    variant="outline"
-                    size="lg"
+                  <button
+                    className={`cursor-pointer w-[140px] h-[46px] rounded-lg bg-white font-semibold shadow-md transition-all duration-300   hover:shadow-lg`}
                     style={{
-                      color: card.link.color,
-                      borderColor: card.link.color,
+                      color: card.link.color || "#F37521",
                     }}
                   >
                     {card.link.label}
-                  </Button>
+                  </button>
                 </Link>
               </div>
             </div>

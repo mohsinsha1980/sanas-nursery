@@ -142,7 +142,10 @@
 
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
-  --header-height: 90px;
+  --header-height: 80px;
+  --header-height-sm: 90px;
+  --header-height-md: 100px;
+  --header-height-lg: 90px;
 }
 
 @theme inline {
@@ -503,6 +506,22 @@ footer {
   .main_header {
     padding: var(--spacing-sm) var(--spacing-3xl);
     border-radius: var(--radius);
+  }
+  
+  :root {
+    --header-height: var(--header-height-sm);
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --header-height: var(--header-height-lg);
+  }
+}
+
+@media (min-width: 1280px) {
+  :root {
+    --header-height: var(--header-height-md);
   }
 }
 

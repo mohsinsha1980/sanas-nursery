@@ -10,7 +10,6 @@ export default function GreenChoices({ plants }: GreenChoicesProps) {
   return (
     <section className="w-full bg-white flex justify-center items-center lg:pt-30 lg:pb-30 md:pt-20 md:pb-20 pt-10 pb-10 ">
       <div className="lg:max-w-[1200px] w-full">
-        {/* Heading */}
         <div className="text-center lg:mb-12 mb-8 ">
           <h2 className="lg:text-[42px] md:text-[36px] text-[28px] font-semibold text-center">
             Your <span style={{ color: "rgba(0,97,31,1)" }}>Green</span> Choices
@@ -20,7 +19,7 @@ export default function GreenChoices({ plants }: GreenChoicesProps) {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:gap-x-6 gap-x-3 lg:gap-y-12 gap-y-5 justify-items-center px-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:gap-x-6 gap-x-3 lg:gap-y-12 gap-y-5 justify-items-center sm:px-4">
           {plants.map((plant: GreenChoicePlant) => (
             <PlantCard plant={plant} key={plant._id} />
           ))}

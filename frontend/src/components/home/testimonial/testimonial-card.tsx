@@ -10,7 +10,6 @@ const TestimonialCard = ({
   item: Testimonial;
   isMobile?: boolean;
 }) => {
-  // Unified design for both mobile and desktop
   return (
     <div
       className={`px-4 ${
@@ -19,18 +18,22 @@ const TestimonialCard = ({
     >
       <div
         key={item._id}
-        className="relative rounded-lg bg-[#4CBA9B] lg:px-8 md:px-6 px-5 lg:py-14 md:py-10 py-6 text-white flex flex-col h-full min-h-[300px]"
+        className="relative rounded-lg bg-[#4CBA9B] lg:px-8 md:px-6 px-5 lg:py-14 md:py-10 py-6 text-white flex flex-col h-full min-h-[300px] group"
       >
-        {/* Decorative quote icon at top */}
         <div className="absolute top-4 right-4 opacity-20">
-          <Quote size={40} className="text-white" />
+          <Quote
+            size={40}
+            className="text-white group-hover:text-green-700 transition-colors duration-300"
+          />
         </div>
 
-        {/* Header with author and rating */}
         <div className="flex justify-between items-start lg:mb-8 md:mb-6 mb-5 relative z-10">
           <div className="flex items-center gap-3">
             <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
-              <Quote size={20} className="text-white" />
+              <Quote
+                size={20}
+                className="text-white group-hover:text-green-700 transition-colors duration-300"
+              />
             </div>
             <div>
               <span className="lg:font-bold lg:text-[24px] md:text-[20px] text-[18px] block">
@@ -56,13 +59,11 @@ const TestimonialCard = ({
           </div>
         </div>
 
-        {/* Content area with proper spacing */}
         <div className="flex-1 flex flex-col">
           <p className="lg:text-[20px] md:text-[18px] text-[16px] leading-relaxed mb-4 break-words flex-1">
             {item.content}
           </p>
 
-          {/* Website link */}
           {item.link && (
             <div className="relative z-10 mt-4">
               <Link
@@ -71,7 +72,7 @@ const TestimonialCard = ({
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-white lg:text-[18px] md:text-[16px] text-[14px] font-medium transition-all duration-200 hover:underline"
               >
-                <span>Visit Website</span>
+                <span>Visit</span>
                 <svg
                   width="16"
                   height="16"

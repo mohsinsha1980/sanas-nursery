@@ -59,7 +59,7 @@ const Contact = () => {
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
-        <div className="lg:w-[100%] lg:h-[870px] md:w-[100%] md:h-[1100px] w-[100%] h-[920px] flex justify-center items-center bg-[#E4FFF0]   ">
+        <div className="lg:w-[100%] lg:h-[870px] md:w-[100%] md:h-[1100px] w-[100%] h-[920px] flex justify-center items-center bg-[#E4FFF0] ">
           <div className="contact-form lg:w-[61%] flex justify-center items-center bg-white rounded-xl">
             <div className="contact-form-innerdiv lg:w-[60%] lg:h-auto md:w-[80%] w-[95%]  lg:gap-y-0 gap-y-10 flex lg:flex-row flex-col justify-between items-center absolute z-10 bg-white p-2 md:p-3 lg:px-3 rounded-xl     ">
               <div className="contact-form-left-div lg:w-[45%] lg:h-[600px] md:w-full w-full flex lg:justify-center lg:items-center md:justify-center justify-start items-start bg-[#4CBA9B] px-4 lg:px-0 py-4 lg:py-0 rounded-xl   ">
@@ -91,7 +91,7 @@ const Contact = () => {
                       </p>
                     </div>
 
-                    <div className="hover:rounded-lg p-2 flex items-start lg:gap-x-5 gap-3 group hover:bg-gray-500/20 transition-all duration-300 cursor-pointer">
+                    <div className="hover:rounded-lg p-2 flex items-start lg:gap-x-5 gap-3 group hover:bg-gray-500/20 transition-all duration-300 ">
                       <MapPin className="lg:text-[22px] md:h-14 md:w-14 h-12 w-12 group-hover:text-[#0d6536]" />
                       <p className="lg:text-[20px] md:text-[20px] text-[16px] lg:font-semibold group-hover:text-[#0d6536]">
                         {SITE_DATA.LOCATION}
@@ -133,7 +133,6 @@ const Contact = () => {
                     </p>
                     <input
                       type="text"
-                      {...register("phone")}
                       {...register("phone")}
                       style={{
                         WebkitBoxShadow: "0 0 0 1000px white inset",

@@ -163,7 +163,7 @@ export const getUserWishlist = async (req, res, next) => {
     }
 
     const wishlist = await Wishlist.find({ userId })
-      .populate("plantId", "_id title slug picture")
+      .populate("plantId", "_id title slug pictures category")
       .lean();
 
     const formattedWishlist = wishlist.map((item) => ({
@@ -171,6 +171,8 @@ export const getUserWishlist = async (req, res, next) => {
       title: item.plantId?.title || "",
       slug: item.plantId?.slug || "",
       picture: item.plantId?.pictures[0] || "",
+      category: item.plantId?.category,
+      plantId: item.plantId?._id,
     }));
 
     req.successResponse = {

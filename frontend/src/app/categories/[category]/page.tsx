@@ -15,6 +15,7 @@ import {
   PlantsCardType,
 } from "@/lib/types/common-types";
 import { Metadata } from "next";
+import Link from "next/link";
 import { Suspense } from "react";
 
 export async function generateMetadata({
@@ -54,7 +55,6 @@ async function fetchPlants(
   const catProdData = await response.json();
   return catProdData;
 }
-
 
 export default async function CollectionPage({
   params,
@@ -111,7 +111,7 @@ export default async function CollectionPage({
               className="h-full w-full flex lg:flex-row flex-col justify-between gap-y-10   "
             >
               <div className="">
-                <CategoryFilter category={category}/>
+                <CategoryFilter category={category} />
               </div>
 
               <div
@@ -124,7 +124,39 @@ export default async function CollectionPage({
                       <PlantCard key={plant.id} data={plant} />
                     ))
                   ) : (
-                    <p>No plants found in this category.</p>
+                    <div className="col-span-2 lg:col-span-4 flex flex-col items-center justify-center py-16 px-4">
+                      <div className="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mb-6">
+                        <svg
+                          className="w-12 h-12 text-gray-400"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={1.5}
+                            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+                          />
+                        </svg>
+                      </div>
+                      <h3 className="text-2xl font-semibold text-gray-800 mb-3">
+                        No Plants Found
+                      </h3>
+                      <p className="text-gray-600 text-center max-w-md mb-6">
+                        We couldn&apos;t find any plants in this category at the
+                        moment. Try adjusting your filters or check back later
+                        for new additions.
+                      </p>
+                      <div className="flex flex-col sm:flex-row gap-3">
+                        <Link
+                          href="/"
+                          className="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors duration-200 font-medium text-center"
+                        >
+                          Go to Home
+                        </Link>
+                      </div>
+                    </div>
                   )}
                 </div>
                 {updatedPlants.length &&

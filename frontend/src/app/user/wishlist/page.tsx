@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { getUserWishlist, removeFromWishlist } from "@/lib/api-routes/api-user";
 import {
   getErrorMessage,
+  getPicURL,
   showErrorToast,
   showSuccessToast,
 } from "@/lib/helper";
@@ -51,7 +52,7 @@ export default function WishlistPage() {
       dispatch(showLoader());
       await removeFromWishlist(id);
       showSuccessToast("Item removed from wishlist");
-      setWishlist((prev) => prev.filter((item) => item._id !== id));
+      setWishlist((prev) => prev.filter((item) => item.plantId !== id));
     } catch (error: unknown) {
       showErrorToast(getErrorMessage(error as AxiosError));
     } finally {
@@ -102,7 +103,7 @@ export default function WishlistPage() {
             >
               <div className="w-full max-w-[200px] sm:max-w-[220px] md:max-w-[240px] lg:max-w-[250px] aspect-[3/4] rounded-lg overflow-hidden transition-transform duration-300 hover:scale-105 relative">
                 <button
-                  onClick={() => handleRemove(plant._id)}
+                  onClick={() => handleRemove(plant.plantId)}
                   className="absolute top-2 right-2 z-20 bg-white/90 hover:bg-white text-red-600 rounded-full p-1.5 shadow-md transition-all duration-200 hover:scale-110"
                 >
                   <X className="w-3 h-3 sm:w-4 sm:h-4" />
@@ -110,16 +111,17 @@ export default function WishlistPage() {
 
                 <div className="relative w-full h-full">
                   <Image
-                    src={plant.picture || "/images/placeholder-plant.jpg"}
+                    src={getPicURL(plant.picture)}
                     alt={plant.title}
                     fill
                     className="object-cover rounded-lg"
                     sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 20vw"
                   />
 
-                  {/* Overlay + See Details Button */}
                   <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg flex items-center justify-center">
-                    <Link href={`/plants/${plant._id}`}>
+                    <Link
+                      href={`/categories/${plant.category}/${plant.slug}/${plant.plantId}`}
+                    >
                       <Button
                         variant="orange"
                         size="sm"

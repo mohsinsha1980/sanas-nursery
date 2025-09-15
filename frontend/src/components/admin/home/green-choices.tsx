@@ -110,7 +110,7 @@ const GreenChoices = ({ data }: { data: HomeGreenPlantType[] }) => {
         {greenChoicesPlants.length === 0 ? (
           <p className="text-muted-foreground">No green choices added yet.</p>
         ) : (
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-x-6 gap-y-12 justify-items-center">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-x-6 gap-y-12 justify-items-center">
             {greenChoicesPlants.map((plant) => (
               <div
                 key={plant._id}

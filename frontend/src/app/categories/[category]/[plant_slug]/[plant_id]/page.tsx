@@ -97,7 +97,7 @@ export default async function ProductDetailsPageByID({
 
             {plant.details && (
               <div
-                className="text-[18px] font-medium leading-relaxed text-start "
+                className="leading-relaxed text-start "
                 dangerouslySetInnerHTML={{ __html: plant.details }}
               />
             )}
@@ -105,18 +105,16 @@ export default async function ProductDetailsPageByID({
             {plant.specifications?.length > 0 && (
               <div className="">
                 <table className="w-full border-separate border-spacing-y-2">
-                  {/* Table Body */}
                   <tbody>
                     {plant.specifications.map((spec, index) => (
                       <tr key={spec.label + index} className="">
-                        {/* Label Column */}
-                        <td className="text-[18px] py-2 px-3 font-medium text-gray-800 border-r border-gray-900">
+                        <td className="relative text-[18px] py-2 px-3 font-medium text-gray-800">
                           {spec.label}
+                          <span className="absolute right-0 top-1/2 -translate-y-1/2 h-[30%] w-px bg-gray-600"></span>
                         </td>
 
-                        {/* Value Column */}
                         <td className="text-[18px] py-2 px-3 font-medium text-gray-800">
-                           {spec.value}
+                          {spec.value}
                         </td>
                       </tr>
                     ))}
@@ -137,7 +135,7 @@ export default async function ProductDetailsPageByID({
       {similarPlants.length > 0 && (
         <section className="lg:pt-30 lg:pb-30 md:pt-20 md:pb-20 pt-10 pb-10 bg-orange-50 ">
           <div className="container mx-auto px-4 ">
-            <h2 className="lg:text-[42px] md:text-[36px] text-[28px] font-semibold text-center mb-10 ">
+            <h2 className="lg:text-[38px] text-[28px] font-semibold text-center mb-10 ">
               Similar <span className="text-[#00611F]">Plant</span> You Might
               Like
             </h2>

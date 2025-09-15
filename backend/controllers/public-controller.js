@@ -447,7 +447,7 @@ export const getPublicHomeData = async (req, res, next) => {
       status: STATUS.ACTIVE,
       "tags.value": BEST_SELLING_TAG,
     })
-      .select("_id title plantId category pictures")
+      .select("_id title plantId category pictures slug")
       .limit(BEST_SELLING_PLANTS_LIMIT)
       .sort({ createdAt: -1 })
       .lean();
@@ -480,7 +480,7 @@ export const getPublicHomeData = async (req, res, next) => {
       testimonials: testimonials || [],
       bestSellingPlants: bestSellingPlants || [],
     };
-
+    
     req.successResponse = {
       message: "Home data retrieved successfully",
       data: responseData,
