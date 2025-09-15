@@ -21,7 +21,7 @@ export default function HomeBanner() {
           className="h-full w-full object-cover"
         />
         <div
-          className="z-1 absolute bg-white/50 bg-opacity-50 p-8 rounded-lg lg:bg-transparent
+          className="z-1 absolute bg-white/80 backdrop-blur-sm bg-opacity-50 p-8 rounded-lg lg:bg-transparent
         lg:w-[711px] lg:h-[385px] lg:t op-[50%] lg:left-[28%] lg:space-y-4
         md:w-[500px] md:h-fit md:top-1/2 md:left-[40%] md:-translate-y-1/2 md:space-y-6 md:items-start
         w-[90%] h-fit top-[50%] -translate-y-1/2 left-1/2 -translate-x-1/2 space-y-5 flex flex-col justify-center items-center 

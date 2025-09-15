@@ -247,25 +247,16 @@ footer {
   justify-content: space-between;
 }
 
-
-
 .main_header nav ul li a {
   font-size: 20px;
   font-weight: 500;
   line-height: 30px;
   color: black;
   display: inline-block;
-  position: relative;
-  transition: all 0.3s ease-in-out;
+  transition: color 0.3s ease-in-out;
 }
 
-.main_header nav ul li .dropdown-link {
-  text-decoration: none !important;
-  color: var(--txt-orange);
-}
-
-.main_header nav ul li .dropdown-link:hover {
-  text-decoration: none !important;
+.main_header nav ul li a:hover {
   color: var(--txt-orange);
 }
 
@@ -273,54 +264,29 @@ footer {
   color: var(--txt-orange);
 }
 
-.main_header nav ul li a::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: 0px;
-  width: 0;
-  height: 2px;
-  background-color: transparent;
-  transition: all 0.3s ease-in-out;
+.main_header nav ul li .dropdown-link {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  text-decoration: none !important;
+  color: black; /* keep black by default */
+  transition: color 0.3s ease-in-out;
 }
 
-.main_header nav ul li a:hover {
+.main_header nav ul li .dropdown-link:hover {
+  text-decoration: none !important;
   color: var(--txt-orange);
 }
 
-.main_header nav ul li a:hover::after {
-  background-color: var(--txt-orange);
-  width: 100%;
-  left: 0;
-}
-
-.main_header nav ul li .dropdown-link::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  width: 0;
-  height: 2px;
-  background-color: transparent;
-  transition: all 0.3s ease-in-out;
-}
-
-.main_header nav ul li .dropdown-link:hover::after {
-  background-color: var(--txt-orange);
-  /* underline color for dropdown */
-  width: 100%;
-}
-
-.main_header nav ul li a.active::after {
-  background-color: var(--txt-orange);
-  width: 100%;
-  left: 0;
+.main_header nav ul li .dropdown-link.active {
+  color: var(--txt-orange);
 }
 
 .main_header .header-actions {
   display: flex;
   gap: 20px;
 }
+
 
 
 

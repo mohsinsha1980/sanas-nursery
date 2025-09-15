@@ -44,18 +44,18 @@ const SubscribeEmail = () => {
   };
 
   return (
-    <div className="mt-2 input-div h-fit w-fit  p-0.5 bg-white  flex flex-row justify-between lg:rounded-xl md:rounded-xl rounded-[5px] ">
+    <div className="mt-2 input-div h-fit w-fit  p-0.5 bg-white  flex flex-row justify-between items-center lg:rounded-xl md:rounded-xl rounded-[5px] ">
       <input
         type="email"
         placeholder="Enter Email Address"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        className="lg:w-[260px] md:w-[180px] w-[160px] lg:pl-5 md:pl-2 px-2 outline-none text-black rounded-lg"
+        className="lg:w-[260px] md:w-[180px] w-[252px] lg:pl-5 md:pl-2 lg:px-0 px-2 lg:py-0 py-2 outline-none text-black rounded-lg"
       />
       <button
         type="button"
         onClick={handleSubscribe}
-        className={`cursor-pointer lg:h-[45px] px-6 md:h-[35px] h-[30px] flex justify-center items-center lg:rounded-xl md:rounded-xl rounded-[5px] text-[#FFFFFF] lg:text-[20px] transition-colors duration-300 ${
+        className={`cursor-pointer lg:h-[45px] px-6 md:h-[35px] h-[38px] flex justify-center items-center lg:rounded-lg md:rounded-lg rounded-[5px] text-[#FFFFFF] lg:text-[20px] transition-colors duration-300 ${
           isSubscribed ? "bg-green-600" : "bg-[#F37521] hover:bg-[#d4631c]"
         }`}
       >

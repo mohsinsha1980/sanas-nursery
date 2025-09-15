@@ -15,7 +15,7 @@ const BestSellProdCards = ({ plants }: { plants: BestSellingPlant[] }) => {
           </p>
         </div>
 
-        <div className="slider-container relative flex items-center justify-center">
+        <div className="slider-container relative flex items-center justify-center ">
           <div
             className={`slider-content relative w-full flex items-center justify-center gap-8 `}
           >

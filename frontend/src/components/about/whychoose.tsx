@@ -1,41 +1,10 @@
 "use client";
-import { ABOUT } from "@/assets";
+import { data } from "@/lib/constants";
 import Image from "next/image";
 import React, { useState } from "react";
 
 const WhyChoose = () => {
-  const data = [
-    {
-      img: ABOUT.QUALITY_ASSURANCE,
-      imgonhover: ABOUT.QUALITY_ASSURANCE_HOVER,
-      title: "Quality Assurance",
-      desc: "Healthy plants with expert care and rigorous quality standards",
-    },
-    {
-      img: ABOUT.WIDE_VARIETY,
-      imgonhover: ABOUT.WIDE_VARIETY_HOVER,
-      title: "Wide Variety",
-      desc: "Extensive selection of plants for every space and preference",
-    },
-    {
-      img: ABOUT.AFFORDABLE_PRICES,
-      imgonhover: ABOUT.AFFORDABLE_PRICES_HOVER,
-      title: "Affordable Prices",
-      desc: "Competitive pricing without compromising on quality",
-    },
-    {
-      img: ABOUT.ECO_FRIENDLY,
-      imgonhover: ABOUT.AFFORDABLE_PRICES,
-      title: "Eco-Friendly",
-      desc: "Sustainable growing methods and environmentally conscious practices",
-    },
-    {
-      img: ABOUT.LOCAL_TRUST,
-      imgonhover: ABOUT.LOCAL_TRUST_HOVER,
-      title: "Local Trust",
-      desc: "Strong community relationships and trusted local expertise",
-    },
-  ];
+
 
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 

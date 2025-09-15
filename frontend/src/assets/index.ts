@@ -33,13 +33,13 @@ export const CATEGORIES_IMG = {
 
 export const HOME_GALLERY = {
   G1: "/images/home/gallery/sanas-nursery-plant-gallery-showcase-beautiful-healthy-plants-and-trees-collection.webp",
-  G2: "/images/home/gallery/sanas-nursery-plant-varieties-gallery.webp",
-  G3: "/images/home/gallery/sanas-nursery-wholesale-plants-showcase.webp",
+  G2: "/images/home/gallery/sanas-nursery-plant-varieties-gallery-diverse-collection-of-flowering-plants-and-trees.webp",
+  G3: "/images/home/gallery/sanas-nursery-wholesale-plants-showcase-premium-quality-plants-for-landscaping.webp",
 };
 
 export const CARDS = {
-  C1: "/images/home/collection/sanas-nursery-summer-plants-collection.webp",
-  C2: "/images/home/collection/sanas-nursery-monsoon-plants-collection.webp",
+  C1: "/images/home/collection/collecton-banner1.webp",
+  C2: "/images/home/collection/sanas-nursery-monsoon-special-green-plants-collection-fresh-lush-plants-for-rainy-season.webp",
 };
 
 export const ABOUT = {
@@ -54,7 +54,7 @@ export const ABOUT = {
   WIDE_VARIETY_HOVER:
     "/images/about/sanas-nursery-wide-plant-variety-hover-icon.png",
   AFFORDABLE_PRICES:
-    "/images/about/sanas-nursery-affordable-plant-prices-icon.png",
+    "/images/about/sanas-nursery-affordable-prices.png",
   AFFORDABLE_PRICES_HOVER:
     "/images/about/sanas-nursery-affordable-plant-prices-hover-icon.png",
   ECO_FRIENDLY:
