@@ -433,7 +433,7 @@ export const getPublicHomeData = async (req, res, next) => {
     const homeData = await Home.findOne({})
       .populate({
         path: "greenChoices",
-        select: "_id title plantId category pictures",
+        select: "_id title plantId slug category pictures",
         match: { status: STATUS.ACTIVE },
       })
       .lean();

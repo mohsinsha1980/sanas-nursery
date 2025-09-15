@@ -1,5 +1,7 @@
 import Image from "next/image";
 import React from "react";
+import { Button } from "../ui/button";
+import Link from "next/link";
 
 const Hero = () => {
   return (
@@ -9,7 +11,7 @@ const Hero = () => {
         height={1500}
         width={1500}
         alt=""
-        className="h-screen w-full"
+        className="h-screen w-full object-cover object-center"
       />
       <div
         className="z-1 absolute bg-white/50 bg-opacity-50 p-8 rounded-lg lg:bg-transparent
@@ -21,8 +23,12 @@ const Hero = () => {
           We&apos;re Just a Message Away!
         </h1>
         <p className="text-[#505050] lg:text-[20px] md:text-[20px] text-[18px] font-medium md:text-start text-center">
-          Have questions or want to stay updated? We&apos;d love to hear from you!
+          Have questions or want to stay updated? We&apos;d love to hear from
+          you!
         </p>
+        <Button variant={"orange"} type="button" size="lg">
+          <Link href="#contact-form">Let&apos;s Connect</Link>
+        </Button>
       </div>
     </div>
   );

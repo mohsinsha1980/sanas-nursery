@@ -132,7 +132,7 @@ export const signin = async (req, res, next) => {
     if (!foundUser.isVerified) {
       return next({
         status: 400,
-        message: "User is not verified, Please register again.",
+        message: "User is not verified, Please check email or register again.",
       });
     }
 
