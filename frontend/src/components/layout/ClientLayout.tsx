@@ -32,14 +32,10 @@ const ClientLayout: React.FC<ClientLayoutProps> = ({ children }) => {
       {!isInitialLoading ? (
         <main className="flex-grow">{children}</main>
       ) : (
-        <PageLoader message="Welcome to Sanas Nursery" showLogo={true} />
+        <PageLoader />
       )}
       <MainFooter />
-      {isInitialLoading ? (
-        <PageLoader message="Welcome to Sanas Nursery" showLogo={true} />
-      ) : (
-        <WhatsappBadge />
-      )}
+      {isInitialLoading ? <PageLoader /> : <WhatsappBadge />}
       <Loader />
     </div>
   );

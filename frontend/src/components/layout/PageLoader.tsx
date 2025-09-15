@@ -1,15 +1,7 @@
 "use client";
 import React from "react";
 
-interface PageLoaderProps {
-  message?: string;
-  showLogo?: boolean;
-}
-
-const PageLoader: React.FC<PageLoaderProps> = ({
-  message = "Loading...",
-  showLogo = true,
-}) => {
+const PageLoader = () => {
   return (
     <div className="fixed inset-0 bg-gradient-to-br from-[#E4FFF0] via-white to-[#F0FDF4] z-50 flex items-center justify-center overflow-hidden">
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen w-full max-w-lg mx-auto px-6">

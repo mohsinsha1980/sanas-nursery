@@ -32,7 +32,7 @@ export default function AdminLayout({
   }, [pathname, router, user]);
 
   if (isLoading) {
-    return <PageLoader message="Loading Admin Panel..." showLogo={true} />;
+    return <PageLoader />;
   }
 
   return (

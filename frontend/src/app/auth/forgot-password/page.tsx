@@ -54,9 +54,7 @@ export default function ForgotPasswordPage() {
         backgroundImage: "url('/site/auth/auth-banner.webp')",
       }}
     >
-      <div
-        className="absolute lg:w-full w-[96%] max-w-[600px] top-[50%] -translate-y-1/2  bg-white/80 backdrop-blur-md shadow-lg rounded-2xl flex justify-center items-center lg:p-15 p-10"
-      >
+      <div className="absolute lg:w-full w-[96%] max-w-[600px] top-[50%] -translate-y-1/2  bg-white/80 backdrop-blur-md shadow-lg rounded-2xl flex justify-center items-center lg:p-10 p-5">
         <div className="flex flex-col w-full" style={{ maxWidth: "500px" }}>
           <h1
             className="lg:text-[40px] text-[25px] font-semibold text-gray-900 leading-13"
@@ -64,7 +62,10 @@ export default function ForgotPasswordPage() {
           >
             Forgot Password
           </h1>
-          <p className="lg:text-[20px] text-[16px] text-gray-600 mt-4" style={{ fontSize: "18px" }}>
+          <p
+            className="lg:text-[16px] text-[16px] text-gray-600 mt-1"
+            style={{ fontSize: "18px" }}
+          >
             Enter your email to receive password reset instructions.
           </p>
 
@@ -77,17 +78,18 @@ export default function ForgotPasswordPage() {
                 name="email"
                 placeholder="Enter Email"
                 label="Email"
-                labelClassName="text-[18px] font-semibold"
+                labelClassName="text-[16px] font-medium"
                 inputType="email"
                 formControl={form.control}
-                className="rounded-md border border-gray-800 px-3 text-black bg-white"
+                className="rounded-md border border-gray-400 px-3 text-black bg-white"
               />
 
               <Button
                 type="submit"
                 variant={"orange"}
-                className="text-lg font-medium text-white mt-2"
-                style={{ width: "100%", height: "48px" }}
+                size={"md"}
+                className="w-full lg:text-lg text-md  font-medium text-white sm:p-2"
+                style={{ width: "100%" }}
               >
                 Proceed
               </Button>

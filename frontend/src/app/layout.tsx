@@ -18,6 +18,9 @@ const catamaran = Catamaran({
 export const metadata: Metadata = {
   title: "Sanas Nursery",
   description: "One stop shop for all your nursery needs",
+  alternates: {
+    canonical: "https://sanasnursery.com/",
+  },
 };
 
 export default function RootLayout({

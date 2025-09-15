@@ -44,7 +44,7 @@ export default function UserLayout({ children }: UserLayoutProps) {
   }, [router, user]);
 
   if (isLoading) {
-    return <PageLoader message="Loading User Dashboard..." showLogo={true} />;
+    return <PageLoader />;
   }
 
   if (!isAuthenticated) {
