@@ -452,7 +452,6 @@ export const getPublicHomeData = async (req, res, next) => {
       .sort({ createdAt: -1 })
       .lean();
 
-    console.log("bestSellingPlants ", bestSellingPlants);
     if (!homeData) {
       const defaultHomeData = {
         greenChoices: [],

@@ -65,16 +65,20 @@ export default function HeaderActions() {
                 <DropdownMenuSeparator />
                 {user.role === ROLES.ADMIN ? (
                   <DropdownMenuItem asChild>
-                    <Link href="/admin/dashboard" className="cursor-pointer hover:text-orange-500">
-                      <LayoutDashboard className="mr-2 h-4 w-4" />
-                      Dashboard
+                    <Link href="/admin/dashboard">
+                      <span className="flex items-center cursor-pointer hover:text-orange-500">
+                        <LayoutDashboard className="mr-2 h-4 w-4" />
+                        Dashboard
+                      </span>
                     </Link>
                   </DropdownMenuItem>
                 ) : (
                   <DropdownMenuItem asChild>
-                    <Link href="/user/profile" className="cursor-pointer">
-                      <UserIcon className="mr-2 h-4 w-4" />
-                      Profile
+                    <Link href="/user/profile">
+                      <span className="flex items-center cursor-pointer hover:text-orange-500">
+                        <UserIcon className="mr-2 h-4 w-4" />
+                        Profile
+                      </span>
                     </Link>
                   </DropdownMenuItem>
                 )}
@@ -83,7 +87,7 @@ export default function HeaderActions() {
                 <DropdownMenuItem
                   onClick={handleLogout}
                   disabled={isLoggingOut}
-                  className="cursor-pointer"
+                  className="cursor-pointer data-[highlighted]:text-orange-500"
                 >
                   <LogOut className="mr-2 h-4 w-4" />
                   {isLoggingOut ? "Logging out..." : "Logout"}

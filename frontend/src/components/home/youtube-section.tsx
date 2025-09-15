@@ -3,8 +3,8 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
-// Extract video ID from a YouTube URL
 function getYoutubeId(url: string): string | null {
   try {
     const parsed = new URL(url);
@@ -33,7 +33,6 @@ const YoutubeSection = ({ videos }: { videos: string[] }) => {
   return (
     <div className="w-full h-full lg:pt-30 lg:pb-30 md:pt-20 md:pb-20 pt-10 pb-10 flex justify-center">
       <div className="w-full max-w-[1370px] flex flex-col items-center px-4">
-        {/* Heading */}
         <div className="text-center mb-8 md:mb-10">
           <h2 className="lg:text-[42px] md:text-[36px] text-[28px] font-semibold text-center">
             See the <span className="text-green-700">Green</span> Experience
@@ -43,7 +42,6 @@ const YoutubeSection = ({ videos }: { videos: string[] }) => {
           </p>
         </div>
 
-        {/* Thumbnails */}
         <div className="flex flex-col md:flex-row gap-6 justify-center w-full">
           {videos.map((url, idx) => {
             const id = getYoutubeId(url);
@@ -85,8 +83,7 @@ const YoutubeSection = ({ videos }: { videos: string[] }) => {
           })}
         </div>
 
-        {/* CTA */}
-        <a
+        <Link
           href="https://www.youtube.com/@sanasNursery"
           target="_blank"
           rel="noopener noreferrer"
@@ -94,10 +91,9 @@ const YoutubeSection = ({ videos }: { videos: string[] }) => {
           <Button variant="orange" size="lg" className="lg:mt-10 md:mt-10 mt-5">
             View on YouTube
           </Button>
-        </a>
+        </Link>
       </div>
 
-      {/* Modal */}
       {openVideo && (
         <div
           className="fixed inset-0 bg-black/70 flex items-center justify-center z-50"

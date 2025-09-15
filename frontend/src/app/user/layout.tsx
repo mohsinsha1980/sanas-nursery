@@ -5,6 +5,8 @@ import { RootState } from "@/redux/store";
 import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
 import ErrorBoundary from "@/components/common/error-boundary";
+import PageLoader from "@/components/layout/PageLoader";
+import { ROLES } from "@/lib/constants";
 
 const UserSidebar = dynamic(
   () => import("@/components/user/layout/user-sidebar"),
@@ -29,24 +31,20 @@ export default function UserLayout({ children }: UserLayoutProps) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
-    if (!user || !user._id) {
+    if (user?._id) {
+      if (user.role !== ROLES.USER) {
+        router.push("/");
+      } else {
+        setIsAuthenticated(true);
+      }
+    } else {
       router.push("/auth/signin");
-      return;
     }
-
-    setIsAuthenticated(true);
     setIsLoading(false);
-  }, [user, router]);
+  }, [router, user]);
 
   if (isLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading...</p>
-        </div>
-      </div>
-    );
+    return <PageLoader message="Loading User Dashboard..." showLogo={true} />;
   }
 
   if (!isAuthenticated) {
@@ -71,7 +69,7 @@ export default function UserLayout({ children }: UserLayoutProps) {
         <div className="flex flex-col lg:flex-row">
           <UserSidebar />
           <div className="flex-1 gap-10">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8">
+            <div className="container mx-auto px-4 sm:px-4 lg:px-6 py-4 sm:py-6 lg:py-6">
               {children}
             </div>
           </div>
