@@ -81,7 +81,6 @@ const TestimonialsList = () => {
     return () => controller.abort();
   }, [confirmVal, idToDelete, dispatch]);
 
-  // Filter testimonials based on selected status
   const filteredTestimonials = testimonials.filter((testimonial) => {
     if (filterStatus === "all") return true;
     if (filterStatus === "active") return testimonial.status === STATUS.ACTIVE;
@@ -92,8 +91,7 @@ const TestimonialsList = () => {
 
   return (
     <>
-      {/* Filter Section */}
-      <div className="mb-6 p-4 bg-white rounded-lg shadow-sm border">
+      <div className="mb-6 p-4 bg-white rounded-lg shadow-sm border border-gray-300">
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-2">
             <Filter size={20} className="text-gray-600" />
@@ -138,7 +136,6 @@ const TestimonialsList = () => {
         </div>
       </div>
 
-      {/* Testimonials Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredTestimonials.map((item, idx) => (
           <div
@@ -187,7 +184,7 @@ const TestimonialsList = () => {
                   rel="noopener noreferrer"
                   className="text-[#4CB390] underline text-[14px] hover:text-[#00611F] hover:bg-[#E4FFF0] px-2 py-1 rounded transition-all duration-200"
                 >
-                  Visit Website
+                  Visit
                 </Link>
               )}
 

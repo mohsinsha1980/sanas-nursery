@@ -11,7 +11,6 @@ export default async function EditPlantPage({
 
   return (
     <>
-      
       <Suspense fallback={<Loading />}>
         <EditPlantForm plantId={plant} />
       </Suspense>

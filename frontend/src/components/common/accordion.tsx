@@ -45,7 +45,7 @@ export function ProductAccordion({
           >
             <div className="flex items-center">
               {/* Question with chevron icon at the right edge */}
-              <AccordionTrigger className="flex-1 text-[18px] font-semibold text-gray-800 hover:no-underline justify-between">
+              <AccordionTrigger className="flex-1 text-[18px] font-semibold text-gray-800 hover:no-underline justify-between py-2!">
                 {item.title}
               </AccordionTrigger>
 

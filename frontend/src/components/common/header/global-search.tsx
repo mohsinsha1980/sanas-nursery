@@ -1,5 +1,4 @@
 "use client";
-import { Button } from "@/components/ui/button";
 import {
   Command,
   CommandEmpty,
@@ -57,13 +56,9 @@ const GlobalSearch = ({ className }: { className?: string }) => {
     <div className="relative">
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild className={className ? `${className}` : ""}>
-          <Button
-            variant="outline"
-            role="combobox"
-            className={`justify-start gap-3 px-3 font-normal border-none p-1 shadow-none bg-transparent`}
-          >
-            <SearchIcon strokeWidth={2} className="!size-5" />
-          </Button>
+          <button className="cursor-pointer text-black">
+            <SearchIcon />
+          </button>
         </PopoverTrigger>
         <PopoverContent
           side="bottom"

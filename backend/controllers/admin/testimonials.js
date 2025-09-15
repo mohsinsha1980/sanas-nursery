@@ -25,7 +25,7 @@ export const createTestimonial = async (req, res, next) => {
       content,
       rating: numericRating,
       link,
-      status: status === STATUS.ACTIVE ? STATUS.ACTIVE : STATUS.INACTIVE,
+      status: status ? STATUS.ACTIVE : STATUS.INACTIVE,
     });
 
     req.successResponse = {

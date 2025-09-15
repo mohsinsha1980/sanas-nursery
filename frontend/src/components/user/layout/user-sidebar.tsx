@@ -98,10 +98,7 @@ export default function UserSidebar() {
        `}
         style={{ top: "0" }}
       >
-        <div
-          className="p-4 sm:p-6"
-          style={{paddingTop: "calc(var(--header-height) + 1rem)"}}
-        >
+        <div className="p-4 sm:p-6 pt-[calc(var(--header-height)+1rem)] ">
           <div className="mb-6 sm:mb-8">
             <div className="flex items-center space-x-3 mb-4">
               <Avatar className="h-10 w-10 sm:h-12 sm:w-12 flex-shrink-0">

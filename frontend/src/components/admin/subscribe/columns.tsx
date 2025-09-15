@@ -14,7 +14,7 @@ export const columns: ColumnDef<SubscriptionTableDataType>[] = [
           className="px-0 gap-0"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Email Id
+          Email ID
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       );
@@ -30,17 +30,13 @@ export const columns: ColumnDef<SubscriptionTableDataType>[] = [
           className="px-0 gap-0"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Created Date
+          Subscribed Date
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       );
     },
     cell: ({ row }) => {
-      return (
-        <div className="p-2">
-            {row.getValue("createdDate")}
-        </div>
-      );
+      return <div className="p-2">{row.getValue("createdDate")}</div>;
     },
   },
 ];

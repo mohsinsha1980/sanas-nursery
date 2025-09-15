@@ -12,7 +12,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { deleteMasterRecord } from "@/lib/api-routes/api-admin";
-import { MASTER_DATA_TYPE, PAGINATION } from "@/lib/constants";
+import { MASTER_DATA_TYPE, MASTERDATA_PER_PAGE } from "@/lib/constants";
 import {
   getErrorMessage,
   getPaginatedMasterData,
@@ -53,10 +53,10 @@ export default function BlogTagsField({ data }: Props) {
       page &&
       blogTagData &&
       blogTagData.length &&
-      blogTagData.length > PAGINATION.PER_PAGE
+      blogTagData.length > MASTERDATA_PER_PAGE
     ) {
       setBlogTags(
-        getPaginatedMasterData(blogTagData, page, PAGINATION.PER_PAGE)
+        getPaginatedMasterData(blogTagData, page, MASTERDATA_PER_PAGE)
       );
     } else {
       setBlogTags(blogTagData);
@@ -202,7 +202,7 @@ export default function BlogTagsField({ data }: Props) {
 
       <CustomPagination
         total={blogTagData.length}
-        perPage={PAGINATION.PER_PAGE}
+        perPage={MASTERDATA_PER_PAGE}
         pageChange={setPage}
       />
 

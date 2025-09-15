@@ -52,6 +52,7 @@ export default async function Home() {
       {homeData.testimonials.length > 0 && (
         <Testimonials testimonials={homeData.testimonials} />
       )}
+
       <YoutubeSection videos={homeData.videos} />
       <Contact />
     </>

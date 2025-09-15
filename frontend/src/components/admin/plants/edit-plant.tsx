@@ -158,6 +158,8 @@ export default function EditPlantForm({ plantId }: EditPlantProps) {
     }
   };
 
+  console.log("previews", previews)
+
   const processPictures = (pictures: FileList) => {
     const objects = [];
     if (pictures?.length) {

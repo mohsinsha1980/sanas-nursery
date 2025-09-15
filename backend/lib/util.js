@@ -134,18 +134,24 @@ export const formatUserData = (user) =>
     role: user.role,
   });
 
-export const generateSlug = (nameValue) => {
-  return nameValue.trim().toLowerCase().replace(/\s+/g, "-");
+export const generateSlug = (title) => {
+  return title
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g, "-")
+    .replace(/[^a-z0-9-]/g, "");
 };
 
 export const invalidSlug = (slug) => {
-  if (slug.length < 3) {
+  const normalizedSlug = generateSlug(slug);
+
+  if (normalizedSlug.length < 3) {
     return "Slug must be at least 3 characters";
   }
-  if (slug.length > 50) {
-    return "Slug must not exceed 50 characters";
+  if (normalizedSlug.length > 100) {
+    return "Slug must not exceed 100 characters";
   }
-  if (!slugRegEx.test(slug)) {
+  if (!slugRegEx.test(normalizedSlug)) {
     return "Slug can only contain lowercase letters, numbers, and hyphens";
   }
 

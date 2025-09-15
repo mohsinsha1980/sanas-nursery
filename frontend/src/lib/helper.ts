@@ -28,7 +28,7 @@ export const nameRegEx = /^[A-Za-z\s]+$/;
 export const phoneRegEx = /^[6-9]\d{9}$/;
 export const emailRegEx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 export const zipRegEx = /^[1-9]{1}\d{2}\s?\d{3}$/;
-export const slugRegEx = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+export const slugRegEx = /^[a-z0-9-]+$/;
 
 export const WEEK_DAYS = [
   "Sunday",
@@ -338,10 +338,6 @@ export const decryptData = (encryptedData: string) => {
   }
 };
 
-export const generateSlug = (nameValue: string) => {
-  return nameValue.trim().toLowerCase().replace(/\s+/g, "-");
-};
-
 export function getFaqAccrItems(faqs: AddPlantFields["faqs"]) {
   return faqs.map((faq, index) => ({
     id: `faq-${index + 1}`,
@@ -466,4 +462,28 @@ export const toCamelCase = (str: string) => {
     .toLowerCase()
     .replace(/[-_]/g, " ")
     .replace(/\b\w/g, (char) => char.toUpperCase());
+};
+
+export const generateSlug = (title: string) => {
+  return title
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g, "-")
+    .replace(/[^a-z0-9-]/g, "");
+};
+
+export const invalidSlug = (slug: string) => {
+  const normalizedSlug = generateSlug(slug);
+
+  if (normalizedSlug.length < 3) {
+    return "Slug must be at least 3 characters";
+  }
+  if (normalizedSlug.length > 100) {
+    return "Slug must not exceed 100 characters";
+  }
+  if (!slugRegEx.test(normalizedSlug)) {
+    return "Slug can only contain lowercase letters, numbers, and hyphens";
+  }
+
+  return false;
 };
