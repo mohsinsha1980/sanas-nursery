@@ -1,4 +1,4 @@
-import { CARDS, CATEGORIES_IMG, HERO, HOME_GALLERY, SITE } from "@/assets";
+import { ABOUT, CARDS, CATEGORIES_IMG, HERO, HOME_GALLERY, SITE } from "@/assets";
 
 export const PLANTS_PER_PAGE = 20;
 export const BLOGS_PER_PAGE = 20;
@@ -303,3 +303,38 @@ export const ENQUIRY_STATUS = {
 
 export type EnquiryStatusType =
   (typeof ENQUIRY_STATUS)[keyof typeof ENQUIRY_STATUS];
+
+
+export const data = [
+      {
+        img: ABOUT.LOCAL_TRUST_HOVER,
+        imgonhover: ABOUT.LOCAL_TRUST,
+        title: "Quality Assurance",
+        desc: "Healthy plants with expert care and rigorous quality standards",
+      },
+      {
+        img: ABOUT.WIDE_VARIETY_HOVER,
+        imgonhover: ABOUT.WIDE_VARIETY,
+        title: "Wide Variety",
+        desc: "Extensive selection of plants for every space and preference",
+      },
+      {
+        img: ABOUT.AFFORDABLE_PRICES_HOVER,
+        imgonhover: ABOUT.AFFORDABLE_PRICES,
+        title: "Affordable Prices",
+        desc: "Competitive pricing without compromising on quality",
+      },
+      {
+        img: ABOUT.ECO_FRIENDLY,
+        imgonhover: ABOUT.ECO_FRIENDLY_HOVER,
+        title: "Eco-Friendly",
+        desc: "Sustainable growing methods and environmentally conscious practices",
+      },
+      {
+        img: ABOUT.LOCAL_TRUST_HOVER,
+        imgonhover: ABOUT.LOCAL_TRUST,
+        title: "Local Trust",
+        desc: "Strong community relationships and trusted local expertise",
+      },
+    ];
+

@@ -24,7 +24,7 @@ export default function ProductListItemPics({ pics }: { pics: string[] }) {
   return (
     <>
       <div
-        className="bl__slider"
+        className="bl__slider "
         ref={emblaRef}
         onMouseOver={() => onHover()}
         onMouseOut={() => onHover()}
@@ -37,7 +37,7 @@ export default function ProductListItemPics({ pics }: { pics: string[] }) {
                 width={260}
                 height={325}
                 alt=""
-                className="rounded-lg lg:w-full lg:h-full"
+                className="rounded-lg w-full lg:h-full"
               />
             </div>
           ))}

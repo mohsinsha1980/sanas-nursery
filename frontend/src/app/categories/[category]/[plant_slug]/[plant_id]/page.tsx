@@ -84,7 +84,7 @@ export default async function ProductDetailsPageByID({
 
           <div className="space-y-5 flex flex-col lg:justify-start justify-between items-start ">
             <div>
-              <h1 className="text-[40px] font-bold text-[#0D6536] lg:text-start text-center">
+              <h1 className="lg:text-[40px] text-[30px] font-bold text-[#0D6536] lg:text-start text-center">
                 {plant.title}
               </h1>
             </div>
@@ -150,7 +150,7 @@ export default async function ProductDetailsPageByID({
                 >
                   <div className="relative cursor-pointer transition-transform duration-300 hover:scale-105 overflow-hidden group  ">
                     {/* Image */}
-                    <div className="relative lg:w-[90%] w-[80%] lg:h-[400px] h-[300px] mx-auto ">
+                    <div className="relative lg:w-[90%] w-[65%] lg:h-[400px] h-[300px] mx-auto ">
                       <Image
                         src={getPicURL(sp.pictures[0])}
                         alt={sp.title}

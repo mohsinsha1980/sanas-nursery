@@ -55,11 +55,11 @@ const PlantCard = ({ data }: { data: PlantsCardType }) => {
       key={data.id}
       href={`/categories/${data.category}/${data.slug}/${data.id}`}
     >
-      <div className="relative rounded-lg cursor-pointer transition-transform duration-300 hover:scale-105 overflow-hidden group">
+      <div className="relative rounded-lg cursor-pointer transition-transform duration-300 hover:scale-105 overflow-hidden group ">
         <button
           onClick={handleWishlistToggle}
           disabled={loading}
-          className={`cursor-pointer absolute top-2 right-2 z-20 p-1 rounded-full shadow-md transition bg-white/80 hover:bg-white ${
+          className={`cursor-pointer absolute top-2 right-2 z-20 p-1 rounded-full shadow-md transition bg-white/80 hover:bg-white  ${
             isInWishlist ? "text-red-600" : "text-gray-600"
           }`}
         >
