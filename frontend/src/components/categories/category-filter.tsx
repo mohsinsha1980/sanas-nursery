@@ -11,12 +11,19 @@ import { useDispatch } from "react-redux";
 import { Button } from "../ui/button";
 import classes from "./filter.module.css";
 import MultiCheckBoxFilter from "./multi-check-filter";
+import { CATEGORY_ARR } from "@/lib/constants";
+import { useParams } from "next/navigation";
+import Link from "next/link";
 
 const defaultMasterData = {
   tags: [],
 };
 
-export default function Filters() {
+interface CategoryFilterProps {
+  category: string;   
+}
+
+export default function Filters({ category }: CategoryFilterProps) {
   const dispatch = useDispatch();
   const [masterData, setMasterData] =
     useState<MasterDataOptionsType>(defaultMasterData);
@@ -35,6 +42,8 @@ export default function Filters() {
     defaultValue: "",
     shallow: false,
   });
+
+
 
   useEffect(() => {
     const controller = new AbortController();
@@ -62,7 +71,6 @@ export default function Filters() {
     };
   }, [dispatch]);
 
-  // 🚀 Prevent background scroll when drawer is open
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -83,7 +91,7 @@ export default function Filters() {
   const FilterContent = (
     <div className={classes.bl_filters}>
       <div
-        className={`w-full h-full p-3 rounded-lg shadow-md shadow-gray-400 flex items-center justify-between`}
+        className={`w-full h-full lg:py-3 px-3 rounded-lg shadow-md shadow-gray-400 flex items-center justify-between `}
       >
         <h3 className="text-[16px] font-semibold">Filters</h3>
         <Button
@@ -96,8 +104,25 @@ export default function Filters() {
         </Button>
       </div>
 
+      <div className="w-full lg:h-full h-[70%] lg:py-3 mt-2 rounded-lg shadow-md shadow-gray-400 flex flex-col lg:items-start items-center justify-between ">
+        {CATEGORY_ARR.map((cat) => (
+          <Link
+            key={cat.value}
+            href={`/categories/${cat.value}`}
+            className={`px-4 lg:py-2 py-0.5 text-lg font-medium transition-colors duration-200 cursor-pointer 
+            ${
+              category === cat.value
+                ? "text-[#f37521] font-semibold"
+                : "text-gray-700 hover:text-[#f37521]"
+            }`}
+          >
+            {cat.label}
+          </Link>
+        ))}
+      </div>
+
       {PLANT_SIZES_ARR.length ? (
-        <div className={`mt-5`} key="sizes">
+        <div className={`lg:mt-5 mt-2`} key="sizes">
           <MultiCheckBoxFilter
             label="Select Size"
             value={sizes ? sizes.split(",") : []}
@@ -108,7 +133,7 @@ export default function Filters() {
       ) : null}
 
       {CARE_LEVEL_ARR?.length ? (
-        <div className={`mt-5`} key="care">
+        <div className={`lg:mt-5 mt-2`} key="care">
           <MultiCheckBoxFilter
             label="Select Care Levels"
             value={care_levels ? care_levels.split(",") : []}

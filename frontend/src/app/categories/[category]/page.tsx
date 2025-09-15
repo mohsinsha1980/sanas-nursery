@@ -55,6 +55,7 @@ async function fetchPlants(
   return catProdData;
 }
 
+
 export default async function CollectionPage({
   params,
   searchParams,
@@ -110,7 +111,7 @@ export default async function CollectionPage({
               className="h-full w-full flex lg:flex-row flex-col justify-between gap-y-10   "
             >
               <div className="">
-                <CategoryFilter />
+                <CategoryFilter category={category}/>
               </div>
 
               <div

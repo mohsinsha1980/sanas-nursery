@@ -7,7 +7,7 @@ const About = () => {
       <div className="h-full w-full lg:pt-30 lg:pb-30 md:pt-20 md:pb-20 pt-10 pb-10 flex flex-row justify-center     ">
         <div className="lg:h-[545px] h-full max-w-[1370px] md:w-[90%] w-[100%] flex lg:flex-row flex-col justify-around   ">
           <div className="h-full lg:w-[621px] w-full lg:pt-7 lg:pb-7 pb-10 flex flex-col justify-between lg:items-start lg:space-y-0 space-y-2 ">
-            <h1 className="lg:text-[42px] md:text-[36px] text-[28px] font-semibold text-center">
+            <h1 className="lg:text-[42px] md:text-[36px] text-[28px] text-center">
               <span className="text-[#00611F]">Sanas Nursery</span> Plants and
               Trees Supplier
             </h1>
