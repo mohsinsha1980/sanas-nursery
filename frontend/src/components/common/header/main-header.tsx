@@ -173,13 +173,24 @@ export default function MainHeader() {
                     </li>
                     <li>
                       <Link
-                        href="/contact"
+                        href="/contact-us"
                         className={`dropdown-link ${
-                          pathname === "/contact" ? "active" : ""
+                          pathname === "/contact-us" ? "active" : ""
                         }`}
                         onClick={() => setMobileOpen(false)}
                       >
                         Contact
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="/blogs"
+                        className={`dropdown-link ${
+                          pathname === "/blogs" ? "active" : ""
+                        }`}
+                        onClick={() => setMobileOpen(false)}
+                      >
+                        Blog
                       </Link>
                     </li>
                   </ul>

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { HOME_HERO } from "@/assets";
 
 export default function HomeBanner() {
-    const heroImages = Object.values(HOME_HERO);
+  const heroImages = Object.values(HOME_HERO);
 
   const today = new Date().getDate();
   const imageIndex = today % heroImages.length;
@@ -21,8 +21,8 @@ export default function HomeBanner() {
           className="h-full w-full object-cover"
         />
         <div
-          className="z-1 absolute 
-        lg:w-[711px] lg:h-[385px] lg:top-[50%] lg:left-[28%] lg:space-y-4
+          className="z-1 absolute bg-white/50 bg-opacity-50 p-8 rounded-lg lg:bg-transparent
+        lg:w-[711px] lg:h-[385px] lg:t op-[50%] lg:left-[28%] lg:space-y-4
         md:w-[500px] md:h-fit md:top-1/2 md:left-[40%] md:-translate-y-1/2 md:space-y-6 md:items-start
         w-[90%] h-fit top-[50%] -translate-y-1/2 left-1/2 -translate-x-1/2 space-y-5 flex flex-col justify-center items-center 
         "
@@ -34,7 +34,8 @@ export default function HomeBanner() {
             Leading Wholesale Plant Nursery in Uruli Kanchan.
           </h1>
           <p className="text-[#505050] lg:text-[20px] md:text-[20px] text-[20px] font-medium md:text-start text-center">
-           A wholesale plant nursery providing healthy fruit trees, flower plants, and greenery grown with expert care.
+            A wholesale plant nursery providing healthy fruit trees, flower
+            plants, and greenery grown with expert care.
           </p>
           <Link href="/categories/fruit-trees">
             <Button variant="orange" size="lg" className="">

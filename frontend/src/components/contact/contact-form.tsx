@@ -142,7 +142,10 @@ export default function ContactPage() {
                       Email
                     </h3>
                     <p className="text-green-700 font-medium">
-                     <Link href={`mailto:${SITE_DATA.EMAIL}`}> {SITE_DATA.EMAIL}</Link>
+                      <Link href={`mailto:${SITE_DATA.EMAIL}`}>
+                        {" "}
+                        {SITE_DATA.EMAIL}
+                      </Link>
                     </p>
                   </div>
                 </div>
@@ -156,7 +159,10 @@ export default function ContactPage() {
                       WhatsApp
                     </h3>
                     <p className="text-green-700 font-medium">
-                      <Link href={`tel:${SITE_DATA.phone}`}> {SITE_DATA.phone}</Link>
+                      <Link href={`tel:${SITE_DATA.phone}`}>
+                        {" "}
+                        {SITE_DATA.phone}
+                      </Link>
                     </p>
                   </div>
                 </div>
@@ -186,6 +192,17 @@ export default function ContactPage() {
                 </div>
               </div>
             </div>
+          </div>
+
+          <div className="relative w-full min-h-[500px] lg:min-h-[500px]">
+            <iframe
+              src={SITE_DATA.GOOGLE_MAP}
+              className="absolute top-0 left-0 w-full h-full rounded-2xl"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
           </div>
         </div>
       </section>
