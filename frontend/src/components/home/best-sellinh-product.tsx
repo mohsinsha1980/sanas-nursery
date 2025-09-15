@@ -15,18 +15,16 @@ const BestSellProdCards = ({ plants }: { plants: BestSellingPlant[] }) => {
           </p>
         </div>
 
-        <div className="slider-container relative flex items-center justify-center ">
-          <div
-            className={`slider-content relative w-full flex items-center justify-center gap-8 `}
-          >
+        <div className="relative flex items-center justify-center">
+          <div className="relative w-full flex items-center justify-center gap-4 md:gap-6 lg:gap-8 flex-wrap">
             {plants.map((item, i) => (
-              <div key={i} className={`slider-single `}>
+              <div key={i} className="flex-shrink-0">
                 <Image
                   src={getPicURL(item.pictures[0])}
                   alt={item.title}
                   width={330}
                   height={500}
-                  className="rounded-lg object-cover"
+                  className="rounded-lg object-cover w-[280px] h-[400px] md:w-[300px] md:h-[450px] lg:w-[330px] lg:h-[500px]"
                 />
                 <p className="text-[#505050] text-[20px] font-semibold mt-2 text-center">
                   {item.title}

@@ -144,7 +144,6 @@ const Contact = () => {
                     {errors.phone && (
                       <p className="text-red-500 text-sm">
                         {errors.phone.message}
-                        {errors.phone.message}
                       </p>
                     )}
                   </div>
