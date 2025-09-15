@@ -87,39 +87,51 @@ export default function MainHeader() {
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 50 }}
-                transition={{ duration: 0.5 }}
-                className="absolute top-[80px] right-0 h-fit w-full bg-white shadow-md p-4 flex flex-col justify-between items-center gap-4 lg:hidden z-50 "
+                transition={{ duration: 0.3 }}
+                className="absolute top-[80px] right-0 w-full bg-gray-50 lg:hidden z-50"
               >
-                <nav className="">
-                  <ul className="flex flex-col gap-4 w-full items-center">
+                <nav className="w-full">
+                  <ul className="flex flex-col w-full">
+                    {/* Home */}
                     <li>
                       <Link
                         href="/"
-                        className={`dropdown-link ${
-                          pathname === "/" ? "active" : ""
+                        className={`flex items-center px-6 py-4 text-base font-semibold hover:bg-gray-100 transition-colors duration-200 ${
+                          pathname === "/" ? "text-green-600" : "text-gray-900"
                         }`}
                         onClick={() => setMobileOpen(false)}
                       >
                         Home
                       </Link>
                     </li>
-                    <li className="relative">
-                      <button
-                        className={`dropdown-link flex items-center justify-center w-full text-[20px] ${
-                          pathname.startsWith("/plants") ? "active" : ""
-                        }`}
-                        onClick={() =>
-                          setMobileDropdownOpen(!mobileDropdownOpen)
-                        }
-                      >
-                        Plants
+
+                    <li>
+                      <div className="flex items-center justify-between w-full px-6 py-4 hover:bg-gray-100">
+                        <span
+                          className={`text-[20px] font-semibold cursor-pointer ${
+                            pathname.startsWith("/plants") ||
+                            pathname.startsWith("/categories")
+                              ? "text-orange-600"
+                              : "text-black"
+                          }`}
+                          onClick={() => {
+                            console.log(mobileDropdownOpen);
+                            setMobileDropdownOpen(false);
+                          }}
+                        >
+                          Plants
+                        </span>
+
                         <svg
-                          className={`ml-1 w-4 h-4 transition-transform duration-200 ${
+                          className={`w-4 h-4 cursor-pointer transition-transform duration-200 ${
                             mobileDropdownOpen ? "rotate-180" : ""
                           }`}
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
+                          onClick={() =>
+                            setMobileDropdownOpen(!mobileDropdownOpen)
+                          }
                         >
                           <path
                             strokeLinecap="round"
@@ -128,7 +140,9 @@ export default function MainHeader() {
                             d="M19 9l-7 7-7-7"
                           />
                         </svg>
-                      </button>
+                      </div>
+
+                      {/* Plant Categories Dropdown */}
                       <AnimatePresence>
                         {mobileDropdownOpen && (
                           <motion.div
@@ -136,57 +150,65 @@ export default function MainHeader() {
                             animate={{ opacity: 1, height: "auto" }}
                             exit={{ opacity: 0, height: 0 }}
                             transition={{ duration: 0.2, ease: "easeOut" }}
-                            className="overflow-hidden"
+                            className="overflow-hidden bg-white"
                           >
-                            <div className="mt-2 w-full">
-                              <ol className="flex flex-col">
-                                {CATEGORY_ARR.map((cat) => (
-                                  <li key={cat.value}>
-                                    <Link
-                                      href={`/categories/${cat.value}`}
-                                      className="block text-center px-4 py-3 !text-[var(--txt-orange)] transition-colors duration-200"
-                                      onClick={() => {
-                                        setMobileOpen(false);
-                                        setMobileDropdownOpen(false);
-                                      }}
-                                    >
-                                      {cat.label}
-                                    </Link>
-                                  </li>
-                                ))}
-                              </ol>
-                            </div>
+                            {CATEGORY_ARR.map((cat) => (
+                              <div key={cat.value} className="w-full">
+                                <Link
+                                  href={`/categories/${cat.value}`}
+                                  className="block px-12 py-3 text-sm text-gray-700 hover:bg-gray-50 transition-colors duration-200 border-l-2 border-transparent hover:border-green-500"
+                                  onClick={() => {
+                                    setMobileOpen(false);
+                                    setMobileDropdownOpen(false);
+                                  }}
+                                >
+                                  {cat.label}
+                                </Link>
+                              </div>
+                            ))}
                           </motion.div>
                         )}
                       </AnimatePresence>
                     </li>
+
+                    {/* About */}
                     <li>
                       <Link
                         href="/about"
-                        className={`dropdown-link ${
-                          pathname === "/about" ? "active" : ""
+                        className={`flex items-center px-6 py-4 text-base font-semibold hover:bg-gray-100 transition-colors duration-200 ${
+                          pathname === "/about"
+                            ? "text-green-600"
+                            : "text-gray-900"
                         }`}
                         onClick={() => setMobileOpen(false)}
                       >
                         About
                       </Link>
                     </li>
+
+                    {/* Contact */}
                     <li>
                       <Link
                         href="/contact-us"
-                        className={`dropdown-link ${
-                          pathname === "/contact-us" ? "active" : ""
+                        className={`flex items-center px-6 py-4 text-base font-semibold hover:bg-gray-100 transition-colors duration-200 ${
+                          pathname === "/contact-us"
+                            ? "text-orange-600"
+                            : "text-gray-900"
                         }`}
                         onClick={() => setMobileOpen(false)}
                       >
                         Contact
                       </Link>
                     </li>
+
+                    {/* Blog */}
                     <li>
                       <Link
                         href="/blogs"
-                        className={`dropdown-link ${
-                          pathname === "/blogs" ? "active" : ""
+                        className={`flex items-center px-6 py-4 text-base font-semibold hover:bg-gray-100 transition-colors duration-200 ${
+                          pathname === "/blogs"
+                            ? "text-green-600"
+                            : "text-gray-900"
                         }`}
                         onClick={() => setMobileOpen(false)}
                       >

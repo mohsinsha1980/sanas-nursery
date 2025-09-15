@@ -25,9 +25,11 @@ export default function HeaderNav() {
         >
           <Link
             href="#categories-section"
-            className={pathname.startsWith("/plants") ? "active" : ""}
+            className={`flex items-center gap-1 ${
+              pathname.startsWith("/plants") ? "active" : ""
+            }`}
           >
-            Plants
+            <span>Plants </span>
           </Link>
 
           <AnimatePresence>
@@ -70,10 +72,7 @@ export default function HeaderNav() {
           </Link>
         </li>
         <li>
-          <Link
-            href="/blogs"
-            className={pathname === "/blogs" ? "active" : ""}
-          >
+          <Link href="/blogs" className={pathname === "/blogs" ? "active" : ""}>
             Blog
           </Link>
         </li>
