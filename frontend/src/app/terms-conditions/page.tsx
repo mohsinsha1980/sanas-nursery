@@ -20,7 +20,7 @@ export default function TermsConditionsPage() {
       },
       contactPoint: {
         "@type": "ContactPoint",
-        telephone: "+91-XXXXXXXXXX", // replace with SITE_DATA.phone
+        telephone: SITE_DATA.phone,
         contactType: "customer service",
         areaServed: "IN",
         availableLanguage: ["en", "mr"],
