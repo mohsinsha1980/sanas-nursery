@@ -70,3 +70,24 @@ ul.context_menu li.active>span:hover {
     font-size: 15px;
   }
 }
+
+/* Mobile Sheet Context Menu Styles */
+@media only screen and (max-width: 768px) {
+  .bl_context_menu {
+    height: 100%;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  ul.context_menu {
+    padding-top: 1rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  ul.context_menu li a,
+  ul.context_menu li span {
+    font-size: 16px;
+    padding: 12px;
+  }
+}

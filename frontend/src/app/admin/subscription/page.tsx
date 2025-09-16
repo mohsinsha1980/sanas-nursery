@@ -4,7 +4,7 @@ export default function Subscribe() {
   return (
     <>
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center pb-4 gap-3">
-        <h1 className="text-3xl font-bold text-gray-900 !px-0">Subscribe</h1>
+        <h1 className="text-3xl font-bold text-gray-900 !px-0">Email Subscriptions</h1>
       </div>
       <SubscriptionList />
     </>

@@ -114,14 +114,14 @@ export default function TagsField({ data }: Props) {
 
   return (
     <div className="pt-5 ">
-      <div className="flex flex-row">
-        <div className="basis-1/4">
-          <h2>Plant Tags</h2>
+      <div className="flex flex-col md:flex-row gap-2 md:gap-0">
+        <div className="w-full md:basis-1/4">
+          <h2 className="text-lg md:text-xl font-semibold !mb-1">Plant Tags</h2>
         </div>
-        <div className="basis-2/4 relative">
+        <div className="w-full md:basis-2/4 relative">
           <Input
             placeholder="Search a tag"
-            className="h-8 border-black/10 rounded-lg"
+            className="h-8 border-black/10 rounded-lg w-full"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
@@ -133,12 +133,13 @@ export default function TagsField({ data }: Props) {
             />
           )}
         </div>
-        <div className="basis-1/4 text-right">
+        <div className="w-full md:basis-1/4 text-left md:text-right">
           <Button
             variant={"orange"}
             type="button"
             size="sm"
             onClick={() => setOpenTag(true)}
+            className="w-full md:w-auto mb-2 md:mb-0"
           >
             <CirclePlusIcon /> Add
           </Button>

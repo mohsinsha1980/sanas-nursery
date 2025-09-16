@@ -34,7 +34,7 @@ const PlantFilter = ({
     <>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-          <div className="grid grid-cols-4 gap-4 mb-4 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4 items-center">
             <div>
               <TextField
                 name="title"
@@ -42,7 +42,7 @@ const PlantFilter = ({
                 placeholder="Filter by plant name"
                 formControl={form.control}
                 inputType="text"
-                className="p-5 border-black/20 rounded-md"
+                className="p-3 md:p-5 border-black/20 rounded-md"
               />
             </div>
             <div>
@@ -52,7 +52,7 @@ const PlantFilter = ({
                 placeholder="Filter by plant ID"
                 formControl={form.control}
                 inputType="text"
-                className="p-5 border-black/20 rounded-md"
+                className="p-3 md:p-5 border-black/20 rounded-md"
               />
             </div>
             <div>
@@ -65,12 +65,18 @@ const PlantFilter = ({
                   { label: "Active", value: "0" },
                   { label: "In-Active", value: "1" },
                 ]}
-                className="p-5 border-black/20 mt-2"
+                className="p-3 md:p-5 border-black/20 mt-0 md:mt-2"
               />
             </div>
-            <div className="flex items-center gap-5">
-              <Button size="sm" variant="orange" type="submit" className="py-5">
-               <ListFilterPlus /> Apply Filter
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 md:gap-5">
+              <Button
+                size="sm"
+                variant="orange"
+                type="submit"
+                className="py-3 md:py-5 w-full sm:w-auto"
+              >
+                <ListFilterPlus className="h-4 w-4" />
+                <span className="ml-2">Apply Filter</span>
               </Button>
               {form.getValues("title") ||
               form.getValues("plantId") ||
@@ -81,9 +87,10 @@ const PlantFilter = ({
                     setFilters(defaultFilters);
                     form.reset();
                   }}
-                  className="py-5"
+                  className="py-3 md:py-5 w-full sm:w-auto"
                 >
-                   <RotateCcw />Clear Filter
+                  <RotateCcw className="h-4 w-4" />
+                  <span className="ml-2">Clear Filter</span>
                 </Button>
               ) : null}
             </div>
