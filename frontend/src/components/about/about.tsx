@@ -5,10 +5,10 @@ import { ABOUT } from "@/assets";
 const About = () => {
   return (
     <div>
-      <div className="h-full w-full lg:pt-30 lg:pb-30 md:pt-20 md:pb-20 pt-10 pb-10 px-5 flex flex-row justify-center     ">
-        <div className="lg:h-[545px] h-full max-w-[1370px] md:w-[90%] w-[100%] flex lg:flex-row flex-col justify-around   ">
-          <div className="h-full lg:w-[621px] w-full lg:pt-7 lg:pb-7 pb-10 flex flex-col justify-between lg:items-start lg:space-y-0 space-y-2 ">
-            <h1 className="lg:text-[42px] md:text-[26px] text-[20px] font-semibold text-center">
+      <div className="h-full w-full lg:pt-30 lg:pb-30 md:pt-20 md:pb-20 pt-10 pb-10 px-5 flex flex-row justify-center ">
+        <div className="h-full max-w-[1200px] md:w-[90%] w-[100%] flex lg:flex-row flex-col justify-between items-start ">
+          <div className="h-full lg:w-[47%] w-full lg:pb-0 pb-10 flex flex-col justify-evenly lg:items-start lg:space-y-5 space">
+            <h1 className="lg:text-[42px] md:text-[26px] text-[20px] font-semibold lg:text-start text-center">
               <span className="text-[#00611F]">Sanas Nursery</span> Plants and
               Trees Supplier
             </h1>
@@ -27,13 +27,13 @@ const About = () => {
               destination for all your wholesale greenery needs.
             </p>
           </div>
-          <div className="h-full md:w-[559px] w-full m-auto">
+          <div className="h-full lg:w-[48%] md:w-[559px] w-full ">
             <Image
               src={ABOUT.WELCOME}
               height={900}
               width={900}
               alt={ABOUT.WELCOME}
-              className="h-full w-full object-cover"
+              className="h-[500px] lg:w-full w-full object-cover"
             />
           </div>
         </div>

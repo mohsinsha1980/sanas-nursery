@@ -6,7 +6,7 @@ import FeaturedBlogCard from "@/components/blogs/featured-blog-card";
 import { ServerPagination } from "@/components/common/server-pagination";
 import config from "@/config/env-config";
 import { getPublishedBlogs } from "@/lib/api-routes/api-public";
-import { BLOGS_PER_PAGE } from "@/lib/constants";
+import { BLOGS_PER_PAGE, SITE_DATA } from "@/lib/constants";
 import {
   BlogDataType,
   BlogFilterType,
@@ -14,6 +14,7 @@ import {
 } from "@/lib/types/common-types";
 import { BookOpen, Star } from "lucide-react";
 import { Metadata } from "next";
+import Script from "next/script";
 import { Suspense } from "react";
 
 export const metadata: Metadata = {
@@ -55,101 +56,150 @@ export default async function BlogsPage({
   const featuredBlogs = blogs.filter((blog) => blog.featured);
   const regularBlogs = blogs.filter((blog) => !blog.featured);
 
+  const schemaData = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Gardening Blogs - Sanas Nursery",
+    url: "https://sanasnursery.com/blogs",
+    headline: "Gardening Blogs, Plant Care Guides & Nursery Insights",
+    description:
+      "Discover expert gardening tips, plant care guides, and nursery insights in our comprehensive blog collection at Sanas Nursery.",
+    mainEntity: {
+      "@type": "Blog",
+      name: "Sanas Nursery Blog",
+      url: "https://sanasnursery.com/blogs",
+      publisher: {
+        "@type": "Organization",
+        name: "Sanas Nursery",
+        url: "https://sanasnursery.com",
+        logo: {
+          "@type": "ImageObject",
+          url: "https://sanasnursery.com/images/site/sanas-nursery.webp",
+        },
+        contactPoint: {
+          "@type": "ContactPoint",
+          telephone: SITE_DATA.phone,
+          contactType: "customer service",
+          areaServed: "IN",
+          availableLanguage: ["en", "mr"],
+        },
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: "Uruli Kanchan",
+          addressLocality: "Pune",
+          addressRegion: "Maharashtra",
+          postalCode: "412202",
+          addressCountry: "IN",
+        },
+      },
+    },
+  };
+
   return (
-    <Suspense
-      fallback={
-        <div className="mt-30">
-          <SkeletonCard />
-        </div>
-      }
-    >
-      <div className="">
-        <BlogListHero />
+    <>
+      <Script
+        id="blogs-schema"
+        type="application/ld+json"
+        strategy="beforeInteractive"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+      />
 
-        <div className="container mx-auto px-4 py-16" id="blogSearch">
-          <div className="mb-12">
-            <BlogSearch />
+      <Suspense
+        fallback={
+          <div className="mt-30">
+            <SkeletonCard />
           </div>
+        }
+      >
+        <div className="">
+          <BlogListHero />
 
-          {blogs.length > 0 ? (
-            <>
-              {featuredBlogs.length > 0 && (
-                <div className="mb-20 md:px-10">
-                  <div className="text-center mb-12">
-                    <div className="inline-flex items-center gap-3 mb-4">
-                      <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-pink-500 rounded-2xl flex items-center justify-center">
-                        <Star className="h-6 w-6 text-white" />
-                      </div>
-                      <h2 className="text-3xl font-bold text-gray-900">
-                        Featured Articles
-                      </h2>
-                    </div>
-                    <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-                      Discover our handpicked collection of expert gardening
-                      guides and tips
-                    </p>
-                  </div>
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    {featuredBlogs.map((blog) => (
-                      <FeaturedBlogCard key={blog._id} blog={blog} />
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {regularBlogs.length ? (
-                <div className="mb-12 md:px-10">
-                  <div className="text-center mb-12">
-                    <div className="inline-flex items-center gap-3 mb-4">
-                      <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-blue-500 rounded-2xl flex items-center justify-center">
-                        <BookOpen className="h-6 w-6 text-white" />
-                      </div>
-                      <h2 className="text-3xl font-bold text-gray-900">
-                        All Articles
-                      </h2>
-                    </div>
-                    <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-                      Explore our complete collection of gardening tips, plant
-                      care guides, and nursery insights
-                    </p>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-                    {regularBlogs.map((blog) => (
-                      <BlogCard key={blog._id} blog={blog} />
-                    ))}
-                  </div>
-                </div>
-              ) : null}
-
-              {total && Math.ceil(total / BLOGS_PER_PAGE) > 1 && (
-                <div className="mt-16">
-                  <ServerPagination
-                    total={total}
-                    perPage={BLOGS_PER_PAGE}
-                    currentPage={currentPage}
-                  />
-                </div>
-              )}
-            </>
-          ) : (
-            <div className="text-center py-20">
-              <div className="bg-gradient-to-br from-gray-100 to-gray-200 rounded-3xl p-12 max-w-md mx-auto">
-                <div className="text-gray-400 mb-6">
-                  <BookOpen className="w-20 h-20 mx-auto" />
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                  No blogs found
-                </h3>
-                <p className="text-gray-600 mb-6">
-                  Try adjusting your search or check back later for new content.
-                </p>
-                <div className="w-16 h-1 bg-gradient-to-r from-green-500 to-orange-500 rounded-full mx-auto"></div>
-              </div>
+          <div className="container mx-auto px-4 py-16" id="blogSearch">
+            <div className="mb-12">
+              <BlogSearch />
             </div>
-          )}
+
+            {blogs.length > 0 ? (
+              <>
+                {featuredBlogs.length > 0 && (
+                  <div className="mb-20 md:px-10">
+                    <div className="text-center mb-12">
+                      <div className="inline-flex items-center gap-3 mb-4">
+                        <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-pink-500 rounded-2xl flex items-center justify-center">
+                          <Star className="h-6 w-6 text-white" />
+                        </div>
+                        <h2 className="text-3xl font-bold text-gray-900">
+                          Featured Articles
+                        </h2>
+                      </div>
+                      <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+                        Discover our handpicked collection of expert gardening
+                        guides and tips
+                      </p>
+                    </div>
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                      {featuredBlogs.map((blog) => (
+                        <FeaturedBlogCard key={blog._id} blog={blog} />
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {regularBlogs.length ? (
+                  <div className="mb-12 md:px-10">
+                    <div className="text-center mb-12">
+                      <div className="inline-flex items-center gap-3 mb-4">
+                        <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-blue-500 rounded-2xl flex items-center justify-center">
+                          <BookOpen className="h-6 w-6 text-white" />
+                        </div>
+                        <h2 className="text-3xl font-bold text-gray-900">
+                          All Articles
+                        </h2>
+                      </div>
+                      <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+                        Explore our complete collection of gardening tips, plant
+                        care guides, and nursery insights
+                      </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+                      {regularBlogs.map((blog) => (
+                        <BlogCard key={blog._id} blog={blog} />
+                      ))}
+                    </div>
+                  </div>
+                ) : null}
+
+                {total && Math.ceil(total / BLOGS_PER_PAGE) > 1 && (
+                  <div className="mt-16">
+                    <ServerPagination
+                      total={total}
+                      perPage={BLOGS_PER_PAGE}
+                      currentPage={currentPage}
+                    />
+                  </div>
+                )}
+              </>
+            ) : (
+              <div className="text-center py-20">
+                <div className="bg-gradient-to-br from-gray-100 to-gray-200 rounded-3xl p-12 max-w-md mx-auto">
+                  <div className="text-gray-400 mb-6">
+                    <BookOpen className="w-20 h-20 mx-auto" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                    No blogs found
+                  </h3>
+                  <p className="text-gray-600 mb-6">
+                    Try adjusting your search or check back later for new
+                    content.
+                  </p>
+                  <div className="w-16 h-1 bg-gradient-to-r from-green-500 to-orange-500 rounded-full mx-auto"></div>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
-      </div>
-    </Suspense>
+      </Suspense>
+    </>
   );
 }

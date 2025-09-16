@@ -24,7 +24,7 @@ export default function ProductPictureSlider({
   const { selectedIndex, onDotButtonClick } = useDotButton(emblaApi);
 
   return (
-    <div className="bl__product__slider sm:mt-2 flex lg:flex-row flex-col lg:justify-evenly justify-between">
+    <div className="bl__product__slider sm:mt-2 flex lg:flex-row flex-col lg:justify-evenly justify-between ">
       <div className="bl__product__slider__container sm:!me-2  " ref={emblaRef}>
         <div className="bl__slider__container ">
           {pictures.length ? (
@@ -47,7 +47,7 @@ export default function ProductPictureSlider({
       <div className="lg:bl__thumbnail__container w-full lg:pt-0 pt-5">
         {/* For lg and up → horizontal scroll */}
         <ScrollArea className="hidden lg:block w-full ">
-          <div className="flex flex-col gap-3 pl-10">
+          <div className="flex flex-col gap-8 pl-10">
             {pictures.length
               ? pictures.map((item, index) => (
                   <DotButton

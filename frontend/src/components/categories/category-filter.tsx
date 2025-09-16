@@ -90,7 +90,7 @@ export default function Filters({ category }: CategoryFilterProps) {
   const FilterContent = (
     <div className={classes.bl_filters}>
       <div
-        className={`w-full h-full lg:py-3 px-3 rounded-lg shadow-md shadow-gray-400 flex items-center justify-between `}
+        className={`w-full h-full px-3 lg:py-2 rounded-lg shadow-md shadow-gray-400 flex items-center justify-between `}
       >
         <h3 className="text-[16px] font-semibold">Filters</h3>
         <Button
@@ -103,7 +103,7 @@ export default function Filters({ category }: CategoryFilterProps) {
         </Button>
       </div>
 
-      <div className="w-full lg:h-full h-[70%] lg:py-3 mt-2 rounded-lg shadow-md shadow-gray-400 flex flex-col lg:items-start items-center justify-between ">
+      <div className="w-full lg:h-full h-[70%] lg:py-3 lg:mt-5 mt-2 rounded-lg shadow-md shadow-gray-400 flex flex-col lg:items-start items-center justify-between ">
         {CATEGORY_ARR.map((cat) => (
           <Link
             key={cat.value}

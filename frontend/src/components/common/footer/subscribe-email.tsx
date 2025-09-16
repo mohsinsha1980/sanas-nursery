@@ -44,13 +44,13 @@ const SubscribeEmail = () => {
   };
 
   return (
-    <div className="mt-2 input-div h-fit w-fit  p-0.5 bg-white  flex flex-row justify-between items-center lg:rounded-xl md:rounded-xl rounded-[5px] ">
+    <div className="mt-2 input-div h-fit w-full max-w-[390px] p-0.5 bg-white  flex flex-row justify-between items-center lg:rounded-xl md:rounded-xl rounded-[5px] ">
       <input
         type="email"
         placeholder="Enter Email Address"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        className="lg:w-[260px] md:w-[180px] w-[252px] lg:pl-5 md:pl-2 lg:px-0 px-2 lg:py-0 py-2 outline-none text-black rounded-lg"
+        className="w-full h-full lg:pl-5 md:pl-2 lg:px-0 px-2 lg:py-0 py-2 outline-none text-black rounded-lg"
       />
       <button
         type="button"

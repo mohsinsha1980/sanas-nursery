@@ -59,14 +59,14 @@ const Contact = () => {
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
-        <div className="lg:w-[100%] lg:h-[870px] md:w-[100%] md:h-[1100px] w-[100%] h-[920px] flex justify-center items-center bg-[#E4FFF0] ">
-          <div className="contact-form lg:w-[61%] flex justify-center items-center bg-white rounded-xl">
-            <div className="contact-form-innerdiv lg:w-[60%] lg:h-auto md:w-[80%] w-[95%]  lg:gap-y-0 gap-y-10 flex lg:flex-row flex-col justify-between items-center absolute z-10 bg-white p-2 md:p-3 lg:px-3 rounded-xl     ">
+        <div className="lg:w-[100%] lg:h-[870px] md:w-[100%] md:h-[1100px] w-[100%] h-[920px] flex justify-center items-center bg-[#E4FFF0]   ">
+          <div className="contact-form lg:max-w-[1200px] flex justify-center items-center bg-white rounded-xl  ">
+            <div className="contact-form-innerdiv lg:w-[1200px] lg:h-auto md:w-[80%] w-[95%]  lg:gap-y-0 gap-y-10 flex lg:flex-row flex-col justify-between items-center absolute z-10 bg-white p-2 md:p-3 lg:px-3 rounded-xl       ">
               <div className="contact-form-left-div lg:w-[45%] lg:h-[600px] md:w-full w-full flex lg:justify-center lg:items-center md:justify-center justify-start items-start bg-[#4CBA9B] px-4 lg:px-0 py-4 lg:py-0 rounded-xl   ">
                 <div className="lg:w-[80%] lg:h-[85%] w-full lg:gap-y-10 gap-y-10 flex flex-col justify-between items-start ">
                   <div className="lg:w-[100%] lg:h-auto lg:gap-y-2 gap-y-2 flex flex-col justify-between   ">
                     <p className="lg:text-[42px] md:text-[36px] text-[24px] text-white font-semibold lg:leading-13 ">
-                      Connect with <span className="text-[#00611F]">Sanas</span>{" "}
+                      Connect with <span className="text-[#00611F]">Sanas</span>
                       Nursery
                     </p>
                     <p className="lg:text-[20px] md:text-[22px] text-[16px] text-white lg:font-semibold">
