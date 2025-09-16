@@ -9,6 +9,7 @@ import { Toaster } from "sonner";
 import "./globals.css";
 import AuthProvider from "@/components/auth/AuthProvider";
 import ClientLayout from "@/components/layout/ClientLayout";
+import { SITE_DATA } from "@/lib/constants";
 
 const catamaran = Catamaran({
   variable: "--font-catamaran",
@@ -28,6 +29,42 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const schemaData = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Sanas Nursery",
+    url: "https://sanasnursery.com/",
+    description: "One stop shop for all your nursery needs",
+    publisher: {
+      "@type": "Organization",
+      name: "Sanas Nursery",
+      url: "https://sanasnursery.com",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://sanasnursery.com/images/site/sanas-nursery.webp",
+      },
+      contactPoint: {
+        "@type": "ContactPoint",
+        telephone: SITE_DATA.phone,
+        contactType: "customer service",
+        areaServed: "IN",
+        availableLanguage: ["en", "mr"],
+      },
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "Uruli Kanchan",
+        addressLocality: "Pune",
+        addressRegion: "Maharashtra",
+        postalCode: "412202",
+        addressCountry: "IN",
+      },
+    },
+    potentialAction: {
+      "@type": "SearchAction",
+      target: "https://sanasnursery.com/search?q={search_term_string}",
+      "query-input": "required name=search_term_string",
+    },
+  };
   return (
     <html lang="en">
       <Script id="gtm" strategy="afterInteractive">

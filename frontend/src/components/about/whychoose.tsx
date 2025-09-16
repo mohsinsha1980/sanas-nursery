@@ -11,8 +11,8 @@ const WhyChoose = () => {
   return (
     <div>
       <div className="h-full w-full lg:pt-30 lg:pb-30 md:pt-20 md:pb-20 pt-10 pb-10 flex flex-row justify-center bg-white px-4 ">
-        <div className="lg:h-[430px] h-full max-w-[1370px] md:w-[90%] w-[100%] flex flex-col justify-between items-center lg:gap-y-0 md:gap-y-10 gap-y-5 ">
-          <div className="h-fit w-full flex flex-col justify-center items-center">
+        <div className="lg:h-full h-full max-w-[1200px] md:w-[90%] w-[100%] flex flex-col justify-between items-center lg:gap-y-10 md:gap-y-10 gap-y-5 ">
+          <div className="h-full w-full flex flex-col justify-center items-center">
             <h1 className="lg:text-[42px] md:text-[36px] text-[28px] font-semibold text-center">
               Why Choose <span className="text-[#00611F]">Sanas Nursery</span>
             </h1>
@@ -22,11 +22,11 @@ const WhyChoose = () => {
           </div>
 
           {/* Cards */}
-          <div className="lg:h-[285px] h-full w-full flex flex-wrap gap-4 justify-center items-center ">
+          <div className=" h-full w-full flex flex-wrap gap-4 justify-center items-center ">
             {data.map((item, i) => (
               <div
                 key={i}
-                className="flex-1 h-[260px] lg:min-w-[250px] md:min-w-[230px] min-w-[250px] lg:max-w-[250px] max-w-[230px]  flex justify-center items-center border-2 border-[#4CBA9B] rounded-lg md:hover:bg-[#4CBA9B] transition-colors duration-300 "
+                className="flex-1 h-[260px] lg:min-w-[220px] md:min-w-[230px] min-w-[250px] lg:max-w-[200px] max-w-[230px] flex justify-center items-center border-2 border-[#4CBA9B] rounded-lg md:hover:bg-[#4CBA9B] transition-colors duration-300 "
                 onMouseEnter={() =>
                   window.innerWidth >= 768 && setHoveredIndex(i)
                 }

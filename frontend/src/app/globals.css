@@ -217,7 +217,7 @@ body {
 
 .container {
   width: 100%;
-  max-width: var(--container-8xl);
+  max-width: var(--container-7xl);
   padding-left: var(--spacing-lg);
   padding-right: var(--spacing-lg);
   margin-left: auto;

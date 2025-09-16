@@ -11,15 +11,11 @@ export default function Footer() {
   return (
     <footer className="bg-accent-900 text-white">
       <div className="container-custom py-12">
-        {/* Logo and Brand */}
         <div className="flex items-center justify-center md:justify-start space-x-3 mb-8">
           <Logo />
-          {/* <h3 className="text-xl font-bold text-primary-400">Sanas Nursery</h3> */}
         </div>
 
-        {/* Main Content Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 ">
-          {/* Company Info - Centered on mobile */}
           <div className="col-span-2 md:col-span-2 text-center md:text-left    ">
             <p className="text-gray-400 text-sm mb-4">
               Stay tuned for updates and exciting announcements.
@@ -29,16 +25,16 @@ export default function Footer() {
                 Email:{" "}
                 <Link
                   href={`mailto:${SITE_DATA.EMAIL}`}
-                  className="hover:underline hover:text-primary-400 transition-colors duration-200"
+                  className="hover:underline hover:text-primary-400 transition-colors duration-200 hover:text-[#f37521]"
                 >
                   {SITE_DATA.EMAIL}
                 </Link>
               </p>
               <p>
-                Phone/WhatsApp:{" "}
+                Phone/WhatsApp:
                 <Link
                   href={`tel:${SITE_DATA.phone.replace(/\s/g, "")}`}
-                  className="hover:underline hover:text-primary-400 transition-colors duration-200"
+                  className="hover:underline hover:text-primary-400 transition-colors duration-200 hover:text-[#f37521]"
                 >
                   {SITE_DATA.phone}
                 </Link>
@@ -56,7 +52,7 @@ export default function Footer() {
                   <li key={link.label}>
                     <Link
                       href={link.pageUrl}
-                      className="text-gray-300 text-start hover:text-primary-400 transition-colors duration-200 "
+                      className="text-gray-300 text-start hover:text-primary-400 transition-colors duration-200 hover:text-[#f37521]"
                     >
                       {link.label}
                     </Link>
@@ -73,7 +69,7 @@ export default function Footer() {
                   <li key={link.label}>
                     <Link
                       href={link.pageUrl}
-                      className="text-gray-300 hover:text-primary-400 transition-colors duration-200"
+                      className="text-gray-300 hover:text-primary-400 transition-colors duration-200 hover:text-[#f37521]"
                     >
                       {link.label}
                     </Link>

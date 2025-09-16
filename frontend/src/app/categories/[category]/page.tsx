@@ -15,7 +15,9 @@ import {
   PlantsCardType,
 } from "@/lib/types/common-types";
 import { Metadata } from "next";
+import Link from "next/link";
 import { Suspense } from "react";
+import { ChevronRight  } from "lucide-react";
 
 export async function generateMetadata({
   params,
@@ -55,7 +57,6 @@ async function fetchPlants(
   return catProdData;
 }
 
-
 export default async function CollectionPage({
   params,
   searchParams,
@@ -87,23 +88,30 @@ export default async function CollectionPage({
 
   return (
     <Suspense fallback={<Loading />}>
-      <div className="relative flex flex-col justify-between items-center ">
+      <div className="relative flex flex-col justify-between items-center  ">
         <div className="w-full lg:h-[500px] h-fit ">
           <CategoryHero categoryValue={category} />
         </div>
 
-        <div className="w-full h-full lg:pt-20 pt-10 text-center ">
-          <h2 className="text-[#0D6536] lg:text-[64px] md:text-[36px] text-[38px] font-semibold text-center">
+        <div className="lg:max-w-[1250px] w-full h-full lg:pt-25 pt-10 lg:px-0 px-3 text-center flex flex-col justify-between items-start">
+          <h2 className="text-[#0D6536] lg:text-[40px] md:text-[36px] text-[38px] font-bold text-start  ">
             {categoryData?.label || category}
           </h2>
-          <p className="text-[#505050] lg:text-[20px] md:text-[22px] text-[16px] font-semibold">
-            Explore a variety of fruit trees perfect for your garden
-          </p>
+          <div className="flex justify-between items-center h-fit w-fit gap-x-2 ">
+            <Link
+              href={"/"}
+              className="text-[20px] text-[#505050] font-semibold text-start hover:text-[#f37521]"
+            >
+              Home
+            </Link>
+            <ChevronRight  className="text-[#505050] "/>
+            <p className="text-[21px] font-semibold text-[#f37521] lg:pt-1">{category}</p>
+          </div>
         </div>
 
         <div
           key="plant-list-main-div"
-          className="h-full lg:max-w-[1250px] w-full lg:pt-20 lg:pb-20 pt-10 pb-10 flex flex-col justify-center items-center   lg:px-0 px-3  "
+          className="h-full lg:max-w-[1250px] w-full pt-10 pb-15 flex flex-col justify-center items-center   lg:px-0 px-3  "
         >
           <div key="filter-list-sort" className="relative  w-full h-full     ">
             <div
@@ -111,7 +119,7 @@ export default async function CollectionPage({
               className="h-full w-full flex lg:flex-row flex-col justify-between gap-y-10   "
             >
               <div className="">
-                <CategoryFilter category={category}/>
+                <CategoryFilter category={category} />
               </div>
 
               <div
