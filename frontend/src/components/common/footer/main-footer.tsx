@@ -11,12 +11,12 @@ export default function Footer() {
   return (
     <footer className="bg-accent-900 text-white">
       <div className="container-custom py-12">
-        <div className="flex items-center justify-center md:justify-start space-x-3 mb-8">
+        <div className="flex items-center justify-start md:justify-start space-x-3 mb-8">
           <Logo />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 ">
-          <div className="col-span-2 md:col-span-2 text-center md:text-left    ">
+          <div className="col-span-2 md:col-span-2 text-left md:text-left    ">
             <p className="text-gray-400 text-sm mb-4">
               Stay tuned for updates and exciting announcements.
             </p>
@@ -43,8 +43,8 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="col-span-1 flex justify-between lg:pl-0 md:pl-0 pl-10 ">
-            {/* Information Links - Centered on mobile */}
+          <div className="col-span-1 flex flex-col md:flex-row md:justify-between lg:pl-0 md:pl-0 pl-0 gap-6">
+            {/* Information Links */}
             <div className="flex flex-col justify-between items-start ">
               <h4 className="text-lg font-semibold mb-4">Information</h4>
               <ul className="space-y-2 text-start">
@@ -61,10 +61,10 @@ export default function Footer() {
               </ul>
             </div>
 
-            {/* Company Links - Centered on mobile */}
-            <div className="flex flex-col justify-between items-end lg:pr-0 pr-2 ">
+            {/* Company Links */}
+            <div className="flex flex-col justify-between items-start md:items-end lg:pr-0 pr-2 ">
               <h4 className="text-lg font-semibold mb-4">Company</h4>
-              <ul className="space-y-2 text-end">
+              <ul className="space-y-2 text-start md:text-end">
                 {FOOTER_LINKS.COMPANY.map((link) => (
                   <li key={link.label}>
                     <Link
@@ -81,16 +81,16 @@ export default function Footer() {
         </div>
         {/* Social Media and Newsletter */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
-          <div className="text-center md:text-left">
+          <div className="text-left md:text-left">
             <p className="text-gray-400 text-sm mb-3">
               Follow us on social media:
             </p>
-            <div className="flex justify-center md:justify-start">
+            <div className="flex justify-start md:justify-start">
               <SocialMedia />
             </div>
           </div>
 
-          <div className="flex justify-center md:justify-end">
+          <div className="flex justify-center md:justify-end w-full">
             <SubscribeEmail />
           </div>
         </div>

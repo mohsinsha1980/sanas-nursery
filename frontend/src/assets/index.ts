@@ -6,6 +6,7 @@ export const HERO = {
     H4: "/images/hero-images/sanas-nursery-healthy-plants-nursery-facility.webp",
   },
   ABOUT: "/images/hero-images/sanas-nursery-plant-cultivation-nursery.webp",
+  CONTACTUS: "/images/hero-images/sanas-nursery-plant-cultivation-nursery.webp",
   BLOGS: "/images/hero-images/sanas-nursery-plant-care-tips-blog.webp",
   FRUIT_TREES:
     "/images/hero-images/sanas-nursery-fruit-trees-wholesale-supplier.webp",
@@ -53,8 +54,7 @@ export const ABOUT = {
   WIDE_VARIETY: "/images/about/sanas-nursery-wide-plant-variety-icon.png",
   WIDE_VARIETY_HOVER:
     "/images/about/sanas-nursery-wide-plant-variety-hover-icon.png",
-  AFFORDABLE_PRICES:
-    "/images/about/sanas-nursery-affordable-prices.png",
+  AFFORDABLE_PRICES: "/images/about/sanas-nursery-affordable-prices.png",
   AFFORDABLE_PRICES_HOVER:
     "/images/about/sanas-nursery-affordable-plant-prices-hover-icon.png",
   ECO_FRIENDLY:

@@ -2,12 +2,13 @@ import Image from "next/image";
 import React from "react";
 import { Button } from "../ui/button";
 import Link from "next/link";
+import { HERO } from "@/assets";
 
 const Hero = () => {
   return (
     <div className="relative w-full h-screen">
       <Image
-        src="/site/about/hero.jpg"
+        src={HERO.ABOUT}
         height={1500}
         width={1500}
         alt=""

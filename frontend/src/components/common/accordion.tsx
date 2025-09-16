@@ -21,6 +21,10 @@ interface ProductAccordionProps {
   onDelete?: (index: number) => void;
   defaultOpen?: string;
   className?: string;
+  itemClassName?: string;
+  triggerClassName?: string;
+  contentClassName?: string;
+  disableContentTopBorder?: boolean;
 }
 
 export function ProductAccordion({
@@ -28,6 +32,10 @@ export function ProductAccordion({
   onDelete,
   defaultOpen,
   className,
+  itemClassName,
+  triggerClassName,
+  contentClassName,
+  disableContentTopBorder,
 }: ProductAccordionProps) {
   return (
     <div className={cn("w-full rounded-lg", className)}>
@@ -41,11 +49,19 @@ export function ProductAccordion({
           <AccordionItem
             key={item.id}
             value={item.id}
-            className="px-4 shadow-sm shadow-gray-400 transition-colors bg-white rounded-lg border-none"
+            className={cn(
+              "px-4 transition-colors bg-white rounded-lg border-none",
+              itemClassName
+            )}
           >
             <div className="flex items-center">
               {/* Question with chevron icon at the right edge */}
-              <AccordionTrigger className="flex-1 text-[18px] font-semibold text-gray-800 hover:no-underline justify-between py-2!">
+              <AccordionTrigger
+                className={cn(
+                  "flex-1 text-[18px] font-semibold text-gray-800 hover:no-underline justify-between py-2!",
+                  triggerClassName
+                )}
+              >
                 {item.title}
               </AccordionTrigger>
 
@@ -61,7 +77,15 @@ export function ProductAccordion({
             </div>
 
             {/* Answer */}
-            <AccordionContent className="flex flex-col gap-3 text-[18px] font-medium border-t border-gray-300 text-gray-800 dark:text-gray-300 pb-4 mt-2 pt-3">
+            <AccordionContent
+              className={cn(
+                "flex flex-col gap-3 text-[18px] font-medium text-gray-800 dark:text-gray-300 pb-4 mt-2 pt-3",
+                disableContentTopBorder
+                  ? undefined
+                  : "border-t border-gray-300",
+                contentClassName
+              )}
+            >
               {item.content.map((text, index) => (
                 <p key={index} className="leading-relaxed">
                   {text}

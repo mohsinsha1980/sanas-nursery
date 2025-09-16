@@ -1,15 +1,15 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { formatDate, getCategoryLabel, getPicURL } from "@/lib/helper";
+import { getCategoryLabel, getFormattedDate, getPicURL } from "@/lib/helper";
 import { BlogDataType } from "@/lib/types/common-types";
 import {
-  Calendar,
-  Clock,
-  User,
-  Tag,
-  Star,
   ArrowRight,
   BookOpen,
+  Calendar,
+  Clock,
+  Star,
+  Tag,
+  User,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -32,7 +32,7 @@ export default function FeaturedBlogCard({ blog }: FeaturedBlogCardProps) {
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
 
           <div className="absolute top-4 left-4">
-            <Badge className="bg-orange-500 text-white font-semibold px-3 py-1">
+            <Badge className="bg-orange-500 text-white font-semibold px-3 py-1 h-6 flex items-center">
               <Star className="h-3 w-3 mr-1" />
               Featured
             </Badge>
@@ -42,7 +42,7 @@ export default function FeaturedBlogCard({ blog }: FeaturedBlogCardProps) {
             <div className="absolute top-4 right-4">
               <Badge
                 variant="secondary"
-                className="bg-white/90 text-gray-700 font-medium"
+                className="bg-white/90 text-gray-700 font-medium px-3 py-1 h-6 flex items-center"
               >
                 <Tag className="h-3 w-3 mr-1" />
                 {getCategoryLabel(blog.category)}
@@ -60,7 +60,7 @@ export default function FeaturedBlogCard({ blog }: FeaturedBlogCardProps) {
             {blog.excerpt}
           </p>
 
-          <div className="flex items-center gap-6 text-sm text-gray-500 mb-6">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-6 text-sm text-gray-500 mb-6">
             {blog.author && (
               <div className="flex items-center gap-2">
                 <div className="w-8 h-8 bg-gradient-to-br from-green-500 to-orange-500 rounded-full flex items-center justify-center">
@@ -77,7 +77,7 @@ export default function FeaturedBlogCard({ blog }: FeaturedBlogCardProps) {
             )}
             <div className="flex items-center gap-2">
               <Calendar className="h-4 w-4" />
-              <span>{formatDate(blog.createdAt)}</span>
+              <span>{getFormattedDate(blog.createdAt)}</span>
             </div>
           </div>
 
@@ -103,7 +103,7 @@ export default function FeaturedBlogCard({ blog }: FeaturedBlogCardProps) {
           <div className="mt-auto">
             <Button
               asChild
-              className="w-full bg-green-50 text-green-600 hover:text-green-700 hover:bg-green-200 border-green-200 hover:border-green-300 font-medium py-2 rounded-lg transition-all duration-300 group-hover:shadow-md"
+              className="w-full text-orange-400 hover:text-orange-500 hover:bg-orange-50 border-orange-200 hover:border-orange-300 font-medium py-2 rounded-lg transition-all duration-300 group-hover:shadow-md"
             >
               <Link href={`/blogs/${blog.slug}`}>
                 <BookOpen className="h-5 w-5 mr-2" />

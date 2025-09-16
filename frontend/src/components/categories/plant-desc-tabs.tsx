@@ -5,47 +5,42 @@ import { ProductAccordion } from "../common/accordion";
 
 export default function PlantDescTabs({ plant }: { plant: PlantDataType }) {
   return (
-    <Tabs
-      defaultValue="description"
-      className="w-full mx-auto p-5 rounded-lg bg-green-50 "
-    >
-      <TabsList className="flex w-full justify-start gap-4 lg:mb-0 mb-5 ">
-        <TabsTrigger
-          value="description"
-          className="px-4 py-2 text-[18px] font-medium text-gray-800 data-[state=active]:bg-[#F37521] data-[state=active]:text-white hover:bg-orange-100 transition "
-        >
-          Description
-        </TabsTrigger>
-
-        {plant.faqs?.length ? (
-          <TabsTrigger
-            value="faqs"
-            className="px-4 py-2 text-[18px] font-medium text-gray-800 data-[state=active]:bg-[#F37521] data-[state=active]:text-white hover:bg-orange-100 transition"
-          >
-            FAQs
+    <>
+      <Tabs defaultValue="description" className="tabs_plain">
+        <TabsList>
+          <TabsTrigger value="description" className="font-semibold mx-2 md:m-0">
+            Description
           </TabsTrigger>
-        ) : null}
-      </TabsList>
+          {plant.faqs?.length ? (
+            <TabsTrigger value="faqs" className="font-semibold">
+              FAQs
+            </TabsTrigger>
+          ) : null}
+        </TabsList>
 
-      <TabsContent
-        value="description"
-        className=" text-[18px] font-medium text-gray-800 leading-relaxed"
-      >
-        <div
-          dangerouslySetInnerHTML={{ __html: plant.description }}
-          className="prose max-w-none"
-        />
-      </TabsContent>
-
-      {plant.faqs?.length ? (
-        <TabsContent value="faqs" className="p-6">
-          <ProductAccordion
-            items={getFaqAccrItems(plant.faqs)}
-            className="mt-2"
-            // defaultOpen={false}
+        <TabsContent
+          value="description"
+          className="m-2 md:m-0 !py-4 !pr-4 !pl-6 md:!p-4 md:!pl-6"
+        >
+          <div
+            className="prose max-w-none text-gray-700 text-base md:text-lg leading-relaxed font-normal"
+            dangerouslySetInnerHTML={{ __html: plant.description }}
           />
         </TabsContent>
-      ) : null}
-    </Tabs>
+
+        {plant.faqs?.length ? (
+          <TabsContent value="faqs" className="m-2 md:m-0 !p-2 md:!p-4">
+            <ProductAccordion
+              items={getFaqAccrItems(plant.faqs)}
+              className="mt-2"
+              itemClassName="shadow-none border border-gray-200 rounded-md"
+              triggerClassName="py-3"
+              contentClassName="rounded-b-md"
+              disableContentTopBorder
+            />
+          </TabsContent>
+        ) : null}
+      </Tabs>
+    </>
   );
 }

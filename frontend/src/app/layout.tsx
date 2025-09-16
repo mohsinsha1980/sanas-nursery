@@ -34,7 +34,9 @@ export default function RootLayout({
     "@type": "WebSite",
     name: "Sanas Nursery",
     url: "https://sanasnursery.com/",
-    description: "One stop shop for all your nursery needs",
+    description:
+      "One stop shop for all your nursery needs - Wholesale plant supplier in Uruli Kanchan, Maharashtra",
+    inLanguage: "en",
     publisher: {
       "@type": "Organization",
       name: "Sanas Nursery",
@@ -42,13 +44,28 @@ export default function RootLayout({
       logo: {
         "@type": "ImageObject",
         url: "https://sanasnursery.com/images/site/sanas-nursery.webp",
+        width: 200,
+        height: 200,
       },
       contactPoint: {
         "@type": "ContactPoint",
         telephone: SITE_DATA.phone,
+        email: SITE_DATA.EMAIL,
         contactType: "customer service",
         areaServed: "IN",
         availableLanguage: ["en", "mr"],
+        hoursAvailable: {
+          "@type": "OpeningHoursSpecification",
+          dayOfWeek: [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday",
+          ],
+        },
       },
       address: {
         "@type": "PostalAddress",
@@ -67,6 +84,12 @@ export default function RootLayout({
   };
   return (
     <html lang="en">
+      <Script
+        id="website-schema"
+        type="application/ld+json"
+        strategy="beforeInteractive"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+      />
       <Script id="gtm" strategy="afterInteractive">
         {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -74,6 +97,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-5L6QZ5TL');`}
       </Script>
+
       <meta
         name="google-site-verification"
         content="bspwJaWHUbp2AJp3d4AuEk7QaaMgeFdyComfMMajsHU"

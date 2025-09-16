@@ -28,7 +28,7 @@ const Mission = () => {
                     width={100}
                     className="h-[64px] w-[64px] object-cover rounded-full"
                   />
-                  <h1 className="text-white lg:text-[32px] md:text-[24px] text-[16px] font-bold text-center">
+                  <h1 className="text-white lg:text-[32px] md:text-[24px] text-[21px] font-bold text-center">
                     Our Mission
                   </h1>
                   <p className="text-white lg:text-[20px] md:text-[16px] text-[16px] font-medium text-center leading-relaxed">
@@ -50,7 +50,7 @@ const Mission = () => {
                     width={100}
                     className="h-[64px] w-[64px] object-cover rounded-full"
                   />
-                  <h1 className="text-white lg:text-[32px] md:text-[24px] text-[16px] font-bold text-center">
+                  <h1 className="text-white lg:text-[32px] md:text-[24px] text-[21px] font-bold text-center">
                     Our Vision
                   </h1>
                   <p className="text-white lg:text-[20px] md:text-[16px] text-[16px] font-medium text-center leading-relaxed">

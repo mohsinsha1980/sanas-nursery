@@ -101,10 +101,11 @@ export const getRelatedBlogs = async (req, res, next) => {
     }
 
     const { category, tags } = currentBlog;
+    const tagValues = (tags || []).map((t) => t.value);
     const query = {
       _id: { $ne: blogId },
       status: STATUS.ACTIVE,
-      $or: [{ category: category }, { tags: { $in: tags || [] } }],
+      $or: [{ category: category }, { "tags.value": { $in: tagValues } }],
     };
 
     const blogs = await Blog.find(query)

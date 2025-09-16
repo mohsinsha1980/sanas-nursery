@@ -17,7 +17,7 @@ import {
 import { Metadata } from "next";
 import Link from "next/link";
 import { Suspense } from "react";
-import { ChevronRight  } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 
 export async function generateMetadata({
   params,
@@ -94,9 +94,15 @@ export default async function CollectionPage({
         </div>
 
         <div className="lg:max-w-[1250px] w-full h-full lg:pt-25 pt-10 lg:px-0 px-3 text-center flex flex-col justify-between items-start">
-          <h2 className="text-[#0D6536] lg:text-[40px] md:text-[36px] text-[38px] font-bold text-start  ">
-            {categoryData?.label || category}
-          </h2>
+          <div className="flex justify-between items-center w-full mb-4">
+            <h2 className="text-[#0D6536] text-3xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl font-bold text-start">
+              {categoryData?.label || category}
+            </h2>
+            {/* Mobile Filter Button */}
+            <div className="md:hidden">
+              <CategoryFilter category={category} />
+            </div>
+          </div>
           <div className="flex justify-between items-center h-fit w-fit gap-x-2 ">
             <Link
               href={"/"}
@@ -104,8 +110,10 @@ export default async function CollectionPage({
             >
               Home
             </Link>
-            <ChevronRight  className="text-[#505050] "/>
-            <p className="text-[21px] font-semibold text-[#f37521] lg:pt-1">{category}</p>
+            <ChevronRight className="text-[#505050] " />
+            <p className="text-[21px] font-semibold text-[#f37521] lg:pt-1">
+              {categoryData?.label}
+            </p>
           </div>
         </div>
 
@@ -118,7 +126,7 @@ export default async function CollectionPage({
               key="filter-and-list"
               className="h-full w-full flex lg:flex-row flex-col justify-between gap-y-10   "
             >
-              <div className="">
+              <div className="hidden md:block">
                 <CategoryFilter category={category} />
               </div>
 

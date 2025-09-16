@@ -1,5 +1,6 @@
 import { SITE_DATA } from "@/lib/constants";
 import Script from "next/script";
+import Link from "next/link";
 
 export default function PrivacyPolicyPage() {
   const schemaData = {
@@ -64,7 +65,7 @@ export default function PrivacyPolicyPage() {
           <div className="lg:max-w-[900px] mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
             <div className="prose prose-sm sm:prose-base md:prose-lg lg:prose-xl max-w-none">
               <div className="bg-[#f8fafc] p-4 sm:p-6 md:p-8 rounded-lg mb-6 sm:mb-8">
-                <p className="text-sm sm:text-base md:text-lg text-[#475569] text-center">
+                <p className="text-base sm:text-base md:text-lg text-[#475569] text-center">
                   <strong>Last updated:</strong> 12 August 2025
                 </p>
               </div>
@@ -75,17 +76,17 @@ export default function PrivacyPolicyPage() {
                   <h2 className="text-xl sm:text-2xl md:text-2xl font-bold text-[#0f172a] mb-3 sm:mb-4">
                     1. Information We Collect
                   </h2>
-                  <p className="text-sm sm:text-base md:text-lg text-[#475569] mb-3 sm:mb-4 leading-relaxed">
+                  <p className="text-base sm:text-base md:text-lg text-[#475569] mb-3 sm:mb-4 leading-relaxed">
                     When you contact us through our website or WhatsApp, we may
                     collect:
                   </p>
-                  <ul className="list-disc list-inside text-sm sm:text-base md:text-lg text-[#475569] space-y-1 sm:space-y-2 ml-4 leading-relaxed">
+                  <ul className="list-disc list-inside text-base sm:text-base md:text-lg text-[#475569] space-y-2 sm:space-y-2 ml-4 leading-relaxed">
                     <li>Your name</li>
                     <li>Your email address</li>
                     <li>Your phone number / WhatsApp number</li>
                     <li>Any message or enquiry details you submit</li>
                   </ul>
-                  <p className="text-sm sm:text-base md:text-lg text-[#475569] mt-3 sm:mt-4 leading-relaxed">
+                  <p className="text-base sm:text-base md:text-lg text-[#475569] mt-3 sm:mt-4 leading-relaxed">
                     We do not collect payment details online, as no online
                     transactions take place through our website.
                   </p>
@@ -198,24 +199,36 @@ export default function PrivacyPolicyPage() {
                     8. Contact Us
                   </h2>
                   <p className="text-[#475569] mb-4">Sanas Nursery</p>
-                  <div className="bg-[#f8fafc] p-6 rounded-lg">
-                    <p className="text-[#475569] mb-2">
-                      <strong>Email : </strong> {SITE_DATA.EMAIL}
+                  <div className="bg-[#f8fafc] p-4 sm:p-6 rounded-lg">
+                    <p className="text-base sm:text-base md:text-lg text-[#475569] mb-2 leading-relaxed">
+                      <strong>Email : </strong>
+                      <Link
+                        href={`mailto:${SITE_DATA.EMAIL}`}
+                        className="hover:text-[#ea580c] hover:underline"
+                      >
+                        {SITE_DATA.EMAIL}
+                      </Link>
                     </p>
-                    <p className="text-[#475569] mb-2">
-                      <strong>Phone/WhatsApp : </strong> {SITE_DATA.phone}
+                    <p className="text-base sm:text-base md:text-lg text-[#475569] mb-2 leading-relaxed">
+                      <strong>Phone/WhatsApp : </strong>
+                      <Link
+                        href={`tel:${SITE_DATA.phone}`}
+                        className="hover:text-[#ea580c] hover:underline"
+                      >
+                        {SITE_DATA.phone}
+                      </Link>
                     </p>
-                    <p className="text-[#475569] mb-2">
+                    <p className="text-base sm:text-base md:text-lg text-[#475569] mb-2 leading-relaxed">
                       <strong>Location : </strong> {SITE_DATA.LOCATION}
                     </p>
-                    <p className="text-[#475569] mt-4">
+                    <p className="text-base sm:text-base md:text-lg text-[#475569] mt-3 sm:mt-4 leading-relaxed">
                       <strong>Contact Form : </strong>
-                      <a
+                      <Link
                         href="/contact-us"
-                        className="text-[#ea580c] hover:text-[#c2410c] underline"
+                        className="hover:text-[#ea580c] hover:underline"
                       >
                         Visit our Contact page
-                      </a>
+                      </Link>
                     </p>
                   </div>
                 </div>

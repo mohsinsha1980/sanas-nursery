@@ -107,7 +107,7 @@ export const CATEGORIES = {
     label: "Masala",
     value: "masala",
     title:
-      "Authentic Masala Collection - Avocado, Clove, Cinnamon, Bay Leaf & More.",
+      "Authentic Masala Collection - Avocado, Bay Leaf & More.",
     picture: CATEGORIES_IMG.MASALA_PLANTS,
     description:
       "Discover premium masalas like avocado, clove, cinnamon, bay leaf, and mix masala, carefully crafted to add richness and authenticity to your meals.",

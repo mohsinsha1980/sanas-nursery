@@ -122,9 +122,23 @@ const YoutubeSection = ({ videos }: { videos: string[] }) => {
               type="button"
               aria-label="Close video"
               onClick={() => setOpenVideo(null)}
-              className="absolute top-2 right-2 bg-white rounded-full p-2 shadow hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white"
+              className="absolute top-3 right-3 bg-black/70 hover:bg-black/90 text-white rounded-full p-2.5 shadow-lg hover:shadow-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black/50 backdrop-blur-sm"
             >
-              ✕
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-5 h-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2.5}
+                aria-hidden="true"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
             </button>
           </div>
         </div>

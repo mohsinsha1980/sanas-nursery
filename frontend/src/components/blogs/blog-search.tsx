@@ -68,9 +68,14 @@ export default function BlogSearch() {
                 <X className="h-6 w-6" />
               </Button>
             )}
-            <Button type="submit" variant={"orange"} size={"lg"} className="">
-              <Search className="h-4 w-4 mr-2" />
-              Search
+            <Button
+              type="submit"
+              variant={"orange"}
+              size={"lg"}
+              className="px-3 sm:px-6"
+            >
+              <Search className="h-4 w-4 sm:mr-0" />
+              <span className="hidden sm:inline">Search</span>
             </Button>
           </div>
         </div>
