@@ -21,7 +21,7 @@ const Hero = () => {
       >
         <h1 className="lg:text-[60px] md:text-[50px] text-[30px] font-bold md:leading-17 leading-10 md:text-start text-center">
           Your Go-To <span className="text-[#00611F]">Plants and Trees</span>{" "}
-          Supplier in Uruli Kanchan - Sanas Nursery.
+          Supplier in Uruli Kanchan.
         </h1>
         <p className="text-[#505050] lg:text-[20px] md:text-[20px] text-[18px] font-medium md:text-start text-center">
           Building trust with healthy plants and trees that thrive in farms,

@@ -56,17 +56,21 @@ const PlantCard = ({ data }: { data: PlantsCardType }) => {
       href={`/categories/${data.category}/${data.slug}/${data.id}`}
     >
       <div className="relative rounded-lg cursor-pointer transition-transform duration-300 hover:scale-105 overflow-hidden group ">
-        <button
-          onClick={handleWishlistToggle}
-          disabled={loading}
-          className={`cursor-pointer absolute top-2 right-2 z-20 p-1 rounded-full shadow-md transition bg-white/80 hover:bg-white  ${
-            isInWishlist ? "text-red-600" : "text-gray-600"
-          }`}
-        >
-          <Heart
-            className={`h-5 w-5 ${isInWishlist ? "fill-red-600" : "fill-none"}`}
-          />
-        </button>
+        {user?._id && user.role === ROLES.USER && (
+          <button
+            onClick={handleWishlistToggle}
+            disabled={loading}
+            className={`cursor-pointer absolute top-2 right-2 z-20 p-1 rounded-full shadow-md transition bg-white/80 hover:bg-white  ${
+              isInWishlist ? "text-red-600" : "text-gray-600"
+            }`}
+          >
+            <Heart
+              className={`h-5 w-5 ${
+                isInWishlist ? "fill-red-600" : "fill-none"
+              }`}
+            />
+          </button>
+        )}
 
         <ProductListItemPics pics={data.pictures} />
         <p className="text-[#505050] lg:text-[18px] md:text-[36px] text-[18px] font-semibold mt-2 text-center transition-colors duration-300 group-hover:text-[#DA5700]">

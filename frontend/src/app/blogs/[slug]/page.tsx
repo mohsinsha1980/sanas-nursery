@@ -108,7 +108,7 @@ export default async function BlogDetailsPage({
   return (
     <div className="min-h-screen bg-gray-50 pt-5">
       <div className={styles.heroSection}>
-        <div className="container mx-auto px-4 py-10">
+        <div className="container mx-auto px-4 py-6">
           <div className={styles.heroContent}>
             <Link href="/blogs" className={styles.backLink}>
               <ArrowLeft className="h-4 w-4" />

@@ -13,8 +13,6 @@ export default function ProductListItemPics({ pics }: { pics: string[] }) {
   const { toggleAutoplay } = useAutoplay(emblaApi);
   const { selectedIndex, onDotButtonClick } = useDotButton(emblaApi);
 
-  console.log("pics", pics);
-
   const onHover = () => {
     if (pics.length > 1) {
       return toggleAutoplay();

@@ -99,7 +99,7 @@ const GreenChoices = ({ data }: { data: HomeGreenPlantType[] }) => {
   return (
     <div>
       <div className="flex flex-col sm:flex-row justify-between items-center pb-4 gap-3">
-        <h1 className="text-3xl font-bold text-gray-900 text-center flex-1">
+        <h1 className="text-2xl md:text-3xl font-bold text-gray-900 text-center flex-1">
           Manage Green Choices
         </h1>
         <UpdateButton type="submit" onClick={() => setOpen(true)} />
@@ -110,13 +110,13 @@ const GreenChoices = ({ data }: { data: HomeGreenPlantType[] }) => {
         {greenChoicesPlants.length === 0 ? (
           <p className="text-muted-foreground">No green choices added yet.</p>
         ) : (
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-x-6 gap-y-12 justify-items-center">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6 gap-y-8 md:gap-y-12 justify-items-center">
             {greenChoicesPlants.map((plant) => (
               <div
                 key={plant._id}
-                className="flex flex-col items-center cursor-pointer"
+                className="flex flex-col items-center cursor-pointer w-full max-w-[180px] sm:max-w-[200px] md:max-w-[220px] lg:max-w-[240px] xl:max-w-[220px]"
               >
-                <div className="w-[200px] sm:w-[220px] md:w-[240px] lg:w-[200px] h-[300px] sm:h-[320px] md:h-[350px] lg:h-[275px] rounded-[10px] overflow-hidden shadow-md bg-white transition-transform duration-300 hover:scale-105">
+                <div className="w-full max-w-[160px] sm:max-w-[180px] md:max-w-[200px] lg:max-w-[220px] xl:max-w-[200px] h-[200px] sm:h-[220px] md:h-[250px] lg:h-[280px] xl:h-[260px] rounded-[10px] overflow-hidden shadow-md bg-white transition-transform duration-300 hover:scale-105">
                   <div className="relative w-full h-full">
                     <Image
                       src={getPicURL(plant.pictures[0]) || "/placeholder.png"}
@@ -126,7 +126,7 @@ const GreenChoices = ({ data }: { data: HomeGreenPlantType[] }) => {
                     />
                   </div>
                 </div>
-                <p className="mt-4 text-center text-lg font-medium group-hover:text-green-700">
+                <p className="mt-2 md:mt-3 text-center text-sm md:text-base lg:text-lg font-medium group-hover:text-green-700 px-1">
                   {plant.title}
                 </p>
               </div>

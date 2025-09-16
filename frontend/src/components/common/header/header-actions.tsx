@@ -87,10 +87,11 @@ export default function HeaderActions() {
                 <DropdownMenuItem
                   onClick={handleLogout}
                   disabled={isLoggingOut}
-                  className="cursor-pointer data-[highlighted]:text-orange-500"
                 >
-                  <LogOut className="mr-2 h-4 w-4" />
-                  {isLoggingOut ? "Logging out..." : "Logout"}
+                  <span className="flex items-center cursor-pointer hover:text-orange-500">
+                    <LogOut className="mr-2 h-4 w-4" />
+                    {isLoggingOut ? "Logging out..." : "Logout"}
+                  </span>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenuPortal>

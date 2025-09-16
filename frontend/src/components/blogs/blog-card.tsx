@@ -1,6 +1,6 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { formatDate, getCategoryLabel, getPicURL } from "@/lib/helper";
+import { getCategoryLabel, getFormattedDate, getPicURL } from "@/lib/helper";
 import { BlogDataType } from "@/lib/types/common-types";
 import {
   ArrowRight,
@@ -33,7 +33,7 @@ export default function BlogCard({ blog }: BlogCardProps) {
 
           {blog.category && (
             <div className="absolute top-3 left-3">
-              <Badge className="bg-white/90 text-gray-700 font-medium text-xs px-2 py-1">
+              <Badge className="bg-white/90 text-gray-700 font-medium px-3 py-1 h-6 flex items-center">
                 <Tag className="h-3 w-3 mr-1" />
                 {getCategoryLabel(blog.category)}
               </Badge>
@@ -60,7 +60,7 @@ export default function BlogCard({ blog }: BlogCardProps) {
           {blog.excerpt}
         </p>
 
-        <div className="flex items-center gap-4 text-xs text-gray-500 mb-4">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-xs text-gray-500 mb-4">
           {blog.author && (
             <div className="flex items-center gap-2">
               <div className="w-6 h-6 bg-gradient-to-br from-green-400 to-orange-400 rounded-full flex items-center justify-center">
@@ -77,7 +77,7 @@ export default function BlogCard({ blog }: BlogCardProps) {
           )}
           <div className="flex items-center gap-1">
             <Calendar className="h-3 w-3" />
-            <span>{formatDate(blog.createdAt)}</span>
+            <span>{getFormattedDate(blog.createdAt)}</span>
           </div>
         </div>
 
@@ -104,7 +104,7 @@ export default function BlogCard({ blog }: BlogCardProps) {
           <Button
             asChild
             variant="outline"
-            className="w-full text-green-600 hover:text-green-700 hover:bg-green-50 border-green-200 hover:border-green-300 font-medium py-2 rounded-lg transition-all duration-300 group-hover:shadow-md"
+            className="w-full text-orange-400 hover:text-orange-500 hover:bg-orange-50 border-orange-200 hover:border-orange-300 font-medium py-2 rounded-lg transition-all duration-300 group-hover:shadow-md"
           >
             <Link href={`/blogs/${blog.slug}`}>
               <BookOpen className="h-4 w-4 mr-2" />

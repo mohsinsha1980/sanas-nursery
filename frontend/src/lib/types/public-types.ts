@@ -51,6 +51,7 @@ export interface BestSellingPlant {
   plantId: string;
   category: string;
   pictures: string[];
+  slug: string;
 }
 
 export interface HomeCard {

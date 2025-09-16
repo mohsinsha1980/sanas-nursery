@@ -6,6 +6,7 @@ import { CircleArrowRight, CircleArrowLeft } from "lucide-react";
 import "./carousel.css";
 import { BestSellingPlant } from "@/lib/types/public-types";
 import { getPicURL } from "@/lib/helper";
+import Link from "next/link";
 
 const BestSellingProduct = ({ plants }: { plants: BestSellingPlant[] }) => {
   useEffect(() => {
@@ -71,7 +72,7 @@ const BestSellingProduct = ({ plants }: { plants: BestSellingPlant[] }) => {
         <div className="slider-container relative flex items-center justify-center">
           {showArrows && (
             <div className="slider-left absolute left-2 lg:top-[45%] md:top-[40%] lg:-translate-y-1/2 z-20 cursor-pointer">
-              <CircleArrowLeft className="h-12 w-12 text-[#00611F]" />
+              <CircleArrowLeft className="h-12 w-12 text-gray-400 hover:text-green-600 transition-colors duration-200" />
             </div>
           )}
 
@@ -90,16 +91,20 @@ const BestSellingProduct = ({ plants }: { plants: BestSellingPlant[] }) => {
                       : ""
                   }`}
                 >
-                  <Image
-                    src={getPicURL(item.pictures[0])}
-                    alt={item.title}
-                    width={330}
-                    height={500}
-                    className="rounded-lg object-cover"
-                  />
-                  <p className="text-[#505050] text-[20px] font-semibold mt-2 text-center">
-                    {item.title}
-                  </p>
+                  <Link
+                    href={`/categories/${item.category}/${item.slug}/${item._id}`}
+                  >
+                    <Image
+                      src={getPicURL(item.pictures[0])}
+                      alt={item.title}
+                      width={330}
+                      height={500}
+                      className="rounded-lg object-cover"
+                    />
+                    <p className="text-[#505050] text-[20px] font-semibold mt-2 text-center">
+                      {item.title}
+                    </p>
+                  </Link>
                 </div>
               );
             })}
@@ -107,7 +112,7 @@ const BestSellingProduct = ({ plants }: { plants: BestSellingPlant[] }) => {
 
           {showArrows && (
             <div className="slider-right absolute lg:right-2 md:right-2 lg:top-[45%] md:top-[40%] lg:-translate-y-1/2 z-20 cursor-pointer">
-              <CircleArrowRight className="h-12 w-12 text-[#00611F]" />
+              <CircleArrowRight className="h-12 w-12 text-gray-400 hover:text-green-600 transition-colors duration-200" />
             </div>
           )}
         </div>

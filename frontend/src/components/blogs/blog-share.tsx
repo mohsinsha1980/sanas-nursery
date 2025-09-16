@@ -1,22 +1,16 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import {
-  Share2,
-  Copy,
-  Check,
-  Facebook,
-  Twitter,
-  Linkedin,
-  Mail,
-} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+  Check,
+  Copy,
+  Facebook,
+  Linkedin,
+  Mail,
+  Share2,
+  Twitter,
+} from "lucide-react";
+import { useEffect, useState } from "react";
 import styles from "./blog-share.module.css";
 
 interface BlogShareProps {
@@ -105,7 +99,7 @@ export default function BlogShare({ title, url, excerpt }: BlogShareProps) {
           </Button>
         )}
 
-        {!hasNativeShare && (
+        {/* {!hasNativeShare && (
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button className={styles.shareButton} variant="outline">
@@ -164,7 +158,7 @@ export default function BlogShare({ title, url, excerpt }: BlogShareProps) {
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
-        )}
+        )} */}
 
         {!hasNativeShare && (
           <div className={styles.individualButtons}>

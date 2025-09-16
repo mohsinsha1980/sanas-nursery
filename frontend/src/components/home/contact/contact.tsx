@@ -91,7 +91,7 @@ const Contact = () => {
                       </p>
                     </div>
 
-                    <div className="hover:rounded-lg p-2 flex items-start lg:gap-x-5 gap-3 group hover:bg-gray-500/20 transition-all duration-300 cursor-pointer">
+                    <div className="hover:rounded-lg p-2 flex items-start lg:gap-x-5 gap-3 group hover:bg-gray-500/20 transition-all duration-300 ">
                       <MapPin className="lg:text-[22px] md:h-14 md:w-14 h-12 w-12 group-hover:text-[#0d6536]" />
                       <p className="lg:text-[20px] md:text-[20px] text-[16px] lg:font-semibold group-hover:text-[#0d6536]">
                         {SITE_DATA.LOCATION}
@@ -133,7 +133,6 @@ const Contact = () => {
                     </p>
                     <input
                       type="text"
-                      {...register("phone")}
                       {...register("phone")}
                       style={{
                         WebkitBoxShadow: "0 0 0 1000px white inset",

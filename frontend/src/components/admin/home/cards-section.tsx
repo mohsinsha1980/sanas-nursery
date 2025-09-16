@@ -6,8 +6,8 @@ export default function CardsSection({ data }: { data?: HomeCardsTypes }) {
   return (
     <>
       <div className="w-full flex items-center justify-center">
-        <div className="w-full max-w-[1000px] h-[400px] flex items-center justify-center ">
-          <div className="w-full flex flex-col md:flex-row gap-6 ">
+        <div className="w-full max-w-[1000px] h-auto md:h-[400px] flex items-center justify-center">
+          <div className="w-full flex flex-col md:flex-row gap-4 md:gap-6">
             <CardsForm
               field={HOME_FIELDS.CARDS.C1}
               data={data?.C1}

@@ -82,9 +82,11 @@ export default async function ProductDetailsPageByID({
   return (
     <Suspense fallback={<DetailsLoading />}>
       <section className="bg-white py-10 lg:mt-15 mt-10 lg:px-0 px-4">
-        <div className="lg:max-w-[1200px] mx-auto w-full h-full flex flex-col justify-between items-start lg:pb-10 lg:pt-0 pt-2 pb-5">
-          <h2 className="text-[#0D6536] lg:text-[40px] md:text-[36px] text-[38px] font-bold text-start  ">{category.label}</h2>
-          <div className="flex items-center gap-x-2">
+        <div className="lg:max-w-[1200px] mx-auto w-full h-full flex flex-col justify-between items-start lg:pb-3 lg:pt-0 pt-2 pb-5">
+          <h2 className="text-[#0D6536] text-3xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl font-bold text-start">
+            {category.label}
+          </h2>
+          <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
             {/* Home */}
             <Link
               href="/"
@@ -92,7 +94,7 @@ export default async function ProductDetailsPageByID({
             >
               Home
             </Link>
-            <ChevronRight  className="text-[#505050]" />
+            <ChevronRight className="text-[#505050] flex-shrink-0" />
 
             {/* Category */}
             {category && (
@@ -102,12 +104,11 @@ export default async function ProductDetailsPageByID({
                     {category.label}
                   </p>
                 </Link>
-                <ChevronRight  className="text-[#505050]" />
+                <ChevronRight className="text-[#505050] flex-shrink-0" />
               </>
             )}
 
-            {/* Plant Title */}
-            <p className="text-[21px] font-semibold text-[#f37521] lg:pt-1">
+            <p className="text-[21px] font-semibold text-[#f37521] lg:pt-1 break-words">
               {plant.title}
             </p>
           </div>
@@ -133,7 +134,7 @@ export default async function ProductDetailsPageByID({
 
             {plant.details && (
               <div
-                className="text-[18px] font-medium leading-relaxed text-start "
+                className="leading-relaxed text-start "
                 dangerouslySetInnerHTML={{ __html: plant.details }}
               />
             )}
@@ -141,16 +142,14 @@ export default async function ProductDetailsPageByID({
             {plant.specifications?.length > 0 && (
               <div className="">
                 <table className="w-full border-separate border-spacing-y-2">
-                  {/* Table Body */}
                   <tbody>
                     {plant.specifications.map((spec, index) => (
                       <tr key={spec.label + index} className="">
-                        {/* Label Column */}
-                        <td className="text-[18px] py-2 px-3 font-medium text-gray-800 border-r border-gray-900">
+                        <td className="relative text-[18px] py-2 px-3 font-medium text-gray-800">
                           {spec.label}
+                          <span className="absolute right-0 top-1/2 -translate-y-1/2 h-[30%] w-px bg-gray-600"></span>
                         </td>
 
-                        {/* Value Column */}
                         <td className="text-[18px] py-2 px-3 font-medium text-gray-800">
                           {spec.value}
                         </td>
@@ -178,15 +177,14 @@ export default async function ProductDetailsPageByID({
               Like
             </h2>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-between items-center gap-6 ">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-between items-center gap-4 md:gap-6">
               {similarPlants.map((sp) => (
                 <Link
                   key={sp._id}
                   href={`/categories/${sp.category}/${sp.slug}/${sp._id}`}
                 >
-                  <div className="relative cursor-pointer transition-transform duration-300 hover:scale-105 overflow-hidden group  ">
-                    {/* Image */}
-                    <div className="relative lg:w-[90%] w-[65%] lg:h-[400px] h-[300px] mx-auto ">
+                  <div className="relative cursor-pointer transition-transform duration-300 hover:scale-105 overflow-hidden group">
+                    <div className="relative w-full h-[250px] sm:h-[280px] md:h-[320px] lg:h-[400px] mx-auto">
                       <Image
                         src={getPicURL(sp.pictures[0])}
                         alt={sp.title}
@@ -196,7 +194,7 @@ export default async function ProductDetailsPageByID({
                     </div>
 
                     {/* Title */}
-                    <p className="text-[#505050] text-lg font-semibold mt-3 mb-4 text-center transition-colors duration-300 group-hover:text-[#DA5700]">
+                    <p className="text-[#505050] text-sm sm:text-base md:text-lg font-semibold mt-3 mb-4 text-center transition-colors duration-300 group-hover:text-[#DA5700]">
                       {sp.title}
                     </p>
                   </div>

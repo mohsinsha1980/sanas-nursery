@@ -146,15 +146,17 @@ export default function AddPlant() {
 
   return (
     <>
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center pb-5 gap-3">
-        <h1 className="text-3xl font-bold text-gray-900 !p-0">Add a plant</h1>
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center pb-4 md:pb-5 gap-3">
+        <h1 className="text-2xl md:text-3xl font-bold text-gray-900 !p-0">
+          Add a plant
+        </h1>
         <BackButton onClick={() => router.back()} />
       </div>
 
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 mb-4">
-            <div className="lg:col-span-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+            <div className="md:col-span-2 lg:col-span-2">
               <TextField
                 name="title"
                 label="Title"
@@ -169,7 +171,7 @@ export default function AddPlant() {
               />
             </div>
 
-            <div className="lg:col-span-2">
+            <div className="md:col-span-2 lg:col-span-2">
               <TextField
                 name="metaDescription"
                 label="Meta Description"
@@ -182,7 +184,7 @@ export default function AddPlant() {
               />
             </div>
 
-            <div className="lg:col-span-4">
+            <div className="md:col-span-2 lg:col-span-4">
               <TextArea
                 name="summary"
                 label="Plant Summary"
@@ -195,7 +197,7 @@ export default function AddPlant() {
               />
             </div>
 
-            <div className="lg:col-span-4">
+            <div className="md:col-span-2 lg:col-span-4">
               <RichTextField
                 name="details"
                 label="Plant Details"
@@ -206,7 +208,7 @@ export default function AddPlant() {
               />
             </div>
 
-            <div className="lg:col-span-4">
+            <div className="md:col-span-2 lg:col-span-4">
               <RichTextField
                 name="description"
                 label="Plant Description"
@@ -217,11 +219,11 @@ export default function AddPlant() {
               />
             </div>
 
-            <div className="col-span-4">
-              <div className="grid grid-cols-4 gap-4 ">
-                <div className="col-span-3 ">
-                  <h2 className="">
-                    <p className="text-[20px] font-semibold pt-5">
+            <div className="md:col-span-2 lg:col-span-4 mt-2">
+              <div className="grid grid-cols-1 sm:grid-cols-4 gap-0 sm:gap-4 mb-4 sm:mb-0">
+                <div className="sm:col-span-3">
+                  <h2>
+                    <p className="text-lg md:text-[20px] font-semibold mb-2 sm:mb-0">
                       Key Specifications
                     </p>
                     {form?.formState?.errors?.specifications?.message ? (
@@ -231,7 +233,7 @@ export default function AddPlant() {
                     ) : null}
                   </h2>
                 </div>
-                <div className="text-left sm:text-right">
+                <div className="text-left sm:text-right lg:text-right">
                   <AddNew
                     label="Specifications"
                     onClick={() => setOpenKeySpec(true)}
@@ -240,7 +242,7 @@ export default function AddPlant() {
               </div>
 
               {/* Specifications Table - Responsive */}
-              <div className="rounded-md mb-4 overflow-x-auto">
+              <div className="rounded-md mb-6 md:mb-4 overflow-x-auto">
                 <Table className="min-w-full">
                   <TableHeader>
                     <TableRow className="flex bg-slate-50 hover:bg-slate-50 border-b border-slate-200">
@@ -296,7 +298,7 @@ export default function AddPlant() {
               </div>
             </div>
 
-            <div className="">
+            <div className="md:col-span-1">
               <SmartBox
                 name="category"
                 label="Category"
@@ -309,7 +311,7 @@ export default function AddPlant() {
               />
             </div>
 
-            <div className="">
+            <div className="md:col-span-1">
               <SmartBox
                 name="size"
                 label="Size"
@@ -322,7 +324,7 @@ export default function AddPlant() {
               />
             </div>
 
-            <div className="">
+            <div className="md:col-span-1">
               <SmartBox
                 name="careLevel"
                 label="Care Level"
@@ -335,7 +337,7 @@ export default function AddPlant() {
               />
             </div>
 
-            <div className="">
+            <div className="md:col-span-1">
               {masterData?.tags?.length ? (
                 <MultipleSelectField
                   name="tags"
@@ -351,7 +353,7 @@ export default function AddPlant() {
               ) : null}
             </div>
 
-            <div className="lg:col-span-4">
+            <div className="md:col-span-2 lg:col-span-4">
               <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
                 <div className="sm:col-span-3">
                   <h4 className="mb-0 text-base sm:text-lg lg:text-xl font-semibold">
@@ -370,21 +372,21 @@ export default function AddPlant() {
             </div>
 
             {getFaqAccrItems(form.getValues("faqs"))?.length ? (
-              <div className="lg:col-span-4">
+              <div className="md:col-span-2 lg:col-span-4">
                 <ProductAccordion
                   items={getFaqAccrItems(form.getValues("faqs"))}
                   onDelete={(index) => removeFaq(index)}
                 />
               </div>
             ) : (
-              <div className="lg:col-span-4 text-gray-500 mb-5">
+              <div className="md:col-span-2 lg:col-span-4 text-gray-500 mb-5">
                 <p className="text-sm sm:text-base">
                   No FAQ added yet. Click on &ldquo;Add New FAQ &ldquo; to add.
                 </p>
               </div>
             )}
 
-            <div className="lg:col-span-2 mt-2">
+            <div className="md:col-span-1 lg:col-span-2 mt-2">
               <InputImageField
                 name="pictures"
                 label="Plants Pictures"
@@ -402,7 +404,7 @@ export default function AddPlant() {
               />
             </div>
 
-            <div className="lg:col-span-2 flex flex-wrap gap-2">
+            <div className="md:col-span-1 lg:col-span-2 flex flex-wrap gap-2">
               {previews.map((item, index) => {
                 return (
                   <div className="relative w-20 h-20" key={`preview_${index}`}>
@@ -412,7 +414,7 @@ export default function AddPlant() {
               })}
             </div>
 
-            <div className="mt-3">
+            <div className="md:col-span-2 lg:col-span-4 mt-3">
               <SwitchField
                 labelClassName="text-base sm:text-lg lg:text-xl font-semibold"
                 name="status"
@@ -422,9 +424,11 @@ export default function AddPlant() {
               />
             </div>
 
-            <div className="lg:col-span-4">
-              <CancelButton onClick={() => router.back()} />
-              <SaveButton type="submit" />
+            <div className="md:col-span-2 lg:col-span-4">
+              <div className="flex flex-row gap-3">
+                <CancelButton onClick={() => router.back()} />
+                <SaveButton type="submit" />
+              </div>
             </div>
           </div>
         </form>

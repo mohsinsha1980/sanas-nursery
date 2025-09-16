@@ -54,19 +54,19 @@ export default function ContactPage() {
   return (
     <div className="" id="contact-form">
       <section className="py-20  ">
-        <div className="container-custom  space-y-10 ">
-          <div className="">
-            <h1 className="lg:text-[42px] md:text-[36px] text-[28px] font-semibold text-center">
-              <span className="text-[#00611F]">Contact Us</span> – We’re Just a
-              Message Away!
+        <div className="container-custom space-y-12">
+          <div className="text-center space-y-4">
+            <h1 className="lg:text-[42px] md:text-[36px] text-[28px] font-bold text-gray-900">
+              <span className="text-[#00611F]">Get in Touch</span> with Our
+              Plant Experts
             </h1>
-            <p className="text-[#505050] lg:text-[20px] md:text-[20px] text-[20px] font-medium text-center">
-              Have questions or want to stay updated? We&apos;d love to hear
-              from you!
+            <p className="text-[#505050] lg:text-[20px] md:text-[18px] text-[16px] font-medium max-w-2xl mx-auto leading-relaxed">
+              Ready to transform your space with beautiful plants? Our plant
+              experts are here to help!
             </p>
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 ">
-            <div className="bg-orange-50 shadow-xl rounded-2xl p-8 hover:shadow-2xl transition-shadow duration-300">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div className="bg-orange-50 shadow-xl rounded-2xl px-4 py-8 sm:px-6 sm:py-8 lg:p-8 hover:shadow-2xl transition-shadow duration-300">
               <h2 className="text-2xl md:text-3xl font-bold text-green-900 mb-6">
                 Send us a Message
               </h2>
@@ -128,7 +128,7 @@ export default function ContactPage() {
             </div>
 
             {/* Contact Info Card */}
-            <div className="bg-green-50 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-shadow duration-300">
+            <div className="bg-green-50 rounded-2xl px-4 py-8 sm:px-6 sm:py-8 lg:p-8 shadow-lg hover:shadow-2xl transition-shadow duration-300">
               <h2 className="text-2xl md:text-3xl font-bold text-green-900 mb-6">
                 Get in Touch
               </h2>
@@ -181,7 +181,7 @@ export default function ContactPage() {
                   </div>
                 </div>
 
-                <div className="bg-white p-4 rounded-xl shadow-inner">
+                <div className="bg-white p-6 rounded-xl shadow-inner">
                   <h3 className="text-lg font-semibold text-black  mb-2">
                     Response Time
                   </h3>

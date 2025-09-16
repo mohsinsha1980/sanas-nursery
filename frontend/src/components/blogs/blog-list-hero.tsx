@@ -20,7 +20,7 @@ const BlogListHero = () => {
         w-[90%] h-fit top-[55%] -translate-y-1/2 left-1/2 -translate-x-1/2 space-y-5 flex flex-col justify-center items-center bg-white/80 backdrop-blur-sm"
         >
           <h1 className="lg:text-[60px] md:text-[50px] text-[40px] font-bold lg:leading-18 leading-13 md:text-start text-center">
-            Our Blog
+            Our Blogs
           </h1>
           <p className="text-[#505050] lg:text-[20px] md:text-[20px] text-[20px] font-medium md:text-start text-center">
             Discover expert gardening tips, plant care guides, and nursery

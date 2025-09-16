@@ -40,4 +40,6 @@ export interface WishlistItem {
   title: string;
   slug: string;
   picture: string;
+  category: string;
+  plantId: string;
 }

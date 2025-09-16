@@ -52,77 +52,83 @@ export default function ResetPasswordPage() {
 
   return (
     <div
-      className="relative flex min-h-screen w-full items-center justify-center bg-cover bg-center overflow-hidden "
+      className="relative flex min-h-screen w-full items-center justify-center bg-cover bg-center overflow-hidden px-4 sm:px-6 lg:px-8 pb-4  mt-4 sm:mt-0"
       style={{
         backgroundImage: `url(${AUTH.BANNER})`,
+        paddingTop: "var(--header-height)",
+        minHeight: "calc(100vh - var(--header-height))",
       }}
     >
-      <div className="absolute lg:w-full w-[96%] max-w-[600px] top-[56%] -translate-y-1/2 bg-white/80 backdrop-blur-md shadow-lg rounded-2xl flex justify-center items-center lg:p-10 p-5">
-        <div className="w-full max-w-[574px] flex flex-col">
-          <h1 className="lg:text-[30px] text-[25px] font-semibold text-gray-900 leading-10">
-            Reset Password
-          </h1>
-          <p className="lg:text-[16px] text-[16px] text-gray-600 ">
-            Enter the OTP sent to your email and set a new password to continue
-            exploring our plant collection.
-          </p>
+      <div className="absolute inset-0 bg-black/20"></div>
 
-          <Form {...form}>
-            <form
-              onSubmit={form.handleSubmit(onSubmit)}
-              className="mt-4 flex flex-col space-y-4 sm:space-y-6"
-            >
-              {/* Email */}
-              <TextField
-                name="email"
-                placeholder="Enter Email"
-                label="Email"
-                labelClassName="text-[16px] font-medium"
-                inputType="email"
-                formControl={form.control}
-                className="w-full rounded-md border border-black/20 px-3 text-black bg-white"
-              />
+      <div className="relative w-full max-w-md sm:max-w-lg lg:max-w-xl xl:max-w-2xl bg-white/90 backdrop-blur-sm shadow-xl rounded-2xl ring-1 ring-black/5 mx-auto">
+        <div className="p-6 sm:p-8 lg:p-10 xl:p-12">
+          <div className="w-full flex flex-col">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 leading-tight mb-2 sm:mb-3">
+              Reset Password
+            </h1>
+            <p className="text-sm sm:text-base lg:text-lg text-gray-600 sm:mb-4 mb-0  leading-relaxed">
+              Enter the OTP sent to your email and set a new password to
+              continue exploring our plant collection.
+            </p>
 
-              <TextField
-                name="otp"
-                placeholder="Enter OTP"
-                label="OTP"
-                labelClassName="text-[16px] font-medium"
-                inputType="text"
-                formControl={form.control}
-                className="w-full rounded-md border border-black/20 px-3 text-black bg-white"
-              />
-
-              <TextField
-                name="password"
-                placeholder="Enter Password"
-                label="Password"
-                labelClassName="text-[16px] font-medium"
-                inputType="password"
-                formControl={form.control}
-                className="w-full rounded-md border border-black/20 px-3 text-black bg-white"
-              />
-
-              <TextField
-                name="confirmPassword"
-                placeholder="Confirm Password"
-                label="Confirm Password"
-                labelClassName="text-[16px] font-medium"
-                inputType="password"
-                formControl={form.control}
-                className="w-full rounded-md border border-black/20 px-3 text-black bg-white"
-              />
-
-              <Button
-                type="submit"
-                variant={"orange"}
-                size={"md"}
-                className="w-full lg:text-lg text-md font-medium text-white sm:p-2"
+            <Form {...form}>
+              <form
+                onSubmit={form.handleSubmit(onSubmit)}
+                className="mt-2 flex flex-col space-y-4 sm:space-y-6"
               >
-                Reset Password
-              </Button>
-            </form>
-          </Form>
+                {/* Email */}
+                <TextField
+                  name="email"
+                  placeholder="Enter Email"
+                  label="Email"
+                  labelClassName="text-[16px] font-medium"
+                  inputType="email"
+                  formControl={form.control}
+                  className="w-full rounded-md border border-black/20 px-3 text-black bg-white"
+                />
+
+                <TextField
+                  name="otp"
+                  placeholder="Enter OTP"
+                  label="OTP"
+                  labelClassName="text-[16px] font-medium"
+                  inputType="text"
+                  formControl={form.control}
+                  className="w-full rounded-md border border-black/20 px-3 text-black bg-white"
+                />
+
+                <TextField
+                  name="password"
+                  placeholder="Enter Password"
+                  label="Password"
+                  labelClassName="text-[16px] font-medium"
+                  inputType="password"
+                  formControl={form.control}
+                  className="w-full rounded-md border border-black/20 px-3 text-black bg-white"
+                />
+
+                <TextField
+                  name="confirmPassword"
+                  placeholder="Confirm Password"
+                  label="Confirm Password"
+                  labelClassName="text-[16px] font-medium"
+                  inputType="password"
+                  formControl={form.control}
+                  className="w-full rounded-md border border-black/20 px-3 text-black bg-white"
+                />
+
+                <Button
+                  type="submit"
+                  variant={"orange"}
+                  size={"md"}
+                  className="w-full lg:text-lg text-md font-medium text-white sm:p-2"
+                >
+                  Reset Password
+                </Button>
+              </form>
+            </Form>
+          </div>
         </div>
       </div>
     </div>

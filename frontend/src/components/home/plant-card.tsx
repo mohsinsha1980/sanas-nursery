@@ -9,9 +9,9 @@ const PlantCard = ({ plant }: { plant: GreenChoicePlant }) => {
     <Link
       key={plant._id}
       href={`/categories/${plant.category}/${plant.slug}/${plant._id}`}
-      className="flex flex-col items-center cursor-pointer"
+      className="flex flex-col items-center cursor-pointer w-full "
     >
-      <div className="w-full md:w-[240px] lg:w-[250px] h-[300px] sm:h-[320px] md:h-[350px] lg:h-[375px] rounded-[10px] overflow-hidden transition-transform duration-300 hover:scale-105 group px-0">
+      <div className="w-[70%] md:w-[240px] lg:w-[250px] h-[350px] sm:h-[320px] md:h-[350px] lg:h-[375px] rounded-[10px] overflow-hidden transition-transform duration-300 hover:scale-105 group px-0 ">
         <div className="relative w-full h-full">
           <Image
             src={getPicURL(plant.pictures[0])}
