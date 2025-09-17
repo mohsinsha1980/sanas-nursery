@@ -51,13 +51,12 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { SubmitHandler, useFieldArray, useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
+import AddNew from "../action-buttons/add-new";
+import BackButton from "../action-buttons/back";
+import CancelButton from "../action-buttons/cancel";
+import UpdateButton from "../action-buttons/update";
 import AddFAQ from "./add-faq";
 import AddSpecificatin from "./add-specification";
-import UpdateButton from "../action-buttons/update";
-import CancelButton from "../action-buttons/cancel";
-import BackButton from "../action-buttons/back";
-import AddNew from "../action-buttons/add-new";
-import SaveButton from "../action-buttons/save";
 
 const defaultValues: EditPlantFields = {
   plantId: "",

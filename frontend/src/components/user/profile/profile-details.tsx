@@ -20,7 +20,7 @@ export default function ProfileDetails({ user }: ProfileHeaderProps) {
     <>
       <div className="mb-6 sm:mb-8">
         <div className="mb-4 sm:mb-6">
-          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2 !px-0" >
             My Profile
           </h1>
           <p className="text-sm sm:text-base text-gray-600">
@@ -29,7 +29,7 @@ export default function ProfileDetails({ user }: ProfileHeaderProps) {
         </div>
 
         <Card>
-          <CardContent className="p-4 sm:p-6">
+          <CardContent className="p-4 sm:p-6 ">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
               <div className="flex items-center space-x-4">
                 <Avatar className="h-16 w-16 flex-shrink-0">
@@ -37,8 +37,8 @@ export default function ProfileDetails({ user }: ProfileHeaderProps) {
                     {getInitials(user.name)}
                   </AvatarFallback>
                 </Avatar>
-                <div className="min-w-0 flex-1">
-                  <h2 className="text-lg sm:text-xl font-semibold text-gray-900 truncate">
+                <div className="min-w-0 flex-1 ">
+                  <h2 className="text-lg sm:text-xl !font-semibold text-gray-900 truncate !mb-1">
                     {user.name}
                   </h2>
                   <p className="text-sm sm:text-base text-gray-600 truncate">

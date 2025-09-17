@@ -8,12 +8,12 @@ import ErrorBoundary from "@/components/common/error-boundary";
 import PageLoader from "@/components/layout/PageLoader";
 import { ROLES } from "@/lib/constants";
 
-const UserSidebar = dynamic(
-  () => import("@/components/user/layout/user-sidebar"),
+const UserTemplate = dynamic(
+  () => import("@/components/user/layout/user-template"),
   {
     ssr: false,
     loading: () => (
-      <div className="w-64 bg-white shadow-lg min-h-screen flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center">
         <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-600"></div>
       </div>
     ),
@@ -62,18 +62,8 @@ export default function UserLayout({ children }: UserLayoutProps) {
 
   return (
     <ErrorBoundary>
-      <div
-        className="min-h-screen bg-gray-50"
-        style={{ paddingTop: "var(--header-height)" }}
-      >
-        <div className="flex flex-col lg:flex-row">
-          <UserSidebar />
-          <div className="flex-1 gap-10">
-            <div className="container mx-auto px-4 sm:px-4 lg:px-6 py-4 sm:py-6 lg:py-6">
-              {children}
-            </div>
-          </div>
-        </div>
+      <div className="min-h-screen ">
+        <UserTemplate>{children}</UserTemplate>
       </div>
     </ErrorBoundary>
   );

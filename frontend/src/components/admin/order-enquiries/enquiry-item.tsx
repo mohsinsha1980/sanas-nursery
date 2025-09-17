@@ -13,11 +13,10 @@ import { OrderEnquiryDataType } from "@/lib/types/admin-types";
 import {
   Calendar,
   Eye,
-  Mail,
   MessageSquare,
   Package,
   Phone,
-  User,
+  User
 } from "lucide-react";
 import Image from "next/image";
 

@@ -58,8 +58,8 @@ export default function UserEnquiriesList() {
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-6">
-        <h2 className="text-2xl font-bold text-gray-900">My Inquiries</h2>
+      <div className="flex items-center justify-between mb-5">
+        <h2 className="text-2xl font-bold text-gray-900 !mb-0">My Inquiries</h2>
         <span className="text-sm text-gray-600">
           {enquiries.length} total inquiries
         </span>
