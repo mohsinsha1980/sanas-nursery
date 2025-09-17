@@ -203,14 +203,16 @@ export default function EditBlogForm({ blogId }: EditBlogProps) {
                     className="rounded-md border-black/10"
                   />
 
-                  <RichTextField
-                    name="content"
-                    label="Blog Content"
-                    labelClassName="text-base font-medium"
-                    placeholder="Write your blog content here..."
-                    formControl={form.control}
-                    className="rounded-md border-black/10"
-                  />
+                  <div key={form.getValues("content").slice(0, 5) + "_content"}>
+                    <RichTextField
+                      name="content"
+                      label="Blog Content"
+                      labelClassName="text-base font-medium"
+                      placeholder="Write your blog content here..."
+                      formControl={form.control}
+                      className="rounded-md border-black/10"
+                    />
+                  </div>
                 </div>
               </div>
 

@@ -124,7 +124,7 @@ export default function BlogTagsField({ data }: Props) {
         <div className="w-full md:basis-1/4">
           <h2 className="text-lg md:text-xl font-semibold !mb-1">Blog Tags</h2>
         </div>
-        <div className="w-full md:basis-2/4 relative">
+        <div className="w-full md:basis-2/4 relative lg:mb-2">
           <Input
             placeholder="Search a blog tag"
             className="h-8 border-black/10 rounded-lg pr-8 w-full"
@@ -134,12 +134,12 @@ export default function BlogTagsField({ data }: Props) {
           {search && (
             <XIcon
               size="16"
-              className="absolute right-2 bottom-1/3 -translate-y-1/2 text-gray-400 hover:text-gray-600 cursor-pointer"
+              className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 cursor-pointer"
               onClick={() => setSearch("")}
             />
           )}
         </div>
-        <div className="w-full md:basis-1/4 text-left md:text-right">
+        <div className="w-full md:basis-1/4 text-left md:text-right lg:mb-2">
           <Button
             variant={"orange"}
             type="button"
@@ -155,14 +155,14 @@ export default function BlogTagsField({ data }: Props) {
       <Table className="mb-4 rounded-lg table-auto w-full">
         <TableHeader>
           <TableRow className="bg-slate-50 hover:bg-slate-50 border-b border-slate-200">
-            <TableHead className="text-left font-semibold text-slate-700 py-2 px-3 sm:px-6 text-xs sm:text-sm">
+            <TableHead className="text-left font-semibold text-slate-700 py-2 px-2 sm:px-6 text-xs sm:text-sm w-[40%] sm:w-auto">
               Blog Tag Label
             </TableHead>
-            <TableHead className="text-left font-semibold text-slate-700 py-2 px-3 sm:px-6 text-xs sm:text-sm">
+            <TableHead className="text-left font-semibold text-slate-700 py-2 px-2 sm:px-6 text-xs sm:text-sm w-[40%] sm:w-auto">
               Blog Tag Value
             </TableHead>
-            <TableHead className="text-right w-20 font-semibold text-slate-700 py-2 px-3 sm:px-6 text-xs sm:text-sm">
-              Actions
+            <TableHead className="text-right font-semibold text-slate-700 py-2 px-1 sm:px-6 text-xs sm:text-sm w-[20%] sm:w-20">
+              Action
             </TableHead>
           </TableRow>
         </TableHeader>
@@ -173,16 +173,16 @@ export default function BlogTagsField({ data }: Props) {
                 key={index}
                 className="border-b border-slate-100 last:border-b-0 hover:bg-slate-50 transition-colors duration-150"
               >
-                <TableCell className="text-left py-2 px-3 sm:px-6 text-slate-600 text-xs sm:text-sm break-words">
+                <TableCell className="text-left py-2 px-2 sm:px-6 text-slate-600 text-xs sm:text-sm break-words w-[40%] sm:w-auto">
                   {data.label}
                 </TableCell>
-                <TableCell className="text-left py-2 px-3 sm:px-6 text-slate-600 text-xs sm:text-sm break-words">
+                <TableCell className="text-left py-2 px-2 sm:px-6 text-slate-600 text-xs sm:text-sm break-words w-[40%] sm:w-auto">
                   {data.value}
                 </TableCell>
-                <TableCell className="text-right py-2 px-3 sm:px-6 text-slate-600 text-xs sm:text-sm break-words">
+                <TableCell className="text-right py-2 px-1 sm:px-6 text-slate-600 text-xs sm:text-sm break-words w-[20%] sm:w-20">
                   <div className="flex justify-end gap-1">
                     <Trash2Icon
-                      size="18"
+                      size="16"
                       color="red"
                       onClick={() => deleteHandler(data._id)}
                       className="icon_action cursor-pointer"

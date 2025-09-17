@@ -43,7 +43,7 @@ export default function AddSpecificatin({
   return (
     <Form {...form}>
       <form className="">
-        <div className="grid grid-cols-3 gap-4 mb-4">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-4">
           <div>
             <TextField
               name="label"
@@ -64,12 +64,12 @@ export default function AddSpecificatin({
           </div>
           <div>
             <div className="space-y-2">
-              <FormLabel>&nbsp;</FormLabel>
+              <FormLabel className="hidden sm:block">&nbsp;</FormLabel>
               <div className="flex h-9 w-full items-center">
                 <Button
                   type="button"
-                  variant={'orange'}
-                  className=""
+                  variant={"orange"}
+                  className="w-full sm:w-auto rounded-md"
                   onClick={form.handleSubmit(onSubmit)}
                 >
                   Add Specification

@@ -11,9 +11,9 @@ export default function SaveButton({ className, type = "submit" }: Props) {
   return (
     <Button
       variant="orange"
-      size="sm"
+      size="default"
       type={type}
-      className={cn("w-full sm:w-auto", className)}
+      className={cn("sm:w-auto", className)}
     >
       <Save /> Save
     </Button>

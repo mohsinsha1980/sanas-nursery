@@ -197,7 +197,7 @@ const PlantsList = () => {
         description="This action cannot be undone and will permanently delete your plant."
         open={openConfirm}
         onclose={(open: boolean) => setOpenConfirm(open)}
-        className="max-w-[500px]"
+        className="max-w-[500px] py-12"
       >
         <ConfirmButton
           handleConfirm={(status: boolean) => {

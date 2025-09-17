@@ -1,3 +1,5 @@
+import AuthProvider from "@/components/auth/AuthProvider";
+import ClientLayout from "@/components/layout/ClientLayout";
 import ReduxProvider from "@/components/layout/ReduxProvider";
 import config from "@/config/env-config";
 import type { Metadata } from "next";
@@ -7,9 +9,6 @@ import Script from "next/script";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 import { Toaster } from "sonner";
 import "./globals.css";
-import AuthProvider from "@/components/auth/AuthProvider";
-import ClientLayout from "@/components/layout/ClientLayout";
-import { SITE_DATA } from "@/lib/constants";
 
 const catamaran = Catamaran({
   variable: "--font-catamaran",
@@ -29,67 +28,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const schemaData = {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    name: "Sanas Nursery",
-    url: "https://sanasnursery.com/",
-    description:
-      "One stop shop for all your nursery needs - Wholesale plant supplier in Uruli Kanchan, Maharashtra",
-    inLanguage: "en",
-    publisher: {
-      "@type": "Organization",
-      name: "Sanas Nursery",
-      url: "https://sanasnursery.com",
-      logo: {
-        "@type": "ImageObject",
-        url: "https://sanasnursery.com/images/site/sanas-nursery.webp",
-        width: 200,
-        height: 200,
-      },
-      contactPoint: {
-        "@type": "ContactPoint",
-        telephone: SITE_DATA.phone,
-        email: SITE_DATA.EMAIL,
-        contactType: "customer service",
-        areaServed: "IN",
-        availableLanguage: ["en", "mr"],
-        hoursAvailable: {
-          "@type": "OpeningHoursSpecification",
-          dayOfWeek: [
-            "Monday",
-            "Tuesday",
-            "Wednesday",
-            "Thursday",
-            "Friday",
-            "Saturday",
-            "Sunday",
-          ],
-        },
-      },
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: "Uruli Kanchan",
-        addressLocality: "Pune",
-        addressRegion: "Maharashtra",
-        postalCode: "412202",
-        addressCountry: "IN",
-      },
-    },
-    potentialAction: {
-      "@type": "SearchAction",
-      target: "https://sanasnursery.com/search?q={search_term_string}",
-      "query-input": "required name=search_term_string",
-    },
-  };
   return (
     <html lang="en">
-      <Script
-        id="website-schema"
-        type="application/ld+json"
-        strategy="beforeInteractive"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
-      />
       <Script id="gtm" strategy="afterInteractive">
         {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
