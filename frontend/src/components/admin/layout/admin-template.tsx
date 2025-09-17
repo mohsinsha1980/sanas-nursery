@@ -11,6 +11,7 @@ export default function AdminTemplate({
   children?: React.ReactNode;
 }>) {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isSheetOpen, setIsSheetOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,6 +22,10 @@ export default function AdminTemplate({
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const closeSheet = () => {
+    setIsSheetOpen(false);
+  };
 
   return (
     <div className="container">
@@ -36,7 +41,7 @@ export default function AdminTemplate({
             isScrolled ? classes.hidden : ""
           }`}
         >
-          <Sheet>
+          <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
             <SheetTrigger asChild>
               <button className={`${classes.mobile_menu_trigger}`}>
                 <Menu className="h-5 w-6 " />
@@ -45,7 +50,7 @@ export default function AdminTemplate({
             </SheetTrigger>
             <SheetContent side="left" className="w-80 p-0">
               <div className={`${classes.sheet_content} h-full`}>
-                <ContextMenu />
+                <ContextMenu onLinkClick={closeSheet} />
               </div>
             </SheetContent>
           </Sheet>

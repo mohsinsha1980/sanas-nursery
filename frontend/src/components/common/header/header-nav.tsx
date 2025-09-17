@@ -26,7 +26,7 @@ export default function HeaderNav() {
           <Link
             href="#categories-section"
             className={`flex items-center gap-1 ${
-              pathname.startsWith("/plants") ? "active" : ""
+              pathname.startsWith("/plants") ||  pathname.startsWith("/categories")  ? "active" : ""
             }`}
           >
             <span>Plants </span>

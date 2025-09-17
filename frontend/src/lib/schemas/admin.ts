@@ -170,7 +170,7 @@ export const testimonialSchema = z.object({
 });
 
 const baseBlogSchema = {
-  title: z.string().nonempty("Title is required"),
+  title: titleSchema,
   slug: slugValidation,
   excerpt: z
     .string()
