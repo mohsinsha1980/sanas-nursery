@@ -57,7 +57,6 @@ import UpdateButton from "../action-buttons/update";
 import CancelButton from "../action-buttons/cancel";
 import BackButton from "../action-buttons/back";
 import AddNew from "../action-buttons/add-new";
-import SaveButton from "../action-buttons/save";
 
 const defaultValues: EditPlantFields = {
   plantId: "",

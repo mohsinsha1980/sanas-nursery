@@ -58,40 +58,46 @@ export default function HeaderActions() {
                 avoidCollisions={true}
                 collisionPadding={10}
               >
+                {/* User info */}
                 <div className="px-2 py-1.5">
                   <p className="text-sm font-medium">{user.name}</p>
                   <p className="text-xs text-gray-500">{user.email}</p>
                 </div>
                 <DropdownMenuSeparator />
+
+                {/* Admin Dashboard / User Profile */}
                 {user.role === ROLES.ADMIN ? (
                   <DropdownMenuItem asChild>
-                    <Link href="/admin/dashboard">
-                      <span className="flex items-center cursor-pointer hover:text-orange-500">
-                        <LayoutDashboard className="mr-2 h-4 w-4" />
-                        Dashboard
-                      </span>
+                    <Link
+                      href="/admin/dashboard"
+                      className="flex items-center w-full cursor-pointer hover:text-orange-500 focus:text-orange-500"
+                    >
+                      <LayoutDashboard className="mr-2 h-4 w-4" />
+                      Dashboard
                     </Link>
                   </DropdownMenuItem>
                 ) : (
                   <DropdownMenuItem asChild>
-                    <Link href="/user/profile">
-                      <span className="flex items-center cursor-pointer hover:text-orange-500">
-                        <UserIcon className="mr-2 h-4 w-4" />
-                        Profile
-                      </span>
+                    <Link
+                      href="/user/profile"
+                      className="flex items-center w-full cursor-pointer hover:text-orange-500 focus:text-orange-500"
+                    >
+                      <UserIcon className="mr-2 h-4 w-4" />
+                      Profile
                     </Link>
                   </DropdownMenuItem>
                 )}
 
                 <DropdownMenuSeparator />
+
+                {/* Logout */}
                 <DropdownMenuItem
                   onClick={handleLogout}
                   disabled={isLoggingOut}
+                  className="flex items-center w-full cursor-pointer hover:text-orange-500 focus:text-orange-500"
                 >
-                  <span className="flex items-center cursor-pointer hover:text-orange-500">
-                    <LogOut className="mr-2 h-4 w-4" />
-                    {isLoggingOut ? "Logging out..." : "Logout"}
-                  </span>
+                  <LogOut className="mr-2 h-4 w-4" />
+                  {isLoggingOut ? "Logging out..." : "Logout"}
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenuPortal>

@@ -24,7 +24,7 @@ export default function HeaderNav() {
           onMouseLeave={() => setOpen(false)}
         >
           <Link
-            href="#categories-section"
+            href="/categories/fruit-trees"
             className={`flex items-center gap-1 ${
               pathname.startsWith("/plants") ? "active" : ""
             }`}
@@ -46,9 +46,9 @@ export default function HeaderNav() {
                     <li key={cat.value}>
                       <Link
                         href={`/categories/${cat.value}`}
-                        className=" px-4 text-gray-800 "
+                        className=" px-4 "
                       >
-                        {cat.label}
+                        <p className="text-[18px]">{cat.label}</p>
                       </Link>
                     </li>
                   ))}

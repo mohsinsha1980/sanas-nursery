@@ -88,7 +88,7 @@ export default function Filters({ category }: CategoryFilterProps) {
   const FilterContent = (
     <div className={classes.bl_filters}>
       <div
-        className={`w-full h-full px-4 py-3 lg:py-2 rounded-lg shadow-md shadow-gray-400 flex items-center justify-between `}
+        className={`w-full h-full px-4 py-3 lg:py-2 rounded-lg border-2 border-gray-100 flex items-center justify-between `}
       >
         <h3 className="text-base lg:text-[16px] font-semibold">Filters</h3>
         <Button
@@ -101,16 +101,16 @@ export default function Filters({ category }: CategoryFilterProps) {
         </Button>
       </div>
 
-      <div className="w-full lg:h-full h-auto lg:py-3 lg:mt-5 mt-4 rounded-lg shadow-md shadow-gray-400 flex flex-col lg:items-start items-start justify-between p-4">
+      <div className="w-full lg:h-full h-auto lg:py-3 lg:mt-5 mt-4 rounded-lg border-2 border-gray-100 flex flex-col lg:items-start items-start justify-between ">
         {CATEGORY_ARR.map((cat) => (
           <Link
             key={cat.value}
             href={`/categories/${cat.value}`}
-            className={`px-3 py-2 lg:py-2 text-base lg:text-lg font-medium transition-colors duration-200 cursor-pointer rounded-md w-full text-left
+            className={`px-3 py-2 lg:py-1 text-base lg:text-lg font-medium transition-colors duration-200 cursor-pointer rounded-md w-full text-left
             ${
               category === cat.value
-                ? "text-[#f37521] font-semibold bg-orange-50"
-                : "text-gray-700 hover:text-[#f37521] hover:bg-gray-50"
+                ? "text-[#f37521] font-semibold "
+                : "text-gray-700 hover:bg-orange-50 "
             }`}
           >
             {cat.label}

@@ -134,16 +134,15 @@ export default function ContactPage() {
               </h2>
               <div className="space-y-8">
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 bg-orange-50 rounded-lg flex items-center justify-center flex-shrink-0">
                     <Mail className="w-6 h-6 text-green-600" />
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-black  mb-1">
                       Email
                     </h3>
-                    <p className="text-green-700 font-medium">
+                    <p className="text-black font-medium">
                       <Link href={`mailto:${SITE_DATA.EMAIL}`}>
-                        {" "}
                         {SITE_DATA.EMAIL}
                       </Link>
                     </p>
@@ -151,14 +150,14 @@ export default function ContactPage() {
                 </div>
 
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 bg-orange-50 rounded-lg flex items-center justify-center flex-shrink-0">
                     <WhatsAppIcon />
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-black  mb-1">
                       WhatsApp
                     </h3>
-                    <p className="text-green-700 font-medium">
+                    <p className="text-black font-medium">
                       <Link href={`tel:${SITE_DATA.phone}`}>
                         {" "}
                         {SITE_DATA.phone}
@@ -168,14 +167,14 @@ export default function ContactPage() {
                 </div>
 
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 bg-orange-50 rounded-lg flex items-center justify-center flex-shrink-0">
                     <MapPin className="w-6 h-6 text-green-600" />
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-black  mb-1">
                       Location
                     </h3>
-                    <p className="text-green-700 font-medium">
+                    <p className="text-black font-medium">
                       {SITE_DATA.LOCATION}
                     </p>
                   </div>

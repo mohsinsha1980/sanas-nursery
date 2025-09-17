@@ -10,7 +10,7 @@ import {
   getStatusColor,
 } from "@/lib/helper";
 import { ContactEnquiryDataType } from "@/lib/types/admin-types";
-import { Calendar, Eye, Mail, MessageSquare, Phone, User } from "lucide-react";
+import { Calendar, Eye, MessageSquare, Phone, User } from "lucide-react";
 
 interface ContactEnquiryItemProps {
   enquiry: ContactEnquiryDataType;

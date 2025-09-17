@@ -89,7 +89,7 @@ const TextField = <T extends FieldValues>({
 
                 {inputType === "password" && (
                   <div
-                    className="absolute right-6 cursor-pointer text-gray-500"
+                    className="absolute right-5 cursor-pointer text-gray-500"
                     onClick={() => setIsView((prev) => !prev)}
                   >
                     {isView ? <EyeOff size={20} /> : <Eye size={20} />}

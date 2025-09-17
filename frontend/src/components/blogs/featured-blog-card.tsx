@@ -20,7 +20,7 @@ interface FeaturedBlogCardProps {
 
 export default function FeaturedBlogCard({ blog }: FeaturedBlogCardProps) {
   return (
-    <article className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 h-full flex flex-col">
+    <article className="group bg-white rounded-2xl transition-all duration-300 overflow-hidden border-2 border-gray-100 h-full flex flex-col">
       <Link href={`/blogs/${blog.slug}`} className="flex flex-col h-full">
         <div className="relative h-64 w-full overflow-hidden">
           <Image
@@ -52,7 +52,7 @@ export default function FeaturedBlogCard({ blog }: FeaturedBlogCardProps) {
         </div>
 
         <div className="p-8 flex flex-col flex-1">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4 line-clamp-2 group-hover:text-green-600 transition-colors">
+          <h2 className="text-2xl font-bold text-gray-900 mb-4 line-clamp-2 group-hover:text-green-900 transition-colors">
             {blog.title}
           </h2>
 
@@ -103,7 +103,7 @@ export default function FeaturedBlogCard({ blog }: FeaturedBlogCardProps) {
           <div className="mt-auto">
             <Button
               asChild
-              className="w-full text-orange-400 hover:text-orange-500 hover:bg-orange-50 border-orange-200 hover:border-orange-300 font-medium py-2 rounded-lg transition-all duration-300 group-hover:shadow-md"
+              className="w-full text-orange-400 hover:text-orange-500 hover:bg-orange-50 border-orange-200 hover:border-orange-300 font-medium py-2 rounded-lg transition-all duration-300 "
             >
               <Link href={`/blogs/${blog.slug}`}>
                 <BookOpen className="h-5 w-5 mr-2" />

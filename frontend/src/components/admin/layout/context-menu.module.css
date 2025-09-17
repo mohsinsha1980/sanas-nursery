@@ -1,6 +1,6 @@
 .bl_context_menu {
   /* position: sticky; */
-  background-color: var(--bg-green-light);
+  /* background-color: var(--bg-green-light); */
   color: black;
 }
 
@@ -13,7 +13,7 @@ ul.context_menu {
 }
 
 ul.context_menu li :hover {
-  background: rgba(65, 158, 132, 0.35);
+  background: #fde5d1;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-radius: 10px;
@@ -58,7 +58,7 @@ ul.context_menu li.active>span,
 ul.context_menu li.active>a:hover,
 ul.context_menu li.active>span:hover {
   /* color: var(--txt-orange); */
-  background-color: rgba(65, 158, 132, 0.55);
+  background-color: var(--txt-orange);
   /* orange with 80% opacity */
   border-radius: 10px;
   color: white;
