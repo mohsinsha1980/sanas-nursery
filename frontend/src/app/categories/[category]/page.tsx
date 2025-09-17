@@ -94,8 +94,8 @@ export default async function CollectionPage({
         </div>
 
         <div className="lg:max-w-[1250px] w-full h-full lg:pt-25 pt-10 lg:px-0 px-3 text-center flex flex-col justify-between items-start">
-          <div className="flex justify-between items-center w-full mb-4">
-            <h2 className="text-[#0D6536] text-3xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl font-bold text-start">
+          <div className="flex justify-between items-center w-full lg:mb-2">
+            <h2 className="text-[#0D6536] text-3xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl font-medium text-start">
               {categoryData?.label || category}
             </h2>
             {/* Mobile Filter Button */}
@@ -106,12 +106,12 @@ export default async function CollectionPage({
           <div className="flex justify-between items-center h-fit w-fit gap-x-2 ">
             <Link
               href={"/"}
-              className="text-[20px] text-[#505050] font-semibold text-start hover:text-[#f37521]"
+              className="text-[18px] text-[#505050] font-semibold text-start hover:text-[#f37521]"
             >
               Home
             </Link>
             <ChevronRight className="text-[#505050] " />
-            <p className="text-[21px] font-semibold text-[#f37521] lg:pt-1">
+            <p className="text-[18px] font-semibold text-[#f37521]">
               {categoryData?.label}
             </p>
           </div>

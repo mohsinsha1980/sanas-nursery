@@ -63,10 +63,10 @@ const SignUpForm = () => {
     >
       <div className="absolute inset-0 bg-black/20"></div>
 
-      <div className="relative w-full max-w-md sm:max-w-lg lg:max-w-xl xl:max-w-2xl bg-white/90 backdrop-blur-sm shadow-xl rounded-2xl ring-1 ring-black/5 mx-auto">
+      <div className="relative w-full max-w-md sm:max-w-lg lg:w-lg xl:max-w-2xl bg-white/80 backdrop-blur-sm shadow-xl rounded-2xl ring-1 ring-black/5 mx-auto">
         <div className="p-6 sm:p-8 lg:p-10 xl:p-12">
           <div className="w-full flex flex-col">
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 leading-tight mb-2 sm:mb-3">
+            <h1 className="text-2xl sm:text-3xl lg:text-3xl font-normal text-gray-900 leading-tight mb-2 sm:mb-3">
               Sign Up
             </h1>
 
@@ -131,7 +131,7 @@ const SignUpForm = () => {
                     type="submit"
                     variant={"orange"}
                     size={"md"}
-                    className="w-full lg:text-lg text-md font-medium text-white mt-2 sm:p-2"
+                    className="w-full lg:text-lg text-md font-normal  text-white mt-2 sm:p-2"
                   >
                     Sign Up
                   </Button>

@@ -83,33 +83,30 @@ export default async function ProductDetailsPageBySlug({
   return (
     <Suspense fallback={<DetailsLoading />}>
       <section className="bg-white py-10 lg:mt-15 mt-10 lg:px-0 px-4">
-        <div className="lg:max-w-[1200px] mx-auto w-full h-full flex flex-col justify-between items-start lg:pb-10 lg:pt-0 pt-2 pb-5">
-          <h2 className="text-[#0D6536] text-3xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl font-bold text-start">
+        <div className="lg:max-w-[1200px] mx-auto w-full h-full flex flex-col justify-between items-start lg:pb-3 lg:pt-0 pt-2 pb-5">
+          <h2 className="text-[#0D6536] text-3xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl font-medium text-start">
             {category.label}
           </h2>
-          <div className="flex items-center gap-x-2">
-            {/* Home */}
+          <div className="flex flex-wrap items-center gap-x-1 gap-y-1 lg:pt-1">
             <Link
               href="/"
-              className="text-[20px] text-[#505050] font-semibold text-start hover:text-[#f37521]"
+              className="text-[18px] text-[#505050] font-semibold text-start hover:text-[#f37521]"
             >
               Home
             </Link>
-            <ChevronRight className="text-[#505050]" />
-
-            {/* Category */}
+            <ChevronRight className="text-[#505050] flex-shrink-0" />
             {category && (
               <>
                 <Link href={`/categories/${category.value}`}>
-                  <p className="text-[21px] font-semibold text-[#505050] lg:pt-1 hover:text-[#f37521]">
+                  <p className="text-[18px] font-semibold text-[#505050]  hover:text-[#f37521]">
                     {category.label}
                   </p>
                 </Link>
-                <ChevronRight className="text-[#505050]" />
+                <ChevronRight className="text-[#505050] flex-shrink-0" />
               </>
             )}
 
-            <p className="text-[21px] font-semibold text-[#f37521] lg:pt-1">
+            <p className="text-[19px] font-semibold text-[#f37521]  break-words">
               {plant.title}
             </p>
           </div>
@@ -185,7 +182,6 @@ export default async function ProductDetailsPageBySlug({
                   href={`/categories/${sp.category}/${sp.slug}/${sp._id}`}
                 >
                   <div className="relative cursor-pointer transition-transform duration-300 hover:scale-105 overflow-hidden group">
-                    {/* Image */}
                     <div className="relative w-full h-[250px] sm:h-[280px] md:h-[320px] lg:h-[400px] mx-auto">
                       <Image
                         src={getPicURL(sp.pictures[0])}

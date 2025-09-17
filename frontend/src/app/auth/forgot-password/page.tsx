@@ -58,14 +58,12 @@ export default function ForgotPasswordPage() {
       <div className="absolute lg:w-full max-w-xs lg:max-w-[450px] top-[50%] -translate-y-1/2 bg-white/80 backdrop-blur-md shadow-lg rounded-2xl flex justify-center items-center lg:p-10 p-5">
         <div className="flex flex-col w-full" style={{ maxWidth: "500px" }}>
           <h1
-            className="lg:text-[40px] text-[25px] font-semibold text-gray-900 leading-13"
-            style={{ fontSize: "32px" }}
+            className="lg:text-md text-[25px] font-normal text-gray-900 leading-13"
           >
             Forgot Password
           </h1>
           <p
-            className="lg:text-[16px] text-[16px] text-gray-600 mt-1"
-            style={{ fontSize: "18px" }}
+            className="lg:text-md text-[16px] text-gray-600 mt-1"
           >
             Enter your email to receive password reset instructions.
           </p>

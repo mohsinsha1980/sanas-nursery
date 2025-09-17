@@ -30,10 +30,9 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.75rem 0.75rem;
-  background: linear-gradient(135deg, var(--bg-green-light), rgba(65, 158, 132, 0.1));
-  border: 1px solid rgba(65, 158, 132, 0.3);
+  background:  var(--txt-orange);
   border-radius: 0.75rem;
-  color: black;
+  color: white;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
@@ -43,10 +42,8 @@
 }
 
 .mobile_menu_trigger:hover {
-  background: linear-gradient(135deg, rgba(65, 158, 132, 0.2), rgba(65, 158, 132, 0.05));
+  background: var(--dark-orange);
   border-color: rgba(65, 158, 132, 0.6);
-  box-shadow: 0 6px 16px rgba(65, 158, 132, 0.25);
-  transform: translateY(-1px);
 }
 
 /* Sheet content styling */
