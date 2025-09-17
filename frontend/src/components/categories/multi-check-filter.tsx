@@ -27,7 +27,7 @@ const MultiCheckBoxFilter: React.FC<MultiCheckBoxFieldProps> = ({
 
   return (
     <div
-      className={`flex flex-col gap-1 p-3 rounded-lg shadow-md  shadow-gray-400`}
+      className={`flex flex-col gap-1 p-3 rounded-lg border-2 border-gray-100`}
     >
       <div className="flex items-center justify-between font-semibold">
         <h3 className="mb-1 text-md">{label}</h3>

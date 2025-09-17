@@ -34,7 +34,7 @@ export default function ContextMenu({ onLinkClick }: ContextMenuProps) {
   };
 
   return (
-    <Card className={`${classes.bl_context_menu}`}>
+    <Card className={`${classes.bl_context_menu} border-2 border-gray-100`}>
       <CardContent className={`${classes.card_content} `}>
         <ul className={`${classes.context_menu} space-y-2`}>
           <li className={`${getActiveClass("/admin/dashboard")} `}>

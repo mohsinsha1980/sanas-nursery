@@ -57,7 +57,8 @@ export default function AdminTemplate({
         </div>
 
         <div
-          className={`${classes.pg_content} bg-[var(--bg-green-light)] py-5 px-2 lg:px-5 rounded-2xl shadow `}
+          // className={`${classes.pg_content} bg-[var(--bg-green-light)] py-5 px-2 lg:px-5 rounded-2xl shadow `}
+          className={`${classes.pg_content} py-5 lg:px-5 rounded-2xl `}
         >
           {children}
         </div>

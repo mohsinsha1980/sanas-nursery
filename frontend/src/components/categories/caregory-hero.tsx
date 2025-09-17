@@ -21,10 +21,10 @@ const CategoryHero = ({ categoryValue }: { categoryValue: string }) => {
             <div className="absolute lg:left-[5%] lg:px-0 px-6 ">
               <div className="max-w-4xl">
                 <div className="bg-white/60 backdrop-blur-sm text-center md:text-left lg:p-5 p-6 rounded-lg md:max-w-lg lg:max-w-2xl ">
-                  <h1 className="text-[#354733] text-4xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl font-bold leading-tight mb-3 sm:mb-4 lg:mb-6">
+                  <h1 className="text-[#354733] text-4xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl font-normal leading-tight mb-3 sm:mb-4 lg:mb-6">
                     {category?.title as string}
                   </h1>
-                  <p className="text-[#505050] text-md sm:text-base md:text-lg lg:text-xl font-semibold leading-relaxed">
+                  <p className="text-[#505050] text-md sm:text-base md:text-lg lg:text-xl font-normal leading-relaxed">
                     {category?.description as string}
                   </p>
                 </div>

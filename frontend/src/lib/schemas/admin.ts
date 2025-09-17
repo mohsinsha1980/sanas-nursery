@@ -62,7 +62,7 @@ export const addPlantSchema = z
     size: z.string().nonempty("Plant Size is required"),
     careLevel: z.string().optional(),
     tags: z.array(tagSchema).optional(),
-    metaDescription: z.string().optional(),
+    metaDescription: z.string().max(160, "Meta description must be less than 160 characters").optional(),
     details: z.string().nonempty("Detail is required"),
     description: z.string().nonempty("Plant description is required"),
     specifications: z.array(specificationsSchema),

@@ -43,9 +43,9 @@ export default function BlogSearch() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="max-w-3xl mx-auto ">
       <form onSubmit={handleSubmit} className="relative">
-        <div className="relative">
+        <div className="relative ">
           <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
             <Search className="h-5 w-5 text-gray-400" />
           </div>
@@ -54,7 +54,7 @@ export default function BlogSearch() {
             placeholder="Search..."
             value={searchText || ""}
             onChange={(e) => setSearchText(e.target.value)}
-            className="w-full pl-12 pr-20 py-6 text-lg border-2 border-gray-200 rounded-lg bg-white shadow-lg"
+            className="w-full pl-12 pr-20 py-6 text-lg border-2 border-gray-200 rounded-lg bg-white "
           />
           <div className="absolute inset-y-0 right-0 flex items-center pr-2">
             {hasSearch && (
