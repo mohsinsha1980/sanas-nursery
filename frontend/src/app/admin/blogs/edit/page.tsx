@@ -12,7 +12,6 @@ export default async function EditBlogPage({
   return (
     <>
       <Suspense fallback={<Loading />}>
-
         <EditBlogForm blogId={blog} />
       </Suspense>
     </>

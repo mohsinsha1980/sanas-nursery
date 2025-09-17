@@ -11,13 +11,12 @@ export default function CancelButton({ onClick, className }: Props) {
   return (
     <Button
       variant="outline"
-      size="sm"
+      size="default"
       type="button"
-      className={cn("w-full sm:w-auto mr-4", className)}
+      className={cn("w-auto mr-4", className)}
       onClick={onClick}
     >
       <X /> Cancel
     </Button>
   );
 }
- 

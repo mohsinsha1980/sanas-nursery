@@ -57,8 +57,10 @@ export default function AddTestimonial() {
 
   return (
     <>
-      <div className="flex justify-between items-center pb-5">
-        <h1 className="text-2xl font-bold">Add Testimonial</h1>
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center pb-4 md:pb-5 gap-3">
+        <h1 className="text-2xl md:text-3xl font-bold text-gray-900 !p-0">
+          Add Testimonial
+        </h1>
         <BackButton onClick={() => router.back()} />
       </div>
 
@@ -133,10 +135,12 @@ export default function AddTestimonial() {
               formControl={form.control}
               className="data-[state=checked]:bg-orange-500 data-[state=unchecked]:bg-gray-300"
             />
-            <div>
-              <CancelButton onClick={() => router.back()} />
 
-              <SaveButton type="submit" />
+            <div className="md:col-span-2 lg:col-span-4">
+              <div className="flex flex-row">
+                <CancelButton onClick={() => router.back()} />
+                <SaveButton type="submit" />
+              </div>
             </div>
           </form>
         </Form>

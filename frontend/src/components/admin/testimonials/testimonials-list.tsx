@@ -179,33 +179,33 @@ const TestimonialsList = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mt-4 md:mt-6 gap-3 sm:gap-0">
-              {item.link && (
-                <Link
-                  href={item.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[#4CB390] underline text-xs md:text-[14px] hover:text-[#00611F] hover:bg-[#E4FFF0] px-2 py-1 rounded transition-all duration-200 self-start"
-                >
-                  Visit
-                </Link>
-              )}
+              <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto">
+                {item.link && (
+                  <Link
+                    href={item.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#4CB390] underline text-xs md:text-[14px] hover:text-[#00611F] hover:bg-[#E4FFF0] px-2 py-1 rounded transition-all duration-200"
+                  >
+                    Visit
+                  </Link>
+                )}
 
-              <div className="flex gap-2 md:gap-3 w-full sm:w-auto">
                 <Link
                   href={`/admin/testimonials/edit?testimonial=${item._id}`}
-                  className="flex items-center gap-1 text-[#4CB390] hover:text-orange-500 hover:bg-orange-50 px-2 py-1 rounded transition-all duration-200 text-xs md:text-sm flex-1 sm:flex-none justify-center"
+                  className="flex items-center gap-1 text-blue-500 hover:text-blue-600 hover:bg-blue-50 px-2 py-1 rounded transition-all duration-200 text-xs md:text-sm"
                 >
                   <Edit2Icon size={14} className="md:w-4 md:h-4" />
-                  <span className="hidden sm:inline">Edit</span>
+                  <span>Edit</span>
                 </Link>
 
                 <button
                   type="button"
                   onClick={() => deleteHandler(item._id)}
-                  className="cursor-pointer flex items-center gap-1 text-red-500 hover:text-red-600 hover:bg-red-50 px-2 py-1 rounded transition-all duration-200 text-xs md:text-sm flex-1 sm:flex-none justify-center"
+                  className="cursor-pointer flex items-center gap-1 text-red-500 hover:text-red-600 hover:bg-red-50 px-2 py-1 rounded transition-all duration-200 text-xs md:text-sm"
                 >
                   <Trash2Icon size={14} className="md:w-4 md:h-4" />
-                  <span className="hidden sm:inline">Delete</span>
+                  <span>Delete</span>
                 </button>
               </div>
             </div>
@@ -218,7 +218,7 @@ const TestimonialsList = () => {
         description="This action cannot be undone and will permanently delete this testimonial."
         open={openConfirm}
         onclose={(open: boolean) => setOpenConfirm(open)}
-        className="max-w-[400px]"
+        className="max-w-[400px] py-10"
       >
         <ConfirmButton
           handleConfirm={(status: boolean) => {

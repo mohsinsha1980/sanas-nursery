@@ -39,8 +39,8 @@ const EnquiryFilter = ({ setFilters }: EnquiryFilterProps) => {
   };
 
   return (
-    <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm mb-6">
-      <div className="flex items-center justify-between mb-4">
+    <div className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6 shadow-sm mb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-3">
         <div className="flex items-center space-x-2">
           <Filter className="w-5 h-5 text-gray-600" />
           <h3 className="text-lg font-semibold text-gray-900">
@@ -61,7 +61,7 @@ const EnquiryFilter = ({ setFilters }: EnquiryFilterProps) => {
       </div>
 
       <div className="flex flex-col justify-center sm:flex-row sm:items-end gap-4">
-        <div className="flex-1 min-w-[280px]">
+        <div className="flex-1 w-full sm:min-w-[280px]">
           <label className="block text-sm font-medium text-gray-700 mb-2">
             Filter by Status
           </label>
@@ -163,15 +163,15 @@ const EnquiryFilter = ({ setFilters }: EnquiryFilterProps) => {
           </Select>
         </div>
 
-        <div className="flex items-center space-x-2 h-9">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center space-y-2 sm:space-y-0 sm:space-x-2 h-auto sm:h-9">
           {status && (
             <Button
               variant="outline"
               size="sm"
               onClick={() => setStatus(undefined)}
-              className="h-full"
+              className="h-9 w-full sm:w-auto"
             >
-              <X  />
+              <X />
               Clear Filter
             </Button>
           )}
@@ -180,7 +180,7 @@ const EnquiryFilter = ({ setFilters }: EnquiryFilterProps) => {
             variant="orange"
             size="sm"
             onClick={() => setStatus(undefined)}
-            className="h-full"
+            className="h-9 w-full sm:w-auto"
           >
             <RotateCcw />
             Reset All

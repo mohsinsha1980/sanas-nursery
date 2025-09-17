@@ -64,7 +64,6 @@ const BlogList = () => {
           filterData,
           controller
         );
-        console.log(response.data.data.blogs, response.data.data);
         setBlogsData({
           data: response.data.data.blogs,
           total: response.data.data.total,
@@ -276,7 +275,7 @@ const BlogList = () => {
         description="This action cannot be undone and will permanently delete your blog."
         open={openConfirm}
         onclose={(open: boolean) => setOpenConfirm(open)}
-        className="max-w-[500px]"
+        className="max-w-[500px] py-10"
       >
         <ConfirmButton
           handleConfirm={(status: boolean) => {

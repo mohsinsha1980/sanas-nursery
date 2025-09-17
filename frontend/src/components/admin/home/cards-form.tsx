@@ -108,7 +108,6 @@ export default function CardsForm({ defaultData, field, data }: CardFormProps) {
           className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
         />
 
-        {/* Overlay with hover effect */}
         <div
           className="absolute bottom-0 left-0 w-full pl-5 group-hover:bg-[rgba(255,255,255,0.5)] flex flex-col items-start justify-center text-left transition-all duration-400 ease-in-out"
           style={{ height: "200px" }}
@@ -134,7 +133,6 @@ export default function CardsForm({ defaultData, field, data }: CardFormProps) {
         </div>
       </div>
 
-      {/* Edit Dialog */}
       <CustomDialog
         title={`Update Card ${field}`}
         open={openEditForm}
@@ -147,7 +145,7 @@ export default function CardsForm({ defaultData, field, data }: CardFormProps) {
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="col-span-2">
+              <div className="md:col-span-2">
                 <TextField
                   name="large"
                   label="Big heading"
@@ -166,7 +164,7 @@ export default function CardsForm({ defaultData, field, data }: CardFormProps) {
                   form.setValue("largeColor", color as string)
                 }
               />
-              <div className="col-span-2">
+              <div className="md:col-span-2">
                 <TextField
                   name="small"
                   label="Small heading"
@@ -185,7 +183,7 @@ export default function CardsForm({ defaultData, field, data }: CardFormProps) {
                 }
               />
 
-              <div className="col-span-2">
+              <div className="md:col-span-2">
                 <TextField
                   name="link.label"
                   label="Link label"
@@ -204,7 +202,7 @@ export default function CardsForm({ defaultData, field, data }: CardFormProps) {
                 }
               />
 
-              <div className="col-span-3">
+              <div className="md:col-span-3">
                 <TextField
                   name="link.address"
                   label="Link address"
@@ -214,7 +212,7 @@ export default function CardsForm({ defaultData, field, data }: CardFormProps) {
                 />
               </div>
 
-              <div className="col-span-1">
+              <div className="md:col-span-1">
                 <InputImageField
                   name="picture"
                   label="Picture"
@@ -224,7 +222,7 @@ export default function CardsForm({ defaultData, field, data }: CardFormProps) {
                   className="border-black/10 rounded-md"
                 />
               </div>
-              <div className="col-span-2 text-right">
+              <div className="md:col-span-2 text-right">
                 {form.getValues("picture") && imageSrc && (
                   <Image
                     src={imageSrc}

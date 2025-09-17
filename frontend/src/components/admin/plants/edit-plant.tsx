@@ -45,7 +45,7 @@ import { PlantTypes } from "@/lib/types/common-types";
 import { hideLoader, showLoader } from "@/redux/uiSlice";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { AxiosError } from "axios";
-import {  Trash2Icon } from "lucide-react";
+import { Trash2Icon } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -57,6 +57,7 @@ import UpdateButton from "../action-buttons/update";
 import CancelButton from "../action-buttons/cancel";
 import BackButton from "../action-buttons/back";
 import AddNew from "../action-buttons/add-new";
+import SaveButton from "../action-buttons/save";
 
 const defaultValues: EditPlantFields = {
   plantId: "",
@@ -158,8 +159,6 @@ export default function EditPlantForm({ plantId }: EditPlantProps) {
     }
   };
 
-  console.log("previews", previews)
-
   const processPictures = (pictures: FileList) => {
     const objects = [];
     if (pictures?.length) {
@@ -204,99 +203,109 @@ export default function EditPlantForm({ plantId }: EditPlantProps) {
 
   return (
     <>
-      <div className="flex justify-between items-center">
-        <h1 className="text-3xl font-bold text-gray-900 !px-0">Edit Plant</h1>
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center pb-4 md:pb-5 gap-3">
+        <h1 className="text-2xl md:text-3xl font-bold text-gray-900 !p-0">
+          Edit Plant
+        </h1>
         <BackButton onClick={() => router.back()} />
       </div>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-          <div className="grid grid-cols-4 gap-4 mb-4 mt-5">
-            <div className="col-span-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+            <div className="md:col-span-2 lg:col-span-2">
               <TextField
                 name="title"
                 label="Title"
                 placeholder="Title"
                 inputType="text"
                 className="rounded-md border-black/20"
-                labelClassName="text-[20px] font-semibold"
+                labelClassName="text-base sm:text-lg lg:text-xl font-semibold"
                 formControl={form.control}
                 onchange={(val) => {
                   form.setValue("slug", generateSlug(val));
                 }}
               />
             </div>
-            <div className="col-span-2">
+
+            <div className="md:col-span-2 lg:col-span-2">
               <TextField
                 name="metaDescription"
                 label="Meta Description"
                 placeholder="Meta Description"
                 formControl={form.control}
                 className="rounded-md border-black/20"
-                labelClassName="text-[20px] font-semibold"
+                labelClassName="text-base sm:text-lg lg:text-xl font-semibold"
                 description="Description to show in global search and for meta tag."
-                descriptionClassName="text-md font-lg"
+                descriptionClassName="text-xs sm:text-sm"
               />
             </div>
-            <div className="col-span-4">
+
+            <div className="md:col-span-2 lg:col-span-4">
               <TextArea
                 name="summary"
                 label="Plant Summary"
-                labelClassName="text-[20px] font-semibold "
+                labelClassName="text-base sm:text-lg lg:text-xl font-semibold"
                 placeholder="Add summary about the plant"
                 formControl={form.control}
                 description="Summary to display on plant card"
-                descriptionClassName="text-md font-lg"
-                className="border-black/20"
+                descriptionClassName="text-xs sm:text-sm"
+                className="border-black/20 bg-white"
               />
             </div>
 
             <div
-              className="col-span-4"
+              className="md:col-span-2 lg:col-span-4"
               key={form.getValues("details").slice(0, 5) + "_details"}
             >
               <RichTextField
                 name="details"
                 label="Plant Details"
-                labelClassName="text-[20px] font-semibold"
+                labelClassName="text-base sm:text-lg lg:text-xl font-semibold"
                 placeholder="Details"
                 formControl={form.control}
-                className="border-black/20 rounded-md"
+                className="rounded-md border-black/20"
               />
             </div>
 
             <div
-              className="col-span-4"
+              className="md:col-span-2 lg:col-span-4"
               key={form.getValues("description").slice(0, 5) + "_description"}
             >
               <RichTextField
                 name="description"
                 label="Plant Description"
-                labelClassName="text-[20px] font-semibold"
+                labelClassName="text-base sm:text-lg lg:text-xl font-semibold"
                 placeholder="Add description about the plant"
                 formControl={form.control}
-                className="border-black/20 rounded-md"
+                className="rounded-md border-black/20"
               />
             </div>
 
-            <div className="col-span-4">
-              <div className="grid grid-cols-4 gap-4 mb-4">
-                <div className="col-span-3">
-                  <p className="mb-0 text-[20px] font-semibold pt-5">
-                    Key Specifications
+            <div className="md:col-span-2 lg:col-span-4 mt-2">
+              <div className="grid grid-cols-1 sm:grid-cols-4 gap-0 sm:gap-4 mb-4 sm:mb-0">
+                <div className="sm:col-span-3">
+                  <h2>
+                    <p className="text-lg md:text-[20px] font-semibold mb-2 sm:mb-0">
+                      Key Specifications
+                    </p>
                     {form?.formState?.errors?.specifications?.message ? (
-                      <div className="text-[0.8rem] font-medium text-destructive">
+                      <div className="text-xs sm:text-sm font-medium text-destructive">
                         {form?.formState?.errors?.specifications?.message}
                       </div>
                     ) : null}
-                  </p>
+                  </h2>
                 </div>
-                <div className="text-right">
-                  <AddNew label="Specifications" onClick={() => setOpenKeySpec(true)} />
+                <div className="text-left sm:text-right lg:text-right">
+                  <AddNew
+                    label="Specifications"
+                    onClick={() => setOpenKeySpec(true)}
+                  />
                 </div>
               </div>
 
-              <div className="rounded-md mb-4">
-                <Table className="min-w-full border-black/20">
+              {/* Specifications Table - Responsive */}
+              <div className="rounded-md mb-6 md:mb-4 overflow-x-auto">
+                <Table className="min-w-full">
                   <TableHeader>
                     <TableRow className="flex bg-slate-50 hover:bg-slate-50 border-b border-slate-200">
                       <TableHead className="w-1/3 font-semibold text-slate-700 py-2 px-3 sm:px-6 text-xs sm:text-sm">
@@ -305,16 +314,17 @@ export default function EditPlantForm({ plantId }: EditPlantProps) {
                       <TableHead className="w-1/3 font-semibold text-slate-700 py-2 px-3 sm:px-6 text-xs sm:text-sm">
                         Value
                       </TableHead>
-                      <TableHead className="w-1/3 font-semibold text-slate-700 py-2 px-3 sm:px-6 text-xs sm:text-sm">
+                      <TableHead className="w-1/3 text-end font-semibold text-slate-700 py-2 px-3 sm:px-6 text-xs sm:text-sm">
                         Actions
                       </TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
-                    {form.getValues("specifications")?.length ? (
-                      form.getValues("specifications").map((obj, index) => (
+                    {form.getValues("specifications") &&
+                    form.getValues("specifications")?.length ? (
+                      form.getValues("specifications")?.map((obj, index) => (
                         <TableRow
-                          key={`specification-${index}`}
+                          key={`specification ${index}`}
                           className="flex justify-center border-b border-slate-100 last:border-b-0 hover:bg-slate-50 transition-colors duration-150"
                         >
                           <TableCell className="w-1/3 py-2 px-3 sm:px-6 text-slate-600 text-xs sm:text-sm break-words">
@@ -323,13 +333,13 @@ export default function EditPlantForm({ plantId }: EditPlantProps) {
                           <TableCell className="w-1/3 py-2 px-3 sm:px-6 text-slate-600 text-xs sm:text-sm break-words">
                             {obj.value}
                           </TableCell>
-                          <TableCell className="w-1/3 py-2 px-3 sm:px-6 text-slate-600 text-xs sm:text-sm break-words">
+                          <TableCell className="w-1/3 py-2 px-3 sm:px-6 text-slate-600">
                             <div className="flex justify-end">
                               <Trash2Icon
-                                size="20"
+                                size="16"
                                 color="red"
                                 onClick={() => remove(index)}
-                                className="cursor-pointer"
+                                className="icon_action sm:w-5 sm:h-5 cursor-pointer"
                               />
                             </div>
                           </TableCell>
@@ -338,8 +348,8 @@ export default function EditPlantForm({ plantId }: EditPlantProps) {
                     ) : (
                       <TableRow>
                         <TableCell
-                          colSpan={3}
-                          className="text-center text-gray-500"
+                          colSpan={8}
+                          className="text-center py-2 px-3 sm:px-6 text-slate-600 text-xs sm:text-sm"
                         >
                           No records added
                         </TableCell>
@@ -350,11 +360,11 @@ export default function EditPlantForm({ plantId }: EditPlantProps) {
               </div>
             </div>
 
-            <div>
+            <div className="md:col-span-1">
               <SmartBox
                 name="category"
                 label="Category"
-                labelClassName="text-[17px] font-semibold"
+                labelClassName="text-sm sm:text-base lg:text-lg font-semibold"
                 placeholder="Select"
                 formControl={form.control}
                 allowCustomValue={false}
@@ -362,11 +372,12 @@ export default function EditPlantForm({ plantId }: EditPlantProps) {
                 className="border-black/20"
               />
             </div>
-            <div>
+
+            <div className="md:col-span-1">
               <SmartBox
                 name="size"
                 label="Size"
-                labelClassName="text-[17px] font-semibold"
+                labelClassName="text-sm sm:text-base lg:text-lg font-semibold"
                 placeholder="Select"
                 formControl={form.control}
                 allowCustomValue={false}
@@ -374,11 +385,12 @@ export default function EditPlantForm({ plantId }: EditPlantProps) {
                 className="border-black/20"
               />
             </div>
-            <div>
+
+            <div className="md:col-span-1">
               <SmartBox
                 name="careLevel"
                 label="Care Level"
-                labelClassName="text-[17px] font-semibold"
+                labelClassName="text-sm sm:text-base lg:text-lg font-semibold"
                 placeholder="Select"
                 formControl={form.control}
                 allowCustomValue={false}
@@ -387,93 +399,98 @@ export default function EditPlantForm({ plantId }: EditPlantProps) {
               />
             </div>
 
-            {masterData?.tags?.length ? (
-              <MultipleSelectField
-                name="tags"
-                label="Tags"
-                placeholder="Select"
-                formControl={form.control}
-                options={masterData.tags.map(({ _id, ...rest }) => {
-                  console.log(_id);
-                  return rest;
-                })}
-                className="border-black/20 rounded-lg !bg-white"
-              />
-            ) : null}
+            <div className="md:col-span-1">
+              {masterData?.tags?.length ? (
+                <MultipleSelectField
+                  name="tags"
+                  label="Tags"
+                  placeholder="Select"
+                  formControl={form.control}
+                  options={masterData.tags.map(({ _id, ...rest }) => {
+                    console.log(_id);
+                    return rest;
+                  })}
+                  className="border-black/20 rounded-lg !bg-white"
+                />
+              ) : null}
+            </div>
 
-            <div className="col-span-4 mt-4 ">
-              <div className="grid grid-cols-4  ">
-                <div className="col-span-3  ">
-                  <h4 className="mb-0 text-[20px] font-semibold">
+            <div className="md:col-span-2 lg:col-span-4">
+              <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
+                <div className="sm:col-span-3">
+                  <h4 className="mb-0 text-base sm:text-lg lg:text-xl font-semibold">
                     Frequently Asked Questions
                     {form?.formState?.errors?.faqs?.message ? (
-                      <div className="text-[0.8rem] font-medium text-destructive">
+                      <div className="text-xs sm:text-sm font-medium text-destructive">
                         {form?.formState?.errors?.faqs?.message}
                       </div>
                     ) : null}
                   </h4>
                 </div>
-                <div className="text-right">
+                <div className="text-left sm:text-right">
                   <AddNew label="FAQ" onClick={() => setOpenAddFAQ(true)} />
                 </div>
               </div>
             </div>
+
             {getFaqAccrItems(form.getValues("faqs"))?.length ? (
-              <div className="col-span-4">
+              <div className="md:col-span-2 lg:col-span-4">
                 <ProductAccordion
                   items={getFaqAccrItems(form.getValues("faqs"))}
                   onDelete={(index) => removeFaq(index)}
-                  className=""
                 />
               </div>
             ) : (
-              <div className="col-span-4 text-gray-500 mb-5">
-                <p>
-                  No FAQ added yet. Click on &quot;Add New FAQ &quot; to add.
+              <div className="md:col-span-2 lg:col-span-4 text-gray-500 mb-5">
+                <p className="text-sm sm:text-base">
+                  No FAQ added yet. Click on &ldquo;Add New FAQ &ldquo; to add.
                 </p>
               </div>
             )}
 
-            <div className="pt-5 ">
+            <div className="md:col-span-1 lg:col-span-2 mt-2">
               <InputImageField
                 name="pictures"
                 label="Plants Pictures"
-                labelClassName="text-[20px] font-semibold "
+                labelClassName="text-base sm:text-lg lg:text-xl font-semibold"
                 multiple={true}
                 accept="image/jpeg, image/jpg, image/png, image/webp"
                 placeholder="Pictures"
-                className="rounded-md border-black/20"
+                className="rounded-md border-black/20 p-2"
                 formControl={form.control}
                 description={`Pictures with ${
                   ALLOWED_MAX_FILE_SIZE / 1000
                 } Kb file size and .jpg, .jpeg, .png and .webp formats are allowed`}
-                descriptionClassName="text-md font-lg"
+                descriptionClassName="text-xs sm:text-sm"
                 onchange={(data) => processPictures(data)}
               />
             </div>
-            <div className="col-span-3 flex column pt-10">
+
+            <div className="md:col-span-1 lg:col-span-2 flex flex-wrap gap-2">
               {previews.map((item, index) => {
                 return (
-                  <div
-                    className="relative w-28 h-28 mr-2"
-                    key={`preview_${index}`}
-                  >
+                  <div className="relative w-20 h-20" key={`preview_${index}`}>
                     <Image src={item} alt="" fill objectFit="contain" />
                   </div>
                 );
               })}
             </div>
-            <div className="mt-3">
+
+            <div className="md:col-span-2 lg:col-span-4 mt-3">
               <SwitchField
+                labelClassName="text-base sm:text-lg lg:text-xl font-semibold"
                 name="status"
                 label="Status"
                 formControl={form.control}
                 className="data-[state=checked]:bg-orange-500 data-[state=unchecked]:bg-gray-300"
               />
             </div>
-            <div className="col-span-4">
-              <CancelButton onClick={() => router.back()} />
-              <UpdateButton type="submit" />
+
+            <div className="md:col-span-2 lg:col-span-4">
+              <div className="flex flex-row gap-3">
+                <CancelButton onClick={() => router.back()} />
+                <UpdateButton type="submit" />
+              </div>
             </div>
           </div>
         </form>

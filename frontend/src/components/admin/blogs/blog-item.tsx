@@ -62,15 +62,23 @@ const BlogItem = ({
 
   const getStatusBadge = (status: string) => {
     const statusMap = {
-      "0": { label: "Active", color: "bg-green-100 text-green-800 hover:bg-green-200" },
-      "1": { label: "Inactive", color: "bg-orange-100 text-orange-800 hover:bg-orange-200" },
+      "0": {
+        label: "Active",
+        color: "bg-green-100 text-green-800 hover:bg-green-200",
+      },
+      "1": {
+        label: "Inactive",
+        color: "bg-orange-100 text-orange-800 hover:bg-orange-200",
+      },
     };
 
     const statusInfo =
       statusMap[status as keyof typeof statusMap] || statusMap["1"];
 
     return (
-      <Badge className={`${statusInfo.color} font-medium`}>
+      <Badge
+        className={`${statusInfo.color} font-medium py-1 h-6 flex items-center`}
+      >
         {statusInfo.label}
       </Badge>
     );
@@ -78,27 +86,27 @@ const BlogItem = ({
 
   return (
     <div className="bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-shadow duration-200 flex flex-col h-full">
-      <div className="relative h-48 w-full rounded-t-lg overflow-hidden">
+      <div className="relative h-40 sm:h-48 w-full rounded-t-lg overflow-hidden">
         <Image
           src={getPicURL(blog.coverImage)}
           alt={blog.title}
           fill
           className="object-cover"
         />
-        <div className="absolute top-3 right-3 flex items-center gap-2">
+        <div className="absolute top-2 right-2 sm:top-3 sm:right-3 flex items-center gap-1 sm:gap-2">
           {blog.featured && (
-            <Badge className="bg-orange-100 text-orange-800 font-medium hover:bg-orange-200">
+            <Badge className="bg-orange-500 text-white font-medium hover:bg-orange-200 text-xs sm:text-sm py-1 h-6 flex items-center">
               <Star className="h-3 w-3 mr-1" />
-              Featured
+              <span>Featured</span>
             </Badge>
           )}
           {getStatusBadge(blog.status)}
         </div>
       </div>
 
-      <div className="p-6 flex flex-col flex-1">
+      <div className="p-4 sm:p-6 flex flex-col flex-1">
         <div className="mb-3">
-          <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">
+          <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-2 line-clamp-2">
             {blog.title}
           </h3>
           <div className="flex items-center gap-2 text-sm text-gray-600">
@@ -111,7 +119,7 @@ const BlogItem = ({
           {blog.excerpt}
         </p>
 
-        <div className="flex items-center gap-4 text-xs text-gray-500 mb-4">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-xs text-gray-500 mb-4">
           {blog.author && (
             <div className="flex items-center gap-1">
               <User className="h-3 w-3" />
@@ -145,21 +153,10 @@ const BlogItem = ({
           </div>
         )}
 
-        {/* Spacer to push actions to bottom */}
         <div className="flex-1"></div>
 
         <div className="flex items-center justify-between pt-4 border-t border-gray-100 mt-auto">
           <div className="flex items-center gap-2">
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => router.push(`/admin/blogs/edit?blog=${blog._id}`)}
-              className="text-blue-600 hover:text-blue-700 hover:bg-blue-50"
-            >
-              <Edit className="h-4 w-4 mr-1" />
-              Edit
-            </Button>
-
             {blog.status === STATUS.ACTIVE ? (
               <Button
                 variant="outline"
@@ -167,10 +164,18 @@ const BlogItem = ({
                 onClick={() => router.push(`/blogs/${blog.slug}`)}
                 className="text-green-600 hover:text-green-700 hover:bg-green-50"
               >
-                <Eye className="h-4 w-4 mr-1" />
-                View
+                <Eye className="h-4 w-4" />
               </Button>
             ) : null}
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => router.push(`/admin/blogs/edit?blog=${blog._id}`)}
+              className="text-blue-600 hover:text-blue-700 hover:bg-blue-50"
+            >
+              <Edit className="h-4 w-4" />
+              Edit
+            </Button>
 
             <Button
               variant="outline"
@@ -178,7 +183,7 @@ const BlogItem = ({
               onClick={() => onDelete(blog._id)}
               className="text-red-600 hover:text-red-700 hover:bg-red-50"
             >
-              <Trash2 className="h-4 w-4 mr-1" />
+              <Trash2 className="h-4 w-4" />
               Delete
             </Button>
           </div>
@@ -186,7 +191,7 @@ const BlogItem = ({
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" size="sm" disabled={isLoading}>
-                <MoreVertical className="h-4 w-4" />
+                <MoreVertical className="h-4 w-4 " />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="border-black/20">

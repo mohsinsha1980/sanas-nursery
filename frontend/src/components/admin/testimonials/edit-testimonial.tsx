@@ -26,7 +26,7 @@ import { testimonialSchema } from "@/lib/schemas/admin";
 import { EditTestimonialType } from "@/lib/types/admin-types";
 import { TestimonialType } from "@/lib/types/common-types";
 import { hideLoader, showLoader } from "@/redux/uiSlice";
-import { Star} from "lucide-react";
+import { Star } from "lucide-react";
 import BackButton from "../action-buttons/back";
 import CancelButton from "../action-buttons/cancel";
 import UpdateButton from "../action-buttons/update";
@@ -105,8 +105,10 @@ export default function EditTestimonialForm({
 
   return (
     <>
-      <div className="flex justify-between items-center pb-5">
-        <h1 className="text-2xl font-bold !px-0">Edit Testimonial</h1>
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center pb-4 md:pb-5 gap-3">
+        <h1 className="text-2xl md:text-3xl font-bold text-gray-900 !p-0">
+          Edit Testimonial
+        </h1>
         <BackButton onClick={() => router.back()} />
       </div>
 
@@ -129,7 +131,7 @@ export default function EditTestimonialForm({
               placeholder="Write testimonial here"
               formControl={form.control}
               labelClassName="text-[20px] font-semibold"
-              className="border-black/20 rounded-md"
+              className="border-black/20"
             />
 
             <div className="space-y-2">
@@ -167,7 +169,7 @@ export default function EditTestimonialForm({
 
             <TextField
               name="link"
-              label="Author Link (Optional)"
+              label="Redirection Link (Optional)"
               placeholder="https://example.com"
               inputType="text"
               className="rounded-md border-black/20"
@@ -182,10 +184,11 @@ export default function EditTestimonialForm({
               className="data-[state=checked]:bg-orange-500 data-[state=unchecked]:bg-gray-300"
             />
 
-            <div>
-              <CancelButton onClick={() => router.back()} />
-
-              <UpdateButton type="submit" />
+            <div className="md:col-span-2 lg:col-span-4">
+              <div className="flex flex-row">
+                <CancelButton onClick={() => router.back()} />
+                <UpdateButton type="submit" />
+              </div>
             </div>
           </form>
         </Form>

@@ -105,7 +105,6 @@ const GreenChoices = ({ data }: { data: HomeGreenPlantType[] }) => {
         <UpdateButton type="submit" onClick={() => setOpen(true)} />
       </div>
 
-      {/* Green choices grid */}
       <div>
         {greenChoicesPlants.length === 0 ? (
           <p className="text-muted-foreground">No green choices added yet.</p>
@@ -135,7 +134,6 @@ const GreenChoices = ({ data }: { data: HomeGreenPlantType[] }) => {
         )}
       </div>
 
-      {/* Update dialog */}
       <CustomDialog
         title="Update Green Choices"
         open={open}
@@ -155,7 +153,6 @@ const GreenChoices = ({ data }: { data: HomeGreenPlantType[] }) => {
                     onSelect={() => togglePlant(plant._id)}
                     className="flex items-center gap-3"
                   >
-                    {/* Checkbox */}
                     <Checkbox
                       checked={selectedPlants.includes(plant._id)}
                       onCheckedChange={() => togglePlant(plant._id)}
@@ -163,7 +160,6 @@ const GreenChoices = ({ data }: { data: HomeGreenPlantType[] }) => {
                       className="border-black/20 rounded-[4px]"
                     />
 
-                    {/* Plant image */}
                     <div className="relative w-10 h-10 rounded overflow-hidden border">
                       <Image
                         src={getPicURL(plant.pictures[0]) || "/placeholder.png"}
@@ -173,7 +169,6 @@ const GreenChoices = ({ data }: { data: HomeGreenPlantType[] }) => {
                       />
                     </div>
 
-                    {/* Plant info */}
                     <div className="flex-1">
                       <p className="font-medium">{plant.title}</p>
                       <p className="text-sm text-muted-foreground">
