@@ -69,16 +69,7 @@ const PlantFilter = ({
               />
             </div>
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 md:gap-5">
-              <Button
-                size="sm"
-                variant="orange"
-                type="submit"
-                className="py-3 md:py-5 w-full sm:w-auto"
-              >
-                <ListFilterPlus className="h-4 w-4" />
-                <span className="ml-2">Apply Filter</span>
-              </Button>
-              {form.getValues("title") ||
+              {/* {form.getValues("title") ||
               form.getValues("plantId") ||
               form.getValues("status") ? (
                 <Button
@@ -90,9 +81,38 @@ const PlantFilter = ({
                   className="py-3 md:py-5 w-full sm:w-auto"
                 >
                   <RotateCcw className="h-4 w-4" />
-                  <span className="ml-2">Clear Filter</span>
+                  <span className="">Clear</span>
                 </Button>
-              ) : null}
+              ) : null} */}
+
+              <Button
+                size="sm"
+                variant="outline"
+                onClick={() => {
+                  setFilters(defaultFilters);
+                  form.reset();
+                }}
+                className="py-3 md:py-5 w-full sm:w-auto"
+                disabled={
+                  form.getValues("title") ||
+                  form.getValues("plantId") ||
+                  form.getValues("status")
+                    ? false
+                    : true
+                }
+              >
+                <RotateCcw className="h-4 w-4" />
+                <span className="">Clear</span>
+              </Button>
+              <Button
+                size="sm"
+                variant="orange"
+                type="submit"
+                className="py-3 md:py-5 w-full sm:w-auto"
+              >
+                <ListFilterPlus className="h-4 w-4" />
+                <span className="">Apply Filter</span>
+              </Button>
             </div>
           </div>
         </form>

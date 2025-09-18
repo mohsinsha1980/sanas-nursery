@@ -14,7 +14,7 @@ interface QuickAction {
 const quickActions: QuickAction[] = [
   {
     title: "Manage Order Enquiries",
-    description: "View and manage plant order enquiries",
+    description: "View and manage order enquiries",
     icon: ShoppingCartIcon,
     link: "/admin/order-enquiries",
     borderColor: "border-l-orange-500",

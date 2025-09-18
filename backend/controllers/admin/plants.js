@@ -36,7 +36,7 @@ export const getPlants = async (req, res, next) => {
     const plants = await Plant.find(filter)
       .limit(per_page)
       .skip(skip)
-      .select("title plantId status category pictures")
+      .select("title plantId status category pictures slug category _id")
       .sort("createdAt")
       .lean()
       .exec();
@@ -228,7 +228,7 @@ export const updatePlant = async (req, res, next) => {
           });
         }
       } catch (error) {
-        console.log(error)
+        console.log(error);
         if (error.code !== "ENOENT") {
           // ENOENT: no such file or directory
           return next({ status: 500, message: "Internal Server Error" });

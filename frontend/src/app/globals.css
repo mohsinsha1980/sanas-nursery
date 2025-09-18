@@ -660,9 +660,9 @@ footer {
   color: #818181;
 }
 
-.tabs_plain [role="tablist"] button:first-child {
+/* .tabs_plain [role="tablist"] button:first-child {
   border-right: 0;
-}
+} */
 
 .tabs_plain [role="tablist"] button[data-state="active"] {
   color: #1d1d1d;

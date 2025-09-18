@@ -117,14 +117,18 @@ export default async function BlogDetailsPage({
 
             <div className="flex items-center gap-3 mb-6">
               {blog.category ? (
-                <div className={styles.categoryBadge}>
-                  <Tag className="h-3 w-3 mr-1" />
-                  {getCategoryLabel(blog.category)}
-                </div>
+                <Link href={`/blogs?search=${blog.category}#blogSearch`}>
+                  <div className={styles.categoryBadge}>
+                    <Tag className="h-3 w-3 mr-1" />
+                    {getCategoryLabel(blog.category)}
+                  </div>
+                </Link>
               ) : null}
 
               {blog.featured && (
-                <div className={styles.featuredBadge}>Featured</div>
+                <div className={styles.featuredBadge}>
+                  <Link href={`/blogs/#featured`}>Featured</Link>
+                </div>
               )}
             </div>
 

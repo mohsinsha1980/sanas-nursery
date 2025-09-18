@@ -353,7 +353,7 @@ export default function AddPlant() {
               ) : null}
             </div>
 
-            <div className="md:col-span-2 lg:col-span-4">
+            <div className="md:col-span-2 lg:col-span-4 mt-2">
               <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
                 <div className="sm:col-span-3">
                   <h4 className="mb-0 text-base sm:text-lg lg:text-xl font-semibold">
@@ -372,10 +372,12 @@ export default function AddPlant() {
             </div>
 
             {getFaqAccrItems(form.getValues("faqs"))?.length ? (
-              <div className="md:col-span-2 lg:col-span-4">
+              <div className="md:col-span-2 lg:col-span-4 ">
                 <ProductAccordion
                   items={getFaqAccrItems(form.getValues("faqs"))}
                   onDelete={(index) => removeFaq(index)}
+                  className=" py-2"
+                  outerBoder
                 />
               </div>
             ) : (
