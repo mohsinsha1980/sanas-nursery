@@ -7,13 +7,12 @@ const About = () => {
     <div className="w-full bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
-          {/* Content Section */}
           <div className="flex-1 lg:max-w-[47%] space-y-6 lg:space-y-8 text-center lg:text-left">
             <div className="space-y-4">
-              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-                <span className="text-green-600">Sanas Nursery</span> Plants and
+              <h2 className="lg:text-[42px] md:text-[38px] text-[28px] font-semibold text-gray-900 leading-tight">
+                <span className="text-[#00611F]">Sanas Nursery</span> Plants and
                 Trees Supplier
-              </h1>
+              </h2>
             </div>
 
             <div className="space-y-4">
@@ -45,7 +44,6 @@ const About = () => {
             </div>
           </div>
 
-          {/* Image Section */}
           <div className="flex-1 lg:max-w-[48%] w-full">
             <div className="relative w-full h-[350px] sm:h-[400px] md:h-[500px] lg:h-[600px] xl:h-[700px]">
               <Image

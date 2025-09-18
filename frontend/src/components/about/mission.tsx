@@ -9,7 +9,7 @@ const Mission = () => {
         <div className="lg:h-[485px] h-full max-w-[1200px] md:w-[90%] w-[100%] flex flex-col justify-between">
           <div className="h-fit w-full flex flex-col justify-center items-center lg:pb-10 md:pb-8 pb-5">
             <h1 className="lg:text-[42px] md:text-[38px] text-[28px] font-semibold text-center">
-              <span className="text-[#00611F]">Mission</span> &{" "}
+              <span className="text-[#00611F]">Mission</span> &
               <span className="text-[#00611F]">Vision</span>
             </h1>
             <p className="text-[#505050] lg:text-[20px] md:text-[18px] text-[16px] font-semibold lg:px-0 px-2 lg:text-start text-center md:mt-2">

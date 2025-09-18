@@ -93,7 +93,7 @@ export default async function CollectionPage({
           <CategoryHero categoryValue={category} />
         </div>
 
-        <div className="lg:max-w-[1250px] w-full h-full lg:pt-25 pt-10 lg:px-0 px-3 text-center flex flex-col justify-between items-start">
+        <div className="lg:max-w-[1200px] w-full h-full lg:pt-25 pt-10 lg:px-0 px-3 text-center flex flex-col justify-between items-start">
           <div className="flex justify-between items-center w-full lg:mb-2">
             <h2 className="text-[#0D6536] text-3xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl font-medium text-start">
               {categoryData?.label || category}
@@ -119,7 +119,7 @@ export default async function CollectionPage({
 
         <div
           key="plant-list-main-div"
-          className="h-full lg:max-w-[1250px] w-full pt-10 pb-15 flex flex-col justify-center items-center   lg:px-0 px-3  "
+          className="h-full lg:max-w-[1200px] w-full pt-10 pb-15 flex flex-col justify-center items-center   lg:px-0 px-3  "
         >
           <div key="filter-list-sort" className="relative  w-full h-full     ">
             <div
