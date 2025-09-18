@@ -107,7 +107,6 @@ export const getBlogBySlug = (slug: string, controller?: Controller) => {
 };
 
 export const getRelatedBlogs = (blogId: string, controller?: Controller) => {
-  console.log("getRelatedBlogs");
   return fetch(`${config.API_PUBLIC_PATH}/blogs/related/${blogId}`, {
     signal: controller?.signal,
     cache: "no-store",

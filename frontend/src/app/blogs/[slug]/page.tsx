@@ -117,7 +117,7 @@ export default async function BlogDetailsPage({
 
             <div className="flex items-center gap-3 mb-6">
               {blog.category ? (
-                <Link href={`/blogs?${blog.category}#blogSearch`}>
+                <Link href={`/blogs?search=${blog.category}#blogSearch`}>
                   <div className={styles.categoryBadge}>
                     <Tag className="h-3 w-3 mr-1" />
                     {getCategoryLabel(blog.category)}
