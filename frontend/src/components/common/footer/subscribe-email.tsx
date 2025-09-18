@@ -55,7 +55,7 @@ const SubscribeEmail = () => {
       <button
         type="button"
         onClick={handleSubscribe}
-        className={`cursor-pointer mr-1 lg:h-[45px] px-6 md:h-[35px] h-[38px] flex justify-center items-center lg:rounded-lg md:rounded-lg rounded-[5px] text-[#FFFFFF] lg:text-[20px] transition-colors duration-300 ${
+        className={`cursor-pointer lg:h-[45px] px-6 md:h-[35px] h-[38px] flex justify-center items-center lg:rounded-lg md:rounded-lg rounded-[5px] text-[#FFFFFF] lg:text-[20px] transition-colors duration-300 ${
           isSubscribed ? "bg-green-600" : "bg-[#F37521] hover:bg-[#d4631c]"
         }`}
       >

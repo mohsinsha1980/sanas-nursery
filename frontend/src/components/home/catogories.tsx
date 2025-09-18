@@ -10,9 +10,9 @@ export default function Categories() {
     >
       <div className="h-full max-w-[1370px] md:w-[90%] w-[100%]    ">
         <div className="h-full w-full flex flex-col justify-center items-center lg:pb-10  pb-5  ">
-          <h1 className="lg:text-[42px] md:text-[36px] text-[28px] font-semibold text-center">
+          <h2 className="lg:text-[42px] md:text-[36px] text-[28px] font-semibold text-center">
             Choose Your <span className="text-[#00611F]">Plant</span> Family
-          </h1>
+          </h2>
           <p className="text-[#505050] lg:text-[20px] md:text-[22px] text-[16px] font-semibold lg:px-0 px-2 lg:text-start text-center">
             Select from handpicked categories that suit your style and needs
           </p>

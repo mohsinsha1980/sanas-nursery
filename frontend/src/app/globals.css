@@ -667,3 +667,9 @@ footer {
 .tabs_plain [role="tablist"] button[data-state="active"] {
   color: #1d1d1d;
 }
+
+prev{
+  white-space: normal;
+  font-family: var(--font-catamaran);
+  font-size: 18px;
+}

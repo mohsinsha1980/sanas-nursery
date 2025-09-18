@@ -250,7 +250,7 @@ export const defultHomeData = {
 };
 
 export const SITE_DATA = {
-  EMAIL: "sanasnursery@gmail.com",
+  EMAIL: "info@sanasnursery.com",
   phone: "+91 8999481616",
   LOCATION: `Sanas Wholesale Nursery, Bori Fata, near ITI collage, Uruli Kanchan, Maharashtra, 412201`,
   GOOGLE_MAP:

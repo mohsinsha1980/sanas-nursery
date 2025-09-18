@@ -1,0 +1,1292 @@
+[{
+  "_id": {
+    "$oid": "68c5ddd9e13aa122cfdd22d9"
+  },
+  "plantId": "bf087e19-3227-4faa-b40f-d0820418c9b4",
+  "title": "Fiddle Leaf Fig",
+  "slug": "fiddle-leaf-fig",
+  "category": "others",
+  "size": "large",
+  "careLevel": "moderate",
+  "tags": [
+    {
+      "label": "Indoor plant",
+      "value": "indoor plant",
+      "_id": {
+        "$oid": "68c862f3f4b98a8314ca00b4"
+      }
+    },
+    {
+      "label": "Low maintenance",
+      "value": "low maintenance",
+      "_id": {
+        "$oid": "68c862f3f4b98a8314ca00b5"
+      }
+    },
+    {
+      "label": "Best selling",
+      "value": "best selling",
+      "_id": {
+        "$oid": "68c862f3f4b98a8314ca00b6"
+      }
+    }
+  ],
+  "summary": "A stylish large-leaf plant perfect for modern interiors.",
+  "metaDescription": "Fiddle Leaf Fig (Ficus lyrata) – a large indoor plant with bold leaves. Ideal for homes and offices",
+  "specifications": [
+    {
+      "label": "Botanical Name",
+      "value": "Ficus lyrata",
+      "_id": {
+        "$oid": "68c862f3f4b98a8314ca00b7"
+      }
+    },
+    {
+      "label": "Height",
+      "value": "3 - 6 ft indoors",
+      "_id": {
+        "$oid": "68c862f3f4b98a8314ca00b8"
+      }
+    },
+    {
+      "label": "Light",
+      "value": "Bright Indirect Sunlight",
+      "_id": {
+        "$oid": "68c862f3f4b98a8314ca00b9"
+      }
+    },
+    {
+      "label": "Water",
+      "value": "Weekly, when topsoil dries",
+      "_id": {
+        "$oid": "68c862f3f4b98a8314ca00ba"
+      }
+    }
+  ],
+  "details": "<p>The Fiddle Leaf Fig is a statement plant with large, glossy leaves. It adds a modern, tropical vibe to any space and thrives in bright, indirect sunlight. Requires occasional pruning to maintain shape.</p>",
+  "description": "<p>Popular among interior designers, the Fiddle Leaf Fig adds elegance and greenery to any room. With proper care, it can grow into a tall, sculptural beauty.</p>",
+  "faqs": [
+    {
+      "question": "Is the Fiddle Leaf Fig beginner-friendly?",
+      "answer": "It requires moderate care, making it best for plant lovers with some experience.",
+      "_id": {
+        "$oid": "68c862f3f4b98a8314ca00bb"
+      }
+    },
+    {
+      "question": "How often should I repot?",
+      "answer": "Repot every 1-2 years or when roots outgrow the pot.",
+      "_id": {
+        "$oid": "68c862f3f4b98a8314ca00bc"
+      }
+    }
+  ],
+  "pictures": [
+    "public\\pictures\\Plants\\4d4add99-ce17-4be7-9e6d-4bfaa1fced74_1757798858228.webp",
+    "public\\pictures\\Plants\\f31b6976-1e02-4750-aea1-f16a7f1ae57a_1757798858231.webp"
+  ],
+  "status": "0",
+  "createdAt": {
+    "$date": "2025-09-13T21:10:49.290Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-15T19:03:15.100Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c5de9de13aa122cfdd22f6"
+  },
+  "plantId": "fa83d5f5-ee2b-4dd0-8891-22a0f666dc5c",
+  "title": "Peace Lily",
+  "slug": "peace-lily",
+  "category": "flower-trees",
+  "size": "medium",
+  "careLevel": "moderate",
+  "tags": [
+    {
+      "label": "Flowering",
+      "value": "flowering",
+      "_id": {
+        "$oid": "68c86305f4b98a8314ca0104"
+      }
+    },
+    {
+      "label": "Best selling",
+      "value": "best selling",
+      "_id": {
+        "$oid": "68c86305f4b98a8314ca0105"
+      }
+    }
+  ],
+  "summary": "Elegant flowering plant with air-purifying qualities.",
+  "metaDescription": "Peace Lily – a flowering indoor plant that thrives in low light and purifies air.",
+  "specifications": [],
+  "details": "<p>Peace Lilies are well-loved for their white blooms and ability to thrive in low light. They also filter harmful toxins from indoor air.</p>",
+  "description": "<p>A symbol of peace and elegance, the Peace Lily adds beauty to any space. Its graceful flowers bloom throughout the year under the right conditions.</p>",
+  "faqs": [
+    {
+      "question": "How often does it bloom?",
+      "answer": "Peace Lilies usually bloom twice a year with proper care.",
+      "_id": {
+        "$oid": "68c86305f4b98a8314ca0106"
+      }
+    },
+    {
+      "question": "Can I keep it in a bedroom?",
+      "answer": "Yes, it’s a perfect bedroom plant thanks to its air-purifying abilities.",
+      "_id": {
+        "$oid": "68c86305f4b98a8314ca0107"
+      }
+    }
+  ],
+  "pictures": [
+    "public\\pictures\\Plants\\d5a89b77-e8ec-4254-b2d0-423a415c5dad_1757798928699.webp",
+    "public\\pictures\\Plants\\f400aad2-7dcb-447d-9862-ba724497caab_1757798928701.webp",
+    "public\\pictures\\Plants\\e9b9bcca-15bf-40eb-a914-9f949abcd743_1757798928702.webp"
+  ],
+  "status": "0",
+  "createdAt": {
+    "$date": "2025-09-13T21:14:05.648Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-15T19:03:33.930Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c5e1a2e13aa122cfdd2496"
+  },
+  "plantId": "1b1ccad4-d2ce-4ad5-a33c-e3d9557b7c89",
+  "title": "Aloe Vera",
+  "slug": "aloe-vera",
+  "category": "show-trees",
+  "size": "medium",
+  "careLevel": "moderate",
+  "tags": [
+    {
+      "label": "Medicinal",
+      "value": "medicinal",
+      "_id": {
+        "$oid": "68c875def4b98a8314ca056c"
+      }
+    },
+    {
+      "label": "Best selling",
+      "value": "best selling",
+      "_id": {
+        "$oid": "68c875def4b98a8314ca056d"
+      }
+    }
+  ],
+  "summary": "A versatile plant known for its healing gel and easy care.",
+  "metaDescription": "Aloe Vera – a medicinal plant known for skin care, health benefits, and low maintenance.",
+  "specifications": [
+    {
+      "label": "Botanical Name",
+      "value": "Aloe barbadensis miller",
+      "_id": {
+        "$oid": "68c875def4b98a8314ca056e"
+      }
+    },
+    {
+      "label": "Height",
+      "value": "1 - 2 ft",
+      "_id": {
+        "$oid": "68c875def4b98a8314ca056f"
+      }
+    },
+    {
+      "label": "Light",
+      "value": "Bright Indirect to Direct Sunlight",
+      "_id": {
+        "$oid": "68c875def4b98a8314ca0570"
+      }
+    },
+    {
+      "label": "Water",
+      "value": "Every 2-3 weeks",
+      "_id": {
+        "$oid": "68c875def4b98a8314ca0571"
+      }
+    }
+  ],
+  "details": "<h4 class=\"text-xl font-bold capitalize\" levels=\"2\"><em>Aloe Vera </em>– a medicinal plant known for skin care, health benefits, and low maintenance.</h4><p>Aloe Vera is one of the most popular medicinal plants, valued for its gel used in skincare and healing. It thrives in sunny windowsills with minimal watering.</p>",
+  "description": "<p>Known for its healing properties, <strong>Aloe Vera</strong> is both functional and decorative. Perfect for homes and offices with good sunlight.</p>",
+  "faqs": [
+    {
+      "question": "Can I use Aloe Vera gel directly from the plant?",
+      "answer": "Yes, you can use the fresh gel for skin and hair care.",
+      "_id": {
+        "$oid": "68c875def4b98a8314ca0572"
+      }
+    },
+    {
+      "question": "Does it need fertilizer?",
+      "answer": "Feed with diluted fertilizer once every 2 months during growing season.",
+      "_id": {
+        "$oid": "68c875def4b98a8314ca0573"
+      }
+    }
+  ],
+  "pictures": [
+    "public\\pictures\\Plants\\49bb3fbb-e663-4eef-97e1-3b0f2f1e38aa_1757798817458.webp",
+    "public\\pictures\\Plants\\8b1e967b-2bac-4053-b0a4-7ec308cf9154_1757798817460.webp",
+    "public\\pictures\\Plants\\3342c64f-e9d3-407c-9633-4c3935fba403_1757798817463.webp"
+  ],
+  "status": "0",
+  "createdAt": {
+    "$date": "2025-09-13T21:26:58.597Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-15T20:23:58.007Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c85f977c6d4c6a6c1cfb96"
+  },
+  "plantId": "bf087e19-3227-4faa-b40f-d0820418c9b45",
+  "title": "Fiddle Leaf Figs",
+  "slug": "fiddle-leaf-figs",
+  "category": "others",
+  "size": "large",
+  "careLevel": "moderate",
+  "tags": [
+    {
+      "label": "Indoor plant",
+      "value": "indoor plant",
+      "_id": {
+        "$oid": "68c862fcf4b98a8314ca00dc"
+      }
+    },
+    {
+      "label": "Low maintenance",
+      "value": "low maintenance",
+      "_id": {
+        "$oid": "68c862fcf4b98a8314ca00dd"
+      }
+    },
+    {
+      "label": "Best selling",
+      "value": "best selling",
+      "_id": {
+        "$oid": "68c862fcf4b98a8314ca00de"
+      }
+    }
+  ],
+  "summary": "A stylish large-leaf plant perfect for modern interiors.",
+  "metaDescription": "Fiddle Leaf Fig (Ficus lyrata) – a large indoor plant with bold leaves. Ideal for homes and offices",
+  "specifications": [
+    {
+      "label": "Botanical Name",
+      "value": "Ficus lyrata",
+      "_id": {
+        "$oid": "68c862fcf4b98a8314ca00df"
+      }
+    },
+    {
+      "label": "Height",
+      "value": "3 - 6 ft indoors",
+      "_id": {
+        "$oid": "68c862fcf4b98a8314ca00e0"
+      }
+    },
+    {
+      "label": "Light",
+      "value": "Bright Indirect Sunlight",
+      "_id": {
+        "$oid": "68c862fcf4b98a8314ca00e1"
+      }
+    },
+    {
+      "label": "Water",
+      "value": "Weekly, when topsoil dries",
+      "_id": {
+        "$oid": "68c862fcf4b98a8314ca00e2"
+      }
+    }
+  ],
+  "details": "<p>The Fiddle Leaf Fig is a statement plant with large, glossy leaves. It adds a modern, tropical vibe to any space and thrives in bright, indirect sunlight. Requires occasional pruning to maintain shape.</p>",
+  "description": "<p>Popular among interior designers, the Fiddle Leaf Fig adds elegance and greenery to any room. With proper care, it can grow into a tall, sculptural beauty.</p>",
+  "faqs": [
+    {
+      "question": "Is the Fiddle Leaf Fig beginner-friendly?",
+      "answer": "It requires moderate care, making it best for plant lovers with some experience.",
+      "_id": {
+        "$oid": "68c862fcf4b98a8314ca00e3"
+      }
+    },
+    {
+      "question": "How often should I repot?",
+      "answer": "Repot every 1-2 years or when roots outgrow the pot.",
+      "_id": {
+        "$oid": "68c862fcf4b98a8314ca00e4"
+      }
+    }
+  ],
+  "pictures": [
+    "public\\pictures\\Plants\\4d4add99-ce17-4be7-9e6d-4bfaa1fced74_1757798858228.webp",
+    "public\\pictures\\Plants\\f31b6976-1e02-4750-aea1-f16a7f1ae57a_1757798858231.webp"
+  ],
+  "status": "0",
+  "createdAt": {
+    "$date": "2025-09-13T21:10:49.290Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-15T19:03:24.361Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c85fc77c6d4c6a6c1cfb98"
+  },
+  "plantId": "1b1ccad4-d2ce-4ad5-a33c-e3d9557b7c75",
+  "title": "Aloe Vera",
+  "slug": "aloe-vera",
+  "category": "show-trees",
+  "size": "medium",
+  "careLevel": "moderate",
+  "tags": [
+    {
+      "label": "Medicinal",
+      "value": "medicinal",
+      "_id": {
+        "$oid": "68c85346b3dcc63b9accd964"
+      }
+    },
+    {
+      "label": "Best selling",
+      "value": "best selling",
+      "_id": {
+        "$oid": "68c85346b3dcc63b9accd965"
+      }
+    }
+  ],
+  "summary": "A versatile plant known for its healing gel and easy care.",
+  "metaDescription": "Aloe Vera – a medicinal plant known for skin care, health benefits, and low maintenance.",
+  "specifications": [
+    {
+      "label": "Botanical Name",
+      "value": "Aloe barbadensis miller",
+      "_id": {
+        "$oid": "68c85346b3dcc63b9accd966"
+      }
+    },
+    {
+      "label": "Height",
+      "value": "1 - 2 ft",
+      "_id": {
+        "$oid": "68c85346b3dcc63b9accd967"
+      }
+    },
+    {
+      "label": "Light",
+      "value": "Bright Indirect to Direct Sunlight",
+      "_id": {
+        "$oid": "68c85346b3dcc63b9accd968"
+      }
+    },
+    {
+      "label": "Water",
+      "value": "Every 2-3 weeks",
+      "_id": {
+        "$oid": "68c85346b3dcc63b9accd969"
+      }
+    }
+  ],
+  "details": "<p>Aloe Vera – a medicinal plant known for skin care, health benefits, and low maintenance.</p><p>Aloe Vera is one of the most popular medicinal plants, valued for its gel used in skincare and healing. It thrives in sunny windowsills with minimal watering.</p>",
+  "description": "<p>Known for its healing properties, Aloe Vera is both functional and decorative. Perfect for homes and offices with good sunlight.</p>",
+  "faqs": [
+    {
+      "question": "Can I use Aloe Vera gel directly from the plant?",
+      "answer": "Yes, you can use the fresh gel for skin and hair care.",
+      "_id": {
+        "$oid": "68c85346b3dcc63b9accd96a"
+      }
+    },
+    {
+      "question": "Does it need fertilizer?",
+      "answer": "Feed with diluted fertilizer once every 2 months during growing season.",
+      "_id": {
+        "$oid": "68c85346b3dcc63b9accd96b"
+      }
+    }
+  ],
+  "pictures": [
+    "public\\pictures\\Plants\\49bb3fbb-e663-4eef-97e1-3b0f2f1e38aa_1757798817458.webp",
+    "public\\pictures\\Plants\\8b1e967b-2bac-4053-b0a4-7ec308cf9154_1757798817460.webp",
+    "public\\pictures\\Plants\\3342c64f-e9d3-407c-9633-4c3935fba403_1757798817463.webp"
+  ],
+  "status": "0",
+  "createdAt": {
+    "$date": "2025-09-13T21:26:58.597Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-15T17:56:22.042Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c9d9775ff0979af85feac3"
+  },
+  "plantId": "6c70729d-6bf8-4cd3-a615-a089a3a2ac5c",
+  "title": "test",
+  "slug": "test",
+  "category": "fruit-trees",
+  "size": "medium",
+  "careLevel": "easy",
+  "tags": [
+    {
+      "label": "Outdoor plant",
+      "value": "outdoor plant",
+      "_id": {
+        "$oid": "68c9dc605ff0979af85fec73"
+      }
+    },
+    {
+      "label": "Low maintenance",
+      "value": "low maintenance",
+      "_id": {
+        "$oid": "68c9dc605ff0979af85fec74"
+      }
+    },
+    {
+      "label": "Medicinal",
+      "value": "medicinal",
+      "_id": {
+        "$oid": "68c9dc605ff0979af85fec75"
+      }
+    },
+    {
+      "label": "Best selling",
+      "value": "best selling",
+      "_id": {
+        "$oid": "68c9dc605ff0979af85fec76"
+      }
+    }
+  ],
+  "summary": "test",
+  "metaDescription": "test",
+  "specifications": [
+    {
+      "label": "Sdfzgh",
+      "value": "dasf",
+      "_id": {
+        "$oid": "68c9dc605ff0979af85fec77"
+      }
+    },
+    {
+      "label": "XSZFDfzgxc",
+      "value": "saDSFZDgfxhc",
+      "_id": {
+        "$oid": "68c9dc605ff0979af85fec78"
+      }
+    }
+  ],
+  "details": "<p>test</p>",
+  "description": "<p>test</p>",
+  "faqs": [
+    {
+      "question": "QEARSETRDTY",
+      "answer": "arestrdtfyguh",
+      "_id": {
+        "$oid": "68c9dc605ff0979af85fec79"
+      }
+    }
+  ],
+  "pictures": [
+    "public\\pictures\\Plants\\e274374b-50b9-4669-9cb4-795537ed0120_1758058870167.webp",
+    "public\\pictures\\Plants\\d3ece4e7-a549-4c7c-8005-0df33b59900d_1758058870243.webp"
+  ],
+  "status": "2",
+  "createdAt": {
+    "$date": "2025-09-16T21:41:11.983Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-16T21:55:19.949Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ca65d65ee465ea189f37be"
+  },
+  "plantId": "39b91570-7baa-44aa-aaac-e6ae83264db8",
+  "title": "Mango Tree",
+  "slug": "mango-tree",
+  "category": "fruit-trees",
+  "size": "medium",
+  "careLevel": "moderate",
+  "tags": [
+    {
+      "label": "Best selling",
+      "value": "best selling",
+      "_id": {
+        "$oid": "68ca67f55ee465ea189f37f4"
+      }
+    },
+    {
+      "label": "Indoor plant",
+      "value": "indoor plant",
+      "_id": {
+        "$oid": "68ca67f55ee465ea189f37f5"
+      }
+    }
+  ],
+  "summary": "A tropical fruit tree producing delicious mangoes.",
+  "metaDescription": "Mango tree for gardening and fruit harvest.",
+  "specifications": [
+    {
+      "label": "Height",
+      "value": "20-30 ft",
+      "_id": {
+        "$oid": "68ca67f55ee465ea189f37f6"
+      }
+    },
+    {
+      "label": "Soil",
+      "value": "Well-drained",
+      "_id": {
+        "$oid": "68ca67f55ee465ea189f37f7"
+      }
+    }
+  ],
+  "details": "<p>The mango tree is loved for its sweet fruits and shade.</p><p></p>",
+  "description": "<p>Mango trees thrive in tropical climates and produce sweet, juicy mangoes.</p><p></p>",
+  "faqs": [
+    {
+      "question": "How much sunlight?",
+      "answer": "Full sunlight at least 6-8 hours daily.",
+      "_id": {
+        "$oid": "68ca67f55ee465ea189f37f8"
+      }
+    }
+  ],
+  "pictures": [
+    "public\\pictures\\Plants\\736e30b1-c901-4743-a6cc-9ad397646e6e_1758095348046.webp",
+    "public\\pictures\\Plants\\0cf7f802-0b1e-4a83-989f-2311f6d4f658_1758095348047.webp"
+  ],
+  "status": "0",
+  "createdAt": {
+    "$date": "2025-09-17T07:40:06.620Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-17T07:49:09.018Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ca6bea5ee465ea189f385e"
+  },
+  "plantId": "c3c09653-432e-4dce-b860-848644fca7a5",
+  "title": "Guava Tree",
+  "slug": "guava-tree",
+  "category": "fruit-trees",
+  "size": "medium",
+  "careLevel": "easy",
+  "tags": [
+    {
+      "label": "Best selling",
+      "value": "best selling",
+      "_id": {
+        "$oid": "68ca6bea5ee465ea189f385f"
+      }
+    },
+    {
+      "label": "Outdoor plant",
+      "value": "outdoor plant",
+      "_id": {
+        "$oid": "68ca6bea5ee465ea189f3860"
+      }
+    }
+  ],
+  "summary": "A hardy fruit tree producing delicious, vitamin-rich guavas.",
+  "metaDescription": "Buy Guava Tree (Psidium guajava) – a hardy, low-maintenance fruit tree producing vitamin-rich guavas. Ideal for gardens and farms.",
+  "specifications": [
+    {
+      "label": "Botanical Name",
+      "value": "Psidium guajava",
+      "_id": {
+        "$oid": "68ca6bea5ee465ea189f3861"
+      }
+    },
+    {
+      "label": "Height",
+      "value": "10 - 15 ft",
+      "_id": {
+        "$oid": "68ca6bea5ee465ea189f3862"
+      }
+    },
+    {
+      "label": "Light",
+      "value": "Full Sun",
+      "_id": {
+        "$oid": "68ca6bea5ee465ea189f3863"
+      }
+    },
+    {
+      "label": "Water",
+      "value": "Regular, keep soil slightly moist",
+      "_id": {
+        "$oid": "68ca6bea5ee465ea189f3864"
+      }
+    }
+  ],
+  "details": "<p>The Guava Tree <em>(Psidium guajava&gt;) </em>is a fast-growing, low-maintenance fruit tree. It produces nutrient-rich guavas, packed with Vitamin C. Adaptable to different soils, it thrives in full sun and makes an excellent choice for small gardens.</p><p></p>",
+  "description": "<p>Guava trees are a favorite for Indian gardens due to their adaptability and nutritious fruits. They grow quickly, require minimal care, and can yield fruits within 2-3 years, making them ideal for home growers.</p><p></p><p></p>",
+  "faqs": [
+    {
+      "question": "How soon does a guava tree bear fruit?",
+      "answer": "Usually within 2-3 years after planting.",
+      "_id": {
+        "$oid": "68ca6bea5ee465ea189f3865"
+      }
+    },
+    {
+      "question": "Can guava grow in pots?",
+      "answer": "Yes, dwarf varieties can grow in large pots.",
+      "_id": {
+        "$oid": "68ca6bea5ee465ea189f3866"
+      }
+    }
+  ],
+  "pictures": [
+    "public\\pictures\\Plants\\6e86adac-78d7-4699-9064-d1b29553863a_1758096360856.webp",
+    "public\\pictures\\Plants\\b402ec8a-3446-4f77-a350-1f5f4a5cb499_1758096360858.webp"
+  ],
+  "status": "0",
+  "createdAt": {
+    "$date": "2025-09-17T08:06:02.535Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-17T08:06:02.535Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ca6d1b5ee465ea189f387d"
+  },
+  "plantId": "33cfc8c8-ecfd-49ce-b6fd-265d6a33bb90",
+  "title": "Rose Plant",
+  "slug": "rose-plant",
+  "category": "flower-trees",
+  "size": "small",
+  "careLevel": "moderate",
+  "tags": [
+    {
+      "label": "Indoor plant",
+      "value": "indoor plant",
+      "_id": {
+        "$oid": "68ca6d1b5ee465ea189f387e"
+      }
+    },
+    {
+      "label": "Flowering",
+      "value": "flowering",
+      "_id": {
+        "$oid": "68ca6d1b5ee465ea189f387f"
+      }
+    }
+  ],
+  "summary": "The timeless symbol of love, admired for its beauty and fragrance.",
+  "metaDescription": "Buy Rose Plant – an all-time favorite flowering plant with stunning blooms and rich fragrance. Perfect for gardens, patios, and gifting.",
+  "specifications": [
+    {
+      "label": "Botanical Name",
+      "value": "Rosa spp.",
+      "_id": {
+        "$oid": "68ca6d1b5ee465ea189f3880"
+      }
+    },
+    {
+      "label": "Height",
+      "value": "2 - 4 ft",
+      "_id": {
+        "$oid": "68ca6d1b5ee465ea189f3881"
+      }
+    },
+    {
+      "label": "Light",
+      "value": "Full Sun",
+      "_id": {
+        "$oid": "68ca6d1b5ee465ea189f3882"
+      }
+    },
+    {
+      "label": "Water",
+      "value": "Regular, avoid waterlogging",
+      "_id": {
+        "$oid": "68ca6d1b5ee465ea189f3883"
+      }
+    }
+  ],
+  "details": "<p>The Rose Plant<em> (Rosa spp.) i</em>s a classic garden favorite, producing vibrant flowers in various colors. It needs sunlight, regular watering, and occasional pruning to bloom year-round.</p><p></p>",
+  "description": "<p>Roses are beloved for their beauty and fragrance, symbolizing love and elegance. Ideal for gardens, balconies, or as potted plants, they thrive with sunlight and care, rewarding you with spectacular blooms.</p><p></p><p></p>",
+  "faqs": [
+    {
+      "question": "How often should I water roses?",
+      "answer": "Water 2-3 times a week depending on climate.",
+      "_id": {
+        "$oid": "68ca6d1b5ee465ea189f3884"
+      }
+    },
+    {
+      "question": "Do roses need pruning?",
+      "answer": "Yes, pruning encourages healthier growth and more blooms.",
+      "_id": {
+        "$oid": "68ca6d1b5ee465ea189f3885"
+      }
+    }
+  ],
+  "pictures": [
+    "public\\pictures\\Plants\\3f60a0ac-e56a-41b5-aeb5-0f78613ed5a8_1758096663157.webp",
+    "public\\pictures\\Plants\\325b66a6-b524-4849-8fb7-35bb5962eb9a_1758096663159.webp",
+    "public\\pictures\\Plants\\9edb6d9f-e0cf-4c17-ad8d-c8abde5aa921_1758096663160.webp"
+  ],
+  "status": "0",
+  "createdAt": {
+    "$date": "2025-09-17T08:11:07.142Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-17T08:11:07.142Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ca6e225ee465ea189f389c"
+  },
+  "plantId": "a55b9808-022a-4a95-838a-5557155c81c8",
+  "title": "Hibiscus Plant",
+  "slug": "hibiscus-plant",
+  "category": "flower-trees",
+  "size": "medium",
+  "careLevel": "easy",
+  "tags": [
+    {
+      "label": "Air purifying",
+      "value": "air purifying",
+      "_id": {
+        "$oid": "68ca6e225ee465ea189f389d"
+      }
+    },
+    {
+      "label": "Flowering",
+      "value": "flowering",
+      "_id": {
+        "$oid": "68ca6e225ee465ea189f389e"
+      }
+    },
+    {
+      "label": "Indoor plant",
+      "value": "indoor plant",
+      "_id": {
+        "$oid": "68ca6e225ee465ea189f389f"
+      }
+    }
+  ],
+  "summary": "Bright tropical blooms, perfect for hedges and borders.",
+  "metaDescription": "Buy Hibiscus Plant (Hibiscus rosa-sinensis) – a tropical flowering plant with large, vibrant blooms. Ideal for gardens and hedges.",
+  "specifications": [
+    {
+      "label": "Botanical Name",
+      "value": "Hibiscus rosa-sinensis",
+      "_id": {
+        "$oid": "68ca6e225ee465ea189f38a0"
+      }
+    },
+    {
+      "label": "Height",
+      "value": "3 - 6 ft",
+      "_id": {
+        "$oid": "68ca6e225ee465ea189f38a1"
+      }
+    },
+    {
+      "label": "Light",
+      "value": "Full Sun to Partial Shade",
+      "_id": {
+        "$oid": "68ca6e225ee465ea189f38a2"
+      }
+    },
+    {
+      "label": "Water",
+      "value": "Regular, moist soil",
+      "_id": {
+        "$oid": "68ca6e225ee465ea189f38a3"
+      }
+    }
+  ],
+  "details": "<p>The Hibiscus Plant (<em>Hibiscus rosa-sinensis)</em> is prized for its large, colorful flowers. Easy to grow and maintain, it adds a tropical touch to any garden. It thrives in sunlight and blooms year-round in warm climates.</p><p></p><p></p>",
+  "description": "<p>Hibiscus plants are ideal for hedges, garden borders, and decorative pots. Their striking blooms also attract pollinators like butterflies and hummingbirds, making them eco-friendly additions to gardens.</p><p></p>",
+  "faqs": [
+    {
+      "question": "Do hibiscus plants bloom all year?",
+      "answer": "Yes, in tropical climates with proper care.",
+      "_id": {
+        "$oid": "68ca6e225ee465ea189f38a4"
+      }
+    },
+    {
+      "question": "Can hibiscus grow indoors?",
+      "answer": "Yes, but it needs bright light and warmth.",
+      "_id": {
+        "$oid": "68ca6e225ee465ea189f38a5"
+      }
+    }
+  ],
+  "pictures": [
+    "public\\pictures\\Plants\\2b374389-fb04-43ef-8817-0fa888510345_1758096928383.webp",
+    "public\\pictures\\Plants\\fdb6421c-2419-4c22-9b74-84ccc4913eb3_1758096928385.webp",
+    "public\\pictures\\Plants\\05cd39c3-fc21-4373-840f-f86139faf75e_1758096928386.webp"
+  ],
+  "status": "0",
+  "createdAt": {
+    "$date": "2025-09-17T08:15:30.973Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-17T08:15:30.973Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ca710f5ee465ea189f38bc"
+  },
+  "plantId": "ed931f9c-a1be-4972-ab63-ee9c9175bdf1",
+  "title": "Banana Plant",
+  "slug": "banana-plant",
+  "category": "fruit-trees",
+  "size": "medium",
+  "careLevel": "easy",
+  "tags": [
+    {
+      "label": "Air purifying",
+      "value": "air purifying",
+      "_id": {
+        "$oid": "68ca710f5ee465ea189f38bd"
+      }
+    },
+    {
+      "label": "Outdoor plant",
+      "value": "outdoor plant",
+      "_id": {
+        "$oid": "68ca710f5ee465ea189f38be"
+      }
+    }
+  ],
+  "summary": "A fast-growing tropical plant producing clusters of sweet bananas.",
+  "metaDescription": "Banana Plant – tropical fruit plant that grows quickly and yields bunches of sweet bananas.",
+  "specifications": [
+    {
+      "label": "Botanical Name",
+      "value": "Musa spp.",
+      "_id": {
+        "$oid": "68ca710f5ee465ea189f38bf"
+      }
+    },
+    {
+      "label": "Height",
+      "value": "6 - 20 ft",
+      "_id": {
+        "$oid": "68ca710f5ee465ea189f38c0"
+      }
+    },
+    {
+      "label": "Light",
+      "value": "Full Sun",
+      "_id": {
+        "$oid": "68ca710f5ee465ea189f38c1"
+      }
+    }
+  ],
+  "details": "<p>The Banana Plant is iconic for its large leaves and delicious fruit. It is fast-growing, requires minimal maintenance, and thrives in tropical and subtropical regions.</p><p></p>",
+  "description": "<p>Known for its sweet fruit, the banana plant is also ornamental due to its lush green leaves. Ideal for kitchen gardens, farms, and landscapes with warm climates.</p><p></p>",
+  "faqs": [],
+  "pictures": [
+    "public\\pictures\\Plants\\36b6624c-bd87-4ff7-b5a6-41ba2395fc80_1758097671815.webp",
+    "public\\pictures\\Plants\\65b3cdf6-b8d1-4300-b5dc-652aa23f7e3c_1758097671820.webp"
+  ],
+  "status": "0",
+  "createdAt": {
+    "$date": "2025-09-17T08:27:59.836Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-17T08:27:59.836Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ca71fe5ee465ea189f38d8"
+  },
+  "plantId": "0b09fc17-8600-48ca-bd80-a028d06f09ea",
+  "title": "Orange Tree",
+  "slug": "orange-tree",
+  "category": "fruit-trees",
+  "size": "medium",
+  "careLevel": "easy",
+  "tags": [
+    {
+      "label": "Best selling",
+      "value": "best selling",
+      "_id": {
+        "$oid": "68ca71fe5ee465ea189f38d9"
+      }
+    },
+    {
+      "label": "Outdoor plant",
+      "value": "outdoor plant",
+      "_id": {
+        "$oid": "68ca71fe5ee465ea189f38da"
+      }
+    },
+    {
+      "label": "Low maintenance",
+      "value": "low maintenance",
+      "_id": {
+        "$oid": "68ca71fe5ee465ea189f38db"
+      }
+    }
+  ],
+  "summary": "A citrus tree producing sweet and tangy oranges, loved worldwide.",
+  "metaDescription": "Orange Tree – medium-sized fruit tree producing juicy oranges. Perfect for gardens and orchards.",
+  "specifications": [
+    {
+      "label": "Botanical Name",
+      "value": "Citrus × sinensis",
+      "_id": {
+        "$oid": "68ca71fe5ee465ea189f38dc"
+      }
+    },
+    {
+      "label": "Height",
+      "value": "10 - 25 ft",
+      "_id": {
+        "$oid": "68ca71fe5ee465ea189f38dd"
+      }
+    },
+    {
+      "label": "Light",
+      "value": "Full Sun",
+      "_id": {
+        "$oid": "68ca71fe5ee465ea189f38de"
+      }
+    },
+    {
+      "label": "Water",
+      "value": "Moderate, well-drained soil",
+      "_id": {
+        "$oid": "68ca71fe5ee465ea189f38df"
+      }
+    }
+  ],
+  "details": "<p>The Orange Tree is one of the most popular fruit trees worldwide. It thrives in warm climates and produces sweet, tangy fruits rich in Vitamin C. Its glossy leaves and fragrant blossoms make it a garden favorite.</p><p></p><p></p>",
+  "description": "<p>Orange trees are valued for both their beauty and fruit production. With proper care, they provide abundant harvests and are a staple in home gardens and orchards alike.</p><p></p>",
+  "faqs": [],
+  "pictures": [
+    "public\\pictures\\Plants\\9a4a6444-7e1c-4213-9f1c-44c1afd10792_1758097916623.webp",
+    "public\\pictures\\Plants\\bb631baf-1de5-4719-b81b-6b9caac7ce37_1758097916624.webp",
+    "public\\pictures\\Plants\\9c395748-00b3-43fa-bf5e-67d19447494d_1758097916624.webp"
+  ],
+  "status": "0",
+  "createdAt": {
+    "$date": "2025-09-17T08:31:58.840Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-17T08:31:58.840Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ca72f75ee465ea189f38f6"
+  },
+  "plantId": "495c9467-e5f2-4233-add6-a44467dfc440",
+  "title": "Apple Tree",
+  "slug": "apple-tree",
+  "category": "fruit-trees",
+  "size": "medium",
+  "careLevel": "moderate",
+  "tags": [
+    {
+      "label": "Best selling",
+      "value": "best selling",
+      "_id": {
+        "$oid": "68ca796c5ee465ea189f3acc"
+      }
+    },
+    {
+      "label": "Outdoor plant",
+      "value": "outdoor plant",
+      "_id": {
+        "$oid": "68ca796c5ee465ea189f3acd"
+      }
+    }
+  ],
+  "summary": "A popular fruit tree producing crisp, sweet, or tart apples in many varieties.",
+  "metaDescription": "Apple Tree – classic fruit tree that produces sweet and tart apples. Ideal for orchards and gardens in temperate climates.",
+  "specifications": [
+    {
+      "label": "Botanical Name",
+      "value": "Malus domestica",
+      "_id": {
+        "$oid": "68ca796c5ee465ea189f3ace"
+      }
+    },
+    {
+      "label": "Height",
+      "value": "10 - 30 ft",
+      "_id": {
+        "$oid": "68ca796c5ee465ea189f3acf"
+      }
+    },
+    {
+      "label": "Light",
+      "value": "Full Sun",
+      "_id": {
+        "$oid": "68ca796c5ee465ea189f3ad0"
+      }
+    },
+    {
+      "label": "Water",
+      "value": "Regular, especially during fruiting",
+      "_id": {
+        "$oid": "68ca796c5ee465ea189f3ad1"
+      }
+    }
+  ],
+  "details": "<p>Apple trees are a staple in temperate regions, producing fruits that are consumed fresh, cooked, or juiced. With proper care, they can yield fruit for decades.</p><p></p><p>[1]: <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://www.gardenary.com/blog/6-essential-gardening-tools-for-beginner-and-advanced-gardeners?utm_source=chatgpt.com\">https://www.gardenary.com/blog/6-essential-gardening-tools-for-beginner-and-advanced-gardeners?utm_source=chatgpt.com</a> \"6 Essential Gardening Tools for Beginner and Advanced ...\"</p><p>[2]: <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://www.gardenary.com/blog/my-favorite-kitchen-gardening-tools?utm_source=chatgpt.com\">https://www.gardenary.com/blog/my-favorite-kitchen-gardening-tools?utm_source=chatgpt.com</a> \"My Favorite Kitchen Gardening Tools\"</p><p>[3]: <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://food52.com/story/26155-best-gardening-tools?utm_source=chatgpt.com\">https://food52.com/story/26155-best-gardening-tools?utm_source=chatgpt.com</a> \"17 Essential Gardening Tools the Pros Swear By\"</p><p>[4]: <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://www.swansonsnursery.com/blog/swansons-staff-favorites-gardening-tools?utm_source=chatgpt.com\">https://www.swansonsnursery.com/blog/swansons-staff-favorites-gardening-tools?utm_source=chatgpt.com</a> \"Swansons' Staff Favorites: Gardening Tools — Seattle's ...\"</p><p>[5]: <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://www.themiddlesizedgarden.co.uk/favourite-garden-tools-products-2021/?utm_source=chatgpt.com\">https://www.themiddlesizedgarden.co.uk/favourite-garden-tools-products-2021/?utm_source=chatgpt.com</a> \"My favourite garden tools and products\"</p><p></p><p></p>",
+  "description": "<p>Apple trees add beauty to gardens with their blossoms and are among the most rewarding fruit trees to grow, offering a wide variety of delicious fruits.</p><p></p>",
+  "faqs": [],
+  "pictures": [
+    "public\\pictures\\Plants\\e7770ee4-d235-47f3-a3f1-6ab04902ec71_1758098165459.webp",
+    "public\\pictures\\Plants\\ee2cb711-87a7-4f3b-a170-5b84cda6da8e_1758098165460.webp",
+    "public\\pictures\\Plants\\e3e6a971-1462-4d06-8254-10103faced6c_1758098165462.webp"
+  ],
+  "status": "0",
+  "createdAt": {
+    "$date": "2025-09-17T08:36:07.476Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-17T09:03:40.861Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ca73b75ee465ea189f3913"
+  },
+  "plantId": "d04fa522-c267-4c3c-a283-cd6125111c31",
+  "title": "Papaya Tree",
+  "slug": "papaya-tree",
+  "category": "fruit-trees",
+  "size": "medium",
+  "careLevel": "easy",
+  "tags": [
+    {
+      "label": "Best selling",
+      "value": "best selling",
+      "_id": {
+        "$oid": "68ca73b75ee465ea189f3914"
+      }
+    },
+    {
+      "label": "Outdoor plant",
+      "value": "outdoor plant",
+      "_id": {
+        "$oid": "68ca73b75ee465ea189f3915"
+      }
+    }
+  ],
+  "summary": "A fast-growing tropical tree producing sweet, orange-fleshed papayas.",
+  "metaDescription": "Papaya Tree – tropical fruit tree producing sweet and nutritious papayas. Grows quickly with minimal care.",
+  "specifications": [
+    {
+      "label": "Botanical Name",
+      "value": "Carica papaya",
+      "_id": {
+        "$oid": "68ca73b75ee465ea189f3916"
+      }
+    },
+    {
+      "label": "Height",
+      "value": "6 - 15 ft",
+      "_id": {
+        "$oid": "68ca73b75ee465ea189f3917"
+      }
+    },
+    {
+      "label": "Light",
+      "value": "Full Sun",
+      "_id": {
+        "$oid": "68ca73b75ee465ea189f3918"
+      }
+    },
+    {
+      "label": "Water",
+      "value": "Moderate, well-drained soil",
+      "_id": {
+        "$oid": "68ca73b75ee465ea189f3919"
+      }
+    }
+  ],
+  "details": "<pre><code class=\"language-json\">The Papaya Tree is a short-lived, fast-growing tropical plant. It bears fruit within a year of planting, making it highly popular for kitchen gardens and commercial cultivation.</code></pre><p></p>",
+  "description": "<pre><code class=\"language-json\">Known for its sweet, juicy fruit, papaya is rich in vitamins and digestive enzymes. It is a favorite choice for tropical home gardens</code></pre><p></p>",
+  "faqs": [],
+  "pictures": [
+    "public\\pictures\\Plants\\4fc943ed-f82c-4ce7-b631-27b466b82ec3_1758098356781.webp",
+    "public\\pictures\\Plants\\64d01cef-dde9-452a-98af-16353ba55b4e_1758098356782.webp",
+    "public\\pictures\\Plants\\0d219af2-ffd4-4fc7-bb0b-5547e866ac9a_1758098356783.webp"
+  ],
+  "status": "0",
+  "createdAt": {
+    "$date": "2025-09-17T08:39:19.934Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-17T08:39:19.934Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ca75445ee465ea189f3930"
+  },
+  "plantId": "211d71d8-cfe6-4b4e-a585-a29a35967131",
+  "title": "Pomegranate Tree",
+  "slug": "pomegranate-tree",
+  "category": "fruit-trees",
+  "size": "small",
+  "careLevel": "moderate",
+  "tags": [
+    {
+      "label": "Outdoor plant",
+      "value": "outdoor plant",
+      "_id": {
+        "$oid": "68ca75445ee465ea189f3931"
+      }
+    },
+    {
+      "label": "Best selling",
+      "value": "best selling",
+      "_id": {
+        "$oid": "68ca75445ee465ea189f3932"
+      }
+    },
+    {
+      "label": "Low maintenance",
+      "value": "low maintenance",
+      "_id": {
+        "$oid": "68ca75445ee465ea189f3933"
+      }
+    }
+  ],
+  "summary": "A hardy fruit tree producing juicy, ruby-red pomegranates full of antioxidants.",
+  "metaDescription": "Pomegranate Tree – easy-to-grow fruit tree producing antioxidant-rich pomegranates. Thrives in warm climates.",
+  "specifications": [
+    {
+      "label": "Botanical Name",
+      "value": "Punica granatum",
+      "_id": {
+        "$oid": "68ca75445ee465ea189f3934"
+      }
+    },
+    {
+      "label": "Height",
+      "value": "6 - 20 ft",
+      "_id": {
+        "$oid": "68ca75445ee465ea189f3935"
+      }
+    }
+  ],
+  "details": "<pre><code class=\"language-json\">Pomegranate trees are highly ornamental with their bright flowers and nutritious fruits. They thrive in hot, dry climates and require little maintenance.</code></pre><p></p>",
+  "description": "<pre><code class=\"language-json\">The pomegranate is a symbol of prosperity and health. Its fruits are loved worldwide, both fresh and juiced, and the tree is resilient in many conditions.</code></pre><p></p>",
+  "faqs": [],
+  "pictures": [
+    "public\\pictures\\Plants\\2d1b1c35-816a-4415-a5e8-287450c12cd1_1758098752384.webp",
+    "public\\pictures\\Plants\\69966223-3a68-48c9-8e14-4819a0643dac_1758098752388.webp",
+    "public\\pictures\\Plants\\4a6769f9-f1f0-416b-8ee3-a9bf70aa0292_1758098752406.webp"
+  ],
+  "status": "0",
+  "createdAt": {
+    "$date": "2025-09-17T08:45:56.166Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-17T08:45:56.166Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ca8e78a83cc21068399954"
+  },
+  "plantId": "c63e9457-1eaf-42de-ae64-5027474a7014",
+  "title": "5 Essential Tips for Growing Healthy Indoor Plants",
+  "slug": "5-essential-tips-for-growing-healthy-indoor-plants",
+  "category": "show-trees",
+  "size": "medium",
+  "careLevel": "easy",
+  "tags": [
+    {
+      "label": "Outdoor plant",
+      "value": "outdoor plant",
+      "_id": {
+        "$oid": "68ca8e78a83cc21068399955"
+      }
+    }
+  ],
+  "summary": "tj",
+  "metaDescription": "",
+  "specifications": [],
+  "details": "<p>fjgh,</p>",
+  "description": "<p>sdxfgjh</p>",
+  "faqs": [],
+  "pictures": [
+    "public\\pictures\\Plants\\bfb99671-a323-42a2-a296-0ff0bf414f93_1758105206143.webp"
+  ],
+  "status": "2",
+  "createdAt": {
+    "$date": "2025-09-17T10:33:28.351Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-17T10:33:37.857Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ca8f62a83cc21068399991"
+  },
+  "plantId": "865d5423-1999-45c9-87a2-ae6573e2037a",
+  "title": " Essential Tips 565( &*for Growing Healthy Indoor Plants",
+  "slug": "essential-tips-565-for-growing-healthy-indoor-plants",
+  "category": "show-trees",
+  "size": "medium",
+  "careLevel": "",
+  "tags": [],
+  "summary": "regfbv",
+  "metaDescription": "",
+  "specifications": [],
+  "details": "<p>fsdv</p>",
+  "description": "<p>efsdv</p>",
+  "faqs": [],
+  "pictures": [
+    "public\\pictures\\Plants\\f8f424e7-828f-4832-a73b-1413809a37dd_1758105439925.webp"
+  ],
+  "status": "0",
+  "createdAt": {
+    "$date": "2025-09-17T10:37:22.495Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-17T10:37:22.495Z"
+  },
+  "__v": 0
+}]

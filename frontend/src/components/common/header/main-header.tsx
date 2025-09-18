@@ -46,6 +46,22 @@ export default function MainHeader() {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [mobileDropdownOpen]);
+
+  // Lock background scroll when mobile menu is open
+  useEffect(() => {
+    const html = document.documentElement;
+    const body = document.body;
+    if (mobileOpen) {
+      const prevHtmlOverflow = html.style.overflow;
+      const prevBodyOverflow = body.style.overflow;
+      html.style.overflow = "hidden";
+      body.style.overflow = "hidden";
+      return () => {
+        html.style.overflow = prevHtmlOverflow;
+        body.style.overflow = prevBodyOverflow;
+      };
+    }
+  }, [mobileOpen]);
   return (
     <header className="md:relative flex justify-center items-center w-full">
       <div
@@ -87,16 +103,18 @@ export default function MainHeader() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 50 }}
                 transition={{ duration: 0.3 }}
-                className="absolute top-[80px] right-0 w-full bg-gray-50 lg:hidden z-50"
+                className="absolute top-0 left-0 w-[80%] bg-gray-50 lg:hidden z-50 min-h-screen"
               >
-                <nav className="w-full">
+                <nav className="w-full mt-[80px]">
                   <ul className="flex flex-col w-full">
                     {/* Home */}
                     <li>
                       <Link
                         href="/"
-                        className={`flex items-center px-6 py-4 text-base font-semibold hover:bg-gray-100 transition-colors duration-200 ${
-                          pathname === "/" ? "text-green-600" : "text-gray-900"
+                        className={`flex items-center px-6 py-4 text-base font-semibold transition-colors duration-200 ${
+                          pathname === "/"
+                            ? "text-orange-600 bg-gray-300"
+                            : "text-gray-900 hover:bg-gray-100"
                         }`}
                         onClick={() => setMobileOpen(false)}
                       >
@@ -104,25 +122,34 @@ export default function MainHeader() {
                       </Link>
                     </li>
 
-                    <li>
-                      <div className="flex items-center justify-between w-full px-6 py-4 hover:bg-gray-100">
+                    <li className="relative">
+                      <button
+                        type="button"
+                        className={`flex items-center justify-between w-full px-6 py-4 transition-colors duration-200 ${
+                          pathname.startsWith("/plants") ||
+                          pathname.startsWith("/categories")
+                            ? "bg-gray-300"
+                            : "hover:bg-gray-100"
+                        }`}
+                        onClick={() =>
+                          setMobileDropdownOpen(!mobileDropdownOpen)
+                        }
+                        aria-expanded={mobileDropdownOpen}
+                        aria-controls="mobile-plants-dropdown"
+                      >
                         <span
-                          className={`text-[20px] font-semibold cursor-pointer ${
+                          className={`text-[20px] font-semibold ${
                             pathname.startsWith("/plants") ||
                             pathname.startsWith("/categories")
-                              ? "text-orange-600"
+                              ? "bg-gray-300"
                               : "text-black"
                           }`}
-                          onClick={() => {
-                            console.log(mobileDropdownOpen);
-                            setMobileDropdownOpen(false);
-                          }}
                         >
                           Plants
                         </span>
 
                         <svg
-                          className={`w-4 h-4 cursor-pointer transition-all duration-200 hover:text-green-600 ${
+                          className={`w-4 h-4 transition-all duration-200 ${
                             mobileDropdownOpen
                               ? "rotate-180 text-green-600"
                               : "text-gray-500"
@@ -130,9 +157,6 @@ export default function MainHeader() {
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
-                          onClick={() =>
-                            setMobileDropdownOpen(!mobileDropdownOpen)
-                          }
                         >
                           <path
                             strokeLinecap="round"
@@ -141,7 +165,7 @@ export default function MainHeader() {
                             d="M19 9l-7 7-7-7"
                           />
                         </svg>
-                      </div>
+                      </button>
 
                       {/* Plant Categories Dropdown */}
                       <AnimatePresence>
@@ -152,12 +176,17 @@ export default function MainHeader() {
                             exit={{ opacity: 0, height: 0 }}
                             transition={{ duration: 0.2, ease: "easeOut" }}
                             className="overflow-hidden bg-white"
+                            id="mobile-plants-dropdown"
                           >
                             {CATEGORY_ARR.map((cat) => (
                               <div key={cat.value} className="w-full">
                                 <Link
                                   href={`/categories/${cat.value}`}
-                                  className="block px-12 py-3 text-sm text-gray-700 hover:bg-gray-50 transition-colors duration-200 border-l-2 border-transparent hover:border-green-500"
+                                  className={`block px-12 py-3 text-sm transition-colors duration-200 border-l-2 ${
+                                    pathname === `/categories/${cat.value}`
+                                      ? "text-orange-600 bg-gray-300 border-green-500"
+                                      : "text-gray-700 hover:bg-gray-50 border-transparent hover:border-green-500"
+                                  }`}
                                   onClick={() => {
                                     setMobileOpen(false);
                                     setMobileDropdownOpen(false);
@@ -176,10 +205,10 @@ export default function MainHeader() {
                     <li>
                       <Link
                         href="/about"
-                        className={`flex items-center px-6 py-4 text-base font-semibold hover:bg-gray-100 transition-colors duration-200 ${
+                        className={`flex items-center px-6 py-4 text-base font-semibold transition-colors duration-200 ${
                           pathname === "/about"
-                            ? "text-green-600"
-                            : "text-gray-900"
+                            ? "text-green-600 bg-gray-100"
+                            : "text-gray-900 hover:bg-gray-100"
                         }`}
                         onClick={() => setMobileOpen(false)}
                       >
@@ -191,10 +220,10 @@ export default function MainHeader() {
                     <li>
                       <Link
                         href="/contact-us"
-                        className={`flex items-center px-6 py-4 text-base font-semibold hover:bg-gray-100 transition-colors duration-200 ${
+                        className={`flex items-center px-6 py-4 text-base font-semibold transition-colors duration-200 ${
                           pathname === "/contact-us"
-                            ? "text-orange-600"
-                            : "text-gray-900"
+                            ? "text-orange-600 bg-gray-300"
+                            : "text-gray-900 hover:bg-gray-100"
                         }`}
                         onClick={() => setMobileOpen(false)}
                       >
@@ -206,10 +235,10 @@ export default function MainHeader() {
                     <li>
                       <Link
                         href="/blogs"
-                        className={`flex items-center px-6 py-4 text-base font-semibold hover:bg-gray-100 transition-colors duration-200 ${
+                        className={`flex items-center px-6 py-4 text-base font-semibold transition-colors duration-200 ${
                           pathname === "/blogs"
-                            ? "text-green-600"
-                            : "text-gray-900"
+                            ? "text-green-600 bg-gray-300"
+                            : "text-gray-900 hover:bg-gray-100"
                         }`}
                         onClick={() => setMobileOpen(false)}
                       >
