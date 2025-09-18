@@ -6,7 +6,11 @@ import TextField from "@/components/form-fields/text-field";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import { createContactEnquiry } from "@/lib/api-routes/api-public";
-import { showErrorToast, showSuccessToast } from "@/lib/helper";
+import {
+  getErrorMessage,
+  showErrorToast,
+  showSuccessToast,
+} from "@/lib/helper";
 import { contactEnquirySchema } from "@/lib/schemas/common";
 import { ContactEnquiryFields } from "@/lib/types/common-types";
 import { hideLoader, showLoader } from "@/redux/uiSlice";
@@ -17,6 +21,7 @@ import { useDispatch } from "react-redux";
 import { Mail, MapPin } from "lucide-react";
 import { SITE_DATA } from "@/lib/constants";
 import Link from "next/link";
+import { AxiosError } from "axios";
 
 const defaultValues = {
   name: "",
@@ -44,8 +49,7 @@ export default function ContactPage() {
       );
       form.reset(defaultValues);
     } catch (error) {
-      console.log(error);
-      showErrorToast("Failed to submit enquiry. Please try again.");
+      showErrorToast(getErrorMessage(error as AxiosError));
     } finally {
       dispatch(hideLoader());
     }
@@ -56,7 +60,7 @@ export default function ContactPage() {
       <section className="py-20  ">
         <div className="container-custom space-y-12">
           <div className="text-center space-y-4">
-            <h1 className="lg:text-[42px] md:text-[36px] text-[28px] font-bold text-gray-900">
+            <h1 className="lg:text-[42px] md:text-[36px] text-[28px] font-semibold text-gray-900">
               <span className="text-[#00611F]">Get in Touch</span> with Our
               Plant Experts
             </h1>

@@ -8,12 +8,12 @@ Promise = global.Promise;
 
 const register = async () => {
   try {
-    const hashed = await hash("12345678", 10);
+    const hashed = await hash("kH#365&65jdoP", 10);
     const user = new User({
-      email: "adminvaibhav@gmail.com",
+      email: "sanasnursery@gmail.com",
       password: hashed,
-      name: "Admin Vaibhav",
-      phone: "9561157845",
+      name: "Ganesh Sanas",
+      phone: "8999481616",
       isVerified: true,
       role: "Admin",
     });

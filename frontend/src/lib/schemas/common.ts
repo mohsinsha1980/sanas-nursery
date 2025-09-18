@@ -24,11 +24,8 @@ export const phoneSchema = z
   .string()
   .trim()
   .min(1, { message: "Phone number is required" })
-  .refine((val) => val.replace(/\D/g, "").length >= 10, {
-    message: "Phone number must be at least 10 digits",
-  })
-  .refine((val) => val.replace(/\D/g, "").length <= 15, {
-    message: "Phone number must be less than 15 digits",
+  .refine((val) => val.replace(/\D/g, "").length <= 10, {
+    message: "Phone number must be of 10 digits",
   })
   .regex(/^[+]?[\d\s\-\(\)]+$/, {
     message: "Please enter a valid phone number",

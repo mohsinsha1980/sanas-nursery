@@ -3,11 +3,16 @@ import SocialMedia from "@/components/common/footer/SocialMedia";
 import { Button } from "@/components/ui/button";
 import { createContactEnquiry } from "@/lib/api-routes/api-public";
 import { SITE_DATA } from "@/lib/constants";
-import { showErrorToast, showSuccessToast } from "@/lib/helper";
+import {
+  getErrorMessage,
+  showErrorToast,
+  showSuccessToast,
+} from "@/lib/helper";
 import { contactEnquirySchema } from "@/lib/schemas/common";
 import { ContactEnquiryFields } from "@/lib/types/common-types";
 import { hideLoader, showLoader } from "@/redux/uiSlice";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { AxiosError } from "axios";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { useReCaptcha } from "next-recaptcha-v3";
 import Link from "next/link";
@@ -49,7 +54,7 @@ const Contact = () => {
       reset(defaultValues);
     } catch (error) {
       console.log(error);
-      showErrorToast("Failed to submit enquiry. Please try again.");
+      showErrorToast(getErrorMessage(error as AxiosError));
     } finally {
       setLoading(false);
       dispatch(hideLoader());
@@ -66,7 +71,8 @@ const Contact = () => {
                 <div className="lg:w-[80%] lg:h-[85%] w-full lg:gap-y-10 gap-y-10 flex flex-col justify-between items-start ">
                   <div className="lg:w-[100%] lg:h-auto lg:gap-y-2 gap-y-2 flex flex-col justify-between   ">
                     <p className="lg:text-[42px] md:text-[36px] text-[24px] text-white font-semibold lg:leading-13 ">
-                      Connect with <span className="text-[#00611F]">Sanas </span>
+                      Connect with{" "}
+                      <span className="text-[#00611F]">Sanas </span>
                       Nursery
                     </p>
                     <p className="lg:text-[20px] md:text-[22px] text-[16px] text-white lg:font-semibold">
