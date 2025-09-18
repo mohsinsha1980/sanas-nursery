@@ -19,7 +19,7 @@ const Hero = () => {
         md:w-[500px] md:h-fit md:top-1/2 md:left-[40%] md:-translate-y-1/2 md:space-y-6 md:items-start
         w-[90%] h-fit top-[60%] -translate-y-1/2 left-1/2 -translate-x-1/2 space-y-5 flex flex-col justify-center items-center"
       >
-        <h1 className="lg:text-[60px] md:text-[50px] text-[30px] font-normal md:leading-18 leading-10 md:text-start text-center">
+        <h1 className="text-4xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl font-normal leading-tight md:text-start text-center">
           Your Go-To <span className="text-[#00611F]">Plants and Trees </span>
           Supplier in Uruli Kanchan.
         </h1>

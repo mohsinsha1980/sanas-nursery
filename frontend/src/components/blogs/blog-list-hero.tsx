@@ -19,7 +19,7 @@ const BlogListHero = () => {
         md:w-[500px] md:h-fit md:top-1/2 md:left-[40%] md:-translate-y-1/2 md:space-y-6 md:items-start
         w-[90%] h-fit top-[55%] -translate-y-1/2 left-1/2 -translate-x-1/2 space-y-5 flex flex-col justify-center items-center bg-white/80 backdrop-blur-sm"
         >
-          <h1 className="lg:text-[60px] md:text-[50px] text-[40px] font-normal lg:leading-18 leading-13 md:text-start text-center">
+          <h1 className="text-4xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl font-normal leading-tight md:text-start text-center">
             Our Blogs
           </h1>
           <p className="text-[#505050] lg:text-[20px] md:text-[20px] text-[20px] font-normal md:text-start text-center">
