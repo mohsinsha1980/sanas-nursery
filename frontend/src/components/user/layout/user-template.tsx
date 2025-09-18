@@ -1,11 +1,11 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import classes from "./admin-template.module.css";
-import ContextMenu from "./context-menu";
+import classes from "./user-template.module.css";
+import UserSidebar from "./user-sidebar";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 
-export default function AdminTemplate({
+export default function UserTemplate({
   children,
 }: Readonly<{
   children?: React.ReactNode;
@@ -28,16 +28,16 @@ export default function AdminTemplate({
   };
 
   return (
-    <div className="container">
-      <div className={`${classes.bl_admin_template} `}>
+    <div className="container ">
+      <div className={`${classes.bl_user_template} `}>
         {/* Desktop Navigation */}
-        <div className={`${classes.admin_nav} ${classes.desktop_nav}`}>
-          <ContextMenu />
+        <div className={`${classes.user_nav} ${classes.desktop_nav} `}>
+          <UserSidebar />
         </div>
 
         {/* Mobile Navigation */}
         <div
-          className={`${classes.mobile_nav} ${
+          className={`${classes.mobile_nav}  ${
             isScrolled ? classes.hidden : ""
           }`}
         >
@@ -50,7 +50,7 @@ export default function AdminTemplate({
             </SheetTrigger>
             <SheetContent side="left" className="w-80 p-0">
               <div className={`${classes.sheet_content} h-full`}>
-                <ContextMenu onLinkClick={closeSheet} />
+                <UserSidebar onLinkClick={closeSheet} />
               </div>
             </SheetContent>
           </Sheet>
@@ -58,7 +58,7 @@ export default function AdminTemplate({
 
         <div
           // className={`${classes.pg_content} bg-[var(--bg-green-light)] py-5 px-2 lg:px-5 rounded-2xl shadow `}
-          className={`${classes.pg_content} py-5 lg:px-5 rounded-2xl `}
+          className={`${classes.pg_content} py-5 px-2 lg:px-5 rounded-2xl `}
         >
           {children}
         </div>

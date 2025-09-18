@@ -7,10 +7,7 @@ import {
   PlantFilterSchema,
   testimonialSchema,
 } from "../schemas/admin";
-import {
-  DataTableActionType,
-  HomeCardType,
-} from "./common-types";
+import { DataTableActionType, HomeCardType } from "./common-types";
 import { MASTER_DATA_TYPE } from "../constants";
 
 export interface SelectOption {
@@ -49,6 +46,9 @@ export interface PlantTableDataType {
   status: string;
   actions: DataTableActionType[];
   picture: string;
+  slug: string;
+  categorySlug: string;
+  _id: string;
 }
 
 export interface UpdateHomeCardTypes extends HomeCardType {

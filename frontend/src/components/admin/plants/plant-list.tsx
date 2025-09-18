@@ -33,6 +33,9 @@ export interface plantListType {
   plantId: string;
   status: boolean;
   pictures: string;
+  slug: string;
+  _id: string;
+  categorySlug: string;
 }
 
 const PlantsList = () => {
@@ -83,6 +86,9 @@ const PlantsList = () => {
             plantId: plant.plantId,
             status: plant.status,
             category: toCamelCase(plant.category),
+            slug: plant.slug,
+            categorySlug: plant.category,
+            _id: plant._id,
             actions: [
               {
                 actionType: ACTION_TYPES.EDIT,

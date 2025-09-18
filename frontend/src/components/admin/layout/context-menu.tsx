@@ -16,11 +16,21 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import classes from "./context-menu.module.css";
 
-export default function ContextMenu() {
+interface ContextMenuProps {
+  onLinkClick?: () => void;
+}
+
+export default function ContextMenu({ onLinkClick }: ContextMenuProps) {
   const pathname = usePathname();
 
   const getActiveClass = (link: string): string => {
     return link === pathname || pathname.startsWith(link) ? classes.active : "";
+  };
+
+  const handleLinkClick = () => {
+    if (onLinkClick) {
+      onLinkClick();
+    }
   };
 
   return (
@@ -28,7 +38,11 @@ export default function ContextMenu() {
       <CardContent className={`${classes.card_content} `}>
         <ul className={`${classes.context_menu} space-y-2`}>
           <li className={`${getActiveClass("/admin/dashboard")} `}>
-            <Link href="/admin/dashboard" className="flex items-center gap-3">
+            <Link
+              href="/admin/dashboard"
+              className="flex items-center gap-3"
+              onClick={handleLinkClick}
+            >
               <div className="">
                 <ChartAreaIcon strokeWidth={1} className="h-6 font-bold" />
               </div>
@@ -37,7 +51,11 @@ export default function ContextMenu() {
           </li>
 
           <li className={getActiveClass("/admin/plants")}>
-            <Link href="/admin/plants" className="flex items-center gap-3">
+            <Link
+              href="/admin/plants"
+              className="flex items-center gap-3"
+              onClick={handleLinkClick}
+            >
               <div className="">
                 <Sprout strokeWidth={1} className="h-6 font-bold" />
               </div>
@@ -46,7 +64,11 @@ export default function ContextMenu() {
           </li>
 
           <li className={getActiveClass("/admin/home")}>
-            <Link href="/admin/home" className="flex items-center gap-3">
+            <Link
+              href="/admin/home"
+              className="flex items-center gap-3"
+              onClick={handleLinkClick}
+            >
               <div className="">
                 <LayoutPanelTopIcon strokeWidth={1} className="h-6 font-bold" />
               </div>
@@ -58,6 +80,7 @@ export default function ContextMenu() {
             <Link
               href="/admin/testimonials"
               className="flex items-center gap-3"
+              onClick={handleLinkClick}
             >
               <div className="">
                 <MessageSquareQuote strokeWidth={1} className="h-6 font-bold" />
@@ -70,6 +93,7 @@ export default function ContextMenu() {
             <Link
               href="/admin/order-enquiries"
               className="flex items-center gap-3"
+              onClick={handleLinkClick}
             >
               <div className="">
                 <ShoppingCartIcon strokeWidth={1} className="h-6 font-bold" />
@@ -79,7 +103,11 @@ export default function ContextMenu() {
           </li>
 
           <li className={getActiveClass("/admin/users")}>
-            <Link href="/admin/users" className="flex items-center gap-3">
+            <Link
+              href="/admin/users"
+              className="flex items-center gap-3"
+              onClick={handleLinkClick}
+            >
               <div className="">
                 <UserRound strokeWidth={1} className="h-6 font-bold" />
               </div>
@@ -88,7 +116,11 @@ export default function ContextMenu() {
           </li>
 
           <li className={getActiveClass("/admin/subscription")}>
-            <Link href="/admin/subscription" className="flex items-center gap-3">
+            <Link
+              href="/admin/subscription"
+              className="flex items-center gap-3"
+              onClick={handleLinkClick}
+            >
               <div className="">
                 <UserPlus strokeWidth={1} className="h-6 font-bold" />
               </div>
@@ -97,7 +129,11 @@ export default function ContextMenu() {
           </li>
 
           <li className={getActiveClass("/admin/blogs")}>
-            <Link href="/admin/blogs" className="flex items-center gap-3">
+            <Link
+              href="/admin/blogs"
+              className="flex items-center gap-3"
+              onClick={handleLinkClick}
+            >
               <div className="">
                 <Notebook strokeWidth={1} className="h-6 font-bold" />
               </div>
@@ -109,6 +145,7 @@ export default function ContextMenu() {
             <Link
               href="/admin/contact-enquiries"
               className="flex items-center gap-3"
+              onClick={handleLinkClick}
             >
               <div className="">
                 <MailOpen strokeWidth={1} className="h-6 font-bold" />
@@ -118,7 +155,11 @@ export default function ContextMenu() {
           </li>
 
           <li className={getActiveClass("/admin/settings")}>
-            <Link href="/admin/settings" className="flex items-center gap-3">
+            <Link
+              href="/admin/settings"
+              className="flex items-center gap-3"
+              onClick={handleLinkClick}
+            >
               <div className="">
                 <SettingsIcon strokeWidth={1} className="h-6 font-bold" />
               </div>

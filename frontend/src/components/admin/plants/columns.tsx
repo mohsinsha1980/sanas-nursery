@@ -5,6 +5,7 @@ import { PlantTableDataType } from "@/lib/types/admin-types";
 import { ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export const columns: ColumnDef<PlantTableDataType>[] = [
   {
@@ -26,16 +27,20 @@ export const columns: ColumnDef<PlantTableDataType>[] = [
       const picture = row.original.picture;
 
       return (
-        <div className="flex items-center gap-2 p-2">
-          <Image
-            src={picture}
-            alt={name}
-            width={50}
-            height={50}
-            className="rounded-sm"
-          />
-          <span>{name}</span>
-        </div>
+        <Link
+          href={`/categories/${row.original.categorySlug}/${row.original.slug}/${row.original._id}`}
+        >
+          <div className="flex items-center gap-2 p-2">
+            <Image
+              src={picture}
+              alt={name}
+              width={50}
+              height={50}
+              className="rounded-sm"
+            />
+            <span>{name}</span>
+          </div>
+        </Link>
       );
     },
   },

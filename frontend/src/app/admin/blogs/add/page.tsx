@@ -144,15 +144,6 @@ export default function AddBlog() {
                     descriptionClassName="text-sm text-gray-500"
                     className="rounded-md border-black/10"
                   />
-
-                  <RichTextField
-                    name="content"
-                    label="Blog Content"
-                    labelClassName="text-base font-medium"
-                    placeholder="Write your blog content here..."
-                    formControl={form.control}
-                    className="rounded-md border-black/10"
-                  />
                 </div>
               </div>
 
@@ -291,6 +282,17 @@ export default function AddBlog() {
                 </div>
               </div>
             </div>
+          </div>
+
+          <div>
+            <RichTextField
+              name="content"
+              label="Blog Content"
+              labelClassName="text-base font-medium"
+              placeholder="Write your blog content here..."
+              formControl={form.control}
+              className="rounded-md border-black/10"
+            />
           </div>
 
           <div className="">

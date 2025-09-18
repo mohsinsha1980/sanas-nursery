@@ -17,6 +17,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import GlobalSearch from "./global-search";
+import { showSuccessToast } from "@/lib/helper";
 
 export default function HeaderActions() {
   const user = useSelector((state: RootState) => state.user);
@@ -29,7 +30,13 @@ export default function HeaderActions() {
       setIsLoggingOut(true);
       await logout();
       dispatch(removeUser());
-      router.push("/");
+      const currentPath = window.location.pathname;
+      const isProtectedPage =
+        currentPath.includes("/user") || currentPath.includes("/admin");
+      if (isProtectedPage) {
+        router.push("/");
+      }
+      showSuccessToast("Loged Out Successfully!");
     } catch (error) {
       console.error("Logout error:", error);
     } finally {

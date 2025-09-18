@@ -25,6 +25,7 @@ interface ProductAccordionProps {
   triggerClassName?: string;
   contentClassName?: string;
   disableContentTopBorder?: boolean;
+  outerBoder?: boolean;
 }
 
 export function ProductAccordion({
@@ -36,6 +37,7 @@ export function ProductAccordion({
   triggerClassName,
   contentClassName,
   disableContentTopBorder,
+  outerBoder,
 }: ProductAccordionProps) {
   return (
     <div className={cn("w-full rounded-lg", className)}>
@@ -50,7 +52,8 @@ export function ProductAccordion({
             key={item.id}
             value={item.id}
             className={cn(
-              "px-4 transition-colors bg-white rounded-lg border-none",
+              "px-4 transition-colors bg-white rounded-lg",
+              outerBoder ? "border border-gray-300 " : " border-none",
               itemClassName
             )}
           >

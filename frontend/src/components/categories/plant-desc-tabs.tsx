@@ -8,7 +8,10 @@ export default function PlantDescTabs({ plant }: { plant: PlantDataType }) {
     <>
       <Tabs defaultValue="description" className="tabs_plain">
         <TabsList>
-          <TabsTrigger value="description" className="font-semibold mx-2 md:m-0">
+          <TabsTrigger
+            value="description"
+            className="font-semibold mx-2 md:m-0"
+          >
             Description
           </TabsTrigger>
           {plant.faqs?.length ? (
@@ -36,7 +39,6 @@ export default function PlantDescTabs({ plant }: { plant: PlantDataType }) {
               itemClassName="shadow-none border border-gray-200 rounded-md"
               triggerClassName="py-3"
               contentClassName="rounded-b-md"
-              disableContentTopBorder
             />
           </TabsContent>
         ) : null}
