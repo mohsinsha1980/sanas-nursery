@@ -73,7 +73,7 @@ export const AUTH = {
 
 export const SITE = {
   LOGO: "/images/site/sanas-nursery.webp",
-  POWERED_BY: "/images/site/bharathatechno-it-pvt-ltd.svg",
+  POWERED_BY: "/images/site/bharathatechno-it-pvt-ltd-white.svg",
 };
 
 export const HOME_HERO = HERO;

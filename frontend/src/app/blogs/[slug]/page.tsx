@@ -1,7 +1,6 @@
 import BlogCard from "@/components/blogs/blog-card";
 import BlogShare from "@/components/blogs/blog-share";
 import BlogTags from "@/components/blogs/blog-tags";
-import config from "@/config/env-config";
 import { getBlogBySlug, getRelatedBlogs } from "@/lib/api-routes/api-public";
 import { getCategoryLabel, getFormattedDate, getPicURL } from "@/lib/helper";
 import { BlogDataType } from "@/lib/types/common-types";
@@ -10,15 +9,16 @@ import {
   BookOpen,
   Calendar,
   Clock,
+  Link2,
   Tag,
   User,
-  Link2,
 } from "lucide-react";
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import styles from "./blog-details.module.css";
+import { Button } from "@/components/ui/button";
 
 interface BlogDetailsPageProps {
   params: Promise<{ slug: string }>;
@@ -180,7 +180,7 @@ export default async function BlogDetailsPage({
             <BlogTags tags={blog.tags || []} />
             <BlogShare
               title={blog.title}
-              url={`${config.WEBAPP_URL}/blogs/${blog.slug}`}
+              url={`/blogs/${blog.slug}`}
               excerpt={blog.excerpt}
             />
           </div>
@@ -210,9 +210,12 @@ export default async function BlogDetailsPage({
               </div>
 
               <div className={styles.ctaSection}>
-                <Link href="/blogs" className={styles.ctaButton}>
-                  <BookOpen className="h-5 w-5 mr-2" />
-                  View All Articles
+                <Link href="/blogs">
+                  <Button variant="orange" size="lg" className="py-2 px-4">
+                    <BookOpen className="h-5 w-5 mr-2" />
+                    View All Articles
+                  </Button>
+                  {/* View All Articles */}
                 </Link>
               </div>
             </div>

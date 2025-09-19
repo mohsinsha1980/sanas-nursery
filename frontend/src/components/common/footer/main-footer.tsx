@@ -96,7 +96,7 @@ export default function Footer() {
         </div>
 
         {/* Copyright and Powered By */}
-        <div className="border-t border-accent-800 mt-8 pt-8">
+        <div className="border-t border-accent-800 mt-8 pt-8 text-gray-400">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-gray-400 text-sm text-center md:text-left">
               © {currentYear} Sanas Nursery. All rights reserved.

@@ -16,7 +16,8 @@ import Script from "next/script";
 async function getHomeDataServer() {
   try {
     const response = await getPublicHomeData();
-    return response.data.data;
+    const resData = await response.json();
+    return resData.data;
   } catch (_error) {
     return {
       greenChoices: [],

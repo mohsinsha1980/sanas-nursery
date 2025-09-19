@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function FooterPoweredBy() {
   return (
-    <div className="flex justify-between items-center gap-2">
+    <div className="flex justify-between items-center gap-2 text-white">
       <Link href="https://bharathatechno.com" target="_blank">
         Powered by
       </Link>

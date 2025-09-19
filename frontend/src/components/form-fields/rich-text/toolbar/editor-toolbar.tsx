@@ -25,7 +25,7 @@ interface EditorToolbarProps {
 const EditorToolbar = ({ editor }: EditorToolbarProps) => {
   return (
     <Toolbar
-      className="m-0 flex items-center justify-between p-2"
+      className="m-0 flex items-center justify-between p-2 z-0"
       aria-label="Formatting options"
     >
       <ToggleGroup className="flex flex-row items-center" type="multiple">

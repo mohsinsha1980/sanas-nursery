@@ -342,7 +342,7 @@ export default function EditBlogForm({ blogId }: EditBlogProps) {
             </div>
           </div>
 
-          <div>
+          <div key={form.getValues("content").slice(0, 5) + "_content"}>
             <RichTextField
               name="content"
               label="Blog Content"
