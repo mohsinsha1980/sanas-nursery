@@ -28,9 +28,9 @@ const MultipleSelectField = <T extends FieldValues>({
   description,
   formControl,
   options,
-  labelClassName, // ✅ receive
+  labelClassName,
   descriptionClassName,
-  className ="",
+  className = "",
 }: MultiSelectFieldProps<T>) => {
   return (
     <FormField
@@ -39,7 +39,6 @@ const MultipleSelectField = <T extends FieldValues>({
       render={({ field }) => (
         <FormItem>
           <FormLabel className={labelClassName}>{label}</FormLabel>{" "}
-          {/* ✅ applied */}
           <FormControl>
             <div className="flex min-h-9 w-full items-center">
               <div className="w-full">

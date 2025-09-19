@@ -16,7 +16,7 @@ import {
   MessageSquare,
   Package,
   Phone,
-  User
+  User,
 } from "lucide-react";
 import Image from "next/image";
 
@@ -39,47 +39,48 @@ export default function EnquiryItem({
 
   return (
     <div className="group bg-white border border-gray-200 rounded-xl p-4 sm:p-6 shadow-sm hover:shadow-lg hover:border-gray-300 transition-all duration-200 flex flex-col h-full">
-      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-4 gap-3">
-        <div className="flex items-center space-x-3 sm:space-x-4">
-          <div className="relative">
-            <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 shadow-sm">
-              {enquiry.plantId?.pictures?.[0] ? (
-                <Image
-                  src={getPicURL(enquiry.plantId.pictures[0])}
-                  alt={enquiry.plantId.title}
-                  width={64}
-                  height={64}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
-                />
-              ) : (
-                <div className="w-full h-full flex items-center justify-center">
-                  <Package className="w-6 h-6 sm:w-8 sm:h-8 text-gray-400" />
-                </div>
-              )}
-            </div>
+      <div className="flex items-center space-x-3 sm:space-x-4 mb-4">
+        <div className="relative flex-shrink-0">
+          <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 shadow-sm">
+            {enquiry.plantId?.pictures?.[0] ? (
+              <Image
+                src={getPicURL(enquiry.plantId.pictures[0])}
+                alt={enquiry.plantId.title}
+                width={64}
+                height={64}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
+              />
+            ) : (
+              <div className="w-full h-full flex items-center justify-center">
+                <Package className="w-6 h-6 sm:w-8 sm:h-8 text-gray-400" />
+              </div>
+            )}
           </div>
-          <div className="flex-1 min-w-0">
-            <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-1 truncate">
-              {enquiry.plantId?.title || "N/A"}
-            </h3>
-            <div className="flex items-center space-x-2">
-              <Calendar className="w-4 h-4 text-gray-400" />
-              <span className="text-sm text-gray-500 font-medium">
+        </div>
+        <div className="flex-1 min-w-0">
+          <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 break-words line-clamp-2">
+            {enquiry.plantId?.title || "N/A"}
+          </h3>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-2 text-gray-500">
+              <Calendar className="w-3 h-3 sm:w-4 sm:h-4 text-gray-400 flex-shrink-0" />
+              <span className="text-xs sm:text-sm font-medium">
                 {new Date(enquiry.createdAt).toLocaleDateString()}
               </span>
             </div>
+            {showStatus && (
+              <Badge
+                variant={getStatusBadgeVariant(enquiry.status)}
+                className={`px-2 sm:px-3 py-1 sm:py-1.5 text-xs sm:text-sm font-bold rounded-full ${getStatusColor(
+                  enquiry.status
+                )} shadow-sm`}
+              >
+                {enquiry.status.charAt(0).toUpperCase() +
+                  enquiry.status.slice(1)}
+              </Badge>
+            )}
           </div>
         </div>
-        {showStatus && (
-          <Badge
-            variant={getStatusBadgeVariant(enquiry.status)}
-            className={`px-3 py-1.5 text-sm font-bold rounded-full ${getStatusColor(
-              enquiry.status
-            )} shadow-sm self-start sm:self-auto`}
-          >
-            {enquiry.status.charAt(0).toUpperCase() + enquiry.status.slice(1)}
-          </Badge>
-        )}
       </div>
 
       <div className="flex-1 flex flex-col">
