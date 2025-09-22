@@ -5,7 +5,7 @@ import { ServerPagination } from "@/components/common/server-pagination";
 import Loading from "@/components/layout/Loading";
 import config from "@/config/env-config";
 import { getCategoryPlants } from "@/lib/api-routes/api-public";
-import { CATEGORIES, PLANTS_PER_PAGE } from "@/lib/constants";
+import { CATEGORIES, CATEGORY_ARR, PLANTS_PER_PAGE } from "@/lib/constants";
 import { getPlantsCardData } from "@/lib/helper";
 import {
   CategoryPageParamsProps,
@@ -18,6 +18,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { Suspense } from "react";
 import { ChevronRight } from "lucide-react";
+import { notFound } from "next/navigation";
 
 export async function generateMetadata({
   params,
@@ -65,6 +66,12 @@ export default async function CollectionPage({
   searchParams: Promise<PlantFilterType>;
 }) {
   const category = (await params).category;
+
+  const validCategory = CATEGORY_ARR.find((c) => c.value === category);
+  if (!validCategory) {
+    return notFound();
+  }
+
   const searchParamsData = await searchParams;
   const currentPage = Number(searchParamsData.page) ?? "1";
 

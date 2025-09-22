@@ -6,7 +6,11 @@ import TextField from "@/components/form-fields/text-field";
 import TextArea from "@/components/form-fields/text-area";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
-import { showErrorToast, showSuccessToast } from "@/lib/helper";
+import {
+  getErrorMessage,
+  showErrorToast,
+  showSuccessToast,
+} from "@/lib/helper";
 import Link from "next/link";
 import { OrderEnquiryFields, PlantDataType } from "@/lib/types/common-types";
 import { RootState } from "@/redux/store";
@@ -17,6 +21,8 @@ import { createOrderEnquiry } from "@/lib/api-routes/api-public";
 import { Form } from "../ui/form";
 import { useReCaptcha } from "next-recaptcha-v3";
 import { X } from "lucide-react";
+import { ROLES } from "@/lib/constants";
+import { AxiosError } from "axios";
 
 const defaultValues: OrderEnquiryFields = {
   name: "",
@@ -58,21 +64,22 @@ const BuyNowBtn = ({ plant }: { plant: PlantDataType }) => {
         plantId: plant._id,
         userId: user?._id || "",
       };
-      console.log(token);
-      const res = await createOrderEnquiry(payload);
-      console.log("res ", res);
+      await createOrderEnquiry(payload);
       showSuccessToast(
         "Your enquiry has been submitted. We will contact you soon!"
       );
       setOpenDialog(false);
       form.reset(defaultValues);
     } catch (error) {
-      console.log(error);
-      showErrorToast("Failed to submit enquiry. Please try again.");
+      showErrorToast(getErrorMessage(error as AxiosError));
     } finally {
       dispatch(hideLoader());
     }
   };
+
+  if (user?.role === ROLES.ADMIN) {
+    return;
+  }
 
   return (
     <>
@@ -96,7 +103,7 @@ const BuyNowBtn = ({ plant }: { plant: PlantDataType }) => {
                   You are not logged in. <strong>Login</strong> to autofill your
                   details.
                 </span>
-                <Link href="/login">
+                <Link href="/auth/signin">
                   <Button size="sm" variant="link" className="text-amber-600">
                     Login
                   </Button>

@@ -66,12 +66,11 @@ export default async function ProductDetailsPageByID({
     };
   } = await fetchProductDetails(plantID);
 
-  if (!response.data.plant) {
+  if (!response?.data?.plant?._id) {
     return notFound();
   }
 
   const plant = response.data.plant;
-  console.log(plant);
   const similarPlants = response.data.similarPlants;
   const pictures = plant.pictures.map((item: string) => getPicURL(item));
 

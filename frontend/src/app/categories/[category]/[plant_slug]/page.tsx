@@ -66,9 +66,7 @@ export default async function ProductDetailsPageBySlug({
     };
   } = await fetchProductDetails(plantSlug);
 
-  console.log("response ", response);
-
-  if (!response.data.plant) {
+  if (!response?.data?.plant?._id) {
     return notFound();
   }
 
