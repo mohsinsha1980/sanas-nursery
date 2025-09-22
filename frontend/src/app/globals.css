@@ -673,3 +673,16 @@ prev{
   font-family: var(--font-catamaran);
   font-size: 18px;
 }
+
+prev>code{
+  white-space: normal;
+  font-family: var(--font-catamaran);
+  font-size: 18px;
+}
+
+code.language-json{
+   white-space: normal;
+  font-family: var(--font-catamaran);
+  font-size: 18px;
+  color:"red" !important
+}
