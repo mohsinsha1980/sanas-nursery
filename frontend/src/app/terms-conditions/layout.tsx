@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Terms & Conditions – Sanas Nursery, Uruli Kanchan",
+  title: "Terms & Conditions - Sanas Nursery, Uruli Kanchan",
   description:
     "Read the Terms & Conditions for using Sanas Nursery’s website. Understand our policies on enquiries, orders, payments, delivery, and data usage in Uruli Kanchan, Maharashtra.",
   alternates: {
@@ -7,13 +7,10 @@ export const metadata = {
   },
 };
 
-export default function RootLayout({
+export default function TermsConditionsLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return (
-      <section>{children}</section>
-  );
+  return <section>{children}</section>;
 }
-

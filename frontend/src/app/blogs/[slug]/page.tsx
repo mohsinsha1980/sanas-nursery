@@ -1,6 +1,7 @@
 import BlogCard from "@/components/blogs/blog-card";
 import BlogShare from "@/components/blogs/blog-share";
 import BlogTags from "@/components/blogs/blog-tags";
+import { Button } from "@/components/ui/button";
 import { getBlogBySlug, getRelatedBlogs } from "@/lib/api-routes/api-public";
 import { getCategoryLabel, getFormattedDate, getPicURL } from "@/lib/helper";
 import { BlogDataType } from "@/lib/types/common-types";
@@ -13,65 +14,13 @@ import {
   Tag,
   User,
 } from "lucide-react";
-import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import styles from "./blog-details.module.css";
-import { Button } from "@/components/ui/button";
 
 interface BlogDetailsPageProps {
   params: Promise<{ slug: string }>;
-}
-
-export async function generateMetadata({
-  params,
-}: BlogDetailsPageProps): Promise<Metadata> {
-  const { slug } = await params;
-
-  try {
-    const response = await getBlogBySlug(slug);
-    const blogData = await response.json();
-
-    if (!blogData.data) {
-      return {
-        title: "Blog Not Found",
-        description: "The blog you're looking for could not be found.",
-      };
-    }
-
-    const blog = blogData.data;
-
-    return {
-      title: `${blog.metaTitle} | Sana's Nursery`,
-      description: blog.metaDescription || blog.excerpt,
-      keywords: blog.tags?.join(", "),
-      authors: blog.author ? [{ name: blog.author }] : undefined,
-      openGraph: {
-        title: blog.metaTitle,
-        description: blog.metaDescription || blog.excerpt,
-        type: "article",
-        publishedTime: blog.createdAt,
-        modifiedTime: blog.updatedAt,
-        authors: blog.author ? [blog.author] : undefined,
-        tags: blog.tags,
-        images: [
-          {
-            url: getPicURL(blog.coverImage),
-            width: 1200,
-            height: 630,
-            alt: blog.title,
-          },
-        ],
-      },
-    };
-  } catch (_error) {
-    console.log(_error);
-    return {
-      title: "Blog Not Found",
-      description: "The blog you're looking for could not be found.",
-    };
-  }
 }
 
 async function fetchBlogDetails(slug: string): Promise<{
@@ -204,9 +153,15 @@ export default async function BlogDetailsPage({
               </div>
 
               <div className={styles.relatedGrid}>
-                {relatedBlogs.map((relatedBlog: BlogDataType) => (
-                  <BlogCard key={relatedBlog._id} blog={relatedBlog} />
-                ))}
+                {relatedBlogs.map(
+                  (relatedBlog: BlogDataType, index: number) => (
+                    <BlogCard
+                      key={relatedBlog._id}
+                      blog={relatedBlog}
+                      index={index}
+                    />
+                  )
+                )}
               </div>
 
               <div className={styles.ctaSection}>

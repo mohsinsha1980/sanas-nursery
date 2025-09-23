@@ -15,13 +15,10 @@ export const metadata = {
   },
 };
 
-
-export default function RootLayout({
+export default function PrivacyPolicyLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return (
-      <section>{children}</section>
-  );
+  return <section>{children}</section>;
 }

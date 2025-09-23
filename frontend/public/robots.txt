@@ -2,6 +2,12 @@
 User-agent: *
 Allow: /
 
+# *
+User-agent: *
+Disallow: /admin
+Disallow: /auth
+Disallow: /api
+
 # Host
 Host: https://sanasnursery.com
 

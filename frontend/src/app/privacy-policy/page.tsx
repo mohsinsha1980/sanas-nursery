@@ -1,6 +1,7 @@
 import { SITE_DATA } from "@/lib/constants";
 import Script from "next/script";
 import Link from "next/link";
+import { SITE } from "@/assets";
 
 export default function PrivacyPolicyPage() {
   const schemaData = {
@@ -17,7 +18,7 @@ export default function PrivacyPolicyPage() {
       url: "https://sanasnursery.com",
       logo: {
         "@type": "ImageObject",
-        url: "https://sanasnursery.com/images/site/sanas-nursery.webp",
+        url: SITE.SEO_LOGO,
       },
       contactPoint: {
         "@type": "ContactPoint",

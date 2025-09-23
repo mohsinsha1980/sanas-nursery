@@ -7,7 +7,6 @@ import { CATEGORIES } from "@/lib/constants";
 import { getPicURL } from "@/lib/helper";
 import { PlantDataType } from "@/lib/types/common-types";
 import { ChevronRight } from "lucide-react";
-import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -23,31 +22,6 @@ async function fetchProductDetails(plantID: string): Promise<{
   const response = await getPlantDetailsByID(plantID, controller);
   const plantData = await response.json();
   return plantData;
-}
-
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ plant_id: string }>;
-}): Promise<Metadata> {
-  const paramsData = await params;
-  const plantID = paramsData.plant_id;
-  const response = await fetchProductDetails(plantID);
-
-  if (!response.data) {
-    return {
-      title: "Not found",
-      description: "The page you are looking for is not found",
-    };
-  }
-
-  const title = response.data.plant.title;
-  const description = response.data.plant.metaDescription;
-
-  return {
-    title: title,
-    description: description,
-  };
 }
 
 export default async function ProductDetailsPageByID({

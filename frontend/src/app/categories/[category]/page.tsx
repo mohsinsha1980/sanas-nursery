@@ -3,51 +3,19 @@ import CategoryFilter from "@/components/categories/category-filter";
 import PlantCard from "@/components/categories/plant-card";
 import { ServerPagination } from "@/components/common/server-pagination";
 import Loading from "@/components/layout/Loading";
-import config from "@/config/env-config";
 import { getCategoryPlants } from "@/lib/api-routes/api-public";
 import { CATEGORIES, CATEGORY_ARR, PLANTS_PER_PAGE } from "@/lib/constants";
 import { getPlantsCardData } from "@/lib/helper";
 import {
-  CategoryPageParamsProps,
   CategoryPlantsHttpResDataType,
   PlantDataType,
   PlantFilterType,
   PlantsCardType,
 } from "@/lib/types/common-types";
-import { Metadata } from "next";
-import Link from "next/link";
-import { Suspense } from "react";
 import { ChevronRight } from "lucide-react";
+import Link from "next/link";
 import { notFound } from "next/navigation";
-
-export async function generateMetadata({
-  params,
-}: CategoryPageParamsProps): Promise<Metadata> {
-  const paramsData = await params;
-  const category = paramsData.category;
-
-  const categoryKey = Object.keys(CATEGORIES).find(
-    (key) => CATEGORIES[key as keyof typeof CATEGORIES].value === category
-  );
-
-  if (categoryKey) {
-    const categoryData = CATEGORIES[categoryKey as keyof typeof CATEGORIES];
-    return {
-      title: `${categoryData.seoTitle} | ${config.WEBAPP_TITLE}`,
-      description: categoryData.seoDescription,
-      openGraph: {
-        title: ` ${categoryData.seoTitle} | ${config.WEBAPP_TITLE}`,
-        description: categoryData.description,
-        url: `${config.WEBAPP_URL}/categories/${categoryData.value}`,
-      },
-    };
-  }
-
-  return {
-    title: "Not found",
-    description: "The page you are looking for is not found",
-  };
-}
+import { Suspense } from "react";
 
 async function fetchPlants(
   slug: string,

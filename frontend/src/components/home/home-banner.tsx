@@ -15,9 +15,10 @@ export default function HomeBanner() {
       <div className="relative w-full h-screen ">
         <Image
           src={selectedImage}
-          alt=""
+          alt="Sanas Nursery - Premium Fruit, Flowering, Show Plants & Shadow Trees Collection in Pune"
           width={1920}
           height={1013}
+          priority={true}
           className="h-full w-full object-cover"
         />
         <div className="z-10 lg:w-[1200px] w-[100%] lg:h-fit h-full absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 ">
