@@ -72,7 +72,7 @@ const BestSellingProduct = ({ plants }: { plants: BestSellingPlant[] }) => {
         <div className="slider-container relative flex items-center justify-center">
           {showArrows && (
             <div className="slider-left absolute left-2 lg:top-[45%] md:top-[40%] lg:-translate-y-1/2 z-20 cursor-pointer">
-              <CircleArrowLeft className="h-12 w-12 text-gray-400 hover:text-green-600 transition-colors duration-200" />
+              <CircleArrowLeft className="h-12 w-12 lg:text-gray-400 text-green-600 lg:hover:text-green-600 transition-colors duration-200" />
             </div>
           )}
 
@@ -112,7 +112,7 @@ const BestSellingProduct = ({ plants }: { plants: BestSellingPlant[] }) => {
 
           {showArrows && (
             <div className="slider-right absolute lg:right-2 md:right-2 lg:top-[45%] md:top-[40%] lg:-translate-y-1/2 z-20 cursor-pointer">
-              <CircleArrowRight className="h-12 w-12 text-gray-400 hover:text-green-600 transition-colors duration-200" />
+              <CircleArrowRight className="h-12 w-12 lg:text-gray-400 text-green-600 lg:hover:text-green-600 transition-colors duration-200" />
             </div>
           )}
         </div>

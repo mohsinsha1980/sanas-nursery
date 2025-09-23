@@ -95,17 +95,18 @@ export default function MainHeader() {
               )}
             </button>
           </div>
-
+      
+          {/* mobile sidebar */}
           <AnimatePresence>
             {mobileOpen && (
               <motion.div
-                initial={{ opacity: 0, x: 50 }}
+                initial={{ opacity: 0, x: -50 }}
                 animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 50 }}
-                transition={{ duration: 0.3 }}
-                className="absolute top-0 left-0 w-[80%] bg-gray-50 lg:hidden z-50 min-h-screen"
+                exit={{ opacity: 0, x: -50 }}
+                transition={{ duration: 0.5 }}
+                className="absolute top-20 left-0 w-[80%] bg-gray-50 lg:hidden z-50 min-h-screen"
               >
-                <nav className="w-full mt-[80px]">
+                <nav className="w-full ">
                   <ul className="flex flex-col w-full">
                     {/* Home */}
                     <li>
@@ -113,8 +114,8 @@ export default function MainHeader() {
                         href="/"
                         className={`flex items-center px-6 py-4 text-base font-semibold transition-colors duration-200 ${
                           pathname === "/"
-                            ? "text-orange-600 bg-gray-300"
-                            : "text-gray-900 hover:bg-gray-100"
+                            ? "bg-gray-300 w-full"
+                            : "text-gray-900 "
                         }`}
                         onClick={() => setMobileOpen(false)}
                       >
@@ -151,8 +152,8 @@ export default function MainHeader() {
                         <svg
                           className={`w-4 h-4 transition-all duration-200 ${
                             mobileDropdownOpen
-                              ? "rotate-180 text-green-600"
-                              : "text-gray-500"
+                              ? "rotate-180 text-black"
+                              : "text-black"
                           }`}
                           fill="none"
                           stroke="currentColor"
@@ -184,8 +185,8 @@ export default function MainHeader() {
                                   href={`/categories/${cat.value}`}
                                   className={`block px-12 py-3 text-sm transition-colors duration-200 border-l-2 ${
                                     pathname === `/categories/${cat.value}`
-                                      ? "text-orange-600 bg-gray-300 border-green-500"
-                                      : "text-gray-700 hover:bg-gray-50 border-transparent hover:border-green-500"
+                                      ? "!text-orange-500 "
+                                      : "text-gray-700 hover:bg-gray-50 w-full"
                                   }`}
                                   onClick={() => {
                                     setMobileOpen(false);
@@ -207,7 +208,7 @@ export default function MainHeader() {
                         href="/about"
                         className={`flex items-center px-6 py-4 text-base font-semibold transition-colors duration-200 ${
                           pathname === "/about"
-                            ? "text-green-600 bg-gray-100"
+                            ? "bg-gray-300 w-full"
                             : "text-gray-900 hover:bg-gray-100"
                         }`}
                         onClick={() => setMobileOpen(false)}
@@ -222,7 +223,7 @@ export default function MainHeader() {
                         href="/contact-us"
                         className={`flex items-center px-6 py-4 text-base font-semibold transition-colors duration-200 ${
                           pathname === "/contact-us"
-                            ? "text-orange-600 bg-gray-300"
+                            ? "bg-gray-300 w-full"
                             : "text-gray-900 hover:bg-gray-100"
                         }`}
                         onClick={() => setMobileOpen(false)}
@@ -237,7 +238,7 @@ export default function MainHeader() {
                         href="/blogs"
                         className={`flex items-center px-6 py-4 text-base font-semibold transition-colors duration-200 ${
                           pathname === "/blogs"
-                            ? "text-green-600 bg-gray-300"
+                            ? "bg-gray-300 w-full"
                             : "text-gray-900 hover:bg-gray-100"
                         }`}
                         onClick={() => setMobileOpen(false)}

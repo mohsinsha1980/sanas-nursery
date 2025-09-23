@@ -10,11 +10,11 @@ const page = () => {
   const schemaData = {
     "@context": "https://schema.org",
     "@type": "AboutPage",
-    name: "Sanas Nursery – Wholesale Plant Nursery Uruli Kanchan",
+    name: "Leading Quality Plants and Trees Supplier | Sanas Nursery",
     url: "https://sanasnursery.com/about",
     headline: "About Sanas Nursery - Wholesale Plant Nursery in Uruli Kanchan",
     description:
-      "Visit Sanas Nursery, a wholesale plant nursery in Uruli Kanchan, Maharashtra. Wide range of fruit plants, flower trees & healthy greenery.",
+      "Sanas Nursery is a trusted quality plants and trees supplier in Uruli Kanchan. Delivering healthy greenery with care and expertise.",
     mainEntity: {
       "@type": "Organization",
       name: "Sanas Nursery",

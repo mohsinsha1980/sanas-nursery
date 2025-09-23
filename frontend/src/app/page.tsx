@@ -36,10 +36,10 @@ export default async function Home() {
   const schemaData = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "Sanas Nursery",
+    name: "Sanas Nursery - Wholesale Plant Nursery Uruli Kanchan",
     url: "https://sanasnursery.com/",
     description:
-      "One stop shop for all your nursery needs - Wholesale plant supplier in Uruli Kanchan, Maharashtra",
+      "Visit Sanas Nursery, a wholesale plant nursery in Uruli Kanchan, Maharashtra. Wide range of fruit plants, flower trees & healthy greenery.",
     inLanguage: "en",
     publisher: {
       "@type": "Organization",
