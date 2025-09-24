@@ -86,6 +86,13 @@ export default async function CollectionPage({
               Home
             </Link>
             <ChevronRight className="text-[#505050] " />
+            <Link
+              href={"/plants"}
+              className="text-[18px] text-[#505050] font-semibold text-start hover:text-[#f37521]"
+            >
+              Plants
+            </Link>
+            <ChevronRight className="text-[#505050] " />
             <p className="text-[18px] font-semibold text-[#f37521]">
               {categoryData?.label}
             </p>

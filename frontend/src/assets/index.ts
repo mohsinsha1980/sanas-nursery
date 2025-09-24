@@ -22,6 +22,7 @@ export const HERO = {
 };
 
 export const CATEGORIES_IMG = {
+  ALL_PLANTS: "/images/categories/fruit-flowering-shadow-plants-hero.webp",
   FRUIT_TREES: "/images/categories/sanas-nursery-fruit-trees-category.webp",
   FLOWER_TREES:
     "/images/categories/sanas-nursery-flowering-trees-category.webp",

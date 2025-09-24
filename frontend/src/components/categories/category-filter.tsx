@@ -102,6 +102,17 @@ export default function Filters({ category }: CategoryFilterProps) {
       </div>
 
       <div className="w-full lg:h-full h-auto lg:py-3 lg:mt-5 mt-4 rounded-lg border-2 border-gray-100 flex flex-col lg:items-start items-start justify-between ">
+        <Link
+          href={`/plants`}
+          className={`px-3 py-2 lg:py-1 text-base lg:text-lg font-medium transition-colors duration-200 cursor-pointer rounded-md w-full text-left
+          ${
+            category === "all"
+              ? "text-[#f37521] font-semibold "
+              : "text-gray-700 hover:bg-orange-50 "
+          }`}
+        >
+          All Plants
+        </Link>
         {CATEGORY_ARR.map((cat) => (
           <Link
             key={cat.value}

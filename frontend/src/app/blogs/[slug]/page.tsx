@@ -16,7 +16,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { redirect } from "next/navigation";
 import styles from "./blog-details.module.css";
 
 interface BlogDetailsPageProps {
@@ -48,7 +48,7 @@ export default async function BlogDetailsPage({
   const { slug } = await params;
   const blogResponse = await fetchBlogDetails(slug);
   if (!blogResponse.data) {
-    notFound();
+    redirect("/blogs");
   }
 
   const blog: BlogDataType = blogResponse.data;

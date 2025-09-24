@@ -24,7 +24,7 @@ export default function HeaderNav() {
           onMouseLeave={() => setOpen(false)}
         >
           <Link
-            href="/plants/fruit-trees"
+            href="/plants"
             className={`flex items-center gap-1 ${
               pathname.startsWith("/plants") ? "active" : ""
             }`}

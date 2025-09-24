@@ -93,6 +93,13 @@ export default async function ProductDetailsPageBySlug({
               Home
             </Link>
             <ChevronRight className="text-[#505050] flex-shrink-0" />
+            <Link
+              href="/plants"
+              className="text-[18px] text-[#505050] font-semibold text-start hover:text-[#f37521]"
+            >
+              Plants
+            </Link>
+            <ChevronRight className="text-[#505050] flex-shrink-0" />
             {category && (
               <>
                 <Link href={`/plants/${category.value}`}>

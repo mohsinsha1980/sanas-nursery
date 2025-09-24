@@ -18,6 +18,44 @@ import Subscription from "../models/Subscription.js";
 import Testimonial from "../models/Testimonial.js";
 import sendEmail from "../services/sendEmail.js";
 
+export const getAllPlants = async (req, res, next) => {
+  try {
+    const { page } = req.query;
+
+    const skip = page && page > 0 ? (page - 1) * PLANTS_PER_PAGE : 0;
+    const filter = await buildPlantFilter(req.query);
+
+    const plantsTotal = await Plant.countDocuments({
+      ...filter,
+      status: STATUS.ACTIVE,
+    });
+
+    const plants = await Plant.find({
+      ...filter,
+      status: STATUS.ACTIVE,
+    })
+      .select("-__v -updatedAt -createdAt")
+      .skip(skip)
+      .limit(PLANTS_PER_PAGE)
+      .lean()
+      .exec();
+
+    req.successResponse = {
+      message: "Data retrieved successfully.",
+      data: {
+        plants: plants,
+        total: plantsTotal,
+      },
+    };
+    return next();
+  } catch (error) {
+    return next({
+      message: error.message || "Internal server error while fetching plants.",
+      status: 500,
+    });
+  }
+};
+
 export const getCatProducts = async (req, res, next) => {
   try {
     const { category_slug } = req.params;

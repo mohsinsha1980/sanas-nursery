@@ -1,10 +1,3 @@
-// import { axiosInstance } from "../config/http";
-// import { APP_PUBLIC_API_PATH } from "./api-routes/api-base-paths";
-// import { buildQueryString } from "./helper";
-// import { Controller, ProductFilterType } from "./types/common-types";
-// import { ContactUsDataType } from "./types/public-types";
-// import { SubscribeEmailApiType } from "./types/public-types";
-
 import { axiosInstance } from "@/config/http";
 import {
   BlogFilterType,
@@ -16,6 +9,15 @@ import {
 } from "../types/common-types";
 import config from "@/config/env-config";
 import { buildBlogQueryString, buildQueryString } from "../helper";
+
+export const getAllPlants = (searchParams: PlantFilterType | undefined) => {
+  const queryString = searchParams ? buildQueryString(searchParams) : "";
+  const url = queryString
+    ? `${config.API_PUBLIC_PATH}/plants${queryString}`
+    : `${config.API_PUBLIC_PATH}/plants`;
+
+  return fetch(url, { cache: "no-store" });
+};
 
 export const getCategoryPlants = (
   category: string,

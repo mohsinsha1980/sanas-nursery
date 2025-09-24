@@ -9,7 +9,7 @@ import { PlantDataType } from "@/lib/types/common-types";
 import { ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { redirect } from "next/navigation";
 import { Suspense } from "react";
 
 async function fetchProductDetails(plantID: string): Promise<{
@@ -41,7 +41,7 @@ export default async function ProductDetailsPageByID({
   } = await fetchProductDetails(plantID);
 
   if (!response?.data?.plant?._id) {
-    return notFound();
+    redirect("/plants");
   }
 
   const plant = response.data.plant;
@@ -65,6 +65,13 @@ export default async function ProductDetailsPageByID({
               className="text-[18px] text-[#505050] font-semibold text-start hover:text-[#f37521]"
             >
               Home
+            </Link>
+            <ChevronRight className="text-[#505050] flex-shrink-0" />
+            <Link
+              href="/plants"
+              className="text-[18px] text-[#505050] font-semibold text-start hover:text-[#f37521]"
+            >
+              Plants
             </Link>
             <ChevronRight className="text-[#505050] flex-shrink-0" />
             {category && (

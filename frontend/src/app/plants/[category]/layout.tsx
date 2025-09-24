@@ -149,8 +149,8 @@ export default async function CategoryLayout({
               {
                 "@type": "ListItem",
                 position: 2,
-                name: "Categories",
-                item: "https://sanasnursery.com/categories",
+                name: "Plants",
+                item: "https://sanasnursery.com/plants",
               },
               {
                 "@type": "ListItem",

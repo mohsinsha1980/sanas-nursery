@@ -114,8 +114,8 @@ export default function MainHeader() {
                         href="/"
                         className={`flex items-center px-6 py-4 text-base font-semibold transition-colors duration-200 ${
                           pathname === "/"
-                            ? "bg-gray-300 w-full"
-                            : "text-gray-900 "
+                            ? "border-l-2 border-orange-500 bg-gray-300 w-full"
+                            : "text-gray-900 hover:bg-gray-100"
                         }`}
                         onClick={() => setMobileOpen(false)}
                       >
@@ -174,17 +174,17 @@ export default function MainHeader() {
                             animate={{ opacity: 1, height: "auto" }}
                             exit={{ opacity: 0, height: 0 }}
                             transition={{ duration: 0.2, ease: "easeOut" }}
-                            className="overflow-hidden bg-white"
+                            className="overflow-hidden bg-white "
                             id="mobile-plants-dropdown"
                           >
                             {CATEGORY_ARR.map((cat) => (
                               <div key={cat.value} className="w-full">
                                 <Link
                                   href={`/plants/${cat.value}`}
-                                  className={`block px-12 py-3 text-sm transition-colors duration-200 border-l-2 ${
+                                  className={`block px-12 py-3 text-sm transition-colors duration-200  ${
                                     pathname === `/plants/${cat.value}`
-                                      ? "!text-orange-500 "
-                                      : "text-gray-700 hover:bg-gray-50 w-full"
+                                      ? "border-l-2 border-orange-500 bg-gray-300 w-full"
+                                      : "!text-gray-700 hover:bg-gray-50 "
                                   }`}
                                   onClick={() => {
                                     setMobileOpen(false);
@@ -206,7 +206,7 @@ export default function MainHeader() {
                         href="/about"
                         className={`flex items-center px-6 py-4 text-base font-semibold transition-colors duration-200 ${
                           pathname === "/about"
-                            ? "bg-gray-300 w-full"
+                            ? "bg-gray-300 w-full border-l-2 border-orange-500"
                             : "text-gray-900 hover:bg-gray-100"
                         }`}
                         onClick={() => setMobileOpen(false)}
@@ -221,7 +221,7 @@ export default function MainHeader() {
                         href="/contact-us"
                         className={`flex items-center px-6 py-4 text-base font-semibold transition-colors duration-200 ${
                           pathname === "/contact-us"
-                            ? "bg-gray-300 w-full"
+                            ? "bg-gray-300 w-full border-l-2 border-orange-500"
                             : "text-gray-900 hover:bg-gray-100"
                         }`}
                         onClick={() => setMobileOpen(false)}
@@ -236,7 +236,7 @@ export default function MainHeader() {
                         href="/blogs"
                         className={`flex items-center px-6 py-4 text-base font-semibold transition-colors duration-200 ${
                           pathname === "/blogs"
-                            ? "bg-gray-300 w-full"
+                            ? "bg-gray-300 w-full border-l-2 border-orange-500"
                             : "text-gray-900 hover:bg-gray-100"
                         }`}
                         onClick={() => setMobileOpen(false)}
