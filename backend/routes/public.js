@@ -12,6 +12,7 @@ routes.get("/test", (req, res) => {
   res.send("App is up and running ");
 });
 
+routes.get("/plants", publicCtrl.getAllPlants);
 routes.get("/plants/:category_slug", publicCtrl.getCatProducts);
 
 routes.get("/master-data", publicCtrl.getMasterData);
