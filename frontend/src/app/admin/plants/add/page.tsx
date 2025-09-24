@@ -410,7 +410,12 @@ export default function AddPlant() {
               {previews.map((item, index) => {
                 return (
                   <div className="relative w-20 h-20" key={`preview_${index}`}>
-                    <Image src={item} alt="" fill objectFit="contain" />
+                    <Image
+                      src={item}
+                      alt="Plant Image Preview - Admin Upload"
+                      fill
+                      objectFit="contain"
+                    />
                   </div>
                 );
               })}

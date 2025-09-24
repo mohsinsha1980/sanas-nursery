@@ -1,12 +1,13 @@
+import { HERO, SITE } from "@/assets";
 import SkeletonCard from "@/components/admin/blogs/skeleton-card";
 import BlogCard from "@/components/blogs/blog-card";
 import BlogListHero from "@/components/blogs/blog-list-hero";
 import BlogSearch from "@/components/blogs/blog-search";
 import FeaturedBlogCard from "@/components/blogs/featured-blog-card";
 import { ServerPagination } from "@/components/common/server-pagination";
-import config from "@/config/env-config";
 import { getPublishedBlogs } from "@/lib/api-routes/api-public";
 import { BLOGS_PER_PAGE, SITE_DATA } from "@/lib/constants";
+import { getPicURL } from "@/lib/helper";
 import {
   BlogDataType,
   BlogFilterType,
@@ -18,14 +19,60 @@ import Script from "next/script";
 import { Suspense } from "react";
 
 export const metadata: Metadata = {
-  title: `Blogs | ${config.WEBAPP_TITLE}`,
+  title: "Gardening Tips & Plant Care Guides | Sanas Nursery Blogs",
   description:
-    "Discover expert gardening tips, plant care guides, and nursery insights in our comprehensive blog collection.",
+    "Explore expert gardening tips, plant care guides, and nursery insights at Sanas Nursery. Learn how to grow fruit, flowering & shadow plants effectively.",
+  keywords: [
+    "gardening blog",
+    "plant care tips",
+    "gardening tips India",
+    "fruit trees care guide",
+    "flowering plants cultivation",
+    "shadow trees growing",
+    "nursery guides",
+    "gardening blog Pune",
+    "plant care blog",
+    "gardening advice",
+    "plant growing tips",
+    "garden maintenance",
+    "plant diseases treatment",
+    "seasonal gardening",
+    "indoor plants care",
+    "outdoor gardening tips",
+    "plant fertilizer guide",
+    "gardening techniques",
+  ],
+  authors: [{ name: "Sanas Nursery" }],
+  creator: "Sanas Nursery",
+  publisher: "Sanas Nursery",
+  category: "Gardening & Plant Care",
+  alternates: {
+    canonical: "https://sanasnursery.com/blogs",
+    languages: {
+      "en-IN": "https://sanasnursery.com/blogs",
+    },
+  },
   openGraph: {
-    title: `Blogs | ${config.WEBAPP_TITLE}`,
+    type: "website",
+    url: "https://sanasnursery.com/blogs",
+    title: "Gardening Blog | Plant Care Tips & Nursery Guides",
     description:
-      "Discover expert gardening tips, plant care guides, and nursery insights in our comprehensive blog collection.",
-    url: `${config.WEBAPP_URL}/blogs`,
+      "Expert gardening tips, plant care guides & nursery insights from Sanas Nursery. Learn fruit trees, flowering plants & shadow trees cultivation.",
+    images: [
+      {
+        url: "https://sanasnursery.com/images/site/sanas-nursery.webp",
+        width: 1200,
+        height: 630,
+        alt: "Sanas Nursery Gardening Blogs",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Gardening Tips & Plant Care Guides | Sanas Nursery Blogs",
+    description:
+      "Expert gardening tips, plant care guides & nursery insights from Sanas Nursery. Learn fruit trees, flowering plants & shadow trees cultivation.",
+    images: ["https://sanasnursery.com/images/site/sanas-nursery.webp"],
   },
 };
 
@@ -64,17 +111,23 @@ export default async function BlogsPage({
     headline: "Gardening Blogs, Plant Care Guides & Nursery Insights",
     description:
       "Discover expert gardening tips, plant care guides, and nursery insights in our comprehensive blog collection at Sanas Nursery.",
-    mainEntity: {
-      "@type": "Blog",
-      name: "Sanas Nursery Blog",
-      url: "https://sanasnursery.com/blogs",
+    mainEntity: blogs.map((blog) => ({
+      "@type": "BlogPosting",
+      headline: blog.title,
+      image: getPicURL(blog.coverImage) || HERO.BLOGS,
+      url: `/blogs/${blog.slug}`,
+      datePublished: blog.createdAt,
+      author: {
+        "@type": "Organization",
+        name: "Sanas Nursery",
+      },
       publisher: {
         "@type": "Organization",
         name: "Sanas Nursery",
         url: "https://sanasnursery.com",
         logo: {
           "@type": "ImageObject",
-          url: "https://sanasnursery.com/images/site/sanas-nursery.webp",
+          url: SITE.SEO_LOGO,
         },
         contactPoint: {
           "@type": "ContactPoint",
@@ -92,7 +145,8 @@ export default async function BlogsPage({
           addressCountry: "IN",
         },
       },
-    },
+      description: blog.metaDescription || blog.excerpt,
+    })),
   };
 
   return (
@@ -103,6 +157,76 @@ export default async function BlogsPage({
         strategy="beforeInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
       />
+
+      <Script
+        id="blogs-breadcrumbs"
+        type="application/ld+json"
+        strategy="afterInteractive"
+      >
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: "Home",
+              item: "https://sanasnursery.com",
+            },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: "Blogs",
+              item: "https://sanasnursery.com/blogs",
+            },
+          ],
+        })}
+      </Script>
+
+      <Script
+        id="blogs-faq"
+        type="application/ld+json"
+        strategy="afterInteractive"
+      >
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: [
+            {
+              "@type": "Question",
+              name: "What gardening topics does Sanas Nursery blog cover?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Our blog covers fruit trees care, flowering plants cultivation, shadow trees growing, plant diseases treatment, seasonal gardening tips, indoor plants care, outdoor gardening techniques, plant fertilizer guides, and general garden maintenance advice.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "How often does Sanas Nursery publish new blog posts?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "We regularly publish new gardening tips, plant care guides, and nursery insights. Check back frequently for the latest expert advice on growing and maintaining healthy plants.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Are the gardening tips suitable for beginners?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Yes, our blog posts are designed for gardeners of all skill levels, from beginners to experts. We provide step-by-step guides and easy-to-follow tips for successful plant cultivation.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Do you cover specific plant types in your blog?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Yes, we specialize in fruit trees, flowering plants, shadow trees, show trees, and masala plants. Our blog provides specific care instructions and growing tips for each plant category.",
+              },
+            },
+          ],
+        })}
+      </Script>
 
       <Suspense
         fallback={
@@ -163,8 +287,8 @@ export default async function BlogsPage({
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-                      {regularBlogs.map((blog) => (
-                        <BlogCard key={blog._id} blog={blog} />
+                      {regularBlogs.map((blog, index) => (
+                        <BlogCard key={blog._id} blog={blog} index={index} />
                       ))}
                     </div>
                   </div>

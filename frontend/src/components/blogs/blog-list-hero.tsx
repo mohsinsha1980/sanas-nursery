@@ -9,7 +9,8 @@ const BlogListHero = () => {
         src={HERO.BLOGS}
         height={1700}
         width={1700}
-        alt=""
+        alt="Gardening Tips & Plant Care Blog - Expert Advice from Sanas Nursery Plant Experts"
+        priority={true}
         className="h-[70vh] w-full object-cover object-center"
       />
       <div className="z-10 lg:w-[1200px] w-[100%] h-fit absolute lg:top-[55%] top-[55%] -translate-y-1/2 left-1/2 -translate-x-1/2 ">

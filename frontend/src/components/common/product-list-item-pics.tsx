@@ -34,7 +34,7 @@ export default function ProductListItemPics({ pics }: { pics: string[] }) {
                 src={item}
                 width={260}
                 height={325}
-                alt=""
+                alt="Plant Image Gallery - High Quality Fruit Trees, Flowering Plants & Shadow Trees from Sanas Nursery"
                 className="rounded-lg w-full lg:h-full"
               />
             </div>

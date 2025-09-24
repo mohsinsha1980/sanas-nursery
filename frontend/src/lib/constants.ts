@@ -1,4 +1,11 @@
-import { ABOUT, CARDS, CATEGORIES_IMG, HERO, HOME_GALLERY, SITE } from "@/assets";
+import {
+  ABOUT,
+  CARDS,
+  CATEGORIES_IMG,
+  HERO,
+  HOME_GALLERY,
+  SITE,
+} from "@/assets";
 
 export const PLANTS_PER_PAGE = 20;
 export const BLOGS_PER_PAGE = 20;
@@ -106,8 +113,7 @@ export const CATEGORIES = {
   MASALA: {
     label: "Masala",
     value: "masala",
-    title:
-      "Authentic Masala Collection - Avocado, Bay Leaf & More.",
+    title: "Authentic Masala Collection - Avocado, Bay Leaf & More.",
     picture: CATEGORIES_IMG.MASALA_PLANTS,
     description:
       "Discover premium masalas like avocado, clove, cinnamon, bay leaf, and mix masala, carefully crafted to add richness and authenticity to your meals.",
@@ -261,6 +267,8 @@ export const SITE_DATA = {
       "https://www.instagram.com/wholesalenursery?igsh=MXZ5MnFlMzVvM2Vsaw%3D%3D&utm_source=qr",
     youtube: "https://youtube.com/@sanasnursery?si=g2njg_7Z2kfy6fw7",
   },
+  GOOGLE_MAP_FOR_SEO:
+    "https://www.google.com/maps/place/Sanas+Wholesale+Nursery+%E0%A4%B6%E0%A4%BE%E0%A4%96%E0%A4%BE+(Uruli-Kanchan)+Unit+2/@18.4814363,74.1640689,17z/data=!3m1!4b1!4m6!3m5!1s0x3bc2e1579a8e3dc1:0xd82516d259aa5ea!8m2!3d18.4814312!4d74.1666438!16s%2Fg%2F11y3n4m4dq?entry=ttu&g_ep=EgoyMDI1MDkyMS4wIKXMDSoASAFQAw%3D%3D",
 } as const;
 
 export const FOOTER_LINKS = {
@@ -304,37 +312,35 @@ export const ENQUIRY_STATUS = {
 export type EnquiryStatusType =
   (typeof ENQUIRY_STATUS)[keyof typeof ENQUIRY_STATUS];
 
-
 export const data = [
-      {
-        img: ABOUT.LOCAL_TRUST_HOVER,
-        imgonhover: ABOUT.LOCAL_TRUST,
-        title: "Quality Assurance",
-        desc: "Healthy plants with expert care and rigorous quality standards",
-      },
-      {
-        img: ABOUT.WIDE_VARIETY_HOVER,
-        imgonhover: ABOUT.WIDE_VARIETY,
-        title: "Wide Variety",
-        desc: "Extensive selection of plants for every space and preference",
-      },
-      {
-        img: ABOUT.AFFORDABLE_PRICES_HOVER,
-        imgonhover: ABOUT.AFFORDABLE_PRICES,
-        title: "Affordable Prices",
-        desc: "Competitive pricing without compromising on quality",
-      },
-      {
-        img: ABOUT.ECO_FRIENDLY,
-        imgonhover: ABOUT.ECO_FRIENDLY_HOVER,
-        title: "Eco-Friendly",
-        desc: "Sustainable growing methods and environmentally conscious practices",
-      },
-      {
-        img: ABOUT.LOCAL_TRUST_HOVER,
-        imgonhover: ABOUT.LOCAL_TRUST,
-        title: "Local Trust",
-        desc: "Strong community relationships and trusted local expertise",
-      },
-    ];
-
+  {
+    img: ABOUT.LOCAL_TRUST_HOVER,
+    imgonhover: ABOUT.LOCAL_TRUST,
+    title: "Quality Assurance",
+    desc: "Healthy plants with expert care and rigorous quality standards",
+  },
+  {
+    img: ABOUT.WIDE_VARIETY_HOVER,
+    imgonhover: ABOUT.WIDE_VARIETY,
+    title: "Wide Variety",
+    desc: "Extensive selection of plants for every space and preference",
+  },
+  {
+    img: ABOUT.AFFORDABLE_PRICES_HOVER,
+    imgonhover: ABOUT.AFFORDABLE_PRICES,
+    title: "Affordable Prices",
+    desc: "Competitive pricing without compromising on quality",
+  },
+  {
+    img: ABOUT.ECO_FRIENDLY,
+    imgonhover: ABOUT.ECO_FRIENDLY_HOVER,
+    title: "Eco-Friendly",
+    desc: "Sustainable growing methods and environmentally conscious practices",
+  },
+  {
+    img: ABOUT.LOCAL_TRUST_HOVER,
+    imgonhover: ABOUT.LOCAL_TRUST,
+    title: "Local Trust",
+    desc: "Strong community relationships and trusted local expertise",
+  },
+];

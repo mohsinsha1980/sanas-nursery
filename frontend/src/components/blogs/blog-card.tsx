@@ -16,9 +16,10 @@ import Link from "next/link";
 
 interface BlogCardProps {
   blog: BlogDataType;
+  index?: number;
 }
 
-export default function BlogCard({ blog }: BlogCardProps) {
+export default function BlogCard({ blog, index }: BlogCardProps) {
   return (
     <article className="group bg-white rounded-xl overflow-hidden h-full flex flex-col border-2 border-gray-100 ">
       <Link href={`/blogs/${blog.slug}`}>
@@ -27,6 +28,7 @@ export default function BlogCard({ blog }: BlogCardProps) {
             src={getPicURL(blog.coverImage)}
             alt={blog.title}
             fill
+            priority={index !== undefined && index < 3}
             className="object-cover group-hover:scale-105 transition-transform duration-500"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>

@@ -27,6 +27,7 @@ export default function FeaturedBlogCard({ blog }: FeaturedBlogCardProps) {
             src={getPicURL(blog.coverImage)}
             alt={blog.title}
             fill
+            priority={true}
             className="object-cover group-hover:scale-105 transition-transform duration-500"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
