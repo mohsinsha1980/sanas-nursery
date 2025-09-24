@@ -299,7 +299,6 @@ export const showErrorToast = (message: string): void => {
 };
 
 export const showSuccessToast = (message: string, duration?: number): void => {
-  console.log("message", message);
   toast.success(message, {
     position: "top-center",
     duration: duration ? duration : 5000,

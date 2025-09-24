@@ -9,7 +9,7 @@ import { PlantDataType } from "@/lib/types/common-types";
 import { ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { redirect } from "next/navigation";
 import { Suspense } from "react";
 
 async function fetchProductDetails(plantID: string): Promise<{
@@ -41,7 +41,7 @@ export default async function ProductDetailsPageByID({
   } = await fetchProductDetails(plantID);
 
   if (!response?.data?.plant?._id) {
-    return notFound();
+    redirect("/plants");
   }
 
   const plant = response.data.plant;

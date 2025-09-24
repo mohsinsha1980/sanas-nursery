@@ -1,4 +1,4 @@
-import { CATEGORIES_IMG, HERO, SITE } from "@/assets";
+import { CATEGORIES_IMG, SITE } from "@/assets";
 import { getAllPlants } from "@/lib/api-routes/api-public";
 import { SITE_DATA } from "@/lib/constants";
 import { getPicURL } from "@/lib/helper";
@@ -15,16 +15,12 @@ interface PlantsLayoutProps {
 
 export async function generateMetadata(): Promise<Metadata> {
   let plantsCount = 0;
-  let plants: PlantDataType[] = [];
-
   try {
     const response = await getAllPlants({});
     const plantsData: CategoryPlantsHttpResDataType = await response.json();
-    plants = plantsData?.data?.plants || [];
     plantsCount = plantsData?.data?.total || 0;
   } catch (_error) {
     plantsCount = 0;
-    plants = [];
   }
 
   return {

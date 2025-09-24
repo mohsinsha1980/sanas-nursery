@@ -1,6 +1,15 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  async redirects() {
+    return [
+      {
+        source: "/categories/:slug*",
+        destination: "/plants/:slug*",
+        permanent: true,
+      },
+    ];
+  },
   reactStrictMode: false,
   webpack(config) {
     config.module.rules.push({

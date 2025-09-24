@@ -95,14 +95,15 @@ export default function MainHeader() {
               )}
             </button>
           </div>
-
+      
+          {/* mobile sidebar */}
           <AnimatePresence>
             {mobileOpen && (
               <motion.div
-                initial={{ opacity: 0, x: 50 }}
+                initial={{ opacity: 0, x: -50 }}
                 animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 50 }}
-                transition={{ duration: 0.3 }}
+                exit={{ opacity: 0, x: -50 }}
+                transition={{ duration: 0.5 }}
                 className="absolute top-20 left-0 w-[80%] bg-gray-50 lg:hidden z-50 min-h-screen"
               >
                 <nav className="w-full ">
@@ -180,9 +181,9 @@ export default function MainHeader() {
                               <div key={cat.value} className="w-full">
                                 <Link
                                   href={`/plants/${cat.value}`}
-                                  className={`block px-12 py-3 text-sm transition-colors duration-200 border-l-2  ${
+                                  className={`block px-12 py-3 text-sm transition-colors duration-200  ${
                                     pathname === `/plants/${cat.value}`
-                                      ? "!text-orange-500 bg-gray-300 w-full"
+                                      ? "border-l-2 border-orange-500 bg-gray-300 w-full"
                                       : "!text-gray-700 hover:bg-gray-50 "
                                   }`}
                                   onClick={() => {
@@ -205,7 +206,7 @@ export default function MainHeader() {
                         href="/about"
                         className={`flex items-center px-6 py-4 text-base font-semibold transition-colors duration-200 ${
                           pathname === "/about"
-                            ? "text-green-600 bg-gray-100"
+                            ? "bg-gray-300 w-full border-l-2 border-orange-500"
                             : "text-gray-900 hover:bg-gray-100"
                         }`}
                         onClick={() => setMobileOpen(false)}
@@ -220,7 +221,7 @@ export default function MainHeader() {
                         href="/contact-us"
                         className={`flex items-center px-6 py-4 text-base font-semibold transition-colors duration-200 ${
                           pathname === "/contact-us"
-                            ? "text-orange-600 bg-gray-300"
+                            ? "bg-gray-300 w-full border-l-2 border-orange-500"
                             : "text-gray-900 hover:bg-gray-100"
                         }`}
                         onClick={() => setMobileOpen(false)}
@@ -235,7 +236,7 @@ export default function MainHeader() {
                         href="/blogs"
                         className={`flex items-center px-6 py-4 text-base font-semibold transition-colors duration-200 ${
                           pathname === "/blogs"
-                            ? "text-green-600 bg-gray-300"
+                            ? "bg-gray-300 w-full border-l-2 border-orange-500"
                             : "text-gray-900 hover:bg-gray-100"
                         }`}
                         onClick={() => setMobileOpen(false)}
