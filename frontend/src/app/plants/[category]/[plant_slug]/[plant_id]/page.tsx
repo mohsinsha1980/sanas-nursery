@@ -69,7 +69,7 @@ export default async function ProductDetailsPageByID({
             <ChevronRight className="text-[#505050] flex-shrink-0" />
             {category && (
               <>
-                <Link href={`/categories/${category.value}`}>
+                <Link href={`/plants/${category.value}`}>
                   <p className="text-[18px] font-semibold text-[#505050]  hover:text-[#f37521]">
                     {category.label}
                   </p>
@@ -151,7 +151,7 @@ export default async function ProductDetailsPageByID({
               {similarPlants.map((sp) => (
                 <Link
                   key={sp._id}
-                  href={`/categories/${sp.category}/${sp.slug}/${sp._id}`}
+                  href={`/plants/${sp.category}/${sp.slug}/${sp._id}`}
                 >
                   <div className="relative cursor-pointer transition-transform duration-300 hover:scale-105 overflow-hidden group">
                     <div className="relative w-full h-[250px] sm:h-[280px] md:h-[320px] lg:h-[400px] mx-auto">

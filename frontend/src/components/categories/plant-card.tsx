@@ -53,7 +53,7 @@ const PlantCard = ({ data }: { data: PlantsCardType }) => {
   return (
     <Link
       key={data.id}
-      href={`/categories/${data.category}/${data.slug}/${data.id}`}
+      href={`/plants/${data.category}/${data.slug}/${data.id}`}
     >
       <div className="relative rounded-lg cursor-pointer transition-transform duration-300 hover:scale-105 overflow-hidden group ">
         {user?._id && user.role === ROLES.USER && (

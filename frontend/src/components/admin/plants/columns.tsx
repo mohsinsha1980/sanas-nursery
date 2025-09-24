@@ -28,7 +28,7 @@ export const columns: ColumnDef<PlantTableDataType>[] = [
 
       return (
         <Link
-          href={`/categories/${row.original.categorySlug}/${row.original.slug}/${row.original._id}`}
+          href={`/plants/${row.original.categorySlug}/${row.original.slug}/${row.original._id}`}
         >
           <div className="flex items-center gap-2 p-2">
             <Image

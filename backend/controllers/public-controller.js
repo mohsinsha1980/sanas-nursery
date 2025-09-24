@@ -499,7 +499,7 @@ const searchOptionsByField = (field, products) => {
     if (!product[field]) return;
     return {
       label: product[field],
-      url: `/categories/${product.category}/${product.slug}/${product._id}`,
+      url: `/plants/${product.category}/${product.slug}/${product._id}`,
     };
   });
 };

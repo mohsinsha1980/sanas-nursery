@@ -120,7 +120,7 @@ export default function WishlistPage() {
 
                   <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg flex items-center justify-center">
                     <Link
-                      href={`/categories/${plant.category}/${plant.slug}/${plant.plantId}`}
+                      href={`/plants/${plant.category}/${plant.slug}/${plant.plantId}`}
                     >
                       <Button
                         variant="orange"

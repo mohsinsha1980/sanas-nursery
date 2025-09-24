@@ -58,9 +58,9 @@ export async function generateMetadata({
       publisher: "Sanas Nursery",
       category: "Plants & Gardening",
       alternates: {
-        canonical: `https://sanasnursery.com/categories/${categoryData.value}`,
+        canonical: `https://sanasnursery.com/plants/${categoryData.value}`,
         languages: {
-          "en-IN": `https://sanasnursery.com/categories/${categoryData.value}`,
+          "en-IN": `https://sanasnursery.com/plants/${categoryData.value}`,
         },
       },
       openGraph: {
@@ -69,7 +69,7 @@ export async function generateMetadata({
           categoryData.seoDescription
         } Browse ${plantsCount}+ ${categoryData.label.toLowerCase()} at Sanas Nursery.`,
         type: "website",
-        url: `https://sanasnursery.com/categories/${categoryData.value}`,
+        url: `https://sanasnursery.com/plants/${categoryData.value}`,
         siteName: "Sanas Nursery",
         images: [
           {
@@ -156,7 +156,7 @@ export default async function CategoryLayout({
                 "@type": "ListItem",
                 position: 3,
                 name: categoryData.label,
-                item: `https://sanasnursery.com/categories/${categoryData.value}`,
+                item: `https://sanasnursery.com/plants/${categoryData.value}`,
               },
             ],
           })}
@@ -174,7 +174,7 @@ export default async function CategoryLayout({
             "@type": "CollectionPage",
             name: categoryData.seoTitle,
             description: categoryData.seoDescription,
-            url: `https://sanasnursery.com/categories/${categoryData.value}`,
+            url: `https://sanasnursery.com/plants/${categoryData.value}`,
             mainEntity: {
               "@type": "ItemList",
               name: `${categoryData.label} Plants`,
@@ -190,7 +190,7 @@ export default async function CategoryLayout({
                     name: plant.title,
                     description: plant.description,
                     image: getPicURL(plant.pictures?.[0]),
-                    url: `https://sanasnursery.com/categories/${categoryData.value}/${plant.slug}/${plant._id}`,
+                    url: `https://sanasnursery.com/plants/${categoryData.value}/${plant.slug}/${plant._id}`,
                     brand: {
                       "@type": "Brand",
                       name: "Sanas Nursery",
@@ -280,7 +280,7 @@ export default async function CategoryLayout({
             "@type": "GardenStore",
             name: `Sanas Nursery - ${categoryData.label}`,
             description: `Specialized ${categoryData.label.toLowerCase()} nursery in Uruli Kanchan, Pune`,
-            url: `https://sanasnursery.com/categories/${categoryData.value}`,
+            url: `https://sanasnursery.com/plants/${categoryData.value}`,
             image: categoryData.picture,
             telephone: "+91 8999481616",
             email: "info@sanasnursery.com",
