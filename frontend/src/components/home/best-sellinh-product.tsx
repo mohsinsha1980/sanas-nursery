@@ -21,7 +21,7 @@ const BestSellProdCards = ({ plants }: { plants: BestSellingPlant[] }) => {
             {plants.map((item, i) => (
               <div key={i} className="flex-shrink-0">
                 <Link
-                  href={`/categories/${item.category}/${item.slug}/${item._id}`}
+                  href={`/plants/${item.category}/${item.slug}/${item._id}`}
                 >
                   <Image
                     src={getPicURL(item.pictures[0])}

@@ -20,8 +20,8 @@ export default function GreenChoices({ plants }: GreenChoicesProps) {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 lg:gap-x-6 gap-x-3 lg:gap-y-12 gap-y-5 justify-items-center sm:px-4">
-          {plants.map((plant: GreenChoicePlant) => (
-            <PlantCard plant={plant} key={plant._id} />
+          {plants.map((plant: GreenChoicePlant, index: number) => (
+            <PlantCard plant={plant} key={plant._id} index={index} />
           ))}
         </div>
       </div>

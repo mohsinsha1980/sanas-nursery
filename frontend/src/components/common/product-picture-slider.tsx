@@ -28,13 +28,14 @@ export default function ProductPictureSlider({
       <div className="bl__product__slider__container sm:!me-2  " ref={emblaRef}>
         <div className="bl__slider__container ">
           {pictures.length ? (
-            pictures.map((item) => (
+            pictures.map((item, index) => (
               <div className="bl__slider__slide" key={item}>
                 <Image
                   src={item}
                   width={501}
                   height={668}
-                  alt=""
+                  alt="Plant Product Images - Premium Quality Plants from Sanas Nursery Wholesale Supplier"
+                  priority={index === 0}
                   className="rounded-lg"
                 />
               </div>
@@ -61,7 +62,8 @@ export default function ProductPictureSlider({
                       src={item}
                       width={100}
                       height={125}
-                      alt=""
+                      alt="Plant Gallery View - Fruit Trees, Flowering Plants & Masala Plants Collection"
+                      priority={index < 3}
                       className="rounded-lg"
                     />
                   </DotButton>
@@ -85,7 +87,8 @@ export default function ProductPictureSlider({
                     src={item}
                     width={100}
                     height={125}
-                    alt=""
+                    alt="Plant Image Preview - Wholesale Plant Nursery Products from Sanas Nursery Pune"
+                    priority={index < 3}
                     className="rounded-lg w-full h-auto"
                   />
                 </DotButton>

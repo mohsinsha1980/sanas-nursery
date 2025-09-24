@@ -73,7 +73,9 @@ export const AUTH = {
 
 export const SITE = {
   LOGO: "/images/site/sanas-nursery.webp",
+  SEO_LOGO: "https://sanasnursery.com/images/site/sanas-nursery.webp",
   POWERED_BY: "/images/site/bharathatechno-it-pvt-ltd-white.svg",
+  FAVICON_IOS: "/images/site/sanas-nursery.png",
 };
 
 export const HOME_HERO = HERO;

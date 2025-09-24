@@ -10,7 +10,7 @@ export default function Categories({ category }: { category: string }) {
           {CATEGORY_ARR.map((cat) => {
             const isActive = category === cat.value;
             return (
-              <Link key={cat.value} href={`/categories/${cat.value}`}>
+              <Link key={cat.value} href={`/plants/${cat.value}`}>
                 <div className="flex flex-col items-center cursor-pointer">
                   <div
                     className={`relative lg:w-[150px] lg:h-[150px] w-[120px] h-[120px] rounded-full overflow-hidden group

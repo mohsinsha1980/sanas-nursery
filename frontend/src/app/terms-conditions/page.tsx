@@ -1,3 +1,4 @@
+import { SITE } from "@/assets";
 import { SITE_DATA } from "@/lib/constants";
 import Link from "next/link";
 import Script from "next/script";
@@ -17,14 +18,14 @@ export default function TermsConditionsPage() {
       url: "https://sanasnursery.com",
       logo: {
         "@type": "ImageObject",
-        url: "https://sanasnursery.com/images/site/sanas-nursery.webp",
+        url: SITE.SEO_LOGO,
       },
       contactPoint: {
         "@type": "ContactPoint",
         telephone: SITE_DATA.phone,
         contactType: "customer service",
         areaServed: "IN",
-        availableLanguage: ["en", "mr"],
+        availableLanguage: ["en"],
       },
       address: {
         "@type": "PostalAddress",

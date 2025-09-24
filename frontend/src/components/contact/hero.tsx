@@ -11,7 +11,8 @@ const Hero = () => {
         src={HERO.ABOUT}
         height={1500}
         width={1500}
-        alt=""
+        alt="Contact Sanas Nursery - Wholesale Plant Nursery in Uruli Kanchan Pune for Plant Orders"
+        priority={true}
         className="h-[70vh] w-full object-cover object-center"
       />
       <div className="z-10 lg:w-[1200px] w-[100%] h-fit absolute lg:top-[55%] top-[55%] -translate-y-1/2 left-1/2 -translate-x-1/2 ">

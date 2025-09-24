@@ -23,7 +23,7 @@ const Mission = () => {
                 <div className="h-full w-full flex flex-col justify-between items-center">
                   <Image
                     src={ABOUT.MISSION}
-                    alt={""}
+                    alt="Sanas Nursery Mission - Wholesale Plant Supplier Committed to Quality & Sustainability"
                     height={100}
                     width={100}
                     className="h-[64px] w-[64px] object-cover rounded-full"
@@ -45,7 +45,7 @@ const Mission = () => {
                 <div className="h-full w-full flex flex-col justify-between items-center">
                   <Image
                     src={ABOUT.VISION}
-                    alt={""}
+                    alt="Sanas Nursery Vision - Leading Plant Nursery in Uruli Kanchan Pune for Green India"
                     height={100}
                     width={100}
                     className="h-[64px] w-[64px] object-cover rounded-full"

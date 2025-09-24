@@ -20,7 +20,7 @@ export default function Categories() {
 
         <div className="flex gap-8 flex-wrap justify-center  ">
           {CATEGORY_ARR.map((cat) => (
-            <Link key={cat.value} href={`/categories/${cat.value}`}>
+            <Link key={cat.value} href={`/plants/${cat.value}`}>
               <div className="flex flex-col items-center cursor-pointer group">
                 <div className="relative lg:w-[160px] lg:h-[160px] w-[150px] h-[150px] rounded-full overflow-hidden">
                   <Image

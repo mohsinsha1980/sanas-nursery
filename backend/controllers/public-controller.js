@@ -447,7 +447,7 @@ export const getPublicHomeData = async (req, res, next) => {
       status: STATUS.ACTIVE,
       "tags.value": BEST_SELLING_TAG,
     })
-      .select("_id title plantId category pictures slug")
+      .select("_id title plantId category pictures slug metaDescription")
       .limit(BEST_SELLING_PLANTS_LIMIT)
       .sort({ createdAt: -1 })
       .lean();
@@ -480,7 +480,7 @@ export const getPublicHomeData = async (req, res, next) => {
       testimonials: testimonials || [],
       bestSellingPlants: bestSellingPlants || [],
     };
-    
+
     req.successResponse = {
       message: "Home data retrieved successfully",
       data: responseData,
@@ -499,7 +499,7 @@ const searchOptionsByField = (field, products) => {
     if (!product[field]) return;
     return {
       label: product[field],
-      url: `/categories/${product.category}/${product.slug}/${product._id}`,
+      url: `/plants/${product.category}/${product.slug}/${product._id}`,
     };
   });
 };
