@@ -146,7 +146,7 @@ export default async function Home() {
       brand: { "@type": "Brand", name: "Sanas Nursery" },
       offers: {
         "@type": "Offer",
-        url: `/categories/${plant.category}/${plant.slug}/${plant._id}`,
+        url: `/plants/${plant.category}/${plant.slug}/${plant._id}`,
       },
     })) || [];
 

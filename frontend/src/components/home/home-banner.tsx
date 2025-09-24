@@ -39,7 +39,7 @@ export default function HomeBanner() {
               A wholesale plant nursery providing healthy fruit trees, flower
               plants, and greenery grown with expert care.
             </p>
-            <Link href="/categories/fruit-trees">
+            <Link href="/plants/fruit-trees">
               <Button variant="orange" size="lg" className="">
                 View Collection
               </Button>

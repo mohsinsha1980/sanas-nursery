@@ -24,9 +24,9 @@ export default function HeaderNav() {
           onMouseLeave={() => setOpen(false)}
         >
           <Link
-            href="/categories/fruit-trees"
+            href="/plants/fruit-trees"
             className={`flex items-center gap-1 ${
-              pathname.startsWith("/plants") ||  pathname.startsWith("/categories")  ? "active" : ""
+              pathname.startsWith("/plants") ? "active" : ""
             }`}
           >
             <span>Plants </span>
@@ -44,10 +44,7 @@ export default function HeaderNav() {
                 <ol className="flex flex-col items-start text-center mb-2 gap-y-2">
                   {CATEGORY_ARR.map((cat) => (
                     <li key={cat.value}>
-                      <Link
-                        href={`/categories/${cat.value}`}
-                        className=" px-4 "
-                      >
+                      <Link href={`/plants/${cat.value}`} className=" px-4 ">
                         <p className="text-[18px]">{cat.label}</p>
                       </Link>
                     </li>

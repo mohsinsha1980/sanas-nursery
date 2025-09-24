@@ -73,16 +73,16 @@ export async function generateMetadata({
       publisher: "Sanas Nursery",
       category: "Plants & Gardening",
       alternates: {
-        canonical: `https://sanasnursery.com/categories/${category}/${plant_slug}/${plant_id}`,
+        canonical: `https://sanasnursery.com/plants/${category}/${plant_slug}/${plant_id}`,
         languages: {
-          "en-IN": `https://sanasnursery.com/categories/${category}/${plant_slug}/${plant_id}`,
+          "en-IN": `https://sanasnursery.com/plants/${category}/${plant_slug}/${plant_id}`,
         },
       },
       openGraph: {
         title,
         description,
         type: "website",
-        url: `https://sanasnursery.com/categories/${category}/${plant_slug}/${plant_id}`,
+        url: `https://sanasnursery.com/plants/${category}/${plant_slug}/${plant_id}`,
         siteName: "Sanas Nursery",
         images: [
           {
@@ -174,13 +174,13 @@ export default async function ProductLayout({
               "@type": "ListItem",
               position: 3,
               name: categoryData?.label || "Plants",
-              item: `https://sanasnursery.com/categories/${category}`,
+              item: `https://sanasnursery.com/plants/${category}`,
             },
             {
               "@type": "ListItem",
               position: 4,
               name: plant.title,
-              item: `https://sanasnursery.com/categories/${category}/${plant_slug}/${plant_id}`,
+              item: `https://sanasnursery.com/plants/${category}/${plant_slug}/${plant_id}`,
             },
           ],
         })}
@@ -236,11 +236,13 @@ export default async function ProductLayout({
             },
           },
           additionalProperty:
-            plant.specifications?.map((spec: { label: string; value: string }) => ({
-              "@type": "PropertyValue",
-              name: spec.label,
-              value: spec.value,
-            })) || [],
+            plant.specifications?.map(
+              (spec: { label: string; value: string }) => ({
+                "@type": "PropertyValue",
+                name: spec.label,
+                value: spec.value,
+              })
+            ) || [],
         })}
       </Script>
 

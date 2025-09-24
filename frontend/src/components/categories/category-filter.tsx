@@ -105,7 +105,7 @@ export default function Filters({ category }: CategoryFilterProps) {
         {CATEGORY_ARR.map((cat) => (
           <Link
             key={cat.value}
-            href={`/categories/${cat.value}`}
+            href={`/plants/${cat.value}`}
             className={`px-3 py-2 lg:py-1 text-base lg:text-lg font-medium transition-colors duration-200 cursor-pointer rounded-md w-full text-left
             ${
               category === cat.value

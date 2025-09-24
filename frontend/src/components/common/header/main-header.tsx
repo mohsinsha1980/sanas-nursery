@@ -126,8 +126,7 @@ export default function MainHeader() {
                       <button
                         type="button"
                         className={`flex items-center justify-between w-full px-6 py-4 transition-colors duration-200 ${
-                          pathname.startsWith("/plants") ||
-                          pathname.startsWith("/categories")
+                          pathname.startsWith("/plants")
                             ? "bg-gray-300"
                             : "hover:bg-gray-100"
                         }`}
@@ -139,8 +138,7 @@ export default function MainHeader() {
                       >
                         <span
                           className={`text-[20px] font-semibold ${
-                            pathname.startsWith("/plants") ||
-                            pathname.startsWith("/categories")
+                            pathname.startsWith("/plants")
                               ? "bg-gray-300"
                               : "text-black"
                           }`}
@@ -181,9 +179,9 @@ export default function MainHeader() {
                             {CATEGORY_ARR.map((cat) => (
                               <div key={cat.value} className="w-full">
                                 <Link
-                                  href={`/categories/${cat.value}`}
+                                  href={`/plants/${cat.value}`}
                                   className={`block px-12 py-3 text-sm transition-colors duration-200 border-l-2 ${
-                                    pathname === `/categories/${cat.value}`
+                                    pathname === `/plants/${cat.value}`
                                       ? "text-orange-600 bg-gray-300 border-green-500"
                                       : "text-gray-700 hover:bg-gray-50 border-transparent hover:border-green-500"
                                   }`}

@@ -92,7 +92,7 @@ const BestSellingProduct = ({ plants }: { plants: BestSellingPlant[] }) => {
                   }`}
                 >
                   <Link
-                    href={`/categories/${item.category}/${item.slug}/${item._id}`}
+                    href={`/plants/${item.category}/${item.slug}/${item._id}`}
                   >
                     <Image
                       src={getPicURL(item.pictures[0])}

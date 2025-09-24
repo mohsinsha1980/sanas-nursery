@@ -21,8 +21,8 @@ export default function NotFound() {
             Oops! Page Not Found
           </h2>
           <p className="text-lg text-gray-600 mb-2">
-            The page you&apos;re looking for seems to have grown away like a plant in
-            the wind.
+            The page you&apos;re looking for seems to have grown away like a
+            plant in the wind.
           </p>
           <p className="text-gray-500">
             Don&apos;t worry, even the best gardeners sometimes lose their way!
@@ -40,7 +40,7 @@ export default function NotFound() {
               Back to Home
             </Button>
           </Link>
-          <Link href="/categories">
+          <Link href="/plants">
             <Button
               variant="outline"
               size="lg"

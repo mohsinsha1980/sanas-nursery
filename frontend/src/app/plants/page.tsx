@@ -7,7 +7,7 @@ export default function CategoriesPage() {
   const router = useRouter();
 
   useEffect(() => {
-    router.push("/categories/fruit-trees");
+    router.push("/plants/fruit-trees");
   }, [router]);
 
   return (
