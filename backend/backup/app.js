@@ -1,8 +1,8 @@
 // To get backup
-// mongodump --db=jsm-test --archive=./db.gzip --gzip
+// mongodump --db=sanas-nursery --archive=./db.gzip --gzip
 
 // To restore from backup
-// mongorestore --gzip --archive="./NCC-20-08-2024-0-0-0.gzip"
+// mongorestore --gzip --archive="./8-12-2025-old-server-db.gzip"
 
 require("dotenv").config({ path: __dirname + "/.." + "/.env" });
 import { spawn } from "node:child_process";
