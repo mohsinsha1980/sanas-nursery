@@ -14,8 +14,8 @@ const templateFile = readFileSync(
 const template = compile(templateFile);
 
 const replacements = {
-  first_name: "Vaibhav",
-  last_name: "Bokare",
+  first_name: "John",
+  last_name: "Doe",
 };
 
 const htmlToSend = template(replacements);
@@ -39,7 +39,7 @@ const sendEmail = async () => {
       to: [
         {
           email_address: {
-            address: "bokarevk2001@gmail.com",
+            address: "receiver@gmail.com",
             name: "Info",
           },
         },
