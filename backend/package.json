@@ -7,7 +7,6 @@
     "start": "node index.js"
   },
   "type": "module",
-  "author": "BharathaTechno IT PVT LTD",
   "license": "ISC",
   "description": "",
   "dependencies": {

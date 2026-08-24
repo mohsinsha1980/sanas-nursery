@@ -305,7 +305,6 @@ export const createOrderEnquiry = async (req, res, next) => {
 
     const data = await sendEmail({
       templatePath: adminTemplatePath,
-      // receiverEmail: "bokarevaibhav2001@gmail.com",
       receiverEmail: config.ADMIN_EMAIL,
       subject: "New Contact Form Submission",
       replacements: AdminReplacements,
@@ -395,7 +394,6 @@ export const createContactEnquiry = async (req, res, next) => {
 
     const data = await sendEmail({
       templatePath: adminTemplatePath,
-      // receiverEmail: "bokarevaibhav2001@gmail.com",
       receiverEmail: config.ADMIN_EMAIL,
       subject: "New Contact Form Submission",
       replacements: AdminReplacements,

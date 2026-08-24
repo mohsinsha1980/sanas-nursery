@@ -10,10 +10,10 @@ const register = async () => {
   try {
     const hashed = await hash("kH#365&65jdoP", 10);
     const user = new User({
-      email: "adminvaibhav@gmail.com",
+      email: "admin@gmail.com",
       password: hashed,
-      name: "Vaibhav Bokare",
-      phone: "9561157845",
+      name: "Admin",
+      phone: "",
       isVerified: true,
       role: "Admin",
     });
