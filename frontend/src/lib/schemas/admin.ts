@@ -53,22 +53,29 @@ export const tagSchema = z.object({
   value: z.string().nonempty("Tag value is required"),
 });
 
+const basePlantSchema = {
+  title: titleSchema,
+  slug: slugValidation,
+  summary: z.string().nonempty("Plant summary is required"),
+  category: z.string().nonempty("Plant Category is required"),
+  size: z.string().nonempty("Plant Size is required"),
+  careLevel: z.string().optional(),
+  tags: z.array(tagSchema).optional(),
+  metaDescription: z
+    .string()
+    .max(160, "Meta description must be less than 160 characters")
+    .optional(),
+  details: z.string().nonempty("Detail is required"),
+  description: z.string().nonempty("Plant description is required"),
+  specifications: z.array(specificationsSchema),
+  faqs: z.array(faqsSchema),
+  status: z.boolean(),
+};
+
 export const addPlantSchema = z
   .object({
-    title: titleSchema,
-    slug: slugValidation,
-    summary: z.string().nonempty("Plant summary is required"),
-    category: z.string().nonempty("Plant Category is required"),
-    size: z.string().nonempty("Plant Size is required"),
-    careLevel: z.string().optional(),
-    tags: z.array(tagSchema).optional(),
-    metaDescription: z.string().max(160, "Meta description must be less than 160 characters").optional(),
-    details: z.string().nonempty("Detail is required"),
-    description: z.string().nonempty("Plant description is required"),
-    specifications: z.array(specificationsSchema),
-    faqs: z.array(faqsSchema),
+    ...basePlantSchema,
     pictures: picturesSchema,
-    status: z.boolean(),
   })
   .superRefine((data, ctx) => {
     const generatedSlug = generateSlug(data.title);
@@ -102,9 +109,10 @@ const editPlantPicturesSchema =
           ),
       ]);
 
-export const editPlantSchema = addPlantSchema
-  .extend({
+export const editPlantSchema = z
+  .object({
     plantId: z.string(),
+    ...basePlantSchema,
     pictures: editPlantPicturesSchema,
   })
   .superRefine((data, ctx) => {
